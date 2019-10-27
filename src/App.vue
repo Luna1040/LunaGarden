@@ -1,85 +1,165 @@
-<script src="./router/index.js"></script>
 <template>
-  <!--Router Page-->
-  <div class="container">
-    <router-view/>
-    <div class="large-bg">
-      <!--<img src="https://cn.bing.com/th?id=OHR.springequinox_ZH-CN1099430476_1920x1080.jpg&rf=NorthMale_1920x1080.jpg&pid=hp" alt="">-->
-      <img src="https://cn.bing.com/th?id=OHR.BesenheideBDJ_ZH-CN2139380821_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
-      <!--      <div class="test"></div>-->
-      <!--<video src="https://az29176.vo.msecnd.net/videocontent/Xmas_Tree_Lights_NimiaRF_4K_951127_768_ZH-CN.mp4" autoplay="autoplay" loop="loop"></video>-->
+  <div id="app">
+    <router-view></router-view>
+    <div
+      :class="{ bcImage177: width177 === 177 , bcImage16: width177 === 16 , bcImage0: width177 === 0}"
+    >
+      <img src="bc1.jpg" alt />
+    </div>
+    <!-- 移动端通用footer -->
+    <footer>
+      <div
+        class="activeBar"
+        :class="{activeHome : footerActive === 'home' , activeNote : footerActive === 'note' , activeUI : footerActive === 'ui' , activeDiary : footerActive === 'diary'}"
+      ></div>
+      <div class="figGroup">
+        <router-link
+          to="/mHome"
+          :class="{active : footerActive === 'home'}"
+          @click="this.footerActive = 'home'"
+        >
+          <figure>
+            <i class="iconfont"></i>
+            <figcaption>Home</figcaption>
+          </figure>
+        </router-link>
+        <router-link
+          to="/mNote"
+          :class="{active : footerActive === 'note'}"
+          @click="this.footerActive = 'note'"
+        >
+          <figure>
+            <i class="iconfont"></i>
+            <figcaption>Note</figcaption>
+          </figure>
+        </router-link>
+        <router-link
+          to="/mDiary"
+          :class="{active : footerActive === 'diary'}"
+          @click="this.footerActive = 'diary'"
+        >
+          <figure>
+            <i class="iconfont"></i>
+            <figcaption>Diary</figcaption>
+          </figure>
+        </router-link>
+        <router-link
+          to="/mUI"
+          :class="{active : footerActive === 'ui'}"
+          @click="this.footerActive = 'ui'"
+        >
+          <figure>
+            <i class="iconfont"></i>
+            <figcaption>Luna-UI</figcaption>
+          </figure>
+        </router-link>
+      </div>
+      <button
+        class="fluidBtn"
+        :class="{leftMove : footerActive === 'note' , rightMove : footerActive === 'home'}"
+      >
+        <i class="iconfont" :class="{show : footerActive === 'note'}"></i>
+      </button>
+    </footer>
+    <div
+      class="alertModal"
+      :class="{showAlert: firstAlert === true , hideAlert: firstAlert === false , hide: firstAlert === ''}"
+      @click="hideModal"
+    >
+      <div
+        class="modalBody"
+        :class="{showModal: firstAlert === true , hideModal: firstAlert === false , hide: firstAlert === ''}"
+        @click.stop
+      >
+        <div class="alertHeader">
+          <p>{{$t('lang.firstAlert.attention')}}</p>
+        </div>
+        <div class="alertBody">
+          <p>{{$t('lang.firstAlert.line1')}}</p>
+          <p>{{$t('lang.firstAlert.line2')}}</p>
+          <p class="error desc">{{$t('lang.firstAlert.line3')}}</p>
+          <p class="error desc">{{$t('lang.firstAlert.line4')}}</p>
+        </div>
+        <div class="alertFooter">
+          <button class="primaryButton" v-waves>Sure</button>
+          <button class="cancelButton" v-waves @click="hideModal">No</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
 <script>
-  // import LunaUI from './assets/css/luna-ui.vue'
-  export default {
-    name: "luna-ui",
-    components:{
+export default {
+  name: "app",
+  data() {
+    return {
+      footerActive: 'home',
+      firstAlert: '',
+      width177: true
+    };
+  },
+  created() {
+    //计算窗口比例调整背景图
+    if (window.innerWidth / window.innerHeight > 1.777) {
+        this.width177 = 177;
+      } else if (window.innerWidth / window.innerHeight < 1) {
+        this.width177 = 0;
+      } else {
+        this.width177 = 16;
+      }
+    //是否为初次访问
+    let firstLoad = 0;
+    let todoList = [];
+    let dataObj = [];
+    //根据localstorage的预设凭据初次判断
+    if (localStorage.getItem("firstLoad")) {
+      firstLoad = 1;
+      //根据localstorage中必须的内容格式取值，若没有，则首先赋值
+      if (localStorage.getItem("todoList")) {
+        dataObj = JSON.parse(localStorage.getItem("todoList"));
+      } else {
+        dataObj = [];
+        todoList = localStorage.setItem("todoList", JSON.stringify(dataObj));
+      }
+    } else {
+      //初次访问，创建默认数据格式保存于localstorage中
+      dataObj = [];
+      todoList = localStorage.setItem("todoList", JSON.stringify(dataObj));
+      //创建凭据证明下次打开时非初次访问
+      firstLoad = localStorage.setItem("firstLoad", 1);
+      //提示是否进入引导模式
+      this.firstAlert = true;
+    }
 
+    //若不是，判断是否登录
+
+    //若未登录，从localstorage获取内容渲染
+
+    //若已登录，从服务器端获取内容
+  },
+  mounted() {
+    const _this = this;
+    window.onresize = () => {
+      console.log(window.innerWidth / window.innerHeight);
+      if (window.innerWidth / window.innerHeight > 1.777) {
+        this.width177 = 177;
+      } else if (window.innerWidth / window.innerHeight < 1) {
+        this.width177 = 0;
+      } else {
+        this.width177 = 16;
+      }
+    };
+  },
+  methods: {
+    hideModal() {
+      this.firstAlert = false;
+      let _this = this;
+      setTimeout(function() {
+        _this.firstAlert = "";
+      }, 500);
     }
   }
+};
 </script>
-
 <style lang="scss">
-  *{
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-  }
-  button{
-    outline: 0;
-    cursor: pointer;
-    overflow: hidden;
-  }
-  a{
-    text-decoration: none;
-  }
-  #app {
-    /*Review Fontfamily&Smoother text*/
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  body::-webkit-scrollbar,div::-webkit-scrollbar,table::-webkit-scrollbar {
-    width: 5px;
-    background-color: rgba(0, 0, 0, 0)
-  }
-  body::-webkit-scrollbar-thumb,div::-webkit-scrollbar-thumb,table::-webkit-scrollbar-thumb {
-    background: silver;
-    border-radius: 5rem
-  }
-  .large-bg{
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    z-index: -1;
-    img{
-      width: 100%;
-      filter:brightness(0.8);
-    }
-    video{
-      width: 100%;
-      filter:brightness(0.5);
-    }
-  }
-  @media (max-device-width:1024px) {
-    .large-bg{
-      img{
-        height: 100vh;
-        width: auto;
-        position: fixed;
-        right: -50%;
-      }
-      video{
-        height: 100vh;
-        width: auto;
-        position: fixed;
-        right: -50%;
-      }
-    }
-  }
 </style>

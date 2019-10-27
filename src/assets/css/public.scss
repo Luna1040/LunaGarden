@@ -1,0 +1,574 @@
+//元素遮盖范围规范如下
+//通用元素适用默认z-index
+//背景层,z-index:-1
+//header＆footer,z-index:100
+//浮动元素&浮动按钮,z-index:150,
+//遮罩层,z-index:200
+//弹窗层,z-index:250
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+div,
+a,
+button,
+figcaption,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+li,
+main,
+p,
+section,
+span {
+  font-family: Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue, sans-serif;
+}
+button{
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+input{
+  outline: 0;
+}
+
+ul li{
+  list-style: none;
+}
+.hide{
+  display: none!important;
+}
+.cancelButton{
+  background-color: #EEEEEE;
+  color: #333;
+}
+.primaryButton{
+  background-color: #eb7290;
+  color: #FFFFFF;
+}
+.error{
+  color: #EC8585;
+}
+.desc{
+  font-size: 12px;
+}
+a{
+  text-decoration: none;
+}
+@font-face {
+  font-family: Cute;
+  src: url(http://www.xn--ilr89m.com/fonts/ZnikomitNo24.otf)
+}
+
+@font-face {
+  font-family: Curve;
+  src: url(http://www.xn--ilr89m.com/fonts/Horatio-D-Light-2.ttf)
+}
+
+@font-face {
+  font-family: Radiu;
+  src: url(http://www.xn--ilr89m.com/fonts/Amira-Light-2.ttf)
+}
+
+@font-face {
+  font-family: Gorgeous;
+  src: url(http://www.xn--ilr89m.com/fonts/Starway-2.otf)
+}
+
+@font-face {
+  font-family: Gorgeous_light;
+  src: url(http://www.xn--ilr89m.com/fonts/Starway-Light-4.otf)
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+.bcImage16{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  img{
+    height: 100%;
+  }
+}
+.bcImage177{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  img{
+    width: 100%;
+  }
+}
+.bcImage0{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../../public/bc1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  img{
+    display: none;
+  }
+}
+
+aside::-webkit-scrollbar,
+textarea::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+table::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: hsla(0, 0%, 100%, .9);
+}
+
+aside::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb,
+table::-webkit-scrollbar-thumb {
+  background: silver;
+  border-radius: 5rem;
+}
+
+//手机端与pad端展示footer,PC端隐藏
+footer {
+  display: none
+}
+
+@media screen and (max-width: 420px) {
+  footer {
+    display: block;
+    width: 100%;
+    height: 60px;
+    background: radial-gradient(75px at top, transparent 50%, rgb(235, 114, 144) 51%);
+    background-position-y: -10px;
+    position: fixed;
+    bottom: -10px;
+    z-index: 100;
+
+    .figGroup {
+      display: flex;
+      align-items: center;
+
+      a {
+        width: 25%
+      }
+    }
+  }
+}
+
+.fluidBtn {
+  background: #eb7290;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  font-size: 50px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 100px;
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% - 30px);
+  -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
+  box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
+  border: 0;
+}
+
+.leftMove {
+  animation: leftMove 0.5s ease-out forwards;
+
+  @keyframes leftMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
+
+.rightMove {
+  animation: rightMove 0.5s ease-out forwards;
+
+  @keyframes rightMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
+.alertModal{
+  display: flex;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 250;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  .modalBody{
+    position: relative;
+    background-color: #ffffff;
+    width: 600px;
+    border-radius: 20px;
+    padding: 8px 16px 24px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+    .alertHeader{
+      padding-bottom: 8px;
+      border-bottom: 1px solid #FEE7F4;
+      p{
+        font-size: 22px;
+      }
+    }
+    .alertBody{
+      padding-top: 25px;
+      p{
+        line-height: 24px;
+      }
+    }
+    .alertFooter{
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-around;
+      button{
+        padding: 5px 25px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+header{
+  width: 100%;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  background-color:rgba(243, 88, 139, 0.55);
+  color: #ffffff;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  .userArea{
+    position: absolute;
+    left: 32px;
+    top: 9px;
+    display: flex;
+    align-items: center;
+    .userIcon{
+      img{
+        width: 48px;
+        height: 48px;
+        border-radius: 44px;
+      }
+    }
+    .information{
+      margin-left: 8px;
+      .userInfo{
+        display: flex;
+        .userName{
+          font-size: 18px;
+        }
+        .VIPer{
+          span{
+            font-size: 12px;
+            margin-left: 4px;
+          }
+        }
+      }
+      .netWorkStatus{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        i{
+          position: relative;
+          top: -1px;
+          font-size: 16px;
+          width: 16px;
+          height: 16px;
+          border-radius: 16px;
+          background-color: rgba(255,255,255,0.2);
+          animation: twinkle 2s ease-in-out infinite;
+          @keyframes twinkle {
+            0%{
+              background-color: rgba(255,255,255,0.2);
+            }
+            75%{
+              background-color: rgba(255,255,255,0);
+            }
+            100%{
+              background-color: rgba(255,255,255,0.2);
+            }
+          }
+        }
+        img{
+          width: 12px;
+          height: 12px;
+        }
+        span{
+          font-size: 12px;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+  .title{
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    h2{
+      font-size: 32px;
+      height: 66px;
+      line-height: 66px;
+    }
+    .cgLang{
+      cursor: pointer;
+    }
+    .cgLang{
+      height: 44px;
+      line-height: 44px;
+      margin-left: 8px;
+    }
+    .langSelect{
+      position: absolute;
+      right: -22px;
+      top: 66px;
+      height: 0;
+      overflow: hidden;
+      background-color:rgba(243, 88, 139, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      li{
+        width: 100%;
+        padding: 8px 22px;
+        cursor: pointer;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      li:hover{
+        background-color: rgba(255,255,255,0.2);
+      }
+    }
+  }
+.guide{
+  position: absolute;
+  right: 32px;
+  top: 0;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  a{
+    color: #F3588B;
+    background-color: #ffffff;
+    border-radius: 66px;
+    padding: 4px 12px;
+    box-shadow: rgba(0,0,0,0.5);
+    i{
+      margin-right: 4px;
+    }
+  }
+}
+}
+.aboutUs{
+  .about{
+    max-width: 1366px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 auto;
+    height: calc(100vh - 110px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 22px 0;
+  }
+  h1{
+    line-height: 48px;
+    font-size: 22px;
+    margin-top: 24px;
+  }
+  p{
+    line-height: 36px;
+  }
+  .cardGroup{
+    display: flex;
+    justify-content: space-around;
+    figure{
+      width: 200px;
+      border: 2px solid #FFFFFF;
+      text-align: center;
+      background-color: rgba(255,255,255,0.5);
+      border-radius: 20px;
+      padding: 20px 18px;
+      img{
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+      }
+      figcaption:first-of-type{
+        font-size: 22px;
+        font-weight: 600;
+      }
+      figcaption:last-of-type{
+        font-size: 14px;
+      }
+    }
+  }
+  .cardGroup:last-of-type{
+    figcaption:last-of-type{
+      text-align: left;
+      margin-top: 8px;
+    }
+  }
+}
+.home{
+  .inputArea{
+    margin: 32px auto 0;
+    height: 44px;
+    line-height: 44px;
+    background-color: rgba(255,255,255,0.4);
+    display: flex;
+    width: calc(100% - 64px);
+    max-width: 1184px;
+    border-radius: 44px;
+    align-items: center;
+    padding: 0 8px;
+    transition: all 0.5s;
+    input{
+      margin: 0 8px;
+      width: calc(100% - 64px);
+      height: 44px;
+      line-height: 44px;
+      font-size: 24px;
+      border: 0;
+      background-color: rgba(0,0,0,0);
+    }
+    button{
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      transition: all 0.5s;
+      border-radius: 32px;
+      i{
+        position: relative;
+        top: -2px;
+        height: 32px;
+        color: #eb7290;
+        font-size: 33px;
+        transition: all 0.5s;
+      }
+    }
+    button:hover{
+      box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+      i{
+        color: #FF91AC;
+      }
+    }
+  }
+  .inputArea:hover{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: rgba(255,255,255,0.75);
+  }
+  .inputAreaActive{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 22px 22px 0 0;
+  }
+  .searchAssociation{
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+    min-height: 0px;
+    transition: all 0.5s;
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 0 0 22px 22px;
+      li{
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        background-color: none;
+        cursor: pointer;
+        transition: all 0.25s;
+    }
+    li:hover{
+      background-color: #FF91AC;
+      color: #FFFFFF;
+    }
+    li:last-of-type{
+      border-radius: 0 0 22px 22px;
+    }
+  }
+}

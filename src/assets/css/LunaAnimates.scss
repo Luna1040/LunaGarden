@@ -1,0 +1,73 @@
+.showAlert{
+  animation: 0.5s ease-in showAlert forwards;
+  @keyframes showAlert {
+    0% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+}
+.hideAlert{
+  animation: 0.5s ease-in hideAlert forwards;
+  @keyframes hideAlert {
+    0% {
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+}
+.showModal{
+  animation: 0.25s ease-in showModal forwards;
+  @keyframes showModal {
+    0%{
+      opacity: 0;
+      top: 24px;
+    }
+    30%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+.hideModal{
+  animation: 0.25s ease-in hideModal forwards;
+  @keyframes hideModal {
+    0%{
+      opacity: 1;
+      top: 0;
+    }
+    100%{
+      opacity: 0;
+      top: -24px;
+    }
+  }
+}
+.langSlideUp{
+  animation: 0.3s ease-in langSlideUp forwards;
+  @keyframes langSlideUp {
+    0%{
+      height: 75px;
+    }
+    100%{
+      height: 0;
+    }
+  }
+}
+.langSlideDown{
+  animation: 0.3s ease-in langSlideDown forwards;
+  @keyframes langSlideDown {
+    0%{
+      height: 0;
+    }
+    100%{
+      height: 75px;
+    }
+  }
+}
