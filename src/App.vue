@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition :name="transitionName">
+      <router-view class="Router"></router-view>
+    </transition>
     <div
       :class="{ bcImage177: width177 === 177 , bcImage16: width177 === 16 , bcImage0: width177 === 0}"
     >
@@ -93,20 +95,21 @@ export default {
   name: "app",
   data() {
     return {
-      footerActive: 'home',
-      firstAlert: '',
-      width177: true
+      footerActive: "home",
+      firstAlert: "",
+      width177: true,
+      transitionName: "slide-right"
     };
   },
   created() {
     //计算窗口比例调整背景图
     if (window.innerWidth / window.innerHeight > 1.777) {
-        this.width177 = 177;
-      } else if (window.innerWidth / window.innerHeight < 1) {
-        this.width177 = 0;
-      } else {
-        this.width177 = 16;
-      }
+      this.width177 = 177;
+    } else if (window.innerWidth / window.innerHeight < 1) {
+      this.width177 = 0;
+    } else {
+      this.width177 = 16;
+    }
     //是否为初次访问
     let firstLoad = 0;
     let todoList = [];
@@ -137,6 +140,19 @@ export default {
 
     //若已登录，从服务器端获取内容
   },
+  watch: {
+    $route(to, from) {
+      console.log(this.$router);
+      // 切换动画
+      let isBack = this.$router.isBack; // 监听路由变化时的状态为前进还是后退
+      if (isBack) {
+        this.transitionName = "slide-left";
+      } else {
+        this.transitionName = "slide-right";
+      }
+      this.$router.isBack = false;
+    }
+  },
   mounted() {
     const _this = this;
     window.onresize = () => {
@@ -162,4 +178,28 @@ export default {
 };
 </script>
 <style lang="scss">
+.Router {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  transition: all 0.5s ease-in;
+  will-change: transform;
+  top: 0;
+  backface-visibility: hidden;
+  perspective: 1000;
+  -webkit-perspective: 1000;
+  overflow: hidden;
+}
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
 </style>

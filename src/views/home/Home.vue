@@ -8,7 +8,7 @@
       user-language="English"
     ></Header>
     <div class="inputArea" :class="{inputAreaActive : todoText !== ''}">
-      <button class="searchBtn" @click="addTodo">
+      <button class="searchBtn" @click="matchQuery">
         <i class="iconfont icon-search"></i>
       </button>
       <input
@@ -31,11 +31,28 @@
         @click="choice(item)"
       >{{item}}</li>
     </ul>
-    <div class="todoList">
-      <ul>
-        <li v-for="i in todoList" :key="i.id">{{i.name}}</li>
-      </ul>
-    </div>
+    <swiper :options="swiperOption">
+      <div class="navigationGroup">
+        <div class="swiper-button-prev" slot="button-prev">111</div>
+        <div class="swiper-button-next" slot="button-next">222</div>
+      </div>
+      <swiper-slide>
+        <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
+          <li v-for="i in todoList" :key="i.id">
+            <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
+            <span>{{$t('lang.home.content')}}{{i.content}}</span>
+          </li>
+        </ul>
+      </swiper-slide>
+      <swiper-slide>
+        <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
+          <li v-for="i in todoList" :key="i.id">
+            <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
+            <span>{{$t('lang.home.content')}}{{i.content}}</span>
+          </li>
+        </ul>
+      </swiper-slide>
+    </swiper>
     <div
       class="toast"
       :class="{showToast: toastLaunch === true , hideToast: toastLaunch === false , hide: toastLaunch === ''}"
@@ -92,13 +109,32 @@ export default {
       addStatus: "",
       modal: "",
       searchArr: [],
-      todoList: []
+      todoList: [],
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      swiperOption: {
+        notNextTick: true,
+        autoplay: false,
+        navigation: {
+          nextEl: ".swiper-button-next", //前进按钮的css选择器或HTML元素。
+          prevEl: ".swiper-button-prev", //后退按钮的css选择器或HTML元素。
+          hideOnClick: true, //点击slide时显示/隐藏按钮
+          disabledClass: "my-button-disabled", //前进后退按钮不可用时的类名。
+          hiddenClass: "my-button-hidden" //按钮隐藏时的Class
+        },
+        autoplayDisableOnInteraction: false,
+        loop: false
+      }
     };
   },
   components: {
     Header
   },
-  created() {},
+  created() {
+    this.todoList = JSON.parse(localStorage.getItem("todoList"));
+  },
   methods: {
     uuidGet() {
       let s = [];
@@ -135,32 +171,35 @@ export default {
         new Date(timeStamp).getMinutes() < 10
           ? "0" + new Date(timeStamp).getMinutes()
           : new Date(timeStamp).getMinutes();
-      // let ss =new Date(timeStamp).getSeconds() < 10? "0" + new Date(timeStamp).getSeconds(): new Date(timeStamp).getSeconds();
-      // return year + "年" + month + "月" + date +"日"+" "+hh+":"+mm ;
-      this.currentTime = month + "/" + date + "/" + year + "/" + hh + ":" + mm;
-      // console.log(this.nowTime);
+      this.currentTime = year + "-" + month + "-" + date + " " + hh + ":" + mm;
     },
     keyup(event) {
-      if (event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 13)
+      if (
+        event.keyCode === 38 ||
+        event.keyCode === 40 ||
+        event.keyCode === 13
+      ) {
         return;
-      if (this.todoText !== "") {
-        let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
-        this.$http
-          .jsonp(url, {
-            params: {
-              wd: this.todoText
-            },
-            jsonp: "cb"
-          })
-          .then(res => {
-            if (res.data.s.length !== 0) {
-              this.searchArr = res.data.s;
-            } else {
-              this.searchArr = [];
-            }
-          });
       } else {
-        this.searchArr = [];
+        if (this.todoText !== "") {
+          let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+          this.$http
+            .jsonp(url, {
+              params: {
+                wd: this.todoText
+              },
+              jsonp: "cb"
+            })
+            .then(res => {
+              if (res.data.s.length !== 0) {
+                this.searchArr = res.data.s;
+              } else {
+                this.searchArr = [];
+              }
+            });
+        } else {
+          this.searchArr = [];
+        }
       }
     },
     choice(value) {
@@ -186,27 +225,30 @@ export default {
         window.open("https://cn.bing.com/search?q=" + this.todoText);
       }
     },
+    matchQuery() {
+      if (this.todoText !== "") {
+        window.open("https://cn.bing.com/search?q=" + this.todoText);
+      } else {
+        this.addAlert = true;
+      }
+    },
     addTodo(e) {
       //非空验证
       if (this.todoText === "") {
         this.addAlert = !this.addAlert;
       } else {
+        this.uuidGet();
         this.timeFormate(new Date());
-        let tempObj = {};
         let localData = JSON.parse(localStorage.getItem("todoList"));
-        //添加li
-        this.todos.push({
+        //设置储存条目内容
+        let tempObj = {
           id: this.uuid,
           time: this.currentTime,
-          content: e.target.value.trim(),
+          content: this.todoText,
           completed: false
-        });
-        // console.log(this.todos)
-        //设置储存条目内容
-        tempObj.id = this.uuid;
-        tempObj.time = this.currentTime;
-        tempObj.content = e.target.value.trim();
-        tempObj.completed = false;
+        };
+        //添加li
+        this.todoList.push(tempObj);
         localData.push(tempObj);
         //定义textContent以方便删除
         this.textContent = localData;
@@ -214,6 +256,7 @@ export default {
         localStorage.setItem("todoList", JSON.stringify(localData));
         //清空输入框
         this.todoText = "";
+        this.keyup({ keyCode: 10 });
         //addStatus
         //成功 successAdd  //未登录 failAdd //未联网 errorAdd
       }

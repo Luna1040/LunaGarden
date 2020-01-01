@@ -28,35 +28,43 @@ import mUser from './views/user/mUserCenter.vue';
 import padUser from './views/user/padUserCenter.vue';
 // 关于我们
 import aboutUs from './views/About.vue'
+//登录相关
+import Login from './views/login/login.vue';
+import Register from './views/login/register.vue';
+import Forgot from './views/login/forgot.vue';
+import ResetPsw from './views/login/resetPsw.vue';
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-		//首屏展示加载动画
-    {path: '/', name: 'start', component: Start},
-		// PC页面统一整合
-		{path: '/home', name: 'home', component: Home},
-		{path: '/guide', name: 'guide', component: Guide},
-		{path: '/user', name: 'user', component: User},
-		{path: '/Luna-UI', name: 'UI', component: UI},
-		{path: '/note', name: 'note', component: Note},
-		{path: '/diary', name: 'diary', component: Diary},
-		//移动端页面统一整合
-		{path: '/mHome', name: 'mHome', component: mHome},
-		{path: '/mGuide', name: 'mGuide', component: mGuide},
-		{path: '/mUser', name: 'mUser', component: mUser},
-		{path: '/mLuna-UI', name: 'mUI', component: mUI},
-		{path: '/mNote', name: 'mnote', component: mNote},
-		{path: '/mDiary', name: 'mDiary', component: mDiary},
-		//pad端页面统一整合
-		{path: '/padHome', name: 'padHome', component: padHome},
-		{path: '/padGuide', name: 'padGuide', component: padGuide},
-		{path: '/padUser', name: 'padUser', component: padUser},
-		{path: '/padLuna-UI', name: 'padUI', component: padUI},
-		{path: '/padNote', name: 'padnote', component: padNote},
-		{path: '/padDiary', name: 'padDiary', component: padDiary},
-		{path: '/aboutUs', name: 'aboutUs', component: aboutUs},
-
-  ]
+    routes: [
+        //首屏展示加载动画
+        { path: '/', name: 'start', component: Start },
+        // PC页面统一整合
+        { path: '/home', name: 'home', component: Home },
+        { path: '/guide', name: 'guide', component: Guide },
+        { path: '/user', name: 'user', component: User },
+        { path: '/Luna-UI', name: 'UI', component: UI },
+        { path: '/note', name: 'note', component: Note },
+        { path: '/diary', name: 'diary', component: Diary },
+        //移动端页面统一整合
+        { path: '/mHome', name: 'mHome', component: mHome },
+        { path: '/mGuide', name: 'mGuide', component: mGuide },
+        { path: '/mUser', name: 'mUser', component: mUser },
+        { path: '/mLuna-UI', name: 'mUI', component: mUI },
+        { path: '/mNote', name: 'mnote', component: mNote },
+        { path: '/mDiary', name: 'mDiary', component: mDiary },
+        //pad端页面统一整合
+        { path: '/padHome', name: 'padHome', component: padHome },
+        { path: '/padGuide', name: 'padGuide', component: padGuide },
+        { path: '/padUser', name: 'padUser', component: padUser },
+        { path: '/padLuna-UI', name: 'padUI', component: padUI },
+        { path: '/padNote', name: 'padnote', component: padNote },
+        { path: '/padDiary', name: 'padDiary', component: padDiary },
+        { path: '/aboutUs', name: 'aboutUs', component: aboutUs },
+        { path: '/login', name: 'login', component: Login },
+        { path: '/register', name: 'register', component: Register },
+        { path: '/forgot', name: 'forgot', component: Forgot },
+        { path: '/reset', name: 'reset', component: ResetPsw },
+    ]
 })

@@ -5,10 +5,14 @@
 //浮动元素&浮动按钮,z-index:150,
 //遮罩层,z-index:200
 //弹窗层,z-index:250
+$white: #FFFFFF;
+$primary: #eb7290;
+
 * {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  overflow: hidden;
 }
 
 div,
@@ -29,38 +33,47 @@ section,
 span {
   font-family: Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue, sans-serif;
 }
-button{
+
+button {
   outline: 0;
   border: 0;
   cursor: pointer;
 }
-input{
+
+input {
   outline: 0;
 }
 
-ul li{
+ul li {
   list-style: none;
 }
-.hide{
-  display: none!important;
+
+.hide {
+  display: none !important;
 }
-.cancelButton{
+
+.cancelButton {
   background-color: #EEEEEE;
   color: #333;
 }
-.primaryButton{
-  background-color: #eb7290;
-  color: #FFFFFF;
+
+.primaryButton {
+  background-color: $primary;
+  color: $white;
 }
-.error{
+
+.error {
   color: #EC8585;
 }
-.desc{
+
+.desc {
   font-size: 12px;
 }
-a{
+
+a {
   text-decoration: none;
 }
+
 @font-face {
   font-family: Cute;
   src: url(http://www.xn--ilr89m.com/fonts/ZnikomitNo24.otf)
@@ -92,7 +105,8 @@ a{
   text-align: center;
   color: #2c3e50;
 }
-.bcImage16{
+
+.bcImage16 {
   position: fixed;
   top: 0;
   left: 0;
@@ -100,11 +114,13 @@ a{
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  img{
+
+  img {
     height: 100%;
   }
 }
-.bcImage177{
+
+.bcImage177 {
   position: fixed;
   top: 0;
   left: 0;
@@ -112,11 +128,13 @@ a{
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  img{
+
+  img {
     width: 100%;
   }
 }
-.bcImage0{
+
+.bcImage0 {
   position: fixed;
   top: 0;
   left: 0;
@@ -128,7 +146,8 @@ a{
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  img{
+
+  img {
     display: none;
   }
 }
@@ -137,6 +156,7 @@ aside::-webkit-scrollbar,
 textarea::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar,
 div::-webkit-scrollbar,
+ul::-webkit-scrollbar,
 table::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -147,6 +167,7 @@ aside::-webkit-scrollbar-thumb,
 textarea::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
 div::-webkit-scrollbar-thumb,
+ul::-webkit-scrollbar-thumb,
 table::-webkit-scrollbar-thumb {
   background: silver;
   border-radius: 5rem;
@@ -180,8 +201,8 @@ footer {
 }
 
 .fluidBtn {
-  background: #eb7290;
-  color: #fff;
+  background: $primary;
+  color: $white;
   width: 60px;
   height: 60px;
   font-size: 50px;
@@ -265,9 +286,10 @@ footer {
     }
   }
 }
-.alertModal{
+
+.alertModal {
   display: flex;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 250;
   top: 0;
@@ -276,141 +298,172 @@ footer {
   height: 100%;
   align-items: center;
   justify-content: center;
-  .modalBody{
+
+  .modalBody {
     position: relative;
-    background-color: #ffffff;
+    background-color: $white;
     width: 600px;
     border-radius: 20px;
     padding: 8px 16px 24px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.3);
-    .alertHeader{
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+    .alertHeader {
       padding-bottom: 8px;
       border-bottom: 1px solid #FEE7F4;
-      p{
+
+      p {
         font-size: 22px;
       }
     }
-    .alertBody{
+
+    .alertBody {
       padding-top: 25px;
-      p{
+
+      p {
         line-height: 24px;
       }
     }
-    .alertFooter{
+
+    .alertFooter {
       padding-top: 25px;
       display: flex;
       justify-content: space-around;
-      button{
+
+      button {
         padding: 5px 25px;
         border-radius: 20px;
       }
     }
   }
 }
-header{
+
+header {
   width: 100%;
   height: 66px;
   display: flex;
   justify-content: center;
-  background-color:rgba(243, 88, 139, 0.55);
-  color: #ffffff;
+  background-color: rgba(243, 88, 139, 0.55);
+  color: $white;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  .userArea{
+  position: relative;
+  z-index: 100;
+  overflow: visible;
+
+  .userArea {
     position: absolute;
     left: 32px;
     top: 9px;
     display: flex;
     align-items: center;
-    .userIcon{
-      img{
+
+    .userIcon {
+      img {
         width: 48px;
         height: 48px;
         border-radius: 44px;
       }
     }
-    .information{
+
+    .information {
       margin-left: 8px;
-      .userInfo{
+
+      .userInfo {
         display: flex;
-        .userName{
+
+        .userName {
           font-size: 18px;
         }
-        .VIPer{
-          span{
+
+        .VIPer {
+          span {
             font-size: 12px;
             margin-left: 4px;
           }
         }
       }
-      .netWorkStatus{
+
+      .netWorkStatus {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        i{
+
+        i {
           position: relative;
           top: -1px;
           font-size: 16px;
           width: 16px;
           height: 16px;
           border-radius: 16px;
-          background-color: rgba(255,255,255,0.2);
+          background-color: rgba(255, 255, 255, 0.2);
           animation: twinkle 2s ease-in-out infinite;
+
           @keyframes twinkle {
-            0%{
-              background-color: rgba(255,255,255,0.2);
+            0% {
+              background-color: rgba(255, 255, 255, 0.2);
             }
-            75%{
-              background-color: rgba(255,255,255,0);
+
+            75% {
+              background-color: rgba(255, 255, 255, 0);
             }
-            100%{
-              background-color: rgba(255,255,255,0.2);
+
+            100% {
+              background-color: rgba(255, 255, 255, 0.2);
             }
           }
         }
-        img{
+
+        img {
           width: 12px;
           height: 12px;
         }
-        span{
+
+        span {
           font-size: 12px;
           margin-left: 2px;
         }
       }
     }
   }
-  .title{
+
+  .title {
     display: flex;
     align-items: baseline;
     position: relative;
-    h2{
+    overflow: visible;
+
+    h2 {
       font-size: 32px;
       height: 66px;
       line-height: 66px;
     }
-    .cgLang{
+
+    .cgLang {
       cursor: pointer;
     }
-    .cgLang{
+
+    .cgLang {
       height: 44px;
       line-height: 44px;
       margin-left: 8px;
     }
-    .langSelect{
+
+    .langSelect {
       position: absolute;
       right: -22px;
       top: 66px;
       height: 0;
       overflow: hidden;
-      background-color:rgba(243, 88, 139, 0.55);
+      background-color: rgba(243, 88, 139, 0.55);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      li{
+
+      li {
         width: 100%;
         padding: 8px 22px;
         cursor: pointer;
@@ -420,85 +473,100 @@ header{
         -o-transition: all 0.5s;
         transition: all 0.5s;
       }
-      li:hover{
-        background-color: rgba(255,255,255,0.2);
+
+      li:hover {
+        background-color: rgba(255, 255, 255, 0.2);
       }
     }
   }
-.guide{
-  position: absolute;
-  right: 32px;
-  top: 0;
-  height: 66px;
-  display: flex;
-  align-items: center;
-  a{
-    color: #F3588B;
-    background-color: #ffffff;
-    border-radius: 66px;
-    padding: 4px 12px;
-    box-shadow: rgba(0,0,0,0.5);
-    i{
-      margin-right: 4px;
+
+  .guide {
+    position: absolute;
+    right: 32px;
+    top: 0;
+    height: 66px;
+    display: flex;
+    align-items: center;
+
+    a {
+      color: #F3588B;
+      background-color: $white;
+      border-radius: 66px;
+      padding: 4px 12px;
+      box-shadow: rgba(0, 0, 0, 0.5);
+
+      i {
+        margin-right: 4px;
+      }
     }
   }
 }
-}
-.aboutUs{
-  .about{
+
+.aboutUs {
+  .about {
     max-width: 1366px;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     margin: 0 auto;
     height: calc(100vh - 110px);
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 22px 0;
   }
-  h1{
+
+  h1 {
     line-height: 48px;
     font-size: 22px;
     margin-top: 24px;
   }
-  p{
+
+  p {
     line-height: 36px;
   }
-  .cardGroup{
+
+  .cardGroup {
     display: flex;
     justify-content: space-around;
-    figure{
+
+    figure {
       width: 200px;
-      border: 2px solid #FFFFFF;
+      border: 2px solid $white;
       text-align: center;
-      background-color: rgba(255,255,255,0.5);
+      background-color: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
       padding: 20px 18px;
-      img{
+
+      img {
         width: 100px;
         height: 100px;
         border-radius: 100px;
       }
-      figcaption:first-of-type{
+
+      figcaption:first-of-type {
         font-size: 22px;
         font-weight: 600;
       }
-      figcaption:last-of-type{
+
+      figcaption:last-of-type {
         font-size: 14px;
       }
     }
   }
-  .cardGroup:last-of-type{
-    figcaption:last-of-type{
+
+  .cardGroup:last-of-type {
+    figcaption:last-of-type {
       text-align: left;
       margin-top: 8px;
     }
   }
 }
-.home{
-  .inputArea{
+
+.home {
+
+  .inputArea {
     margin: 32px auto 0;
     height: 44px;
     line-height: 44px;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     width: calc(100% - 64px);
     max-width: 1184px;
@@ -506,69 +574,146 @@ header{
     align-items: center;
     padding: 0 8px;
     transition: all 0.5s;
-    input{
+
+    input {
       margin: 0 8px;
       width: calc(100% - 64px);
       height: 44px;
       line-height: 44px;
       font-size: 24px;
       border: 0;
-      background-color: rgba(0,0,0,0);
+      background-color: rgba(0, 0, 0, 0);
     }
-    button{
+
+    button {
       width: 32px;
       height: 32px;
-      background-color: #ffffff;
+      background-color: $white;
       transition: all 0.5s;
       border-radius: 32px;
-      i{
+
+      i {
         position: relative;
         top: -2px;
         height: 32px;
-        color: #eb7290;
+        color: $primary;
         font-size: 33px;
         transition: all 0.5s;
       }
     }
-    button:hover{
-      box-shadow: 0 2px 3px rgba(0,0,0,0.4);
-      i{
+
+    button:hover {
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+
+      i {
         color: #FF91AC;
       }
     }
   }
-  .inputArea:hover{
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255,0.75);
+
+  .inputArea:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
   }
-  .inputAreaActive{
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255,0.75);
+
+  .inputAreaActive {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 22px 22px 0 0;
   }
-  .searchAssociation{
+
+  .searchAssociation {
     width: calc(100% - 48px);
     max-width: 1200px;
     margin: 0 auto;
     height: auto;
     min-height: 0px;
-    transition: all 0.5s;
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0 0 22px 22px;
-      li{
-        height: 32px;
-        line-height: 32px;
-        font-size: 14px;
-        background-color: none;
-        cursor: pointer;
-        transition: all 0.25s;
+
+    li {
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      background-color: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      border: 1px solid rgba(0, 0, 0, 0);
     }
-    li:hover{
+
+    li:hover {
       background-color: #FF91AC;
-      color: #FFFFFF;
+      color: $white;
+      border: 1px solid $white;
     }
-    li:last-of-type{
+
+    li:last-of-type {
       border-radius: 0 0 22px 22px;
     }
+  }
+
+  .swiper-container {
+    margin-top: 16px;
+    position: relative;
+
+    .swiper-wrapper {
+      overflow: visible;
+      position: relative;
+    }
+
+    .navigationGroup {
+      overflow: visible;
+      width: calc(100% - 66px);
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      left: calc(15% - 33px);
+      height: 44px;
+      line-height: 44px;
+      background-color: red;
+      border-radius: 10px 10px 10px 10px;
+
+      >div {
+        width: 50%;
+        background-image: none;
+        height: 44px;
+        line-height: 44px;
+        position: relative;
+      }
+    }
+  }
+
+  .todoList {
+    width: calc(100% - 64px);
+    max-width: 1184px;
+    padding: 12px 8px 32px;
+    min-height: 0;
+    max-height: calc(100vh - 192px);
+    overflow-y: auto;
+    margin: 16px auto 0;
+
+    li {
+      width: calc(100% - 44px);
+      background-color: rgba(243, 88, 139, 0.35);
+      margin-top: 16px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 44px;
+      transition: all 0.5s;
+      cursor: pointer;
+      color: $white;
+      text-align: left;
+      padding: 0 22px;
+    }
+
+    li:hover {
+      background-color: rgba(243, 88, 139, 0.85);
+    }
+  }
+
+  .todoList-shorter {
+    height: calc(100vh - 512px);
   }
 }

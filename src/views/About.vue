@@ -91,7 +91,7 @@
 import Header from "../components/activeHeader";
 import crypto from "crypto";
 import "../assets/icons/logo/iconfont.js";
-
+import { log } from "util";
 export default {
   name: "app",
   data() {
@@ -112,7 +112,10 @@ export default {
       s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
       s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
 
-      let timeStamp = new Date().getTime().toString().substr(-7);
+      let timeStamp = new Date()
+        .getTime()
+        .toString()
+        .substr(-7);
       s[8] = timeStamp;
       let uuid = s.join("");
       this.uuid = uuid;
@@ -157,7 +160,7 @@ export default {
   overflow: hidden;
   margin-bottom: 16px;
 }
-.iconText{
-  width: 150px
+.iconText {
+  width: 150px;
 }
 </style>
