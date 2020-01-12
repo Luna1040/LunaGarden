@@ -13,6 +13,7 @@ import VueI18n from 'vue-i18n'
 import axios from 'axios'
 import './assets/js/publicRes.js'
 import './assets/icon/iconfont.css';
+import './assets/public/lunaUI'
 
 
 // window.Vue = Vue;

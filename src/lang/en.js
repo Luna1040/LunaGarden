@@ -8,16 +8,21 @@ export const lang = {
         login: 'Login'
     },
     firstAlert: {
-        attention: "Attention!",
+        attention: "Attention",
+        warning: 'Warning',
         line1: "It looks like you're the first time here.",
         line2: "Do you want to into the GUIDE mode to know what can you do with Luna Garden?",
         line3: "It will always show When you change your browser or clear your storage.",
-        line4: "When you close this modal,you can found the GUIDE mode at the Right Top Corner."
+        line4: "When you close this modal,you can found the GUIDE mode at the Right Top Corner.",
+        sure: 'Sure',
+        no: 'Not now'
     },
     home: {
         input: "What are you going to do?",
         timeStamp: 'Create Time:',
         content: 'Todo:',
+        prev: 'Private List',
+        next: 'Team List',
         alert: {
             addAlertSuccess: "Added successfully!",
             addAlertSuccess2: "Your data is already in the cloud and can be viewed on another device.",
@@ -25,12 +30,15 @@ export const lang = {
             addAlertFail2: "Your data is already in the local browser and can be synchronized after logging in.",
             addAlertNetError: "Added successfully!But your current device doesn't seem to be connected to the Internet.",
             addAlertNetError2: "When your device is connected to the Internet,If you access Luna Garden again and stay logged in, we will synchronize your data to the cloud.",
-            emptyAlert: "You must enter todo items or search content before you can proceed to the next step!"
+            emptyAlert: "You must enter todo items or search content before you can proceed to the next step!",
+            delMsg: 'Are you sure delete this todo record?',
+            delMsg2: 'It can not recover after your confirm!'
         },
         button: {
             OK: "Got it",
             cancel: "Cancel",
-            confirm: "Confirm"
+            confirm: "Confirm",
+            DEL: 'Delete'
         }
     },
     guide: {

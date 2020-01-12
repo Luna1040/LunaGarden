@@ -1,6 +1,8 @@
 import vue from 'vue'
 import axios from 'axios'
-import { url } from './url.js'
+import {
+  url
+} from './url.js'
 // import { setToken, getToken } from '@/libs/util'
 // post请求
 const getData = function (branchUrl, info) {
@@ -13,7 +15,7 @@ const getData = function (branchUrl, info) {
   }
   return axios.post(url + branchUrl, info, headData).then((msg) => {
     if (msg.status === 200) {
-      if (msg.data.status) {
+      if (msg.data.code) {
         if (msg.data.data) {
           // console.log("打印POST请求返回结果msg.data.data:" + JSON.stringify(msg.data.data));
           return msg.data
@@ -140,8 +142,7 @@ const getDataAll = function (branchUrls) {
 
 // 编辑请求 operation判断是编辑还是新增
 const editSelect = function (operation, curId) {
-  if (operation == 'add') {
-  } else if (operation == 'edit') {
+  if (operation == 'add') {} else if (operation == 'edit') {
     if (curId) {
       this.editId = curId
     } else {
@@ -152,8 +153,7 @@ const editSelect = function (operation, curId) {
 
 // 测试
 const getList = function (operation, curId) {
-  if (operation == 'add') {
-  } else if (operation == 'edit') {
+  if (operation == 'add') {} else if (operation == 'edit') {
     if (curId) {
       this.editId = curId
     } else {
@@ -175,13 +175,13 @@ vue.prototype.getDataGet = getDataGet
 // vue.prototype.getDataBatchDel = getDataBatchDel
 // export{ getData , getDataPatch,getDataDel,editSelect,getDataGet}
 
-axios.interceptors.request.use((config) => {
-  if (getToken()) {
-      // 全局配置请求头添加内容
-    // config.headers['Authorization'] = getToken().replace(/Bearer /g, '')
+// axios.interceptors.request.use((config) => {
+//   if (getToken()) {
+//       // 全局配置请求头添加内容
+//     // config.headers['Authorization'] = getToken().replace(/Bearer /g, '')
 
-  } else {
+//   } else {
 
-  }
-  return config
-})
+//   }
+//   return config
+// })

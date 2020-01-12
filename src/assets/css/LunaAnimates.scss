@@ -49,6 +49,74 @@
     }
   }
 }
+.leftMove {
+  animation: leftMove 0.5s ease-out forwards;
+
+  @keyframes leftMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
+.rightMove {
+  animation: rightMove 0.5s ease-out forwards;
+
+  @keyframes rightMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
 .langSlideUp{
   animation: 0.3s ease-in langSlideUp forwards;
   @keyframes langSlideUp {
