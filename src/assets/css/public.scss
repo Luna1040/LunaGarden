@@ -7,6 +7,7 @@
 //弹窗层,z-index:250
 $white: #FFFFFF;
 $primary: #eb7290;
+$primaryText: #F3588B;
 
 * {
   margin: 0;
@@ -52,14 +53,23 @@ ul li {
   display: none !important;
 }
 
-.cancelButton {
-  background-color: #EEEEEE;
-  color: #333;
+.smFont{
+  font-size: 12px;
 }
-
+.defaultTextColor{
+  color: #4A4A4A;
+}
 .primaryButton {
   background-color: $primary;
   color: $white;
+  -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+}
+.normalButton{
+  background-color: $white;
+  color: #4a4a4a;
+  -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
 
 .error {
@@ -74,30 +84,30 @@ a {
   text-decoration: none;
 }
 
-@font-face {
-  font-family: Cute;
-  src: url(http://www.xn--ilr89m.com/fonts/ZnikomitNo24.otf)
-}
-
-@font-face {
-  font-family: Curve;
-  src: url(http://www.xn--ilr89m.com/fonts/Horatio-D-Light-2.ttf)
-}
-
-@font-face {
-  font-family: Radiu;
-  src: url(http://www.xn--ilr89m.com/fonts/Amira-Light-2.ttf)
-}
-
-@font-face {
-  font-family: Gorgeous;
-  src: url(http://www.xn--ilr89m.com/fonts/Starway-2.otf)
-}
-
-@font-face {
-  font-family: Gorgeous_light;
-  src: url(http://www.xn--ilr89m.com/fonts/Starway-Light-4.otf)
-}
+//@font-face {
+//  font-family: Cute;
+//  src: url(../fonts/ZnikomitNo24.otf)
+//}
+//
+//@font-face {
+//  font-family: Curve;
+//  src: url(./fonts/Horatio-D-Light-2.ttf)
+//}
+//
+//@font-face {
+//  font-family: Radiu;
+//  src: url(../fonts/Amira-Light-2.ttf)
+//}
+//
+//@font-face {
+//  font-family: Gorgeous;
+//  src: url(../fonts/Starway-2.otf)
+//}
+//
+//@font-face {
+//  font-family: Gorgeous_light;
+//  src: url(../fonts/Starway-Light-4.otf)
+//}
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -157,6 +167,7 @@ textarea::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar,
 div::-webkit-scrollbar,
 ul::-webkit-scrollbar,
+.swiper-slide::-webkit-scrollbar,
 table::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -168,6 +179,7 @@ textarea::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
 div::-webkit-scrollbar-thumb,
 ul::-webkit-scrollbar-thumb,
+.swiper-slide::-webkit-scrollbar-thumb,
 table::-webkit-scrollbar-thumb {
   background: silver;
   border-radius: 5rem;
@@ -215,126 +227,6 @@ footer {
   -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
   box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
   border: 0;
-}
-
-.leftMove {
-  animation: leftMove 0.5s ease-out forwards;
-
-  @keyframes leftMove {
-    0% {
-      background-position-x: 110px;
-    }
-
-    40% {
-      background-position-x: 20px;
-    }
-
-    100% {
-      background-position-x: 0;
-    }
-  }
-
-  //适配iPhoneX&XS MAX的按钮动画
-  @media screen and (max-device-width: 375px) {
-    @keyframes leftMove {
-      0% {
-        background-position-x: 100px;
-      }
-
-      40% {
-        background-position-x: 15px;
-      }
-
-      100% {
-        background-position-x: 0;
-      }
-    }
-  }
-}
-
-.rightMove {
-  animation: rightMove 0.5s ease-out forwards;
-
-  @keyframes rightMove {
-    0% {
-      background-position-x: 110px;
-    }
-
-    40% {
-      background-position-x: 20px;
-    }
-
-    100% {
-      background-position-x: 0;
-    }
-  }
-
-  //适配iPhoneX&XS MAX的按钮动画
-  @media screen and (max-device-width: 375px) {
-    @keyframes leftMove {
-      0% {
-        background-position-x: 100px;
-      }
-
-      40% {
-        background-position-x: 15px;
-      }
-
-      100% {
-        background-position-x: 0;
-      }
-    }
-  }
-}
-
-.alertModal {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  z-index: 250;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-
-  .modalBody {
-    position: relative;
-    background-color: $white;
-    width: 600px;
-    border-radius: 20px;
-    padding: 8px 16px 24px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-
-    .alertHeader {
-      padding-bottom: 8px;
-      border-bottom: 1px solid #FEE7F4;
-
-      p {
-        font-size: 22px;
-      }
-    }
-
-    .alertBody {
-      padding-top: 25px;
-
-      p {
-        line-height: 24px;
-      }
-    }
-
-    .alertFooter {
-      padding-top: 25px;
-      display: flex;
-      justify-content: space-around;
-
-      button {
-        padding: 5px 25px;
-        border-radius: 20px;
-      }
-    }
-  }
 }
 
 header {
@@ -440,44 +332,6 @@ header {
       height: 66px;
       line-height: 66px;
     }
-
-    .cgLang {
-      cursor: pointer;
-    }
-
-    .cgLang {
-      height: 44px;
-      line-height: 44px;
-      margin-left: 8px;
-    }
-
-    .langSelect {
-      position: absolute;
-      right: -22px;
-      top: 66px;
-      height: 0;
-      overflow: hidden;
-      background-color: rgba(243, 88, 139, 0.55);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-
-      li {
-        width: 100%;
-        padding: 8px 22px;
-        cursor: pointer;
-        -webkit-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-        -ms-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        transition: all 0.5s;
-      }
-
-      li:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
-    }
   }
 
   .guide {
@@ -487,17 +341,81 @@ header {
     height: 66px;
     display: flex;
     align-items: center;
+    overflow: visible;
+
+    >.btnGroup {
+      color: $primaryText;
+      background-color: $white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      display: flex;
+      border-radius: 32px;
+      padding: 4px 12px;
+      margin-right: 16px;
+
+      >div {
+        width: 26px;
+        height: 26px;
+        position: relative;
+        cursor: pointer;
+        overflow: visible;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 26px;
+          border: 1px solid $primaryText;
+        }
+
+        .languageBlackHover {
+          position: absolute;
+          top: 1.5px;
+          left: 1.5px;
+          width: 25px;
+          height: 25px;
+          border-radius: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          transition: all 0.5s;
+        }
+
+        .languageBlackHover:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      >div:last-of-type {
+        padding-left: 8px;
+
+        .languageBlackHover {
+          margin-left: 8px;
+        }
+      }
+
+      >div.languageActive {
+        .languageBlackHover {
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+    }
 
     a {
-      color: #F3588B;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: $primaryText;
       background-color: $white;
       border-radius: 66px;
       padding: 4px 12px;
       box-shadow: rgba(0, 0, 0, 0.5);
+      height: 24px;
+      line-height: 24px;
+      transition: all 0.5s;
 
       i {
         margin-right: 4px;
       }
+    }
+
+    a:hover {
+      color: $white;
+      background-color: mix($primary, rgba(0, 0, 0, 0.3), 0.8);
     }
   }
 }
@@ -596,7 +514,7 @@ header {
         position: relative;
         top: -2px;
         height: 32px;
-        color: $primary;
+        color: $primaryText;
         font-size: 33px;
         transition: all 0.5s;
       }
@@ -663,9 +581,107 @@ header {
   }
 
   .swiper-slide {
-    overflow: visible;
+    overflow: auto;
+    height: calc(100vh - 244px);
+    padding-top: 36px;
   }
+  .lunaModal {
+    display: flex;
+    position: fixed;
+    z-index: 250;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    .modalMask{
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      z-index: 200;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .modalContainer {
+      position: relative;
+      background-color: $white;
+      width: 600px;
+      border-radius: 20px;
+      padding: 8px 16px 16px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      z-index: 250;
 
+      .modalHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #FEE7F4;
+        position: relative;
+        margin-bottom: 32px;
+        >div{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          p {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            i,img{
+              margin-right: 8px;
+            }
+          }
+        }
+        p {
+          font-size: 22px;
+          display: flex;
+          align-items: center;
+          i,img{
+            margin-right: 8px;
+          }
+        }
+        >i{
+          cursor: pointer;
+          position: absolute;
+          right: 16px;
+        }
+      }
+
+      .modalBody {
+        p {
+          line-height: 24px;
+        }
+      }
+
+      .modalFooter {
+        padding-top: 32px;
+        display: flex;
+        justify-content: space-around;
+        overflow: visible;
+        width: 60%;
+        margin: 0 auto;
+        button {
+          padding: 5px 25px;
+          border-radius: 20px;
+        }
+        >div{
+          overflow: visible;
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          button {
+            padding: 5px 25px;
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+  .zIndexHide{
+    z-index: -2!important;
+  }
   #navigation {
     position: relative;
     overflow: visible;
@@ -689,7 +705,7 @@ header {
       transition: all 0.3s;
       outline: 0;
       background-color: $white;
-      color: $primary;
+      color: $primaryText;
       left: 0;
       right: 0;
       position: relative;
@@ -720,10 +736,8 @@ header {
     max-width: 1184px;
     padding: 12px 8px 32px;
     min-height: 0;
-    max-height: calc(100vh - 192px);
-    overflow-y: auto;
-    margin: 0 auto 0;
     overflow: visible;
+    margin: 0 auto 0;
 
     li {
       width: calc(100% - 44px);
@@ -741,6 +755,11 @@ header {
       justify-content: space-between;
       align-items: center;
       overflow: visible;
+
+      span {
+        margin-right: 16px;
+        transition: all 0.5s;
+      }
 
       .dragBtn {
         width: 36px;
@@ -777,7 +796,7 @@ header {
             line-height: 60px;
             text-align: center;
             background-color: $white;
-            color: $primary;
+            color: $primaryText;
             transition: all 0.35s;
             border-radius: 40px;
           }
@@ -813,7 +832,7 @@ header {
             top: -20px;
 
             button {
-              color: $primary
+              color: $primaryText
             }
           }
 
@@ -822,7 +841,7 @@ header {
             top: 40px;
 
             button {
-              color: $primary
+              color: $primaryText
             }
           }
 
@@ -831,7 +850,7 @@ header {
             top: 40px;
 
             button {
-              color: $primary
+              color: $primaryText
             }
           }
 
@@ -840,7 +859,7 @@ header {
             top: 100px;
 
             button {
-              color: $primary
+              color: $primaryText
             }
           }
 
@@ -890,6 +909,11 @@ header {
   }
 
   .todoList-shorter {
-    height: calc(100vh - 512px);
+    height: calc(100vh - 574px);
+  }
+
+  .successText {
+    color: #B1FFDA;
+    text-decoration: line-through;
   }
 }

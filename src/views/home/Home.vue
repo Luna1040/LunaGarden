@@ -36,35 +36,46 @@
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
     </div>
     <swiper :options="swiperOption">
-      <swiper-slide>
-        <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
+      <swiper-slide :class="{'todoList-shorter': searchArr.length !== 0}">
+        <ul class="todoList">
           <li v-for="(i,index) in todoList" :key="i.id">
             <div>
-              <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
-              <span>{{$t('lang.home.content')}}{{i.content}}</span>
+              <span
+                :class="{successText: i.completed === true}"
+              >{{$t('lang.home.timeStamp')}}{{i.time}}</span>
+              <span
+                :class="{successText: i.completed === true}"
+              >{{$t('lang.home.content')}}{{i.content}}</span>
             </div>
             <div class="dragBtn" @click="mousedown(index)">
               <div
                 class="dragMenu"
                 :class="{dragMenuShow : dragActive === index, dragMenuHide: dragActive === -1}"
               >
-                <i class="iconfont icon-cancel" @click.stop="dragActive = -1"></i>
-                <div>
-                  <button>
+                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
+                <div @click.stop="cgStatus(i.id)">
+                  <!-- 完成计划 -->
+                  <button v-show="i.completed === false">
+                    <i class="iconfont icon-quedingx"></i>
+                  </button>
+                  <button v-show="i.completed === true">
                     <i class="iconfont icon-quedingx"></i>
                   </button>
                 </div>
-                <div>
+                <div @click.stop="editShow(i.id)">
+                  <!-- 编辑计划 -->
                   <button>
                     <i class="iconfont icon-remark"></i>
                   </button>
                 </div>
-                <div>
+                <div @click.stop="copyContent(i.id)">
+                  <!-- 复制文本 -->
                   <button>
-                    <i class="iconfont icon-remark"></i>
+                    <i class="iconfont icon-copy-l"></i>
                   </button>
                 </div>
-                <div>
+                <div @click.stop="delShow(i.id)">
+                  <!-- 删除计划 -->
                   <button>
                     <i class="iconfont icon-ICON_cancel"></i>
                   </button>
@@ -100,27 +111,24 @@
         class="error desc"
       >{{$t('lang.home.alert.addAlertNetError2')}}</p>
     </div>
-    <div
-      class="alertModal"
-      :class="{showAlert: addAlert === true , hideAlert: addAlert === false , hide: addAlert === ''}"
-      @click="hideModal"
-    >
-      <div
-        class="modalBody"
-        :class="{showModal: addAlert === true , hideModal: addAlert === false , hide: addAlert === ''}"
-        @click.stop
-      >
-        <div class="alertHeader">
-          <p>{{$t('lang.firstAlert.attention')}}</p>
-        </div>
-        <div class="alertBody">
-          <p class="error">{{$t('lang.home.alert.emptyAlert')}}</p>
-        </div>
-        <div class="alertFooter">
-          <button class="primaryButton" v-waves @click="hideModal">{{$t('lang.home.button.OK')}}</button>
-        </div>
+    <Modal v-model="emptyWarning" @on-cancel="emptyWarningCancel()" :title="$t('lang.firstAlert.attention')">
+      <div>
+        <p class="error">{{$t('lang.home.alert.emptyAlert')}}</p>
       </div>
-    </div>
+      <div slot="footer">
+        <button class="primaryButton" v-ripple @click="emptyWarningCancel()">{{$t('lang.home.button.OK')}}</button>
+      </div>
+    </Modal>
+    <Modal v-model="del" @on-cancel="delCancel()" :title="$t('lang.firstAlert.warning')">
+      <div>
+        <p class="defaultTextColor">{{$t('lang.home.alert.delMsg')}}</p>
+        <p class="error smFont">{{$t('lang.home.alert.delMsg2')}}</p>
+      </div>
+      <div slot="footer">
+        <button class="normalButton" v-ripple @click="delCancel()">{{$t('lang.home.button.cancel')}}</button>
+        <button class="primaryButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -131,6 +139,9 @@ export default {
   name: "home",
   data() {
     return {
+      del: false,
+      emptyWarning: false,
+      choiceId: '',
       todoText: "",
       currentTime: "",
       uuid: "",
@@ -168,15 +179,14 @@ export default {
       this.dragActive = index;
     },
     uuidGet() {
-      //定义一个随机的数组
       let s = [];
       let hexDigits =
         "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       for (let i = 0; i < 26; i++) {
         s[i] = hexDigits.substr(Math.floor(Math.random() * 0x26), 1);
       }
-      s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+      s[14] = "4";
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
 
       let timeStamp = new Date()
         .getTime()
@@ -186,7 +196,6 @@ export default {
       this.uuid = s.join("");
     },
     timeFormate(timeStamp) {
-      //定义年月日时间
       let year = new Date(timeStamp).getFullYear();
       let month =
         new Date(timeStamp).getMonth() + 1 < 10
@@ -215,7 +224,7 @@ export default {
         return;
       } else {
         if (this.todoText !== "") {
-          let url = "https://sp0.baidu  .com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+          let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
           this.$http
             .jsonp(url, {
               params: {
@@ -265,10 +274,13 @@ export default {
         this.addAlert = true;
       }
     },
-    addTodo(e) {
+    emptyWarningCancel(){
+      this.emptyWarning = false
+    },
+    addTodo() {
       //非空验证
       if (this.todoText === "") {
-        this.addAlert = !this.addAlert;
+        this.emptyWarning = true
       } else {
         this.uuidGet();
         this.timeFormate(new Date());
@@ -297,16 +309,52 @@ export default {
     hideModal() {
       this.addAlert = false;
       let _this = this;
-      setTimeout(function() {
+      setTimeout(function () {
         _this.addAlert = "";
       }, 500);
     },
     hideToast() {
       this.toastLaunch = false;
       let _this = this;
-      setTimeout(function() {
+      setTimeout(function () {
         _this.toastLaunch = "";
       }, 500);
+    },
+    dragClose() {
+      this.dragActive = -1
+    },
+    cgStatus(id) {
+      this.todoList.forEach((item, index) => {
+        if (item.id === id) {
+          this.todoList[index].completed = !this.todoList[index].completed
+        }
+      })
+      localStorage.setItem('todoList', JSON.stringify(this.todoList))
+      this.dragClose()
+    },
+    editShow() {
+      this.dragClose()
+    },
+    delShow(id) {
+      this.del = true;
+      this.choiceId = id;
+      this.dragClose()
+    },
+    delCancel() {
+      this.del = false;
+      this.choiceId = ''
+    },
+    delConfirm() {
+      this.todoList.forEach((item, index) => {
+        if (item.id === this.choiceId) {
+          this.todoList.splice(index, 1)
+        }
+      });
+      localStorage.setItem('todoList', JSON.stringify(this.todoList));
+      this.delCancel()
+    },
+    copyContent() {
+      this.dragClose()
     }
   }
 };
@@ -317,3 +365,9 @@ export default {
 <!--https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1442,21118,29567,29221,22158&wd=Luna&req=2&csor=4&cb=jQuery110201946216263738294_1571396837817&_=1571396837820-->
 <!--bing搜索List模块-->
 <!--https://cn.bing.com/AS/Suggestions?pt=page.home&mkt=zh-cn&ds=mobileweb&qry=luna&cp=0&cvid=4C94085CD28049A3AC1BBC34170774C3-->
+<style scoped lang="scss">
+.successText {
+  color: aquamarine;
+  text-decoration: line-through;
+}
+</style>

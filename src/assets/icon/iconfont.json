@@ -144,6 +144,13 @@
       "font_class": "HotelDetails_icn_Internet",
       "unicode": "e60e",
       "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "11348960",
+      "name": "copy-l",
+      "font_class": "copy-l",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
     }
   ]
 }

@@ -28,19 +28,19 @@
     <!--        Title-->
     <div class="title">
       <h2>{{msgHeader}}</h2>
-      <div class="cgLang" @click="cgLang">
-        {{$i18n.locale | languageTrans}}
-        <i></i>
-      </div>
-      <ul
-        class="langSelect"
-        :class="{langSlideDown: langSlideDown === true , langSlideUp: langSlideDown === false , '' : langSlideDown === ''}"
-      >
-        <li v-waves @click="setLang('en-US')">English</li>
-        <li v-waves @click="setLang('zh-CN')">中文</li>
-      </ul>
+      <!-- <img :src="imgSrc" alt /> -->
     </div>
     <div class="guide">
+      <div class="btnGroup">
+        <div @click="setLang('en-US')" :class="{languageActive: $i18n.locale !== 'zh-CN'}">
+          <img src="../assets/icons/language-english.svg" alt />
+          <div class="languageBlackHover"></div>
+        </div>
+        <div @click="setLang('zh-CN')" :class="{languageActive: $i18n.locale === 'zh-CN'}">
+          <img src="../assets/icons/language-chinese.svg" alt />
+          <div class="languageBlackHover"></div>
+        </div>
+      </div>
       <router-link to="aboutUs">
         <i class="iconfont icon-guide"></i>
         {{$t('lang.titles.guide')}}
@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { publicApi } from "../assets/js/url.js";
+
 export default {
   name: "app",
   data() {
@@ -57,12 +59,17 @@ export default {
       navigator: {
         onLine: true
       },
+      imgSrc: "",
       langSlideDown: ""
     };
   },
   mounted() {
     this.navigator.onLine = window.navigator.onLine;
     setInterval(this.getNavigator, 1000);
+    this.getData(publicApi.imgCode, {}).then(res => {
+      console.log(res.data);
+      this.imgSrc = res.data;
+    });
   },
   beforeDestroy() {
     if (this.timer) {

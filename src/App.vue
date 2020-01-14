@@ -63,30 +63,23 @@
         <i class="iconfont" :class="{show : footerActive === 'note'}"></i>
       </button>
     </footer>
-    <div
-      class="alertModal"
-      :class="{showAlert: firstAlert === true , hideAlert: firstAlert === false , hide: firstAlert === ''}"
-      @click="hideModal"
-    >
-      <div
-        class="modalBody"
-        :class="{showModal: firstAlert === true , hideModal: firstAlert === false , hide: firstAlert === ''}"
-        @click.stop
-      >
-        <div class="alertHeader">
+    <div class="lunaModal" :class="{'': firstAlert !== '' , hide: firstAlert === ''}">
+      <div class="modalMask" :class="{showAlert: firstAlert === true , hideAlert: firstAlert === false , hide: firstAlert === ''}" @click="hideModal"></div>
+      <Modal v-model="firstAlert" @on-cancel="hideModal">
+        <div slot="header">
           <p>{{$t('lang.firstAlert.attention')}}</p>
         </div>
-        <div class="alertBody">
+        <div>
           <p>{{$t('lang.firstAlert.line1')}}</p>
           <p>{{$t('lang.firstAlert.line2')}}</p>
           <p class="error desc">{{$t('lang.firstAlert.line3')}}</p>
           <p class="error desc">{{$t('lang.firstAlert.line4')}}</p>
         </div>
-        <div class="alertFooter">
-          <button class="primaryButton" v-waves>Sure</button>
-          <button class="cancelButton" v-waves @click="hideModal">No</button>
+        <div slot="footer">
+          <button class="normalButton" v-ripple @click="hideModal">{{$t('lang.firstAlert.no')}}</button>
+          <button class="primaryButton" v-ripple @click="toGuide">{{$t('lang.firstAlert.sure')}}</button>
         </div>
-      </div>
+      </Modal>
     </div>
   </div>
 </template>
@@ -154,9 +147,7 @@ export default {
     }
   },
   mounted() {
-    const _this = this;
     window.onresize = () => {
-      console.log(window.innerWidth / window.innerHeight);
       if (window.innerWidth / window.innerHeight > 1.777) {
         this.width177 = 177;
       } else if (window.innerWidth / window.innerHeight < 1) {
@@ -169,10 +160,10 @@ export default {
   methods: {
     hideModal() {
       this.firstAlert = false;
-      let _this = this;
-      setTimeout(function() {
-        _this.firstAlert = "";
-      }, 500);
+    },
+    toGuide() {
+      this.$router.push('aboutUs');
+      this.hideModal()
     }
   }
 };

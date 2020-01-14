@@ -9,10 +9,13 @@ export const lang = {
     },
     firstAlert: {
         attention: "提示",
+        warning: '警告',
         line1: "你好像是初次访问Luna Garden",
         line2: "要进入引导模式来快速了解Luna Garden可以怎样帮助你吗？",
         line3: "这条提示也可能出现在你清空了浏览器的缓存或更换浏览器时出现，",
-        line4: "当你关闭这条提示之后，想要再次访问引导模式，你可以在浏览器的右上角找到引导入口。"
+        line4: "当你关闭这条提示之后，想要再次访问引导模式，你可以在浏览器的右上角找到引导入口。",
+        sure: '无比乐意',
+        no: '晚些时候'
     },
     home: {
         input: "想要做些什么？",
@@ -27,12 +30,15 @@ export const lang = {
             addAlertFail2: "您的数据已位于本地浏览器，登录后即可同步。",
             addAlertNetError: "添加成功！但您当前设备似乎未接入互联网。",
             addAlertNetError2: "当您的设备接入互联网时，再次访问Luna Garden且保持登录状态，我们会将您的数据同步至云端。",
-            emptyAlert: "你必须先输入待办事项或搜索内容，才可以进行下一步操作！"
+            emptyAlert: "你必须先输入待办事项或搜索内容，才可以进行下一步操作！",
+            delMsg: '您确定要删除此待办事项吗？',
+            delMsg2: '删除后无法恢复该记录!'
         },
         button: {
             OK: "好的",
             cancel: "取消",
-            confirm: "确认"
+            confirm: "确认",
+            DEL: '删除'
         }
     },
     guide: {

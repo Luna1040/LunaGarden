@@ -44,7 +44,7 @@ if (window.Vue) {
 }
 
 function install(Vue) {
-    Vue.directive('waves', {bind})
+    Vue.directive('ripple', {bind})
 }
 
 export default {install}
