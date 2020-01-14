@@ -229,107 +229,6 @@ footer {
   border: 0;
 }
 
-
-
-
-
-.lunaModal {
-  display: flex;
-  position: fixed;
-  z-index: 250;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  .modalMask{
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    z-index: 200;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .modalContainer {
-    position: relative;
-    background-color: $white;
-    width: 600px;
-    border-radius: 20px;
-    padding: 8px 16px 16px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    z-index: 250;
-
-    .modalHeader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #FEE7F4;
-      position: relative;
-      margin-bottom: 32px;
->div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  p {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    i,img{
-      margin-right: 8px;
-    }
-  }
-}
-      p {
-        font-size: 22px;
-        display: flex;
-        align-items: center;
-        i,img{
-          margin-right: 8px;
-        }
-      }
-      >i{
-        cursor: pointer;
-        position: absolute;
-        right: 16px;
-      }
-    }
-
-    .modalBody {
-      p {
-        line-height: 24px;
-      }
-    }
-
-    .modalFooter {
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-around;
-      overflow: visible;
-      width: 60%;
-      margin: 0 auto;
-      button {
-        padding: 5px 25px;
-        border-radius: 20px;
-      }
-      >div{
-        overflow: visible;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        button {
-          padding: 5px 25px;
-          border-radius: 20px;
-        }
-      }
-    }
-  }
-}
-.zIndexHide{
-  z-index: -2!important;
-}
 header {
   width: 100%;
   height: 66px;
@@ -686,7 +585,103 @@ header {
     height: calc(100vh - 244px);
     padding-top: 36px;
   }
+  .lunaModal {
+    display: flex;
+    position: fixed;
+    z-index: 250;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    .modalMask{
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      z-index: 200;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .modalContainer {
+      position: relative;
+      background-color: $white;
+      width: 600px;
+      border-radius: 20px;
+      padding: 8px 16px 16px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      z-index: 250;
 
+      .modalHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #FEE7F4;
+        position: relative;
+        margin-bottom: 32px;
+        >div{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          p {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            i,img{
+              margin-right: 8px;
+            }
+          }
+        }
+        p {
+          font-size: 22px;
+          display: flex;
+          align-items: center;
+          i,img{
+            margin-right: 8px;
+          }
+        }
+        >i{
+          cursor: pointer;
+          position: absolute;
+          right: 16px;
+        }
+      }
+
+      .modalBody {
+        p {
+          line-height: 24px;
+        }
+      }
+
+      .modalFooter {
+        padding-top: 32px;
+        display: flex;
+        justify-content: space-around;
+        overflow: visible;
+        width: 60%;
+        margin: 0 auto;
+        button {
+          padding: 5px 25px;
+          border-radius: 20px;
+        }
+        >div{
+          overflow: visible;
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          button {
+            padding: 5px 25px;
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+  .zIndexHide{
+    z-index: -2!important;
+  }
   #navigation {
     position: relative;
     overflow: visible;

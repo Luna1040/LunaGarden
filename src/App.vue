@@ -76,8 +76,8 @@
           <p class="error desc">{{$t('lang.firstAlert.line4')}}</p>
         </div>
         <div slot="footer">
-          <button class="normalButton" v-waves @click="hideModal">{{$t('lang.firstAlert.no')}}</button>
-          <button class="primaryButton" v-waves @click="toGuide">{{$t('lang.firstAlert.sure')}}</button>
+          <button class="normalButton" v-ripple @click="hideModal">{{$t('lang.firstAlert.no')}}</button>
+          <button class="primaryButton" v-ripple @click="toGuide">{{$t('lang.firstAlert.sure')}}</button>
         </div>
       </Modal>
     </div>

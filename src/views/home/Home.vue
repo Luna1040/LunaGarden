@@ -116,7 +116,7 @@
         <p class="error">{{$t('lang.home.alert.emptyAlert')}}</p>
       </div>
       <div slot="footer">
-        <button class="primaryButton" v-waves @click="emptyWarningCancel()">{{$t('lang.home.button.OK')}}</button>
+        <button class="primaryButton" v-ripple @click="emptyWarningCancel()">{{$t('lang.home.button.OK')}}</button>
       </div>
     </Modal>
     <Modal v-model="del" @on-cancel="delCancel()" :title="$t('lang.firstAlert.warning')">
@@ -125,8 +125,8 @@
         <p class="error smFont">{{$t('lang.home.alert.delMsg2')}}</p>
       </div>
       <div slot="footer">
-        <button class="normalButton" v-waves @click="delCancel()">{{$t('lang.home.button.cancel')}}</button>
-        <button class="primaryButton" v-waves @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
+        <button class="normalButton" v-ripple @click="delCancel()">{{$t('lang.home.button.cancel')}}</button>
+        <button class="primaryButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
       </div>
     </Modal>
   </div>

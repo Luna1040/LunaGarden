@@ -17,8 +17,8 @@
         </div>
         <div class="modalFooter" v-if="footerShow">
           <slot name="footer">
-            <button class="normalButton" v-waves @click="close">{{$t('lang.home.button.cancel')}}</button>
-            <button class="primaryButton" v-waves @click="close">{{$t('lang.home.button.confirm')}}</button>
+            <button class="normalButton" v-ripple @click="close">{{$t('lang.home.button.cancel')}}</button>
+            <button class="primaryButton" v-ripple @click="close">{{$t('lang.home.button.confirm')}}</button>
           </slot>
         </div>
       </div>
@@ -132,15 +132,15 @@
         };
       },
       modalWidth () {
-          if(this.width !== 'auto') {
-            return {
-              width: this.width + 'px'
-            }
-        } else {
-            return {
-              width: this.width
-            }
+        if(this.width !== 'auto') {
+          return {
+            width: this.width + 'px'
           }
+        } else {
+          return {
+            width: this.width
+          }
+        }
       },
       modalHeight() {
         if(this.height !== 'auto') {
