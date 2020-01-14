@@ -5,10 +5,10 @@
       </div>
     </transition>
     <transition name="modalAnimation">
-      <div class="modalContainer" :style="[styles, modalWidth, modalRadius]" :class="[className, colorTheme]" v-show="showModal">
+      <div class="modalContainer" :style="[styles, modalWidth, modalRadius, modalBackground]" :class="[className, colorTheme]" v-show="showModal">
         <div class="modalHeader" v-if="showHead">
           <slot name="header">
-            <p>{{title}}</p>
+            <p :style="titleColor">{{title}}</p>
           </slot>
           <i class="iconfont icon-cancel" @click="close"></i>
         </div>
@@ -101,6 +101,14 @@
       radius: {
         type: Number,
         default: 20
+      },
+      color: {
+        type: String,
+        default: '#4a4a4a'
+      },
+      background: {
+        type: String,
+        default: '#FFFFFF'
       }
     },
     data() {
@@ -137,7 +145,7 @@
     computed: {
       wrapStyles () {
         return {
-          zIndex: this.zIndex
+          zIndex: this.zIndex,
         };
       },
       modalWidth () {
@@ -187,6 +195,16 @@
           return {
             overflow: 'visible',
           }
+        }
+      },
+      modalBackground() {
+        return {
+          backgroundColor: this.background + '!important'
+        }
+      },
+      titleColor() {
+        return {
+          color: this.color
         }
       }
     },
