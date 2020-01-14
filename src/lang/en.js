@@ -18,6 +18,8 @@ export const lang = {
         input: "What are you going to do?",
         timeStamp: 'Create Time:',
         content: 'Todo:',
+        prev: 'Private List',
+        next: 'Team List',
         alert: {
             addAlertSuccess: "Added successfully!",
             addAlertSuccess2: "Your data is already in the cloud and can be viewed on another device.",

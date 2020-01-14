@@ -18,6 +18,8 @@ export const lang = {
         input: "想要做些什么？",
         timeStamp: '创建日期：',
         content: '待办事项：',
+        prev: '私人记事板',
+        next: '团队记事板',
         alert: {
             addAlertSuccess: "添加成功！",
             addAlertSuccess2: "您的数据已位于云端，可在另一设备查看。",

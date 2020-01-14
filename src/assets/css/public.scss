@@ -653,35 +653,65 @@ header {
   }
 
   .swiper-container {
-    margin-top: 16px;
     position: relative;
+    overflow: visible;
 
     .swiper-wrapper {
       overflow: visible;
       position: relative;
     }
+  }
 
-    .navigationGroup {
-      overflow: visible;
-      width: calc(100% - 66px);
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      top: 0;
-      left: calc(15% - 33px);
+  .swiper-slide {
+    overflow: visible;
+  }
+
+  #navigation {
+    position: relative;
+    overflow: visible;
+    height: 44px;
+    width: 280px;
+    top: 0;
+    left: 0;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 44px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 50%;
+      max-width: 600px;
+      background-image: none;
       height: 44px;
       line-height: 44px;
-      background-color: red;
-      border-radius: 10px 10px 10px 10px;
+      transition: all 0.3s;
+      outline: 0;
+      background-color: $white;
+      color: $primary;
+      left: 0;
+      right: 0;
+      position: relative;
+    }
 
-      >div {
-        width: 50%;
-        background-image: none;
-        height: 44px;
-        line-height: 44px;
-        position: relative;
-      }
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled {
+      opacity: 1;
+      cursor: auto;
+      pointer-events: none;
+      color: $white;
+      background-color: $primary;
+    }
+
+    .swiper-button-prev {
+      border-top-left-radius: 44px;
+      border-bottom-left-radius: 44px;
+    }
+
+    .swiper-button-next {
+      border-top-right-radius: 44px;
+      border-bottom-right-radius: 44px;
     }
   }
 
@@ -692,7 +722,8 @@ header {
     min-height: 0;
     max-height: calc(100vh - 192px);
     overflow-y: auto;
-    margin: 16px auto 0;
+    margin: 0 auto 0;
+    overflow: visible;
 
     li {
       width: calc(100% - 44px);
@@ -706,6 +737,151 @@ header {
       color: $white;
       text-align: left;
       padding: 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: visible;
+
+      .dragBtn {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        background-color: $white;
+        position: relative;
+        left: 16px;
+        transition: all 0.5s;
+        overflow: visible;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+        .dragMenu {
+          width: 0;
+          height: 0;
+          border-radius: 0;
+          background-color: rgba(0, 0, 0, 0);
+          position: absolute;
+          z-index: 200;
+          bottom: 18px;
+          right: 18px;
+          border: 0;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+          transform: rotate(360deg);
+          transition: all 0.5s;
+
+          >.iconfont.icon-cancel {
+            display: none;
+            position: absolute;
+            top: calc(50% - 30px);
+            left: calc(50% - 30px);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: $white;
+            color: $primary;
+            transition: all 0.35s;
+            border-radius: 40px;
+          }
+
+          >.iconfont.icon-cancel:hover {
+            background-color: $primary;
+            color: $white;
+          }
+
+          >div {
+            display: none;
+            position: absolute;
+            overflow: hidden;
+            transform: rotate(45deg) skew(0deg);
+            text-align: center;
+            line-height: 80px;
+            transition: all 0.35s;
+
+            button {
+              transition: all 0.35s;
+              background-color: rgba(0, 0, 0, 0);
+              border: 0;
+              transform: rotate(-45deg) skew(0deg);
+
+              i {
+                font-size: 18px;
+              }
+            }
+          }
+
+          >div:first-of-type {
+            left: 40px;
+            top: -20px;
+
+            button {
+              color: $primary
+            }
+          }
+
+          >div:nth-of-type(2) {
+            left: -20px;
+            top: 40px;
+
+            button {
+              color: $primary
+            }
+          }
+
+          >div:nth-of-type(3) {
+            left: 100px;
+            top: 40px;
+
+            button {
+              color: $primary
+            }
+          }
+
+          >div:last-of-type {
+            left: 40px;
+            top: 100px;
+
+            button {
+              color: $primary
+            }
+          }
+
+          >div:hover {
+            background-color: $primary;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+            button {
+              color: $white
+            }
+          }
+        }
+
+        .dragMenuShow {
+          width: 160px;
+          height: 160px;
+          border-radius: 160px;
+          background-color: $white;
+          position: absolute;
+          z-index: 200;
+          bottom: -64px;
+          right: -64px;
+          border: 2px solid $white;
+          transform: rotate(0deg);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+          >.iconfont.icon-cancel {
+            display: block;
+          }
+
+          >div {
+            display: block;
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+
+      .dragBtn:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
     }
 
     li:hover {

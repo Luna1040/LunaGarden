@@ -31,16 +31,46 @@
         @click="choice(item)"
       >{{item}}</li>
     </ul>
+    <div id="navigation">
+      <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
+      <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
+    </div>
     <swiper :options="swiperOption">
-      <div class="navigationGroup">
-        <div class="swiper-button-prev" slot="button-prev">111</div>
-        <div class="swiper-button-next" slot="button-next">222</div>
-      </div>
       <swiper-slide>
         <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
-          <li v-for="i in todoList" :key="i.id">
-            <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
-            <span>{{$t('lang.home.content')}}{{i.content}}</span>
+          <li v-for="(i,index) in todoList" :key="i.id">
+            <div>
+              <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
+              <span>{{$t('lang.home.content')}}{{i.content}}</span>
+            </div>
+            <div class="dragBtn" @click="mousedown(index)">
+              <div
+                class="dragMenu"
+                :class="{dragMenuShow : dragActive === index, dragMenuHide: dragActive === -1}"
+              >
+                <i class="iconfont icon-cancel" @click.stop="dragActive = -1"></i>
+                <div>
+                  <button>
+                    <i class="iconfont icon-quedingx"></i>
+                  </button>
+                </div>
+                <div>
+                  <button>
+                    <i class="iconfont icon-remark"></i>
+                  </button>
+                </div>
+                <div>
+                  <button>
+                    <i class="iconfont icon-remark"></i>
+                  </button>
+                </div>
+                <div>
+                  <button>
+                    <i class="iconfont icon-ICON_cancel"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </swiper-slide>
@@ -110,6 +140,7 @@ export default {
       modal: "",
       searchArr: [],
       todoList: [],
+      dragActive: -1,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
@@ -118,11 +149,8 @@ export default {
         notNextTick: true,
         autoplay: false,
         navigation: {
-          nextEl: ".swiper-button-next", //前进按钮的css选择器或HTML元素。
-          prevEl: ".swiper-button-prev", //后退按钮的css选择器或HTML元素。
-          hideOnClick: true, //点击slide时显示/隐藏按钮
-          disabledClass: "my-button-disabled", //前进后退按钮不可用时的类名。
-          hiddenClass: "my-button-hidden" //按钮隐藏时的Class
+          nextEl: "#navigation>.swiper-button-next", //前进按钮的css选择器或HTML元素。
+          prevEl: "#navigation>.swiper-button-prev" //后退按钮的css选择器或HTML元素。
         },
         autoplayDisableOnInteraction: false,
         loop: false
@@ -136,7 +164,11 @@ export default {
     this.todoList = JSON.parse(localStorage.getItem("todoList"));
   },
   methods: {
+    mousedown(index) {
+      this.dragActive = index;
+    },
     uuidGet() {
+      //定义一个随机的数组
       let s = [];
       let hexDigits =
         "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -154,6 +186,7 @@ export default {
       this.uuid = s.join("");
     },
     timeFormate(timeStamp) {
+      //定义年月日时间
       let year = new Date(timeStamp).getFullYear();
       let month =
         new Date(timeStamp).getMonth() + 1 < 10
@@ -182,7 +215,7 @@ export default {
         return;
       } else {
         if (this.todoText !== "") {
-          let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+          let url = "https://sp0.baidu  .com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
           this.$http
             .jsonp(url, {
               params: {
