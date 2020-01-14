@@ -5,7 +5,7 @@
       </div>
     </transition>
     <transition name="modalAnimation">
-      <div class="modalContainer" :style="[styles, modalWidth]" :class="className" v-show="showModal">
+      <div class="modalContainer" :style="[styles, modalWidth, modalRadius]" :class="[className, colorTheme]" v-show="showModal">
         <div class="modalHeader" v-if="showHead">
           <slot name="header">
             <p>{{title}}</p>
@@ -57,6 +57,10 @@
       className: {
         type: String
       },
+      type: {
+        type: String,
+        default: 'Normal'
+      },
       //自定义样式
       styles: {
         type: Object,
@@ -94,11 +98,16 @@
         type: [Number, String],
         default: 'auto',
       },
+      radius: {
+        type: Number,
+        default: 20
+      }
     },
     data() {
       return {
         showModal: this.value,
-        showHead: true
+        showHead: true,
+        colorTheme: this.type
       }
     },
     methods: {
@@ -140,6 +149,11 @@
           return {
             width: this.width
           }
+        }
+      },
+      modalRadius() {
+        return {
+          borderRadius: this.radius + 'px'
         }
       },
       modalHeight() {
