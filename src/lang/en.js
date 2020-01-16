@@ -30,7 +30,7 @@ export const lang = {
             addAlertFail2: "Your data is already in the local browser and can be synchronized after logging in.",
             addAlertNetError: "Added successfully!But your current device doesn't seem to be connected to the Internet.",
             addAlertNetError2: "When your device is connected to the Internet,If you access Luna Garden again and stay logged in, we will synchronize your data to the cloud.",
-            emptyAlert: "You must enter todo items or search content before you can proceed to the next step!",
+            emptyAlert: "You must enter search content before you can proceed to the next step!",
             delMsg: 'Are you sure delete this todo record?',
             delMsg2: 'It can not recover after your confirm!'
         },

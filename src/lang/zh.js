@@ -30,7 +30,7 @@ export const lang = {
             addAlertFail2: "您的数据已位于本地浏览器，登录后即可同步。",
             addAlertNetError: "添加成功！但您当前设备似乎未接入互联网。",
             addAlertNetError2: "当您的设备接入互联网时，再次访问Luna Garden且保持登录状态，我们会将您的数据同步至云端。",
-            emptyAlert: "你必须先输入待办事项或搜索内容，才可以进行下一步操作！",
+            emptyAlert: "你必须先输入搜索内容，才可以进行下一步操作！",
             delMsg: '您确定要删除此待办事项吗？',
             delMsg2: '删除后无法恢复该记录!'
         },

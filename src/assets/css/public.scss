@@ -9,6 +9,7 @@ $white: #FFFFFF;
 $primary: #eb7290;
 $primaryText: #F3588B;
 $error: #FF4719;
+$errorText: #FF1919;
 $success: #00af57;
 $warning: #e9a600;
 $alert: #c5006a;
@@ -69,6 +70,12 @@ ul li {
   -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
+.errorButton {
+  background-color: $error;
+  color: $white;
+  -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+}
 .normalButton{
   background-color: $white;
   color: #4a4a4a;
@@ -76,8 +83,11 @@ ul li {
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
 
-.error {
-  color: #EC8585;
+.errorText {
+  color: $errorText;
+}
+.primaryText{
+  color: $primaryText;
 }
 
 .desc {
@@ -712,30 +722,45 @@ header {
       .modalHeader{
         background-color: $error;
         color: $white;
+        p{
+          color: $white!important;
+        }
       }
     }
     .modalContainer.successModal{
       .modalHeader{
         background-color: $success;
         color: $white;
+        p{
+          color: $white!important;
+        }
       }
     }
     .modalContainer.warningModal{
       .modalHeader{
         background-color: $warning;
         color: $white;
+        p{
+          color: $white!important;
+        }
       }
     }
     .modalContainer.alertModal{
       .modalHeader{
         background-color: $alert;
         color: $white;
+        p{
+          color: $white!important;
+        }
       }
     }
     .modalContainer.primaryModal{
       .modalHeader{
         background-color: $primary;
         color: $white;
+        p{
+          color: $white!important;
+        }
       }
     }
   }

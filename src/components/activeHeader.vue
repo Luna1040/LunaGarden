@@ -41,7 +41,7 @@
           <div class="languageBlackHover"></div>
         </div>
       </div>
-      <router-link to="aboutUs">
+      <router-link to="aboutUs" v-ripple>
         <i class="iconfont icon-guide"></i>
         {{$t('lang.titles.guide')}}
       </router-link>
@@ -67,7 +67,6 @@ export default {
     this.navigator.onLine = window.navigator.onLine;
     setInterval(this.getNavigator, 1000);
     this.getData(publicApi.imgCode, {}).then(res => {
-      console.log(res.data);
       this.imgSrc = res.data;
     });
   },
@@ -80,7 +79,6 @@ export default {
   methods: {
     cgLang() {
       this.langSlideDown = this.langSlideDown !== true;
-      console.log(this.langSlideDown);
     },
     setLang(value) {
       this.$i18n.locale = value;

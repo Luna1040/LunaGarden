@@ -9,7 +9,7 @@
     ></Header>
     <div class="inputArea" :class="{inputAreaActive: todoText !== ''}">
       <button class="searchBtn" @click="matchQuery">
-        <i class="iconfont icon-search"></i>
+        <i class="iconfont icon-search" v-ripple></i>
       </button>
       <input
               type="text"
@@ -20,7 +20,7 @@
               @keydown="keydown($event)"
       />
       <button class="searchBtn" @click="addTodo">
-        <i class="iconfont icon-add"></i>
+        <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
     <ul class="searchAssociation">
@@ -113,20 +113,20 @@
     </div>
     <Modal v-model="emptyWarning" @on-cancel="emptyWarningCancel()" :title="$t('lang.firstAlert.attention')">
       <div>
-        <p class="error">{{$t('lang.home.alert.emptyAlert')}}</p>
+        <p class="primaryText">{{$t('lang.home.alert.emptyAlert')}}</p>
       </div>
       <div slot="footer">
         <button class="primaryButton" v-ripple @click="emptyWarningCancel()">{{$t('lang.home.button.OK')}}</button>
       </div>
     </Modal>
-    <Modal v-model="del" @on-cancel="delCancel()" :title="$t('lang.firstAlert.warning')">
+    <Modal v-model="del" @on-cancel="delCancel()" :title="$t('lang.firstAlert.warning')" type="error">
       <div>
         <p class="defaultTextColor">{{$t('lang.home.alert.delMsg')}}</p>
-        <p class="error smFont">{{$t('lang.home.alert.delMsg2')}}</p>
+        <p class="errorText smFont">{{$t('lang.home.alert.delMsg2')}}</p>
       </div>
       <div slot="footer">
         <button class="normalButton" v-ripple @click="delCancel()">{{$t('lang.home.button.cancel')}}</button>
-        <button class="primaryButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
+        <button class="errorButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
       </div>
     </Modal>
   </div>
@@ -271,7 +271,7 @@
         if (this.todoText !== "") {
           window.open("https://cn.bing.com/search?q=" + this.todoText);
         } else {
-          this.addAlert = true;
+          this.emptyWarning = true;
         }
       },
       emptyWarningCancel(){
