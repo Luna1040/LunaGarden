@@ -5,10 +5,10 @@
       </div>
     </transition>
     <transition name="modalAnimation">
-      <div class="modalContainer" :style="[styles, modalWidth, modalRadius, modalShadow]" :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}]" v-show="showModal">
+      <div class="modalContainer" :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]" :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}]" v-show="showModal">
         <div class="modalHeader" v-if="showHead">
           <slot name="header">
-            <p>{{title}}</p>
+            <p :style="titleColor">{{title}}</p>
           </slot>
           <i class="iconfont icon-cancel" @click="close"></i>
         </div>
@@ -117,13 +117,21 @@
       corner: {
         type: String,
         default: 'large'
+      },
+      color: {
+        type: String,
+        default: '#4a4a4a'
+      },
+      background: {
+        type: String,
+        default: '#FFFFFF'
       }
     },
     data() {
       return {
         showModal: this.value,
         showHead: true,
-        test: ''
+        colorTheme: this.type
       }
     },
     methods: {
@@ -154,7 +162,7 @@
     computed: {
       wrapStyles () {
         return {
-          zIndex: this.zIndex
+          zIndex: this.zIndex,
         };
       },
       modalWidth () {
@@ -213,6 +221,16 @@
           return {
             overflow: 'visible',
           }
+        }
+      },
+      modalBackground() {
+        return {
+          backgroundColor: this.background + '!important'
+        }
+      },
+      titleColor() {
+        return {
+          color: this.color
         }
       }
     },
