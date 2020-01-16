@@ -1,11 +1,11 @@
 <template>
   <div class="lunaModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
     <transition name="maskAnimation">
-      <div class="modalMask" @click="handleMask()" v-show="showModal" v-if="showMask">
+      <div class="modalMask" @click="handleMask()" v-show="showModal" v-if="showMask" :class="{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}">
       </div>
     </transition>
     <transition name="modalAnimation">
-      <div class="modalContainer" :style="[styles, modalWidth, modalRadius]" :class="[className, colorTheme]" v-show="showModal">
+      <div class="modalContainer" :style="[styles, modalWidth, modalRadius, modalShadow]" :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}]" v-show="showModal">
         <div class="modalHeader" v-if="showHead">
           <slot name="header">
             <p>{{title}}</p>
@@ -101,19 +101,36 @@
       radius: {
         type: Number,
         default: 20
+      },
+      maskStyle: {
+        type: String,
+        default: 'dark'
+      },
+      shadow: {
+        type: Boolean,
+        default: true
+      },
+      shadowStyle: {
+        type: String,
+        default: 'light'
+      },
+      corner: {
+        type: String,
+        default: 'large'
       }
     },
     data() {
       return {
         showModal: this.value,
         showHead: true,
-        colorTheme: this.type
+        test: ''
       }
     },
     methods: {
       //点击右上角和默认关闭按钮时触发函数  外部调用@on-cancel()
       close () {
         this.showModal = false;
+        this.$emit('input', false);
         this.$emit('on-cancel');
       },
       //点击遮罩层触发事件
@@ -154,6 +171,15 @@
       modalRadius() {
         return {
           borderRadius: this.radius + 'px'
+        }
+      },
+      modalShadow() {
+        if(!this.shadow) {
+          return {
+            boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
+          }
+        } else {
+          return {}
         }
       },
       modalHeight() {

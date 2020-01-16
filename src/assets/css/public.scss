@@ -8,6 +8,10 @@
 $white: #FFFFFF;
 $primary: #eb7290;
 $primaryText: #F3588B;
+$error: #FF4719;
+$success: #00af57;
+$warning: #e9a600;
+$alert: #c5006a;
 
 * {
   margin: 0;
@@ -553,7 +557,7 @@ header {
       height: 30px;
       line-height: 30px;
       font-size: 14px;
-      background-color: none;
+      background-color: rgba(0,0,0,0);
       cursor: pointer;
       transition: all 0.25s;
       border: 1px solid rgba(0, 0, 0, 0);
@@ -585,6 +589,21 @@ header {
     height: calc(100vh - 244px);
     padding-top: 36px;
   }
+  .squareCorner{
+    border-radius: 0!important;
+  }
+  .smallCorner{
+    border-radius: 4px!important;
+  }
+  .filletCorner{
+    border-radius: 8px!important;
+  }
+  .largeCorner{
+    border-radius: 25px!important;
+  }
+  .fullCorner{
+    border-radius: 100%!important;
+  }
   .lunaModal {
     display: flex;
     position: fixed;
@@ -596,7 +615,6 @@ header {
     align-items: center;
     justify-content: center;
     .modalMask{
-      background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
       z-index: 200;
       top: 0;
@@ -604,21 +622,26 @@ header {
       width: 100%;
       height: 100%;
     }
+    .modalMask.darkMask{
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modalMask.lightMask{
+      background-color: rgba(255, 255, 255, 0.5);
+    }
     .modalContainer {
       position: relative;
-      background-color: $white;
       width: 600px;
       border-radius: 20px;
-      padding: 8px 16px 16px;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      padding-bottom: 16px;
       z-index: 250;
-
+      background-color: $white;
       .modalHeader {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: 8px;
+        padding: 8px 16px;
         border-bottom: 1px solid #FEE7F4;
+        background-color: $white;
         position: relative;
         margin-bottom: 32px;
         >div{
@@ -650,6 +673,7 @@ header {
       }
 
       .modalBody {
+        padding: 0 16px;
         p {
           line-height: 24px;
         }
@@ -676,6 +700,42 @@ header {
             border-radius: 20px;
           }
         }
+      }
+    }
+    .modalContainer.darkShadow{
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    }
+    .modalContainer.lightShadow{
+      box-shadow: 0 3px 5px rgba(255, 255, 255, 0.3);
+    }
+    .modalContainer.errorModal{
+      .modalHeader{
+        background-color: $error;
+        color: $white;
+      }
+    }
+    .modalContainer.successModal{
+      .modalHeader{
+        background-color: $success;
+        color: $white;
+      }
+    }
+    .modalContainer.warningModal{
+      .modalHeader{
+        background-color: $warning;
+        color: $white;
+      }
+    }
+    .modalContainer.alertModal{
+      .modalHeader{
+        background-color: $alert;
+        color: $white;
+      }
+    }
+    .modalContainer.primaryModal{
+      .modalHeader{
+        background-color: $primary;
+        color: $white;
       }
     }
   }
