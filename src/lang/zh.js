@@ -32,7 +32,8 @@ export const lang = {
             addAlertNetError2: "当您的设备接入互联网时，再次访问Luna Garden且保持登录状态，我们会将您的数据同步至云端。",
             emptyAlert: "你必须先输入搜索内容，才可以进行下一步操作！",
             delMsg: '您确定要删除此待办事项吗？',
-            delMsg2: '删除后无法恢复该记录!'
+            delMsg2: '删除后无法恢复该记录!',
+            create: '创建计划'
         },
         button: {
             OK: "好的",

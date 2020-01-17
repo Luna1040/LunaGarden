@@ -32,7 +32,8 @@ export const lang = {
             addAlertNetError2: "When your device is connected to the Internet,If you access Luna Garden again and stay logged in, we will synchronize your data to the cloud.",
             emptyAlert: "You must enter search content before you can proceed to the next step!",
             delMsg: 'Are you sure delete this todo record?',
-            delMsg2: 'It can not recover after your confirm!'
+            delMsg2: 'It can not recover after your confirm!',
+            create: 'Create Plan'
         },
         button: {
             OK: "Got it",

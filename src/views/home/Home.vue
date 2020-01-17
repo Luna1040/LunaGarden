@@ -129,6 +129,9 @@
         <button class="errorButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
       </div>
     </Modal>
+    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.firstAlert.create')" type="primary">
+
+    </Modal>
   </div>
 </template>
 
@@ -141,6 +144,7 @@
       return {
         del: false,
         emptyWarning: false,
+        create: false,
         choiceId: '',
         todoText: "",
         currentTime: "",
@@ -165,6 +169,13 @@
           },
           autoplayDisableOnInteraction: false,
           loop: false
+        },
+        createData: {
+          title: '',
+          content: '',
+          status: false,
+          deadLine: '',
+          notice: true,
         }
       };
     },
@@ -280,7 +291,7 @@
       addTodo() {
         //非空验证
         if (this.todoText === "") {
-          this.emptyWarning = true
+          this.create = true
         } else {
           this.uuidGet();
           this.timeFormate(new Date());
@@ -305,6 +316,22 @@
           //addStatus
           //成功 successAdd  //未登录 failAdd //未联网 errorAdd
         }
+      },
+      createConfirm() {
+        let params = JSON.parse(JSON.stringify(this.createData));
+        this.todoList.push(params);
+        localStorage.setItem('todoList', this.todoList)
+        this.createCancel()
+      },
+      createCancel() {
+        this.createData = {
+          title: '',
+          content: '',
+          status: false,
+          deadLine: '',
+          notice: true,
+        };
+        this.create = false
       },
       hideModal() {
         this.addAlert = false;
