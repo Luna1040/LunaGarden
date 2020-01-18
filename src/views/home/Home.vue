@@ -18,11 +18,12 @@
               v-model="todoText"
               @keyup="keyup($event)"
               @keydown="keydown($event)"
-      />
+      /><br>
       <button class="searchBtn" @click="addTodo">
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
+    <Input type="textarea" :width="200" color="#FF0000" background="lightpink" borderColor="#F3588B" corner="large" ghost></Input>
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"
@@ -147,8 +148,6 @@
         create: false,
         choiceId: '',
         todoText: "",
-        currentTime: "",
-        uuid: "",
         addAlert: "",
         toastLaunch: "",
         addStatus: "",
@@ -188,43 +187,6 @@
     methods: {
       mousedown(index) {
         this.dragActive = index;
-      },
-      uuidGet() {
-        let s = [];
-        let hexDigits =
-                "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        for (let i = 0; i < 26; i++) {
-          s[i] = hexDigits.substr(Math.floor(Math.random() * 0x26), 1);
-        }
-        s[14] = "4";
-        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
-
-        let timeStamp = new Date()
-                .getTime()
-                .toString()
-                .substr(-7);
-        s[8] = timeStamp;
-        this.uuid = s.join("");
-      },
-      timeFormate(timeStamp) {
-        let year = new Date(timeStamp).getFullYear();
-        let month =
-                new Date(timeStamp).getMonth() + 1 < 10
-                        ? "0" + (new Date(timeStamp).getMonth() + 1)
-                        : new Date(timeStamp).getMonth() + 1;
-        let date =
-                new Date(timeStamp).getDate() < 10
-                        ? "0" + new Date(timeStamp).getDate()
-                        : new Date(timeStamp).getDate();
-        let hh =
-                new Date(timeStamp).getHours() < 10
-                        ? "0" + new Date(timeStamp).getHours()
-                        : new Date(timeStamp).getHours();
-        let mm =
-                new Date(timeStamp).getMinutes() < 10
-                        ? "0" + new Date(timeStamp).getMinutes()
-                        : new Date(timeStamp).getMinutes();
-        this.currentTime = year + "-" + month + "-" + date + " " + hh + ":" + mm;
       },
       keyup(event) {
         if (
@@ -293,13 +255,13 @@
         if (this.todoText === "") {
           this.create = true
         } else {
-          this.uuidGet();
-          this.timeFormate(new Date());
+          let id = this.uuidGet();
+          let time = this.timeFormat(new Date());
           let localData = JSON.parse(localStorage.getItem("todoList"));
           //设置储存条目内容
           let tempObj = {
-            id: this.uuid,
-            time: this.currentTime,
+            id: id,
+            time: time,
             content: this.todoText,
             completed: false
           };

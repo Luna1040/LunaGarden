@@ -12,6 +12,9 @@ import './assets/css/LunaAnimates.scss'
 import VueI18n from 'vue-i18n'
 import axios from 'axios'
 import './assets/js/publicRes.js'
+import './assets/js/timeFormat.js'
+import './assets/js/getId.js'
+import './assets/js/colorMatch.js'
 import './assets/icon/iconfont.css';
 import './assets/public/lunaUI'
 

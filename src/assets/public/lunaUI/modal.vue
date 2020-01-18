@@ -100,7 +100,7 @@
       },
       radius: {
         type: Number,
-        default: 20
+        default: -1
       },
       maskStyle: {
         type: String,
@@ -177,8 +177,12 @@
         }
       },
       modalRadius() {
-        return {
-          borderRadius: this.radius + 'px'
+        if(this.radius !== -1) {
+          return {
+            borderRadius: this.radius + 'px!important'
+          }
+        } else {
+          return {}
         }
       },
       modalShadow() {
@@ -243,24 +247,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .maskAnimation-enter-active, .maskAnimation-leave-active {
-    transition: opacity 0.5s;
-  }
-  .maskAnimation-enter, .maskAnimation-leave-to {
-    opacity: 0;
-  }
-  .maskAnimation-leave,.maskAnimation-enter-to{
-    opacity: 1;
-  }
-  .modalAnimation-enter-active,.modalAnimation-leave-active{
-    transition: all 0.3s;
-  }
-  .modalAnimation-leave,.modalAnimation-enter-to{
-    opacity: 1;
-    top: 0;
-  }
-  .modalAnimation-enter, .modalAnimation-leave-to {
-    opacity: 0;
-    top: -24px;
-  }
+
 </style>

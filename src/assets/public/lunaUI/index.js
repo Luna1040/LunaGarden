@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Modal from './modal.vue'
-import Button from './button.vue'
-import Input from './input.vue'
+import Button from './Button.vue'
+import Input from './Input.vue'
 
 const LunaUI = {
     Modal,
     Button,
-    Input
+    Input,
 };
 
 Object.keys(LunaUI).forEach(name => {

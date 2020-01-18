@@ -1,3 +1,24 @@
+.maskAnimation-enter-active, .maskAnimation-leave-active {
+  transition: opacity 0.5s;
+}
+.maskAnimation-enter, .maskAnimation-leave-to {
+  opacity: 0;
+}
+.maskAnimation-leave,.maskAnimation-enter-to{
+  opacity: 1;
+}
+.modalAnimation-enter-active,.modalAnimation-leave-active{
+  transition: all 0.3s;
+}
+.modalAnimation-leave,.modalAnimation-enter-to{
+  opacity: 1;
+  top: 0;
+}
+.modalAnimation-enter, .modalAnimation-leave-to {
+  opacity: 0;
+  top: -24px;
+}
+
 .showAlert{
   animation: 0.5s ease-in showAlert forwards;
   @keyframes showAlert {

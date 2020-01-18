@@ -1,10 +1,12 @@
 <template>
+<div class="lunaButton">
 
+</div>
 </template>
 
 <script>
     export default {
-        name: "button"
+        name: "Button"
     }
 </script>
 
