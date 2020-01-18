@@ -1,6 +1,13 @@
 <template>
     <div class="lunaInput" :class="[{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost}]" :style="[inputWidth, inputRadius, inputHeight, inputBorder, inputBackground, boxShadowStyle]" @mouseenter="hoverEnter" @mouseleave="hoverOut" @focusin="focusEnter" @focusout="focusLeave">
-        <input :style="[textColor]" :type="type"/>
+        <i v-if="pre" :class="icon" @click="handelIcon"></i>
+        <slot name="pre"></slot>
+        <input v-model="textValue" :style="[textColor]" :type="type" :maxlength="maxlength" @input="cgValue" @keyup="handelKeyUp" @keyup.enter="handelEnter" @keydown="handelKeyDown" @keypress="handelKeyPress" @focus="handelFocus" @blur="handelBlur"/>
+        <!--        清空按钮-->
+        <i v-if="clearable" class="iconfont icon-cancel" @click="clearText"></i>
+        <i v-if="suffix" @click="handelIcon" :class="icon"></i>
+        <slot name="suffix"></slot>
+        <span v-if="showWordLimit">{{count}}/{{maxlength}}</span>
     </div>
 </template>
 
@@ -47,6 +54,30 @@
                 default: 'text'
             },
             ghost: {
+                type: Boolean,
+                default: false
+            },
+            icon: {
+                type: String,
+                default: ''
+            },
+            pre: {
+                type: Boolean,
+                default: false
+            },
+            suffix: {
+                type: Boolean,
+                default: false
+            },
+            clearable: {
+                type: Boolean,
+                default: false
+            },
+            maxlength: {
+                type: Number,
+                default: 120
+            },
+            showWordLimit: {
                 type: Boolean,
                 default: false
             },
@@ -102,12 +133,16 @@
                 return {
                     boxShadow: this.boxShadow
                 }
+            },
+            count() {
+                return this.textValue.length
             }
         },
         data() {
             return {
                 boxShadow: '0 0 0 2px rgba(0,0,0, 0)',
-                borderColorStyle: '#EEEEEE'
+                borderColorStyle: '#EEEEEE',
+                textValue: this.value
             }
         },
         methods: {
@@ -133,6 +168,35 @@
             focusLeave() {
                 this.boxShadow = '0 0 0 2px rgba(0,0,0, 0)';
                 this.borderColorStyle = '#EEEEEE'
+            },
+            clearText() {
+                this.$emit('on-cancel', this.textValue)
+                this.textValue = '';
+                this.$emit('input', '');
+            },
+            cgValue() {
+                this.$emit('on-change', this.textValue)
+            },
+            handelKeyUp(event) {
+                this.$emit('on-keyup', event)
+            },
+            handelKeyDown(event) {
+                this.$emit('on-keydown', event)
+            },
+            handelKeyPress(event) {
+                this.$emit('on-keypress', event)
+            },
+            handelFocus(event) {
+                this.$emit('on-focus', event)
+            },
+            handelBlur(event) {
+                this.$emit('on-blur', event)
+            },
+            handelIcon() {
+                this.$emit('on-blur', this.textValue)
+            },
+            handelEnter() {
+                this.$emit('on-enter', this.textValue)
             }
         },
     }

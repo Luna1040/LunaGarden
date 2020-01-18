@@ -661,13 +661,25 @@ header {
   align-items: center;
   justify-content: space-between;
   outline: 0;
+  padding: 0 12px;
   input{
     border: 0;
     outline: 0;
     width: auto;
     height: 100%;
     background: rgba(0,0,0,0);
-    padding: 0 8px;
+  }
+  i {
+    cursor: pointer;
+    margin-left: 6px;
+    overflow: visible;
+  }
+  .icon-cancel{
+    font-size: 8px;
+  }
+  span{
+    color: #3c3c3c;
+    font-size: 8px;
   }
 }
 .lunaInput.ghostInput{
