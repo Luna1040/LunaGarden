@@ -55,7 +55,8 @@
       },
       //自定义类名
       className: {
-        type: String
+        type: String,
+        default: ''
       },
       type: {
         type: String,

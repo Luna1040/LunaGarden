@@ -23,9 +23,7 @@
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
-    <Input v-model="test" type="textarea" :width="200" color="#FF0000" background="lightpink" borderColor="#F3588B" corner="large" ghost clearable :showWordLimit="true" @on-cancel="testValue">
-      <i slot="suffix" class="iconfont icon-ICON_cancel"></i>
-    </Input>
+    <Button theme="primary" type="ghost" icon="iconfont icon-quedingx" suffix corner="full" :radius = '3'>test</Button>
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"
@@ -188,9 +186,6 @@
       this.todoList = JSON.parse(localStorage.getItem("todoList"));
     },
     methods: {
-      testValue(value){
-        console.log(value);
-      },
       mousedown(index) {
         this.dragActive = index;
       },

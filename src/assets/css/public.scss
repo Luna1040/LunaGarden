@@ -504,7 +504,11 @@ header {
   border-radius: 25px!important;
 }
 .fullCorner{
-  border-radius: 100%!important;
+  border-radius: 1000px!important;
+}
+.roundCorner{
+  padding: 16px!important;
+  border-radius: 50%!important;
 }
 .lunaModal {
   display: flex;
@@ -671,7 +675,6 @@ header {
   }
   i {
     cursor: pointer;
-    margin-left: 6px;
     overflow: visible;
   }
   .icon-cancel{
@@ -684,6 +687,82 @@ header {
 }
 .lunaInput.ghostInput{
   background-color: rgba(0,0,0,0) !important;
+}
+.lunaButton{
+  display: inline-block;
+  transition: all 0.5s;
+  cursor: pointer;
+  background-color: $white;
+  color: #4A4A4A;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 16px;
+  border: 1px solid $white;
+  i{
+    overflow: visible;
+  }
+}
+.lunaButton.darkShadow{
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+.lunaButton.lightShadow{
+  box-shadow: 0 3px 5px rgba(255, 255, 255, 0.3);
+}
+.lunaButton.primaryButton{
+  background-color: $primary;
+  color: $white;
+  border-color: $primary;
+}
+.lunaButton.errorButton{
+  background-color: $error;
+  color: $white;
+  border-color: $error;
+}
+.lunaButton.successButton{
+  background-color: $success;
+  color: $white;
+  border-color: $success;
+}
+.lunaButton.warningButton{
+  background-color: $warning;
+  color: $white;
+  border-color: $warning;
+}
+.lunaButton.alertButton{
+  background-color: $alert;
+  color: $white;
+  border-color: $alert;
+}
+.lunaButton.textButton{
+  background-color: rgba(0,0,0,0)!important;
+  border: 1px solid rgba(0,0,0,0)!important;
+}
+.lunaButton.ghostButton{
+  background-color: rgba(0,0,0,0)!important;
+}
+.lunaButton.ghostButton.primaryButton{
+  color: $primary!important;
+}
+.lunaButton.ghostButton.errorButton{
+  color: $error!important;
+}
+.lunaButton.ghostButton.successButton{
+  color: $success!important;
+}
+.lunaButton.ghostButton.warningButton{
+  color: $warning!important;
+}
+.lunaButton.ghostButton.alertButton{
+  color: $alert!important;
+}
+.lunaButton:hover{
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+.pre{
+  margin-right: 6px;
+}
+.suffix{
+  margin-left: 6px;
 }
 .zIndexHide{
   z-index: -2!important;
