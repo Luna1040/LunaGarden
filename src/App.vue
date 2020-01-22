@@ -129,8 +129,7 @@
       //若已登录，从服务器端获取内容
     },
     watch: {
-      $route(to, from) {
-        console.log(this.$router);
+      $route() {
         // 切换动画
         let isBack = this.$router.isBack; // 监听路由变化时的状态为前进还是后退
         if (isBack) {
@@ -143,12 +142,21 @@
     },
     mounted() {
       window.onresize = () => {
-        if (window.innerWidth / window.innerHeight > 1.777) {
+        if (window.innerWidth / window.innerHeight >= 1.777) {
           this.width177 = 177;
         } else if (window.innerWidth / window.innerHeight < 1) {
           this.width177 = 0;
         } else {
           this.width177 = 16;
+        }
+        if(window.innerWidth >= window.innerHeight) {
+          if (this.$route.name.indexOf('m') === 0) {
+            this.$router.push(this.$route.name.substr(1))
+          }
+        } else {
+          if (this.$route.name.indexOf('m') !== 0) {
+            this.$router.push('m' + this.$route.name)
+          }
         }
       };
     },
