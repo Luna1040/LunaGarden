@@ -893,22 +893,6 @@
 <script>
 export default {
   name: "start",
-  created() {
-    setTimeout(() => {
-      //检测屏幕大小，以显示尺寸为基准
-      let screenWidth = window.screen.width;
-      //手机端:420px以下
-      if (screenWidth < 420) {
-        this.$router.push("mHome");
-      } else if ((screenWidth > 420) & (screenWidth < 1280)) {
-        this.$router.push("padHome");
-      } else {
-        this.$router.push("home");
-      }
-      //pad端:420px以上1280px以下
-      //PC端优先原则
-    }, 1000);
-  }
 };
 </script>
 
