@@ -893,6 +893,11 @@
 <script>
 export default {
   name: "start",
+  created() {
+    setTimeout(() => {
+        this.$router.push("Home");
+    }, 1000);
+  }
 };
 </script>
 
