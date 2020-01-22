@@ -103,25 +103,21 @@
         this.width177 = 16;
       }
       //是否为初次访问
-      let firstLoad = 0;
-      let todoList = [];
-      let dataObj = [];
       //根据localstorage的预设凭据初次判断
       if (localStorage.getItem("firstLoad")) {
-        firstLoad = 1;
         //根据localstorage中必须的内容格式取值，若没有，则首先赋值
-        if (localStorage.getItem("todoList")) {
-          dataObj = JSON.parse(localStorage.getItem("todoList"));
-        } else {
-          dataObj = [];
-          todoList = localStorage.setItem("todoList", JSON.stringify(dataObj));
+        if (!localStorage.getItem("todoList")) {
+          localStorage.setItem("todoList", JSON.stringify([]));
+        }
+        if (!localStorage.getItem("businessList")) {
+          localStorage.setItem("businessList", JSON.stringify([]));
         }
       } else {
         //初次访问，创建默认数据格式保存于localstorage中
-        dataObj = [];
-        todoList = localStorage.setItem("todoList", JSON.stringify(dataObj));
+        localStorage.setItem("todoList", JSON.stringify([]));
+        localStorage.setItem("businessList", JSON.stringify([]));
         //创建凭据证明下次打开时非初次访问
-        firstLoad = localStorage.setItem("firstLoad", 1);
+        localStorage.setItem("firstLoad", JSON.stringify(1));
         //提示是否进入引导模式
         this.firstAlert = true;
       }

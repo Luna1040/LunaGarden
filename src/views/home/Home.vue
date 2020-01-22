@@ -23,7 +23,6 @@
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
-    <Button theme="primary" type="ghost" icon="iconfont icon-quedingx" suffix corner="full" :radius = '3'>test</Button>
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"
@@ -36,7 +35,7 @@
       <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
     </div>
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide :class="{'todoList-shorter': searchArr.length !== 0}">
         <ul class="todoList">
           <li v-for="(i,index) in todoList" :key="i.id">
@@ -88,9 +87,50 @@
       </swiper-slide>
       <swiper-slide>
         <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
-          <li v-for="i in todoList" :key="i.id">
-            <span>{{$t('lang.home.timeStamp')}}{{i.time}}</span>
-            <span>{{$t('lang.home.content')}}{{i.content}}</span>
+          <li v-for="(i,index) in businessList" :key="i.id">
+            <div>
+              <span
+                      :class="{successText: i.completed === true}"
+              >{{$t('lang.home.timeStamp')}}{{i.time}}</span>
+              <span
+                      :class="{successText: i.completed === true}"
+              >{{$t('lang.home.content')}}{{i.content}}</span>
+            </div>
+            <div class="dragBtn" @click="mousedown(index)">
+              <div
+                      class="dragMenu"
+                      :class="{dragMenuShow : dragActive === index, dragMenuHide: dragActive === -1}"
+              >
+                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
+                <div @click.stop="cgStatus(i.id)">
+                  <!-- 完成计划 -->
+                  <button v-show="i.completed === false">
+                    <i class="iconfont icon-quedingx"></i>
+                  </button>
+                  <button v-show="i.completed === true">
+                    <i class="iconfont icon-quedingx"></i>
+                  </button>
+                </div>
+                <div @click.stop="editShow(i.id)">
+                  <!-- 编辑计划 -->
+                  <button>
+                    <i class="iconfont icon-remark"></i>
+                  </button>
+                </div>
+                <div @click.stop="copyContent(i.id)">
+                  <!-- 复制文本 -->
+                  <button>
+                    <i class="iconfont icon-copy-l"></i>
+                  </button>
+                </div>
+                <div @click.stop="delShow(i.id)">
+                  <!-- 删除计划 -->
+                  <button>
+                    <i class="iconfont icon-ICON_cancel"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </swiper-slide>
@@ -130,7 +170,7 @@
         <button class="errorButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
       </div>
     </Modal>
-    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.firstAlert.create')" type="primary">
+    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.home.alert.create')" type="primary">
 
     </Modal>
   </div>
@@ -155,6 +195,7 @@
         modal: "",
         searchArr: [],
         todoList: [],
+        businessList: [],
         dragActive: -1,
         navigation: {
           nextEl: ".swiper-button-next",
@@ -168,7 +209,13 @@
             prevEl: "#navigation>.swiper-button-prev" //后退按钮的css选择器或HTML元素。
           },
           autoplayDisableOnInteraction: false,
-          loop: false
+          loop: false,
+          on: {
+            slideChange: () => {
+              this.dragActive = -1;
+              this.activeList = this.$refs.mySwiper.swiper.swipeDirection
+            }
+          }
         },
         createData: {
           title: '',
@@ -176,7 +223,8 @@
           status: false,
           deadLine: '',
           notice: true,
-        }
+        },
+        activeList: 'prev'
       };
     },
     components: {
@@ -184,6 +232,7 @@
     },
     created() {
       this.todoList = JSON.parse(localStorage.getItem("todoList"));
+      this.businessList = JSON.parse(localStorage.getItem("businessList"));
     },
     methods: {
       mousedown(index) {
@@ -258,23 +307,42 @@
         } else {
           let id = this.uuidGet();
           let time = this.timeFormat(new Date());
-          let localData = JSON.parse(localStorage.getItem("todoList"));
-          //设置储存条目内容
-          let tempObj = {
-            id: id,
-            time: time,
-            content: this.todoText,
-            completed: false
-          };
-          //添加li
-          this.todoList.push(tempObj);
-          localData.push(tempObj);
-          //定义textContent以方便删除
-          this.textContent = localData;
-          //存入localStorage
-          localStorage.setItem("todoList", JSON.stringify(localData));
+          if(this.activeList === 'prev') {
+            let localData = JSON.parse(localStorage.getItem("todoList"));
+            //设置储存条目内容
+            let tempObj = {
+              id: id,
+              time: time,
+              content: this.todoText,
+              completed: false
+            };
+            //添加li
+            this.todoList.push(tempObj);
+            localData.push(tempObj);
+            //定义textContent以方便删除
+            this.textContent = localData;
+            //存入localStorage
+            localStorage.setItem("todoList", JSON.stringify(localData));
+          } else {
+            let localData = JSON.parse(localStorage.getItem("businessList"));
+            //设置储存条目内容
+            let tempObj = {
+              id: id,
+              time: time,
+              content: this.todoText,
+              completed: false
+            };
+            //添加li
+            this.businessList.push(tempObj);
+            localData.push(tempObj);
+            //定义textContent以方便删除
+            this.textContent = localData;
+            //存入localStorage
+            localStorage.setItem("businessList", JSON.stringify(localData));
+          }
           //清空输入框
           this.todoText = "";
+          //发送空值查询请求
           this.keyup({ keyCode: 10 });
           //addStatus
           //成功 successAdd  //未登录 failAdd //未联网 errorAdd

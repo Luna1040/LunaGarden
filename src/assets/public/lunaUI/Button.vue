@@ -3,6 +3,7 @@
     class="lunaButton"
     :style="[styles, buttonWidth, buttonRadius, buttonShadow, buttonBackground]"
     :class="[className, {errorButton: theme === 'error', successButton: theme === 'success',warningButton: theme === 'warning',primaryButton: theme === 'primary',alertButton: theme === 'alert', '': theme === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': type === 'Normal', 'textButton': type === 'text', 'ghostButton': type === 'ghost'}]"
+    v-ripple
   >
     <i :class="icon" class="pre" v-if="pre"></i>
     <slot></slot>

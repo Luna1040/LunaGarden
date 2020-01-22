@@ -911,6 +911,10 @@ header {
       color: $white;
       background-color: $primary;
     }
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover{
+      background-color: lightpink;
+    }
 
     .swiper-button-prev {
       border-top-left-radius: 44px;
