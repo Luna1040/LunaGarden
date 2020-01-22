@@ -698,6 +698,8 @@ header {
   vertical-align: middle;
   padding: 8px 16px;
   border: 1px solid $white;
+  position: relative;
+  overflow: visible;
   i{
     overflow: visible;
   }
@@ -763,6 +765,16 @@ header {
 }
 .suffix{
   margin-left: 6px;
+}
+.affix{
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: $error;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  border: 1px solid #FFFFFF;
 }
 .zIndexHide{
   z-index: -2!important;

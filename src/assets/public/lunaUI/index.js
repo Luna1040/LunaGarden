@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Modal from './modal.vue'
+import Modal from './Modal.vue'
 import Button from './Button.vue'
 import Input from './Input.vue'
 

@@ -8,6 +8,7 @@
     <i :class="icon" class="pre" v-if="pre"></i>
     <slot></slot>
     <i :class="icon" class="suffix" v-if="suffix"></i>
+    <div v-if="badge" class="badge"></div>
   </div>
 </template>
 
@@ -62,6 +63,10 @@ export default {
       type: Number,
       default: -1
     },
+    badge: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     buttonWidth() {
