@@ -23,7 +23,7 @@
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
-    <Button theme="primary" corner="square" badge>111test</Button>
+<!--    <Button theme="primary" corner="square" badge>111test</Button>-->
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"

@@ -766,7 +766,7 @@ header {
 .suffix{
   margin-left: 6px;
 }
-.affix{
+.lunaBadge{
   width: 6px;
   height: 6px;
   border-radius: 6px;
@@ -775,6 +775,18 @@ header {
   right: -4px;
   top: -4px;
   border: 1px solid #FFFFFF;
+}
+.lunaBadge.errorBadge{
+  background-color: $error;
+}
+.lunaBadge.successBadge{
+  background-color: $success;
+}
+.lunaBadge.alertBadge{
+  background-color: $alert;
+}
+.lunaBadge.warningBadge{
+  background-color: $warning;
 }
 .zIndexHide{
   z-index: -2!important;
