@@ -1,5 +1,5 @@
 <template>
-    <div class="lunaRow" :style="[rowPadding, rowWidth, rowHeight, rowMaxHeight, rowMaxWidth, rowScrollable, rowBackground, rowBorder]" :class="[{block: !flex, flex: flex}, className]">
+    <div class="lunaRow" :style="[rowPadding, rowWidth, rowHeight, rowMaxHeight, rowMaxWidth, rowScrollable, rowBackground, rowBorder]" :class="className">
         <slot></slot>
     </div>
 </template>

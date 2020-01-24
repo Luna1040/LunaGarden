@@ -305,9 +305,8 @@ $alert: #c5006a;
   background-color: $warning;
 }
 .lunaRow{
-  overflow: visible;
+  overflow: auto;
   display: flex;
-  //align-items: center;
   >.lunaCol{
     border-left: 0!important;
   }
