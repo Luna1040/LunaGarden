@@ -1,5 +1,5 @@
 <template>
-    <div class="lunaRow" :style="[rowPadding, rowWidth, rowHeight, rowMaxHeight, rowMaxWidth, rowScrollable]" :class="[{block: !flex, flex: flex}, className]">
+    <div class="lunaRow" :style="[rowPadding, rowWidth, rowHeight, rowMaxHeight, rowMaxWidth, rowScrollable, rowBackground, rowBorder]" :class="[{block: !flex, flex: flex}, className]">
         <slot></slot>
     </div>
 </template>
@@ -10,6 +10,14 @@
     export default {
         name: "Row",
         props: {
+            background: {
+                type: String,
+                default: '#FEFEFE'
+            },
+            border: {
+                type: String,
+                default: '1px solid #EFEFEF'
+            },
             //宽度高度相关小于等于100为百分比，大于100为px
             width: {
                 //可选auto
@@ -50,48 +58,52 @@
             }
         },
         computed: {
+            rowBackground() {
+                return {
+                    backgroundColor: this.background
+                }
+            },
+            rowBorder() {
+                return {
+                    border: this.border
+                }
+            },
             rowPadding() {
                 return {
                     padding: this.padding + 'px'
                 }
             },
             rowWidth() {
-                if (this.width < 100) {
+                if (this.width <= 100) {
                     return {
-                        width: 'calc(' + this.width + '%' + '-' + this.padding * 2 + 'px)'
+                        width: 'calc(' + this.width + '%-' + this.padding * 2 + 'px-6px)'
                     }
                 } else {
                     return {
-                        width: this.width - this.padding * 2 + 'px'
+                        width: this.width - this.padding * 2 - 6 + 'px'
                     }
                 }
             },
             rowMaxWidth() {
-                if (this.maxWidth < 100) {
+                if (this.maxWidth <= 100) {
                     return {
-                        maxWidth: 'calc(' + this.maxWidth + '%' + '-' + this.padding * 2 + 'px)'
+                        maxWidth: 'calc(' + this.maxWidth + '%-' + this.padding * 2 + 'px-6px)'
                     }
                 } else {
                     return {
-                        maxWidth: this.maxWidth - this.padding * 2 + 'px'
+                        maxWidth: this.maxWidth - this.padding * 2 - 6 + 'px'
                     }
                 }
             },
             rowHeight() {
-                if (this.height < 100) {
-                    return {
-                        height: 'calc(' + this.height + '%' + '-' + this.padding * 2 + 'px)'
-                    }
-                } else {
-                    return {
-                        height: this.height - this.padding * 2 + 'px'
-                    }
+                return {
+                    height: this.height + 'px'
                 }
             },
             rowMaxHeight() {
                 if (this.maxHeight < 100) {
                     return {
-                        maxHeight: 'calc(' + this.maxHeight + '%' + '-' + this.padding * 2 + 'px)'
+                        maxHeight: 'calc(' + this.maxHeight + '%-' + this.padding * 2 + 'px)'
                     }
                 } else {
                     return {

@@ -23,7 +23,15 @@
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
-<!--    <Button theme="primary" corner="square" badge>111test</Button>-->
+    <Row background="red">
+      <Col :span="8" background="lightblue">test</Col>
+      <Col :span="4" background="yellow">test</Col>
+      <Col :span="2" background="skyblue">test</Col>
+      <Col :span="1" background="pink">test</Col>
+      <Col :span="3" background="hotPink">test</Col>
+      <Col :span="3" background="#4a4a4a" color="#FFFFFF">test</Col>
+      <Col :span="2" background="purple" color="#FFFFFF">test</Col>
+    </Row>
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"

@@ -304,6 +304,17 @@ $alert: #c5006a;
 .lunaBadge.warningBadge{
   background-color: $warning;
 }
+.lunaRow{
+  overflow: visible;
+  display: flex;
+  //align-items: center;
+  >.lunaCol{
+    border-left: 0!important;
+  }
+  >.lunaCol:last-of-type{
+    border-right: 0!important;
+  }
+}
 .zIndexHide{
   z-index: -2!important;
 }

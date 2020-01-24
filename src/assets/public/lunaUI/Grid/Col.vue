@@ -1,5 +1,5 @@
 <template>
-    <div class="lunaCol" :class="[className, {block: !flex, flex: flex}]" :style="[colPadding, colWidth, colHeight, colMaxWidth, colMaxHeight, colScrollable]">
+    <div class="lunaCol" :class="[className, classes, {block: !flex, flex: flex}]" :style="[colPadding, colHeight, colMaxHeight, colScrollable, colBackground, colBorder, colColor]">
         <slot></slot>
     </div>
 </template>
@@ -13,13 +13,17 @@
             }
         },
         props: {
-            width: {
-                type: [Number, String],
-                default: 100
+            background: {
+                type: String,
+                default: '#FFFFFF'
             },
-            maxWidth: {
-                type: Number,
-                default: 100
+            border: {
+                type: String,
+                default: '1px solid #FFFFFF'
+            },
+            color: {
+                type: String,
+                default: '#4A4A4A'
             },
             height: {
                 type: Number,
@@ -65,44 +69,67 @@
                 type: String,
                 default: ''
             },
+            xs: [Number, Object],
+            sm: [Number, Object],
+            md: [Number, Object],
+            lg: [Number, Object],
+            xl: [Number, Object],
+            xxl: [Number, Object]
         },
         computed: {
+            classes () {
+                let classList = [
+                    'lunaCol',
+                    {
+                        [`lunaCol-span-${this.span}`]: this.span,
+                        [`lunaCol-order-${this.order}`]: this.order,
+                        [`lunaCol-offset-${this.offset}`]: this.offset,
+                        [`lunaCol-push-${this.push}`]: this.push,
+                        [`lunaCol-pull-${this.pull}`]: this.pull
+                    }
+                ];
+
+                ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach(size => {
+                    if (typeof this[size] === 'number') {
+                        classList.push(`lunaCol-span-${size}-${this[size]}`);
+                    } else if (typeof this[size] === 'object') {
+                        let props = this[size];
+                        Object.keys(props).forEach(prop => {
+                            classList.push(
+                                prop !== 'span'
+                                    ? `lunaCol-${size}-${prop}-${props[prop]}`
+                                    : `lunaCol-span-${size}-${props[prop]}`
+                            );
+                        });
+                    }
+                });
+
+                return classList;
+            },
+            colBackground() {
+                return {
+                    backgroundColor: this.background
+                }
+            },
+            colColor() {
+                return {
+                    color: this.color
+                }
+            },
+            colBorder() {
+                return {
+                    border: this.border
+                }
+            },
             colPadding() {
                 return {
                     padding: this.padding + 'px'
                 }
             },
-            colWidth() {
-                if(this.width < 100) {
-                    return {
-                        width: 'calc(' + this.width + '%' + '-' + this.padding * 2 + 'px)'
-                    }
-                } else {
-                    return {
-                        width: this.width - this.padding * 2 + 'px'
-                    }
-                }
-            },
-            colMaxWidth() {
-                if(this.maxWidth < 100) {
-                    return {
-                        maxWidth: 'calc(' + this.maxWidth + '%' + '-' + this.padding * 2 + 'px)'
-                    }
-                } else {
-                    return {
-                        maxWidth: this.maxWidth - this.padding * 2 + 'px'
-                    }
-                }
-            },
             colHeight() {
-                if (this.height < 100) {
-                    return {
-                        height: 'calc(' + this.height + '%' + '-' + this.padding * 2 + 'px)'
-                    }
-                } else {
-                    return {
-                        height: this.height - this.padding * 2 + 'px'
-                    }
+                return {
+                    height: this.height - this.padding * 2 - 2 + 'px',
+                    lineHeight: this.height - this.padding * 2 - 2 + 'px'
                 }
             },
             colMaxHeight() {
