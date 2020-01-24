@@ -7,11 +7,6 @@
 <script>
     export default {
         name: "Col",
-        data() {
-            return {
-                gutter: 0
-            }
-        },
         props: {
             background: {
                 type: String,
@@ -154,13 +149,6 @@
                     }
                 }
             },
-            colSpan() {
-                if(this.span !== 0) {
-                    return {
-
-                    }
-                }
-            }
         }
     }
 </script>

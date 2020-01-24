@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import { findChildren, findBrothers} from "../js/public";
 
     export default {
         name: "Row",
@@ -123,17 +122,6 @@
                 }
             },
         },
-        watch: {
-            gutter(value) {
-                const lunaCol = findChildren(this, 'Col');
-                const childCol = findBrothers(lunaCol, 'Col', false);
-                if(childCol.length) {
-                    childCol.forEach(item => {
-                        item.gutter = value
-                    })
-                }
-            }
-        }
     }
 </script>
 
