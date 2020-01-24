@@ -26,7 +26,7 @@
             },
             padding: {
                 type: Number,
-                default: 8
+                default: 0
             },
             maxHeight: {
                 type: [Number, String],
@@ -41,7 +41,7 @@
                 default: false,
             },
             gutter: {
-                type: Number,
+                type: [Number, Object],
                 default: 0
             },
             className: {
