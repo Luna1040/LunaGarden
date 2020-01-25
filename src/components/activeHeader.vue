@@ -41,7 +41,7 @@
           <div class="languageBlackHover"></div>
         </div>
       </div>
-      <router-link to="aboutUs" v-ripple>
+      <router-link to="AboutUs" v-ripple>
         <i class="iconfont icon-guide"></i>
         {{$t('lang.titles.guide')}}
       </router-link>

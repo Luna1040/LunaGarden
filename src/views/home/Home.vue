@@ -31,7 +31,6 @@
               @click="choice(item)"
       >{{item}}</li>
     </ul>
-    <Button theme="primary" badge corner="round" :width="40" :height="40">testtesttesttest</Button>
     <div id="navigation">
       <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>

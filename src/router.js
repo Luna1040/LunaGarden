@@ -18,7 +18,8 @@ import mGuide from './views/guide/mGuide.vue';
 import User from './views/user/UserCenter.vue';
 import mUser from './views/user/mUserCenter.vue';
 // 关于我们
-import aboutUs from './views/About.vue'
+import AboutUs from './views/about/About.vue'
+import mAboutUs from './views/about/mAbout.vue'
 //登录相关
 import Login from './views/login/login.vue';
 import Register from './views/login/register.vue';
@@ -43,7 +44,8 @@ const router = new Router({
         { path: '/mUser', name: 'mUser', component: mUser },
         { path: '/mNote', name: 'mNote', component: mNote },
         { path: '/mDiary', name: 'mDiary', component: mDiary },
-        { path: '/aboutUs', name: 'aboutUs', component: aboutUs },
+        { path: '/AboutUs', name: 'AboutUs', component: AboutUs },
+        { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs },
         { path: '/login', name: 'login', component: Login },
         { path: '/register', name: 'register', component: Register },
         { path: '/forgot', name: 'forgot', component: Forgot },

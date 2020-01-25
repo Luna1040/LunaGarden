@@ -43,14 +43,6 @@
                 type: Boolean,
                 default: false
             },
-            flex: {
-                type: Boolean,
-                default: false,
-            },
-            gutter: {
-                type: [Number, Object],
-                default: 0
-            },
             className: {
                 type: String,
                 default: ''
@@ -75,38 +67,38 @@
             rowWidth() {
                 if (this.width <= 100) {
                     return {
-                        width: 'calc(' + this.width + '%-' + this.padding * 2 + 'px-6px)'
+                        width: 'calc(' + this.width + '% - ' + this.padding*2 + 'px - 2px)'
                     }
                 } else {
                     return {
-                        width: this.width - this.padding * 2 - 6 + 'px'
+                        width: this.width - this.padding * 2 - 2 + 'px'
                     }
                 }
             },
             rowMaxWidth() {
                 if (this.maxWidth <= 100) {
                     return {
-                        maxWidth: 'calc(' + this.maxWidth + '%-' + this.padding * 2 + 'px-6px)'
+                        maxWidth: 'calc(' + this.width + '% - ' + this.padding*2 + 'px - 2px)'
                     }
                 } else {
                     return {
-                        maxWidth: this.maxWidth - this.padding * 2 - 6 + 'px'
+                        maxWidth: this.maxWidth - this.padding * 2 - 2 + 'px'
                     }
                 }
             },
             rowHeight() {
                 return {
-                    height: this.height + 'px'
+                    height: this.height - this.padding*2 - 2 + 'px'
                 }
             },
             rowMaxHeight() {
                 if (this.maxHeight < 100) {
                     return {
-                        maxHeight: 'calc(' + this.maxHeight + '%-' + this.padding * 2 + 'px)'
+                        maxHeight: 'calc(' + this.maxHeight + '%-' + this.padding * 2 - 2 + 'px)'
                     }
                 } else {
                     return {
-                        maxHeight: this.maxHeight - this.padding * 2 + 'px'
+                        maxHeight: this.maxHeight - this.padding * 2 - 2 + 'px'
                     }
                 }
             },

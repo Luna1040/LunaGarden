@@ -88,9 +88,9 @@
   </div>
 </template>
 <script>
-import Header from "../components/activeHeader";
+import Header from "../../components/activeHeader";
 import crypto from "crypto";
-import "../assets/icons/logo/iconfont.js";
+import "../../assets/icons/logo/iconfont.js";
 import { log } from "util";
 export default {
   name: "app",

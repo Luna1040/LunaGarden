@@ -220,10 +220,10 @@ $alert: #c5006a;
     overflow: visible;
   }
 }
-.lunaButton.darkShadow{
+.darkShadow{
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
-.lunaButton.lightShadow{
+.lightShadow{
   box-shadow: 0 3px 5px rgba(255, 255, 255, 0.3);
 }
 .lunaButton.primaryButton{
@@ -337,6 +337,43 @@ $alert: #c5006a;
   >.lunaCol:last-of-type{
     border-right: 0!important;
   }
+}
+.lunaContainer.darkContainer{
+  background-color: #4A4A4A!important;
+  color: $white;
+}
+.lunaCard {
+  background-color: #FEFEFE;
+  color: #4A4A4A;
+  .lunaCardTitle {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    text-align: left;
+  }
+  .lunaCardBody{
+    text-align: left;
+    height: calc(100% - 36px);
+    padding: 4px 4px 4px 16px;
+    p,span,li,i,a,b,figcaption,div{
+      font-size: 14px;
+      overflow: visible;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}
+.lunaCard.darkCard{
+  background-color: #4A4A4A!important;
+  color: $white;
+}
+.flex{
+  display: flex;
+}
+.block{
+  display: block;
 }
 .zIndexHide{
   z-index: -2!important;
