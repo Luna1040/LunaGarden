@@ -23,15 +23,6 @@
         <i class="iconfont icon-add" v-ripple></i>
       </button>
     </div>
-    <Row background="red">
-      <Col :span="8" background="lightblue" border="1px solid blue">test</Col>
-      <Col :span="4" background="yellow">test</Col>
-      <Col :span="2" background="skyblue">test</Col>
-      <Col :span="1" background="pink">test</Col>
-      <Col :span="3" background="hotPink">test</Col>
-      <Col :span="3" background="#4a4a4a" color="#FFFFFF">test</Col>
-      <Col :span="2" background="purple" color="#FFFFFF">test</Col>
-    </Row>
     <ul class="searchAssociation">
       <li
               class="list-group-item-text"
@@ -40,6 +31,7 @@
               @click="choice(item)"
       >{{item}}</li>
     </ul>
+    <Button theme="primary" badge corner="round" :width="40" :height="40">testtesttesttest</Button>
     <div id="navigation">
       <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
@@ -192,7 +184,6 @@
     name: "home",
     data() {
       return {
-        test: '',
         del: false,
         emptyWarning: false,
         create: false,

@@ -276,6 +276,30 @@ $alert: #c5006a;
 .lunaButton:hover{
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
+.lunaButton{
+  .lunaBadge {
+    right: 0;
+    top: 0;
+  }
+}
+.lunaButton.filletCorner{
+  .lunaBadge {
+    right: 1px;
+    top: 1px;
+  }
+}
+.lunaButton.largeCorner{
+  .lunaBadge {
+    right: 4px;
+    top: 4px;
+  }
+}
+.lunaButton.roundCorner{
+  .lunaBadge {
+    right: 8%;
+    top: 35%;
+  }
+}
 .pre{
   margin-right: 6px;
 }

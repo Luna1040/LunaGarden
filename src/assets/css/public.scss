@@ -500,8 +500,8 @@ header {
     line-height: 44px;
     background-color: rgba(255, 255, 255, 0.5);
     display: flex;
-    width: calc(100% - 64px);
-    max-width: 1184px;
+    width: calc(100% - 132px);
+    max-width: 1384px;
     border-radius: 44px;
     align-items: center;
     padding: 0 8px;
@@ -653,8 +653,8 @@ header {
   }
 
   .todoList {
-    width: calc(100% - 64px);
-    max-width: 1184px;
+    width: calc(100% - 132px);
+    max-width: 1384px;
     padding: 12px 8px 32px;
     min-height: 0;
     overflow: visible;
