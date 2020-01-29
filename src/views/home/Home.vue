@@ -31,6 +31,7 @@
               @click="choice(item)"
       >{{item}}</li>
     </ul>
+    <Button @click="test">test</Button>
     <div id="navigation">
       <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
@@ -412,6 +413,9 @@
       },
       copyContent() {
         this.dragClose()
+      },
+      test() {
+        alert('111')
       }
     }
   };

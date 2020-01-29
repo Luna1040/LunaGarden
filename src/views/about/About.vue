@@ -1,98 +1,94 @@
 <template>
   <div>
-    <Container theme="dark" shadow-style="light" border="1px solid #000" :width="500" :height="300" align="center" justify="center">
-      <Card corner="fillet" :width="300" :height="150" title="test" theme="light" shadow-style="light" scrollable>
-        <p>test for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testingtest for testing</p>
-      </Card>
-    </Container>
+    <Table :data="tableData" :columns="columns"></Table>
   </div>
-  <!--  <div class="aboutUs">-->
-  <!--    <Header-->
-  <!--      :msg-header="$t('lang.titles.about')"-->
-  <!--      user-icon="userIcon.jpg"-->
-  <!--      user-name="Luna Lovegood"-->
-  <!--      is-viper="true"-->
-  <!--      user-language="English"-->
-  <!--    ></Header>-->
-  <!--    <div class="about">-->
-  <!--      <h1>{{ $t('lang.aboutUs.title') }}</h1>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc2') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc3') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc4') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc5') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc6') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc7') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc8') }}</p>-->
-  <!--      <p>{{ $t('lang.aboutUs.desc9') }}</p>-->
-  <!--      <h1>{{ $t('lang.aboutUs.title2') }}</h1>-->
-  <!--      <div class="cardGroup">-->
-  <!--        <figure>-->
-  <!--          <img src="userIcon.jpg" alt />-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.author') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.authorDesc') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <img src="userIcon.jpg" alt />-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.people') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <img src="userIcon.jpg" alt />-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.people3') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <img src="userIcon.jpg" alt />-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.people2') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.mystery') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--      </div>-->
-  <!--      <h1>{{ $t('lang.aboutUs.title3') }}</h1>-->
-  <!--      <div class="cardGroup">-->
-  <!--        <figure>-->
-  <!--          <svg class="icon" aria-hidden="true">-->
-  <!--            <use xlink:href="#icon-Vue" />-->
-  <!--          </svg>-->
+  <!--    <div class="aboutUs">-->
+  <!--      <Header-->
+  <!--        :msg-header="$t('lang.titles.about')"-->
+  <!--        user-icon="userIcon.jpg"-->
+  <!--        user-name="Luna Lovegood"-->
+  <!--        is-viper="true"-->
+  <!--        user-language="English"-->
+  <!--      ></Header>-->
+  <!--      <div class="about">-->
+  <!--        <h1>{{ $t('lang.aboutUs.title') }}</h1>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc2') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc3') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc4') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc5') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc6') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc7') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc8') }}</p>-->
+  <!--        <p>{{ $t('lang.aboutUs.desc9') }}</p>-->
+  <!--        <h1>{{ $t('lang.aboutUs.title2') }}</h1>-->
+  <!--        <div class="cardGroup">-->
+  <!--          <figure>-->
+  <!--            <img src="userIcon.jpg" alt />-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.author') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.authorDesc') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <img src="userIcon.jpg" alt />-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.people') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <img src="userIcon.jpg" alt />-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.people3') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <img src="userIcon.jpg" alt />-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.people2') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.mystery') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--        </div>-->
+  <!--        <h1>{{ $t('lang.aboutUs.title3') }}</h1>-->
+  <!--        <div class="cardGroup">-->
+  <!--          <figure>-->
+  <!--            <svg class="icon" aria-hidden="true">-->
+  <!--              <use xlink:href="#icon-Vue" />-->
+  <!--            </svg>-->
 
-  <!--          <figcaption>{{ $t('lang.aboutUs.organ') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organDesc') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <svg class="icon" aria-hidden="true">-->
-  <!--            <use xlink:href="#icon-microsoft" />-->
-  <!--          </svg>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organ2') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organDesc2') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <svg class="icon iconText" aria-hidden="true">-->
-  <!--            <use xlink:href="#icon-logo_google_text" />-->
-  <!--          </svg>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organ3') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organDesc3') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <svg class="icon" aria-hidden="true">-->
-  <!--            <use xlink:href="#icon-iconfont" />-->
-  <!--          </svg>-->
-  <!--          <figcaption>Icon Font</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organDesc4') }}</figcaption>-->
-  <!--        </figure>-->
-  <!--        <figure>-->
-  <!--          <svg class="icon iconText" aria-hidden="true">-->
-  <!--            <use xlink:href="#icon-Bing" />-->
-  <!--          </svg>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organ5') }}</figcaption>-->
-  <!--          <figcaption>{{ $t('lang.aboutUs.organDesc5') }}</figcaption>-->
-  <!--        </figure>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organ') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organDesc') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <svg class="icon" aria-hidden="true">-->
+  <!--              <use xlink:href="#icon-microsoft" />-->
+  <!--            </svg>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organ2') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organDesc2') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <svg class="icon iconText" aria-hidden="true">-->
+  <!--              <use xlink:href="#icon-logo_google_text" />-->
+  <!--            </svg>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organ3') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organDesc3') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <svg class="icon" aria-hidden="true">-->
+  <!--              <use xlink:href="#icon-iconfont" />-->
+  <!--            </svg>-->
+  <!--            <figcaption>Icon Font</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organDesc4') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--          <figure>-->
+  <!--            <svg class="icon iconText" aria-hidden="true">-->
+  <!--              <use xlink:href="#icon-Bing" />-->
+  <!--            </svg>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organ5') }}</figcaption>-->
+  <!--            <figcaption>{{ $t('lang.aboutUs.organDesc5') }}</figcaption>-->
+  <!--          </figure>-->
+  <!--        </div>-->
+  <!--        <button @click="uuidGet">UUID</button>-->
+  <!--        <h1>{{uuid}}</h1>-->
+  <!--        <button @click="getIns">INS</button>-->
+  <!--        <h1>{{ins}}</h1>-->
   <!--      </div>-->
-  <!--      <button @click="uuidGet">UUID</button>-->
-  <!--      <h1>{{uuid}}</h1>-->
-  <!--      <button @click="getIns">INS</button>-->
-  <!--      <h1>{{ins}}</h1>-->
   <!--    </div>-->
-  <!--  </div>-->
 </template>
 <script>
   import Header from "../../components/activeHeader";
@@ -103,12 +99,59 @@
     name: "app",
     data() {
       return {
-        test: true,
         uuid: "",
-        ins: ""
+        ins: "",
+        columns: [
+          {
+            title: '序号',
+            type: 'index',
+            align: 'center',
+            width: 80,
+            fixed: 'left'
+          },
+          {
+            title: '名称',
+            key: 'name',
+            align: 'center',
+            width: 200,
+            className: 'testTableClass',
+            ellipsis: true,
+            fullDisplay: true,
+          },
+          {
+            title: '操作',
+            type: 'custom',
+            align: 'center',
+            fixed: 'right',
+            render: (h, params) => {
+              return h('div', [
+                h('Button',{
+                  on: {
+                    click: () => {
+                      alert('111')
+                    }
+                  }
+                }, 'test')
+              ])
+            }
+          },
+        ],
+        tableData: [
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test2',
+            id: '7772',
+          }
+        ]
       };
     },
     methods: {
+      test() {
+        alert('111')
+      },
       // 获取uuid
       uuidGet() {
         let s = [];

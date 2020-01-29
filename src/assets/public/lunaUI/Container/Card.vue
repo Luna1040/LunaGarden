@@ -1,9 +1,15 @@
 <template>
     <div class="lunaCard" :style="[cardPadding, cardWidth, cardHeight, cardMaxHeight, cardMaxWidth, cardBackground, cardBorder, cardRadius, cardShadow, cardImage, flexStyle]" :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': theme === 'light', 'darkCard': theme === 'dark'},{darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'},{flex: flex, block: !flex}]">
-        <div class="lunaCardTitle"><i v-if="icon !== ''" :class="icon"></i><span :style="cardFontSize">{{title}}</span></div>
+        <div class="lunaCardTitle" v-if="showHead">
+            <slot name="header">
+                <i v-if="icon !== ''" :class="icon"></i>
+                <span :style="cardFontSize">{{title}}</span>
+            </slot>
+        </div>
         <div class="lunaCardBody" :style="cardScrollable">
             <slot></slot>
         </div>
+        <slot name="footer"></slot>
     </div>
 </template>
 
@@ -11,6 +17,10 @@
     export default {
         name: "Card",
         props: {
+            showHead: {
+                type: Boolean,
+                default: true
+            },
             title: {
                 type: String,
                 default: ''

@@ -352,6 +352,9 @@ $alert: #c5006a;
     padding: 0 16px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     text-align: left;
+    i,img{
+      margin-right: 6px;
+    }
   }
   .lunaCardBody{
     text-align: left;
