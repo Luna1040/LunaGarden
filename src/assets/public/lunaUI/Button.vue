@@ -1,14 +1,14 @@
 <template>
   <div
           class="lunaButton"
-          :style="[styles, buttonWidth, buttonHeight, buttonFontSize, buttonRadius, buttonShadow, buttonBackground]"
+          :style="[styles, buttonWidth, buttonHeight, buttonFontSize, buttonRadius, buttonShadow, buttonBackground, buttonColor, buttonBorder]"
           :class="[className, {errorButton: theme === 'error', successButton: theme === 'success',warningButton: theme === 'warning',primaryButton: theme === 'primary',alertButton: theme === 'alert', '': theme === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': type === 'Normal', 'textButton': type === 'text', 'ghostButton': type === 'ghost'}]"
           @click="click()"
           v-ripple
   >
-    <i :class="icon" class="pre" v-if="pre"></i>
-    <slot></slot>
-    <i :class="icon" class="suffix" v-if="suffix"></i>
+    <i :style="buttonColor" :class="icon" class="pre" v-if="pre"></i>
+    <slot :style="buttonColor"></slot>
+    <i :style="buttonColor" :class="icon" class="suffix" v-if="suffix"></i>
     <div v-if="badge" class="lunaBadge"></div>
   </div>
 </template>
@@ -18,6 +18,10 @@
   export default {
     name: "Button",
     props: {
+      color: {
+        type: String,
+        default: '#4A4A4A'
+      },
       theme: {
         type: String,
         default: "Normal"
@@ -61,6 +65,10 @@
         type: String,
         default: "dark"
       },
+      border: {
+        type: String,
+        default: '1px solid #FFF'
+      },
       radius: {
         type: Number,
         default: -1
@@ -75,14 +83,23 @@
       },
       height: {
         type: [Number, String],
-        default: 'auto'
+        default: 30
       },
       fontSize: {
         type: [Number, String],
         default: '12px'
+      },
+      background: {
+        type: String,
+        default: '#FFF'
       }
     },
     computed: {
+      buttonBorder() {
+        return {
+          border: this.border
+        }
+      },
       buttonWidth() {
         if (typeof this.width === "string") {
           return {
@@ -140,6 +157,11 @@
         return {
           backgroundColor: this.background + "!important"
         };
+      },
+      buttonColor() {
+        return {
+          color: this.color
+        }
       }
     },
     methods: {

@@ -17,8 +17,8 @@ import './assets/js/getId.js'
 import './assets/js/colorMatch.js'
 import './assets/icon/iconfont.css';
 import './assets/public/lunaUI'
-import './assets/css/LunaUI/LunaUI.scss'
-import './assets/css/LunaUI/lunaCol.scss'
+// import './assets/css/LunaUI/LunaUI.scss'
+// import './assets/css/LunaUI/lunaCol.scss'
 
 
 // window.Vue = Vue;

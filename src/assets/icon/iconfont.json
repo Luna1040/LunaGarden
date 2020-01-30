@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "527045",
+      "name": "add",
+      "font_class": "add1",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
       "icon_id": "547164",
       "name": "info_nointernet",
       "font_class": "infonointernet",
@@ -55,13 +62,6 @@
       "unicode_decimal": 58889
     },
     {
-      "icon_id": "2514758",
-      "name": "search",
-      "font_class": "search",
-      "unicode": "e7a2",
-      "unicode_decimal": 59298
-    },
-    {
       "icon_id": "3341540",
       "name": "history",
       "font_class": "history",
@@ -74,13 +74,6 @@
       "font_class": "apply1",
       "unicode": "e61c",
       "unicode_decimal": 58908
-    },
-    {
-      "icon_id": "4280595",
-      "name": "icon Delete item",
-      "font_class": "iconDeleteitem",
-      "unicode": "e647",
-      "unicode_decimal": 58951
     },
     {
       "icon_id": "5634140",
@@ -118,25 +111,18 @@
       "unicode_decimal": 58896
     },
     {
-      "icon_id": "7454282",
-      "name": "add",
-      "font_class": "add",
-      "unicode": "e6f1",
-      "unicode_decimal": 59121
-    },
-    {
-      "icon_id": "8439060",
-      "name": "confirm",
-      "font_class": "ddh_confirm",
-      "unicode": "e615",
-      "unicode_decimal": 58901
-    },
-    {
       "icon_id": "10467430",
       "name": "down",
       "font_class": "down",
       "unicode": "e600",
       "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "10997775",
+      "name": "search",
+      "font_class": "search1",
+      "unicode": "e699",
+      "unicode_decimal": 59033
     },
     {
       "icon_id": "11044295",

@@ -8,20 +8,24 @@
             user-language="English"
     ></Header>
     <div class="inputArea" :class="{inputAreaActive: todoText !== ''}">
-      <button class="searchBtn" @click="matchQuery">
-        <i class="iconfont icon-search" v-ripple></i>
-      </button>
-      <input
+      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="matchQuery" background="#F3588B" shadow border="0">
+        <i class="iconfont icon-search1"></i>
+      </Button>
+      <Input
               type="text"
               class="searchInput"
               :placeholder="$t('lang.home.input')"
               v-model="todoText"
-              @keyup="keyup($event)"
-              @keydown="keydown($event)"
-      /><br>
-      <button class="searchBtn" @click="addTodo">
-        <i class="iconfont icon-add" v-ripple></i>
-      </button>
+              border-color="rgba(0,0,0,0)"
+              ghost
+              width="calc(100% - 90px)"
+              font-size="32"
+              @on-keyup="keyup($event)"
+              @on-keydown="keydown($event)"
+      ></Input><br>
+      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="addTodo" background="#F3588B" shadow border="0">
+        <i class="iconfont icon-add1"></i>
+      </Button>
     </div>
     <ul class="searchAssociation">
       <li
@@ -31,7 +35,6 @@
               @click="choice(item)"
       >{{item}}</li>
     </ul>
-    <Button @click="test">test</Button>
     <div id="navigation">
       <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
       <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>

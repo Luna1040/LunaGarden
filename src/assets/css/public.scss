@@ -14,6 +14,8 @@ $success: #00af57;
 $warning: #e9a600;
 $alert: #c5006a;
 
+@import "./LunaUI/LunaUI.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -429,7 +431,7 @@ header {
 
     a:hover {
       color: $white;
-      background-color: mix($primary, rgba(0, 0, 0, 0.3), 0.8);
+      background-color: scale-color($primary, $lightness: +35%);
     }
   }
 }
@@ -517,20 +519,10 @@ header {
       background-color: rgba(0, 0, 0, 0);
     }
 
-    button {
-      width: 32px;
-      height: 32px;
-      background-color: $white;
-      transition: all 0.5s;
-      border-radius: 32px;
-
+    .lunaButton {
       i {
-        position: relative;
-        top: -2px;
-        height: 32px;
-        color: $primaryText;
-        font-size: 33px;
-        transition: all 0.5s;
+        color: $white;
+        font-size: 16px;
       }
     }
 
@@ -555,11 +547,11 @@ header {
   }
 
   .searchAssociation {
-    width: calc(100% - 48px);
-    max-width: 1200px;
+    width: calc(100% - 116px);
+    max-width: 1384px;
     margin: 0 auto;
     height: auto;
-    min-height: 0px;
+    min-height: 0;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0 0 22px 22px;
 
