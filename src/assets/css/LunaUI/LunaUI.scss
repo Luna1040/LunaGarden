@@ -1,22 +1,37 @@
 @import "./lunaCol.scss";
 $white: #FFFFFF;
 $primary: #eb7290;
-$primaryHover: scale-color($primary, $lightness: +75%);
-$primaryActive: scale-color($primary, $lightness: +85%);
+$primaryHover: scale-color($primary, $lightness: +85%);
+$primaryActive: scale-color($primary, $lightness: +65%);
+$primaryDarkHover: scale-color($primaryText, $lightness: -35%, $alpha: -75%);
+$primaryDarkActive: scale-color($primaryText, $lightness: -35%, $alpha: -55%);
 $primaryText: #F3588B;
 $error: #FF483D;
-$errorHover: scale-color($error, $lightness: +75%);
+$errorHover: scale-color($error, $lightness: +85%);
 $errorText: #FF1919;
 $success: #10D56E;
 $warning: #FECB37;
 $alert: #7636FF;
 $disableText: #737373;
 $normalDark: #4A4A4A;
-$lightGray: #EEEEEE;
+$lightDark: #555555;
+$lightGray: #F5F5F5;
+$normalGray: #E8E8E8;
 $darkShadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 $lightShadow: 0 3px 3px rgba(255, 255, 255, 0.3);
 $hoverDarkShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+
+*::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+  background-color: unset;
+  border-radius: 500px;
+}
+*::-webkit-scrollbar-thumb{
+  background-color: $primary;
+  border-radius: 500px;
+}
 
 .squareCorner{
   border-radius: 0!important;
@@ -212,6 +227,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   background-color: rgba(0,0,0,0) !important;
 }
 .lunaButton{
+  min-width: 60px;
   display: inline-block;
   transition: all 0.5s;
   cursor: pointer;
@@ -378,16 +394,82 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 .lunaTable{
   width: 100%;
+  position: relative;
+  transition: all 0.5s;
+  .lunaLoading {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    overflow: visible;
+    .face {
+      position: absolute;
+      border-radius: 50%;
+      border-style: solid;
+      animation: animate 3s linear infinite;
+      overflow: visible;
+      .circle {
+        position: absolute;
+        width: 50%;
+        height: 0.1em;
+        top: 50%;
+        left: 50%;
+        background-color: transparent;
+        transform: rotate(var(--deg));
+        transform-origin: left;
+        overflow: visible;
+      }
+      .circle::before {
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: currentColor;
+        border-radius: 50%;
+        box-shadow: 0 0 30px rgba(255,255,255,1);
+        overflow: visible;
+      }
+    }
+    .face:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      color: $white;
+      border-color: currentColor transparent transparent currentColor;
+      border-width: 6px 6px 0 0;
+      --deg: -45deg;
+      animation-direction: normal;
+      overflow: visible;
+    }
+    .face:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      color: $primary;
+      border-color: currentColor currentColor transparent transparent;
+      border-width: 6px 0 0 6px;
+      --deg: -135deg;
+      animation-direction: reverse;
+      overflow: visible;
+    }
+  }
   thead{
-    tr{
+    >tr{
       height: 32px;
       line-height: 32px;
       font-size: 14px;
-      th{
+      >th{
         border-left: 0!important;
         font-size: 12px;
+        padding: 0 8px;
       }
-      th:last-of-type{
+      >th:last-of-type{
         border-right: 0!important;
       }
     }
@@ -399,15 +481,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
   tbody{
+    min-height: 32px;
     tr{
       border-bottom: 0!important;
       border-left: 0!important;
       height: 42px;
       line-height: 42px;
+      transition: all 0.5s;
       td{
         border-bottom: 0!important;
         border-left: 0!important;
         font-size: 12px;
+        padding: 0 8px;
       }
       td:last-of-type{
         border-right: 0!important;
@@ -421,6 +506,110 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 }
+.lunaTable.headerFixed{
+  thead{
+    display: table;
+    width: 100%;
+    table-layout: fixed; /**表格列的宽度由表格宽度决定，不由内容决定*/
+    text-align: center;
+  }
+  tbody{
+    display: block;
+    overflow: auto;
+    tr{
+      display: table;
+      width: 100%;
+      table-layout: fixed; /**表格列的宽度由表格宽度决定，不由内容决定*/
+      text-align: center;
+    }
+  }
+}
+.lunaTable.lightTable{
+  background: $white;
+  thead{
+    background: $normalGray;
+  }
+  tbody{
+    tr{
+      box-shadow: 0 1px 0 $lightGray;
+    }
+  }
+  .currentRow{
+    background-color: $primaryActive!important;
+  }
+  .hoverRow{
+    background-color: $primaryHover;
+  }
+}
+.lunaTable.darkTable{
+  background: $lightDark;
+  thead{
+    background: $normalDark;
+    color: $lightGray;
+  }
+  tbody{
+    tr{
+      box-shadow: 0 1px 0 $lightGray;
+      color: $white;
+    }
+  }
+  .currentRow{
+    background-color: $primaryDarkActive!important;
+  }
+  .hoverRow{
+    background-color: $primaryDarkHover;
+  }
+}
+.lunaTable.darkShadow{
+  box-shadow: $darkShadow;
+}
+.lunaTable.darkShadow:hover{
+  box-shadow: $hoverDarkShadow;
+}
+.lunaTable.lightShadow{
+  box-shadow: $lightShadow;
+}
+.lunaTable.lightShadow:hover{
+  box-shadow: $hoverLightShadow;
+}
+.lunaPage{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  margin-top: 16px;
+  .lunaPageCell{
+    margin-right: 8px;
+    min-width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 12px;
+  }
+  .lunaPageCell:hover{
+    background-color: $primaryActive!important;
+  }
+  .lunaPageCell.pageCellActive{
+    background-color: $primary!important;
+    color: $white;
+  }
+  .pageElevator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+      margin: 0 4px;
+      font-size: 12px;
+    }
+  }
+  .pageCounter{
+    position: absolute;
+    font-size: 12px;
+    left: 16px;
+  }
+}
 .flex{
   display: flex;
 }
@@ -429,4 +618,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 .zIndexHide{
   z-index: -2!important;
+}
+
+@keyframes animate {
+  to {
+    transform: rotate(1turn);
+  }
 }

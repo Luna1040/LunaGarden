@@ -7,7 +7,8 @@
             is-viper="true"
             user-language="English"
     ></Header>
-    <Table :data="tableData" :columns="columns" @on-row-click="test" border></Table>
+    <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>
+    <Page :limit="page" @on-click="test" elevator counter></Page>
 <!--    <div class="about">-->
 <!--      <h1>{{ $t('lang.aboutUs.title') }}</h1>-->
 <!--      <p>{{ $t('lang.aboutUs.desc') }}</p>-->
@@ -81,10 +82,6 @@
 <!--          <figcaption>{{ $t('lang.aboutUs.organDesc5') }}</figcaption>-->
 <!--        </figure>-->
 <!--      </div>-->
-<!--      <button @click="uuidGet">UUID</button>-->
-<!--      <h1>{{uuid}}</h1>-->
-<!--      <button @click="getIns">INS</button>-->
-<!--      <h1>{{ins}}</h1>-->
 <!--    </div>-->
   </div>
 </template>
@@ -97,8 +94,8 @@
     name: "app",
     data() {
       return {
-        uuid: "",
-        ins: "",
+        loading: true,
+        page: 22,
         columns: [
           {
             title: '序号',
@@ -132,7 +129,7 @@
                 h('Button',{
                   props: {
                     shadow: false,
-                    theme: 'alert'
+                    theme: 'primary'
                   },
                   on: {
                     click: () => {
@@ -145,6 +142,30 @@
           },
         ],
         tableData: [
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test',
+            id: '777',
+          },
           {
             name: 'test',
             id: '777',
@@ -172,55 +193,12 @@
         ]
       };
     },
+    created() {
+    },
     methods: {
       test(value) {
-        console.log(value);
+        // console.log(value);
       },
-      // 获取uuid
-      uuidGet() {
-        let s = [];
-        let hexDigits =
-                "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        for (let i = 0; i < 26; i++) {
-          s[i] = hexDigits.substr(Math.floor(Math.random() * 0x26), 1);
-        }
-        s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-
-        let timeStamp = new Date()
-                .getTime()
-                .toString()
-                .substr(-7);
-        s[8] = timeStamp;
-        let uuid = s.join("");
-        this.uuid = uuid;
-      },
-      getIns() {
-        let params = {
-          userName: "LunaLovegood",
-          password: "Luna1040"
-        };
-        //声明MD5
-        let md5 = crypto.createHash("md5");
-        //声明sha256
-        const sha256 = require("js-sha256").sha256; //这里用的是require方法，所以没用import
-        // let s = '11111'
-        // s = sha256(s)//要加密的密码
-        // md5.update(s); //this.pw2这是你要加密的密码
-        // s = md5.digest("hex"); //this.pw这就是你加密完的密码，这个往后台传就行了
-
-        // let s =
-        let baseData = JSON.stringify(params);
-        let s = md5.update(sha256(baseData));
-        s =
-                baseData +
-                md5
-                        .digest("hex")
-                        .toString(16)
-                        .toUpperCase();
-        // crypto转16位        md5加密  256加密
-        // console.log(s);
-      }
     },
     components: {
       Header

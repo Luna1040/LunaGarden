@@ -412,26 +412,8 @@ header {
         }
       }
     }
-
-    a {
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      color: $primaryText;
-      background-color: $white;
-      border-radius: 66px;
-      padding: 4px 12px;
-      box-shadow: rgba(0, 0, 0, 0.5);
-      height: 24px;
-      line-height: 24px;
-      transition: all 0.5s;
-
-      i {
-        margin-right: 4px;
-      }
-    }
-
-    a:hover {
-      color: $white;
-      background-color: scale-color($primary, $lightness: +35%);
+    a{
+      overflow: visible;
     }
   }
 }

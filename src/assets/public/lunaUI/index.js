@@ -8,6 +8,7 @@ import Col from './Grid/Col.vue'
 import Container from './Container/Container.vue'
 import Card from './Container/Card.vue'
 import Table from './Table/Table.vue'
+import Page from './Table/Page.vue'
 
 const LunaUI = {
     Modal,
@@ -19,6 +20,7 @@ const LunaUI = {
     Container,
     Card,
     Table,
+    Page
 };
 
 Object.keys(LunaUI).forEach(name => {

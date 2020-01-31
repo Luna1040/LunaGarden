@@ -1,5 +1,7 @@
 <template>
-
+<div class="lunaList">
+    <slot></slot>
+</div>
 </template>
 
 <script>

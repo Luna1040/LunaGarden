@@ -18,9 +18,13 @@
   export default {
     name: "Button",
     props: {
+      loading: {
+        type: Boolean,
+        default: false
+      },
       color: {
         type: String,
-        default: '#4A4A4A'
+        default: 'none'
       },
       theme: {
         type: String,
@@ -91,7 +95,7 @@
       },
       background: {
         type: String,
-        default: '#FFF'
+        default: 'none'
       }
     },
     computed: {
@@ -154,13 +158,17 @@
         }
       },
       buttonBackground() {
-        return {
-          backgroundColor: this.background + "!important"
-        };
+        if(this.background !== 'none') {
+          return {
+            backgroundColor: this.background + "!important"
+          };
+        }
       },
       buttonColor() {
-        return {
-          color: this.color
+        if(this.color !== 'none') {
+          return {
+            color: this.color
+          }
         }
       }
     },
