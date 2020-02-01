@@ -137,6 +137,20 @@
       "font_class": "copy-l",
       "unicode": "e61a",
       "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "12736666",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "12736667",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
     }
   ]
 }

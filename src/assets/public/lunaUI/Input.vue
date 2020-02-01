@@ -1,7 +1,7 @@
 <template>
   <div
           class="lunaInput"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost}]"
+          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost},{disabled: disabled}]"
           :style="[inputWidth, inputRadius, inputHeight, inputBorder, inputBackground, boxShadowStyle]"
           @mouseenter="hoverEnter"
           @mouseleave="hoverOut"
@@ -16,6 +16,7 @@
             :type="type"
             :maxlength="maxlength"
             :placeholder="placeholder"
+            :disabled="disabled"
             @input="cgValue"
             @keyup="handelKeyUp"
             @keyup.enter="handelEnter"
@@ -37,8 +38,12 @@
     name: "Input",
     props: {
       value: {
-        type: String,
+        type: [String,Number],
         default: ""
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
       },
       className: {
         type: String,

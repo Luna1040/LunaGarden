@@ -12,7 +12,8 @@ $errorText: #FF1919;
 $success: #10D56E;
 $warning: #FECB37;
 $alert: #7636FF;
-$disableText: #737373;
+$disableText: #B4B4B4;
+$disableBackground: #D6D6D6;
 $normalDark: #4A4A4A;
 $lightDark: #555555;
 $lightGray: #F5F5F5;
@@ -31,6 +32,30 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 *::-webkit-scrollbar-thumb{
   background-color: $primary;
   border-radius: 500px;
+}
+*.disabled{
+  background-color: $disableBackground!important;
+  color: $disableText!important;
+  cursor: no-drop!important;
+}
+.lunaInput.disabled{
+  background-color: $disableBackground!important;
+  color: $disableText!important;
+  cursor: no-drop!important;
+  input{
+    background-color: $disableBackground!important;
+    color: $disableText!important;
+    cursor: no-drop!important;
+  }
+}
+.lunaButton:disabled{
+  pointer-events: unset;
+  background-color: $disableBackground!important;
+  color: $disableText!important;
+  cursor: no-drop!important;
+  i{
+    color: $disableText!important;
+  }
 }
 
 .squareCorner{
@@ -228,7 +253,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 .lunaButton{
   min-width: 60px;
-  display: inline-block;
+  display: flex;
   transition: all 0.5s;
   cursor: pointer;
   text-align: center;
@@ -590,6 +615,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
   .lunaPageCell:hover{
     background-color: $primaryActive!important;
+  }
+  .lunaPageCell:disabled{
+    background-color: $disableBackground!important;
+    color: $disableText!important;
+    cursor: no-drop!important;
   }
   .lunaPageCell.pageCellActive{
     background-color: $primary!important;

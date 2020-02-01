@@ -94,7 +94,7 @@
     name: "app",
     data() {
       return {
-        loading: true,
+        loading: false,
         page: 22,
         columns: [
           {
@@ -129,11 +129,12 @@
                 h('Button',{
                   props: {
                     shadow: false,
-                    theme: 'primary'
+                    theme: 'primary',
+                    disabled: true
                   },
                   on: {
                     click: () => {
-                      console.log(params.row)
+                      // alert('111')
                     }
                   }
                 }, '修改')
@@ -197,7 +198,7 @@
     },
     methods: {
       test(value) {
-        // console.log(value);
+        console.log(value);
       },
     },
     components: {

@@ -1,8 +1,9 @@
 <template>
-  <div
+  <button
           class="lunaButton"
           :style="[styles, buttonWidth, buttonHeight, buttonFontSize, buttonRadius, buttonShadow, buttonBackground, buttonColor, buttonBorder]"
           :class="[className, {errorButton: theme === 'error', successButton: theme === 'success',warningButton: theme === 'warning',primaryButton: theme === 'primary',alertButton: theme === 'alert', '': theme === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': type === 'Normal', 'textButton': type === 'text', 'ghostButton': type === 'ghost'}]"
+          :disabled="disabled"
           @click="click()"
           v-ripple
   >
@@ -10,7 +11,7 @@
     <slot :style="buttonColor"></slot>
     <i :style="buttonColor" :class="icon" class="suffix" v-if="suffix"></i>
     <div v-if="badge" class="lunaBadge"></div>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -56,6 +57,10 @@
         default() {
           return {};
         }
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       },
       corner: {
         type: String,
@@ -107,11 +112,11 @@
       buttonWidth() {
         if (typeof this.width === "string") {
           return {
-            width: this.width
+            width: 'calc(' + this.width + '+ 30px)'
           }
         } else {
           return {
-            width: this.width + "px"
+            width: this.width + "px + 30px"
           }
         }
       },

@@ -2,13 +2,19 @@
     <div class="lunaPage" :style="[styles]" :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}">
         <span v-if="counter" class="pageCounter">共{{limit}}条</span>
         <slot name="pre"></slot>
-        <div class="lunaPageCell" v-for="i in limitCount" :key="i" :style="[cellStyles]" :class="[{pageCellActive:i === choiceIndex},{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]" @click="handelClick(i)">{{i}}</div>
+        <button class="lunaPageCell" @click="prev" :disabled="prevDisable">
+            <i class="iconfont icon-fanhui"></i>
+        </button>
+        <button class="lunaPageCell" v-for="i in limitCount" :key="i" :style="[cellStyles]" :class="[{pageCellActive:i === choiceIndex},{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]" @click="handelClick(i)">{{i}}</button>
+        <button class="lunaPageCell" @click="next" :disabled="nextDisable">
+            <i class="iconfont icon-youjiantou"></i>
+        </button>
         <div class="pageSizer">
             <!--            <Select></Select>-->
         </div>
         <div class="pageElevator">
             <span>前往第</span>
-        <Input v-if="elevator" :value="1" :width="40" :height="24" border-color="#cfcfcf" ghost font-size="12px"></Input>
+        <Input v-if="elevator" :value="1" :width="40" :height="24" border-color="#cfcfcf" font-size="12px" disabled></Input>
             <span>页</span>
         </div>
         <slot name="suffix"></slot>
@@ -62,7 +68,9 @@
         },
         data() {
             return {
-                choiceIndex: -1
+                choiceIndex: -1,
+                prevDisable: false,
+                nextDisable: false,
             }
         },
         computed: {
@@ -97,8 +105,8 @@
                 } else {
                     styleList.width = this.width
                 }
-                if(this.backgroundColor !== 'none') {
-                    styleList.backgroundColor = this.backgroundColor
+                if(this.cellBackgroundColor !== 'none') {
+                    styleList.backgroundColor = this.cellBackgroundColor
                 }
                 if(this.radius !== -1) {
                     styleList.borderRadius = this.radius + 'px'
@@ -110,13 +118,34 @@
         methods: {
             handelClick(value) {
                 this.choiceIndex = value;
-                console.log(value);
+                this.examineIndex();
                 this.$emit('on-click', value)
+            },
+            prev() {
+                this.choiceIndex--;
+                this.handelClick(this.choiceIndex)
+            },
+            next() {
+                this.choiceIndex++;
+                this.handelClick(this.choiceIndex)
+            },
+            examineIndex() {
+                if(this.choiceIndex === 1) {
+                    this.prevDisable = true;
+                    this.nextDisable = false
+                } else if(this.choiceIndex === this.limit){
+                    this.nextDisable = true;
+                    this.prevDisable = false
+                } else {
+                    this.nextDisable = false;
+                    this.prevDisable = false
+                }
             }
         },
         mounted() {
             if(this.page !== 0) {
                 this.choiceIndex = 1
+                this.examineIndex()
             }
         }
     }

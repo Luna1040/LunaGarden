@@ -42,7 +42,7 @@
         </div>
       </div>
       <router-link to="AboutUs">
-        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90">
+        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90" disabled>
           <span>{{$t('lang.titles.guide')}}</span>
         </Button>
       </router-link>
