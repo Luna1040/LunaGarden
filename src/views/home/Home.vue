@@ -8,7 +8,7 @@
             user-language="English"
     ></Header>
     <div class="inputArea" :class="{inputAreaActive: todoText !== ''}">
-      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="matchQuery" background="#F3588B" shadow border="0">
+      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="matchQuery" theme="primary" shadow border="0">
         <i class="iconfont icon-search1"></i>
       </Button>
       <Input
@@ -23,7 +23,7 @@
               @on-keyup="keyup($event)"
               @on-keydown="keydown($event)"
       ></Input><br>
-      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="addTodo" background="#F3588B" shadow border="0">
+      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="addTodo" theme="primary" shadow border="0">
         <i class="iconfont icon-add1"></i>
       </Button>
     </div>

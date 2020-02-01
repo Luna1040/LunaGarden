@@ -110,13 +110,27 @@
         }
       },
       buttonWidth() {
-        if (typeof this.width === "string") {
-          return {
-            width: 'calc(' + this.width + '+ 30px)'
+        if(this.corner === 'round') {
+          if (typeof this.width === "string") {
+            return {
+              minWidth: this.width,
+              width: this.width
+            }
+          } else {
+            return {
+              minWidth: this.width + 'px',
+              width: this.width + "px"
+            }
           }
         } else {
-          return {
-            width: this.width + "px + 30px"
+          if (typeof this.width === "string") {
+            return {
+              width: 'calc(' + this.width + ' + 30px)'
+            }
+          } else {
+            return {
+              width: this.width + 30 + "px"
+            }
           }
         }
       },

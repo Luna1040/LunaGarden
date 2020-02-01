@@ -2,11 +2,11 @@
     <div class="lunaPage" :style="[styles]" :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}">
         <span v-if="counter" class="pageCounter">共{{limit}}条</span>
         <slot name="pre"></slot>
-        <button class="lunaPageCell" @click="prev" :disabled="prevDisable">
+        <button class="lunaPageCell pagination" @click="prev" :disabled="prevDisable" :style="[cellStyles]" :class="[{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]">
             <i class="iconfont icon-fanhui"></i>
         </button>
         <button class="lunaPageCell" v-for="i in limitCount" :key="i" :style="[cellStyles]" :class="[{pageCellActive:i === choiceIndex},{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]" @click="handelClick(i)">{{i}}</button>
-        <button class="lunaPageCell" @click="next" :disabled="nextDisable">
+        <button class="lunaPageCell pagination" @click="next" :disabled="nextDisable" :style="[cellStyles]" :class="[{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]">
             <i class="iconfont icon-youjiantou"></i>
         </button>
         <div class="pageSizer">
@@ -14,7 +14,7 @@
         </div>
         <div class="pageElevator">
             <span>前往第</span>
-        <Input v-if="elevator" :value="1" :width="40" :height="24" border-color="#cfcfcf" font-size="12px" disabled></Input>
+        <Input v-if="elevator" :value="1" :width="40" :height="24" border-color="#cfcfcf" font-size="12px"></Input>
             <span>页</span>
         </div>
         <slot name="suffix"></slot>

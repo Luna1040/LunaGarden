@@ -41,11 +41,9 @@
           <div class="languageBlackHover"></div>
         </div>
       </div>
-      <router-link to="AboutUs">
-        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90" disabled>
+        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90" @click="toAbout">
           <span>{{$t('lang.titles.guide')}}</span>
         </Button>
-      </router-link>
     </div>
   </header>
 </template>
@@ -87,6 +85,9 @@
       },
       getNavigator() {
         this.navigator.onLine = window.navigator.onLine;
+      },
+      toAbout() {
+        this.$router.push('AboutUs')
       }
     },
     filters: {

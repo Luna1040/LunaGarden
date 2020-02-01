@@ -12,8 +12,8 @@ $errorText: #FF1919;
 $success: #10D56E;
 $warning: #FECB37;
 $alert: #7636FF;
-$disableText: #B4B4B4;
-$disableBackground: #D6D6D6;
+$disableText: #CCC6C6;
+$disableBackground: #EEEEEE;
 $normalDark: #4A4A4A;
 $lightDark: #555555;
 $lightGray: #F5F5F5;
@@ -256,12 +256,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   display: flex;
   transition: all 0.5s;
   cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
   padding: 0 15px;
   position: relative;
   overflow: visible;
   i{
+    transition: all 0.5s;
     overflow: visible;
   }
 }
@@ -275,6 +276,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   background-color: $primary;
   color: $white;
   border-color: $primary;
+}
+.lunaButton.primaryButton:hover{
+  background-color: $primaryHover;
+  color: $primary;
 }
 .lunaButton.errorButton{
   background-color: $error;
@@ -616,14 +621,20 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   .lunaPageCell:hover{
     background-color: $primaryActive!important;
   }
+  .lunaPageCell.pageCellActive{
+    background-color: $primary!important;
+    color: $white;
+  }
+  .pagination{
+    color: $primary;
+    i{
+      font-size: 10px;
+    }
+  }
   .lunaPageCell:disabled{
     background-color: $disableBackground!important;
     color: $disableText!important;
     cursor: no-drop!important;
-  }
-  .lunaPageCell.pageCellActive{
-    background-color: $primary!important;
-    color: $white;
   }
   .pageElevator{
     display: flex;
