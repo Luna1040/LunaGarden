@@ -178,26 +178,14 @@ a {
   }
 }
 
-aside::-webkit-scrollbar,
-textarea::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar,
-div::-webkit-scrollbar,
-ul::-webkit-scrollbar,
-.swiper-slide::-webkit-scrollbar,
-table::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 5px;
   height: 5px;
-  background-color: hsla(0, 0%, 100%, .9);
+  background-color: unset;
 }
 
-aside::-webkit-scrollbar-thumb,
-textarea::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb,
-div::-webkit-scrollbar-thumb,
-ul::-webkit-scrollbar-thumb,
-.swiper-slide::-webkit-scrollbar-thumb,
-table::-webkit-scrollbar-thumb {
-  background: silver;
+*::-webkit-scrollbar-thumb {
+  background: $primary;
   border-radius: 5rem;
 }
 
@@ -489,7 +477,6 @@ header {
 
     input {
       margin: 0 8px;
-      width: calc(100% - 64px);
       height: 44px;
       line-height: 44px;
       font-size: 24px;

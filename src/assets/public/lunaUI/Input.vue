@@ -152,9 +152,15 @@
         }
       },
       inputHeight() {
-        return {
-          height: this.height + "px"
-        };
+        if(typeof this.height !== 'string') {
+          return {
+            height: this.height - 2 + "px"
+          };
+        } else {
+          return {
+            height: 'calc('+this.height + '- 2px)'
+          }
+        }
       },
       inputBackground() {
         return {

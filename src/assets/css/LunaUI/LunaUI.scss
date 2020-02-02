@@ -68,7 +68,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   border-radius: 8px!important;
 }
 .largeCorner{
-  border-radius: 25px!important;
+  border-radius: 15px!important;
 }
 .fullCorner{
   border-radius: 1000px!important;
@@ -224,6 +224,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 .lunaInput{
   transition: all 0.5s;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -654,14 +655,36 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaSelect{
   display: inline-block;
   cursor: pointer;
-  transition: all 0.5s;
-  input{
-    cursor: pointer;
+  //background-color: $white;
+  position: relative;
+  .lunaInput{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: $darkShadow!important;
+    z-index: 20;
+    input{
+      cursor: pointer!important;
+    }
+  }
+  .selectBackground{
+    background-color: #EEEEEE;
+  }
+  .optionHidden{
+    overflow: hidden;
+  }
+  .optionGroup{
+    max-height: 150px;
+    overflow: auto;
+    transition: all 0.5s;
+    background-color: #EEE;
+    .lunaOption{
+      border-bottom: 1px solid $lightGray;
+      padding: 6px 8px;
+    }
   }
 }
-.lunaOption{
-  background-color: #FFF;
-}
+
 .flex{
   display: flex;
 }

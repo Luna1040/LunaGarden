@@ -10,7 +10,7 @@
     <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>
     <Page :limit="page" @on-click="test" elevator counter></Page>
     <p>{{selectValue}}</p>
-    <Select v-model="selectValue" :data="tableData" keyValue="id" label="name" filterable @on-change="text">
+    <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" @on-change="text" corner="large">
 <!--      <Option v-for="(i,index) in tableData" :key="index" :value="i.id" :label="i.name"></Option>-->
     </Select>
 
@@ -97,9 +97,9 @@
     name: "app",
     data() {
       return {
-        loading: true,
+        loading: false,
         page: 22,
-        selectValue: '',
+        selectValue: '7772',
         columns: [
           {
             title: '序号',
@@ -195,6 +195,16 @@
             name: 'test2',
             id: '7772',
           }
+        ],
+        selectData: [
+          {
+            name: 'test',
+            id: '777',
+          },
+          {
+            name: 'test2',
+            id: '7772',
+          },
         ]
       };
     },

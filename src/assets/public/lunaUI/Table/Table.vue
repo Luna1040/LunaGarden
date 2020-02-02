@@ -117,7 +117,7 @@
             },
             corner: {
                 type: String,
-                default: 'small'
+                default: 'large'
             },
             width: {
                 type: [String,Number],
@@ -143,7 +143,7 @@
         },
         computed: {
             bodyMaxHeight() {
-                if(typeof this.maxHeight === 'string') {
+                if(typeof this.maxHeight !== 'string') {
                     if(this.maxHeight <= 100) {
                         return {
                             maxHeight: this.maxHeight + '%'

@@ -1,5 +1,5 @@
 <template>
-<div class="lunaOption" @click="handelSelect">
+<div class="lunaOption" @click.stop="handelSelect">
     <slot>{{label}}</slot>
 </div>
 </template>
