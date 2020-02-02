@@ -17,6 +17,7 @@
             :maxlength="maxlength"
             :placeholder="placeholder"
             :disabled="disabled"
+            :readonly="readonly"
             @input="cgValue"
             @keyup="handelKeyUp"
             @keyup.enter="handelEnter"
@@ -52,6 +53,10 @@
       corner: {
         type: String,
         default: "large"
+      },
+      readonly: {
+        type: Boolean,
+        default: false
       },
       //自定义宽度  作用于container
       width: {

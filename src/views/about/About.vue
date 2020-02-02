@@ -9,6 +9,11 @@
     ></Header>
     <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>
     <Page :limit="page" @on-click="test" elevator counter></Page>
+    <p>{{selectValue}}</p>
+    <Select v-model="selectValue" :data="tableData" keyValue="id" label="name" filterable @on-change="text">
+<!--      <Option v-for="(i,index) in tableData" :key="index" :value="i.id" :label="i.name"></Option>-->
+    </Select>
+
 <!--    <div class="about">-->
 <!--      <h1>{{ $t('lang.aboutUs.title') }}</h1>-->
 <!--      <p>{{ $t('lang.aboutUs.desc') }}</p>-->
@@ -87,15 +92,14 @@
 </template>
 <script>
   import Header from "../../components/activeHeader";
-  import crypto from "crypto";
   import "../../assets/icons/logo/iconfont.js";
-  import { log } from "util";
   export default {
     name: "app",
     data() {
       return {
-        loading: false,
+        loading: true,
         page: 22,
+        selectValue: '',
         columns: [
           {
             title: '序号',
@@ -130,7 +134,7 @@
                   props: {
                     shadow: false,
                     theme: 'primary',
-                    disabled: true
+                    loading: true
                   },
                   on: {
                     click: () => {
@@ -200,6 +204,9 @@
       test(value) {
         console.log(value);
       },
+      text(value) {
+        // console.log(value)
+      }
     },
     components: {
       Header

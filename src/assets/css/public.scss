@@ -252,11 +252,7 @@ header {
   justify-content: center;
   background-color: rgba(243, 88, 139, 0.55);
   color: $white;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   position: relative;
   z-index: 100;
   overflow: visible;
@@ -548,7 +544,7 @@ header {
     }
 
     li:hover {
-      background-color: #FF91AC;
+      background-color: $primary;
       color: $white;
       border: 1px solid $white;
     }

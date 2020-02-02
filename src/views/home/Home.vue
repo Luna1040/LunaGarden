@@ -28,6 +28,7 @@
       </Button>
     </div>
     <ul class="searchAssociation">
+      <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
       <li
               class="list-group-item-text"
               v-for="(item,index) in searchArr"

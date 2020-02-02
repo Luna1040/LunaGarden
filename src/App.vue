@@ -129,10 +129,9 @@
       //若已登录，从服务器端获取内容
     },
     watch: {
-      $route() {
+      $route(to, from) {
         // 切换动画
-        let isBack = this.$router.isBack; // 监听路由变化时的状态为前进还是后退
-        if (isBack) {
+        if (to.meta.index <= from.meta.index) {
           this.transitionName = "slide-left";
         } else {
           this.transitionName = "slide-right";
@@ -177,12 +176,10 @@
     position: absolute;
     z-index: 0;
     height: 100%;
-    transition: all 0.5s ease-in;
+    transition: all 0.5s  cubic-bezier(0.8, 0, 0.2, 1) 0s;
     will-change: transform;
     top: 0;
     backface-visibility: hidden;
-    perspective: 1000;
-    -webkit-perspective: 1000;
     overflow: hidden;
   }
   .slide-left-enter,

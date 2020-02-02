@@ -9,6 +9,12 @@ import Container from './Container/Container.vue'
 import Card from './Container/Card.vue'
 import Table from './Table/Table.vue'
 import Page from './Table/Page.vue'
+import List from './List/List.vue'
+import ListItem from './List/ListItem.vue'
+import Form from './Form/Form.vue'
+import FormItem from './Form/FormItem.vue'
+import Select from './Select/Select.vue'
+import Option from './Select/Option.vue'
 
 const LunaUI = {
     Modal,
@@ -20,7 +26,13 @@ const LunaUI = {
     Container,
     Card,
     Table,
-    Page
+    Page,
+    List,
+    ListItem,
+    Form,
+    FormItem,
+    Select,
+    Option,
 };
 
 Object.keys(LunaUI).forEach(name => {

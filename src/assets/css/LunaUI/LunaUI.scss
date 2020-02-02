@@ -442,7 +442,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       position: absolute;
       border-radius: 50%;
       border-style: solid;
-      animation: animate 3s linear infinite;
+      animation: animate 3s ease-in-out infinite;
       overflow: visible;
       .circle {
         position: absolute;
@@ -650,6 +650,17 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     font-size: 12px;
     left: 16px;
   }
+}
+.lunaSelect{
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+  input{
+    cursor: pointer;
+  }
+}
+.lunaOption{
+  background-color: #FFF;
 }
 .flex{
   display: flex;

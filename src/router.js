@@ -33,19 +33,19 @@ const router = new Router({
         //首屏展示加载动画
         { path: '/', name: 'start', component: Start },
         // PC页面统一整合
-        { path: '/Home', name: 'Home', component: Home },
-        { path: '/Guide', name: 'Guide', component: Guide },
+        { path: '/Home', name: 'Home', component: Home, meta:{index: 0}},
+        { path: '/Guide', name: 'Guide', component: Guide, meta:{index: 999}},
         { path: '/User', name: 'User', component: User },
         { path: '/Note', name: 'Note', component: Note },
         { path: '/Diary', name: 'Diary', component: Diary },
         //移动端页面统一整合
-        { path: '/mHome', name: 'mHome', component: mHome },
-        { path: '/mGuide', name: 'mGuide', component: mGuide },
+        { path: '/mHome', name: 'mHome', component: mHome, meta:{index: 0}},
+        { path: '/mGuide', name: 'mGuide', component: mGuide, meta:{index: 999}},
         { path: '/mUser', name: 'mUser', component: mUser },
         { path: '/mNote', name: 'mNote', component: mNote },
         { path: '/mDiary', name: 'mDiary', component: mDiary },
-        { path: '/AboutUs', name: 'AboutUs', component: AboutUs },
-        { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs },
+        { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta:{index: 999} },
+        { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta:{index: 999} },
         { path: '/login', name: 'login', component: Login },
         { path: '/register', name: 'register', component: Register },
         { path: '/forgot', name: 'forgot', component: Forgot },
@@ -54,7 +54,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-    if(to.name !== 'start') {
+    if (to.name !== 'start') {
         //路由分别引导
         if (window.innerWidth > window.innerHeight) {
             if (to.name.indexOf('m') === 0) {
@@ -76,6 +76,5 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-})
-
+});
 export default router
