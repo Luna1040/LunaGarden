@@ -232,9 +232,9 @@
               this.choiceIndex = this.filterData.length - 1
             }
           } else {
-            if(this.choiceIndex === 0) {
+            if(this.choiceIndex === 0 && direction === -1) {
               this.choiceIndex = this.filterData.length - 1
-            } else if(this.choiceIndex === this.filterData.length - 1) {
+            } else if(this.choiceIndex === this.filterData.length - 1 && direction === 1) {
               this.choiceIndex = 0
             } else {
               this.choiceIndex = this.choiceIndex + direction
