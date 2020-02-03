@@ -251,9 +251,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     i {
         cursor: pointer;
         overflow: visible;
+        transition: all 0.3s;
     }
     .icon-cancel {
         font-size: 8px;
+    }
+    .pre{
+        position: relative;
+        left: 12px;
+    }
+    .suffix{
+        position: relative;
+        right: 12px;
     }
     span {
         color: $normalDark;
@@ -744,7 +753,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
             position: relative;
             max-height: 150px;
             overflow: auto;
-            background-color: #EEE;
+            background-color: #FFF;
             .lunaOption {
                 border-bottom: 1px solid $lightGray;
                 padding: 6px 8px;

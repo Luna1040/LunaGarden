@@ -18,6 +18,9 @@
             :width="inputStyles.width"
             :height="inputStyles.height"
             :corner="corner"
+            icon="iconfont icon-down"
+            suffix
+            :spin="showList"
             v-model="initValue"
             @focusout="hideList()"
     ></Input>

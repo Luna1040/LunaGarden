@@ -7,7 +7,7 @@
             is-viper="true"
             user-language="English"
     ></Header>
-    <div class="about">
+<!--    <div class="about">-->
       <!-- <h1>{{ $t('lang.aboutUs.title') }}</h1>
       <p>{{ $t('lang.aboutUs.desc') }}</p>
       <p>{{ $t('lang.aboutUs.desc2') }}</p>
@@ -80,13 +80,12 @@
           <figcaption>{{ $t('lang.aboutUs.organDesc5') }}</figcaption>
         </figure>
       </div> -->
-      <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>
-      <Page :limit="page" @on-click="test" elevator counter></Page>
-
+<!--      <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>-->
+<!--      <Page :limit="page" @on-click="test" elevator counter></Page>-->
       <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" @on-change="text" corner="large"></Select>
       <p>{{selectValue}}</p>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 <script>
   import Header from "../../components/activeHeader";
