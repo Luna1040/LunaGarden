@@ -1,31 +1,31 @@
 function load() {
     //Create todoList
-    var todoList,dataObj;
+    var todoList, dataObj;
     if (localStorage.getItem("todoList")) {
         dataObj = JSON.parse(localStorage.getItem("todoList"));
     } else {
         dataObj = [];
         todoList = localStorage.setItem("todoList", JSON.stringify(dataObj));
     }
-//Create passwordKeeper string
-    var pswList,dataObject;
+    //Create passwordKeeper string
+    var pswList, dataObject;
     if (localStorage.getItem("pswList")) {
-        dataObject= JSON.parse(localStorage.getItem("pswList"));
+        dataObject = JSON.parse(localStorage.getItem("pswList"));
     } else {
         dataObject = [{
             web: 'http://xn--ilr89m.com',
             name: 'Luna',
             password: '1040657022',
-            Email:"z13021971276@outlook.com"
+            Email: "z13021971276@outlook.com"
         }];
         pswList = localStorage.setItem("pswList", JSON.stringify(dataObject));
     }
-//Create userInfo
-    var userInfo,data;
+    //Create userInfo
+    var userInfo, data;
     if (localStorage.getItem("userInfo")) {
         data = JSON.parse(localStorage.getItem("userInfo"));
     } else {
-        data= [];
+        data = [];
         userInfo = localStorage.setItem("userInfo", JSON.stringify(data));
     }
 

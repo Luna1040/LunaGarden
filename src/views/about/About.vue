@@ -99,7 +99,7 @@
       return {
         loading: false,
         page: 22,
-        selectValue: '7772',
+        selectValue: '',
         columns: [
           {
             title: '序号',

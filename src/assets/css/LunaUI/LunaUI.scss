@@ -1,8 +1,8 @@
 @import "./lunaCol.scss";
 $white: #FFFFFF;
 $primary: #eb7290;
-$primaryHover: scale-color($primary, $lightness: +85%);
-$primaryActive: scale-color($primary, $lightness: +65%);
+$primaryHover: scale-color($primary, $lightness: +35%);
+$primaryActive: scale-color($primary, $lightness: +75%);
 $primaryDarkHover: scale-color($primaryText, $lightness: -35%, $alpha: -75%);
 $primaryDarkActive: scale-color($primaryText, $lightness: -35%, $alpha: -55%);
 $primaryText: #F3588B;
@@ -22,681 +22,759 @@ $darkShadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 $lightShadow: 0 3px 3px rgba(255, 255, 255, 0.3);
 $hoverDarkShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
-
-*::-webkit-scrollbar{
-  width: 5px;
-  height: 5px;
-  background-color: unset;
-  border-radius: 500px;
-}
-*::-webkit-scrollbar-thumb{
-  background-color: $primary;
-  border-radius: 500px;
-}
-*.disabled{
-  background-color: $disableBackground!important;
-  color: $disableText!important;
-  cursor: no-drop!important;
-}
-.lunaInput.disabled{
-  background-color: $disableBackground!important;
-  color: $disableText!important;
-  cursor: no-drop!important;
-  input{
-    background-color: $disableBackground!important;
-    color: $disableText!important;
-    cursor: no-drop!important;
-  }
-}
-.lunaButton:disabled{
-  pointer-events: unset;
-  background-color: $disableBackground!important;
-  color: $disableText!important;
-  cursor: no-drop!important;
-  i{
-    color: $disableText!important;
-  }
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: unset;
+    border-radius: 500px;
 }
 
-.squareCorner{
-  border-radius: 0!important;
+*::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: 500px;
 }
-.smallCorner{
-  border-radius: 4px!important;
+
+*.disabled {
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
 }
-.filletCorner{
-  border-radius: 8px!important;
+
+.lunaInput.disabled {
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
+    input {
+        background-color: $disableBackground !important;
+        color: $disableText !important;
+        cursor: no-drop !important;
+    }
 }
-.largeCorner{
-  border-radius: 15px!important;
+
+.lunaButton:disabled {
+    pointer-events: unset;
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
+    i {
+        color: $disableText !important;
+    }
 }
-.fullCorner{
-  border-radius: 1000px!important;
+
+.squareCorner {
+    border-radius: 0 !important;
 }
-.roundCorner{
-  padding: 0!important;
-  border-radius: 50%!important;
+
+.smallCorner {
+    border-radius: 4px !important;
 }
-.primaryHover{
-  background-color: $primaryHover;
+
+.filletCorner {
+    border-radius: 8px !important;
 }
+
+.largeCorner {
+    border-radius: 15px !important;
+}
+
+.fullCorner {
+    border-radius: 1000px !important;
+}
+
+.roundCorner {
+    padding: 0 !important;
+    border-radius: 50% !important;
+}
+
+.primaryHover {
+    background-color: $primaryHover;
+}
+
 .lunaModal {
-  display: flex;
-  position: fixed;
-  z-index: 250;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  .modalMask{
-    position: absolute;
-    z-index: 200;
+    display: flex;
+    position: fixed;
+    z-index: 250;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
-  .modalMask.darkMask{
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .modalMask.lightMask{
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  .modalContainer {
+    align-items: center;
+    justify-content: center;
+    .modalMask {
+        position: absolute;
+        z-index: 200;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .modalMask.darkMask {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modalMask.lightMask {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    .modalContainer {
+        position: relative;
+        padding-bottom: 16px;
+        z-index: 250;
+        background-color: $white;
+        .modalHeader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-bottom: 1px solid $primaryActive;
+            background-color: $white;
+            position: relative;
+            margin-bottom: 32px;
+            >div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p {
+                    font-size: 22px;
+                    display: flex;
+                    align-items: center;
+                    i,
+                    img {
+                        margin-right: 8px;
+                    }
+                }
+            }
+            p {
+                font-size: 22px;
+                display: flex;
+                align-items: center;
+                i,
+                img {
+                    margin-right: 8px;
+                }
+            }
+            >i {
+                cursor: pointer;
+                position: absolute;
+                right: 16px;
+            }
+        }
+        .modalBody {
+            padding: 0 16px;
+            p {
+                line-height: 24px;
+            }
+        }
+        .modalFooter {
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-around;
+            overflow: visible;
+            width: 60%;
+            margin: 0 auto;
+            button {
+                padding: 5px 25px;
+                border-radius: 20px;
+            }
+            >div {
+                overflow: visible;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                button {
+                    padding: 5px 25px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+    .modalContainer.errorModal {
+        .modalHeader {
+            background-color: $error;
+            color: $white;
+            p {
+                color: $white !important;
+            }
+        }
+    }
+    .modalContainer.successModal {
+        .modalHeader {
+            background-color: $success;
+            color: $white;
+            p {
+                color: $white !important;
+            }
+        }
+    }
+    .modalContainer.warningModal {
+        .modalHeader {
+            background-color: $warning;
+            color: $white;
+            p {
+                color: $white !important;
+            }
+        }
+    }
+    .modalContainer.alertModal {
+        .modalHeader {
+            background-color: $alert;
+            color: $white;
+            p {
+                color: $white !important;
+            }
+        }
+    }
+    .modalContainer.primaryModal {
+        .modalHeader {
+            background-color: $primary;
+            color: $white;
+            p {
+                color: $white !important;
+            }
+        }
+    }
+}
+
+.lunaInput {
+    transition: all 0.5s;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: 0;
+    input {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        padding: 0 12px;
+    }
+    i {
+        cursor: pointer;
+        overflow: visible;
+    }
+    .icon-cancel {
+        font-size: 8px;
+    }
+    span {
+        color: $normalDark;
+        font-size: 8px;
+    }
+}
+
+.lunaInput.ghostInput {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.lunaButton {
+    min-width: 60px;
+    display: flex;
+    transition: all 0.5s;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
     position: relative;
-    padding-bottom: 16px;
-    z-index: 250;
-    background-color: $white;
-    .modalHeader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 16px;
-      border-bottom: 1px solid $primaryActive;
-      background-color: $white;
-      position: relative;
-      margin-bottom: 32px;
-      >div{
+    overflow: visible;
+    i {
+        transition: all 0.5s;
+        overflow: visible;
+    }
+}
+
+.darkShadow {
+    box-shadow: $darkShadow;
+}
+
+.lightShadow {
+    box-shadow: $lightShadow;
+}
+
+.lunaButton.primaryButton {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+}
+
+.lunaButton.primaryButton:hover {
+    background-color: $primaryHover;
+    color: $primary;
+}
+
+.lunaButton.errorButton {
+    background-color: $error;
+    color: $white;
+    border-color: $error;
+}
+
+.lunaButton.successButton {
+    background-color: $success;
+    color: $white;
+    border-color: $success;
+}
+
+.lunaButton.warningButton {
+    background-color: $warning;
+    color: $white;
+    border-color: $warning;
+}
+
+.lunaButton.alertButton {
+    background-color: $alert;
+    color: $white;
+    border-color: $alert;
+}
+
+.lunaButton.textButton {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+.lunaButton.ghostButton {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.lunaButton.ghostButton.primaryButton {
+    color: $primary !important;
+}
+
+.lunaButton.ghostButton.errorButton {
+    color: $error !important;
+}
+
+.lunaButton.ghostButton.successButton {
+    color: $success !important;
+}
+
+.lunaButton.ghostButton.warningButton {
+    color: $warning !important;
+}
+
+.lunaButton.ghostButton.alertButton {
+    color: $alert !important;
+}
+
+.lunaButton:hover {
+    box-shadow: $hoverDarkShadow;
+}
+
+.lunaButton {
+    .lunaBadge {
+        right: 0;
+        top: 0;
+    }
+}
+
+.lunaButton.filletCorner {
+    .lunaBadge {
+        right: 1px;
+        top: 1px;
+    }
+}
+
+.lunaButton.largeCorner {
+    .lunaBadge {
+        right: 4px;
+        top: 4px;
+    }
+}
+
+.lunaButton.roundCorner {
+    .lunaBadge {
+        right: 8%;
+        top: 35%;
+    }
+}
+
+.pre {
+    margin-right: 6px;
+}
+
+.suffix {
+    margin-left: 6px;
+}
+
+.lunaBadge {
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: $error;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    border: 1px solid $white;
+}
+
+.lunaBadge.errorBadge {
+    background-color: $error;
+}
+
+.lunaBadge.successBadge {
+    background-color: $success;
+}
+
+.lunaBadge.alertBadge {
+    background-color: $alert;
+}
+
+.lunaBadge.warningBadge {
+    background-color: $warning;
+}
+
+.lunaRow {
+    overflow: auto;
+    display: flex;
+    >.lunaCol {
+        border-left: 0 !important;
+    }
+    >.lunaCol:last-of-type {
+        border-right: 0 !important;
+    }
+}
+
+.lunaContainer.darkContainer {
+    background-color: $normalDark !important;
+    color: $white;
+}
+
+.lunaCard {
+    background-color: $lightGray;
+    color: $normalDark;
+    .lunaCardTitle {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 16px;
+        border-bottom: 1px solid $lightGray;
+        text-align: left;
+        i,
+        img {
+            margin-right: 6px;
+        }
+    }
+    .lunaCardBody {
+        text-align: left;
+        height: calc(100% - 36px);
+        padding: 4px 4px 4px 16px;
+        p,
+        span,
+        li,
+        i,
+        a,
+        b,
+        figcaption,
+        div {
+            font-size: 14px;
+            overflow: visible;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    }
+}
+
+.lunaCard.darkCard {
+    background-color: $normalDark !important;
+    color: $white;
+}
+
+.lunaTable {
+    width: 100%;
+    position: relative;
+    transition: all 0.5s;
+    .lunaLoading {
+        width: 100%;
+        height: 100%;
+        font-size: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        p {
-          font-size: 22px;
-          display: flex;
-          align-items: center;
-          i,img{
-            margin-right: 8px;
-          }
+        background-color: rgba(0, 0, 0, 0.8);
+        overflow: visible;
+        .face {
+            position: absolute;
+            border-radius: 50%;
+            border-style: solid;
+            animation: animate 3s ease-in-out infinite;
+            overflow: visible;
+            .circle {
+                position: absolute;
+                width: 50%;
+                height: 0.1em;
+                top: 50%;
+                left: 50%;
+                background-color: transparent;
+                transform: rotate(var(--deg));
+                transform-origin: left;
+                overflow: visible;
+            }
+            .circle::before {
+                position: absolute;
+                top: -10px;
+                right: -15px;
+                content: '';
+                width: 20px;
+                height: 20px;
+                background-color: currentColor;
+                border-radius: 50%;
+                box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+                overflow: visible;
+            }
         }
-      }
-      p {
-        font-size: 22px;
+        .face:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            color: $white;
+            border-color: currentColor transparent transparent currentColor;
+            border-width: 6px 6px 0 0;
+            --deg: -45deg;
+            animation-direction: normal;
+            overflow: visible;
+        }
+        .face:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            color: $primary;
+            border-color: currentColor currentColor transparent transparent;
+            border-width: 6px 0 0 6px;
+            --deg: -135deg;
+            animation-direction: reverse;
+            overflow: visible;
+        }
+    }
+    thead {
+        >tr {
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            >th {
+                border-left: 0 !important;
+                font-size: 12px;
+                padding: 0 8px;
+            }
+            >th:last-of-type {
+                border-right: 0 !important;
+            }
+        }
+        tr:first-of-type {
+            border-top: 0 !important;
+            th {
+                border-top: 0 !important;
+            }
+        }
+    }
+    tbody {
+        min-height: 32px;
+        tr {
+            border-bottom: 0 !important;
+            border-left: 0 !important;
+            height: 42px;
+            line-height: 42px;
+            transition: all 0.5s;
+            td {
+                border-bottom: 0 !important;
+                border-left: 0 !important;
+                font-size: 12px;
+                padding: 0 8px;
+            }
+            td:last-of-type {
+                border-right: 0 !important;
+            }
+        }
+        tr:first-of-type {
+            border-top: 0 !important;
+            td {
+                border-top: 0 !important;
+            }
+        }
+    }
+}
+
+.lunaTable.headerFixed {
+    thead {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        /**表格列的宽度由表格宽度决定，不由内容决定*/
+        text-align: center;
+    }
+    tbody {
+        display: block;
+        overflow: auto;
+        tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            /**表格列的宽度由表格宽度决定，不由内容决定*/
+            text-align: center;
+        }
+    }
+}
+
+.lunaTable.lightTable {
+    background: $white;
+    thead {
+        background: $normalGray;
+    }
+    tbody {
+        tr {
+            box-shadow: 0 1px 0 $lightGray;
+        }
+    }
+    .currentRow {
+        background-color: $primaryActive !important;
+    }
+    .hoverRow {
+        background-color: $primaryHover;
+    }
+}
+
+.lunaTable.darkTable {
+    background: $lightDark;
+    thead {
+        background: $normalDark;
+        color: $lightGray;
+    }
+    tbody {
+        tr {
+            box-shadow: 0 1px 0 $lightGray;
+            color: $white;
+        }
+    }
+    .currentRow {
+        background-color: $primaryDarkActive !important;
+    }
+    .hoverRow {
+        background-color: $primaryDarkHover;
+    }
+}
+
+.lunaTable.darkShadow {
+    box-shadow: $darkShadow;
+}
+
+.lunaTable.darkShadow:hover {
+    box-shadow: $hoverDarkShadow;
+}
+
+.lunaTable.lightShadow {
+    box-shadow: $lightShadow;
+}
+
+.lunaTable.lightShadow:hover {
+    box-shadow: $hoverLightShadow;
+}
+
+.lunaPage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px 16px;
+    margin-top: 16px;
+    .lunaPageCell {
+        margin-right: 8px;
+        min-width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-size: 12px;
+    }
+    .lunaPageCell:hover {
+        background-color: $primaryActive !important;
+    }
+    .lunaPageCell.pageCellActive {
+        background-color: $primary !important;
+        color: $white;
+    }
+    .pagination {
+        color: $primary;
+        i {
+            font-size: 10px;
+        }
+    }
+    .lunaPageCell:disabled {
+        background-color: $disableBackground !important;
+        color: $disableText !important;
+        cursor: no-drop !important;
+    }
+    .pageElevator {
         display: flex;
         align-items: center;
-        i,img{
-          margin-right: 8px;
+        justify-content: center;
+        span {
+            margin: 0 4px;
+            font-size: 12px;
         }
-      }
-      >i{
-        cursor: pointer;
+    }
+    .pageCounter {
         position: absolute;
-        right: 16px;
-      }
-    }
-
-    .modalBody {
-      padding: 0 16px;
-      p {
-        line-height: 24px;
-      }
-    }
-
-    .modalFooter {
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-around;
-      overflow: visible;
-      width: 60%;
-      margin: 0 auto;
-      button {
-        padding: 5px 25px;
-        border-radius: 20px;
-      }
-      >div{
-        overflow: visible;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        button {
-          padding: 5px 25px;
-          border-radius: 20px;
-        }
-      }
-    }
-  }
-  .modalContainer.errorModal{
-    .modalHeader{
-      background-color: $error;
-      color: $white;
-      p{
-        color: $white!important;
-      }
-    }
-  }
-  .modalContainer.successModal{
-    .modalHeader{
-      background-color: $success;
-      color: $white;
-      p{
-        color: $white!important;
-      }
-    }
-  }
-  .modalContainer.warningModal{
-    .modalHeader{
-      background-color: $warning;
-      color: $white;
-      p{
-        color: $white!important;
-      }
-    }
-  }
-  .modalContainer.alertModal{
-    .modalHeader{
-      background-color: $alert;
-      color: $white;
-      p{
-        color: $white!important;
-      }
-    }
-  }
-  .modalContainer.primaryModal{
-    .modalHeader{
-      background-color: $primary;
-      color: $white;
-      p{
-        color: $white!important;
-      }
-    }
-  }
-}
-.lunaInput{
-  transition: all 0.5s;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  outline: 0;
-  padding: 0 12px;
-  input{
-    border: 0;
-    outline: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0);
-  }
-  i {
-    cursor: pointer;
-    overflow: visible;
-  }
-  .icon-cancel{
-    font-size: 8px;
-  }
-  span{
-    color: $normalDark;
-    font-size: 8px;
-  }
-}
-.lunaInput.ghostInput{
-  background-color: rgba(0,0,0,0) !important;
-}
-.lunaButton{
-  min-width: 60px;
-  display: flex;
-  transition: all 0.5s;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  padding: 0 15px;
-  position: relative;
-  overflow: visible;
-  i{
-    transition: all 0.5s;
-    overflow: visible;
-  }
-}
-.darkShadow{
-  box-shadow: $darkShadow;
-}
-.lightShadow{
-  box-shadow: $lightShadow;
-}
-.lunaButton.primaryButton{
-  background-color: $primary;
-  color: $white;
-  border-color: $primary;
-}
-.lunaButton.primaryButton:hover{
-  background-color: $primaryHover;
-  color: $primary;
-}
-.lunaButton.errorButton{
-  background-color: $error;
-  color: $white;
-  border-color: $error;
-}
-.lunaButton.successButton{
-  background-color: $success;
-  color: $white;
-  border-color: $success;
-}
-.lunaButton.warningButton{
-  background-color: $warning;
-  color: $white;
-  border-color: $warning;
-}
-.lunaButton.alertButton{
-  background-color: $alert;
-  color: $white;
-  border-color: $alert;
-}
-.lunaButton.textButton{
-  background-color: rgba(0,0,0,0)!important;
-  border: 1px solid rgba(0,0,0,0)!important;
-}
-.lunaButton.ghostButton{
-  background-color: rgba(0,0,0,0)!important;
-}
-.lunaButton.ghostButton.primaryButton{
-  color: $primary!important;
-}
-.lunaButton.ghostButton.errorButton{
-  color: $error!important;
-}
-.lunaButton.ghostButton.successButton{
-  color: $success!important;
-}
-.lunaButton.ghostButton.warningButton{
-  color: $warning!important;
-}
-.lunaButton.ghostButton.alertButton{
-  color: $alert!important;
-}
-.lunaButton:hover{
-  box-shadow: $hoverDarkShadow;
-}
-.lunaButton{
-  .lunaBadge {
-    right: 0;
-    top: 0;
-  }
-}
-.lunaButton.filletCorner{
-  .lunaBadge {
-    right: 1px;
-    top: 1px;
-  }
-}
-.lunaButton.largeCorner{
-  .lunaBadge {
-    right: 4px;
-    top: 4px;
-  }
-}
-.lunaButton.roundCorner{
-  .lunaBadge {
-    right: 8%;
-    top: 35%;
-  }
-}
-.pre{
-  margin-right: 6px;
-}
-.suffix{
-  margin-left: 6px;
-}
-.lunaBadge{
-  width: 6px;
-  height: 6px;
-  border-radius: 6px;
-  background-color: $error;
-  position: absolute;
-  right: -4px;
-  top: -4px;
-  border: 1px solid $white;
-}
-.lunaBadge.errorBadge{
-  background-color: $error;
-}
-.lunaBadge.successBadge{
-  background-color: $success;
-}
-.lunaBadge.alertBadge{
-  background-color: $alert;
-}
-.lunaBadge.warningBadge{
-  background-color: $warning;
-}
-.lunaRow{
-  overflow: auto;
-  display: flex;
-  >.lunaCol{
-    border-left: 0!important;
-  }
-  >.lunaCol:last-of-type{
-    border-right: 0!important;
-  }
-}
-.lunaContainer.darkContainer{
-  background-color: $normalDark!important;
-  color: $white;
-}
-.lunaCard {
-  background-color: $lightGray;
-  color: $normalDark;
-  .lunaCardTitle {
-    width: 100%;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 16px;
-    border-bottom: 1px solid $lightGray;
-    text-align: left;
-    i,img{
-      margin-right: 6px;
-    }
-  }
-  .lunaCardBody{
-    text-align: left;
-    height: calc(100% - 36px);
-    padding: 4px 4px 4px 16px;
-    p,span,li,i,a,b,figcaption,div{
-      font-size: 14px;
-      overflow: visible;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-  }
-}
-.lunaCard.darkCard{
-  background-color: $normalDark!important;
-  color: $white;
-}
-.lunaTable{
-  width: 100%;
-  position: relative;
-  transition: all 0.5s;
-  .lunaLoading {
-    width: 100%;
-    height: 100%;
-    font-size: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.8);
-    overflow: visible;
-    .face {
-      position: absolute;
-      border-radius: 50%;
-      border-style: solid;
-      animation: animate 3s ease-in-out infinite;
-      overflow: visible;
-      .circle {
-        position: absolute;
-        width: 50%;
-        height: 0.1em;
-        top: 50%;
-        left: 50%;
-        background-color: transparent;
-        transform: rotate(var(--deg));
-        transform-origin: left;
-        overflow: visible;
-      }
-      .circle::before {
-        position: absolute;
-        top: -10px;
-        right: -15px;
-        content: '';
-        width: 20px;
-        height: 20px;
-        background-color: currentColor;
-        border-radius: 50%;
-        box-shadow: 0 0 30px rgba(255,255,255,1);
-        overflow: visible;
-      }
-    }
-    .face:nth-child(1) {
-      width: 200px;
-      height: 200px;
-      color: $white;
-      border-color: currentColor transparent transparent currentColor;
-      border-width: 6px 6px 0 0;
-      --deg: -45deg;
-      animation-direction: normal;
-      overflow: visible;
-    }
-    .face:nth-child(2) {
-      width: 200px;
-      height: 200px;
-      color: $primary;
-      border-color: currentColor currentColor transparent transparent;
-      border-width: 6px 0 0 6px;
-      --deg: -135deg;
-      animation-direction: reverse;
-      overflow: visible;
-    }
-  }
-  thead{
-    >tr{
-      height: 32px;
-      line-height: 32px;
-      font-size: 14px;
-      >th{
-        border-left: 0!important;
         font-size: 12px;
-        padding: 0 8px;
-      }
-      >th:last-of-type{
-        border-right: 0!important;
-      }
+        left: 16px;
     }
-    tr:first-of-type{
-      border-top: 0!important;
-      th{
-        border-top: 0!important;
-      }
-    }
-  }
-  tbody{
-    min-height: 32px;
-    tr{
-      border-bottom: 0!important;
-      border-left: 0!important;
-      height: 42px;
-      line-height: 42px;
-      transition: all 0.5s;
-      td{
-        border-bottom: 0!important;
-        border-left: 0!important;
-        font-size: 12px;
-        padding: 0 8px;
-      }
-      td:last-of-type{
-        border-right: 0!important;
-      }
-    }
-    tr:first-of-type{
-      border-top: 0!important;
-      td{
-        border-top: 0!important;
-      }
-    }
-  }
 }
-.lunaTable.headerFixed{
-  thead{
-    display: table;
-    width: 100%;
-    table-layout: fixed; /**表格列的宽度由表格宽度决定，不由内容决定*/
-    text-align: center;
-  }
-  tbody{
-    display: block;
-    overflow: auto;
-    tr{
-      display: table;
-      width: 100%;
-      table-layout: fixed; /**表格列的宽度由表格宽度决定，不由内容决定*/
-      text-align: center;
-    }
-  }
-}
-.lunaTable.lightTable{
-  background: $white;
-  thead{
-    background: $normalGray;
-  }
-  tbody{
-    tr{
-      box-shadow: 0 1px 0 $lightGray;
-    }
-  }
-  .currentRow{
-    background-color: $primaryActive!important;
-  }
-  .hoverRow{
-    background-color: $primaryHover;
-  }
-}
-.lunaTable.darkTable{
-  background: $lightDark;
-  thead{
-    background: $normalDark;
-    color: $lightGray;
-  }
-  tbody{
-    tr{
-      box-shadow: 0 1px 0 $lightGray;
-      color: $white;
-    }
-  }
-  .currentRow{
-    background-color: $primaryDarkActive!important;
-  }
-  .hoverRow{
-    background-color: $primaryDarkHover;
-  }
-}
-.lunaTable.darkShadow{
-  box-shadow: $darkShadow;
-}
-.lunaTable.darkShadow:hover{
-  box-shadow: $hoverDarkShadow;
-}
-.lunaTable.lightShadow{
-  box-shadow: $lightShadow;
-}
-.lunaTable.lightShadow:hover{
-  box-shadow: $hoverLightShadow;
-}
-.lunaPage{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 8px 16px;
-  margin-top: 16px;
-  .lunaPageCell{
-    margin-right: 8px;
-    min-width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
+
+.lunaSelect {
+    display: inline-block;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-size: 12px;
-  }
-  .lunaPageCell:hover{
-    background-color: $primaryActive!important;
-  }
-  .lunaPageCell.pageCellActive{
-    background-color: $primary!important;
-    color: $white;
-  }
-  .pagination{
-    color: $primary;
-    i{
-      font-size: 10px;
-    }
-  }
-  .lunaPageCell:disabled{
-    background-color: $disableBackground!important;
-    color: $disableText!important;
-    cursor: no-drop!important;
-  }
-  .pageElevator{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    span{
-      margin: 0 4px;
-      font-size: 12px;
-    }
-  }
-  .pageCounter{
-    position: absolute;
-    font-size: 12px;
-    left: 16px;
-  }
-}
-.lunaSelect{
-  display: inline-block;
-  cursor: pointer;
-  //background-color: $white;
-  position: relative;
-  .lunaInput{
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-shadow: $darkShadow!important;
-    z-index: 20;
-    input{
-      cursor: pointer!important;
-    }
-  }
-  .selectBackground{
-    background-color: #EEEEEE;
-  }
-  .optionHidden{
     overflow: hidden;
-  }
-  .optionGroup{
-    max-height: 150px;
-    overflow: auto;
-    transition: all 0.5s;
-    background-color: #EEE;
-    .lunaOption{
-      border-bottom: 1px solid $lightGray;
-      padding: 6px 8px;
+    position: relative;
+    padding-bottom: 3px;
+    .lunaInput {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: $darkShadow !important;
+        z-index: 20;
+        input {
+            cursor: pointer !important;
+        }
     }
-  }
+    .selectBackground {
+        background-color: #EEEEEE;
+    }
+    .optionHidden {
+        overflow: hidden;
+    }
+    .optionGroup {
+        max-height: 150px;
+        overflow: auto;
+        transition: all 0.5s;
+        background-color: #EEE;
+        .lunaOption {
+            border-bottom: 1px solid $lightGray;
+            padding: 6px 8px;
+            transition: all 0.5s;
+        }
+        .lunaOption:last-of-type {
+            border-bottom: 0;
+        }
+        .lunaOption:hover {
+            background-color: $primaryHover;
+        }
+        .lunaOption.optionActive {
+            background-color: $primary;
+            color: $white;
+        }
+    }
 }
 
-.flex{
-  display: flex;
+.flex {
+    display: flex;
 }
-.block{
-  display: block;
+
+.block {
+    display: block;
 }
-.zIndexHide{
-  z-index: -2!important;
+
+.zIndexHide {
+    z-index: -2 !important;
 }
 
 @keyframes animate {
-  to {
-    transform: rotate(1turn);
-  }
+    to {
+        transform: rotate(1turn);
+    }
 }

@@ -1,5 +1,5 @@
 // 寻找子节点
-export function findChildren (context, componentName, ignoreComponentNames = []) {
+export function findChildren(context, componentName, ignoreComponentNames = []) {
     if (!Array.isArray(ignoreComponentNames)) {
         ignoreComponentNames = [ignoreComponentNames];
     }
@@ -15,7 +15,7 @@ export function findChildren (context, componentName, ignoreComponentNames = [])
 }
 
 // 寻找父节点
-export function findParents (context, componentName) {
+export function findParents(context, componentName) {
     let parents = [];
     const parent = context.$parent;
     if (parent) {
@@ -27,7 +27,7 @@ export function findParents (context, componentName) {
 }
 
 // 寻找兄弟节点
-export function findBrothers (context, componentName, exceptSelf = true) {
+export function findBrothers(context, componentName, exceptSelf = true) {
     let res = context.$parent.$children.filter(item => {
         return item.$options.name === componentName;
     });
