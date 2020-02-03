@@ -1,18 +1,18 @@
 <template>
   <div
           class="lunaInput"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost},{disabled: disabled}]"
+          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost},{disabled: disabled}, {lightInput: theme === 'light', darkInput: theme === 'dark'}]"
           :style="[inputWidth, inputRadius, inputHeight, inputBorder, inputBackground, boxShadowStyle]"
           @mouseenter="hoverEnter"
           @mouseleave="hoverOut"
           @focusin="focusEnter"
           @focusout="focusLeave"
   >
-      <i v-if="pre" :class="[icon,{spin: spin}]" class="pre" @click="handelIcon"></i>
+    <i v-if="pre" :class="[icon,{spin: spin}]" class="pre" @click="handelIcon"></i>
     <slot name="pre"></slot>
     <input
             :value="textValue"
-            :style="[textColor, inputFontSize]"
+            :style="[textColor, inputFontSize, inputWidthCount]"
             :type="type"
             :maxlength="maxlength"
             :placeholder="placeholder"
@@ -55,6 +55,10 @@
       corner: {
         type: String,
         default: "large"
+      },
+      theme: {
+        type: String,
+        default: 'light'
       },
       readonly: {
         type: Boolean,
@@ -140,12 +144,33 @@
       inputWidth() {
         if (typeof this.width !== "string") {
           return {
-            width: this.width + "px"
+            width: this.width + 'px'
           };
         } else {
           return {
             width: this.width
           };
+        }
+      },
+      inputWidthCount() {
+        if(this.showWordLimit) {
+          if(this.suffix && this.pre){
+            return {
+              width: 'calc(100% - 62px)'
+            }
+          } else if(this.suffix || this.pre){
+            return {
+              width: 'calc(100% - 40px)'
+            }
+          } else {
+            return {
+              width: 'calc(100% - 32px)'
+            }
+          }
+        } else {
+          return {
+            width: '100%'
+          }
         }
       },
       inputRadius() {
@@ -160,11 +185,11 @@
       inputHeight() {
         if (typeof this.height !== 'string') {
           return {
-            height: this.height - 2 + "px"
+            height: this.height + "px"
           };
         } else {
           return {
-            height: 'calc(' + this.height + '- 2px)'
+            height: this.height
           }
         }
       },

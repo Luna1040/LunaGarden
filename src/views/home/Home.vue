@@ -175,7 +175,7 @@
         <button class="errorButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
       </div>
     </Modal>
-    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.home.alert.create')" type="primary">
+    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.home.alert.create')" type="primary" theme="dark">
 
     </Modal>
   </div>

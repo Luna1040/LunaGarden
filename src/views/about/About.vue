@@ -7,8 +7,8 @@
             is-viper="true"
             user-language="English"
     ></Header>
-<!--    <div class="about">-->
-      <!-- <h1>{{ $t('lang.aboutUs.title') }}</h1>
+    <div class="about">
+      <h1>{{ $t('lang.aboutUs.title') }}</h1>
       <p>{{ $t('lang.aboutUs.desc') }}</p>
       <p>{{ $t('lang.aboutUs.desc2') }}</p>
       <p>{{ $t('lang.aboutUs.desc3') }}</p>
@@ -79,13 +79,24 @@
           <figcaption>{{ $t('lang.aboutUs.organ5') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.organDesc5') }}</figcaption>
         </figure>
-      </div> -->
-<!--      <Table :data="tableData" :columns="columns" @on-row-click="test" border :loading="loading" headerFixed :shadow="true" :width="100" theme="dark"></Table>-->
-<!--      <Page :limit="page" @on-click="test" elevator counter></Page>-->
-      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" @on-change="text" corner="large"></Select>
-      <p>{{selectValue}}</p>
+      </div>
+      <Table :data="tableData" :columns="columns" border :loading="loading" headerFixed :shadow="true" :width="100" :theme="theme"></Table>
+      <Page :limit="page" elevator counter :theme="theme"></Page>
+      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>
+    <Input :theme="theme"></Input>
+    <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
+      <p>TEST</p>
+    </Modal>
+    <Card :theme="theme" :width="200" :height="200" title="Luna Card">
+      <p>TEST LUNA CARD</p>
+    </Card>
+      <Container :theme="theme">
+        <p>Luna Container</p>
+      </Container>
+    <Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
+    <Button @click="cgTheme" :theme="theme">切换模式</Button>
     </div>
-<!--  </div>-->
+  </div>
 </template>
 <script>
   import Header from "../../components/activeHeader";
@@ -95,6 +106,8 @@
     data() {
       return {
         loading: false,
+        dark: false,
+        theme: 'light',
         page: 22,
         selectValue: '',
         columns: [
@@ -208,11 +221,12 @@
     created() {
     },
     methods: {
-      test(value) {
-        console.log(value);
-      },
-      text(value) {
-        // console.log(value)
+      cgTheme() {
+        if(this.theme === 'light') {
+          this.theme = 'dark'
+        } else {
+          this.theme = 'light'
+        }
       }
     },
     components: {

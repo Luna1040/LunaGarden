@@ -2,36 +2,43 @@
   <div
     class="lunaPage"
     :style="[styles]"
-    :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}"
+    :class="[{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {lightPage: theme === 'light', darkPage: theme === 'dark'}]"
   >
     <span v-if="counter" class="pageCounter">共{{limit}}条</span>
     <slot name="pre"></slot>
-    <button
+    <Button
       class="lunaPageCell pagination"
       @click="prev"
       :disabled="prevDisable"
-      :style="[cellStyles]"
-      :class="[{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]"
+      :width="24"
+      :height="24"
+      corner="round"
+      :theme="theme"
     >
       <i class="iconfont icon-fanhui"></i>
-    </button>
-    <button
+    </Button>
+    <Button
       class="lunaPageCell"
       v-for="i in limitCount"
       :key="i"
-      :style="[cellStyles]"
-      :class="[{pageCellActive:i === choiceIndex},{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]"
+      :width="24"
+      :height="24"
+      corner="round"
+      :theme="theme"
       @click="handelClick(i)"
-    >{{i}}</button>
-    <button
+      :class="[{pageCellActive:i === choiceIndex}]"
+    >{{i}}</Button>
+    <Button
       class="lunaPageCell pagination"
       @click="next"
       :disabled="nextDisable"
-      :style="[cellStyles]"
-      :class="[{squareCorner: cellCorner === 'square', smallCorner: cellCorner === 'small', filletCorner: cellCorner === 'fillet', largeCorner: cellCorner === 'large', fullCorner: cellCorner === 'full', roundCorner: cellCorner === 'round'}]"
+      :width="24"
+      :height="24"
+      corner="round"
+      :theme="theme"
     >
       <i class="iconfont icon-youjiantou"></i>
-    </button>
+    </Button>
     <div class="pageSizer">
       <!--            <Select></Select>-->
     </div>
@@ -44,6 +51,7 @@
         :height="24"
         border-color="#cfcfcf"
         font-size="12px"
+        :theme="theme"
       ></Input>
       <span>页</span>
     </div>
@@ -65,7 +73,11 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: '#F5F5F5'
+      default: 'none'
+    },
+    theme: {
+      type: String,
+      default: 'light'
     },
     cellWidth: {
       type: [Number, String],

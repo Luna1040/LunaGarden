@@ -2,7 +2,7 @@
   <div
           class="lunaSelect"
           :style="[selectStyles]"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {disabled: disabled},{lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
+          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'},{lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
           @focusin='handelClick'
           @focusout="hideList()"
           @keydown.esc="handleKeydown"
@@ -22,7 +22,10 @@
             suffix
             :spin="showList"
             v-model="initValue"
+            @focusin='handelClick'
             @focusout="hideList()"
+            :background="background"
+            :theme="theme"
     ></Input>
     <div
             class="optionScrollBarHidden"
@@ -33,6 +36,7 @@
                 v-show="showList"
                 class="optionGroup"
                 :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
+                :style="[optionStyles]"
         >
           <slot>
             <Option
@@ -105,7 +109,7 @@
       },
       background: {
         type: String,
-        default: 'none'
+        default: '#FFFFFF'
       },
       optionBackground: {
         type: String,
@@ -150,9 +154,9 @@
         }
 
         if (typeof this.height !== 'string') {
-          styleList.paddingTop = this.height + 'px'
+          styleList.paddingTop = this.height + 3 + 'px'
         } else {
-          styleList.height = this.height
+          styleList.paddingTop = 'calc(' + this.height + '+ 3px)'
         }
 
         return styleList
@@ -174,7 +178,12 @@
         return styleList
       },
       optionStyles() {
-
+        const styleList = {};
+        if(this.optionBackground !== 'none') {
+          return {
+            backgroundColor: this.optionBackground + '!important'
+          }
+        }
       },
     },
     watch: {

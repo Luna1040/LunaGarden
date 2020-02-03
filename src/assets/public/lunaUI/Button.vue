@@ -2,7 +2,7 @@
   <button
     class="lunaButton"
     :style="[styles, buttonWidth, buttonHeight, buttonFontSize, buttonRadius, buttonShadow, buttonBackground, buttonColor, buttonBorder]"
-    :class="[className, {errorButton: theme === 'error', successButton: theme === 'success',warningButton: theme === 'warning',primaryButton: theme === 'primary',alertButton: theme === 'alert', '': theme === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': type === 'Normal', 'textButton': type === 'text', 'ghostButton': type === 'ghost'}]"
+    :class="[className, {errorButton: theme === 'error', successButton: theme === 'success',warningButton: theme === 'warning',primaryButton: theme === 'primary',alertButton: theme === 'alert', lightButton: theme === 'light', darkButton: theme === 'dark'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': type === 'normal', 'textButton': type === 'text', 'ghostButton': type === 'ghost'}]"
     :disabled="disabled"
     @click="click()"
     v-ripple
@@ -29,11 +29,11 @@ export default {
     },
     theme: {
       type: String,
-      default: "Normal"
+      default: "light"
     },
     type: {
       type: String,
-      default: 'Normal'
+      default: 'normal'
     },
     className: {
       type: String,

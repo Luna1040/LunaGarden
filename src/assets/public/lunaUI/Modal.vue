@@ -1,20 +1,20 @@
 <template>
-  <div class="lunaModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
+  <transition name="modalAnimation">
+  <div class="lunaModal" v-show="showModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
     <transition name="maskAnimation">
       <div
         class="modalMask"
         @click="handleMask()"
         v-show="showModal"
         v-if="showMask"
-        :class="{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}"
+        :class="[{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}]"
       ></div>
     </transition>
-    <transition name="modalAnimation">
+
       <div
         class="modalContainer"
         :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]"
-        :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}]"
-        v-show="showModal"
+        :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightModal: theme === 'light', darkModal: theme === 'dark'}]"
       >
         <div class="modalHeader" v-if="showHead">
           <slot name="header">
@@ -32,8 +32,9 @@
           </slot>
         </div>
       </div>
-    </transition>
+
   </div>
+  </transition>
 </template>
 
 <script>
@@ -67,6 +68,10 @@ export default {
     className: {
       type: String,
       default: ''
+    },
+    theme: {
+      type: String,
+      default: 'light'
     },
     type: {
       type: String,
@@ -135,7 +140,7 @@ export default {
     },
     background: {
       type: String,
-      default: '#FFFFFF'
+      default: 'none'
     }
   },
   data() {
@@ -239,8 +244,10 @@ export default {
       }
     },
     modalBackground() {
-      return {
-        backgroundColor: this.background + '!important'
+      if(this.background !== 'none') {
+        return {
+          backgroundColor: this.background + '!important'
+        }
       }
     },
     titleColor() {

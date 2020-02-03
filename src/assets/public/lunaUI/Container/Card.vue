@@ -2,7 +2,7 @@
   <div
     class="lunaCard"
     :style="[cardPadding, cardWidth, cardHeight, cardMaxHeight, cardMaxWidth, cardBackground, cardBorder, cardRadius, cardShadow, cardImage, flexStyle]"
-    :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {'': theme === 'light', 'darkCard': theme === 'dark'},{darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'},{flex: flex, block: !flex}]"
+    :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {lightCard: theme === 'light', darkCard: theme === 'dark'},{darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'},{flex: flex, block: !flex}]"
   >
     <div class="lunaCardTitle" v-if="showHead">
       <slot name="header">

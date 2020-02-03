@@ -47,7 +47,7 @@ export default {
       default: 100
     },
     maxWidth: {
-      type: Number,
+      type: [Number, String],
       default: 100
     },
     height: {
@@ -56,7 +56,7 @@ export default {
     },
     padding: {
       type: Number,
-      default: 0
+      default: 16
     },
     maxHeight: {
       type: [Number, String],
@@ -120,48 +120,36 @@ export default {
       }
     },
     containerWidth() {
-      if (this.border !== '0') {
-        if (this.width <= 100) {
+      if(typeof this.width !== 'string') {
+        if(this.width <= 100) {
           return {
-            width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
+            width: this.width + '%'
           }
         } else {
           return {
-            width: this.width - this.padding * 2 - 2 + 'px'
+            width: this.width + 'px'
           }
         }
       } else {
-        if (this.width <= 100) {
-          return {
-            width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px)'
-          }
-        } else {
-          return {
-            width: this.width - this.padding * 2 + 'px'
-          }
+        return {
+          width: this.width
         }
       }
     },
     containerMaxWidth() {
-      if (this.border !== '0') {
-        if (this.maxWidth <= 100) {
+      if(typeof this.maxWidth !== 'string') {
+        if(this.maxWidth <= 100) {
           return {
-            maxWidth: 'calc(' + this.maxWidth + '% - ' + this.padding * 2 + 'px - 2px)'
+            maxWidth: this.maxWidth + '%'
           }
         } else {
           return {
-            maxWidth: this.maxWidth - this.padding * 2 - 2 + 'px'
+            maxWidth: this.maxWidth + 'px'
           }
         }
       } else {
-        if (this.maxWidth <= 100) {
-          return {
-            maxWidth: 'calc(' + this.maxWidth + '% - ' + this.padding * 2 + 'px)'
-          }
-        } else {
-          return {
-            maxWidth: this.maxWidth - this.padding * 2 + 'px'
-          }
+        return {
+          maxWidth: this.maxWidth
         }
       }
     },
