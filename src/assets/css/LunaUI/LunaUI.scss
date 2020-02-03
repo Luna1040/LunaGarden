@@ -298,6 +298,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaButton.primaryButton:hover {
     background-color: $primaryHover;
     color: $primary;
+    i {
+        color: $primary;
+    }
 }
 
 .lunaButton.errorButton {
@@ -719,7 +722,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaSelect {
     display: inline-block;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     padding-bottom: 3px;
     .lunaInput {
@@ -732,31 +735,31 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
             cursor: pointer !important;
         }
     }
-    .selectBackground {
-        background-color: #EEEEEE;
-    }
-    .optionHidden {
+    .optionScrollBarHidden {
+        position: absolute;
+        width: 100%;
         overflow: hidden;
-    }
-    .optionGroup {
-        max-height: 150px;
-        overflow: auto;
-        transition: all 0.5s;
-        background-color: #EEE;
-        .lunaOption {
-            border-bottom: 1px solid $lightGray;
-            padding: 6px 8px;
-            transition: all 0.5s;
-        }
-        .lunaOption:last-of-type {
-            border-bottom: 0;
-        }
-        .lunaOption:hover {
-            background-color: $primaryHover;
-        }
-        .lunaOption.optionActive {
-            background-color: $primary;
-            color: $white;
+        .optionGroup {
+            width: 100%;
+            position: relative;
+            max-height: 150px;
+            overflow: auto;
+            background-color: #EEE;
+            .lunaOption {
+                border-bottom: 1px solid $lightGray;
+                padding: 6px 8px;
+                transition: all 0.5s;
+            }
+            .lunaOption:last-of-type {
+                border-bottom: 0;
+            }
+            .lunaOption:hover {
+                background-color: $primaryHover;
+            }
+            .lunaOption.optionActive {
+                background-color: $primary;
+                color: $white;
+            }
         }
     }
 }

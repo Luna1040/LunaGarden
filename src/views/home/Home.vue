@@ -18,7 +18,7 @@
               v-model="todoText"
               border-color="rgba(0,0,0,0)"
               ghost
-              width="calc(100% - 90px)"
+              width="100%"
               font-size="32"
               @on-keyup="keyup($event)"
               @on-keydown="keydown($event)"

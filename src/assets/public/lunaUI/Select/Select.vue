@@ -2,9 +2,9 @@
   <div
           class="lunaSelect"
           :style="[selectStyles]"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {disabled: disabled}, {selectBackground: showList}]"
-          @click="handelClick"
-          @focusout="showList = false"
+          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {disabled: disabled},{lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
+          @focusin='handelClick'
+          @focusout="hideList()"
           @keydown.esc="handleKeydown"
           @keydown.enter="handleKeydown"
           @keydown.up.prevent="handleKeydown"
@@ -19,15 +19,15 @@
             :height="inputStyles.height"
             :corner="corner"
             v-model="initValue"
-            @focusout="showList = false"
+            @focusout="hideList()"
     ></Input>
-    <transition name="slideDown">
-      <div
-              class="optionScrollBarHidden"
-              v-show="showList"
-              :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
-      >
+    <div
+            class="optionScrollBarHidden"
+            :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
+    >
+      <transition name="slideDown">
         <div
+                v-show="showList"
                 class="optionGroup"
                 :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
         >
@@ -42,8 +42,9 @@
             ></Option>
           </slot>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
+
   </div>
 </template>
 
@@ -94,6 +95,38 @@
       corner: {
         type: String,
         default: "large"
+      },
+      radius: {
+        type: Number,
+        default: -1
+      },
+      background: {
+        type: String,
+        default: 'none'
+      },
+      optionBackground: {
+        type: String,
+        default: 'none'
+      },
+      color: {
+        type: String,
+        default: 'none'
+      },
+      optionColor: {
+        type: String,
+        default: 'none'
+      },
+      shadow: {
+        type: Boolean,
+        default: true
+      },
+      shadowStyle: {
+        type: String,
+        default: 'dark'
+      },
+      theme: {
+        type: String,
+        default: 'light'
       },
     },
     data() {
@@ -152,7 +185,8 @@
           });
           this.filterData = newData;
         } else {
-          this.filterData = this.selectData
+          this.filterData = this.selectData;
+          this.choiceIndex = -1
         }
       },
     },
@@ -174,11 +208,15 @@
     methods: {
       handelClick() {
         this.showList = !this.showList;
+        if(this.showList === false) {
+          this.$emit('input', '');
+          this.initValue = ''
+        }
         this.$emit('on-click')
       },
       optionSelect(obj) {
         this.showList = false;
-        this.choiceIndex = 0
+        this.choiceIndex = 0;
         this.$emit('input', obj.value);
         this.initValue = obj.label;
         if (!this.returnLabel) {
@@ -202,7 +240,7 @@
           // Esc slide-up
           if (key === 'Escape') {
             e.stopPropagation();
-            this.showList = false
+            this.hideList()
           }
           // next
           if (key === 'ArrowUp') {
@@ -217,8 +255,8 @@
             let choiceItem = {
               key: this.filterData[this.choiceIndex][this.keyValue],
               label: this.filterData[this.choiceIndex][this.keyLabel],
-            }
-            this.optionSelect(choiceItem)
+            };
+            this.optionSelect(choiceItem);
             this.choiceIndex = 0
           }
         }
@@ -242,19 +280,25 @@
           }
         }
       },
+      hideList() {
+        this.showList = false
+      }
     },
   }
 </script>
 
 <style scoped lang="scss">
   .slideDown-enter-active {
-    transition: all 0.3s cubic-bezier(0, 0, 0, 1) 0s;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.8, 1) 0s;
   }
   .slideDown-leave-active {
     transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   }
   .slideDown-enter,
   .slideDown-leave-to {
-    transform: translateY(-200%);
+    transform: translateY(-100%);
+  }
+  .offMiddle{
+    transform: scaleY(0);
   }
 </style>
