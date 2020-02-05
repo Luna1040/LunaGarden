@@ -8,6 +8,8 @@
             user-language="English"
     ></Header>
     <div class="about">
+      <Form ref="form" :form="form" :theme="theme"></Form>
+      <Button @click="submit" theme="primary">提交</Button>
       <h1>{{ $t('lang.aboutUs.title') }}</h1>
       <p>{{ $t('lang.aboutUs.desc') }}</p>
       <p>{{ $t('lang.aboutUs.desc2') }}</p>
@@ -29,6 +31,11 @@
           <img src="userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>
+        </figure>
+        <figure>
+          <img src="userIcon.jpg" alt />
+          <figcaption>{{ $t('lang.aboutUs.people4') }}</figcaption>
+          <figcaption>{{ $t('lang.aboutUs.UI') }}</figcaption>
         </figure>
         <figure>
           <img src="userIcon.jpg" alt />
@@ -83,18 +90,18 @@
       <Table :data="tableData" :columns="columns" border :loading="loading" headerFixed :shadow="true" :width="100" :theme="theme"></Table>
       <Page :limit="page" elevator counter :theme="theme"></Page>
       <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>
-    <Input :theme="theme"></Input>
-    <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
-      <p>TEST</p>
-    </Modal>
-    <Card :theme="theme" :width="200" :height="200" title="Luna Card">
-      <p>TEST LUNA CARD</p>
-    </Card>
+      <Input v-model="selectValue" :theme="theme"></Input>
+      <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
+        <p>TEST</p>
+      </Modal>
+      <Card :theme="theme" :width="200" :height="200" title="Luna Card">
+        <p>TEST LUNA CARD</p>
+      </Card>
       <Container :theme="theme">
         <p>Luna Container</p>
       </Container>
-    <Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
-    <Button @click="cgTheme" :theme="theme">切换模式</Button>
+      <Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
+      <Button @click="cgTheme" :theme="theme">切换模式</Button>
     </div>
   </div>
 </template>
@@ -105,7 +112,7 @@
     name: "app",
     data() {
       return {
-        loading: false,
+        loading: true,
         dark: false,
         theme: 'light',
         page: 22,
@@ -215,10 +222,120 @@
             name: 'test2',
             id: '7772',
           },
-        ]
+        ],
+        form: [
+          {
+            title: 'Username：',
+            validate: 'userName',
+            required: true,
+            emptyWarning: '用户名不能为空',
+            validateMethods: {
+              length: {
+                on: ['blur', 'change'],
+                max: 20,
+                maxErrText: '用户名不能多于20位字符！',
+                min: 5,
+                minErrText: '用户名不能少于5位字符！'
+              },
+              noChara: {
+                on: ['blur', 'change'], errText: '不允许输入特殊符号！'
+              },
+              noChinese: {
+                on: ['blur', 'change'], errText: '不允许输入中文！'
+              },
+              noEnglish: {
+                on: ['blur', 'change'], errText: '不允许输入英文！'
+              },
+              noEnglishChara: {
+                on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
+              },
+              noChineseChara: {
+                on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
+              },
+              noNumber: {
+                on: ['blur', 'change'],
+                errText: '不允许输入数字！'
+              },
+            },
+            render: (h) => {
+              return h('Input', {
+                props: {
+                  value: this.createData.userName,
+                  theme: this.theme,
+                },
+                on: {
+                  input: (event) => {
+                    this.createData.userName = event
+                  }
+                }
+              })
+            },
+            errStatus: false,
+            errText: ''
+          },
+          {
+            title: 'Password：',
+            validate: 'password',
+            required: true,
+            emptyWarning: '密码不能为空',
+            description: '输入密码',
+            validateMethods: [
+              {
+                type: 'length',
+                max: 20, maxErrText: '用户名不能多于20位字符！', min: 5, minErrText: '用户名不能少于5位字符！'
+              },
+              {
+                type: 'noChara',
+                on: ['blur', 'change'], errText: '不允许输入特殊符号！'
+              },
+              {
+                type: 'noChinese',
+                on: ['blur', 'change'], errText: '不允许输入中文！'
+              },
+              {
+                type: 'noEnglish',
+                on: ['blur', 'change'], errText: '不允许输入英文！'
+              },
+              {
+                type: 'noEnglishChara',
+                on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
+              },
+              {
+                type: 'noChineseChara',
+                on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
+              },
+              {
+                type: 'noNumber',
+                on: ['blur', 'change'],
+                errText: '不允许输入数字！'
+              },
+            ],
+            render: (h) => {
+              return h('Input', {
+                props: {
+                  value: this.createData.password,
+                  theme: this.theme,
+                  type: 'password'
+                },
+                on: {
+                  input: (event) => {
+                    this.createData.password = event
+                  }
+                }
+              })
+            },
+            errStatus: false,
+            errText: ''
+          }
+        ],
+        createData: {
+          userName: '',
+          password: ''
+        }
       };
     },
     created() {
+
     },
     methods: {
       cgTheme() {
@@ -227,6 +344,9 @@
         } else {
           this.theme = 'light'
         }
+      },
+      submit() {
+        this.$refs.form.examine(this.createData)
       }
     },
     components: {

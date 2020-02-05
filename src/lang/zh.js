@@ -64,6 +64,8 @@ export const lang = {
         people3: "老王",
         developer: "开发者",
         mystery: "神秘人",
+        people4: "素言",
+        UI: 'UI 设计师',
         title3: "以下，为致谢名单(Luna Garden与列举的公司或组织部门无关)",
         organ: "Vue",
         organDesc: "Luna Garden构建使用的基础框架",

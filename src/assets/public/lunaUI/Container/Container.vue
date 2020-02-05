@@ -54,13 +54,13 @@ export default {
       type: [Number, String],
       default: 100
     },
-    padding: {
-      type: Number,
-      default: 16
-    },
     maxHeight: {
       type: [Number, String],
       default: 'auto',
+    },
+    padding: {
+      type: Number,
+      default: 16
     },
     scrollable: {
       type: Boolean,

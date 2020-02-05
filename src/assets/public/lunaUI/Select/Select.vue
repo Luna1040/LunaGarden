@@ -2,7 +2,7 @@
   <div
           class="lunaSelect"
           :style="[selectStyles]"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'},{lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
+          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
           @focusin='handelClick'
           @focusout="hideList()"
           @keydown.esc="handleKeydown"

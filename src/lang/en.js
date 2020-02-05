@@ -64,6 +64,8 @@ export const lang = {
         people3: "Naht",
         developer: "Developer",
         mystery: "Mystery Man",
+        people4: "Fo Xi",
+        UI: 'UI Designer',
         title3: "list of thanks(no relation with the companies and the organazation under)",
         organ: "Vue",
         organDesc: "Luna Garden's base framework",

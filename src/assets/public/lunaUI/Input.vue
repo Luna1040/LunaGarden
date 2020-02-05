@@ -133,6 +133,10 @@
       spin: {
         type: Boolean,
         default: false
+      },
+      validate: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {

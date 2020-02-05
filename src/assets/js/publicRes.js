@@ -12,7 +12,7 @@ const getData = function (branchUrl, info) {
     headers: {
       'mac': info.mac
     }
-  }
+  };
   return axios.post(url + branchUrl, info, headData).then((msg) => {
     if (msg.status === 200) {
       if (msg.data.code) {
