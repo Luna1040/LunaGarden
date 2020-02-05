@@ -56,247 +56,248 @@
 </template>
 
 <script>
-  export default {
-    name: "Select",
-    props: {
-      value: {
-        type: [String, Array, Number],
-        default: ''
-      },
-      selectData: {
-        type: Array,
-        default: []
-      },
-      keyValue: {
-        type: String,
-        default: ""
-      },
-      keyLabel: {
-        type: String,
-        default: ''
-      },
-      filterable: {
-        type: Boolean,
-        default: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      returnLabel: {
-        type: Boolean,
-        default: false
-      },
-      width: {
-        type: [String, Number],
-        default: 180
-      },
-      height: {
-        type: [String, Number],
-        default: 32
-      },
-      className: {
-        type: String,
-        default: ""
-      },
-      corner: {
-        type: String,
-        default: "large"
-      },
-      radius: {
-        type: Number,
-        default: -1
-      },
-      background: {
-        type: String,
-        default: '#FFFFFF'
-      },
-      optionBackground: {
-        type: String,
-        default: 'none'
-      },
-      color: {
-        type: String,
-        default: 'none'
-      },
-      optionColor: {
-        type: String,
-        default: 'none'
-      },
-      shadow: {
-        type: Boolean,
-        default: true
-      },
-      shadowStyle: {
-        type: String,
-        default: 'dark'
-      },
-      theme: {
-        type: String,
-        default: 'light'
-      },
+export default {
+  name: 'Select',
+  props: {
+    value: {
+      type: [String, Array, Number],
+      default: ''
     },
-    data() {
-      return {
-        showList: false,
-        initValue: '',
-        filterData: [],
-        choiceIndex: -1
-      }
+    selectData: {
+      type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: []
     },
-    computed: {
-      selectStyles() {
-        const styleList = {};
-        if (typeof this.width !== 'string') {
-          styleList.width = this.width + 'px'
-        } else {
-          styleList.width = this.width
-        }
-
-        if (typeof this.height !== 'string') {
-          styleList.paddingTop = this.height + 3 + 'px'
-        } else {
-          styleList.paddingTop = 'calc(' + this.height + '+ 3px)'
-        }
-
-        return styleList
-      },
-      inputStyles() {
-        const styleList = {};
-        if (typeof this.width !== 'string') {
-          styleList.width = this.width + 'px'
-        } else {
-          styleList.width = this.width
-        }
-
-        if (typeof this.height !== 'string') {
-          styleList.paddingTop = this.height + 'px'
-        } else {
-          styleList.height = this.height
-        }
-
-        return styleList
-      },
-      optionStyles() {
-        const styleList = {};
-        if(this.optionBackground !== 'none') {
-          return {
-            backgroundColor: this.optionBackground + '!important'
-          }
-        }
-      },
+    keyValue: {
+      type: String,
+      default: ''
     },
-    watch: {
-      initValue() {
-        let newData = [];
-        if (this.initValue !== '') {
-          this.selectData.forEach(item => {
-            if (item[this.keyLabel].indexOf(this.initValue) !== -1) {
-              newData.push(item)
-            }
-          });
-          this.filterData = newData;
-        } else {
-          this.filterData = this.selectData;
-          this.choiceIndex = -1
-        }
-      },
+    keyLabel: {
+      type: String,
+      default: ''
     },
-    created() {
-      if (this.value !== '') {
-        for (let i = 0; i < this.selectData.length; i++) {
-          if (this.selectData[i][this.keyValue] === this.value) {
-            this.initValue = this.selectData[i][this.keyLabel];
-            this.filterData.push(this.selectData[i]);
-            this.choiceIndex = 0
-            break;
-          }
-        }
+    filterable: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    returnLabel: {
+      type: Boolean,
+      default: false
+    },
+    width: {
+      type: [String, Number],
+      default: 180
+    },
+    height: {
+      type: [String, Number],
+      default: 32
+    },
+    className: {
+      type: String,
+      default: ''
+    },
+    corner: {
+      type: String,
+      default: 'large'
+    },
+    radius: {
+      type: Number,
+      default: -1
+    },
+    background: {
+      type: String,
+      default: '#FFFFFF'
+    },
+    optionBackground: {
+      type: String,
+      default: 'none'
+    },
+    color: {
+      type: String,
+      default: 'none'
+    },
+    optionColor: {
+      type: String,
+      default: 'none'
+    },
+    shadow: {
+      type: Boolean,
+      default: true
+    },
+    shadowStyle: {
+      type: String,
+      default: 'dark'
+    },
+    theme: {
+      type: String,
+      default: 'light'
+    }
+  },
+  data () {
+    return {
+      showList: false,
+      initValue: '',
+      filterData: [],
+      choiceIndex: -1
+    }
+  },
+  computed: {
+    selectStyles () {
+      const styleList = {}
+      if (typeof this.width !== 'string') {
+        styleList.width = this.width + 'px'
       } else {
-        this.initValue = this.value;
+        styleList.width = this.width
+      }
+
+      if (typeof this.height !== 'string') {
+        styleList.paddingTop = this.height + 3 + 'px'
+      } else {
+        styleList.paddingTop = 'calc(' + this.height + '+ 3px)'
+      }
+
+      return styleList
+    },
+    inputStyles () {
+      const styleList = {}
+      if (typeof this.width !== 'string') {
+        styleList.width = this.width + 'px'
+      } else {
+        styleList.width = this.width
+      }
+
+      if (typeof this.height !== 'string') {
+        styleList.paddingTop = this.height + 'px'
+      } else {
+        styleList.height = this.height
+      }
+
+      return styleList
+    },
+    optionStyles () {
+      const styleList = {}
+      if (this.optionBackground !== 'none') {
+        return {
+          backgroundColor: this.optionBackground + '!important'
+        }
+      }
+    }
+  },
+  watch: {
+    initValue () {
+      let newData = []
+      if (this.initValue !== '') {
+        this.selectData.forEach(item => {
+          if (item[this.keyLabel].indexOf(this.initValue) !== -1) {
+            newData.push(item)
+          }
+        })
+        this.filterData = newData
+      } else {
         this.filterData = this.selectData
+        this.choiceIndex = -1
+      }
+    }
+  },
+  created () {
+    if (this.value !== '') {
+      for (let i = 0; i < this.selectData.length; i++) {
+        if (this.selectData[i][this.keyValue] === this.value) {
+          this.initValue = this.selectData[i][this.keyLabel]
+          this.filterData.push(this.selectData[i])
+          this.choiceIndex = 0
+          break
+        }
+      }
+    } else {
+      this.initValue = this.value
+      this.filterData = this.selectData
+    }
+  },
+  methods: {
+    handelClick () {
+      this.showList = !this.showList
+      if (this.showList === false) {
+        this.$emit('input', '')
+        this.initValue = ''
+      }
+      this.$emit('on-click')
+    },
+    optionSelect (obj) {
+      this.showList = false
+      this.choiceIndex = 0
+      this.$emit('input', obj.value)
+      this.initValue = obj.label
+      if (!this.returnLabel) {
+        this.$emit('on-change', obj.value)
+      } else {
+        this.$emit('on-change', obj)
       }
     },
-    methods: {
-      handelClick() {
-        this.showList = !this.showList;
-        if(this.showList === false) {
-          this.$emit('input', '');
-          this.initValue = ''
-        }
-        this.$emit('on-click')
-      },
-      optionSelect(obj) {
-        this.showList = false;
-        this.choiceIndex = 0;
-        this.$emit('input', obj.value);
-        this.initValue = obj.label;
-        if (!this.returnLabel) {
-          this.$emit('on-change', obj.value)
-        } else {
-          this.$emit('on-change', obj)
-        }
-      },
-      handleKeydown(e) {
-        const key = e.key || e.code;
-        if (key === 'Backspace') {
-          return;
+    handleKeydown (e) {
+      const key = e.key || e.code
+      if (key === 'Backspace') {
+        return
+      }
+
+      if (this.showList) {
+        e.preventDefault()
+        if (key === 'Tab') {
+          e.stopPropagation()
         }
 
-        if (this.showList) {
-          e.preventDefault();
-          if (key === 'Tab') {
-            e.stopPropagation();
+        // Esc slide-up
+        if (key === 'Escape') {
+          e.stopPropagation()
+          this.hideList()
+        }
+        // next
+        if (key === 'ArrowUp') {
+          this.navigateOptions(-1)
+        }
+        // prev
+        if (key === 'ArrowDown') {
+          this.navigateOptions(1)
+        }
+        // enter
+        if (key === 'Enter') {
+          let choiceItem = {
+            key: this.filterData[this.choiceIndex][this.keyValue],
+            label: this.filterData[this.choiceIndex][this.keyLabel]
           }
-
-          // Esc slide-up
-          if (key === 'Escape') {
-            e.stopPropagation();
-            this.hideList()
-          }
-          // next
-          if (key === 'ArrowUp') {
-            this.navigateOptions(-1);
-          }
-          // prev
-          if (key === 'ArrowDown') {
-            this.navigateOptions(1);
-          }
-          // enter
-          if (key === 'Enter') {
-            let choiceItem = {
-              key: this.filterData[this.choiceIndex][this.keyValue],
-              label: this.filterData[this.choiceIndex][this.keyLabel],
-            };
-            this.optionSelect(choiceItem);
+          this.optionSelect(choiceItem)
+          this.choiceIndex = 0
+        }
+      }
+    },
+    navigateOptions (direction) {
+      if (this.filterData.length !== 0) {
+        if (this.choiceIndex === -1) {
+          if (direction === 1) {
             this.choiceIndex = 0
-          }
-        }
-      },
-      navigateOptions(direction) {
-        if(this.filterData.length !== 0) {
-          if(this.choiceIndex === -1) {
-            if(direction === 1) {
-              this.choiceIndex = 0
-            } else {
-              this.choiceIndex = this.filterData.length - 1
-            }
           } else {
-            if(this.choiceIndex === 0 && direction === -1) {
-              this.choiceIndex = this.filterData.length - 1
-            } else if(this.choiceIndex === this.filterData.length - 1 && direction === 1) {
-              this.choiceIndex = 0
-            } else {
-              this.choiceIndex = this.choiceIndex + direction
-            }
+            this.choiceIndex = this.filterData.length - 1
+          }
+        } else {
+          if (this.choiceIndex === 0 && direction === -1) {
+            this.choiceIndex = this.filterData.length - 1
+          } else if (this.choiceIndex === this.filterData.length - 1 && direction === 1) {
+            this.choiceIndex = 0
+          } else {
+            this.choiceIndex = this.choiceIndex + direction
           }
         }
-      },
-      hideList() {
-        this.showList = false
       }
     },
+    hideList () {
+      this.showList = false
+    }
   }
+}
 </script>
 
 <style scoped lang="scss">

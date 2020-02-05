@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: "Page",
+  name: 'Page',
   props: {
     limit: {
       type: Number,
@@ -93,7 +93,7 @@ export default {
     },
     corner: {
       type: String,
-      default: "large"
+      default: 'large'
     },
     cellCorner: {
       type: String,
@@ -101,30 +101,30 @@ export default {
     },
     elevator: {
       type: Boolean,
-      default: false,
+      default: false
     },
     counter: {
       type: Boolean,
-      default: false,
+      default: false
     }
   },
-  data() {
+  data () {
     return {
       choiceIndex: -1,
       prevDisable: false,
-      nextDisable: false,
+      nextDisable: false
     }
   },
   computed: {
-    limitCount() {
-      const count = [];
+    limitCount () {
+      const count = []
       for (let i = 0; i < this.limit; i++) {
         count.push(i + 1)
       }
       return count
     },
-    styles() {
-      const styleList = {};
+    styles () {
+      const styleList = {}
       if (typeof this.width !== 'string') {
         if (this.width <= 100) {
           styleList.width = 'calc(' + this.width + '% - ' + '32px)'
@@ -140,8 +140,8 @@ export default {
 
       return styleList
     },
-    cellStyles() {
-      const styleList = [];
+    cellStyles () {
+      const styleList = []
       if (typeof this.cellWidth !== 'string') {
         styleList.width = this.width + 'px'
       } else {
@@ -158,33 +158,33 @@ export default {
     }
   },
   methods: {
-    handelClick(value) {
-      this.choiceIndex = value;
-      this.examineIndex();
+    handelClick (value) {
+      this.choiceIndex = value
+      this.examineIndex()
       this.$emit('on-click', value)
     },
-    prev() {
-      this.choiceIndex--;
+    prev () {
+      this.choiceIndex--
       this.handelClick(this.choiceIndex)
     },
-    next() {
-      this.choiceIndex++;
+    next () {
+      this.choiceIndex++
       this.handelClick(this.choiceIndex)
     },
-    examineIndex() {
+    examineIndex () {
       if (this.choiceIndex === 1) {
-        this.prevDisable = true;
+        this.prevDisable = true
         this.nextDisable = false
       } else if (this.choiceIndex === this.limit) {
-        this.nextDisable = true;
+        this.nextDisable = true
         this.prevDisable = false
       } else {
-        this.nextDisable = false;
+        this.nextDisable = false
         this.prevDisable = false
       }
     }
   },
-  mounted() {
+  mounted () {
     if (this.page !== 0) {
       this.choiceIndex = 1
       this.examineIndex()

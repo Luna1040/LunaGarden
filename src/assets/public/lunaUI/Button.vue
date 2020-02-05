@@ -17,7 +17,7 @@
 <script>
 
 export default {
-  name: "Button",
+  name: 'Button',
   props: {
     loading: {
       type: Boolean,
@@ -29,7 +29,7 @@ export default {
     },
     theme: {
       type: String,
-      default: "light"
+      default: 'light'
     },
     type: {
       type: String,
@@ -37,11 +37,11 @@ export default {
     },
     className: {
       type: String,
-      default: ""
+      default: ''
     },
     icon: {
       type: String,
-      default: ""
+      default: ''
     },
     pre: {
       type: Boolean,
@@ -51,11 +51,11 @@ export default {
       type: Boolean,
       default: false
     },
-    //自定义样式
+    // 自定义样式
     styles: {
       type: Object,
-      default() {
-        return {};
+      default () {
+        return {}
       }
     },
     disabled: {
@@ -64,7 +64,7 @@ export default {
     },
     corner: {
       type: String,
-      default: "large"
+      default: 'large'
     },
     shadow: {
       type: Boolean,
@@ -72,7 +72,7 @@ export default {
     },
     shadowStyle: {
       type: String,
-      default: "dark"
+      default: 'dark'
     },
     border: {
       type: String,
@@ -104,14 +104,14 @@ export default {
     }
   },
   computed: {
-    buttonBorder() {
+    buttonBorder () {
       return {
         border: this.border
       }
     },
-    buttonWidth() {
+    buttonWidth () {
       if (this.corner === 'round') {
-        if (typeof this.width === "string") {
+        if (typeof this.width === 'string') {
           return {
             minWidth: this.width,
             width: this.width
@@ -119,23 +119,23 @@ export default {
         } else {
           return {
             minWidth: this.width + 'px',
-            width: this.width + "px"
+            width: this.width + 'px'
           }
         }
       } else {
-        if (typeof this.width === "string") {
+        if (typeof this.width === 'string') {
           return {
             width: 'calc(' + this.width + ' + 30px)'
           }
         } else {
           return {
-            width: this.width + 30 + "px"
+            width: this.width + 30 + 'px'
           }
         }
       }
     },
-    buttonHeight() {
-      if (typeof this.height === "string") {
+    buttonHeight () {
+      if (typeof this.height === 'string') {
         return {
           height: this.height,
           lineHeight: this.height
@@ -147,7 +147,7 @@ export default {
         }
       }
     },
-    buttonFontSize() {
+    buttonFontSize () {
       if (typeof this.fontSize === 'string') {
         return {
           fontSize: this.fontSize
@@ -158,45 +158,49 @@ export default {
         }
       }
     },
-    buttonRadius() {
+    buttonRadius () {
       if (this.radius !== -1) {
         return {
-          borderRadius: this.radius + "px!important"
-        };
+          borderRadius: this.radius + 'px!important'
+        }
       } else {
-        return {};
+        return {}
       }
     },
-    buttonShadow() {
+    buttonShadow () {
       if (!this.shadow) {
         return {
-          boxShadow: "0 0 0 rgba(0, 0, 0, 0)!important"
-        };
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
+        }
       } else {
-        return {};
+        return {}
       }
     },
-    buttonBackground() {
+    buttonBackground () {
       if (this.background !== 'none') {
         return {
-          backgroundColor: this.background + "!important"
-        };
+          backgroundColor: this.background + '!important'
+        }
+      } else {
+        return {}
       }
     },
-    buttonColor() {
+    buttonColor () {
       if (this.color !== 'none') {
         return {
           color: this.color
         }
+      } else {
+        return {}
       }
     }
   },
   methods: {
-    click() {
+    click () {
       this.$emit('click')
     }
   }
-};
+}
 </script>
 
 <style scoped>

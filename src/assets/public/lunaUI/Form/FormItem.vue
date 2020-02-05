@@ -14,38 +14,38 @@
 </template>
 
 <script>
-    import Render from './formRender.js';
-    import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from "../js/validate";
+import Render from './formRender.js'
+import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../js/validate'
 
-    export default {
-        name: "FormItem",
-        components: { Render },
-        props: {
-            labelWidthCount: {
-                type: Object,
-                default: {}
-            },
-            itemData: {
-                type: Object,
-                default: {}
-            },
-            corner: {
-                type: String,
-                default: 'large'
-            },
-        },
-        data() {
-            return {
-                formItemData: {}
-            }
-        },
-        created() {
-            this.formItemData = this.itemData
-        },
-        methods: {
-
-        }
+export default {
+  name: 'FormItem',
+  components: { Render },
+  props: {
+    labelWidthCount: {
+      type: Object,
+      default: {}
+    },
+    itemData: {
+      type: Object,
+      default: {}
+    },
+    corner: {
+      type: String,
+      default: 'large'
     }
+  },
+  data () {
+    return {
+      formItemData: {}
+    }
+  },
+  created () {
+    this.formItemData = this.itemData
+  },
+  methods: {
+
+  }
+}
 </script>
 
 <style scoped>

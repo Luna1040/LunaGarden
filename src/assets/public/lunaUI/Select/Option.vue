@@ -8,7 +8,7 @@
 import '../js/public'
 
 export default {
-  name: "Option",
+  name: 'Option',
   props: {
     label: {
       type: [String, Number],
@@ -35,14 +35,14 @@ export default {
     //         parent.$emit.apply(parent, [eventName].concat(params));
     //     }
     // },
-    handelSelect() {
+    handelSelect () {
       let obj = {
         value: this.value,
         label: this.label
-      };
-      this.$emit('optionSelect', obj);
+      }
+      this.$emit('optionSelect', obj)
     }
-  },
+  }
 
 }
 </script>

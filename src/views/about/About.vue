@@ -106,253 +106,262 @@
   </div>
 </template>
 <script>
-  import Header from "../../components/activeHeader";
-  import "../../assets/icons/logo/iconfont.js";
-  export default {
-    name: "app",
-    data() {
-      return {
-        loading: true,
-        dark: false,
-        theme: 'light',
-        page: 22,
-        selectValue: '',
-        columns: [
-          {
-            title: '序号',
-            type: 'index',
-            align: 'center',
-            width: 80,
-            fixed: 'left'
-          },
-          {
-            title: '名称',
-            key: 'name',
-            align: 'center',
-            width: 200,
-            className: 'testTableClass',
-            ellipsis: true,
-            fullDisplay: true,
-          },
-          {
-            title: '操作',
-            type: 'custom',
-            align: 'center',
-            fixed: 'right',
-            render: (h, params) => {
-              return h('div', {
-                style: {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }
-              }, [
-                h('Button',{
-                  props: {
-                    shadow: false,
-                    theme: 'primary',
-                    loading: true
-                  },
-                  on: {
-                    click: () => {
-                      // alert('111')
-                    }
+import Header from '../../components/activeHeader'
+import '../../assets/icons/logo/iconfont.js'
+export default {
+  name: 'app',
+  data () {
+    return {
+      loading: true,
+      dark: false,
+      theme: 'light',
+      page: 22,
+      selectValue: '',
+      columns: [
+        {
+          title: '序号',
+          type: 'index',
+          align: 'center',
+          width: 80,
+          fixed: 'left'
+        },
+        {
+          title: '名称',
+          key: 'name',
+          align: 'center',
+          width: 200,
+          className: 'testTableClass',
+          ellipsis: true,
+          fullDisplay: true
+        },
+        {
+          title: '操作',
+          type: 'custom',
+          align: 'center',
+          fixed: 'right',
+          render: (h, params) => {
+            return h('div', {
+              style: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }
+            }, [
+              h('Button', {
+                props: {
+                  shadow: false,
+                  theme: 'primary',
+                  loading: true
+                },
+                on: {
+                  click: () => {
+                    // alert('111')
                   }
-                }, '修改')
-              ])
+                }
+              }, '修改')
+            ])
+          }
+        }
+      ],
+      tableData: [
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        }
+      ],
+      selectData: [
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        }
+      ],
+      form: [
+        {
+          title: 'Username：',
+          validate: 'userName',
+          required: true,
+          emptyWarning: '用户名不能为空',
+          validateMethods: {
+            length: {
+              on: ['blur', 'change'],
+              max: 20,
+              maxErrText: '用户名不能多于20位字符！',
+              min: 5,
+              minErrText: '用户名不能少于5位字符！'
+            },
+            noChara: {
+              on: ['blur', 'change'], errText: '不允许输入特殊符号！'
+            },
+            noChinese: {
+              on: ['blur', 'change'], errText: '不允许输入中文！'
+            },
+            noEnglish: {
+              on: ['blur', 'change'], errText: '不允许输入英文！'
+            },
+            noEnglishChara: {
+              on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
+            },
+            noChineseChara: {
+              on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
+            },
+            noNumber: {
+              on: ['blur', 'change'],
+              errText: '不允许输入数字！'
             }
           },
-        ],
-        tableData: [
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          }
-        ],
-        selectData: [
-          {
-            name: 'test',
-            id: '777',
-          },
-          {
-            name: 'test2',
-            id: '7772',
-          },
-        ],
-        form: [
-          {
-            title: 'Username：',
-            validate: 'userName',
-            required: true,
-            emptyWarning: '用户名不能为空',
-            validateMethods: {
-              length: {
-                on: ['blur', 'change'],
-                max: 20,
-                maxErrText: '用户名不能多于20位字符！',
-                min: 5,
-                minErrText: '用户名不能少于5位字符！'
+          render: (h) => {
+            return h('Input', {
+              props: {
+                value: this.createData.userName,
+                theme: this.theme
               },
-              noChara: {
-                on: ['blur', 'change'], errText: '不允许输入特殊符号！'
-              },
-              noChinese: {
-                on: ['blur', 'change'], errText: '不允许输入中文！'
-              },
-              noEnglish: {
-                on: ['blur', 'change'], errText: '不允许输入英文！'
-              },
-              noEnglishChara: {
-                on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
-              },
-              noChineseChara: {
-                on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
-              },
-              noNumber: {
-                on: ['blur', 'change'],
-                errText: '不允许输入数字！'
-              },
-            },
-            render: (h) => {
-              return h('Input', {
-                props: {
-                  value: this.createData.userName,
-                  theme: this.theme,
-                },
-                on: {
-                  input: (event) => {
-                    this.createData.userName = event
-                  }
+              on: {
+                input: (event) => {
+                  this.createData.userName = event
                 }
-              })
-            },
-            errStatus: false,
-            errText: ''
+              }
+            })
           },
-          {
-            title: 'Password：',
-            validate: 'password',
-            required: true,
-            emptyWarning: '密码不能为空',
-            description: '输入密码',
-            validateMethods: [
-              {
-                type: 'length',
-                max: 20, maxErrText: '用户名不能多于20位字符！', min: 5, minErrText: '用户名不能少于5位字符！'
-              },
-              {
-                type: 'noChara',
-                on: ['blur', 'change'], errText: '不允许输入特殊符号！'
-              },
-              {
-                type: 'noChinese',
-                on: ['blur', 'change'], errText: '不允许输入中文！'
-              },
-              {
-                type: 'noEnglish',
-                on: ['blur', 'change'], errText: '不允许输入英文！'
-              },
-              {
-                type: 'noEnglishChara',
-                on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
-              },
-              {
-                type: 'noChineseChara',
-                on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
-              },
-              {
-                type: 'noNumber',
-                on: ['blur', 'change'],
-                errText: '不允许输入数字！'
-              },
-            ],
-            render: (h) => {
-              return h('Input', {
-                props: {
-                  value: this.createData.password,
-                  theme: this.theme,
-                  type: 'password'
-                },
-                on: {
-                  input: (event) => {
-                    this.createData.password = event
-                  }
-                }
-              })
+          errStatus: false,
+          errText: ''
+        },
+        {
+          title: 'Password：',
+          validate: 'password',
+          required: true,
+          emptyWarning: '密码不能为空',
+          description: '输入密码',
+          validateMethods: [
+            {
+              type: 'length',
+              on: ['blur', 'change'],
+              max: 20,
+              maxErrText: '用户名不能多于20位字符！',
+              min: 5,
+              minErrText: '用户名不能少于5位字符！'
             },
-            errStatus: false,
-            errText: ''
-          }
-        ],
-        createData: {
-          userName: '',
-          password: ''
+            {
+              type: 'noChara',
+              on: ['blur', 'change'],
+              errText: '不允许输入特殊符号！'
+            },
+            {
+              type: 'noChinese',
+              on: ['blur', 'change'],
+              errText: '不允许输入中文！'
+            },
+            {
+              type: 'noEnglish',
+              on: ['blur', 'change'],
+              errText: '不允许输入英文！'
+            },
+            {
+              type: 'noEnglishChara',
+              on: ['blur', 'change'],
+              errText: '不允许输入英文特殊符号！'
+            },
+            {
+              type: 'noChineseChara',
+              on: ['blur', 'change'],
+              errText: '不允许输入中文特殊符号！'
+            },
+            {
+              type: 'noNumber',
+              on: ['blur', 'change'],
+              errText: '不允许输入数字！'
+            }
+          ],
+          render: (h) => {
+            return h('Input', {
+              props: {
+                value: this.createData.password,
+                theme: this.theme,
+                type: 'password'
+              },
+              on: {
+                input: (event) => {
+                  this.createData.password = event
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
         }
-      };
-    },
-    created() {
+      ],
+      createData: {
+        userName: '',
+        password: ''
+      }
+    }
+  },
+  created () {
 
-    },
-    methods: {
-      cgTheme() {
-        if(this.theme === 'light') {
-          this.theme = 'dark'
-        } else {
-          this.theme = 'light'
-        }
-      },
-      submit() {
-        this.$refs.form.examine(this.createData)
+  },
+  methods: {
+    cgTheme () {
+      if (this.theme === 'light') {
+        this.theme = 'dark'
+      } else {
+        this.theme = 'light'
       }
     },
-    components: {
-      Header
+    submit () {
+      this.$refs.form.examine(this.createData)
     }
-  };
+  },
+  components: {
+    Header
+  }
+}
 </script>
 <style lang='scss' scoped>
   .icon {
