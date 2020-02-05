@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../js/validate'
 
 export default {
   name: 'Form',
@@ -169,6 +170,7 @@ export default {
   },
   created () {
     // this.addAttr(this.form)
+    //   console.log(noChinese('ss'));
   },
   methods: {
     createContent (h) {
@@ -188,18 +190,88 @@ export default {
     examine (data) {
       for (let i = 0; i < this.formData.length; i++) {
         if (this.formData[i].validate) {
+          let str = data[this.formData[i].validate].trim()
+          let valid = this.formData[i].validateMethods
+
           this.formData[i].errStatus = false
           this.formData[i].errText = ''
-          let str = data[this.formData[i].validate]
           if (this.formData[i].required) {
             if (str === '') {
               this.formData[i].errStatus = true
               this.formData[i].errText = this.formData[i].emptyWarning
             }
           }
-          if (this.formData[i].errStatus === false && this.formData[i].validateMethods) {
-            for (let ins = 0; ins < this.formData[i].validateMethods.length; ins++) {
-
+          if (!this.formData[i].errStatus && valid) {
+            for (let ins = 0; ins < valid.length; ins++) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'length') {
+                if (str.length < valid[ins].min) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].minErrText
+                } else if (str.length > valid[ins].max) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].maxErrText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChara') {
+                if (!noChara(str)) {
+                    this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChinese') {
+                if (!noChinese(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChineseChara') {
+                if (!noChineseChara(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglish') {
+                if (!noEnglish(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglishChara') {
+                if (!noEnglishChara(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'noNumber') {
+                if (!noNumber(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'email') {
+                if (!email(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'phone') {
+                if (!email(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'IDNumber') {
+                if (!email(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
+              if (!this.formData[i].errStatus && valid[ins].type === 'urlLink') {
+                if (!email(str)) {
+                  this.formData[i].errStatus = true
+                  this.formData[i].errText = valid[ins].errText
+                }
+              }
             }
           }
         }

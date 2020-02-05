@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "Container",
+  name: 'Container',
   props: {
     shadow: {
       type: Boolean,
@@ -40,9 +40,9 @@ export default {
       type: String,
       default: '1px solid #EFEFEF'
     },
-    //宽度高度相关小于等于100为百分比，大于100为px
+    // 宽度高度相关小于等于100为百分比，大于100为px
     width: {
-      //可选auto
+      // 可选auto
       type: [Number, String],
       default: 100
     },
@@ -56,7 +56,7 @@ export default {
     },
     maxHeight: {
       type: [Number, String],
-      default: 'auto',
+      default: 'auto'
     },
     padding: {
       type: Number,
@@ -92,36 +92,36 @@ export default {
     }
   },
   computed: {
-    flexStyle() {
+    flexStyle () {
       return {
         flexDirection: this.direction,
         justifyContent: this.justify,
         alignItems: this.align
       }
     },
-    containerBackground() {
+    containerBackground () {
       return {
         backgroundColor: this.background
       }
     },
-    containerImage() {
+    containerImage () {
       return {
         backgroundImage: 'url("' + this.image + '")!important'
       }
     },
-    containerBorder() {
+    containerBorder () {
       return {
         border: this.border
       }
     },
-    containerPadding() {
+    containerPadding () {
       return {
         padding: this.padding + 'px'
       }
     },
-    containerWidth() {
-      if(typeof this.width !== 'string') {
-        if(this.width <= 100) {
+    containerWidth () {
+      if (typeof this.width !== 'string') {
+        if (this.width <= 100) {
           return {
             width: this.width + '%'
           }
@@ -136,9 +136,9 @@ export default {
         }
       }
     },
-    containerMaxWidth() {
-      if(typeof this.maxWidth !== 'string') {
-        if(this.maxWidth <= 100) {
+    containerMaxWidth () {
+      if (typeof this.maxWidth !== 'string') {
+        if (this.maxWidth <= 100) {
           return {
             maxWidth: this.maxWidth + '%'
           }
@@ -153,7 +153,7 @@ export default {
         }
       }
     },
-    containerHeight() {
+    containerHeight () {
       if (this.border !== '0') {
         if (this.height <= 100) {
           return {
@@ -176,7 +176,7 @@ export default {
         }
       }
     },
-    containerMaxHeight() {
+    containerMaxHeight () {
       if (this.border !== '0') {
         if (this.maxHeight < 100) {
           return {
@@ -199,7 +199,7 @@ export default {
         }
       }
     },
-    containerScrollable() {
+    containerScrollable () {
       if (this.scrollable) {
         return {
           overFlow: 'auto'
@@ -210,25 +210,25 @@ export default {
         }
       }
     },
-    containerRadius() {
+    containerRadius () {
       if (this.radius !== -1) {
         return {
-          borderRadius: this.radius + "px!important"
-        };
+          borderRadius: this.radius + 'px!important'
+        }
       } else {
-        return {};
+        return {}
       }
     },
-    containerShadow() {
+    containerShadow () {
       if (!this.shadow) {
         return {
-          boxShadow: "0 0 0 rgba(0, 0, 0, 0)!important"
-        };
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
+        }
       } else {
-        return {};
+        return {}
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

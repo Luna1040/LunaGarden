@@ -229,34 +229,21 @@ export default {
           validate: 'userName',
           required: true,
           emptyWarning: '用户名不能为空',
-          validateMethods: {
-            length: {
+          validateMethods: [
+            {
+              type: 'length',
               on: ['blur', 'change'],
               max: 20,
               maxErrText: '用户名不能多于20位字符！',
-              min: 5,
-              minErrText: '用户名不能少于5位字符！'
+              min: 4,
+              minErrText: '用户名不能少于4位字符！'
             },
-            noChara: {
-              on: ['blur', 'change'], errText: '不允许输入特殊符号！'
-            },
-            noChinese: {
-              on: ['blur', 'change'], errText: '不允许输入中文！'
-            },
-            noEnglish: {
-              on: ['blur', 'change'], errText: '不允许输入英文！'
-            },
-            noEnglishChara: {
-              on: ['blur', 'change'], errText: '不允许输入英文特殊符号！'
-            },
-            noChineseChara: {
-              on: ['blur', 'change'], errText: '不允许输入中文特殊符号！'
-            },
-            noNumber: {
+            {
+              type: 'noChara',
               on: ['blur', 'change'],
-              errText: '不允许输入数字！'
+              errText: '不允许输入特殊符号！'
             }
-          },
+          ],
           render: (h) => {
             return h('Input', {
               props: {
@@ -283,15 +270,10 @@ export default {
             {
               type: 'length',
               on: ['blur', 'change'],
-              max: 20,
-              maxErrText: '用户名不能多于20位字符！',
-              min: 5,
-              minErrText: '用户名不能少于5位字符！'
-            },
-            {
-              type: 'noChara',
-              on: ['blur', 'change'],
-              errText: '不允许输入特殊符号！'
+              max: 24,
+              maxErrText: '密码不能多于24位字符！',
+              min: 6,
+              minErrText: '密码不能少于6位字符！'
             },
             {
               type: 'noChinese',
@@ -299,24 +281,9 @@ export default {
               errText: '不允许输入中文！'
             },
             {
-              type: 'noEnglish',
-              on: ['blur', 'change'],
-              errText: '不允许输入英文！'
-            },
-            {
-              type: 'noEnglishChara',
-              on: ['blur', 'change'],
-              errText: '不允许输入英文特殊符号！'
-            },
-            {
               type: 'noChineseChara',
               on: ['blur', 'change'],
               errText: '不允许输入中文特殊符号！'
-            },
-            {
-              type: 'noNumber',
-              on: ['blur', 'change'],
-              errText: '不允许输入数字！'
             }
           ],
           render: (h) => {
@@ -335,11 +302,40 @@ export default {
           },
           errStatus: false,
           errText: ''
+        },
+        {
+          title: 'Email：',
+          validate: 'email',
+          required: true,
+          emptyWarning: '邮箱不能为空',
+          validateMethods: [
+            {
+              type: 'email',
+              errText: '邮箱格式不正确'
+            }
+          ],
+          render: (h) => {
+            return h('Input', {
+              props: {
+                value: this.createData.email,
+                theme: this.theme,
+                type: 'text'
+              },
+              on: {
+                input: (event) => {
+                  this.createData.email = event
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
         }
       ],
       createData: {
         userName: '',
-        password: ''
+        password: '',
+        email: ''
       }
     }
   },

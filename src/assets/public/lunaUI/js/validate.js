@@ -12,7 +12,7 @@ export const noChara = function (str) {
  */
 
 export const noEnglish = function (str) {
-  let specialKey = /^[a-zA-Z]+$/
+  let specialKey = /.*[a-zA-Z]+.*/
   return !specialKey.test(str.trim())
 }
 
@@ -21,7 +21,7 @@ export const noEnglish = function (str) {
  */
 
 export const noEnglishChara = function (str) {
-  let specialKey = /^[`~!@#$%^&*()_+<>?:"{},./;'[\]]+$/
+  let specialKey = /^.*[`~!@#$%^&*()_+<>?:"{},./;'[\]]+.*/
   return !specialKey.test(str.trim())
 }
 
@@ -30,7 +30,7 @@ export const noEnglishChara = function (str) {
  */
 
 export const noChinese = function (str) {
-  let specialKey = /^[\u4e00-\u9fa5]+$/
+  let specialKey = /^.*[\u4e00-\u9fa5]+.*/
   return !specialKey.test(str.trim())
 }
 
@@ -39,7 +39,7 @@ export const noChinese = function (str) {
  */
 
 export const noChineseChara = function (str) {
-  let specialKey = /^[·！#￥（—）：；“”‘、，|《。》？【】[\]]+$/
+  let specialKey = /^.*[·！#￥（—）：；“”‘、，|《。》？【】[\]]+.*/
   return !specialKey.test(str.trim())
 }
 
@@ -48,7 +48,7 @@ export const noChineseChara = function (str) {
  */
 
 export const noNumber = function checkNodeNo (str) {
-  let specialKey = /^[0-9]+$/
+  let specialKey = /^.*[0-9]+.*/
   return !specialKey.test(str.trim())
 }
 
