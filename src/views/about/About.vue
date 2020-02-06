@@ -313,6 +313,32 @@ export default {
           errText: ''
         },
         {
+          title: 'Bank：',
+          validate: 'bank',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: '银行不能为空',
+          render: (h, params) => {
+            return h('Select', {
+              props: {
+                value: this.createData.bank,
+                theme: this.theme,
+                selectData: this.selectData,
+                keyValue: 'id',
+                keyLabel: 'name',
+                filterable: true
+              },
+              on: {
+                input: (event) => {
+                  this.createData.bank = event
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        },
+        {
           title: 'Email：',
           validate: 'email',
           validateOnChange: true,
@@ -350,7 +376,8 @@ export default {
       createData: {
         userName: '',
         password: '',
-        email: ''
+        email: '',
+        bank: ''
       }
     }
   },

@@ -809,6 +809,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
             position: relative;
             max-height: 150px;
             overflow: auto;
+            z-index: 99999;
             .lunaOption {
                 border-bottom: 1px solid $lightGray;
                 padding: 6px 8px;
