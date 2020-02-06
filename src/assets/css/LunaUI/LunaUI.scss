@@ -854,6 +854,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         margin-bottom: 6px;
         position: relative;
         transition: all 0.35s;
+        overflow: visible;
+        >div{
+            overflow: visible;
+        }
         span{
             box-sizing: border-box;
             display: inline-block;

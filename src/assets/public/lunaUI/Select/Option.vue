@@ -1,6 +1,6 @@
 <template>
   <div class="lunaOption" @click.stop="handelSelect">
-    <slot>{{label}}</slot>
+    <slot>{{ label }}</slot>
   </div>
 </template>
 
@@ -43,9 +43,7 @@ export default {
       this.$emit('optionSelect', obj)
     }
   }
-
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

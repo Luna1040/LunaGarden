@@ -114,7 +114,7 @@ export default {
     return {
       loading: true,
       dark: false,
-      theme: 'light',
+      theme: 'dark',
       page: 22,
       selectValue: '',
       columns: [
@@ -227,12 +227,12 @@ export default {
         {
           title: 'Username：',
           validate: 'userName',
+          validateOnChange: true,
           required: true,
           emptyWarning: '用户名不能为空',
           validateMethods: [
             {
               type: 'length',
-              on: ['blur', 'change'],
               max: 20,
               maxErrText: '用户名不能多于20位字符！',
               min: 4,
@@ -240,19 +240,24 @@ export default {
             },
             {
               type: 'noChara',
-              on: ['blur', 'change'],
               errText: '不允许输入特殊符号！'
             }
           ],
-          render: (h) => {
+          render: (h, params) => {
             return h('Input', {
               props: {
                 value: this.createData.userName,
-                theme: this.theme
+                theme: this.theme,
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
               },
               on: {
                 input: (event) => {
                   this.createData.userName = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
                 }
               }
             })
@@ -263,13 +268,13 @@ export default {
         {
           title: 'Password：',
           validate: 'password',
+          validateOnChange: true,
           required: true,
           emptyWarning: '密码不能为空',
           description: '输入密码',
           validateMethods: [
             {
               type: 'length',
-              on: ['blur', 'change'],
               max: 24,
               maxErrText: '密码不能多于24位字符！',
               min: 6,
@@ -277,25 +282,29 @@ export default {
             },
             {
               type: 'noChinese',
-              on: ['blur', 'change'],
               errText: '不允许输入中文！'
             },
             {
               type: 'noChineseChara',
-              on: ['blur', 'change'],
               errText: '不允许输入中文特殊符号！'
             }
           ],
-          render: (h) => {
+          render: (h, params) => {
             return h('Input', {
               props: {
                 value: this.createData.password,
                 theme: this.theme,
-                type: 'password'
+                type: 'password',
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
               },
               on: {
                 input: (event) => {
                   this.createData.password = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
                 }
               }
             })
@@ -306,6 +315,7 @@ export default {
         {
           title: 'Email：',
           validate: 'email',
+          validateOnChange: true,
           required: true,
           emptyWarning: '邮箱不能为空',
           validateMethods: [
@@ -314,16 +324,21 @@ export default {
               errText: '邮箱格式不正确'
             }
           ],
-          render: (h) => {
+          render: (h, params) => {
             return h('Input', {
               props: {
                 value: this.createData.email,
                 theme: this.theme,
-                type: 'text'
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
               },
               on: {
                 input: (event) => {
                   this.createData.email = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
                 }
               }
             })

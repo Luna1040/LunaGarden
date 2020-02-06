@@ -1,28 +1,50 @@
 <template>
-    <div
-            class="lunaForm"
-            :style="[formStyles]"
-            :class="[className,
-            {darkShadow: shadow && shadowStyle === 'dark', lightShadow: shadow && shadowStyle === 'light'},
-            {scrollable: scrollable},
-            {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'},
-            {lightForm: theme === 'light', darkForm: theme === 'dark'},
-            {formColumn: direction === 'column', formRow: direction === 'row'}
-            ]">
-        <FormItem
-                class="lunaFormItem"
-                v-for="(i, index) in formData"
-                :key="index"
-                :itemData="i"
-                :labelWidthCount="labelWidthCount"
-                :style="formItemStyle"
-                :corner="corner"
-        ></FormItem>
-    </div>
+  <div
+    class="lunaForm"
+    :style="[formStyles]"
+    :class="[
+      className,
+      {
+        darkShadow: shadow && shadowStyle === 'dark',
+        lightShadow: shadow && shadowStyle === 'light'
+      },
+      { scrollable: scrollable },
+      {
+        squareCorner: corner === 'square',
+        smallCorner: corner === 'small',
+        filletCorner: corner === 'fillet',
+        largeCorner: corner === 'large',
+        fullCorner: corner === 'full'
+      },
+      { lightForm: theme === 'light', darkForm: theme === 'dark' },
+      { formColumn: direction === 'column', formRow: direction === 'row' }
+    ]"
+  >
+    <FormItem
+      class="lunaFormItem"
+      v-for="(i, index) in formData"
+      :key="index"
+      :itemData="i"
+      :labelWidthCount="labelWidthCount"
+      :style="formItemStyle"
+      :corner="corner"
+    ></FormItem>
+  </div>
 </template>
 
 <script>
-import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../js/validate'
+import {
+  noChara,
+  noChinese,
+  noChineseChara,
+  noEnglish,
+  noEnglishChara,
+  noNumber,
+  email,
+  phone,
+  IDNumber,
+  urlLink
+} from '../js/validate'
 
 export default {
   name: 'Form',
@@ -95,7 +117,6 @@ export default {
     },
     form: {
       type: Array,
-      // eslint-disable-next-line vue/require-valid-default-prop
       default: []
     }
   },
@@ -212,37 +233,55 @@ export default {
                   this.formData[i].errText = valid[ins].maxErrText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noChara') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noChara'
+              ) {
                 if (!noChara(str)) {
-                    this.formData[i].errStatus = true
+                  this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noChinese') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noChinese'
+              ) {
                 if (!noChinese(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noChineseChara') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noChineseChara'
+              ) {
                 if (!noChineseChara(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglish') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noEnglish'
+              ) {
                 if (!noEnglish(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglishChara') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noEnglishChara'
+              ) {
                 if (!noEnglishChara(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'noNumber') {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'noNumber'
+              ) {
                 if (!noNumber(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
@@ -255,19 +294,25 @@ export default {
                 }
               }
               if (!this.formData[i].errStatus && valid[ins].type === 'phone') {
-                if (!email(str)) {
+                if (!phone(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'IDNumber') {
-                if (!email(str)) {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'IDNumber'
+              ) {
+                if (!IDNumber(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (!this.formData[i].errStatus && valid[ins].type === 'urlLink') {
-                if (!email(str)) {
+              if (
+                !this.formData[i].errStatus &&
+                valid[ins].type === 'urlLink'
+              ) {
+                if (!urlLink(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
@@ -285,5 +330,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

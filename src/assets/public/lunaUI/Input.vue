@@ -1,42 +1,84 @@
 <template>
   <div
-          class="lunaInput"
-          :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {ghostInput: ghost},{disabled: disabled}, {lightInput: theme === 'light', darkInput: theme === 'dark'}]"
-          :style="[inputWidth, inputRadius, inputHeight, inputBorder, inputBackground, boxShadowStyle]"
-          @mouseenter="hoverEnter"
-          @mouseleave="hoverOut"
-          @focusin="focusEnter"
-          @focusout="focusLeave"
+    class="lunaInput"
+    :class="[
+      className,
+      {
+        squareCorner: corner === 'square',
+        smallCorner: corner === 'small',
+        filletCorner: corner === 'fillet',
+        largeCorner: corner === 'large',
+        fullCorner: corner === 'full'
+      },
+      { ghostInput: ghost },
+      { disabled: disabled },
+      { lightInput: theme === 'light', darkInput: theme === 'dark' }
+    ]"
+    :style="[
+      inputWidth,
+      inputRadius,
+      inputHeight,
+      inputBorder,
+      inputBackground,
+      boxShadowStyle
+    ]"
+    @mouseenter="hoverEnter"
+    @mouseleave="hoverOut"
+    @focusin="focusEnter"
+    @focusout="focusLeave"
   >
-    <i v-if="pre" :class="[icon,{spin: spin}]" class="pre" @click="handelIcon"></i>
+    <i
+      v-if="pre"
+      :class="[icon, { spin: spin }]"
+      class="pre"
+      @click="handelIcon"
+    ></i>
     <slot name="pre"></slot>
     <input
-            :value="textValue"
-            :style="[textColor, inputFontSize, inputWidthCount]"
-            :type="type"
-            :maxlength="maxlength"
-            :placeholder="placeholder"
-            :disabled="disabled"
-            :readonly="readonly"
-            @input="cgValue"
-            @keyup="handelKeyUp"
-            @keyup.enter="handelEnter"
-            @keydown="handelKeyDown"
-            @keypress="handelKeyPress"
-            @focus="handelFocus"
-            @blur="handelBlur"
+      :value="textValue"
+      :style="[textColor, inputFontSize, inputWidthCount]"
+      :type="type"
+      :maxlength="maxlength"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      @input="cgValue"
+      @keyup="handelKeyUp"
+      @keyup.enter="handelEnter"
+      @keydown="handelKeyDown"
+      @keypress="handelKeyPress"
+      @focus="handelFocus"
+      @blur="handelBlur"
     />
     <!--        清空按钮-->
     <i v-if="clearable" class="iconfont icon-cancel" @click="clearText"></i>
     <transition name="">
-      <i v-if="suffix" :class="[icon, {spin: spin}]" class="suffix" @click="handelIcon"></i>
+      <i
+        v-if="suffix"
+        :class="[icon, { spin: spin }]"
+        class="suffix"
+        @click="handelIcon"
+      ></i>
     </transition>
     <slot name="suffix"></slot>
-    <span v-if="showWordLimit">{{count}}/{{maxlength}}</span>
+    <span v-if="showWordLimit">{{ count }}/{{ maxlength }}</span>
   </div>
 </template>
 
 <script>
+import {
+  email,
+  IDNumber,
+  noChara,
+  noChinese,
+  noChineseChara,
+  noEnglish,
+  noEnglishChara,
+  noNumber,
+  phone,
+  urlLink
+} from './js/validate'
+
 export default {
   name: 'Input',
   props: {
@@ -134,9 +176,13 @@ export default {
       type: Boolean,
       default: false
     },
-    validate: {
+    validateOnChange: {
       type: Boolean,
       default: false
+    },
+    validateMethods: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {
@@ -248,11 +294,11 @@ export default {
     focusEnter () {
       if (this.borderColor !== '') {
         this.boxShadow =
-                  '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
+                '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
         this.borderColorStyle = this.borderColor
       } else {
         this.boxShadow =
-                  '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
+                '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
         this.borderColorStyle = this.background
       }
     },
@@ -267,6 +313,7 @@ export default {
     },
     cgValue (event) {
       this.$emit('input', event.target.value)
+      this.$emit('onValidate', this.examine(event.target.value))
     },
     handelKeyUp (event) {
       this.$emit('on-keyup', event)
@@ -289,21 +336,101 @@ export default {
     handelEnter () {
       this.$emit('on-enter', this.textValue)
     },
-    setTextValue (value) {
-      if (value === this.textValue) return
-      this.textValue = value
+    examine (str) {
+      const valid = this.validateMethods
+      let params = {
+        errStatus: false,
+        errText: ''
+      }
+      for (let ins = 0; ins < valid.length; ins++) {
+        if (!params.errStatus && valid[ins].type === 'length') {
+          if (str.length < valid[ins].min) {
+            params.errStatus = true
+            params.errText = valid[ins].minErrText
+          } else if (str.length > valid[ins].max) {
+            params.errStatus = true
+            params.errText = valid[ins].maxErrText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noChara') {
+          if (!noChara(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noChinese') {
+          if (!noChinese(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noChineseChara') {
+          if (!noChineseChara(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noEnglish') {
+          if (!noEnglish(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noEnglishChara') {
+          if (!noEnglishChara(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'noNumber') {
+          if (!noNumber(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'email') {
+          if (!email(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'phone') {
+          if (!phone(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'IDNumber') {
+          if (!IDNumber(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+        if (!params.errStatus && valid[ins].type === 'urlLink') {
+          if (!urlLink(str)) {
+            params.errStatus = true
+            params.errText = valid[ins].errText
+          }
+        }
+      }
+
+      return params
     }
   },
   watch: {
     value (val) {
-      this.setTextValue(val)
+      if (val === this.textValue) {
+        return val
+      } else {
+        this.textValue = val
+      }
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .spin {
-    transform: rotateZ(180deg);
-  }
+.spin {
+  transform: rotateZ(180deg);
+}
 </style>

@@ -1,18 +1,18 @@
 export default {
-    functional: true,
-    props: {
-        row: Object,
-        column: Object,
-        index: Number,
-        render: Function
-    },
-    render: (h, ctx) => {
-        const params = {
-            row: ctx.props.row,
-            column: ctx.props.column,
-            index: ctx.props.index
-        };
-
-        return ctx.props.render(h, params);
+  functional: true,
+  props: {
+    validateMethods: Array,
+    validateOnChange: Boolean,
+    data: Object,
+    render: Function
+  },
+  render: (h, ctx) => {
+    const params = {
+      validateMethods: ctx.props.validateMethods,
+      validateOnChange: ctx.props.validateOnChange,
+      data: ctx.props.data
     }
-};
+
+    return ctx.props.render(h, params)
+  }
+}

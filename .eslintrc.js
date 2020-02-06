@@ -12,6 +12,7 @@ module.exports = {
     'vue/no-parsing-error': [2, {
       'x-invalid-end-tag': false
     }],
+    'vue/require-valid-default-prop': false,
     'no-undef': 'off',
     'camelcase': 'off'
   },
