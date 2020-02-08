@@ -15,6 +15,7 @@ import Form from './Form/Form.vue'
 import FormItem from './Form/FormItem.vue'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
+import Message from "./Message/index.js";
 
 const LunaUI = {
     Modal,
@@ -38,5 +39,7 @@ const LunaUI = {
 Object.keys(LunaUI).forEach(name => {
     Vue.component(name, LunaUI[name])
 });
+
+Vue.prototype.$Message = Message;
 
 export default LunaUI

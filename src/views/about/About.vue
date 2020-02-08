@@ -382,7 +382,17 @@ export default {
     }
   },
   created () {
-
+    this.$Message.info({
+      content: '111'
+    })
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
+    this.$Message.info('111')
   },
   methods: {
     cgTheme () {
