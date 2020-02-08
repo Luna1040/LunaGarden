@@ -179,7 +179,6 @@ export default {
       return styleList
     },
     optionStyles () {
-      const styleList = {}
       if (this.optionBackground !== 'none') {
         return {
           backgroundColor: this.optionBackground + '!important'
@@ -266,7 +265,7 @@ export default {
         // enter
         if (key === 'Enter') {
           let choiceItem = {
-            key: this.filterData[this.choiceIndex][this.keyValue],
+            value: this.filterData[this.choiceIndex][this.keyValue],
             label: this.filterData[this.choiceIndex][this.keyLabel]
           }
           this.optionSelect(choiceItem)

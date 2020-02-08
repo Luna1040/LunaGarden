@@ -849,21 +849,15 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 .lunaForm{
     box-sizing: border-box;
+    text-align: left;
     .lunaFormItem {
-        padding-bottom: 20px;
-        padding-top: 4px;
+        padding: 4px 8px 20px;
         margin-bottom: 6px;
         position: relative;
         transition: all 0.35s;
         overflow: visible;
         >div{
             overflow: visible;
-        }
-        span{
-            box-sizing: border-box;
-            display: inline-block;
-            text-align: right;
-            padding-right: 8px;
         }
         span.required:before {
             display: inline-block;
@@ -882,6 +876,25 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         }
         .moveMargin{
             margin-top: 16px;
+        }
+    }
+    .lunaFormItem.leftLabel{
+        display: flex;
+        align-items: center;
+        span{
+            box-sizing: border-box;
+            display: inline-block;
+            text-align: right;
+            padding-right: 8px;
+        }
+    }
+    .lunaFormItem.topLabel{
+        display: flex;
+        flex-direction: column;
+        span{
+            box-sizing: border-box;
+            display: inline-block;
+            text-align: left;
         }
     }
     .lunaFormItem.morePadding{

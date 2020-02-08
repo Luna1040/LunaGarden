@@ -40,18 +40,6 @@
 
 <script>
 import Render from './formRender.js'
-import {
-  noChara,
-  noChinese,
-  noChineseChara,
-  noEnglish,
-  noEnglishChara,
-  noNumber,
-  email,
-  phone,
-  IDNumber,
-  urlLink
-} from '../js/validate'
 
 export default {
   name: 'FormItem',

@@ -26,7 +26,7 @@
       :key="index"
       :itemData="i"
       :labelWidthCount="labelWidthCount"
-      :style="formItemStyle"
+      :class="{leftLabel: labelPosition === 'left', topLabel: labelPosition === 'top'}"
       :corner="corner"
     ></FormItem>
   </div>
@@ -168,16 +168,6 @@ export default {
 
       return styleList
     },
-    formItemStyle () {
-      const styleList = {}
-
-      if (this.labelPosition === 'left') {
-        styleList.display = 'flex'
-        styleList.alignItems = 'center'
-      }
-
-      return styleList
-    },
     labelWidthCount () {
       return {
         width: this.labelWidth + 'px'
@@ -196,17 +186,6 @@ export default {
   methods: {
     createContent (h) {
       return h('div', this.$slots.default)
-    },
-    addAttr (data) {
-      data.forEach((item, index) => {
-        if (item.validate) {
-          data[index].errStatus = false
-          data[index].errText = ''
-          this.formData.push(data[index])
-        } else {
-          this.formData.push(item)
-        }
-      })
     },
     examine (data) {
       for (let i = 0; i < this.formData.length; i++) {
@@ -321,10 +300,9 @@ export default {
           }
         }
       }
-      // Object.keys(data).forEach((key) => {
-      //   console.log(key + ':' + data[key]);
-      //
-      // })
+      for (let i = 0; i < this.formData.length; i++) {
+        return this.formData[i].errStatus !== true;
+      }
     }
   }
 }

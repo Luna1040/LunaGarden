@@ -109,7 +109,7 @@ export default {
     // 自定义宽度  作用于container
     width: {
       type: [Number, String],
-      default: 150
+      default: 180
     },
     // 自定义高度  作用于body
     height: {

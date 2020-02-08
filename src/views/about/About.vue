@@ -8,7 +8,7 @@
             user-language="English"
     ></Header>
     <div class="about">
-      <Form ref="form" :form="form" :theme="theme"></Form>
+      <Form ref="form" :form="form" :theme="theme" :width="240" label-position="top"></Form>
       <Button @click="submit" theme="primary">提交</Button>
       <h1>{{ $t('lang.aboutUs.title') }}</h1>
       <p>{{ $t('lang.aboutUs.desc') }}</p>
@@ -393,7 +393,11 @@ export default {
       }
     },
     submit () {
-      this.$refs.form.examine(this.createData)
+      if (!this.$refs.form.examine(this.createData)) {
+        // Error
+      } else {
+        // Success
+      }
     }
   },
   components: {

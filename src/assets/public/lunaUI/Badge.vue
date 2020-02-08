@@ -152,7 +152,6 @@ export default {
     },
   },
   methods: {
-
   }
 }
 </script>
