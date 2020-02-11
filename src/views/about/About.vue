@@ -382,17 +382,29 @@ export default {
     }
   },
   created () {
-    this.$Message.info({
-      content: '111'
+    this.$Message.warning({
+      content: '111',
+      icon: 'iconfont icon-search1',
+      duration: 0
     })
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
-    this.$Message.info('111')
+    this.$Message.info({
+      content: '111',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 0
+    })
+    this.$Message.info({
+      content: '111',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 0
+    })
+    this.$Message.info({
+      content: '111',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 0
+    })
   },
   methods: {
     cgTheme () {

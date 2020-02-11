@@ -1,10 +1,15 @@
-<!-- alert.vue -->
 <template>
-  <div class="alert">
-    <div class="alert-main" v-for="item in notices" :key="item.name">
-      <div class="alert-content" v-if="typeof item === 'object'">{{ item.content }}</div>
-      <div class="alert-content" v-else>{{ item.content }}</div>
-    </div>
+  <div class="lunaMessage">
+    <transition-group name="messageAnimation">
+      <div v-for="item in notices" :key="item.name">
+        <div :class="item.theme"  class="messageBody">
+          <i v-if="item.icon" :class="item.icon"></i>
+          <span v-if="typeof item === 'object'">{{ item.content }}</span>
+          <span v-else>{{ item }}</span>
+        </div>
+      </div>
+    </transition-group>
+
   </div>
 </template>
 <script>
@@ -17,8 +22,11 @@
   export default {
     data () {
       return {
-        notices: []
+        notices: [],
       }
+    },
+    created() {
+      console.log(this.notices);
     },
     methods: {
       add (notice) {
@@ -32,9 +40,11 @@
 
         // 定时移除，单位：秒
         const duration = notice.duration;
-        setTimeout(() => {
-          this.remove(name);
-        }, duration * 1000);
+        if(duration !== 0) {
+          setTimeout(() => {
+            this.remove(name);
+          }, duration * 1000);
+        }
       },
       remove (name) {
         const notices = this.notices;
@@ -49,21 +59,18 @@
     }
   }
 </script>
-<style>
-  .alert{
-    position: fixed;
-    width: 100%;
-    top: 16px;
-    left: 0;
-    text-align: center;
-    pointer-events: none;
+<style lang="scss" scoped>
+
+
+  .messageAnimation-enter-active,.messageAnimation-leave-active{
+    transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   }
-  .alert-content{
-    display: inline-block;
-    padding: 8px 16px;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-    margin-bottom: 8px;
+  .messageAnimation-leave,.messageAnimation-enter-to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .messageAnimation-enter, .messageAnimation-leave-to {
+    opacity: 0;
+    transform: translateY(-24px);
   }
 </style>

@@ -127,12 +127,12 @@ export default {
       const styleList = {}
       if (typeof this.width !== 'string') {
         if (this.width <= 100) {
-          styleList.width = 'calc(' + this.width + '% - ' + '32px)'
+          styleList.width = this.width + '%'
         } else {
-          styleList.width = this.width - 32 + 'px'
+          styleList.width = this.width + 'px'
         }
       } else {
-        styleList.width = 'calc(' + this.width + ' - 32px'
+        styleList.width = this.width
       }
       if (this.backgroundColor !== 'none') {
         styleList.backgroundColor = this.backgroundColor

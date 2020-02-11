@@ -39,6 +39,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     color: $disableText !important;
     cursor: no-drop !important;
 }
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
 
 .lunaInput.disabled {
     background-color: $disableBackground !important;
@@ -242,14 +248,14 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
 .lunaInput {
     transition: all 0.5s;
-    box-sizing: border-box;
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: relative;
     outline: 0;
     input {
-        box-sizing: border-box;
+
         border: 0;
         outline: 0;
         height: 100%;
@@ -477,7 +483,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaContainer{
-    box-sizing: border-box;
+
 }
 .lunaContainer.darkContainer {
     background-color: $normalDark !important;
@@ -848,7 +854,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 }
 .lunaForm{
-    box-sizing: border-box;
+
     text-align: left;
     .lunaFormItem {
         padding: 4px 8px 20px;
@@ -882,7 +888,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         display: flex;
         align-items: center;
         span{
-            box-sizing: border-box;
+
             display: inline-block;
             text-align: right;
             padding-right: 8px;
@@ -892,7 +898,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         display: flex;
         flex-direction: column;
         span{
-            box-sizing: border-box;
+
             display: inline-block;
             text-align: left;
         }
@@ -910,6 +916,70 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaForm.darkForm{
     background-color: $normalDark;
     color: $white;
+}
+.lunaMessage{
+    position: fixed;
+    width: 100%;
+    top: 16px;
+    left: 0;
+    text-align: center;
+    pointer-events: none;
+    overflow: visible;
+    >span{
+
+    }
+    i{
+        margin-right: 6px;
+    }
+    .messageBody{
+        display: inline-block;
+        //width: auto!important;
+        padding: 8px 16px;
+        border-radius: 3px;
+        box-shadow: $darkShadow;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .messageBody.warningMessage{
+        border: 1px solid $warning;
+        background-color: $warning;
+        i, span{
+            color: $white;
+        }
+    }
+    .messageBody.errorMessage{
+        border: 1px solid $error;
+        background-color: $error;
+        i, span{
+            color: $white;
+        }
+    }
+    .messageBody.successMessage{
+        border: 1px solid $success;
+        background-color: $success;
+        i, span{
+            color: $white;
+        }
+    }
+    .messageBody.primaryMessage{
+        border: 1px solid $primary;
+        background-color: $primary;
+        i, span{
+            color: $white;
+        }
+    }
+    .messageBody.normalMessage{
+        border: 1px solid $primary;
+        background-color: $white;
+        i{
+            color: $primary;
+        }
+    }
+    .alertClose{
+        margin-right: 0;
+        margin-left: 6px;
+        border: 1px solid #333;
+    }
 }
 
 .flex {

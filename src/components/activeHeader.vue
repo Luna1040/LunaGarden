@@ -34,11 +34,9 @@
       <div class="btnGroup">
         <div @click="setLang('en-US')" :class="{languageActive: $i18n.locale !== 'zh-CN'}">
           <img src="../assets/icons/language-english.svg" alt />
-          <div class="languageBlackHover"></div>
         </div>
         <div @click="setLang('zh-CN')" :class="{languageActive: $i18n.locale === 'zh-CN'}">
           <img src="../assets/icons/language-chinese.svg" alt />
-          <div class="languageBlackHover"></div>
         </div>
       </div>
         <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90" @click="toAbout">
