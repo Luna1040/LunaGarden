@@ -25,6 +25,9 @@ import Login from './views/login/login.vue';
 import Register from './views/login/register.vue';
 import Forgot from './views/login/forgot.vue';
 import ResetPsw from './views/login/resetPsw.vue';
+//字节测试
+import ByteDemo from "./views/byteDemos/byteDemo";
+import mByteDemo from "./views/byteDemos/mByteDemo";
 
 Vue.use(Router);
 
@@ -32,6 +35,8 @@ const router = new Router({
     routes: [
         //首屏展示加载动画
         { path: '/', name: 'start', component: Start },
+        { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
+        { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
         // PC页面统一整合
         { path: '/Home', name: 'Home', component: Home, meta:{index: 0}},
         { path: '/Guide', name: 'Guide', component: Guide, meta:{index: 999}},
