@@ -13,54 +13,53 @@
   </div>
 </template>
 <script>
-  let seed = 0;
+let seed = 0
 
-  function getUuid() {
-    return 'alert_' + (seed++);
-  }
+function getUuid () {
+  return 'alert_' + (seed++)
+}
 
-  export default {
-    data () {
-      return {
-        notices: [],
+export default {
+  data () {
+    return {
+      notices: []
+    }
+  },
+  created () {
+    console.log(this.notices)
+  },
+  methods: {
+    add (notice) {
+      const name = getUuid()
+
+      let _notice = Object.assign({
+        name: name
+      }, notice)
+
+      this.notices.push(_notice)
+
+      // 定时移除，单位：秒
+      const duration = notice.duration
+      if (duration !== 0) {
+        setTimeout(() => {
+          this.remove(name)
+        }, duration * 1000)
       }
     },
-    created() {
-      console.log(this.notices);
-    },
-    methods: {
-      add (notice) {
-        const name = getUuid();
+    remove (name) {
+      const notices = this.notices
 
-        let _notice = Object.assign({
-          name: name
-        }, notice);
-
-        this.notices.push(_notice);
-
-        // 定时移除，单位：秒
-        const duration = notice.duration;
-        if(duration !== 0) {
-          setTimeout(() => {
-            this.remove(name);
-          }, duration * 1000);
-        }
-      },
-      remove (name) {
-        const notices = this.notices;
-
-        for (let i = 0; i < notices.length; i++) {
-          if (notices[i].name === name) {
-            this.notices.splice(i, 1);
-            break;
-          }
+      for (let i = 0; i < notices.length; i++) {
+        if (notices[i].name === name) {
+          this.notices.splice(i, 1)
+          break
         }
       }
     }
   }
+}
 </script>
 <style lang="scss" scoped>
-
 
   .messageAnimation-enter-active,.messageAnimation-leave-active{
     transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;

@@ -5,11 +5,11 @@
 //浮动元素&浮动按钮,z-index:150,
 //遮罩层,z-index:200
 //弹窗层,z-index:250
-$white: #FFFFFF;
+$white: #ffffff;
 $primary: #eb7290;
-$primaryText: #F3588B;
-$error: #FF4719;
-$errorText: #FF1919;
+$primaryText: #f3588b;
+$error: #ff4719;
+$errorText: #ff1919;
 $success: #00af57;
 $warning: #e9a600;
 $alert: #c5006a;
@@ -39,7 +39,9 @@ main,
 p,
 section,
 span {
-  font-family: Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue, sans-serif;
+  font-family: Microsoft YaHei UI Light, Microsoft YaHei Light,
+    WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue,
+    sans-serif;
 }
 
 button {
@@ -60,11 +62,11 @@ ul li {
   display: none !important;
 }
 
-.smFont{
+.smFont {
   font-size: 12px;
 }
-.defaultTextColor{
-  color: #4A4A4A;
+.defaultTextColor {
+  color: #4a4a4a;
 }
 .primaryButton {
   background-color: $primary;
@@ -78,7 +80,7 @@ ul li {
   -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
-.normalButton{
+.normalButton {
   background-color: $white;
   color: #4a4a4a;
   -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
@@ -88,7 +90,7 @@ ul li {
 .errorText {
   color: $errorText;
 }
-.primaryText{
+.primaryText {
   color: $primaryText;
 }
 
@@ -167,7 +169,7 @@ a {
   z-index: -1;
   width: 100%;
   height: 100vh;
-  background-image: url('../../../public/bc1.jpg');
+  background-image: url("../../../public/bc1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -191,7 +193,7 @@ a {
 
 //手机端与pad端展示footer,PC端隐藏
 footer {
-  display: none
+  display: none;
 }
 
 @media screen and (max-width: 420px) {
@@ -199,7 +201,11 @@ footer {
     display: block;
     width: 100%;
     height: 60px;
-    background: radial-gradient(75px at top, transparent 50%, rgb(235, 114, 144) 51%);
+    background: radial-gradient(
+      75px at top,
+      transparent 50%,
+      rgb(235, 114, 144) 51%
+    );
     background-position-y: -10px;
     position: fixed;
     bottom: -10px;
@@ -210,7 +216,7 @@ footer {
       align-items: center;
 
       a {
-        width: 25%
+        width: 25%;
       }
     }
   }
@@ -228,8 +234,8 @@ footer {
   position: fixed;
   bottom: 30px;
   left: calc(50% - 30px);
-  -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
-  box-shadow: 0 2px 10px rgba(33, 33, 33, .5);
+  -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
+  box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
   border: 0;
 }
 
@@ -343,7 +349,7 @@ header {
     align-items: center;
     overflow: visible;
 
-    >.btnGroup {
+    > .btnGroup {
       color: $primaryText;
       background-color: $white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -352,7 +358,7 @@ header {
       padding: 4px 12px;
       margin-right: 16px;
 
-      >div {
+      > div {
         box-sizing: content-box;
         width: 26px;
         height: 26px;
@@ -369,22 +375,22 @@ header {
           filter: brightness(50%);
           transition: all 0.5s;
         }
-        img:hover{
+        img:hover {
           filter: brightness(80%);
         }
       }
 
-      >div:last-of-type {
+      > div:last-of-type {
         margin-left: 8px;
       }
 
-      >div.languageActive {
+      > div.languageActive {
         img {
           filter: brightness(1);
         }
       }
     }
-    a{
+    a {
       overflow: visible;
     }
   }
@@ -449,7 +455,6 @@ header {
 }
 
 .home {
-
   .inputArea {
     margin: 32px auto 0;
     height: 44px;
@@ -483,7 +488,7 @@ header {
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 
       i {
-        color: #FF91AC;
+        color: #ff91ac;
       }
     }
   }
@@ -512,7 +517,7 @@ header {
       height: 30px;
       line-height: 30px;
       font-size: 14px;
-      background-color: rgba(0,0,0,0);
+      background-color: rgba(0, 0, 0, 0);
       cursor: pointer;
       transition: all 0.25s;
       border: 1px solid rgba(0, 0, 0, 0);
@@ -582,7 +587,7 @@ header {
       background-color: $primary;
     }
     .swiper-button-prev:hover,
-    .swiper-button-next:hover{
+    .swiper-button-next:hover {
       background-color: lightpink;
     }
 
@@ -652,7 +657,7 @@ header {
           transform: rotate(360deg);
           transition: all 0.5s;
 
-          >.iconfont.icon-cancel {
+          > .iconfont.icon-cancel {
             display: none;
             position: absolute;
             top: calc(50% - 30px);
@@ -667,12 +672,12 @@ header {
             border-radius: 40px;
           }
 
-          >.iconfont.icon-cancel:hover {
+          > .iconfont.icon-cancel:hover {
             background-color: $primary;
             color: $white;
           }
 
-          >div {
+          > div {
             display: none;
             position: absolute;
             overflow: hidden;
@@ -693,48 +698,48 @@ header {
             }
           }
 
-          >div:first-of-type {
+          > div:first-of-type {
             left: 40px;
             top: -20px;
 
             button {
-              color: $primaryText
+              color: $primaryText;
             }
           }
 
-          >div:nth-of-type(2) {
+          > div:nth-of-type(2) {
             left: -20px;
             top: 40px;
 
             button {
-              color: $primaryText
+              color: $primaryText;
             }
           }
 
-          >div:nth-of-type(3) {
+          > div:nth-of-type(3) {
             left: 100px;
             top: 40px;
 
             button {
-              color: $primaryText
+              color: $primaryText;
             }
           }
 
-          >div:last-of-type {
+          > div:last-of-type {
             left: 40px;
             top: 100px;
 
             button {
-              color: $primaryText
+              color: $primaryText;
             }
           }
 
-          >div:hover {
+          > div:hover {
             background-color: $primary;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
             button {
-              color: $white
+              color: $white;
             }
           }
         }
@@ -752,11 +757,11 @@ header {
           transform: rotate(0deg);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
-          >.iconfont.icon-cancel {
+          > .iconfont.icon-cancel {
             display: block;
           }
 
-          >div {
+          > div {
             display: block;
             width: 80px;
             height: 80px;
@@ -779,7 +784,7 @@ header {
   }
 
   .successText {
-    color: #B1FFDA;
+    color: #b1ffda;
     text-decoration: line-through;
   }
 }
