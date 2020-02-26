@@ -482,16 +482,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaContainer{
-
+    transition: all 0.5s;
 }
 .lunaContainer.darkContainer {
     background-color: $normalDark !important;
     color: $white;
+
 }
 
 .lunaCard {
     background-color: $lightGray;
     color: $normalDark;
+    transition: all 0.5s;
     .lunaCardTitle {
         width: 100%;
         height: 36px;
@@ -964,6 +966,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         border: 1px solid $primary;
         background-color: $primary;
         i, span{
+            color: $white;
+        }
+    }
+    .messageBody.alertMessage{
+        border: 1px solid $alert;
+        background-color: $alert;
+        i,span{
             color: $white;
         }
     }

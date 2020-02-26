@@ -8,6 +8,9 @@
             user-language="English"
     ></Header>
     <div class="about">
+      <List>
+        <ListItem v-for="(i, index) in listData" :key="index" :img="i.img" :title="i.userName" :label="i.discribe"></ListItem>
+      </List>
       <Form ref="form" :form="form" :theme="theme" :width="240" label-position="top"></Form>
       <Button @click="submit" theme="primary">提交</Button>
       <h1>{{ $t('lang.aboutUs.title') }}</h1>
@@ -379,31 +382,50 @@ export default {
         email: '',
         bank: ''
       }
+      listData: [
+        {
+          userName: '卢娜',
+          describe: 'Luna-UI的作者',
+          img: 'userIcon.jpg'
+        }
+      ],
     }
   },
   created () {
+    this.$Message.info({
+      content: 'Info Message',
+      icon: 'iconfont icon-search1',
+      duration: 3
+    })
+    this.$Message.error({
+      content: 'Error Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
     this.$Message.warning({
-      content: '111',
-      icon: 'iconfont icon-search1',
-      duration: 0
-    })
-    this.$Message.info({
-      content: '111',
+      content: 'Warning Message',
       icon: 'iconfont icon-search1',
       theme: 'light',
-      duration: 0
+      duration: 3
     })
-    this.$Message.info({
-      content: '111',
+    this.$Message.success({
+      content: 'Success Message',
       icon: 'iconfont icon-search1',
       theme: 'light',
-      duration: 0
+      duration: 3
     })
-    this.$Message.info({
-      content: '111',
+    this.$Message.primary({
+      content: 'Primary Message',
       icon: 'iconfont icon-search1',
       theme: 'light',
-      duration: 0
+      duration: 3
+    })
+    this.$Message.alert({
+      content: 'Alert Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
     })
   },
   methods: {
