@@ -1,17 +1,7 @@
 <template>
   <button
     class="lunaButton"
-    :style="[
-      styles,
-      buttonWidth,
-      buttonHeight,
-      buttonFontSize,
-      buttonRadius,
-      buttonShadow,
-      buttonBackground,
-      buttonColor,
-      buttonBorder
-    ]"
+    :style="[styles, buttonStyles]"
     :class="[
       className,
       {
@@ -24,8 +14,8 @@
         darkButton: theme === 'dark'
       },
       {
-        darkShadow: shadowStyle === 'dark',
-        lightShadow: shadowStyle === 'light'
+        darkShadow: shadowTheme === 'dark',
+        lightShadow: shadowTheme === 'light'
       },
       {
         squareCorner: corner === 'square',
@@ -45,10 +35,32 @@
     @click="click()"
     v-ripple
   >
-    <i :style="buttonColor" :class="icon" class="pre" v-if="pre"></i>
-    <slot :style="buttonColor"></slot>
-    <i :style="buttonColor" :class="icon" class="suffix" v-if="suffix"></i>
-    <div v-if="badge" class="lunaBadge"></div>
+    <i
+      :style="{ color: color }"
+      :class="fontIcon"
+      class="pre"
+      v-if="pre && fontIcon !== ''"
+    ></i>
+    <img
+      :class="imageIcon"
+      class="buttonImg pre"
+      v-if="pre && imageIcon !== ''"
+    />
+    <slot :style="{ color: color }"></slot>
+    <i
+      :style="{ color: color }"
+      :class="fontIcon"
+      class="suffix"
+      v-if="suffix && fontIcon !== ''"
+    ></i>
+    <img
+      :class="imageIcon"
+      class="buttonImg suffix"
+      v-if="suffix && imageIcon !== ''"
+    />
+    <div v-if="badge" class="lunaBadge">
+      <span v-if="badgeType === 'number'">{{ badgeCount }}</span>
+    </div>
   </button>
 </template>
 
@@ -56,25 +68,99 @@
 export default {
   name: 'Button',
   props: {
-    loading: {
-      type: Boolean,
-      default: false
+    width: {
+      type: [Number, String],
+      default: 'auto'
+    },
+    height: {
+      type: [Number, String],
+      default: 32
     },
     color: {
       type: String,
       default: 'none'
     },
+    background: {
+      type: String,
+      default: 'none'
+    },
+    fontSize: {
+      type: [Number, String],
+      default: '12px'
+    },
+    border: {
+      type: String,
+      default: '1px solid #FFF'
+    },
+    shadow: {
+      type: Boolean,
+      default: true
+    },
+    shadowTheme: {
+      type: String,
+      default: 'dark'
+    },
+    shadowStyle: {
+      type: String,
+      default: ''
+    },
     theme: {
       type: String,
       default: 'light'
+    },
+    colorTheme: {
+      type: String,
+      default: 'light'
+    },
+    className: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    padding: {
+      type: [String, Number],
+      default: '0 16px'
+    },
+    margin: {
+      type: [String, Number],
+      default: ''
+    },
+    radius: {
+      type: [Number, String],
+      default: -1
+    },
+    corner: {
+      type: String,
+      default: 'large'
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     type: {
       type: String,
       default: 'normal'
     },
-    className: {
+    badge: {
+      type: Boolean,
+      default: false
+    },
+    badgeType: {
       type: String,
-      default: ''
+      default: 'dot'
+    },
+    badgeCount: {
+      type: Number,
+      default: 0
     },
     icon: {
       type: String,
@@ -88,148 +174,103 @@ export default {
       type: Boolean,
       default: false
     },
-    // 自定义样式
-    styles: {
-      type: Object,
-      default () {
-        return {}
-      }
-    },
-    disabled: {
+    long: {
       type: Boolean,
       default: false
-    },
-    corner: {
-      type: String,
-      default: 'large'
-    },
-    shadow: {
-      type: Boolean,
-      default: true
-    },
-    shadowStyle: {
-      type: String,
-      default: 'dark'
-    },
-    border: {
-      type: String,
-      default: '1px solid #FFF'
-    },
-    radius: {
-      type: Number,
-      default: -1
-    },
-    badge: {
-      type: Boolean,
-      default: false
-    },
-    width: {
-      type: [Number, String],
-      default: 'auto'
-    },
-    height: {
-      type: [Number, String],
-      default: 30
-    },
-    fontSize: {
-      type: [Number, String],
-      default: '12px'
-    },
-    background: {
-      type: String,
-      default: 'none'
+    }
+  },
+  data () {
+    return {
+      fontIcon: '',
+      imageIcon: ''
     }
   },
   computed: {
-    buttonBorder () {
-      return {
-        border: this.border
+    buttonStyles () {
+      let styles = {
+        border: this.border,
+        background: this.background
       }
-    },
-    buttonWidth () {
       if (this.corner === 'round') {
         if (typeof this.width === 'string') {
-          return {
-            minWidth: this.width,
-            width: this.width
-          }
+          styles.minWidth = this.width
+          styles.width = this.width
         } else {
-          return {
-            minWidth: this.width + 'px',
-            width: this.width + 'px'
-          }
+          styles.minWidth = this.width + 'px'
+          styles.width = this.width + 'px'
         }
       } else {
         if (typeof this.width === 'string') {
-          return {
-            width: 'calc(' + this.width + ' + 30px)'
-          }
+          styles.width = this.width
         } else {
-          return {
-            width: this.width + 30 + 'px'
-          }
+          styles.width = this.width + 'px'
         }
       }
-    },
-    buttonHeight () {
       if (typeof this.height === 'string') {
-        return {
-          height: this.height,
-          lineHeight: this.height
-        }
+        styles.height = this.height
+        styles.lineHeight = this.height
       } else {
-        return {
-          height: this.height + 'px',
-          lineHeight: this.height + 'px'
-        }
+        styles.height = this.height + 'px'
+        styles.lineHeight = this.height + 'px'
       }
-    },
-    buttonFontSize () {
-      if (typeof this.fontSize === 'string') {
-        return {
-          fontSize: this.fontSize
-        }
-      } else {
-        return {
-          fontSize: this.fontSize + 'px'
-        }
-      }
-    },
-    buttonRadius () {
-      if (this.radius !== -1) {
-        return {
-          borderRadius: this.radius + 'px!important'
-        }
-      } else {
-        return {}
-      }
-    },
-    buttonShadow () {
-      if (!this.shadow) {
-        return {
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
-        }
-      } else {
-        return {}
-      }
-    },
-    buttonBackground () {
-      if (this.background !== 'none') {
-        return {
-          backgroundColor: this.background + '!important'
-        }
-      } else {
-        return {}
-      }
-    },
-    buttonColor () {
       if (this.color !== 'none') {
-        return {
-          color: this.color
-        }
-      } else {
-        return {}
+        styles.color = this.color
       }
+      if (typeof this.fontsize === 'string') {
+        styles.fontSize = this.fontsize
+      } else {
+        styles.fontSize = this.fontSize + 'px'
+      }
+      if (typeof this.padding === 'string') {
+        styles.padding = this.padding
+      } else {
+        styles.padding = '0 ' + this.padding + 'px'
+      }
+      if (this.margin !== '') {
+        if (typeof this.margin === 'string') {
+          styles.margin = this.margin
+        } else {
+          styles.margin = '0 ' + this.margin + 'px'
+        }
+      }
+      if (this.shadowStyle !== '') {
+        styles.boxShadow = this.shadowStyle
+      }
+      if (this.radius !== -1) {
+        if (typeof this.radius === 'string') {
+          styles.borderRadius = this.radius
+        } else {
+          styles.borderRadius = this.radius + 'px'
+        }
+      }
+      if (this.long) {
+        style.width = '100%'
+      }
+      return styles
+    }
+  },
+  created () {
+    let icon = this.icon
+    // 为了避免转义反斜杠出问题，这里将对其进行转换
+    let re = /(\\+)/g
+    let filename = icon.replace(re, '#')
+    // 对路径字符串进行剪切截取
+    let fileArray = filename.split('#')
+    // 获取数组中最后一个，即文件名
+    let fileName = fileArray[fileArray.length - 1]
+    // 再对文件名进行截取，以取得后缀名
+    let suffixName = fileName.split('.')
+    // 获取截取的最后一个字符串，即为后缀名
+    let last = suffixName[suffixName.length - 1]
+    // 添加需要判断的后缀名类型
+    let tp = 'jpg,svg,png,JPG,SVG,PNG'
+    // 返回符合条件的后缀名在字符串中的位置
+    let rs = tp.indexOf(last)
+    // 如果返回的结果大于或等于0，说明包含允许上传的文件类型
+    if (rs >= 0) {
+      this.imageIcon = this.icon
+    } else {
+      this.fontIcon = this.icon
     }
   },
   methods: {

@@ -305,13 +305,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaButton {
-    min-width: 60px;
+    min-width: 64px;
     display: flex;
     transition: all 0.5s;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    padding: 0 15px;
     position: relative;
     overflow: visible;
     i {
