@@ -381,7 +381,7 @@ export default {
         password: '',
         email: '',
         bank: ''
-      }
+      },
       listData: [
         {
           userName: '卢娜',

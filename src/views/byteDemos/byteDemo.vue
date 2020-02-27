@@ -9,6 +9,10 @@
             <span>{{index + 1}}.{{i.value}}</span>
         </li>
     </ul>
+        <textarea @focus="watchPaste" @blur="cancelPaste"></textarea>
+        <div class="uploadImgPreview">
+            <img v-for="(i,index) in imgList" :key="index" :src="i" alt=""/>
+        </div>
     </div>
 </template>
 
@@ -17,6 +21,7 @@ export default {
   name: 'byteDemo',
   data () {
     return {
+      imgList: [],
       list: [
         { id: '1', value: '111' },
         { id: '2', value: '222' },
@@ -37,8 +42,8 @@ export default {
       this.dragging = event.target.childNodes[0]
     },
     onDragOver (event) {
-        console.log(event.target.childNodes[0])
-        this.target = event.target.childNodes[0]
+      console.log(event.target.childNodes[0])
+      this.target = event.target.childNodes[0]
       if (this.target.nodeName === 'SPAN' && this.target !== this.dragging) {
         if (this._index(this.dragging) < this._index(this.target)) {
           this.target.parentNode.parentNode.insertBefore(this.dragging, this.target.parentNode.nextSibling.childNodes[0])
@@ -63,6 +68,39 @@ export default {
     _index (el) {
       let domData = Array.from(this.$refs.parentNode.childNodes[0])
       return domData.findIndex(i => i.innerText === el.innerText)
+    },
+    watchPaste () {
+      document.body.addEventListener('paste', this.handelPaste)
+    },
+    cancelPaste () {
+
+    },
+    handelPaste (e) {
+      const { clipboardData } = e
+      const { items, types } = clipboardData
+      // console.log('ea', clipboardData, items, types)
+      let item = items[0]
+      for (let i = 0; i < types.length; i++) {
+        if (types[i] === 'Files') {
+          item = items[i]
+          break
+        }
+      }
+      if (item && item.kind === 'file' && item.type.match(/^image\//i)) {
+        this.ceshi(item)
+      }
+    },
+    ceshi (item) {
+      const blob = item.getAsFile()
+      const reader = new FileReader()
+      reader.onload = e => {
+          this.imgList.push(e.target.result)
+        // const img = new Image()
+        // img.src = e.target.result
+        // console.log(img)
+        // document.body.appendChild(img)
+      }
+      reader.readAsDataURL(blob)
     }
   }
 }
@@ -91,6 +129,15 @@ export default {
         }
         li:hover{
             background-color: lightblue;
+        }
+    }
+    .uploadImgPreview{
+        img{
+            width: 50px;
+            margin-right: 16px;
+        }
+        img:last-of-type{
+            margin-right: 0;
         }
     }
 </style>
