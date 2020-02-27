@@ -73,7 +73,7 @@ export default {
       document.body.addEventListener('paste', this.handelPaste)
     },
     cancelPaste () {
-
+      document.body.removeEventListener('paste', this.handelPaste)
     },
     handelPaste (e) {
       const { clipboardData } = e
@@ -94,7 +94,7 @@ export default {
       const blob = item.getAsFile()
       const reader = new FileReader()
       reader.onload = e => {
-          this.imgList.push(e.target.result)
+        this.imgList.push(e.target.result)
         // const img = new Image()
         // img.src = e.target.result
         // console.log(img)
