@@ -94,6 +94,7 @@ export default {
       dom.style.transform = `translateY(${offset}px)`
 
       // 触发重绘
+      // eslint-disable-next-line no-unused-expressions
       dom.offsetWidth
       dom.style.transition = 'transform .3s'
       dom.style.transform = ``

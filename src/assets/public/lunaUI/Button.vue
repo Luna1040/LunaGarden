@@ -77,11 +77,11 @@ export default {
       default: 32
     },
     color: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     background: {
-      type: String,
+      type: [String, Number],
       default: 'none'
     },
     fontSize: {
@@ -89,7 +89,7 @@ export default {
       default: '12px'
     },
     border: {
-      type: String,
+      type: [Number, String],
       default: '1px solid #FFF'
     },
     shadow: {
@@ -187,9 +187,18 @@ export default {
   },
   computed: {
     buttonStyles () {
-      let styles = {
-        border: this.border,
-        background: this.background
+      let styles = {}
+      if (this.background !== 'none') {
+        if (typeof this.background === 'string') {
+          styles.background = this.background
+        } else {
+          styles.background = '#' + this.background
+        }
+      }
+      if (typeof this.border === 'string') {
+        styles.border = this.border
+      } else {
+        styles.border = '1px solid #' + this.border
       }
       if (this.corner === 'round') {
         if (typeof this.width === 'string') {
@@ -214,7 +223,11 @@ export default {
         styles.lineHeight = this.height + 'px'
       }
       if (this.color !== 'none') {
-        styles.color = this.color
+        if (typeof this.color === 'string') {
+          styles.color = this.color
+        } else {
+          styles.color = '#' + this.color
+        }
       }
       if (typeof this.fontsize === 'string') {
         styles.fontSize = this.fontsize
@@ -234,7 +247,7 @@ export default {
         }
       }
       if (this.shadowStyle !== '') {
-        styles.boxShadow = this.shadowStyle
+        styles.boxShadow = this.shadowStyle + '!important'
       }
       if (this.radius !== -1) {
         if (typeof this.radius === 'string') {
