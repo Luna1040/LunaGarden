@@ -109,7 +109,7 @@ export default {
       document.body.addEventListener('paste', this.handelPaste)
     },
     cancelPaste () {
-
+      document.body.removeEventListener('paste', this.handelPaste)
     },
     handelPaste (e) {
       const { clipboardData } = e
