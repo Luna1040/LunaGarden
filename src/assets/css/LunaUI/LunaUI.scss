@@ -248,14 +248,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
 .lunaInput {
     transition: all 0.5s;
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: relative;
     outline: 0;
     input {
-
         border: 0;
         outline: 0;
         height: 100%;
@@ -284,6 +282,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         font-size: 8px;
         right: 4px;
     }
+}
+.lunaInput:hover{
+    box-shadow: 0 0 0 2px $primary 0.2;
+    border: 1px solid $primary;
 }
 .lunaInput.lightInput{
     background-color: $white;
@@ -817,6 +819,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
             max-height: 150px;
             overflow: auto;
             z-index: 99999;
+            border: 1px solid #CECECE;
             .lunaOption {
                 border-bottom: 1px solid $lightGray;
                 padding: 6px 8px;

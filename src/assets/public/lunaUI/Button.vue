@@ -188,11 +188,17 @@ export default {
   computed: {
     buttonStyles () {
       let styles = {
-        border: this.border,
-        background: this.background
+        border: this.border
+      }
+      if (typeof this.background !== 'string') {
+        styles.backgroundColor = '#' + this.background
+      } else {
+        if (this.background !== 'none') {
+          styles.backgroundColor = this.background
+        }
       }
       if (this.corner === 'round') {
-        if (typeof this.width === 'string') {
+        if (typeof this.width === 'string' && this.width !== 'auto') {
           styles.minWidth = this.width
           styles.width = this.width
         } else {

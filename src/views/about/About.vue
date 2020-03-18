@@ -117,7 +117,7 @@ export default {
     return {
       loading: true,
       dark: false,
-      theme: 'dark',
+      theme: 'light',
       page: 22,
       selectValue: '',
       columns: [
