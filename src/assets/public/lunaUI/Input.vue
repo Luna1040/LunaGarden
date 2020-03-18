@@ -313,7 +313,9 @@ export default {
     },
     cgValue (event) {
       this.$emit('input', event.target.value)
-      this.$emit('onValidate', this.examine(event.target.value))
+      if (this.validateOnChange) {
+        this.$emit('onValidate', this.examine(event.target.value))
+      }
     },
     handelKeyUp (event) {
       this.$emit('on-keyup', event)
@@ -329,6 +331,9 @@ export default {
     },
     handelBlur (event) {
       this.$emit('on-blur', event)
+      if (!this.validateOnChange) {
+        this.$emit('onBlurValidate', this.examine(event.target.value))
+      }
     },
     handelIcon () {
       this.$emit('on-blur', this.textValue)

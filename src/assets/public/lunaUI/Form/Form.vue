@@ -301,7 +301,7 @@ export default {
         }
       }
       for (let i = 0; i < this.formData.length; i++) {
-        return this.formData[i].errStatus !== true;
+        return this.formData[i].errStatus !== true
       }
     }
   }
