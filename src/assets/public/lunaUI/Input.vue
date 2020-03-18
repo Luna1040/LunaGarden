@@ -82,6 +82,28 @@ import {
 export default {
   name: 'Input',
   props: {
+    // 自定义宽度  作用于container
+    width: {
+      type: [Number, String],
+      default: 180
+    },
+    // 自定义高度  作用于body
+    height: {
+      type: [Number, String],
+      default: 32
+    },
+    color: {
+      type: String,
+      default: '#4A4A4A'
+    },
+    background: {
+      type: String,
+      default: '#FFFFFF'
+    },
+    fontSize: {
+      type: [String, Number],
+      default: '14px'
+    },
     value: {
       type: [String, Number],
       default: ''
@@ -106,27 +128,9 @@ export default {
       type: Boolean,
       default: false
     },
-    // 自定义宽度  作用于container
-    width: {
-      type: [Number, String],
-      default: 180
-    },
-    // 自定义高度  作用于body
-    height: {
-      type: Number,
-      default: 32
-    },
     radius: {
       type: Number,
       default: -1
-    },
-    background: {
-      type: String,
-      default: '#FFFFFF'
-    },
-    color: {
-      type: String,
-      default: '#4A4A4A'
     },
     borderColor: {
       type: String,
@@ -163,10 +167,6 @@ export default {
     showWordLimit: {
       type: Boolean,
       default: false
-    },
-    fontSize: {
-      type: String,
-      default: '14px'
     },
     placeholder: {
       type: String,
@@ -284,6 +284,8 @@ export default {
     hoverEnter () {
       if (this.borderColor !== '') {
         this.borderColorStyle = this.borderColor
+      } else {
+        this.borderColorStyle = this.background
       }
     },
     hoverOut () {
@@ -292,8 +294,12 @@ export default {
     focusEnter () {
       if (this.borderColor !== '') {
         this.boxShadow =
-                '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
+                        '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
         this.borderColorStyle = this.borderColor
+      } else {
+        this.boxShadow =
+                        '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
+        this.borderColorStyle = this.background
       }
     },
     focusLeave () {
@@ -424,7 +430,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.spin {
-  transform: rotateZ(180deg);
-}
+  .spin {
+    transform: rotateZ(180deg);
+  }
 </style>
