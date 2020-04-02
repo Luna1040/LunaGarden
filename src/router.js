@@ -28,6 +28,7 @@ import ResetPsw from './views/login/resetPsw.vue'
 // 字节测试
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
+import ByteCursor from './views/byteDemos/byteCursor'
 
 Vue.use(Router)
 
@@ -37,6 +38,7 @@ const router = new Router({
     { path: '/', name: 'start', component: Start },
     { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
     { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
+    { path: '/Cursor', name: 'Cursor', component: ByteCursor },
     // PC页面统一整合
     { path: '/Home', name: 'Home', component: Home, meta: { index: 0 } },
     { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },

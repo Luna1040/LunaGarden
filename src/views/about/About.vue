@@ -95,7 +95,7 @@
       <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>
       <Input v-model="selectValue" :theme="theme"></Input>
       <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
-        <p>TEST</p>
+        <p>弹窗</p>
       </Modal>
       <Card :theme="theme" :width="200" :height="200" title="Luna Card">
         <p>TEST LUNA CARD</p>
@@ -388,45 +388,86 @@ export default {
           describe: 'Luna-UI的作者',
           img: 'userIcon.jpg'
         }
-      ],
+      ]
     }
   },
   created () {
-    this.$Message.info({
-      content: 'Info Message',
-      icon: 'iconfont icon-search1',
-      duration: 3
-    })
-    this.$Message.error({
-      content: 'Error Message',
-      icon: 'iconfont icon-search1',
-      theme: 'light',
-      duration: 3
-    })
-    this.$Message.warning({
-      content: 'Warning Message',
-      icon: 'iconfont icon-search1',
-      theme: 'light',
-      duration: 3
-    })
-    this.$Message.success({
-      content: 'Success Message',
-      icon: 'iconfont icon-search1',
-      theme: 'light',
-      duration: 3
-    })
-    this.$Message.primary({
-      content: 'Primary Message',
-      icon: 'iconfont icon-search1',
-      theme: 'light',
-      duration: 3
-    })
-    this.$Message.alert({
-      content: 'Alert Message',
-      icon: 'iconfont icon-search1',
-      theme: 'light',
-      duration: 3
-    })
+    // 弹窗拦截其余弹窗
+    // let fileList = [
+    //   {
+    //     name: '邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他.txt',
+    //     size: 155
+    //   },
+    //   {
+    //     name: 'empty',
+    //     size: 0
+    //   },
+    //   {
+    //     name: 'sizeOver',
+    //     size: 150
+    //   }
+    // ]
+    // for (let i = 0; i < fileList.length; i++) {
+    //   if (fileList[i].name.length > 50) {
+    //     this.errorMessage = '超长'
+    //     this.wrongList.push(fileList[i].name)
+    //     this.dark = true
+    //     continue
+    //   } else if (fileList[i].size === 0) {
+    //     if (this.dark === false) {
+    //       this.wrongList.push(fileList[i].name)
+    //       this.errorMessage = '空'
+    //       this.dark = true
+    //     }
+    //     continue
+    //   } else if (fileList[i].size > 50 && this.dark === false) {
+    //     if (this.dark === false) {
+    //       this.wrongList.push(fileList[i].name)
+    //       this.errorMessage = '大于50'
+    //       this.dark = true
+    //     }
+    //     continue
+    //   }
+    // }
+    // 文件名称截取
+    // let name = 'test.222.txt'
+    // let frontName = name.split('.').slice(0, name.split('.').length - 1).join('.')
+    // console.log(frontName)
+    // this.$Message.info({
+    //   content: 'Info Message',
+    //   icon: 'iconfont icon-search1',
+    //   duration: 3
+    // })
+    // this.$Message.error({
+    //   content: 'Error Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.warning({
+    //   content: 'Warning Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.success({
+    //   content: 'Success Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.primary({
+    //   content: 'Primary Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.alert({
+    //   content: 'Alert Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
   },
   methods: {
     cgTheme () {

@@ -81,94 +81,94 @@
   </div>
 </template>
 <script>
-  import './assets/css/public.scss'
+import './assets/css/public.scss'
 
-  export default {
-    name: "app",
-    data() {
-      return {
-        footerActive: "home",
-        firstAlert: false,
-        width177: true,
-        transitionName: "slide-right"
-      };
-    },
-    created() {
-      //计算窗口比例调整背景图
-      if (window.innerWidth / window.innerHeight > 1.777) {
-        this.width177 = 177;
+export default {
+  name: 'app',
+  data () {
+    return {
+      footerActive: 'home',
+      firstAlert: false,
+      width177: true,
+      transitionName: 'slide-right'
+    }
+  },
+  created () {
+    // 计算窗口比例调整背景图
+    if (window.innerWidth / window.innerHeight > 1.777) {
+      this.width177 = 177
+    } else if (window.innerWidth / window.innerHeight < 1) {
+      this.width177 = 0
+    } else {
+      this.width177 = 16
+    }
+    // 是否为初次访问
+    // 根据localstorage的预设凭据初次判断
+    if (localStorage.getItem('firstLoad')) {
+      // 根据localstorage中必须的内容格式取值，若没有，则首先赋值
+      if (!localStorage.getItem('todoList')) {
+        localStorage.setItem('todoList', JSON.stringify([]))
+      }
+      if (!localStorage.getItem('businessList')) {
+        localStorage.setItem('businessList', JSON.stringify([]))
+      }
+    } else {
+      // 初次访问，创建默认数据格式保存于localstorage中
+      localStorage.setItem('todoList', JSON.stringify([]))
+      localStorage.setItem('businessList', JSON.stringify([]))
+      // 创建凭据证明下次打开时非初次访问
+      localStorage.setItem('firstLoad', JSON.stringify(1))
+      // 提示是否进入引导模式
+      this.firstAlert = true
+    }
+
+    // 若不是，判断是否登录
+
+    // 若未登录，从localstorage获取内容渲染
+
+    // 若已登录，从服务器端获取内容
+  },
+  watch: {
+    $route (to, from) {
+      // 切换动画
+      if (to.meta.index <= from.meta.index) {
+        this.transitionName = 'slide-left'
+      } else {
+        this.transitionName = 'slide-right'
+      }
+      this.$router.isBack = false
+    }
+  },
+  mounted () {
+    window.onresize = () => {
+      if (window.innerWidth / window.innerHeight >= 1.777) {
+        this.width177 = 177
       } else if (window.innerWidth / window.innerHeight < 1) {
-        this.width177 = 0;
+        this.width177 = 0
       } else {
-        this.width177 = 16;
+        this.width177 = 16
       }
-      //是否为初次访问
-      //根据localstorage的预设凭据初次判断
-      if (localStorage.getItem("firstLoad")) {
-        //根据localstorage中必须的内容格式取值，若没有，则首先赋值
-        if (!localStorage.getItem("todoList")) {
-          localStorage.setItem("todoList", JSON.stringify([]));
-        }
-        if (!localStorage.getItem("businessList")) {
-          localStorage.setItem("businessList", JSON.stringify([]));
+      if (window.innerWidth >= window.innerHeight) {
+        if (this.$route.name.indexOf('m') === 0) {
+          this.$router.push(this.$route.name.substr(1))
         }
       } else {
-        //初次访问，创建默认数据格式保存于localstorage中
-        localStorage.setItem("todoList", JSON.stringify([]));
-        localStorage.setItem("businessList", JSON.stringify([]));
-        //创建凭据证明下次打开时非初次访问
-        localStorage.setItem("firstLoad", JSON.stringify(1));
-        //提示是否进入引导模式
-        this.firstAlert = true;
-      }
-
-      //若不是，判断是否登录
-
-      //若未登录，从localstorage获取内容渲染
-
-      //若已登录，从服务器端获取内容
-    },
-    watch: {
-      $route(to, from) {
-        // 切换动画
-        if (to.meta.index <= from.meta.index) {
-          this.transitionName = "slide-left";
-        } else {
-          this.transitionName = "slide-right";
+        if (this.$route.name.indexOf('m') !== 0) {
+          this.$router.push('m' + this.$route.name)
         }
-        this.$router.isBack = false;
-      }
-    },
-    mounted() {
-      window.onresize = () => {
-        if (window.innerWidth / window.innerHeight >= 1.777) {
-          this.width177 = 177;
-        } else if (window.innerWidth / window.innerHeight < 1) {
-          this.width177 = 0;
-        } else {
-          this.width177 = 16;
-        }
-        if(window.innerWidth >= window.innerHeight) {
-          if (this.$route.name.indexOf('m') === 0) {
-            this.$router.push(this.$route.name.substr(1))
-          }
-        } else {
-          if (this.$route.name.indexOf('m') !== 0) {
-            this.$router.push('m' + this.$route.name)
-          }
-        }
-      };
-    },
-    methods: {
-      hideModal() {
-        this.firstAlert = false;
-      },
-      toGuide() {
-        this.$router.push('aboutUs');
-        this.hideModal()
       }
     }
-  };
+  },
+  methods: {
+    hideModal () {
+      this.firstAlert = false
+    },
+    toGuide () {
+      this.$router.push('aboutUs')
+      this.hideModal()
+    }
+  }
+}
 </script>
 <style lang="scss">
   .Router {
