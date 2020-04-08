@@ -18,7 +18,7 @@
           <!--                        Network status-->
           <i
                   class="iconfont"
-                  :class="{'icon-HotelDetails_icn_Internet' : navigator.onLine === true , 'icon-infonointernet' : navigator.onLine === false}"
+                  :class="{'icon-ios-wifi' : navigator.onLine === true , 'icon-ios-globe' : navigator.onLine === false}"
           ></i>
           <span v-show="navigator.onLine === true">{{$t('lang.titles.online')}}</span>
           <span v-show="navigator.onLine === false">{{$t('lang.titles.offline')}}</span>
@@ -39,8 +39,8 @@
           <img src="../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
-        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
-          <span>{{$t('lang.titles.guide')}}</span>
+        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-ios-compass" :fontSize="16" :iconSize="22" pre :width="130" @click="toAbout">
+          {{$t('lang.titles.guide')}}
         </Button>
     </div>
   </header>

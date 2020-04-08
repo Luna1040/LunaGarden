@@ -36,7 +36,7 @@
     v-ripple
   >
     <i
-      :style="{ color: color }"
+      :style="[iconFontSize, iconFontColor]"
       :class="fontIcon"
       class="pre"
       v-if="pre && fontIcon !== ''"
@@ -46,9 +46,9 @@
       class="buttonImg pre"
       v-if="pre && imageIcon !== ''"
     />
-    <slot :style="{ color: color }"></slot>
+    <slot></slot>
     <i
-      :style="{ color: color }"
+      :style="[iconFontSize, iconColor]"
       :class="fontIcon"
       class="suffix"
       v-if="suffix && fontIcon !== ''"
@@ -177,6 +177,14 @@ export default {
     long: {
       type: Boolean,
       default: false
+    },
+    iconColor: {
+      type: [Number, String],
+      default: 'none'
+    },
+    iconSize: {
+      type: [Number, String],
+      default: 'none'
     }
   },
   data () {
@@ -222,18 +230,6 @@ export default {
         styles.height = this.height + 'px'
         styles.lineHeight = this.height + 'px'
       }
-      if (this.color !== 'none') {
-        if (typeof this.color === 'string') {
-          styles.color = this.color
-        } else {
-          styles.color = '#' + this.color
-        }
-      }
-      if (typeof this.fontsize === 'string') {
-        styles.fontSize = this.fontsize
-      } else {
-        styles.fontSize = this.fontSize + 'px'
-      }
       if (typeof this.padding === 'string') {
         styles.padding = this.padding
       } else {
@@ -256,10 +252,56 @@ export default {
           styles.borderRadius = this.radius + 'px'
         }
       }
+      if (this.color !== 'none') {
+        if (typeof this.color === 'string') {
+          styles.color = this.color
+        } else {
+          styles.color = '#' + this.color
+        }
+      }
+      if (typeof this.fontSize === 'string') {
+        styles.fontSize = this.fontSize
+      } else {
+        styles.fontSize = this.fontSize + 'px'
+      }
       if (this.long) {
-        style.width = '100%'
+        styles.width = '100%'
       }
       return styles
+    },
+    iconFontSize () {
+      if (this.iconSize !== 'none') {
+        if (typeof this.iconSize === 'string') {
+          return { fontSize: this.iconSize }
+        } else {
+          return { fontSize: this.iconSize + 'px' }
+        }
+      } else {
+        if (typeof this.fontSize === 'string') {
+          return { fontSize: this.fontsize }
+        } else {
+          return { fontSize: this.fontSize + 'px' }
+        }
+      }
+    },
+    iconFontColor () {
+      if (this.iconColor !== '') {
+        if (this.iconColor !== 'none') {
+          if (typeof this.iconColor === 'string') {
+            return { color: this.iconColor }
+          } else {
+            return { color: '#' + this.iconColor }
+          }
+        }
+      } else {
+        if (this.color !== 'none') {
+          if (typeof this.color === 'string') {
+            return { color: this.color }
+          } else {
+            return { color: '#' + this.color }
+          }
+        }
+      }
     }
   },
   created () {
