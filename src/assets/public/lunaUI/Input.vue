@@ -14,14 +14,7 @@
       { disabled: disabled },
       { lightInput: theme === 'light', darkInput: theme === 'dark' }
     ]"
-    :style="[
-      inputWidth,
-      inputRadius,
-      inputHeight,
-      inputBorder,
-      inputBackground,
-      boxShadowStyle
-    ]"
+    :style="[inputStyle]"
     @mouseenter="hoverEnter"
     @mouseleave="hoverOut"
     @focusin="focusEnter"
@@ -186,20 +179,44 @@ export default {
     }
   },
   computed: {
-    inputFontSize () {
-      return {
-        fontSize: this.fontSize
+    inputStyle () {
+      let style = {
+        boxShadow: this.boxShadow
       }
-    },
-    inputWidth () {
       if (typeof this.width !== 'string') {
-        return {
-          width: this.width + 'px'
-        }
+        style.width = this.width + 'px'
       } else {
-        return {
-          width: this.width
+        style.width = this.width
+      }
+      if (this.radius !== -1) {
+        if (typeof this.radius !== 'string') {
+          style.borderRadius = this.radius + 'px!important'
+        } else {
+          style.borderRadius = this.radius + '!important'
         }
+      }
+      if (typeof this.height !== 'string') {
+        style.height = this.height + 'px'
+      } else {
+        style.height = this.height
+      }
+      if (typeof this.backgroundColor !== 'string') {
+        style.backgroundColor = '#' + this.background
+      } else {
+        style.backgroundColor = this.background
+      }
+      if (this.ghost && this.borderColor !== '') {
+        style.border = '1px solid ' + this.borderColor
+      } else {
+        style.border = '1px solid ' + this.borderColorStyle
+      }
+      return style
+    },
+    inputFontSize () {
+      if (typeof this.fontSize === 'string') {
+        return { fontSize: this.fontSize }
+      } else {
+        return { fontSize: this.fontSize + 'px' }
       }
     },
     inputWidthCount () {
@@ -223,50 +240,11 @@ export default {
         }
       }
     },
-    inputRadius () {
-      if (this.radius !== -1) {
-        return {
-          borderRadius: this.radius + 'px!important'
-        }
-      } else {
-        return {}
-      }
-    },
-    inputHeight () {
-      if (typeof this.height !== 'string') {
-        return {
-          height: this.height + 'px'
-        }
-      } else {
-        return {
-          height: this.height
-        }
-      }
-    },
-    inputBackground () {
-      return {
-        backgroundColor: this.background
-      }
-    },
-    inputBorder () {
-      if (this.ghost && this.borderColor !== '') {
-        return {
-          border: '1px solid ' + this.borderColor
-        }
-      } else {
-        return {
-          border: '1px solid ' + this.borderColorStyle
-        }
-      }
-    },
     textColor () {
-      return {
-        color: this.color
-      }
-    },
-    boxShadowStyle () {
-      return {
-        boxShadow: this.boxShadow
+      if (typeof this.color !== 'string') {
+        return { color: '#' + this.color }
+      } else {
+        return { color: this.color }
       }
     },
     count () {
