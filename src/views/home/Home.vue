@@ -9,7 +9,7 @@
     ></Header>
     <div class="inputArea" :class="{inputAreaActive: todoText !== ''}">
       <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="matchQuery" theme="primary" shadow border="0">
-        <i class="iconfont icon-ios-search"></i>
+        <i class="iconfont icon-search1"></i>
       </Button>
       <Input
               type="text"
