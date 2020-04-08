@@ -122,7 +122,7 @@ export default {
       default: false
     },
     radius: {
-      type: [Number,String]
+      type: [Number, String],
       default: -1
     },
     borderColor: {
