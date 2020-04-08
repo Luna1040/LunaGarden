@@ -86,11 +86,11 @@ export default {
       default: 32
     },
     color: {
-      type: String,
+      type: [String, Number],
       default: '#4A4A4A'
     },
     background: {
-      type: String,
+      type: [String, Number],
       default: '#FFFFFF'
     },
     fontSize: {
@@ -122,7 +122,7 @@ export default {
       default: false
     },
     radius: {
-      type: Number,
+      type: [Number,String]
       default: -1
     },
     borderColor: {
