@@ -354,7 +354,7 @@ header {
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       display: flex;
       border-radius: 32px;
-      padding: 4px 12px;
+      padding: 3px 12px;
       margin-right: 16px;
 
       > div {
@@ -363,7 +363,6 @@ header {
         height: 26px;
         position: relative;
         cursor: pointer;
-        border: 1px solid $primaryText;
         border-radius: 26px;
 
         img {
