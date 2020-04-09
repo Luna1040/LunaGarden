@@ -160,3 +160,15 @@
     }
   }
 }
+
+.searchListAnimation-enter-active,.searchListAnimation-leave-active{
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+.searchListAnimation-leave,.searchListAnimation-enter-to{
+  opacity: 1;
+  top: 44px;
+}
+.searchListAnimation-enter, .searchListAnimation-leave-to {
+  opacity: 0;
+  top: 100px;
+}

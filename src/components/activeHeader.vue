@@ -10,18 +10,18 @@
           <!--                    Username Area-->
           <span class="userName">{{userName}}</span>
           <!--                    Viper Icon Area-->
-          <div class="VIPer" v-show="isViper === 'true'">
-            <span class="font-Gothic">VIP</span>
-          </div>
+<!--          <div class="VIPer font-Gothic" v-show="isViper === 'true'">-->
+<!--            VIP-->
+<!--          </div>-->
         </div>
-        <div class="netWorkStatus">
+        <div class="netWorkStatus" :class="{networkError: !navigator.onLine}">
           <!--                        Network status-->
           <i
                   class="iconfont"
-                  :class="{'icon-HotelDetails_icn_Internet' : navigator.onLine === true , 'icon-infonointernet' : navigator.onLine === false}"
+                  :class="{'icon-HotelDetails_icn_Internet' : navigator.onLine , 'icon-infonointernet' : !navigator.onLine}"
           ></i>
-          <span v-show="navigator.onLine === true">{{$t('lang.titles.online')}}</span>
-          <span v-show="navigator.onLine === false">{{$t('lang.titles.offline')}}</span>
+          <span v-show="navigator.onLine">{{$t('lang.titles.online')}}</span>
+          <span v-show="!navigator.onLine">{{$t('lang.titles.offline')}}</span>
         </div>
       </div>
     </div>
@@ -47,84 +47,84 @@
 </template>
 
 <script>
-  import { publicApi } from "../assets/js/url.js";
+import { publicApi } from '../assets/js/url.js'
 
-  export default {
-    name: "app",
-    data() {
-      return {
-        navigator: {
-          onLine: true
-        },
-        imgSrc: "",
-        langSlideDown: ""
-      };
-    },
-    mounted() {
-      this.navigator.onLine = window.navigator.onLine;
-      setInterval(this.getNavigator, 1000);
-      this.getData(publicApi.imgCode, {}).then(res => {
-        this.imgSrc = res.data;
-      });
-    },
-    beforeDestroy() {
-      if (this.timer) {
-        //如果定时器还在运行 或者直接关闭，不用判断
-        clearInterval(this.timer); //关闭
-      }
-    },
-    methods: {
-      cgLang() {
-        this.langSlideDown = this.langSlideDown !== true;
+export default {
+  name: 'app',
+  data () {
+    return {
+      navigator: {
+        onLine: true
       },
-      setLang(value) {
-        this.$i18n.locale = value;
-        this.langSlideDown = false;
-      },
-      getNavigator() {
-        this.navigator.onLine = window.navigator.onLine;
-      },
-      toAbout() {
-        this.$router.push('AboutUs')
-      }
-    },
-    filters: {
-      languageTrans(value) {
-        if (value === "zh-CN") {
-          value = "中文";
-        } else {
-          value = "English";
-        }
-        return value;
-      }
-    },
-    props: {
-      theme: {
-        type: String,
-        default: "glass"
-      },
-      msgHeader: {
-        type: String,
-        required: true
-      },
-      isViper: {
-        type: String,
-        default: "false"
-      },
-      userIcon: {
-        type: String,
-        default: ""
-      },
-      userName: {
-        type: String,
-        default: "Visitor"
-      },
-      userLanguage: {
-        type: String,
-        default: "En"
-      }
+      imgSrc: '',
+      langSlideDown: ''
     }
-  };
+  },
+  mounted () {
+    this.navigator.onLine = window.navigator.onLine
+    setInterval(this.getNavigator, 1000)
+    this.getData(publicApi.imgCode, {}).then(res => {
+      this.imgSrc = res.data
+    })
+  },
+  beforeDestroy () {
+    if (this.timer) {
+      // 如果定时器还在运行 或者直接关闭，不用判断
+      clearInterval(this.timer) // 关闭
+    }
+  },
+  methods: {
+    cgLang () {
+      this.langSlideDown = this.langSlideDown !== true
+    },
+    setLang (value) {
+      this.$i18n.locale = value
+      this.langSlideDown = false
+    },
+    getNavigator () {
+      this.navigator.onLine = window.navigator.onLine
+    },
+    toAbout () {
+      this.$router.push('AboutUs')
+    }
+  },
+  filters: {
+    languageTrans (value) {
+      if (value === 'zh-CN') {
+        value = '中文'
+      } else {
+        value = 'English'
+      }
+      return value
+    }
+  },
+  props: {
+    theme: {
+      type: String,
+      default: 'glass'
+    },
+    msgHeader: {
+      type: String,
+      required: true
+    },
+    isViper: {
+      type: String,
+      default: 'false'
+    },
+    userIcon: {
+      type: String,
+      default: ''
+    },
+    userName: {
+      type: String,
+      default: 'Visitor'
+    },
+    userLanguage: {
+      type: String,
+      default: 'En'
+    }
+  }
+}
 </script>
 
 <style>

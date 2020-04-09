@@ -1,61 +1,95 @@
 <template>
   <div class="home">
     <Header
-            :msg-header="$t('lang.titles.home')"
-            user-icon="userIcon.jpg"
-            user-name="Luna Lovegood"
-            is-viper="true"
-            user-language="English"
+      :msg-header="$t('lang.titles.home')"
+      user-icon="userIcon.jpg"
+      user-name="Luna Lovegood"
+      is-viper="true"
+      user-language="English"
     ></Header>
-    <div class="inputArea" :class="{inputAreaActive: todoText !== ''}">
-      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="matchQuery" theme="primary" shadow border="0">
-        <i class="iconfont icon-search1"></i>
-      </Button>
-      <Input
-              type="text"
-              class="searchInput"
-              :placeholder="$t('lang.home.input')"
-              v-model="todoText"
-              border-color="rgba(0,0,0,0)"
-              ghost
-              width="100%"
-              font-size="32"
-              @on-keyup="keyup($event)"
-              @on-keydown="keydown($event)"
-      ></Input><br>
-      <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" @click="addTodo" theme="primary" shadow border="0">
-        <i class="iconfont icon-add1"></i>
-      </Button>
+    <div class="searchArea">
+      <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
+        <Button
+          :width="32"
+          :height="32"
+          corner="round"
+          color="#333"
+          class="searchBtn"
+          @click="matchQuery"
+          theme="primary"
+          shadow
+          border="0"
+        >
+          <i class="iconfont icon-search1"></i>
+        </Button>
+        <Input
+          type="text"
+          class="searchInput"
+          :placeholder="$t('lang.home.input')"
+          v-model="todoText"
+          border-color="rgba(0,0,0,0)"
+          ghost
+          width="100%"
+          font-size="32"
+          @on-keyup="keyup($event)"
+          @on-keydown="keydown($event)"
+        ></Input
+        ><br />
+        <Button
+          :width="32"
+          :height="32"
+          corner="round"
+          color="#333"
+          class="searchBtn"
+          @click="addTodo"
+          theme="primary"
+          shadow
+          border="0"
+        >
+          <i class="iconfont icon-add1"></i>
+        </Button>
+      </div>
+      <transition name="searchListAnimation">
+        <ul class="searchAssociation" v-if="todoText.trim() !== ''">
+          <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
+          <li
+            class="list-group-item-text"
+            v-for="(item, index) in searchArr"
+            :key="index"
+            @click="choice(item)"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </transition>
     </div>
-    <ul class="searchAssociation">
-      <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
-      <li
-              class="list-group-item-text"
-              v-for="(item,index) in searchArr"
-              :key="index"
-              @click="choice(item)"
-      >{{item}}</li>
-    </ul>
     <div id="navigation">
-      <div class="swiper-button-prev" slot="button-prev">{{$t('lang.home.prev')}}</div>
-      <div class="swiper-button-next" slot="button-next">{{$t('lang.home.next')}}</div>
+      <div class="swiper-button-prev" slot="button-prev">
+        {{ $t("lang.home.prev") }}
+      </div>
+      <div class="swiper-button-next" slot="button-next">
+        {{ $t("lang.home.next") }}
+      </div>
     </div>
     <swiper :options="swiperOption" ref="mySwiper">
-      <swiper-slide :class="{'todoList-shorter': searchArr.length !== 0}">
+      <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
         <ul class="todoList">
-          <li v-for="(i,index) in todoList" :key="i.id">
+          <li v-for="(i, index) in todoList" :key="i.id">
             <div>
-              <span
-                      :class="{successText: i.completed === true}"
-              >{{$t('lang.home.timeStamp')}}{{i.time}}</span>
-              <span
-                      :class="{successText: i.completed === true}"
-              >{{$t('lang.home.content')}}{{i.content}}</span>
+              <span :class="{ successText: i.completed === true }"
+                >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+              >
+              <span :class="{ successText: i.completed === true }"
+                >{{ $t("lang.home.content") }}{{ i.content }}</span
+              >
             </div>
             <div class="dragBtn" @click="mousedown(index)">
               <div
-                      class="dragMenu"
-                      :class="{dragMenuShow : dragActive === index, dragMenuHide: dragActive === -1}"
+                class="dragMenu"
+                :class="{
+                  dragMenuShow: dragActive === index,
+                  dragMenuHide: dragActive === -1
+                }"
               >
                 <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
                 <div @click.stop="cgStatus(i.id)">
@@ -91,20 +125,26 @@
         </ul>
       </swiper-slide>
       <swiper-slide>
-        <ul class="todoList" :class="{'todoList-shorter': searchArr.length !== 0}">
-          <li v-for="(i,index) in businessList" :key="i.id">
+        <ul
+          class="todoList"
+          :class="{ 'todoList-shorter': searchArr.length !== 0 }"
+        >
+          <li v-for="(i, index) in businessList" :key="i.id">
             <div>
-              <span
-                      :class="{successText: i.completed === true}"
-              >{{$t('lang.home.timeStamp')}}{{i.time}}</span>
-              <span
-                      :class="{successText: i.completed === true}"
-              >{{$t('lang.home.content')}}{{i.content}}</span>
+              <span :class="{ successText: i.completed === true }"
+                >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+              >
+              <span :class="{ successText: i.completed === true }"
+                >{{ $t("lang.home.content") }}{{ i.content }}</span
+              >
             </div>
             <div class="dragBtn" @click="mousedown(index)">
               <div
-                      class="dragMenu"
-                      :class="{dragMenuShow : dragActive === index, dragMenuHide: dragActive === -1}"
+                class="dragMenu"
+                :class="{
+                  dragMenuShow: dragActive === index,
+                  dragMenuHide: dragActive === -1
+                }"
               >
                 <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
                 <div @click.stop="cgStatus(i.id)">
@@ -141,42 +181,72 @@
       </swiper-slide>
     </swiper>
     <div
-            class="toast"
-            :class="{showToast: toastLaunch === true , hideToast: toastLaunch === false , hide: toastLaunch === ''}"
+      class="toast"
+      :class="{
+        showToast: toastLaunch === true,
+        hideToast: toastLaunch === false,
+        hide: toastLaunch === ''
+      }"
     >
-      <p v-show="addStatus === 'successAdd'">{{$t('lang.home.alert.addAlertSuccess')}}</p>
-      <p v-show="addStatus === 'failAdd'">{{$t('lang.home.alert.addAlertFail')}}</p>
-      <p v-show="addStatus === 'errorAdd'">{{$t('lang.home.alert.addAlertNetError')}}</p>
-      <p
-              v-show="addStatus === 'successAdd'"
-              class="error desc"
-      >{{$t('lang.home.alert.addAlertSuccess2')}}</p>
-      <p v-show="addStatus === 'failAdd'" class="error desc">{{$t('lang.home.alert.addAlertFail2')}}</p>
-      <p
-              v-show="addStatus === 'errorAdd'"
-              class="error desc"
-      >{{$t('lang.home.alert.addAlertNetError2')}}</p>
+      <p v-show="addStatus === 'successAdd'">
+        {{ $t("lang.home.alert.addAlertSuccess") }}
+      </p>
+      <p v-show="addStatus === 'failAdd'">
+        {{ $t("lang.home.alert.addAlertFail") }}
+      </p>
+      <p v-show="addStatus === 'errorAdd'">
+        {{ $t("lang.home.alert.addAlertNetError") }}
+      </p>
+      <p v-show="addStatus === 'successAdd'" class="error desc">
+        {{ $t("lang.home.alert.addAlertSuccess2") }}
+      </p>
+      <p v-show="addStatus === 'failAdd'" class="error desc">
+        {{ $t("lang.home.alert.addAlertFail2") }}
+      </p>
+      <p v-show="addStatus === 'errorAdd'" class="error desc">
+        {{ $t("lang.home.alert.addAlertNetError2") }}
+      </p>
     </div>
-    <Modal v-model="emptyWarning" @on-cancel="emptyWarningCancel()" :title="$t('lang.firstAlert.attention')">
+    <Modal
+      v-model="emptyWarning"
+      @on-cancel="emptyWarningCancel()"
+      :title="$t('lang.firstAlert.attention')"
+    >
       <div>
-        <p class="primaryText">{{$t('lang.home.alert.emptyAlert')}}</p>
+        <p class="primaryText">{{ $t("lang.home.alert.emptyAlert") }}</p>
       </div>
       <div slot="footer">
-        <button class="primaryButton" v-ripple @click="emptyWarningCancel()">{{$t('lang.home.button.OK')}}</button>
+        <button class="primaryButton" v-ripple @click="emptyWarningCancel()">
+          {{ $t("lang.home.button.OK") }}
+        </button>
       </div>
     </Modal>
-    <Modal v-model="del" @on-cancel="delCancel()" :title="$t('lang.firstAlert.warning')" type="error">
+    <Modal
+      v-model="del"
+      @on-cancel="delCancel()"
+      :title="$t('lang.firstAlert.warning')"
+      type="error"
+    >
       <div>
-        <p class="defaultTextColor">{{$t('lang.home.alert.delMsg')}}</p>
-        <p class="errorText smFont">{{$t('lang.home.alert.delMsg2')}}</p>
+        <p class="defaultTextColor">{{ $t("lang.home.alert.delMsg") }}</p>
+        <p class="errorText smFont">{{ $t("lang.home.alert.delMsg2") }}</p>
       </div>
       <div slot="footer">
-        <button class="normalButton" v-ripple @click="delCancel()">{{$t('lang.home.button.cancel')}}</button>
-        <button class="errorButton" v-ripple @click="delConfirm()">{{$t('lang.home.button.DEL')}}</button>
+        <button class="normalButton" v-ripple @click="delCancel()">
+          {{ $t("lang.home.button.cancel") }}
+        </button>
+        <button class="errorButton" v-ripple @click="delConfirm()">
+          {{ $t("lang.home.button.DEL") }}
+        </button>
       </div>
     </Modal>
-    <Modal v-model="create" @on-cancel="createCancel()" :title="$t('lang.home.alert.create')" type="primary" theme="dark">
-
+    <Modal
+      v-model="create"
+      @on-cancel="createCancel()"
+      :title="$t('lang.home.alert.create')"
+      type="primary"
+      theme="dark"
+    >
     </Modal>
   </div>
 </template>
@@ -245,10 +315,9 @@ export default {
     keyup (event) {
       if (
         event.keyCode === 38 ||
-                event.keyCode === 40 ||
-                event.keyCode === 13
+        event.keyCode === 40 ||
+        event.keyCode === 13
       ) {
-
       } else {
         if (this.todoText !== '') {
           let url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su'
@@ -431,8 +500,8 @@ export default {
 <!--bing搜索List模块-->
 <!--https://cn.bing.com/AS/Suggestions?pt=page.home&mkt=zh-cn&ds=mobileweb&qry=luna&cp=0&cvid=4C94085CD28049A3AC1BBC34170774C3-->
 <style scoped lang="scss">
-  .successText {
-    color: aquamarine;
-    text-decoration: line-through;
-  }
+.successText {
+  color: aquamarine;
+  text-decoration: line-through;
+}
 </style>

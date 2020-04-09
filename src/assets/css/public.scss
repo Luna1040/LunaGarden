@@ -243,9 +243,10 @@ footer {
 
 header {
   width: 100%;
-  height: 66px;
+  height: 44px;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: rgba(243, 88, 139, 0.55);
   color: $white;
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
@@ -255,15 +256,16 @@ header {
   .userArea {
     position: absolute;
     left: 32px;
-    top: 9px;
+    height: 44px;
     display: flex;
     align-items: center;
 
     .userIcon {
+      height: 36px;
       img {
-        width: 48px;
-        height: 48px;
-        border-radius: 44px;
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
       }
     }
 
@@ -272,23 +274,23 @@ header {
 
       .userInfo {
         display: flex;
+        align-items: center;
 
         .userName {
-          font-size: 18px;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .VIPer {
-          span {
-            font-size: 12px;
-            margin-left: 4px;
-          }
+          height: 16px;
+          font-size: 12px;
+          margin-left: 6px;
         }
       }
 
       .netWorkStatus {
+        height: 16px;
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
 
         i {
           position: relative;
@@ -297,22 +299,6 @@ header {
           width: 16px;
           height: 16px;
           border-radius: 16px;
-          background-color: rgba(255, 255, 255, 0.2);
-          animation: twinkle 2s ease-in-out infinite;
-
-          @keyframes twinkle {
-            0% {
-              background-color: rgba(255, 255, 255, 0.2);
-            }
-
-            75% {
-              background-color: rgba(255, 255, 255, 0);
-            }
-
-            100% {
-              background-color: rgba(255, 255, 255, 0.2);
-            }
-          }
         }
 
         img {
@@ -322,8 +308,11 @@ header {
 
         span {
           font-size: 12px;
-          margin-left: 2px;
+          margin-left: 4px;
         }
+      }
+      .netWorkError{
+        background-color: $error;
       }
     }
   }
@@ -334,9 +323,9 @@ header {
     position: relative;
 
     h2 {
-      font-size: 32px;
-      height: 66px;
-      line-height: 66px;
+      font-size: 24px;
+      height: 44px;
+      line-height: 44px;
     }
   }
 
@@ -344,7 +333,7 @@ header {
     position: absolute;
     right: 32px;
     top: 0;
-    height: 66px;
+    height: 44px;
     display: flex;
     align-items: center;
 
@@ -460,7 +449,7 @@ header {
     border-radius: 44px;
     align-items: center;
     padding: 0 8px;
-    transition: all 0.5s;
+    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
 
     input {
       margin: 0 8px;
@@ -497,15 +486,18 @@ header {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 22px 22px 0 0;
   }
-
+.searchArea {
+  position: relative;
   .searchAssociation {
-    width: calc(100% - 116px);
+    width: calc(100% - 132px);
     max-width: 1384px;
-    margin: 0 auto;
     height: auto;
     min-height: 0;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0 0 22px 22px;
+    position: absolute;
+    left: 66px;
+    z-index: 99;
 
     li {
       height: 30px;
@@ -527,7 +519,7 @@ header {
       border-radius: 0 0 22px 22px;
     }
   }
-
+}
   .swiper-container {
     position: relative;
 
