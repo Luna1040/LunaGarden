@@ -1,6 +1,6 @@
 <template>
   <transition name="modalAnimation">
-    <div class="lunaModal" v-show="showModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
+    <div class="lunaModal" v-if="showModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
       <transition name="maskAnimation">
         <div
                 class="modalMask"
@@ -10,7 +10,6 @@
                 :class="[{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}]"
         ></div>
       </transition>
-
       <div
               class="modalContainer"
               :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]"
@@ -32,7 +31,6 @@
           </slot>
         </div>
       </div>
-
     </div>
   </transition>
 </template>

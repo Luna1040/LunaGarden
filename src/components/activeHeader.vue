@@ -39,7 +39,7 @@
           <img src="../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
-        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="90" @click="toAbout">
+        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
           <span>{{$t('lang.titles.guide')}}</span>
         </Button>
     </div>

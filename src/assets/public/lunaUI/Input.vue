@@ -14,15 +14,7 @@
       { disabled: disabled },
       { lightInput: theme === 'light', darkInput: theme === 'dark' }
     ]"
-    :style="[
-      inputWidth,
-      inputRadius,
-      inputHeight,
-      inputBorder,
-      inputBackground,
-      inputStyles,
-      boxShadowStyle
-    ]"
+    :style="[inputStyle]"
     @mouseenter="hoverEnter"
     @mouseleave="hoverOut"
     @focusin="focusEnter"
@@ -94,11 +86,11 @@ export default {
       default: 32
     },
     color: {
-      type: String,
+      type: [String, Number],
       default: '#4A4A4A'
     },
     background: {
-      type: String,
+      type: [String, Number],
       default: '#FFFFFF'
     },
     fontSize: {
@@ -130,10 +122,9 @@ export default {
       default: false
     },
     radius: {
-      type: Number,
+      type: [Number, String],
       default: -1
     },
-
     borderColor: {
       type: String,
       default: ''
@@ -188,58 +179,44 @@ export default {
     }
   },
   computed: {
-    inputStyles () {
-      let styles = {}
+    inputStyle () {
+      let style = {
+        boxShadow: this.boxShadow
+      }
       if (typeof this.width !== 'string') {
-        styles.width = this.width + 'px'
+        style.width = this.width + 'px'
       } else {
-        styles.width = this.width
+        style.width = this.width
+      }
+      if (this.radius !== -1) {
+        if (typeof this.radius !== 'string') {
+          style.borderRadius = this.radius + 'px!important'
+        } else {
+          style.borderRadius = this.radius + '!important'
+        }
       }
       if (typeof this.height !== 'string') {
-        styles.height = this.height + 'px'
+        style.height = this.height + 'px'
       } else {
-        styles.height = this.height
+        style.height = this.height
       }
-      if (typeof this.color === 'string') {
-        styles.color = this.color
+      if (typeof this.backgroundColor !== 'string') {
+        style.backgroundColor = '#' + this.background
       } else {
-        styles.color = '#' + this.color
+        style.backgroundColor = this.background
       }
-      if (typeof this.background === 'string') {
-        styles.background = this.background
+      if (this.ghost && this.borderColor !== '') {
+        style.border = '1px solid ' + this.borderColor
       } else {
-        styles.background = '#' + this.background
+        style.border = '1px solid ' + this.borderColorStyle
       }
-      if (typeof this.fontSize === 'string') {
-        styles.fontSize = this.fontSize
-      } else {
-        styles.fontSize = this.fontSize + 'px'
-      }
-      return styles
+      return style
     },
     inputFontSize () {
-      return {
-        fontSize: this.fontSize
-      }
-    },
-    inputWidth () {
-      if (typeof this.width !== 'string') {
-        return {
-          width: this.width + 'px'
-        }
+      if (typeof this.fontSize === 'string') {
+        return { fontSize: this.fontSize }
       } else {
-        return {
-          width: this.width
-        }
-      }
-      if (typeof this.height !== 'string') {
-        return {
-          height: this.height + 'px'
-        }
-      } else {
-        return {
-          height: this.height
-        }
+        return { fontSize: this.fontSize + 'px' }
       }
     },
     inputWidthCount () {
@@ -263,50 +240,11 @@ export default {
         }
       }
     },
-    inputRadius () {
-      if (this.radius !== -1) {
-        return {
-          borderRadius: this.radius + 'px!important'
-        }
-      } else {
-        return {}
-      }
-    },
-    inputHeight () {
-      if (typeof this.height !== 'string') {
-        return {
-          height: this.height + 'px'
-        }
-      } else {
-        return {
-          height: this.height
-        }
-      }
-    },
-    inputBackground () {
-      return {
-        backgroundColor: this.background
-      }
-    },
-    inputBorder () {
-      if (this.ghost && this.borderColor !== '') {
-        return {
-          border: '1px solid ' + this.borderColor
-        }
-      } else {
-        return {
-          border: '1px solid ' + this.borderColorStyle
-        }
-      }
-    },
     textColor () {
-      return {
-        color: this.color
-      }
-    },
-    boxShadowStyle () {
-      return {
-        boxShadow: this.boxShadow
+      if (typeof this.color !== 'string') {
+        return { color: '#' + this.color }
+      } else {
+        return { color: this.color }
       }
     },
     count () {
@@ -353,7 +291,9 @@ export default {
     },
     cgValue (event) {
       this.$emit('input', event.target.value)
-      this.$emit('onValidate', this.examine(event.target.value))
+      if (this.validateOnChange) {
+        this.$emit('onValidate', this.examine(event.target.value))
+      }
     },
     handelKeyUp (event) {
       this.$emit('on-keyup', event)
@@ -369,6 +309,9 @@ export default {
     },
     handelBlur (event) {
       this.$emit('on-blur', event)
+      if (!this.validateOnChange) {
+        this.$emit('onBlurValidate', this.examine(event.target.value))
+      }
     },
     handelIcon () {
       this.$emit('on-blur', this.textValue)

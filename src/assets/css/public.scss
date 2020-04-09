@@ -20,6 +20,8 @@ $alert: #c5006a;
   margin: 0;
   padding: 0;
   font-size: 16px;
+}
+body{
   overflow: hidden;
 }
 
@@ -249,7 +251,6 @@ header {
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   position: relative;
   z-index: 100;
-  overflow: visible;
 
   .userArea {
     position: absolute;
@@ -331,7 +332,6 @@ header {
     display: flex;
     align-items: baseline;
     position: relative;
-    overflow: visible;
 
     h2 {
       font-size: 32px;
@@ -347,7 +347,6 @@ header {
     height: 66px;
     display: flex;
     align-items: center;
-    overflow: visible;
 
     > .btnGroup {
       color: $primaryText;
@@ -355,7 +354,7 @@ header {
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       display: flex;
       border-radius: 32px;
-      padding: 4px 12px;
+      padding: 3px 12px;
       margin-right: 16px;
 
       > div {
@@ -364,8 +363,6 @@ header {
         height: 26px;
         position: relative;
         cursor: pointer;
-        overflow: visible;
-        border: 1px solid $primaryText;
         border-radius: 26px;
 
         img {
@@ -389,9 +386,6 @@ header {
           filter: brightness(1);
         }
       }
-    }
-    a {
-      overflow: visible;
     }
   }
 }
@@ -536,10 +530,8 @@ header {
 
   .swiper-container {
     position: relative;
-    overflow: visible;
 
     .swiper-wrapper {
-      overflow: visible;
       position: relative;
     }
   }
@@ -551,7 +543,6 @@ header {
   }
   #navigation {
     position: relative;
-    overflow: visible;
     height: 44px;
     width: 280px;
     top: 0;
@@ -607,7 +598,6 @@ header {
     max-width: 1384px;
     padding: 12px 8px 32px;
     min-height: 0;
-    overflow: visible;
     margin: 0 auto 0;
 
     li {
@@ -625,7 +615,6 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      overflow: visible;
 
       span {
         margin-right: 16px;
@@ -640,7 +629,6 @@ header {
         position: relative;
         left: 16px;
         transition: all 0.5s;
-        overflow: visible;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
         .dragMenu {
@@ -656,12 +644,13 @@ header {
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
           transform: rotate(360deg);
           transition: all 0.5s;
+          overflow: hidden;
 
           > .iconfont.icon-cancel {
             display: none;
             position: absolute;
-            top: calc(50% - 30px);
-            left: calc(50% - 30px);
+            top: calc(50% - 27px);
+            left: calc(50% - 28px);
             width: 60px;
             height: 60px;
             line-height: 60px;
