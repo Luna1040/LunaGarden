@@ -20,6 +20,7 @@
       inputHeight,
       inputBorder,
       inputBackground,
+      inputStyles,
       boxShadowStyle
     ]"
     @mouseenter="hoverEnter"
@@ -187,6 +188,35 @@ export default {
     }
   },
   computed: {
+    inputStyles () {
+      let styles = {}
+      if (typeof this.width !== 'string') {
+        styles.width = this.width + 'px'
+      } else {
+        styles.width = this.width
+      }
+      if (typeof this.height !== 'string') {
+        styles.height = this.height + 'px'
+      } else {
+        styles.height = this.height
+      }
+      if (typeof this.color === 'string') {
+        styles.color = this.color
+      } else {
+        styles.color = '#' + this.color
+      }
+      if (typeof this.background === 'string') {
+        styles.background = this.background
+      } else {
+        styles.background = '#' + this.background
+      }
+      if (typeof this.fontSize === 'string') {
+        styles.fontSize = this.fontSize
+      } else {
+        styles.fontSize = this.fontSize + 'px'
+      }
+      return styles
+    },
     inputFontSize () {
       return {
         fontSize: this.fontSize
@@ -200,6 +230,15 @@ export default {
       } else {
         return {
           width: this.width
+        }
+      }
+      if (typeof this.height !== 'string') {
+        return {
+          height: this.height + 'px'
+        }
+      } else {
+        return {
+          height: this.height
         }
       }
     },
