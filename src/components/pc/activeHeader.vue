@@ -1,5 +1,5 @@
 <template>
-  <header :class="theme">
+  <header class="header" :class="theme">
     <!--        User Area-->
     <div class="userArea">
       <div class="userIcon">
@@ -33,10 +33,10 @@
     <div class="guide">
       <div class="btnGroup">
         <div @click="setLang('en-US')" :class="{languageActive: $i18n.locale !== 'zh-CN'}">
-          <img src="../assets/icons/language-english.svg" alt />
+          <img src="../../assets/icons/language-english.svg" alt />
         </div>
         <div @click="setLang('zh-CN')" :class="{languageActive: $i18n.locale === 'zh-CN'}">
-          <img src="../assets/icons/language-chinese.svg" alt />
+          <img src="../../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
         <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { publicApi } from '../assets/js/url.js'
+import { publicApi } from '../../assets/js/url.js'
 
 export default {
   name: 'app',

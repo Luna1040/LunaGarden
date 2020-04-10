@@ -252,7 +252,7 @@
 </template>
 
 <script>
-import Header from '../../components/activeHeader'
+import Header from '../../components/pc/activeHeader'
 
 export default {
   name: 'home',

@@ -42,8 +42,8 @@ p,
 section,
 span {
   font-family: Microsoft YaHei UI Light, Microsoft YaHei Light,
-    WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue,
-    sans-serif;
+  WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue,
+  sans-serif;
 }
 
 button {
@@ -204,9 +204,9 @@ footer {
     width: 100%;
     height: 60px;
     background: radial-gradient(
-      75px at top,
-      transparent 50%,
-      rgb(235, 114, 144) 51%
+                    75px at top,
+                    transparent 50%,
+                    rgb(235, 114, 144) 51%
     );
     background-position-y: -10px;
     position: fixed;
@@ -241,7 +241,7 @@ footer {
   border: 0;
 }
 
-header {
+.header {
   width: 100%;
   height: 44px;
   display: flex;
@@ -379,6 +379,74 @@ header {
   }
 }
 
+.mHeader{
+  width: 100%;
+  height: 48px;
+  background-color: $primary;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+  position: relative;
+  z-index: 100;
+  .userArea{
+    position: absolute;
+    left: 16px;
+    height: 36px;
+    display: flex;
+    align-items: baseline;
+    .userIcon{
+      height: 36px;
+      img{
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+      }
+    }
+    .netWorkStatus{
+      position: relative;
+      right: 12px;
+      background-color: rgba(243, 88, 139, 0.55);
+      width: 18px;
+      height: 18px;
+      border-radius: 18px;
+      text-align: center;
+      line-height: 18px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .networkError{
+      background-color: $error;
+    }
+  }
+  .title {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+
+    h2 {
+      font-size: 24px;
+      height: 44px;
+      line-height: 44px;
+    }
+  }
+  .guide {
+    position: absolute;
+    right: 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    .btnGroup{
+      height: 32px;
+      margin-right: 8px;
+      img{
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
 .aboutUs {
   .about {
     max-width: 1366px;
@@ -438,88 +506,90 @@ header {
 }
 
 .home {
-  .inputArea {
-    margin: 32px auto 0;
-    height: 44px;
-    line-height: 44px;
-    background-color: rgba(255, 255, 255, 0.5);
-    display: flex;
+  .searchArea {
+    position: relative;
     width: calc(100% - 132px);
     max-width: 1384px;
-    border-radius: 44px;
-    align-items: center;
-    padding: 0 8px;
-    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    margin: 0 auto;
 
-    input {
-      margin: 0 8px;
+    .inputArea {
+      margin: 32px auto 0;
       height: 44px;
       line-height: 44px;
-      font-size: 24px;
-      border: 0;
-      background-color: rgba(0, 0, 0, 0);
-    }
+      background-color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      border-radius: 44px;
+      align-items: center;
+      padding: 0 8px;
+      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
 
-    .lunaButton {
-      i {
-        color: $white;
-        font-size: 16px;
+      input {
+        margin: 0 8px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 24px;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      .lunaButton {
+        i {
+          color: $white;
+          font-size: 16px;
+        }
+      }
+
+      button:hover {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+
+        i {
+          color: #ff91ac;
+        }
       }
     }
 
-    button:hover {
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-
-      i {
-        color: #ff91ac;
-      }
-    }
-  }
-
-  .inputArea:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-
-  .inputAreaActive {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 22px 22px 0 0;
-  }
-.searchArea {
-  position: relative;
-  .searchAssociation {
-    width: calc(100% - 132px);
-    max-width: 1384px;
-    height: auto;
-    min-height: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0 0 22px 22px;
-    position: absolute;
-    left: 66px;
-    z-index: 99;
-
-    li {
-      height: 30px;
-      line-height: 30px;
-      font-size: 14px;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transition: all 0.25s;
-      border: 1px solid rgba(0, 0, 0, 0);
+    .inputArea:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
     }
 
-    li:hover {
-      background-color: $primary;
-      color: $white;
-      border: 1px solid $white;
+    .inputAreaActive {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 22px 22px 0 0;
     }
 
-    li:last-of-type {
+    .searchAssociation {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      background-color: rgba(255, 255, 255, 0.8);
       border-radius: 0 0 22px 22px;
+      position: absolute;
+      z-index: 99;
+
+      li {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        transition: all 0.25s;
+        border: 1px solid rgba(0, 0, 0, 0);
+      }
+
+      li:hover {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $white;
+      }
+
+      li:last-of-type {
+        border-radius: 0 0 22px 22px;
+      }
     }
   }
-}
   .swiper-container {
     position: relative;
 
@@ -767,5 +837,346 @@ header {
   .successText {
     color: #b1ffda;
     text-decoration: line-through;
+  }
+}
+
+.mHome{
+  .searchArea {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .inputArea {
+      margin: 32px auto 0;
+      height: 44px;
+      line-height: 44px;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      border-radius: 44px;
+      align-items: center;
+      padding: 0 8px;
+      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+
+      input {
+        font-size: 14px;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      .lunaButton {
+        i {
+          color: $white;
+          font-size: 16px;
+        }
+      }
+
+      button:hover {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+
+        i {
+          color: #ff91ac;
+        }
+      }
+    }
+
+    .inputArea:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .inputAreaActive {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 22px 22px 0 0;
+    }
+    .searchAssociation {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 22px 22px;
+      position: absolute;
+      z-index: 99;
+
+      li {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        transition: all 0.25s;
+        border: 1px solid rgba(0, 0, 0, 0);
+      }
+
+      li:hover {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $white;
+      }
+
+      li:last-of-type {
+        border-radius: 0 0 22px 22px;
+      }
+    }
+  }
+  .todoList {
+    width: calc(100% - 32px);
+    max-width: 1200px;
+    padding: 12px 8px 32px;
+    min-height: 0;
+    margin: 0 auto 0;
+
+    li {
+      width: 100%;
+      background-color: rgba(243, 88, 139, 0.35);
+      margin-top: 16px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 44px;
+      transition: all 0.5s;
+      cursor: pointer;
+      color: $white;
+      text-align: left;
+      padding: 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .content {
+        width: calc(100% - 36px);
+        display: flex;
+        flex-direction: column;
+        p {
+          transition: all 0.5s;
+        }
+
+        p.text {
+          font-size: 16px;
+          height: 14px;
+          line-height: 14px;
+          white-space: pre;
+        }
+
+        p.timer {
+          font-size: 12px;
+          height: 14px;
+          line-height: 14px;
+        }
+      }
+
+      .dragBtn {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        background-color: $white;
+        position: relative;
+        left: 16px;
+        transition: all 0.5s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+        .dragMenu {
+          width: 0;
+          height: 0;
+          border-radius: 0;
+          background-color: rgba(0, 0, 0, 0);
+          position: absolute;
+          z-index: 200;
+          bottom: 18px;
+          right: 18px;
+          border: 0;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+          transform: rotate(360deg);
+          transition: all 0.5s;
+          overflow: hidden;
+
+          > .iconfont.icon-cancel {
+            display: none;
+            position: absolute;
+            top: calc(50% - 27px);
+            left: calc(50% - 28px);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: $white;
+            color: $primaryText;
+            transition: all 0.35s;
+            border-radius: 40px;
+          }
+
+          > .iconfont.icon-cancel:hover {
+            background-color: $primary;
+            color: $white;
+          }
+
+          > div {
+            display: none;
+            position: absolute;
+            overflow: hidden;
+            transform: rotate(45deg) skew(0deg);
+            text-align: center;
+            line-height: 80px;
+            transition: all 0.35s;
+
+            button {
+              transition: all 0.35s;
+              background-color: rgba(0, 0, 0, 0);
+              border: 0;
+              transform: rotate(-45deg) skew(0deg);
+
+              i {
+                font-size: 18px;
+              }
+            }
+          }
+
+          > div:first-of-type {
+            left: 40px;
+            top: -20px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:nth-of-type(2) {
+            left: -20px;
+            top: 40px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:nth-of-type(3) {
+            left: 100px;
+            top: 40px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:last-of-type {
+            left: 40px;
+            top: 100px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:hover {
+            background-color: $primary;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+            button {
+              color: $white;
+            }
+          }
+        }
+
+        .dragMenuShow {
+          width: 160px;
+          height: 160px;
+          border-radius: 160px;
+          background-color: $white;
+          position: absolute;
+          z-index: 200;
+          bottom: -64px;
+          right: -64px;
+          border: 2px solid $white;
+          transform: rotate(0deg);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+          > .iconfont.icon-cancel {
+            display: block;
+          }
+
+          > div {
+            display: block;
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+
+      .dragBtn:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+    }
+
+    li:hover {
+      background-color: rgba(243, 88, 139, 0.85);
+    }
+  }
+
+  .todoList-shorter {
+    height: calc(100vh - 574px);
+  }
+  .swiper-container {
+    position: relative;
+
+    .swiper-wrapper {
+      position: relative;
+    }
+  }
+
+  .swiper-slide {
+    overflow: auto;
+    height: calc(100vh - 244px);
+    padding-top: 36px;
+  }
+  #navigation {
+    position: relative;
+    height: 44px;
+    width: 280px;
+    top: 0;
+    left: 0;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 44px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 50%;
+      max-width: 600px;
+      background-image: none;
+      height: 44px;
+      line-height: 44px;
+      transition: all 0.3s;
+      outline: 0;
+      background-color: $white;
+      color: $primaryText;
+      left: 0;
+      right: 0;
+      position: relative;
+    }
+
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled {
+      opacity: 1;
+      cursor: auto;
+      pointer-events: none;
+      color: $white;
+      background-color: $primary;
+    }
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background-color: lightpink;
+    }
+
+    .swiper-button-prev {
+      border-top-left-radius: 44px;
+      border-bottom-left-radius: 44px;
+    }
+
+    .swiper-button-next {
+      border-top-right-radius: 44px;
+      border-bottom-right-radius: 44px;
+    }
   }
 }

@@ -172,3 +172,14 @@
   opacity: 0;
   top: 100px;
 }
+.langSlideDown-enter-active,.langSlideDown-leave-active{
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+.langSlideDown-leave,.langSlideDown-enter-to{
+  opacity: 1;
+  top: 44px;
+}
+.langSlideDown-enter, .langSlideDown-leave-to {
+  opacity: 0;
+  top: 100px;
+}

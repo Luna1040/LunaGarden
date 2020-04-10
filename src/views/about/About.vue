@@ -109,7 +109,7 @@
   </div>
 </template>
 <script>
-import Header from '../../components/activeHeader'
+import Header from '../../components/pc/activeHeader'
 import '../../assets/icons/logo/iconfont.js'
 export default {
   name: 'app',

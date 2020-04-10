@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import Header from "../../components/activeHeader";
+import Header from "../../components/pc/activeHeader";
 import { login } from '../../assets/js/url.js'
 
 export default {
