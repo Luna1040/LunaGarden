@@ -20,6 +20,8 @@ $alert: #c5006a;
   margin: 0;
   padding: 0;
   font-size: 16px;
+  -webkit-tap-highlight-color: rgba(255,0,0,0);
+  -webkit-appearance:none;
 }
 body{
   overflow: hidden;
@@ -924,7 +926,7 @@ footer {
   .todoList {
     width: calc(100% - 32px);
     max-width: 1200px;
-    padding: 12px 8px 32px;
+    padding: 0 8px 90px;
     min-height: 0;
     margin: 0 auto 0;
 
@@ -932,14 +934,14 @@ footer {
       width: 100%;
       background-color: rgba(243, 88, 139, 0.35);
       margin-top: 16px;
-      height: 44px;
-      line-height: 44px;
+      min-height: 44px;
+      height: auto;
       border-radius: 44px;
       transition: all 0.5s;
       cursor: pointer;
       color: $white;
       text-align: left;
-      padding: 0 22px;
+      padding: 0 8px 0 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -953,162 +955,60 @@ footer {
 
         p.text {
           font-size: 16px;
-          height: 14px;
-          line-height: 14px;
-          white-space: pre;
+          height: 20px;
+          line-height: 20px;
+          width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         p.timer {
           font-size: 12px;
           height: 14px;
           line-height: 14px;
+          margin-top: 4px;
+        }
+
+        p.dragActive{
+          height: auto;
+          white-space: pre-wrap;
+          text-overflow: unset;
+          overflow: visible;
+          word-break: break-word;
         }
       }
-
-      .dragBtn {
-        width: 36px;
-        height: 36px;
-        border-radius: 36px;
-        background-color: $white;
+      .btnGroup{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+      .cgStatusIcon{
+        cursor: pointer;
         position: relative;
-        left: 16px;
-        transition: all 0.5s;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
-        .dragMenu {
-          width: 0;
-          height: 0;
-          border-radius: 0;
-          background-color: rgba(0, 0, 0, 0);
-          position: absolute;
-          z-index: 200;
-          bottom: 18px;
-          right: 18px;
-          border: 0;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
-          transform: rotate(360deg);
-          transition: all 0.5s;
-          overflow: hidden;
-
-          > .iconfont.icon-cancel {
-            display: none;
-            position: absolute;
-            top: calc(50% - 27px);
-            left: calc(50% - 28px);
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            text-align: center;
-            background-color: $white;
-            color: $primaryText;
-            transition: all 0.35s;
-            border-radius: 40px;
-          }
-
-          > .iconfont.icon-cancel:hover {
-            background-color: $primary;
-            color: $white;
-          }
-
-          > div {
-            display: none;
-            position: absolute;
-            overflow: hidden;
-            transform: rotate(45deg) skew(0deg);
-            text-align: center;
-            line-height: 80px;
-            transition: all 0.35s;
-
-            button {
-              transition: all 0.35s;
-              background-color: rgba(0, 0, 0, 0);
-              border: 0;
-              transform: rotate(-45deg) skew(0deg);
-
-              i {
-                font-size: 18px;
-              }
-            }
-          }
-
-          > div:first-of-type {
-            left: 40px;
-            top: -20px;
-
-            button {
-              color: $primaryText;
-            }
-          }
-
-          > div:nth-of-type(2) {
-            left: -20px;
-            top: 40px;
-
-            button {
-              color: $primaryText;
-            }
-          }
-
-          > div:nth-of-type(3) {
-            left: 100px;
-            top: 40px;
-
-            button {
-              color: $primaryText;
-            }
-          }
-
-          > div:last-of-type {
-            left: 40px;
-            top: 100px;
-
-            button {
-              color: $primaryText;
-            }
-          }
-
-          > div:hover {
-            background-color: $primary;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
-            button {
-              color: $white;
-            }
-          }
-        }
-
-        .dragMenuShow {
-          width: 160px;
-          height: 160px;
-          border-radius: 160px;
-          background-color: $white;
-          position: absolute;
-          z-index: 200;
-          bottom: -64px;
-          right: -64px;
-          border: 2px solid $white;
-          transform: rotate(0deg);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
-          > .iconfont.icon-cancel {
-            display: block;
-          }
-
-          > div {
-            display: block;
-            width: 80px;
-            height: 80px;
-          }
-        }
+        z-index: 10;
+        background-color: $white;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 32px;
+        color: $primary;
+        text-align: center;
       }
-
-      .dragBtn:hover {
-        background-color: rgba(255, 255, 255, 0.35);
+      .successText {
+        color: #b1ffda;
+        text-decoration: line-through;
       }
     }
-
-    li:hover {
+    li:first-of-type{
+      margin-top: 0;
+    }
+    li.dragActive {
       background-color: rgba(243, 88, 139, 0.85);
+      padding: 8px 8px 8px 16px;
+      flex-direction: column;
     }
   }
 
@@ -1124,29 +1024,28 @@ footer {
   }
 
   .swiper-slide {
-    overflow: auto;
-    height: calc(100vh - 244px);
-    padding-top: 36px;
+    overflow-y: auto;
+    height: calc(100vh - 194px);
   }
   #navigation {
     position: relative;
-    height: 44px;
+    height: 32px;
     width: 280px;
     top: 0;
     left: 0;
-    margin: 32px auto 0;
+    margin: 16px auto;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 44px;
+    border-radius: 32px;
 
     .swiper-button-prev,
     .swiper-button-next {
       width: 50%;
       max-width: 600px;
       background-image: none;
-      height: 44px;
-      line-height: 44px;
+      height: 32px;
+      line-height: 32px;
       transition: all 0.3s;
       outline: 0;
       background-color: $white;
@@ -1154,6 +1053,7 @@ footer {
       left: 0;
       right: 0;
       position: relative;
+      margin-top: -16px;
     }
 
     .swiper-button-prev.swiper-button-disabled,
@@ -1164,19 +1064,15 @@ footer {
       color: $white;
       background-color: $primary;
     }
-    .swiper-button-prev:hover,
-    .swiper-button-next:hover {
-      background-color: lightpink;
-    }
 
     .swiper-button-prev {
-      border-top-left-radius: 44px;
-      border-bottom-left-radius: 44px;
+      border-top-left-radius: 32px;
+      border-bottom-left-radius: 32px;
     }
 
     .swiper-button-next {
-      border-top-right-radius: 44px;
-      border-bottom-right-radius: 44px;
+      border-top-right-radius: 32px;
+      border-bottom-right-radius: 32px;
     }
   }
 }

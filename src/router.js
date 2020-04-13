@@ -29,6 +29,7 @@ import ResetPsw from './views/login/resetPsw.vue'
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
 import ByteCursor from './views/byteDemos/byteCursor'
+import ByteDiscuss from './views/byteDemos/byteDiscuss'
 
 Vue.use(Router)
 
@@ -39,6 +40,9 @@ const router = new Router({
     { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
     { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
     { path: '/Cursor', name: 'Cursor', component: ByteCursor },
+    { path: '/mCursor', name: 'mCursor', component: ByteCursor },
+    { path: '/Discuss', name: 'Discuss', component: ByteDiscuss },
+    { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss },
     // PC页面统一整合
     { path: '/Home', name: 'Home', component: Home, meta: { index: 0 } },
     { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },

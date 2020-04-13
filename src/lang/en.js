@@ -39,7 +39,10 @@ export const lang = {
       OK: 'Got it',
       cancel: 'Cancel',
       confirm: 'Confirm',
-      DEL: 'Delete'
+      DEL: 'Delete',
+      edit: 'Edit',
+      copy: 'Copy',
+      finish: 'Finish'
     }
   },
   guide: {

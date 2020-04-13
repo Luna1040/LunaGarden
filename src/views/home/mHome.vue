@@ -31,6 +31,7 @@
                         ghost
                         width="100%"
                         font-size="32"
+                        maxlength="150"
                         @on-keyup="keyup($event)"
                         @on-keydown="keydown($event)"
                 ></Input
@@ -74,48 +75,17 @@
         <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
                 <ul class="todoList">
-                    <li v-for="(i, index) in todoList" :key="i.id">
+                    <li v-for="(i, index) in todoList" :key="i.id" @click="mousedown(index)" :class="{ dragActive: dragActive === index }">
                         <div class="content">
-                            <p class="text" :class="{ successText: i.completed === true }">{{ i.content }}</p>
-                            <p class="timer" :class="{ successText: i.completed === true }">{{ i.time }}</p>
+                            <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
+                            <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
                         </div>
-                        <div class="dragBtn" @click="mousedown(index)">
-                            <div
-                                    class="dragMenu"
-                                    :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-                            >
-                                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                                <div @click.stop="cgStatus(i.id)">
-                                    <!-- 完成计划 -->
-                                    <button v-show="i.completed === false">
-                                        <i class="iconfont icon-quedingx"></i>
-                                    </button>
-                                    <button v-show="i.completed === true">
-                                        <i class="iconfont icon-quedingx"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="editShow(i.id)">
-                                    <!-- 编辑计划 -->
-                                    <button>
-                                        <i class="iconfont icon-remark"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="copyContent(i.id)">
-                                    <!-- 复制文本 -->
-                                    <button>
-                                        <i class="iconfont icon-copy-l"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="delShow(i.id)">
-                                    <!-- 删除计划 -->
-                                    <button>
-                                        <i class="iconfont icon-ICON_cancel"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <i v-if="dragActive !== index" @click="cgStatus(i.id)" class="cgStatusIcon iconfont icon-quedingx"></i>
+                        <div v-else class="btnGroup">
+                            <Button :height="24" @click="cgStatus(index)">{{$t("lang.home.button.finish")}}</Button>
+                            <Button :height="24" @click="editShow">{{$t("lang.home.button.edit")}}</Button>
+                            <Button :height="24" @click="editShow">{{$t("lang.home.button.copy")}}</Button>
+                            <Button :height="24" theme="error" @click="editShow">{{$t("lang.home.button.DEL")}}</Button>
                         </div>
                     </li>
                 </ul>
@@ -125,52 +95,17 @@
                         class="todoList"
                         :class="{ 'todoList-shorter': searchArr.length !== 0 }"
                 >
-                    <li v-for="(i, index) in businessList" :key="i.id">
-                        <div>
-              <span :class="{ successText: i.completed === true }"
-              >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
-              >
-                            <span :class="{ successText: i.completed === true }"
-                            >{{ $t("lang.home.content") }}{{ i.content }}</span
-                            >
+                    <li v-for="(i, index) in businessList" :key="i.id" @click="mousedown(index)" :class="{ dragActive: dragActive === index }">
+                        <div class="content">
+                            <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
+                            <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
                         </div>
-                        <div class="dragBtn" @click="mousedown(index)">
-                            <div
-                                    class="dragMenu"
-                                    :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-                            >
-                                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                                <div @click.stop="cgStatus(i.id)">
-                                    <!-- 完成计划 -->
-                                    <button v-show="i.completed === false">
-                                        <i class="iconfont icon-quedingx"></i>
-                                    </button>
-                                    <button v-show="i.completed === true">
-                                        <i class="iconfont icon-quedingx"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="editShow(i.id)">
-                                    <!-- 编辑计划 -->
-                                    <button>
-                                        <i class="iconfont icon-remark"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="copyContent(i.id)">
-                                    <!-- 复制文本 -->
-                                    <button>
-                                        <i class="iconfont icon-copy-l"></i>
-                                    </button>
-                                </div>
-                                <div @click.stop="delShow(i.id)">
-                                    <!-- 删除计划 -->
-                                    <button>
-                                        <i class="iconfont icon-ICON_cancel"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <i v-if="dragActive !== index" @click="cgStatus(i.id)" class="cgStatusIcon iconfont icon-quedingx"></i>
+                        <div v-else class="btnGroup">
+                            <Button :height="24" @click="cgStatus(index)">{{$t("lang.home.button.finish")}}</Button>
+                            <Button :height="24" @click="editShow">{{$t("lang.home.button.edit")}}</Button>
+                            <Button :height="24" @click="editShow">{{$t("lang.home.button.copy")}}</Button>
+                            <Button :height="24" theme="error" @click="editShow">{{$t("lang.home.button.DEL")}}</Button>
                         </div>
                     </li>
                 </ul>
@@ -220,7 +155,11 @@ export default {
   },
   methods: {
     mousedown (index) {
-      this.dragActive = index
+      if (this.dragActive === index) {
+        this.dragActive = -1
+      } else {
+        this.dragActive = index
+      }
     },
     keyup (event) {
       if (
@@ -341,15 +280,15 @@ export default {
         }
       })
       localStorage.setItem('todoList', JSON.stringify(this.todoList))
-      this.dragClose()
+      // this.dragClose()
     },
     editShow () {
-      this.dragClose()
+      // this.dragClose()
     },
     delShow (id) {
       this.del = true
       this.choiceId = id
-      this.dragClose()
+      // this.dragClose()
     },
     delCancel () {
       this.del = false
@@ -365,7 +304,7 @@ export default {
       this.delCancel()
     },
     copyContent () {
-      this.dragClose()
+      // this.dragClose()
     }
   }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <link rel="icon" href="./favicon.ico">
     <title>lunagarden</title>
   </head>
@@ -14,4 +14,24 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+      window.onload=function () {
+          document.addEventListener('touchstart',function (event) {
+              if(event.touches.length>1){
+                  event.preventDefault();
+              }
+          });
+          var lastTouchEnd=0;
+          document.addEventListener('touchend',function (event) {
+              var now=(new Date()).getTime();
+              if(now-lastTouchEnd<=300){
+                  event.preventDefault();
+              }
+              lastTouchEnd=now;
+          },false);
+          document.addEventListener('gesturestart', function (event) {
+              event.preventDefault();
+          });
+      }
+  </script>
 </html>

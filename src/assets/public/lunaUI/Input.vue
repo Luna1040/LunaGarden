@@ -155,7 +155,7 @@ export default {
     },
     maxlength: {
       type: Number,
-      default: 120
+      default: 500
     },
     showWordLimit: {
       type: Boolean,
