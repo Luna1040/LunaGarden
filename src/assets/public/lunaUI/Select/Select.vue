@@ -3,8 +3,8 @@
           class="lunaSelect"
           :style="[selectStyles]"
           :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightSelect: theme === 'light', darkSelect: theme === 'dark'}]"
-          @focusin='handelClick'
-          @focusout="hideList()"
+          @click="handelClick"
+          v-click-outside="hideList"
           @keydown.esc="handleKeydown"
           @keydown.enter="handleKeydown"
           @keydown.up.prevent="handleKeydown"
@@ -22,8 +22,6 @@
             suffix
             :spin="showList"
             v-model="initValue"
-            @focusin='handelClick'
-            @focusout="hideList()"
             :background="background"
             :theme="theme"
     ></Input>
@@ -33,10 +31,10 @@
     >
       <transition name="slideDown">
         <div
-                v-show="showList"
                 class="optionGroup"
                 :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
                 :style="[optionStyles]"
+                v-show="showList"
         >
           <slot>
             <Option
@@ -51,7 +49,6 @@
         </div>
       </transition>
     </div>
-
   </div>
 </template>
 

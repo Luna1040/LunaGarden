@@ -1,7 +1,9 @@
 <template>
 <div class="body">
-  <div class="bottom">
-    <textarea placeholder="test" name="" id=""></textarea>
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>
 </template>
@@ -13,20 +15,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.body{
-  width: 100%;
-  font-size: 16px;
-  .bottom{
+  .body>div{
     width: 100%;
-    height: 2.75em;
-    background-color: lightblue;
-    position: fixed;
-    bottom: 0;
+    height: 500px;
     display: flex;
     align-items: center;
+    >div:first-of-type{
+      width: 22%;
+      height: 500px;
+      background: #9a6e3a;
+    }
+    >div:nth-of-type(2) {
+      width: 45%;
+      height: 500px;
+      background: hotpink;
+    }
+    >div:last-of-type{
+      width: 33%;
+      height: 500px;
+      background-color: springgreen;
+    }
   }
-  textarea{
-    font-size: 32px;
-  }
-}
 </style>

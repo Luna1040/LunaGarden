@@ -15,31 +15,32 @@ import Form from './Form/Form.vue'
 import FormItem from './Form/FormItem.vue'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
-import Message from "./Message/index.js";
+import Message from './Message/index.js'
+import './util/clickoutside'
 
 const LunaUI = {
-    Modal,
-    Button,
-    Input,
-    Badge,
-    Row,
-    Col,
-    Container,
-    Card,
-    Table,
-    Page,
-    List,
-    ListItem,
-    Form,
-    FormItem,
-    Select,
-    Option,
-};
+  Modal,
+  Button,
+  Input,
+  Badge,
+  Row,
+  Col,
+  Container,
+  Card,
+  Table,
+  Page,
+  List,
+  ListItem,
+  Form,
+  FormItem,
+  Select,
+  Option
+}
 
 Object.keys(LunaUI).forEach(name => {
-    Vue.component(name, LunaUI[name])
-});
+  Vue.component(name, LunaUI[name])
+})
 
-Vue.prototype.$Message = Message;
+Vue.prototype.$Message = Message
 
 export default LunaUI

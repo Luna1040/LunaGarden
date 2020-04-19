@@ -1,6 +1,7 @@
 @import "./lunaCol.scss";
 $white: #FFFFFF;
 $primary: #eb7290;
+$primaryOpacity: #eb729050;
 $primaryHover: scale-color($primary, $lightness: +35%);
 $primaryActive: scale-color($primary, $lightness: +75%);
 $primaryDarkHover: scale-color($primaryText, $lightness: -35%, $alpha: -75%);
@@ -44,27 +45,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     margin: 0;
     font-size: 16px;
     box-sizing: border-box;
-}
-
-.lunaInput.disabled {
-    background-color: $disableBackground !important;
-    color: $disableText !important;
-    cursor: no-drop !important;
-    input {
-        background-color: $disableBackground !important;
-        color: $disableText !important;
-        cursor: no-drop !important;
-    }
-}
-
-.lunaButton:disabled {
-    pointer-events: unset;
-    background-color: $disableBackground !important;
-    color: $disableText !important;
-    cursor: no-drop !important;
-    i {
-        color: $disableText !important;
-    }
 }
 
 .squareCorner {
@@ -253,6 +233,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     justify-content: flex-start;
     position: relative;
     outline: 0;
+    border: 1px solid #eeeeee;
     input {
         border: 0;
         outline: 0;
@@ -284,7 +265,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 }
 .lunaInput:hover{
-    box-shadow: 0 0 0 2px $primary 0.2;
+    border: 1px solid $primary;
+}
+.lunaInput.focusing{
+    box-shadow: 0 0 0 2px $primaryOpacity;
     border: 1px solid $primary;
 }
 .lunaInput.lightInput{
@@ -305,6 +289,16 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaInput.ghostInput {
     background-color: rgba(0, 0, 0, 0) !important;
 }
+.lunaInput.disabled {
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
+    input {
+        background-color: $disableBackground !important;
+        color: $disableText !important;
+        cursor: no-drop !important;
+    }
+}
 
 .lunaButton {
     min-width: 64px;
@@ -318,6 +312,15 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     i {
         transition: all 0.5s;
         overflow: visible;
+    }
+}
+.lunaButton:disabled {
+    pointer-events: unset;
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
+    i {
+        color: $disableText !important;
     }
 }
 
@@ -537,7 +540,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     width: 100%;
     position: relative;
     transition: all 0.5s;
+    overflow: hidden;
     .lunaLoading {
+        border-radius: inherit;
         width: 100%;
         height: 100%;
         font-size: 10px;
@@ -803,8 +808,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         position: absolute;
         top: 0;
         left: 0;
-        box-shadow: $darkShadow !important;
-        z-index: 20;
         input {
             cursor: pointer !important;
         }
@@ -858,7 +861,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 }
 .lunaForm{
-
     text-align: left;
     .lunaFormItem {
         padding: 4px 8px 20px;
@@ -915,7 +917,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 }
 .lunaForm.lightForm{
-    background-color: $lightGray;
+    background-color: $white;
 }
 .lunaForm.darkForm{
     background-color: $normalDark;

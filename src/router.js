@@ -25,6 +25,8 @@ import Login from './views/login/login.vue'
 import Register from './views/login/register.vue'
 import Forgot from './views/login/forgot.vue'
 import ResetPsw from './views/login/resetPsw.vue'
+// LunaUI
+import LunaUI from './views/UI/lunaUI.vue'
 // 字节测试
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
@@ -43,6 +45,8 @@ const router = new Router({
     { path: '/mCursor', name: 'mCursor', component: ByteCursor },
     { path: '/Discuss', name: 'Discuss', component: ByteDiscuss },
     { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss },
+    { path: '/LunaUI', name: 'LunaUI', component: LunaUI },
+    { path: '/mLunaUI', name: 'LunaUI', component: LunaUI },
     // PC页面统一整合
     { path: '/Home', name: 'Home', component: Home, meta: { index: 0 } },
     { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },

@@ -1076,3 +1076,22 @@ footer {
     }
   }
 }
+.lunaUIPage {
+  .lunaUI {
+    padding-top: 48px;
+    overflow: auto;
+    height: calc(100% - 48px);
+    .controlPanel {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      position: fixed;
+      top: 44px;
+      height: 48px;
+      background-color: #F7F7F7;
+      box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+      z-index: 15;
+    }
+  }
+}

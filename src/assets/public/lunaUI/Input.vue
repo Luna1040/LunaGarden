@@ -1,7 +1,7 @@
 <template>
   <div
-    class="lunaInput"
-    :class="[
+          class="lunaInput"
+          :class="[
       className,
       {
         squareCorner: corner === 'square',
@@ -12,45 +12,44 @@
       },
       { ghostInput: ghost },
       { disabled: disabled },
-      { lightInput: theme === 'light', darkInput: theme === 'dark' }
+      { lightInput: theme === 'light', darkInput: theme === 'dark' },
+      {focusing: focusing}
     ]"
-    :style="[inputStyle]"
-    @mouseenter="hoverEnter"
-    @mouseleave="hoverOut"
-    @focusin="focusEnter"
-    @focusout="focusLeave"
+          :style="[inputStyle]"
+          @focusin="focusEnter"
+          @focusout="focusLeave"
   >
     <i
-      v-if="pre"
-      :class="[icon, { spin: spin }]"
-      class="pre"
-      @click="handelIcon"
+            v-if="pre"
+            :class="[icon, { spin: spin }]"
+            class="pre"
+            @click="handelIcon"
     ></i>
     <slot name="pre"></slot>
     <input
-      :value="textValue"
-      :style="[textColor, inputFontSize, inputWidthCount]"
-      :type="type"
-      :maxlength="maxlength"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :readonly="readonly"
-      @input="cgValue"
-      @keyup="handelKeyUp"
-      @keyup.enter="handelEnter"
-      @keydown="handelKeyDown"
-      @keypress="handelKeyPress"
-      @focus="handelFocus"
-      @blur="handelBlur"
+            :value="textValue"
+            :style="[textColor, inputFontSize, inputWidthCount]"
+            :type="type"
+            :maxlength="maxlength"
+            :placeholder="placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            @input="cgValue"
+            @keyup="handelKeyUp"
+            @keyup.enter="handelEnter"
+            @keydown="handelKeyDown"
+            @keypress="handelKeyPress"
+            @focus="handelFocus"
+            @blur="handelBlur"
     />
     <!--        清空按钮-->
     <i v-if="clearable" class="iconfont icon-cancel" @click="clearText"></i>
     <transition name="">
       <i
-        v-if="suffix"
-        :class="[icon, { spin: spin }]"
-        class="suffix"
-        @click="handelIcon"
+              v-if="suffix"
+              :class="[icon, { spin: spin }]"
+              class="suffix"
+              @click="handelIcon"
       ></i>
     </transition>
     <slot name="suffix"></slot>
@@ -253,36 +252,41 @@ export default {
   },
   data () {
     return {
-      boxShadow: '0 0 0 2px rgba(0,0,0, 0)',
-      borderColorStyle: '#EEEEEE',
+      // boxShadow: '0 0 0 2px rgba(0,0,0, 0)',
+      // borderColorStyle: '#EEEEEE',
+      focusing: false,
       textValue: this.value
     }
   },
   methods: {
-    hoverEnter () {
-      if (this.borderColor !== '') {
-        this.borderColorStyle = this.borderColor
-      } else {
-        this.borderColorStyle = this.background
-      }
-    },
-    hoverOut () {
-      this.borderColorStyle = '#EEEEEE'
-    },
+    // hoverEnter () {
+    //   if (this.borderColor !== '') {
+    //     this.borderColorStyle = this.borderColor
+    //   } else {
+    //     this.borderColorStyle = this.background
+    //   }
+    //     this.focusing = true
+    // },
+    // hoverOut () {
+    //     this.focusing = false
+    //   this.borderColorStyle = '#EEEEEE'
+    // },
     focusEnter () {
-      if (this.borderColor !== '') {
-        this.boxShadow =
-                        '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
-        this.borderColorStyle = this.borderColor
-      } else {
-        this.boxShadow =
-                        '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
-        this.borderColorStyle = this.background
-      }
+      // if (this.borderColor !== '') {
+      //   this.boxShadow =
+      //                   '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
+      //   this.borderColorStyle = this.borderColor
+      // } else {
+      //   this.boxShadow =
+      //                   '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
+      //   this.borderColorStyle = this.background
+      // }
+      this.focusing = true
     },
     focusLeave () {
-      this.boxShadow = '0 0 0 2px rgba(0,0,0, 0)'
-      this.borderColorStyle = '#EEEEEE'
+      // this.boxShadow = '0 0 0 2px rgba(0,0,0, 0)'
+      // this.borderColorStyle = '#EEEEEE'
+      this.focusing = false
     },
     clearText () {
       this.$emit('on-cancel', this.textValue)

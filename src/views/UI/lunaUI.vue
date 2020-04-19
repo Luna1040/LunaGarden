@@ -1,0 +1,422 @@
+<template>
+  <div class="lunaUIPage">
+    <Header
+            :msg-header="$t('lang.titles.about')"
+            user-icon="userIcon.jpg"
+            user-name="Luna Lovegood"
+            is-viper="true"
+            user-language="English"
+    ></Header>
+    <div class="lunaUI">
+      <div class="controlPanel">
+        <Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
+        <Button @click="cgTheme" :theme="theme">切换模式</Button>
+      </div>
+      <Container :theme="theme" :flex="false">
+        <p>Luna Container</p>
+      <List>
+        <ListItem v-for="(i, index) in listData" :key="index" :img="i.img" :title="i.userName" :label="i.discribe"></ListItem>
+      </List>
+      <Form ref="form" :form="form" :theme="theme" :width="240" label-position="top"></Form>
+        <Button @click="submit" theme="primary">提交</Button>
+        <Button @click="submit">重置</Button>
+        <Card :theme="theme" :width="200" :height="200" title="Luna Card">
+          <p>TEST LUNA CARD</p>
+        </Card>
+      <Table :data="tableData" :columns="columns" border :loading="loading" headerFixed :shadow="true" :width="100" :theme="theme"></Table>
+      <Page :limit="page" elevator counter :theme="theme"></Page>
+<!--      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>-->
+<!--      <Input v-model="selectValue" :theme="theme"></Input>-->
+      <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
+        <p>弹窗</p>
+      </Modal>
+      </Container>
+    </div>
+  </div>
+</template>
+
+<script>
+import Header from '../../components/pc/activeHeader'
+export default {
+  name: 'lunaUI.vue',
+  data () {
+    return {
+      loading: false,
+      dark: false,
+      theme: 'light',
+      page: 22,
+      selectValue: '',
+      columns: [
+        {
+          title: '序号',
+          type: 'index',
+          align: 'center',
+          width: 80,
+          fixed: 'left'
+        },
+        {
+          title: '名称',
+          key: 'name',
+          align: 'center',
+          width: 200,
+          className: 'testTableClass',
+          ellipsis: true,
+          fullDisplay: true
+        },
+        {
+          title: '操作',
+          type: 'custom',
+          align: 'center',
+          fixed: 'right',
+          render: (h, params) => {
+            return h('div', {
+              style: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }
+            }, [
+              h('Button', {
+                props: {
+                  shadow: false,
+                  theme: 'primary',
+                  loading: true
+                },
+                on: {
+                  click: () => {
+                    // alert('111')
+                  }
+                }
+              }, '修改')
+            ])
+          }
+        }
+      ],
+      tableData: [
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        }
+      ],
+      selectData: [
+        {
+          name: 'test',
+          id: '777'
+        },
+        {
+          name: 'test2',
+          id: '7772'
+        }
+      ],
+      form: [
+        {
+          title: 'Username：',
+          validate: 'userName',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: '用户名不能为空',
+          validateMethods: [
+            {
+              type: 'length',
+              max: 20,
+              maxErrText: '用户名不能多于20位字符！',
+              min: 4,
+              minErrText: '用户名不能少于4位字符！'
+            },
+            {
+              type: 'noChara',
+              errText: '不允许输入特殊符号！'
+            }
+          ],
+          render: (h, params) => {
+            return h('Input', {
+              props: {
+                value: this.createData.userName,
+                theme: this.theme,
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
+              },
+              on: {
+                input: (event) => {
+                  this.createData.userName = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        },
+        {
+          title: 'Password：',
+          validate: 'password',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: '密码不能为空',
+          description: '输入密码',
+          validateMethods: [
+            {
+              type: 'length',
+              max: 24,
+              maxErrText: '密码不能多于24位字符！',
+              min: 6,
+              minErrText: '密码不能少于6位字符！'
+            },
+            {
+              type: 'noChinese',
+              errText: '不允许输入中文！'
+            },
+            {
+              type: 'noChineseChara',
+              errText: '不允许输入中文特殊符号！'
+            }
+          ],
+          render: (h, params) => {
+            return h('Input', {
+              props: {
+                value: this.createData.password,
+                theme: this.theme,
+                type: 'password',
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
+              },
+              on: {
+                input: (event) => {
+                  this.createData.password = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        },
+        {
+          title: 'Bank：',
+          validate: 'bank',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: '银行不能为空',
+          render: (h, params) => {
+            return h('Select', {
+              props: {
+                value: this.createData.bank,
+                theme: this.theme,
+                selectData: this.selectData,
+                keyValue: 'id',
+                keyLabel: 'name',
+                filterable: true
+              },
+              on: {
+                input: (event) => {
+                  this.createData.bank = event
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        },
+        {
+          title: 'Email：',
+          validate: 'email',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: '邮箱不能为空',
+          validateMethods: [
+            {
+              type: 'email',
+              errText: '邮箱格式不正确'
+            }
+          ],
+          render: (h, params) => {
+            return h('Input', {
+              props: {
+                value: this.createData.email,
+                theme: this.theme,
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods
+              },
+              on: {
+                input: (event) => {
+                  this.createData.email = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        }
+      ],
+      createData: {
+        userName: '',
+        password: '',
+        email: '',
+        bank: ''
+      },
+      listData: [
+        {
+          userName: '卢娜',
+          describe: 'Luna-UI的作者',
+          img: 'userIcon.jpg'
+        }
+      ]
+    }
+  },
+  components: {
+    Header
+  },
+  created () {
+    // 弹窗拦截其余弹窗
+    // let fileList = [
+    //   {
+    //     name: '邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他邱琦雯有人提起物业让他.txt',
+    //     size: 155
+    //   },
+    //   {
+    //     name: 'empty',
+    //     size: 0
+    //   },
+    //   {
+    //     name: 'sizeOver',
+    //     size: 150
+    //   }
+    // ]
+    // for (let i = 0; i < fileList.length; i++) {
+    //   if (fileList[i].name.length > 50) {
+    //     this.errorMessage = '超长'
+    //     this.wrongList.push(fileList[i].name)
+    //     this.dark = true
+    //     continue
+    //   } else if (fileList[i].size === 0) {
+    //     if (this.dark === false) {
+    //       this.wrongList.push(fileList[i].name)
+    //       this.errorMessage = '空'
+    //       this.dark = true
+    //     }
+    //     continue
+    //   } else if (fileList[i].size > 50 && this.dark === false) {
+    //     if (this.dark === false) {
+    //       this.wrongList.push(fileList[i].name)
+    //       this.errorMessage = '大于50'
+    //       this.dark = true
+    //     }
+    //     continue
+    //   }
+    // }
+    // 文件名称截取
+    // let name = 'test.222.txt'
+    // let frontName = name.split('.').slice(0, name.split('.').length - 1).join('.')
+    // console.log(frontName)
+    // this.$Message.info({
+    //   content: 'Info Message',
+    //   icon: 'iconfont icon-search1',
+    //   duration: 3
+    // })
+    // this.$Message.error({
+    //   content: 'Error Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.warning({
+    //   content: 'Warning Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.success({
+    //   content: 'Success Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.primary({
+    //   content: 'Primary Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+    // this.$Message.alert({
+    //   content: 'Alert Message',
+    //   icon: 'iconfont icon-search1',
+    //   theme: 'light',
+    //   duration: 3
+    // })
+  },
+  methods: {
+    cgTheme () {
+      if (this.theme === 'light') {
+        this.theme = 'dark'
+      } else {
+        this.theme = 'light'
+      }
+    },
+    submit () {
+      if (!this.$refs.form.examine(this.createData)) {
+        // Error
+      } else {
+        // Success
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

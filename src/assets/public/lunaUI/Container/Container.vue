@@ -52,7 +52,7 @@ export default {
     },
     height: {
       type: [Number, String],
-      default: 100
+      default: 'auto'
     },
     maxHeight: {
       type: [Number, String],
