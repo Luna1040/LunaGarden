@@ -34,7 +34,7 @@
           @on-keyup="keyup($event)"
           @on-keydown="keydown($event)"
         ></Input
-        ><br />
+        >
         <Button
           :width="32"
           :height="32"

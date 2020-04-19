@@ -24,6 +24,7 @@
             v-model="initValue"
             :background="background"
             :theme="theme"
+            @input="changeText"
     ></Input>
     <div
             class="optionScrollBarHidden"
@@ -139,7 +140,8 @@ export default {
       showList: false,
       initValue: '',
       filterData: [],
-      choiceIndex: -1
+      choiceIndex: -1,
+      chose: false
     }
   },
   computed: {
@@ -215,12 +217,12 @@ export default {
     }
   },
   methods: {
+      changeText(value) {
+          this.initValue = value
+          this.chose = false
+      },
     handelClick () {
-      this.showList = !this.showList
-      if (this.showList === false) {
-        this.$emit('input', '')
-        this.initValue = ''
-      }
+      this.showList = true
       this.$emit('on-click')
     },
     optionSelect (obj) {
@@ -228,6 +230,7 @@ export default {
       this.choiceIndex = 0
       this.$emit('input', obj.value)
       this.initValue = obj.label
+      this.chose = true
       if (!this.returnLabel) {
         this.$emit('on-change', obj.value)
       } else {
@@ -290,6 +293,10 @@ export default {
       }
     },
     hideList () {
+        if (!this.chose) {
+            this.$emit('input', '')
+            this.initValue = ''
+        }
       this.showList = false
     }
   }

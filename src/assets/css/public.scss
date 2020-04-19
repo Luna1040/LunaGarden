@@ -43,8 +43,8 @@ main,
 p,
 section,
 span {
-  font-family: Microsoft YaHei UI Light, Microsoft YaHei Light,
-  WenQuanYi Micro Hei, PingFang SC, San Francisco, Helvetica, Helvetica Neue,
+  font-family: PingFang SC, Microsoft YaHei UI Light, Microsoft YaHei Light,
+  WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue,
   sans-serif;
 }
 
@@ -454,7 +454,7 @@ footer {
     max-width: 1366px;
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0 auto;
-    height: calc(100vh - 110px + 44px);
+    height: calc(100vh - 44px);
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 22px 0;
@@ -1080,7 +1080,7 @@ footer {
   .lunaUI {
     padding-top: 48px;
     overflow: auto;
-    height: calc(100% - 48px);
+    height: calc(100% - 45px);
     .controlPanel {
       width: 100%;
       display: flex;
