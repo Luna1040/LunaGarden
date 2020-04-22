@@ -25,31 +25,22 @@
             :background="background"
             :theme="theme"
             @input="changeText"
+            ref="input"
     ></Input>
-    <div
-            class="optionScrollBarHidden"
-            :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
-    >
-      <transition name="slideDown">
-        <div
-                class="optionGroup"
-                :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}"
-                :style="[optionStyles]"
-                v-show="showList"
-        >
-          <slot>
-            <Option
-                    v-for="(i,index) in filterData"
-                    :key="index"
-                    :value="i[keyValue]"
-                    :label="i[keyLabel]"
-                    :class='{optionActive: index === choiceIndex}'
-                    @optionSelect="optionSelect"
-            ></Option>
-          </slot>
+    <transition name="slideDown">
+      <div v-if="showList" class="optionScrollBarHidden" :class="{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}" :style="[optionStyles]">
+        <div>
+        <Option
+                v-for="(i,index) in filterData"
+                :key="index"
+                :value="i[keyValue]"
+                :label="i[keyLabel]"
+                :class='{optionActive: index === choiceIndex, optionWrap: wrap}'
+                @optionSelect="optionSelect"
+        ></Option>
         </div>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -133,6 +124,10 @@ export default {
     theme: {
       type: String,
       default: 'light'
+    },
+    wrap: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -182,6 +177,8 @@ export default {
         return {
           backgroundColor: this.optionBackground + '!important'
         }
+      } else {
+        return {}
       }
     }
   },
@@ -217,12 +214,15 @@ export default {
     }
   },
   methods: {
-      changeText(value) {
-          this.initValue = value
-          this.chose = false
-      },
+    changeText (value) {
+      this.initValue = value
+      this.chose = false
+    },
     handelClick () {
-      this.showList = true
+      this.showList = !this.showList
+      if (this.showList) {
+        this.$refs.input.getFocus()
+      }
       this.$emit('on-click')
     },
     optionSelect (obj) {
@@ -293,10 +293,10 @@ export default {
       }
     },
     hideList () {
-        if (!this.chose) {
-            this.$emit('input', '')
-            this.initValue = ''
-        }
+      if (!this.chose) {
+        this.$emit('input', '')
+        this.initValue = ''
+      }
       this.showList = false
     }
   }
@@ -305,16 +305,23 @@ export default {
 
 <style scoped lang="scss">
   .slideDown-enter-active {
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.8, 1) 0s;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.8, 1) 0s;
   }
+
   .slideDown-leave-active {
-    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1) 0s;
   }
+
   .slideDown-enter,
   .slideDown-leave-to {
-    transform: translateY(-100%);
+    transform: translateY(-24px);
+    opacity: 0;
+    .lunaOption{
+      padding: 2px 8px;
+    }
   }
-  .offMiddle{
+
+  .offMiddle {
     transform: scaleY(0);
   }
 </style>

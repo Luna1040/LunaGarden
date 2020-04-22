@@ -30,7 +30,7 @@
         </th>
       </tr>
     </thead>
-    <tbody :style="[bodyMaxHeight]">
+    <tbody :style="[bodyMaxHeight]" v-click-outside="blurRow">
       <tr v-if="data.length === 0">
         <td v-if="data.length === 0" :colspan="columns.length">
           <slot name="empty">{{ emptyText }}</slot>
@@ -86,13 +86,13 @@
 </template>
 
 <script>
-import Render from "./tableRender.js";
+import Render from './tableRender.js'
 
 export default {
-  name: "Table",
+  name: 'Table',
   components: { Render },
-  render(h) {
-    return h("div", [this.createContent(h)]);
+  render (h) {
+    return h('div', [this.createContent(h)])
   },
   props: {
     data: {
@@ -117,11 +117,11 @@ export default {
     },
     emptyText: {
       type: String,
-      default: "暂无数据"
+      default: '暂无数据'
     },
     theme: {
       type: String,
-      default: "light"
+      default: 'light'
     },
     border: {
       type: Boolean,
@@ -129,23 +129,23 @@ export default {
     },
     borderStyle: {
       type: String,
-      default: "#F5F5F5"
+      default: '#F5F5F5'
     },
     background: {
       type: String,
-      default: "none"
+      default: 'none'
     },
     color: {
       type: String,
-      default: "none"
+      default: 'none'
     },
     headerBackground: {
       type: String,
-      default: "none"
+      default: 'none'
     },
     headerColor: {
       type: String,
-      default: "none"
+      default: 'none'
     },
     shadow: {
       type: Boolean,
@@ -153,7 +153,7 @@ export default {
     },
     shadowStyle: {
       type: String,
-      default: "dark"
+      default: 'dark'
     },
     radius: {
       type: Number,
@@ -161,7 +161,7 @@ export default {
     },
     corner: {
       type: String,
-      default: "large"
+      default: 'large'
     },
     width: {
       type: [String, Number],
@@ -176,94 +176,99 @@ export default {
       default: true
     }
   },
-  data() {
+  data () {
     return {
-      hoverRowBorder: "",
+      hoverRowBorder: '',
       hoverRow: this.borderStyle,
       currentRow: this.borderStyle,
       choiceIndex: -1,
       hoverIndex: -1
-    };
+    }
   },
   computed: {
-    bodyMaxHeight() {
-      if (typeof this.maxHeight !== "string") {
+    bodyMaxHeight () {
+      if (typeof this.maxHeight !== 'string') {
         if (this.maxHeight <= 100) {
           return {
-            maxHeight: this.maxHeight + "%"
-          };
+            maxHeight: this.maxHeight + '%'
+          }
         } else {
           return {
-            maxHeight: this.maxHeight + "px"
-          };
+            maxHeight: this.maxHeight + 'px'
+          }
         }
       } else {
         return {
           maxHeight: this.maxHeight
-        };
+        }
       }
     },
-    tableStyles() {
-      let styleList = {};
-      if (this.background !== "none") {
-        styleList.backgroundColor = this.background + "!important";
+    tableStyles () {
+      let styleList = {}
+      if (this.background !== 'none') {
+        styleList.backgroundColor = this.background + '!important'
       }
-      if (this.color !== "none") {
-        styleList.color = this.color + "!important";
+      if (this.color !== 'none') {
+        styleList.color = this.color + '!important'
       }
       if (this.shadow === false) {
-        styleList.boxShadow = "none";
+        styleList.boxShadow = 'none'
       }
-      if (typeof this.width === "string") {
-        styleList.width = this.width;
+      if (typeof this.width === 'string') {
+        styleList.width = this.width
       } else {
         if (this.width <= 100) {
-          styleList.width = this.width + "%";
+          styleList.width = this.width + '%'
         } else {
-          styleList.width = this.width + "px";
+          styleList.width = this.width + 'px'
         }
       }
       if (this.radius !== -1) {
-        styleList.borderRadius = this.radius + "px";
+        styleList.borderRadius = this.radius + 'px'
       }
-      return styleList;
+      return styleList
     },
-    headerStyles() {
-      let styleList = {};
-      if (this.headerBackground !== "none") {
-        styleList.backgroundColor = this.headerBackground + "!important";
+    headerStyles () {
+      let styleList = {}
+      if (this.headerBackground !== 'none') {
+        styleList.backgroundColor = this.headerBackground + '!important'
       }
-      if (this.headerColor !== "none") {
-        styleList.color = this.headerColor + "!important";
+      if (this.headerColor !== 'none') {
+        styleList.color = this.headerColor + '!important'
       }
-      return styleList;
+      return styleList
     },
-    baseBorder() {
+    baseBorder () {
       if (this.border) {
         return {
-          border: "1px solid " + this.borderStyle
-        };
+          border: '1px solid ' + this.borderStyle
+        }
       }
     }
   },
   methods: {
-    createContent(h) {
-      return h("div", this.$slots.default);
+    createContent (h) {
+      return h('div', this.$slots.default)
     },
-    choiceRow(params, index) {
+    choiceRow (params, index) {
       if (this.highlightRow) {
-        this.choiceIndex = index;
-        this.$emit("on-row-click", params);
+        this.choiceIndex = index
+        this.$emit('on-row-click', params)
       }
     },
-    hoverEnter(index) {
-      this.hoverIndex = index;
+    blurRow () {
+      if (this.highlightRow && this.choiceIndex !== -1) {
+        this.choiceIndex = -1
+      }
     },
-    hoverOut() {
-      this.hoverIndex = -1;
+    hoverEnter (index) {
+      this.hoverIndex = index
+    },
+    hoverOut () {
+      this.hoverIndex = -1
     }
   }
-};
+}
 </script>
 
 <style scoped></style>

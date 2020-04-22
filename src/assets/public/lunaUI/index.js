@@ -16,7 +16,7 @@ import FormItem from './Form/FormItem.vue'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
 import Message from './Message/index.js'
-import './util/clickoutside'
+import './util/clickoutside.js'
 
 const LunaUI = {
   Modal,

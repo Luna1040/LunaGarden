@@ -41,6 +41,7 @@
             @keypress="handelKeyPress"
             @focus="handelFocus"
             @blur="handelBlur"
+            ref="input"
     />
     <!--        清空按钮-->
     <i v-if="clearable" class="iconfont icon-cancel" @click="clearText"></i>
@@ -259,33 +260,13 @@ export default {
     }
   },
   methods: {
-    // hoverEnter () {
-    //   if (this.borderColor !== '') {
-    //     this.borderColorStyle = this.borderColor
-    //   } else {
-    //     this.borderColorStyle = this.background
-    //   }
-    //     this.focusing = true
-    // },
-    // hoverOut () {
-    //     this.focusing = false
-    //   this.borderColorStyle = '#EEEEEE'
-    // },
+    getFocus () {
+      this.$refs.input.focus()
+    },
     focusEnter () {
-      // if (this.borderColor !== '') {
-      //   this.boxShadow =
-      //                   '0 0 0 2px rgba(' + this.toRGB(this.borderColor) + ', 0.2)'
-      //   this.borderColorStyle = this.borderColor
-      // } else {
-      //   this.boxShadow =
-      //                   '0 0 0 2px rgba(' + this.toRGB(this.background) + ', 0.2)'
-      //   this.borderColorStyle = this.background
-      // }
       this.focusing = true
     },
     focusLeave () {
-      // this.boxShadow = '0 0 0 2px rgba(0,0,0, 0)'
-      // this.borderColorStyle = '#EEEEEE'
       this.focusing = false
     },
     clearText () {

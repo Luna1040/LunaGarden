@@ -144,12 +144,32 @@ export default {
       ],
       selectData: [
         {
-          name: 'test',
-          id: '777'
+          name: '中国银行',
+          id: '1'
         },
         {
-          name: 'test2',
-          id: '7772'
+          name: '中国招商银行',
+          id: '2'
+        },
+        {
+          name: '中国农业银行中国农业银行中国农业银行',
+          id: '3'
+        },
+        {
+          name: '中国建设银行',
+          id: '4'
+        },
+        {
+          name: '中国浦发银行',
+          id: '5'
+        },
+        {
+          name: '中国农村信用社',
+          id: '6'
+        },
+        {
+          name: '中国人民银行',
+          id: '7'
         }
       ],
       form: [
@@ -255,7 +275,8 @@ export default {
                 selectData: this.selectData,
                 keyValue: 'id',
                 keyLabel: 'name',
-                filterable: true
+                filterable: true,
+                wrap: true
               },
               on: {
                 input: (event) => {

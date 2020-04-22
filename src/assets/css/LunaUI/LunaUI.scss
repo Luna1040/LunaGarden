@@ -1,4 +1,5 @@
 @import "./lunaCol.scss";
+
 $white: #FFFFFF;
 $primary: #eb7290;
 $primaryOpacity: #eb729050;
@@ -21,998 +22,1151 @@ $lightGray: #F5F5F5;
 $normalGray: #E8E8E8;
 $darkShadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 $lightShadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+$aroundDarkShadow: 0 0 5px rgba(0, 0, 0, 0.3);
+$aroundLightShadow: 0 0 5px rgba(255, 255, 255, 0.3);
 $hoverDarkShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 *::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-    background-color: unset;
-    border-radius: 500px;
+  width: 5px;
+  height: 5px;
+  background-color: unset;
+  border-radius: 500px;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: $primary;
-    border-radius: 500px;
+  background-color: $primary;
+  border-radius: 500px;
 }
 
 *.disabled {
-    background-color: $disableBackground !important;
-    color: $disableText !important;
-    cursor: no-drop !important;
+  background-color: $disableBackground !important;
+  color: $disableText !important;
+  cursor: no-drop !important;
 }
-*{
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    box-sizing: border-box;
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .squareCorner {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .smallCorner {
-    border-radius: 4px !important;
+  border-radius: 4px !important;
 }
 
 .filletCorner {
-    border-radius: 8px !important;
+  border-radius: 8px !important;
 }
 
 .largeCorner {
-    border-radius: 15px !important;
+  border-radius: 15px !important;
 }
 
 .fullCorner {
-    border-radius: 1000px !important;
+  border-radius: 1000px !important;
 }
 
 .roundCorner {
-    padding: 0 !important;
-    border-radius: 50% !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
 }
 
 .primaryHover {
-    background-color: $primaryHover;
+  background-color: $primaryHover;
 }
 
 .lunaModal {
-    display: flex;
-    position: fixed;
-    z-index: 250;
+  display: flex;
+  position: fixed;
+  z-index: 250;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .modalMask {
+    position: absolute;
+    z-index: 200;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    align-items: center;
-    justify-content: center;
-    .modalMask {
+  }
+
+  .modalMask.darkMask {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modalMask.lightMask {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .modalContainer {
+    position: relative;
+    padding-bottom: 16px;
+    z-index: 250;
+    background-color: $white;
+
+    .modalHeader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid $primaryActive;
+      background-color: $white;
+      position: relative;
+      margin-bottom: 32px;
+
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          font-size: 22px;
+          display: flex;
+          align-items: center;
+
+          i,
+          img {
+            margin-right: 8px;
+          }
+        }
+      }
+
+      p {
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+
+        i,
+        img {
+          margin-right: 8px;
+        }
+      }
+
+      > i {
+        cursor: pointer;
         position: absolute;
-        z-index: 200;
-        top: 0;
-        left: 0;
+        right: 16px;
+      }
+    }
+
+    .modalBody {
+      padding: 0 16px;
+
+      p {
+        line-height: 24px;
+      }
+    }
+
+    .modalFooter {
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-around;
+      overflow: visible;
+      width: 60%;
+      margin: 0 auto;
+
+      button {
+        padding: 5px 25px;
+        border-radius: 20px;
+      }
+
+      > div {
+        overflow: visible;
         width: 100%;
-        height: 100%;
-    }
-    .modalMask.darkMask {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-    .modalMask.lightMask {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-    .modalContainer {
-        position: relative;
-        padding-bottom: 16px;
-        z-index: 250;
-        background-color: $white;
-        .modalHeader {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 16px;
-            border-bottom: 1px solid $primaryActive;
-            background-color: $white;
-            position: relative;
-            margin-bottom: 32px;
-            >div {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p {
-                    font-size: 22px;
-                    display: flex;
-                    align-items: center;
-                    i,
-                    img {
-                        margin-right: 8px;
-                    }
-                }
-            }
-            p {
-                font-size: 22px;
-                display: flex;
-                align-items: center;
-                i,
-                img {
-                    margin-right: 8px;
-                }
-            }
-            >i {
-                cursor: pointer;
-                position: absolute;
-                right: 16px;
-            }
+        display: flex;
+        justify-content: space-around;
+
+        button {
+          padding: 5px 25px;
+          border-radius: 20px;
         }
-        .modalBody {
-            padding: 0 16px;
-            p {
-                line-height: 24px;
-            }
-        }
-        .modalFooter {
-            padding-top: 32px;
-            display: flex;
-            justify-content: space-around;
-            overflow: visible;
-            width: 60%;
-            margin: 0 auto;
-            button {
-                padding: 5px 25px;
-                border-radius: 20px;
-            }
-            >div {
-                overflow: visible;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-                button {
-                    padding: 5px 25px;
-                    border-radius: 20px;
-                }
-            }
-        }
+      }
     }
-    .modalContainer.errorModal {
-        .modalHeader {
-            background-color: $error;
-            color: $white;
-            p {
-                color: $white !important;
-            }
-        }
+  }
+
+  .modalContainer.errorModal {
+    .modalHeader {
+      background-color: $error;
+      color: $white;
+
+      p {
+        color: $white !important;
+      }
     }
-    .modalContainer.successModal {
-        .modalHeader {
-            background-color: $success;
-            color: $white;
-            p {
-                color: $white !important;
-            }
-        }
+  }
+
+  .modalContainer.successModal {
+    .modalHeader {
+      background-color: $success;
+      color: $white;
+
+      p {
+        color: $white !important;
+      }
     }
-    .modalContainer.warningModal {
-        .modalHeader {
-            background-color: $warning;
-            color: $white;
-            p {
-                color: $white !important;
-            }
-        }
+  }
+
+  .modalContainer.warningModal {
+    .modalHeader {
+      background-color: $warning;
+      color: $white;
+
+      p {
+        color: $white !important;
+      }
     }
-    .modalContainer.alertModal {
-        .modalHeader {
-            background-color: $alert;
-            color: $white;
-            p {
-                color: $white !important;
-            }
-        }
+  }
+
+  .modalContainer.alertModal {
+    .modalHeader {
+      background-color: $alert;
+      color: $white;
+
+      p {
+        color: $white !important;
+      }
     }
-    .modalContainer.primaryModal {
-        .modalHeader {
-            background-color: $primary;
-            color: $white;
-            p {
-                color: $white !important;
-            }
-        }
+  }
+
+  .modalContainer.primaryModal {
+    .modalHeader {
+      background-color: $primary;
+      color: $white;
+
+      p {
+        color: $white !important;
+      }
     }
-    .modalContainer.lightModal{
-        background-color: $white;
-    }
-    .modalContainer.darkModal{
-        background-color: $normalDark;
-        color: $white!important;
-    }
+  }
+
+  .modalContainer.lightModal {
+    background-color: $white;
+  }
+
+  .modalContainer.darkModal {
+    background-color: $normalDark;
+    color: $white !important;
+  }
 }
 
 .lunaInput {
-    transition: all 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  outline: 0;
+  border: 1px solid #eeeeee;
+
+  input {
+    border: 0;
     outline: 0;
-    border: 1px solid #eeeeee;
-    input {
-        border: 0;
-        outline: 0;
-        height: 100%;
-        background: rgba(0, 0, 0, 0);
-        padding: 0 12px;
-    }
-    i {
-        cursor: pointer;
-        overflow: visible;
-        transition: all 0.3s;
-    }
-    .icon-cancel {
-        font-size: 8px;
-    }
-    .pre{
-        position: relative;
-        left: 12px;
-    }
-    .suffix{
-        position: relative;
-        right: 12px;
-    }
-    span {
-        position: absolute;
-        color: $normalDark;
-        font-size: 8px;
-        right: 4px;
-    }
-}
-.lunaInput:hover{
-    border: 1px solid $primary;
-}
-.lunaInput.focusing{
-    box-shadow: 0 0 0 2px $primaryOpacity;
-    border: 1px solid $primary;
-}
-.lunaInput.lightInput{
-    background-color: $white;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 12px;
+  }
+
+  i {
+    cursor: pointer;
+    overflow: visible;
+    transition: all 0.3s;
+  }
+
+  .icon-cancel {
+    font-size: 8px;
+  }
+
+  .pre {
+    position: relative;
+    left: 12px;
+  }
+
+  .suffix {
+    position: relative;
+    right: 12px;
+  }
+
+  span {
+    position: absolute;
     color: $normalDark;
+    font-size: 8px;
+    right: 4px;
+  }
 }
-.lunaInput.darkInput{
-    background-color: $normalDark!important;
-    color: $white!important;
-    input{
-        color: $white!important;
-    }
-    i{
-        color: $white!important;
-    }
+
+.lunaInput:hover {
+  border: 1px solid $primary;
+}
+
+.lunaInput.focusing {
+  box-shadow: 0 0 0 2px $primaryOpacity;
+  border: 1px solid $primary;
+}
+
+.lunaInput.lightInput {
+  background-color: $white;
+  color: $normalDark;
+}
+
+.lunaInput.darkInput {
+  background-color: $normalDark !important;
+  color: $white !important;
+
+  input {
+    color: $white !important;
+  }
+
+  i {
+    color: $white !important;
+  }
 }
 
 .lunaInput.ghostInput {
-    background-color: rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
+
 .lunaInput.disabled {
+  background-color: $disableBackground !important;
+  color: $disableText !important;
+  cursor: no-drop !important;
+
+  input {
     background-color: $disableBackground !important;
     color: $disableText !important;
     cursor: no-drop !important;
-    input {
-        background-color: $disableBackground !important;
-        color: $disableText !important;
-        cursor: no-drop !important;
-    }
+  }
 }
 
 .lunaButton {
-    min-width: 64px;
-    display: flex;
+  min-width: 64px;
+  display: flex;
+  transition: all 0.5s;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+
+  i {
     transition: all 0.5s;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: visible;
-    i {
-        transition: all 0.5s;
-        overflow: visible;
-    }
+  }
 }
+
 .lunaButton:disabled {
-    pointer-events: unset;
-    background-color: $disableBackground !important;
+  pointer-events: unset;
+  background-color: $disableBackground !important;
+  color: $disableText !important;
+  cursor: no-drop !important;
+
+  i {
     color: $disableText !important;
-    cursor: no-drop !important;
-    i {
-        color: $disableText !important;
-    }
+  }
 }
 
 .darkShadow {
-    box-shadow: $darkShadow;
+  box-shadow: $darkShadow;
 }
 
 .lightShadow {
-    box-shadow: $lightShadow;
+  box-shadow: $lightShadow;
 }
 
-.lunaButton.darkButton{
-    background-color: #000;
-    color: $white;
+.lunaButton.darkButton {
+  background-color: #000;
+  color: $white;
 }
-.lunaButton.lightButton{
-    background-color: $white;
-    color: $normalDark;
+
+.lunaButton.lightButton {
+  background-color: $white;
+  color: $normalDark;
 }
 
 .lunaButton.primaryButton {
-    background-color: $primary;
-    color: $white;
-    border-color: $primary;
+  background-color: $primary;
+  color: $white;
+  border-color: $primary;
 }
 
 .lunaButton.primaryButton:hover {
-    background-color: $primaryHover;
+  background-color: $primaryHover;
+  color: $primary;
+
+  i {
     color: $primary;
-    i {
-        color: $primary;
-    }
+  }
 }
 
 .lunaButton.errorButton {
-    background-color: $error;
-    color: $white;
-    border-color: $error;
+  background-color: $error;
+  color: $white;
+  border-color: $error;
 }
 
 .lunaButton.successButton {
-    background-color: $success;
-    color: $white;
-    border-color: $success;
+  background-color: $success;
+  color: $white;
+  border-color: $success;
 }
 
 .lunaButton.warningButton {
-    background-color: $warning;
-    color: $white;
-    border-color: $warning;
+  background-color: $warning;
+  color: $white;
+  border-color: $warning;
 }
 
 .lunaButton.alertButton {
-    background-color: $alert;
-    color: $white;
-    border-color: $alert;
+  background-color: $alert;
+  color: $white;
+  border-color: $alert;
 }
 
 .lunaButton.textButton {
-    background-color: rgba(0, 0, 0, 0) !important;
-    border: 1px solid rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
 }
 
 .lunaButton.ghostButton {
-    background-color: rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .lunaButton.ghostButton.primaryButton {
-    color: $primary !important;
+  color: $primary !important;
 }
 
 .lunaButton.ghostButton.errorButton {
-    color: $error !important;
+  color: $error !important;
 }
 
 .lunaButton.ghostButton.successButton {
-    color: $success !important;
+  color: $success !important;
 }
 
 .lunaButton.ghostButton.warningButton {
-    color: $warning !important;
+  color: $warning !important;
 }
 
 .lunaButton.ghostButton.alertButton {
-    color: $alert !important;
+  color: $alert !important;
 }
 
 .lunaButton:hover {
-    box-shadow: $hoverDarkShadow;
+  box-shadow: $hoverDarkShadow;
 }
 
 .lunaButton {
-    .lunaBadge {
-        right: 0;
-        top: 0;
-    }
+  .lunaBadge {
+    right: 0;
+    top: 0;
+  }
 }
 
 .lunaButton.filletCorner {
-    .lunaBadge {
-        right: 1px;
-        top: 1px;
-    }
+  .lunaBadge {
+    right: 1px;
+    top: 1px;
+  }
 }
 
 .lunaButton.largeCorner {
-    .lunaBadge {
-        right: 4px;
-        top: 4px;
-    }
+  .lunaBadge {
+    right: 4px;
+    top: 4px;
+  }
 }
 
 .lunaButton.roundCorner {
-    .lunaBadge {
-        right: 8%;
-        top: 35%;
-    }
+  .lunaBadge {
+    right: 8%;
+    top: 35%;
+  }
 }
 
 .pre {
-    margin-right: 6px;
+  margin-right: 6px;
 }
 
 .suffix {
-    margin-left: 6px;
+  margin-left: 6px;
 }
 
 .lunaBadge {
-    width: 6px;
-    height: 6px;
-    border-radius: 6px;
-    background-color: $error;
-    position: absolute;
-    right: -4px;
-    top: -4px;
-    border: 1px solid $white;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: $error;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  border: 1px solid $white;
 }
 
 .lunaBadge.errorBadge {
-    background-color: $error;
+  background-color: $error;
 }
 
 .lunaBadge.successBadge {
-    background-color: $success;
+  background-color: $success;
 }
 
 .lunaBadge.alertBadge {
-    background-color: $alert;
+  background-color: $alert;
 }
 
 .lunaBadge.warningBadge {
-    background-color: $warning;
+  background-color: $warning;
 }
 
 .lunaRow {
-    overflow: auto;
-    display: flex;
-    >.lunaCol {
-        border-left: 0 !important;
-    }
-    >.lunaCol:last-of-type {
-        border-right: 0 !important;
-    }
+  overflow: auto;
+  display: flex;
+
+  > .lunaCol {
+    border-left: 0 !important;
+  }
+
+  > .lunaCol:last-of-type {
+    border-right: 0 !important;
+  }
 }
 
-.lunaContainer{
-    transition: all 0.5s;
+.lunaContainer {
+  transition: all 0.5s;
 }
+
 .lunaContainer.darkContainer {
-    background-color: $normalDark !important;
-    color: $white;
+  background-color: $normalDark !important;
+  color: $white;
 
 }
 
 .lunaCard {
-    background-color: $lightGray;
-    color: $normalDark;
-    transition: all 0.5s;
-    .lunaCardTitle {
-        width: 100%;
-        height: 36px;
-        line-height: 36px;
-        padding: 0 16px;
-        border-bottom: 1px solid $lightGray;
-        text-align: left;
-        i,
-        img {
-            margin-right: 6px;
-        }
+  background-color: $lightGray;
+  color: $normalDark;
+  transition: all 0.5s;
+
+  .lunaCardTitle {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-bottom: 1px solid $lightGray;
+    text-align: left;
+
+    i,
+    img {
+      margin-right: 6px;
     }
-    .lunaCardBody {
-        text-align: left;
-        height: calc(100% - 36px);
-        padding: 4px 4px 4px 16px;
-        p,
-        span,
-        li,
-        i,
-        a,
-        b,
-        figcaption,
-        div {
-            font-size: 14px;
-            overflow: visible;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
+  }
+
+  .lunaCardBody {
+    text-align: left;
+    height: calc(100% - 36px);
+    padding: 4px 4px 4px 16px;
+
+    p,
+    span,
+    li,
+    i,
+    a,
+    b,
+    figcaption,
+    div {
+      font-size: 14px;
+      overflow: visible;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
+  }
 }
 
 .lunaCard.darkCard {
-    background-color: $normalDark !important;
-    color: $white;
+  background-color: $normalDark !important;
+  color: $white;
 }
 
 .lunaTable {
+  width: 100%;
+  position: relative;
+  transition: all 0.5s;
+  overflow: hidden;
+
+  .lunaLoading {
+    border-radius: inherit;
     width: 100%;
-    position: relative;
-    transition: all 0.5s;
-    overflow: hidden;
-    .lunaLoading {
-        border-radius: inherit;
-        width: 100%;
-        height: 100%;
-        font-size: 10px;
+    height: 100%;
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: visible;
+
+    .face {
+      position: absolute;
+      border-radius: 50%;
+      border-style: solid;
+      animation: animate 3s ease-in-out infinite;
+      overflow: visible;
+
+      .circle {
         position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.8);
+        width: 50%;
+        height: 0.1em;
+        top: 50%;
+        left: 50%;
+        background-color: transparent;
+        transform: rotate(var(--deg));
+        transform-origin: left;
         overflow: visible;
-        .face {
-            position: absolute;
-            border-radius: 50%;
-            border-style: solid;
-            animation: animate 3s ease-in-out infinite;
-            overflow: visible;
-            .circle {
-                position: absolute;
-                width: 50%;
-                height: 0.1em;
-                top: 50%;
-                left: 50%;
-                background-color: transparent;
-                transform: rotate(var(--deg));
-                transform-origin: left;
-                overflow: visible;
-            }
-            .circle::before {
-                position: absolute;
-                top: -10px;
-                right: -15px;
-                content: '';
-                width: 20px;
-                height: 20px;
-                background-color: currentColor;
-                border-radius: 50%;
-                box-shadow: 0 0 30px rgba(255, 255, 255, 1);
-                overflow: visible;
-            }
-        }
-        .face:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            color: $white;
-            border-color: currentColor transparent transparent currentColor;
-            border-width: 6px 6px 0 0;
-            --deg: -45deg;
-            animation-direction: normal;
-            overflow: visible;
-        }
-        .face:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            color: $primary;
-            border-color: currentColor currentColor transparent transparent;
-            border-width: 6px 0 0 6px;
-            --deg: -135deg;
-            animation-direction: reverse;
-            overflow: visible;
-        }
+      }
+
+      .circle::before {
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: currentColor;
+        border-radius: 50%;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        overflow: visible;
+      }
     }
-    thead {
-        >tr {
-            height: 32px;
-            line-height: 32px;
-            font-size: 14px;
-            >th {
-                border-left: 0 !important;
-                font-size: 12px;
-                padding: 0 8px;
-            }
-            >th:last-of-type {
-                border-right: 0 !important;
-            }
-        }
-        tr:first-of-type {
-            border-top: 0 !important;
-            th {
-                border-top: 0 !important;
-            }
-        }
+
+    .face:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      color: $white;
+      border-color: currentColor transparent transparent currentColor;
+      border-width: 6px 6px 0 0;
+      --deg: -45deg;
+      animation-direction: normal;
+      overflow: visible;
     }
-    tbody {
-        min-height: 32px;
-        tr {
-            border-bottom: 0 !important;
-            border-left: 0 !important;
-            height: 42px;
-            line-height: 42px;
-            transition: all 0.5s;
-            td {
-                border-bottom: 0 !important;
-                border-left: 0 !important;
-                font-size: 12px;
-                padding: 0 8px;
-            }
-            td:last-of-type {
-                border-right: 0 !important;
-            }
-        }
-        tr:first-of-type {
-            border-top: 0 !important;
-            td {
-                border-top: 0 !important;
-            }
-        }
+
+    .face:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      color: $primary;
+      border-color: currentColor currentColor transparent transparent;
+      border-width: 6px 0 0 6px;
+      --deg: -135deg;
+      animation-direction: reverse;
+      overflow: visible;
     }
+  }
+
+  thead {
+    > tr {
+      height: 32px;
+      line-height: 32px;
+      font-size: 14px;
+
+      > th {
+        border-left: 0 !important;
+        font-size: 12px;
+        padding: 0 8px;
+      }
+
+      > th:last-of-type {
+        border-right: 0 !important;
+      }
+    }
+
+    tr:first-of-type {
+      border-top: 0 !important;
+
+      th {
+        border-top: 0 !important;
+      }
+    }
+  }
+
+  tbody {
+    min-height: 32px;
+
+    tr {
+      border-bottom: 0 !important;
+      border-left: 0 !important;
+      height: 42px;
+      line-height: 42px;
+      transition: all 0.5s;
+
+      td {
+        border-bottom: 0 !important;
+        border-left: 0 !important;
+        font-size: 12px;
+        padding: 0 8px;
+      }
+
+      td:last-of-type {
+        border-right: 0 !important;
+      }
+    }
+
+    tr:first-of-type {
+      border-top: 0 !important;
+
+      td {
+        border-top: 0 !important;
+      }
+    }
+  }
 }
 
 .lunaTable.headerFixed {
-    thead {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-        /**表格列的宽度由表格宽度决定，不由内容决定*/
-        text-align: center;
+  thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /**表格列的宽度由表格宽度决定，不由内容决定*/
+    text-align: center;
+  }
+
+  tbody {
+    display: block;
+    overflow: auto;
+
+    tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      /**表格列的宽度由表格宽度决定，不由内容决定*/
+      text-align: center;
     }
-    tbody {
-        display: block;
-        overflow: auto;
-        tr {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-            /**表格列的宽度由表格宽度决定，不由内容决定*/
-            text-align: center;
-        }
-    }
+  }
 }
 
 .lunaTable.lightTable {
-    background: $white;
-    thead {
-        background: $normalGray;
+  background: $white;
+
+  thead {
+    background: $normalGray;
+  }
+
+  tbody {
+    tr {
+      box-shadow: 0 1px 0 $lightGray;
     }
-    tbody {
-        tr {
-            box-shadow: 0 1px 0 $lightGray;
-        }
-    }
-    .currentRow {
-        background-color: $primary !important;
-        color: $white;
-    }
-    .hoverRow {
-        background-color: $primaryActive;
-    }
+  }
+
+  .currentRow {
+    background-color: $primary !important;
+    color: $white;
+  }
+
+  .hoverRow {
+    background-color: $primaryActive;
+  }
 }
 
 .lunaTable.darkTable {
-    background: $lightDark;
-    thead {
-        background: $normalDark;
-        color: $lightGray;
+  background: $lightDark;
+
+  thead {
+    background: $normalDark;
+    color: $lightGray;
+  }
+
+  tbody {
+    tr {
+      box-shadow: 0 1px 0 $lightGray;
+      color: $white;
     }
-    tbody {
-        tr {
-            box-shadow: 0 1px 0 $lightGray;
-            color: $white;
-        }
-    }
-    .currentRow {
-        background-color: $primaryDarkActive !important;
-    }
-    .hoverRow {
-        background-color: $primaryDarkHover;
-    }
+  }
+
+  .currentRow {
+    background-color: $primaryDarkActive !important;
+  }
+
+  .hoverRow {
+    background-color: $primaryDarkHover;
+  }
 }
 
 .lunaTable.darkShadow {
-    box-shadow: $darkShadow;
+  box-shadow: $darkShadow;
 }
 
 .lunaTable.darkShadow:hover {
-    box-shadow: $hoverDarkShadow;
+  box-shadow: $hoverDarkShadow;
 }
 
 .lunaTable.lightShadow {
-    box-shadow: $lightShadow;
+  box-shadow: $lightShadow;
 }
 
 .lunaTable.lightShadow:hover {
-    box-shadow: $hoverLightShadow;
+  box-shadow: $hoverLightShadow;
 }
 
 .lunaPage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  margin-top: 16px;
+  position: relative;
+
+  .lunaPageCell {
+    margin-right: 8px;
+    min-width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 12px;
+  }
+
+  .pagination {
+    color: $primary;
+
+    i {
+      font-size: 10px;
+    }
+  }
+
+  .lunaPageCell:disabled {
+    background-color: $disableBackground !important;
+    color: $disableText !important;
+    cursor: no-drop !important;
+  }
+
+  .pageElevator {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 8px 16px;
-    margin-top: 16px;
-    position: relative;
-    .lunaPageCell {
-        margin-right: 8px;
-        min-width: 24px;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-size: 12px;
+    justify-content: center;
+
+    span {
+      margin: 0 4px;
+      font-size: 12px;
     }
-    .pagination {
-        color: $primary;
-        i {
-            font-size: 10px;
-        }
-    }
-    .lunaPageCell:disabled {
-        background-color: $disableBackground !important;
-        color: $disableText !important;
-        cursor: no-drop !important;
-    }
-    .pageElevator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        span {
-            margin: 0 4px;
-            font-size: 12px;
-        }
-    }
-    .pageCounter {
-        position: absolute;
-        font-size: 12px;
-        left: 16px;
-    }
+  }
+
+  .pageCounter {
+    position: absolute;
+    font-size: 12px;
+    left: 16px;
+  }
 }
-.lunaPage.lightPage{
-    background-color: $lightGray;
-    .lunaPageCell:hover {
-        background-color: $primaryActive !important;
-    }
-    .lunaPageCell.pageCellActive {
-        background-color: $primary !important;
-        color: $white;
-    }
+
+.lunaPage.lightPage {
+  background-color: $lightGray;
+
+  .lunaPageCell:hover {
+    background-color: $primaryActive !important;
+  }
+
+  .lunaPageCell.pageCellActive {
+    background-color: $primary !important;
+    color: $white;
+  }
 }
-.lunaPage.darkPage{
-    background-color: $normalDark;
-    span{
-        color: $white;
-    }
-    .lunaPageCell{
-        color: $white;
-    }
-    .lunaPageCell:hover {
-        background-color: $primaryDarkActive !important;
-    }
-    .lunaPageCell.pageCellActive {
-        background-color: $primary !important;
-        color: $white;
-    }
+
+.lunaPage.darkPage {
+  background-color: $normalDark;
+
+  span {
+    color: $white;
+  }
+
+  .lunaPageCell {
+    color: $white;
+  }
+
+  .lunaPageCell:hover {
+    background-color: $primaryDarkActive !important;
+  }
+
+  .lunaPageCell.pageCellActive {
+    background-color: $primary !important;
+    color: $white;
+  }
 }
 
 .lunaSelect {
-    display: inline-block;
-    cursor: pointer;
-    overflow: visible;
-    position: relative;
-    .lunaInput {
-        position: absolute;
-        top: 0;
-        left: 0;
-        input {
-            cursor: pointer !important;
-        }
-    }
-    .optionScrollBarHidden {
-        position: absolute;
-        width: 100%;
-        overflow: hidden;
-        .optionGroup {
-            width: 100%;
-            position: relative;
-            max-height: 150px;
-            overflow: auto;
-            z-index: 99999;
-            border: 1px solid #CECECE;
-            .lunaOption {
-                border-bottom: 1px solid $lightGray;
-                padding: 6px 8px;
-                transition: all 0.5s;
-            }
-            .lunaOption:last-of-type {
-                border-bottom: 0;
-            }
-        }
-    }
-}
-.lunaSelect.lightSelect{
-    .optionGroup {
-        background-color: $white;
-    }
-    .lunaOption:hover {
-        background-color: $primaryHover;
-    }
-    .lunaOption.optionActive {
-        background-color: $primary;
-        color: $white;
-    }
-}
-.lunaSelect.darkSelect{
-    .optionGroup {
-        background-color: $normalDark;
-    }
-    .lunaOption{
-        color: #FFFFFF;
-    }
-    .lunaOption:hover {
-        background-color: $primaryHover;
-    }
-    .lunaOption.optionActive {
-        background-color: $primary;
-    }
-}
-.lunaForm{
-    text-align: left;
-    .lunaFormItem {
-        padding: 4px 8px 20px;
-        margin-bottom: 6px;
-        position: relative;
-        transition: all 0.35s;
-        overflow: visible;
-        >div{
-            overflow: visible;
-        }
-        span.required:before {
-            display: inline-block;
-            line-height: 1;
-            color: $errorText;
-            font-family: SimSun;
-            content: '*';
-        }
-        p{
-            font-size: 12px;
-            line-height: 16px;
-            text-align: center;
-            position: absolute;
-            transition: all 0.35s;
-            padding-top: 2px;
-        }
-        .moveMargin{
-            margin-top: 16px;
-        }
-    }
-    .lunaFormItem.leftLabel{
-        display: flex;
-        align-items: center;
-        span{
+  display: inline-block;
+  cursor: pointer;
+  overflow: visible;
+  position: relative;
+  z-index: 5;
 
-            display: inline-block;
-            text-align: right;
-            padding-right: 8px;
-        }
-    }
-    .lunaFormItem.topLabel{
-        display: flex;
-        flex-direction: column;
-        span{
-
-            display: inline-block;
-            text-align: left;
-        }
-    }
-    .lunaFormItem.morePadding{
-        padding-bottom: 40px;
-    }
-    .lunaFormItem.errBorder{
-        border: 1px solid $error;
-    }
-}
-.lunaForm.lightForm{
-    background-color: $white;
-}
-.lunaForm.darkForm{
-    background-color: $normalDark;
-    color: $white;
-}
-.lunaMessage{
-    position: fixed;
-    width: 100%;
-    top: 16px;
+  .lunaInput {
+    position: absolute;
+    top: 0;
     left: 0;
-    text-align: center;
-    pointer-events: none;
-    overflow: visible;
-    >span{
 
+    input {
+      cursor: pointer !important;
     }
-    i{
-        margin-right: 6px;
+  }
+
+  .optionScrollBarHidden {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+    >div{
+      overflow: auto;
+      width: 100%;
+      max-height: 175px;
     }
-    .messageBody{
-        display: inline-block;
-        //width: auto!important;
-        padding: 8px 16px;
-        border-radius: 3px;
-        box-shadow: $darkShadow;
-        margin-bottom: 8px;
-        font-weight: 600;
+
+    .lunaOption {
+      border-bottom: 1px solid $lightGray;
+      padding: 6px 8px;
+      transition: all 0.5s;
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
-    .messageBody.warningMessage{
-        border: 1px solid $warning;
-        background-color: $warning;
-        i, span{
-            color: $white;
-        }
+    .lunaOption.optionWrap {
+      text-overflow: inherit;
+      white-space: pre-wrap;
+      overflow: visible;
     }
-    .messageBody.errorMessage{
-        border: 1px solid $error;
-        background-color: $error;
-        i, span{
-            color: $white;
-        }
+
+    .lunaOption:last-of-type {
+      border-bottom: 0;
     }
-    .messageBody.successMessage{
-        border: 1px solid $success;
-        background-color: $success;
-        i, span{
-            color: $white;
-        }
+  }
+}
+
+.lunaSelect.lightSelect {
+  .optionScrollBarHidden {
+    background-color: $white;
+    box-shadow: $aroundDarkShadow;
+  }
+
+  .lunaOption:hover {
+    background-color: $primaryHover;
+  }
+
+  .lunaOption.optionActive {
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+.lunaSelect.darkSelect {
+  .optionScrollBarHidden {
+    background-color: $normalDark;
+    box-shadow: $aroundLightShadow;
+  }
+
+  .lunaOption {
+    color: #FFFFFF;
+  }
+
+  .lunaOption:hover {
+    background-color: $primaryHover;
+  }
+
+  .lunaOption.optionActive {
+    background-color: $primary;
+  }
+}
+
+.lunaForm {
+  text-align: left;
+
+  .lunaFormItem {
+    padding: 4px 8px 20px;
+    margin-bottom: 6px;
+    position: relative;
+    transition: all 0.35s;
+    overflow: visible;
+
+    > div {
+      overflow: visible;
     }
-    .messageBody.primaryMessage{
-        border: 1px solid $primary;
-        background-color: $primary;
-        i, span{
-            color: $white;
-        }
+
+    span.required:before {
+      display: inline-block;
+      line-height: 1;
+      color: $errorText;
+      font-family: SimSun;
+      content: '*';
     }
-    .messageBody.alertMessage{
-        border: 1px solid $alert;
-        background-color: $alert;
-        i,span{
-            color: $white;
-        }
+
+    p {
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      position: absolute;
+      transition: all 0.35s;
+      padding-top: 2px;
     }
-    .messageBody.normalMessage{
-        border: 1px solid $primary;
-        background-color: $white;
-        i{
-            color: $primary;
-        }
+
+    .moveMargin {
+      margin-top: 16px;
     }
-    .alertClose{
-        margin-right: 0;
-        margin-left: 6px;
-        border: 1px solid #333;
+  }
+
+  .lunaFormItem.leftLabel {
+    display: flex;
+    align-items: center;
+
+    span {
+
+      display: inline-block;
+      text-align: right;
+      padding-right: 8px;
     }
+  }
+
+  .lunaFormItem.topLabel {
+    display: flex;
+    flex-direction: column;
+
+    span {
+
+      display: inline-block;
+      text-align: left;
+    }
+  }
+
+  .lunaFormItem.morePadding {
+    padding-bottom: 40px;
+  }
+
+  .lunaFormItem.errBorder {
+    border: 1px solid $error;
+  }
+}
+
+.lunaForm.lightForm {
+  background-color: $white;
+}
+
+.lunaForm.darkForm {
+  background-color: $normalDark;
+  color: $white;
+}
+
+.lunaMessage {
+  position: fixed;
+  width: 100%;
+  top: 16px;
+  left: 0;
+  text-align: center;
+  pointer-events: none;
+  overflow: visible;
+
+  > span {
+
+  }
+
+  i {
+    margin-right: 6px;
+  }
+
+  .messageBody {
+    display: inline-block;
+    //width: auto!important;
+    padding: 8px 16px;
+    border-radius: 3px;
+    box-shadow: $darkShadow;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .messageBody.warningMessage {
+    border: 1px solid $warning;
+    background-color: $warning;
+
+    i, span {
+      color: $white;
+    }
+  }
+
+  .messageBody.errorMessage {
+    border: 1px solid $error;
+    background-color: $error;
+
+    i, span {
+      color: $white;
+    }
+  }
+
+  .messageBody.successMessage {
+    border: 1px solid $success;
+    background-color: $success;
+
+    i, span {
+      color: $white;
+    }
+  }
+
+  .messageBody.primaryMessage {
+    border: 1px solid $primary;
+    background-color: $primary;
+
+    i, span {
+      color: $white;
+    }
+  }
+
+  .messageBody.alertMessage {
+    border: 1px solid $alert;
+    background-color: $alert;
+
+    i, span {
+      color: $white;
+    }
+  }
+
+  .messageBody.normalMessage {
+    border: 1px solid $primary;
+    background-color: $white;
+
+    i {
+      color: $primary;
+    }
+  }
+
+  .alertClose {
+    margin-right: 0;
+    margin-left: 6px;
+    border: 1px solid #333;
+  }
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .block {
-    display: block;
+  display: block;
 }
 
 .zIndexHide {
-    z-index: -2 !important;
+  z-index: -2 !important;
 }
 
-.scrollable{
-    overflow: auto;
+.scrollable {
+  overflow: auto;
 }
 
 @keyframes animate {
-    to {
-        transform: rotate(1turn);
-    }
+  to {
+    transform: rotate(1turn);
+  }
 }
