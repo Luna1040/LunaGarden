@@ -93,7 +93,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   justify-content: center;
 
   .modalMask {
-    position: absolute;
+    position: fixed;
     z-index: 200;
     top: 0;
     left: 0;
@@ -989,6 +989,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
 .lunaForm {
   text-align: left;
+  transition: all 0.5s;
 
   .lunaFormItem {
     padding: 4px 8px 20px;
@@ -1153,7 +1154,27 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 }
 
-.lunaTree {}
+.lunaTree {
+  .lunaTreeItem {
+    margin-left: 24px;
+
+    .lunaItemInner {
+      display: flex;
+      align-items: center;
+
+
+      .arrowIcon {
+        height: 16px;
+        width: 16px;
+        transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+      }
+
+      .arrowIcon.arrowActive {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
 
 .flex {
   display: flex;

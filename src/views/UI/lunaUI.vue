@@ -47,8 +47,8 @@
           :theme="theme"
         ></Table>
         <Page :limit="page" elevator counter :theme="theme"></Page>
-        <!--      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>-->
-        <!--      <Input v-model="selectValue" :theme="theme"></Input>-->
+        <!-- <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select> -->
+        <!-- <Input v-model="selectValue" :theme="theme"></Input> -->
         <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
           <p>弹窗</p>
         </Modal>
@@ -75,19 +75,30 @@ export default {
           children: [
             {
               title: "parent 1-1",
-              expand: true,
+              expand: false,
               children: [
                 {
                   title: "leaf 1-1-1",
                 },
                 {
                   title: "leaf 1-1-2",
+                  expand: true,
+                  children: [
+                    {
+                      title: "grandChild 1-1-2-1",
+                      selected: true,
+                    },
+                    {
+                      title: "grandChild 1-1-2-2",
+                      selected: false,
+                    },
+                  ],
                 },
               ],
             },
             {
               title: "parent 1-2",
-              expand: true,
+              expand: false,
               children: [
                 {
                   title: "leaf 1-2-1",
