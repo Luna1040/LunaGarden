@@ -1,25 +1,22 @@
 <template>
-  <div class="lunaTree">
-    <div class="lunaTreeTitle">
-      <img v-if="titleImg !== ''" :src="titleImg" alt="" />
-      <i
-        v-if="titleIcon !== ''"
-        :class="titleIcon"
-      ></i
-      >{{ title }}
-    </div>
-    <p v-if="data.length === 0">{{ emptyText }}</p>
-    <div v-else>
-      <ul>
-        <TreeItem
-          v-for="(i, index) in stateData"
-          :data="i"
-          :index="index"
-          :list-name="i.title"
-        ></TreeItem>
-      </ul>
-    </div>
-  </div>
+	<div class="lunaTree">
+		<div class="lunaTreeTitle">
+			<img v-if="titleImg !== ''" :src="titleImg" alt="" />
+			<i v-if="titleIcon !== ''" :class="titleIcon"></i>{{ title }}
+		</div>
+		<p v-if="data.length === 0">{{ emptyText }}</p>
+		<div v-else>
+			<ul>
+				<TreeItem
+					v-for="(i, index) in stateData"
+					:key="index"
+					:data="i"
+					:index="index"
+					:list-name="i.title"
+				></TreeItem>
+			</ul>
+		</div>
+	</div>
 </template>
 
 <script>

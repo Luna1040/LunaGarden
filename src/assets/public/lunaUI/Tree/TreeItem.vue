@@ -1,14 +1,15 @@
 <template>
-  <li>
-    <span @click.stop="expandTreeItem">{{ stateData.title }}</span>
-    <ul v-if="stateData.children" v-show="stateData.expand">
-      <TreeItem
-        v-for="(i, index) in stateData.children"
-        :data="i"
-        :index="index"
-      ></TreeItem>
-    </ul>
-  </li>
+	<li>
+		<span @click.stop="expandTreeItem">{{ stateData.title }}</span>
+		<ul v-if="stateData.children" v-show="stateData.expand">
+			<TreeItem
+				v-for="(i, index) in stateData.children"
+				:key="index"
+				:data="i"
+				:index="index"
+			></TreeItem>
+		</ul>
+	</li>
 </template>
 
 <script>
