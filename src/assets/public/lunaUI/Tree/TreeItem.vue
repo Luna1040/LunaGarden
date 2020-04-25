@@ -10,10 +10,22 @@
         <i class="iconfont icon-youjiantou"></i>
       </div>
       <div class="lunaTreeCell" @click.stop="expandTreeItem">
-        <template>{{ stateData.title }}</template>
+        <Render
+          v-if="data.render"
+          :render="data.render"
+          :data="data"
+          :node="node"
+        ></Render>
+        <Render
+          v-else-if="isParentRender"
+          :render="parentRender"
+          :data="data"
+          :node="node"
+        ></Render>
+        <template v-else>{{ stateData.title }}</template>
       </div>
     </div>
-    <transition name="expand">
+    <transition name="slideDown">
       <ul v-if="stateData.children" v-show="stateData.expand">
         <TreeItem
           v-for="(i, index) in stateData.children"
@@ -58,6 +70,18 @@ export default {
         return Tree.render;
       } else {
         return null;
+      }
+    },
+    node() {
+      const Tree = findComponentUpward(this, "Tree");
+      if (Tree) {
+        // 将所有的 node（即flatState）和当前 node 都传递
+        return [
+          Tree.flatState,
+          Tree.flatState.find((item) => item.nodeKey === this.data.nodeKey),
+        ];
+      } else {
+        return [];
       }
     },
   },

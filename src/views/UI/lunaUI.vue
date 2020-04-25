@@ -87,6 +87,18 @@ export default {
                     {
                       title: "grandChild 1-1-2-1",
                       selected: true,
+                      render: (h, { root, node, data }) => {
+                        return h(
+                          "span",
+                          {
+                            style: {
+                              display: "inline-block",
+                              width: "100%",
+                            },
+                          },
+                          "11111"
+                        );
+                      },
                     },
                     {
                       title: "grandChild 1-1-2-2",
