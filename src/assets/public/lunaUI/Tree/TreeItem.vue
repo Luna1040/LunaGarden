@@ -1,32 +1,41 @@
 <template>
-	<div class="lunaTreeItem">
-		<span>{{ data.title }}</span>
-		<div class="lunaTreeChild" v-if="data.children">
-			<TreeItem
-				v-for="(i, index) in data.children"
-				:key="index"
-				:data="i"
-			></TreeItem>
-		</div>
-	</div>
+  <li>
+    <span @click.stop="expandTreeItem">{{ stateData.title }}</span>
+    <ul v-if="stateData.children" v-show="stateData.expand">
+      <TreeItem
+        v-for="(i, index) in stateData.children"
+        :data="i"
+        :index="index"
+      ></TreeItem>
+    </ul>
+  </li>
 </template>
 
 <script>
-import TreeItem from './TreeItem.vue'
+import TreeItem from "./TreeItem.vue";
 export default {
-  name: 'TreeItem',
+  name: "TreeItem",
   components: {
-    TreeItem
+    TreeItem,
   },
   props: {
-
-        data: {
+    data: {
       type: Object,
-      default: {}
-    }
-  }
-}
+      default: {},
+    },
+  },
+  data() {
+    return {
+      stateData: this.data,
+    };
+  },
+  methods: {
+    expandTreeItem(index) {
+      this.stateData.expand = !this.stateData.expand;
+      console.log(this.stateData.expand);
+    },
+  },
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

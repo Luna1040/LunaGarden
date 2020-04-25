@@ -26,6 +26,7 @@ $aroundDarkShadow: 0 0 5px rgba(0, 0, 0, 0.3);
 $aroundLightShadow: 0 0 5px rgba(255, 255, 255, 0.3);
 $hoverDarkShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -124,7 +125,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       position: relative;
       margin-bottom: 32px;
 
-      > div {
+      >div {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -152,7 +153,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         }
       }
 
-      > i {
+      >i {
         cursor: pointer;
         position: absolute;
         right: 16px;
@@ -180,7 +181,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         border-radius: 20px;
       }
 
-      > div {
+      >div {
         overflow: visible;
         width: 100%;
         display: flex;
@@ -531,11 +532,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   overflow: auto;
   display: flex;
 
-  > .lunaCol {
+  >.lunaCol {
     border-left: 0 !important;
   }
 
-  > .lunaCol:last-of-type {
+  >.lunaCol:last-of-type {
     border-right: 0 !important;
   }
 }
@@ -672,18 +673,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   thead {
-    > tr {
+    >tr {
       height: 32px;
       line-height: 32px;
       font-size: 14px;
 
-      > th {
+      >th {
         border-left: 0 !important;
         font-size: 12px;
         padding: 0 8px;
       }
 
-      > th:last-of-type {
+      >th:last-of-type {
         border-right: 0 !important;
       }
     }
@@ -922,7 +923,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     width: 100%;
     z-index: -1;
     overflow: hidden;
-    >div{
+
+    >div {
       overflow: auto;
       width: 100%;
       max-height: 175px;
@@ -937,6 +939,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       text-overflow: ellipsis;
       overflow: hidden;
     }
+
     .lunaOption.optionWrap {
       text-overflow: inherit;
       white-space: pre-wrap;
@@ -994,7 +997,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     transition: all 0.35s;
     overflow: visible;
 
-    > div {
+    >div {
       overflow: visible;
     }
 
@@ -1070,10 +1073,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   pointer-events: none;
   overflow: visible;
 
-  > span {
-
-  }
-
   i {
     margin-right: 6px;
   }
@@ -1092,7 +1091,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid $warning;
     background-color: $warning;
 
-    i, span {
+    i,
+    span {
       color: $white;
     }
   }
@@ -1101,7 +1101,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid $error;
     background-color: $error;
 
-    i, span {
+    i,
+    span {
       color: $white;
     }
   }
@@ -1110,7 +1111,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid $success;
     background-color: $success;
 
-    i, span {
+    i,
+    span {
       color: $white;
     }
   }
@@ -1119,7 +1121,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid $primary;
     background-color: $primary;
 
-    i, span {
+    i,
+    span {
       color: $white;
     }
   }
@@ -1128,7 +1131,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid $alert;
     background-color: $alert;
 
-    i, span {
+    i,
+    span {
       color: $white;
     }
   }
@@ -1148,6 +1152,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 1px solid #333;
   }
 }
+
+.lunaTree {}
 
 .flex {
   display: flex;
