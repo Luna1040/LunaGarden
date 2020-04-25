@@ -16,6 +16,7 @@ import FormItem from './Form/FormItem.vue'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
 import Message from './Message/index.js'
+import Tree from './Tree/index.js'
 import './util/clickoutside.js'
 
 const LunaUI = {
@@ -34,7 +35,8 @@ const LunaUI = {
   Form,
   FormItem,
   Select,
-  Option
+  Option,
+  Tree
 }
 
 Object.keys(LunaUI).forEach(name => {

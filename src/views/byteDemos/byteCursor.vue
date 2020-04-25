@@ -9,8 +9,8 @@
 export default {
   name: 'ByteCursor',
   data: function () {
-    return {
-      test: ''
+      return {
+        test: ''
     }
   },
   methods: {

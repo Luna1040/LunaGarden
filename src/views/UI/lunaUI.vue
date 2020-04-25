@@ -1,11 +1,11 @@
 <template>
   <div class="lunaUIPage">
     <Header
-            :msg-header="$t('lang.titles.about')"
-            user-icon="userIcon.jpg"
-            user-name="Luna Lovegood"
-            is-viper="true"
-            user-language="English"
+      :msg-header="$t('lang.titles.about')"
+      user-icon="userIcon.jpg"
+      user-name="Luna Lovegood"
+      is-viper="true"
+      user-language="English"
     ></Header>
     <div class="lunaUI">
       <div class="controlPanel">
@@ -14,334 +14,396 @@
       </div>
       <Container :theme="theme" :flex="false">
         <p>Luna Container</p>
-      <List>
-        <ListItem v-for="(i, index) in listData" :key="index" :img="i.img" :title="i.userName" :label="i.discribe"></ListItem>
-      </List>
-      <Form ref="form" :form="form" :theme="theme" :width="240" label-position="top"></Form>
+        <Tree :data="tree" title="Luna Tree"></Tree>
+        <List>
+          <ListItem
+            v-for="(i, index) in listData"
+            :key="index"
+            :img="i.img"
+            :title="i.userName"
+            :label="i.discribe"
+          ></ListItem>
+        </List>
+        <Form
+          ref="form"
+          :form="form"
+          :theme="theme"
+          :width="240"
+          label-position="top"
+        ></Form>
         <Button @click="submit" theme="primary">提交</Button>
         <Button @click="submit">重置</Button>
         <Card :theme="theme" :width="200" :height="200" title="Luna Card">
           <p>TEST LUNA CARD</p>
         </Card>
-      <Table :data="tableData" :columns="columns" border :loading="loading" headerFixed :shadow="true" :width="100" :theme="theme"></Table>
-      <Page :limit="page" elevator counter :theme="theme"></Page>
-<!--      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>-->
-<!--      <Input v-model="selectValue" :theme="theme"></Input>-->
-      <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
-        <p>弹窗</p>
-      </Modal>
+        <Table
+          :data="tableData"
+          :columns="columns"
+          border
+          :loading="loading"
+          headerFixed
+          :shadow="true"
+          :width="100"
+          :theme="theme"
+        ></Table>
+        <Page :limit="page" elevator counter :theme="theme"></Page>
+        <!--      <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select>-->
+        <!--      <Input v-model="selectValue" :theme="theme"></Input>-->
+        <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
+          <p>弹窗</p>
+        </Modal>
       </Container>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '../../components/pc/activeHeader'
+import Header from "../../components/pc/activeHeader";
 export default {
-  name: 'lunaUI.vue',
-  data () {
+  name: "lunaUI.vue",
+  data() {
     return {
       loading: false,
       dark: false,
-      theme: 'light',
+      theme: "light",
       page: 22,
-      selectValue: '',
+      selectValue: "",
+      tree: [
+        {
+          title: "parent 1",
+          expand: true,
+          children: [
+            {
+              title: "parent 1-1",
+              expand: true,
+              children: [
+                {
+                  title: "leaf 1-1-1",
+                },
+                {
+                  title: "leaf 1-1-2",
+                },
+              ],
+            },
+            {
+              title: "parent 1-2",
+              expand: true,
+              children: [
+                {
+                  title: "leaf 1-2-1",
+                },
+                {
+                  title: "leaf 1-2-1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
       columns: [
         {
-          title: '序号',
-          type: 'index',
-          align: 'center',
+          title: "序号",
+          type: "index",
+          align: "center",
           width: 80,
-          fixed: 'left'
+          fixed: "left",
         },
         {
-          title: '名称',
-          key: 'name',
-          align: 'center',
+          title: "名称",
+          key: "name",
+          align: "center",
           width: 200,
-          className: 'testTableClass',
+          className: "testTableClass",
           ellipsis: true,
-          fullDisplay: true
+          fullDisplay: true,
         },
         {
-          title: '操作',
-          type: 'custom',
-          align: 'center',
-          fixed: 'right',
+          title: "操作",
+          type: "custom",
+          align: "center",
+          fixed: "right",
           render: (h, params) => {
-            return h('div', {
-              style: {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }
-            }, [
-              h('Button', {
-                props: {
-                  shadow: false,
-                  theme: 'primary',
-                  loading: true
+            return h(
+              "div",
+              {
+                style: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 },
-                on: {
-                  click: () => {
-                    // alert('111')
-                  }
-                }
-              }, '修改')
-            ])
-          }
-        }
+              },
+              [
+                h(
+                  "Button",
+                  {
+                    props: {
+                      shadow: false,
+                      theme: "primary",
+                      loading: true,
+                    },
+                    on: {
+                      click: () => {
+                        // alert('111')
+                      },
+                    },
+                  },
+                  "修改"
+                ),
+              ]
+            );
+          },
+        },
       ],
       tableData: [
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test',
-          id: '777'
+          name: "test",
+          id: "777",
         },
         {
-          name: 'test2',
-          id: '7772'
+          name: "test2",
+          id: "7772",
         },
         {
-          name: 'test2',
-          id: '7772'
+          name: "test2",
+          id: "7772",
         },
         {
-          name: 'test2',
-          id: '7772'
+          name: "test2",
+          id: "7772",
         },
         {
-          name: 'test2',
-          id: '7772'
+          name: "test2",
+          id: "7772",
         },
         {
-          name: 'test2',
-          id: '7772'
-        }
+          name: "test2",
+          id: "7772",
+        },
       ],
       selectData: [
         {
-          name: '中国银行',
-          id: '1'
+          name: "中国银行",
+          id: "1",
         },
         {
-          name: '中国招商银行',
-          id: '2'
+          name: "中国招商银行",
+          id: "2",
         },
         {
-          name: '中国农业银行中国农业银行中国农业银行',
-          id: '3'
+          name: "中国农业银行中国农业银行中国农业银行",
+          id: "3",
         },
         {
-          name: '中国建设银行',
-          id: '4'
+          name: "中国建设银行",
+          id: "4",
         },
         {
-          name: '中国浦发银行',
-          id: '5'
+          name: "中国浦发银行",
+          id: "5",
         },
         {
-          name: '中国农村信用社',
-          id: '6'
+          name: "中国农村信用社",
+          id: "6",
         },
         {
-          name: '中国人民银行',
-          id: '7'
-        }
+          name: "中国人民银行",
+          id: "7",
+        },
       ],
       form: [
         {
-          title: 'Username：',
-          validate: 'userName',
+          title: "Username：",
+          validate: "userName",
           validateOnChange: true,
           required: true,
-          emptyWarning: '用户名不能为空',
+          emptyWarning: "用户名不能为空",
           validateMethods: [
             {
-              type: 'length',
+              type: "length",
               max: 20,
-              maxErrText: '用户名不能多于20位字符！',
+              maxErrText: "用户名不能多于20位字符！",
               min: 4,
-              minErrText: '用户名不能少于4位字符！'
+              minErrText: "用户名不能少于4位字符！",
             },
             {
-              type: 'noChara',
-              errText: '不允许输入特殊符号！'
-            }
+              type: "noChara",
+              errText: "不允许输入特殊符号！",
+            },
           ],
           render: (h, params) => {
-            return h('Input', {
+            return h("Input", {
               props: {
                 value: this.createData.userName,
                 theme: this.theme,
                 validateOnChange: params.validateOnChange,
-                validateMethods: params.validateMethods
+                validateMethods: params.validateMethods,
               },
               on: {
                 input: (event) => {
-                  this.createData.userName = event
+                  this.createData.userName = event;
                 },
                 onValidate: (value) => {
-                  params.data.errStatus = value.errStatus
-                  params.data.errText = value.errText
-                }
-              }
-            })
+                  params.data.errStatus = value.errStatus;
+                  params.data.errText = value.errText;
+                },
+              },
+            });
           },
           errStatus: false,
-          errText: ''
+          errText: "",
         },
         {
-          title: 'Password：',
-          validate: 'password',
+          title: "Password：",
+          validate: "password",
           validateOnChange: true,
           required: true,
-          emptyWarning: '密码不能为空',
-          description: '输入密码',
+          emptyWarning: "密码不能为空",
+          description: "输入密码",
           validateMethods: [
             {
-              type: 'length',
+              type: "length",
               max: 24,
-              maxErrText: '密码不能多于24位字符！',
+              maxErrText: "密码不能多于24位字符！",
               min: 6,
-              minErrText: '密码不能少于6位字符！'
+              minErrText: "密码不能少于6位字符！",
             },
             {
-              type: 'noChinese',
-              errText: '不允许输入中文！'
+              type: "noChinese",
+              errText: "不允许输入中文！",
             },
             {
-              type: 'noChineseChara',
-              errText: '不允许输入中文特殊符号！'
-            }
+              type: "noChineseChara",
+              errText: "不允许输入中文特殊符号！",
+            },
           ],
           render: (h, params) => {
-            return h('Input', {
+            return h("Input", {
               props: {
                 value: this.createData.password,
                 theme: this.theme,
-                type: 'password',
+                type: "password",
                 validateOnChange: params.validateOnChange,
-                validateMethods: params.validateMethods
+                validateMethods: params.validateMethods,
               },
               on: {
                 input: (event) => {
-                  this.createData.password = event
+                  this.createData.password = event;
                 },
                 onValidate: (value) => {
-                  params.data.errStatus = value.errStatus
-                  params.data.errText = value.errText
-                }
-              }
-            })
+                  params.data.errStatus = value.errStatus;
+                  params.data.errText = value.errText;
+                },
+              },
+            });
           },
           errStatus: false,
-          errText: ''
+          errText: "",
         },
         {
-          title: 'Bank：',
-          validate: 'bank',
+          title: "Bank：",
+          validate: "bank",
           validateOnChange: true,
           required: true,
-          emptyWarning: '银行不能为空',
+          emptyWarning: "银行不能为空",
           render: (h, params) => {
-            return h('Select', {
+            return h("Select", {
               props: {
                 value: this.createData.bank,
                 theme: this.theme,
                 selectData: this.selectData,
-                keyValue: 'id',
-                keyLabel: 'name',
+                keyValue: "id",
+                keyLabel: "name",
                 filterable: true,
-                wrap: true
+                wrap: true,
               },
               on: {
                 input: (event) => {
-                  this.createData.bank = event
-                }
-              }
-            })
+                  this.createData.bank = event;
+                },
+              },
+            });
           },
           errStatus: false,
-          errText: ''
+          errText: "",
         },
         {
-          title: 'Email：',
-          validate: 'email',
+          title: "Email：",
+          validate: "email",
           validateOnChange: true,
           required: true,
-          emptyWarning: '邮箱不能为空',
+          emptyWarning: "邮箱不能为空",
           validateMethods: [
             {
-              type: 'email',
-              errText: '邮箱格式不正确'
-            }
+              type: "email",
+              errText: "邮箱格式不正确",
+            },
           ],
           render: (h, params) => {
-            return h('Input', {
+            return h("Input", {
               props: {
                 value: this.createData.email,
                 theme: this.theme,
                 validateOnChange: params.validateOnChange,
-                validateMethods: params.validateMethods
+                validateMethods: params.validateMethods,
               },
               on: {
                 input: (event) => {
-                  this.createData.email = event
+                  this.createData.email = event;
                 },
                 onValidate: (value) => {
-                  params.data.errStatus = value.errStatus
-                  params.data.errText = value.errText
-                }
-              }
-            })
+                  params.data.errStatus = value.errStatus;
+                  params.data.errText = value.errText;
+                },
+              },
+            });
           },
           errStatus: false,
-          errText: ''
-        }
+          errText: "",
+        },
       ],
       createData: {
-        userName: '',
-        password: '',
-        email: '',
-        bank: ''
+        userName: "",
+        password: "",
+        email: "",
+        bank: "",
       },
       listData: [
         {
-          userName: '卢娜',
-          describe: 'Luna-UI的作者',
-          img: 'userIcon.jpg'
-        }
-      ]
-    }
+          userName: "卢娜",
+          describe: "Luna-UI的作者",
+          img: "userIcon.jpg",
+        },
+      ],
+    };
   },
   components: {
-    Header
+    Header,
   },
-  created () {
+  created() {
     // 弹窗拦截其余弹窗
     // let fileList = [
     //   {
@@ -420,24 +482,22 @@ export default {
     // })
   },
   methods: {
-    cgTheme () {
-      if (this.theme === 'light') {
-        this.theme = 'dark'
+    cgTheme() {
+      if (this.theme === "light") {
+        this.theme = "dark";
       } else {
-        this.theme = 'light'
+        this.theme = "light";
       }
     },
-    submit () {
+    submit() {
       if (!this.$refs.form.examine(this.createData)) {
         // Error
       } else {
         // Success
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
