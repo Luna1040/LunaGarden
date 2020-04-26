@@ -1,60 +1,61 @@
 <template>
-  <div class="lunaUIPage">
-    <Header
-      :msg-header="$t('lang.titles.about')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
-    <div class="lunaUI">
-      <div class="controlPanel">
-        <Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
-        <Button @click="cgTheme" :theme="theme">切换模式</Button>
-      </div>
-      <Container :theme="theme" :flex="false">
-        <p>Luna Container</p>
-        <Tree :data="tree" title="Luna Tree"></Tree>
-        <List>
-          <ListItem
-            v-for="(i, index) in listData"
-            :key="index"
-            :img="i.img"
-            :title="i.userName"
-            :label="i.discribe"
-          ></ListItem>
-        </List>
-        <Form
-          ref="form"
-          :form="form"
-          :theme="theme"
-          :width="240"
-          label-position="top"
-        ></Form>
-        <Button @click="submit" theme="primary">提交</Button>
-        <Button @click="submit">重置</Button>
-        <Card :theme="theme" :width="200" :height="200" title="Luna Card">
-          <p>TEST LUNA CARD</p>
-        </Card>
-        <Table
-          :data="tableData"
-          :columns="columns"
-          border
-          :loading="loading"
-          headerFixed
-          :shadow="true"
-          :width="100"
-          :theme="theme"
-        ></Table>
-        <Page :limit="page" elevator counter :theme="theme"></Page>
-        <!-- <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select> -->
-        <!-- <Input v-model="selectValue" :theme="theme"></Input> -->
-        <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
-          <p>弹窗</p>
-        </Modal>
-      </Container>
-    </div>
-  </div>
+	<div class="lunaUIPage">
+		<Header
+			:msg-header="$t('lang.titles.about')"
+			user-icon="userIcon.jpg"
+			user-name="Luna Lovegood"
+			is-viper="true"
+			user-language="English"
+		></Header>
+		<div class="lunaUI">
+			<div class="controlPanel">
+				<Button @click="dark = !dark" :theme="theme">显示弹窗</Button>
+				<Button @click="showMessage" :theme="theme">显示通知</Button>
+				<Button @click="cgTheme" :theme="theme">切换模式</Button>
+			</div>
+			<Container :theme="theme" :flex="false">
+				<p>Luna Container</p>
+				<Tree :data="tree" title="Luna Tree" @onSelect="selectTree"></Tree>
+				<List>
+					<ListItem
+						v-for="(i, index) in listData"
+						:key="index"
+						:img="i.img"
+						:title="i.userName"
+						:label="i.discribe"
+					></ListItem>
+				</List>
+				<Form
+					ref="form"
+					:form="form"
+					:theme="theme"
+					:width="240"
+					label-position="top"
+				></Form>
+				<Button @click="submit" theme="primary">提交</Button>
+				<Button @click="submit">重置</Button>
+				<Card :theme="theme" :width="200" :height="200" title="Luna Card">
+					<p>LUNA CARD</p>
+				</Card>
+				<Table
+					:data="tableData"
+					:columns="columns"
+					border
+					:loading="loading"
+					headerFixed
+					:shadow="true"
+					:width="100"
+					:theme="theme"
+				></Table>
+				<Page :limit="page" elevator counter :theme="theme"></Page>
+				<!-- <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select> -->
+				<!-- <Input v-model="selectValue" :theme="theme"></Input> -->
+				<Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
+					<p>弹窗</p>
+				</Modal>
+			</Container>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -87,7 +88,7 @@ export default {
                     {
                       title: "grandChild 1-1-2-1",
                       selected: true,
-                      render: (h, { root, node, data }) => {
+                      render: (h, params) => {
                         return h(
                           "span",
                           {
@@ -95,6 +96,11 @@ export default {
                               display: "inline-block",
                               width: "100%",
                             },
+                            on: {
+                              click: () => {
+                                console.log(params);
+                              }
+                            }
                           },
                           "11111"
                         );
@@ -468,43 +474,48 @@ export default {
     // let name = 'test.222.txt'
     // let frontName = name.split('.').slice(0, name.split('.').length - 1).join('.')
     // console.log(frontName)
-    // this.$Message.info({
-    //   content: 'Info Message',
-    //   icon: 'iconfont icon-search1',
-    //   duration: 3
-    // })
-    // this.$Message.error({
-    //   content: 'Error Message',
-    //   icon: 'iconfont icon-search1',
-    //   theme: 'light',
-    //   duration: 3
-    // })
-    // this.$Message.warning({
-    //   content: 'Warning Message',
-    //   icon: 'iconfont icon-search1',
-    //   theme: 'light',
-    //   duration: 3
-    // })
-    // this.$Message.success({
-    //   content: 'Success Message',
-    //   icon: 'iconfont icon-search1',
-    //   theme: 'light',
-    //   duration: 3
-    // })
-    // this.$Message.primary({
-    //   content: 'Primary Message',
-    //   icon: 'iconfont icon-search1',
-    //   theme: 'light',
-    //   duration: 3
-    // })
-    // this.$Message.alert({
-    //   content: 'Alert Message',
-    //   icon: 'iconfont icon-search1',
-    //   theme: 'light',
-    //   duration: 3
-    // })
   },
   methods: {
+    selectTree(value) {
+      console.log(value)
+    },
+    showMessage() {
+      this.$Message.info({
+      content: 'Info Message',
+      icon: 'iconfont icon-search1',
+      duration: 3
+    })
+    this.$Message.error({
+      content: 'Error Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
+    this.$Message.warning({
+      content: 'Warning Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
+    this.$Message.success({
+      content: 'Success Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
+    this.$Message.primary({
+      content: 'Primary Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
+    this.$Message.alert({
+      content: 'Alert Message',
+      icon: 'iconfont icon-search1',
+      theme: 'light',
+      duration: 3
+    })
+    },
     cgTheme() {
       if (this.theme === "light") {
         this.theme = "dark";

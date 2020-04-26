@@ -1161,12 +1161,14 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     .lunaItemInner {
       display: flex;
       align-items: center;
+      cursor: pointer;
 
 
       .arrowIcon {
-        height: 16px;
-        width: 16px;
-        transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+        transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+        i{
+          font-size: 12px;
+        }
       }
 
       .arrowIcon.arrowActive {
