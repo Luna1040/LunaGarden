@@ -55,11 +55,11 @@ export default {
     },
     showCheckbox: {
       type: Boolean,
-      deafault: false
+      default: false
     },
     width: {
       type: [Number, String],
-      default: 300
+      default: 'auto'
     },
     height: {
       type: [Number, String],
