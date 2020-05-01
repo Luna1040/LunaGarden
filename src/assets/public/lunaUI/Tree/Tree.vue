@@ -1,53 +1,53 @@
 <template>
-	<div class="lunaTree">
-		<div class="lunaTreeTitle">
-			<img v-if="titleImg !== ''" :src="titleImg" alt="" />
-			<i v-if="titleIcon !== ''" :class="titleIcon"></i>{{ title }}
-		</div>
-		<p v-if="data.length === 0">{{ emptyText }}</p>
-		<div v-else>
-			<ul>
-				<TreeItem
-					v-for="(i, index) in stateData"
-					:key="index"
-					:data="i"
-					:index="index"
-					:list-name="i.title"
-					:selectChange="selectChange"
-				></TreeItem>
-			</ul>
-		</div>
-	</div>
+  <div class="lunaTree" :style="[treeStyles]">
+    <div class="lunaTreeTitle">
+      <img v-if="titleImg !== ''" :src="titleImg" alt="" />
+      <i v-if="titleIcon !== ''" :class="titleIcon"></i>{{ title }}
+    </div>
+    <p v-if="data.length === 0">{{ emptyText }}</p>
+    <div v-else>
+      <ul>
+        <TreeItem
+          v-for="(i, index) in stateData"
+          :key="index"
+          :data="i"
+          :index="index"
+          :list-name="i.title"
+          :select-change="selectChange"
+        ></TreeItem>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
-import TreeItem from "./TreeItem.vue";
+import TreeItem from './TreeItem.vue'
 
 export default {
-  name: "Tree",
+  name: 'Tree',
   components: {
-    TreeItem,
+    TreeItem
   },
   props: {
     data: {
       type: Array,
-      default: [],
+      default: []
     },
     title: {
       type: String,
-      default: "",
+      default: ''
     },
     titleIcon: {
       type: String,
-      default: "",
+      default: ''
     },
     titleImg: {
       type: String,
-      default: "",
+      default: ''
     },
     emptyText: {
       type: String,
-      default: "暂无数据",
+      default: '暂无数据'
     },
     selectChange: {
       type: Boolean,
@@ -55,16 +55,52 @@ export default {
     },
     showCheckbox: {
       type: Boolean,
-      deafault: false,
+      deafault: false
     },
+    width: {
+      type: [Number, String],
+      default: 300
+    },
+    height: {
+      type: [Number, String],
+      default: 'auto'
+    },
+    background: {
+      type: [Number, String],
+      default: 'inherit'
+    },
+    scrollable: {
+      type: Boolean,
+      default: false
+    }
   },
-  data() {
+  data () {
     return {
-      stateData: this.data,
-    };
+      stateData: this.data
+    }
   },
-  methods: {},
-};
+  computed: {
+    treeStyles () {
+      const styles = {}
+      if (typeof this.width === 'string') {
+        styles.width = this.width
+      } else {
+        styles.width = this.width + 'px'
+      }
+      if (typeof this.height === 'string') {
+        styles.height = this.height
+      } else {
+        styles.height = this.height + 'px'
+      }
+      if (this.scrollable) {
+        styles.overFlow = auto
+      }
+
+      return styles
+    }
+  },
+  methods: {}
+}
 </script>
 
 <style scoped></style>

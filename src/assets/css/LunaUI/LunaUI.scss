@@ -1162,9 +1162,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       display: flex;
       align-items: center;
       cursor: pointer;
-
+      transition: all 0.3s;
 
       .arrowIcon {
+        display: block;
+        text-align: center;
+        width: 22px;
         transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
         i{
           font-size: 12px;
@@ -1174,6 +1177,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       .arrowIcon.arrowActive {
         transform: rotate(90deg);
       }
+    }
+    .lunaItemInner:hover{
+      background: $primaryOpacity;
     }
   }
 }

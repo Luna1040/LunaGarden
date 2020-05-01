@@ -236,7 +236,7 @@
 
 .slideDown-enter,
 .slideDown-leave-to {
-  transform: translateY(-24px);
+  transform: translateY(-18px);
   opacity: 0;
 }
 
@@ -250,6 +250,6 @@
 
 .expand-enter,
 .expand-leave-to {
-  transform: translateY(-24px) scale(1.1);
+  transform: translateY(-18px) scale(1.1);
   opacity: 0;
 }

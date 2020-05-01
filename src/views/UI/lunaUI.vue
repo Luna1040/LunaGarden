@@ -15,7 +15,12 @@
 			</div>
 			<Container :theme="theme" :flex="false">
 				<p>Luna Container</p>
-				<Tree :data="tree" title="Luna Tree" @onSelect="selectTree"></Tree>
+				<Tree
+					:data="tree"
+					:width="300"
+					title="Luna Tree"
+					@onSelect="selectTree"
+				></Tree>
 				<List>
 					<ListItem
 						v-for="(i, index) in listData"
