@@ -1,8 +1,13 @@
 <template>
   <div class="lunaTree" :style="[treeStyles]">
     <div class="lunaTreeTitle">
-      <img v-if="titleImg !== ''" :src="titleImg" alt="" />
-      <i v-if="titleIcon !== ''" :class="titleIcon"></i>{{ title }}
+      <slot name="title">
+        <img v-if="titleImg !== '' && !suffix" :src="titleImg" alt="" />
+        <i v-if="titleIcon !== '' && !suffix" :class="titleIcon"></i>
+        {{ title }}
+        <img v-if="titleImg !== '' && suffix" :src="titleImg" alt="" />
+        <i v-if="titleIcon !== '' && suffix" :class="titleIcon"></i>
+      </slot>
     </div>
     <p v-if="data.length === 0">{{ emptyText }}</p>
     <div v-else>
@@ -31,6 +36,7 @@ export default {
   props: {
     data: {
       type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
       default: []
     },
     title: {
@@ -40,6 +46,14 @@ export default {
     titleIcon: {
       type: String,
       default: ''
+    },
+    pre: {
+      type: Boolean,
+      default: true
+    },
+    suffix: {
+      type: Boolean,
+      default: false
     },
     titleImg: {
       type: String,
@@ -55,7 +69,7 @@ export default {
     },
     showCheckbox: {
       type: Boolean,
-      deafault: false
+      default: false
     },
     width: {
       type: [Number, String],
@@ -93,7 +107,7 @@ export default {
         styles.height = this.height + 'px'
       }
       if (this.scrollable) {
-        styles.overFlow = auto
+        styles.overFlow = 'auto'
       }
 
       return styles
