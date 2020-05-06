@@ -1029,7 +1029,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     align-items: center;
 
     span {
-
       display: inline-block;
       text-align: right;
       padding-right: 8px;
@@ -1163,14 +1162,19 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       align-items: center;
       cursor: pointer;
       transition: all 0.3s;
+      position: relative;
 
       .arrowIcon {
+        position: absolute;
         display: block;
         text-align: center;
         width: 22px;
         transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
         i{
           font-size: 12px;
+        }
+        i:before{
+          margin-top: 4px;
         }
       }
 
@@ -1180,6 +1184,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
     .lunaItemInner:hover{
       background: $primaryOpacity;
+    }
+    .lunaTreeCell{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-left: 20px;
     }
   }
 }

@@ -73,7 +73,7 @@ export default {
     },
     width: {
       type: [Number, String],
-      default: 300
+      default: 'auto'
     },
     height: {
       type: [Number, String],
