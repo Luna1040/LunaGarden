@@ -15,18 +15,18 @@
           corner="round"
           color="#333"
           class="searchBtn"
-          @click="matchQuery"
           theme="primary"
           shadow
           border="0"
+          @click="matchQuery"
         >
           <i class="iconfont icon-search1"></i>
         </Button>
         <Input
+          v-model="todoText"
           type="text"
           class="searchInput"
           :placeholder="$t('lang.home.input')"
-          v-model="todoText"
           border-color="rgba(0,0,0,0)"
           ghost
           width="100%"
@@ -41,21 +41,21 @@
           corner="round"
           color="#333"
           class="searchBtn"
-          @click="addTodo"
           theme="primary"
           shadow
           border="0"
+          @click="addTodo"
         >
           <i class="iconfont icon-add1"></i>
         </Button>
       </div>
       <transition name="searchListAnimation">
-        <ul class="searchAssociation" v-if="todoText.trim() !== ''">
+        <ul v-if="todoText.trim() !== ''" class="searchAssociation">
           <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
           <li
-            class="list-group-item-text"
             v-for="(item, index) in searchArr"
             :key="index"
+            class="list-group-item-text"
             @click="choice(item)"
           >
             {{ item }}
@@ -64,23 +64,23 @@
       </transition>
     </div>
     <div id="navigation">
-      <div class="swiper-button-prev" slot="button-prev">
+      <div slot="button-prev" class="swiper-button-prev">
         {{ $t("lang.home.prev") }}
       </div>
-      <div class="swiper-button-next" slot="button-next">
+      <div slot="button-next" class="swiper-button-next">
         {{ $t("lang.home.next") }}
       </div>
     </div>
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper ref="mySwiper" :options="swiperOption">
       <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
         <ul class="todoList">
           <li v-for="(i, index) in todoList" :key="i.id">
             <div>
               <span :class="{ successText: i.completed === true }"
-                >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+              >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
               >
               <span :class="{ successText: i.completed === true }"
-                >{{ $t("lang.home.content") }}{{ i.content }}</span
+              >{{ $t("lang.home.content") }}{{ i.content }}</span
               >
             </div>
             <div class="dragBtn" @click="mousedown(index)">
@@ -132,10 +132,10 @@
           <li v-for="(i, index) in businessList" :key="i.id">
             <div>
               <span :class="{ successText: i.completed === true }"
-                >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+              >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
               >
               <span :class="{ successText: i.completed === true }"
-                >{{ $t("lang.home.content") }}{{ i.content }}</span
+              >{{ $t("lang.home.content") }}{{ i.content }}</span
               >
             </div>
             <div class="dragBtn" @click="mousedown(index)">
@@ -209,43 +209,43 @@
     </div>
     <Modal
       v-model="emptyWarning"
-      @on-cancel="emptyWarningCancel()"
       :title="$t('lang.firstAlert.attention')"
+      @on-cancel="emptyWarningCancel()"
     >
       <div>
         <p class="primaryText">{{ $t("lang.home.alert.emptyAlert") }}</p>
       </div>
       <div slot="footer">
-        <button class="primaryButton" v-ripple @click="emptyWarningCancel()">
+        <button v-ripple class="primaryButton" @click="emptyWarningCancel()">
           {{ $t("lang.home.button.OK") }}
         </button>
       </div>
     </Modal>
     <Modal
       v-model="del"
-      @on-cancel="delCancel()"
       :title="$t('lang.firstAlert.warning')"
       type="error"
+      @on-cancel="delCancel()"
     >
       <div>
         <p class="defaultTextColor">{{ $t("lang.home.alert.delMsg") }}</p>
         <p class="errorText smFont">{{ $t("lang.home.alert.delMsg2") }}</p>
       </div>
       <div slot="footer">
-        <button class="normalButton" v-ripple @click="delCancel()">
+        <button v-ripple class="normalButton" @click="delCancel()">
           {{ $t("lang.home.button.cancel") }}
         </button>
-        <button class="errorButton" v-ripple @click="delConfirm()">
+        <button v-ripple class="errorButton" @click="delConfirm()">
           {{ $t("lang.home.button.DEL") }}
         </button>
       </div>
     </Modal>
     <Modal
       v-model="create"
-      @on-cancel="createCancel()"
       :title="$t('lang.home.alert.create')"
       type="primary"
       theme="dark"
+      @on-cancel="createCancel()"
     >
     </Modal>
   </div>
@@ -253,6 +253,7 @@
 
 <script>
 import Header from '../../components/pc/activeHeader'
+import {publicApi} from "../../assets/js/url";
 
 export default {
   name: 'home',
@@ -307,6 +308,9 @@ export default {
   created () {
     this.todoList = JSON.parse(localStorage.getItem('todoList'))
     this.businessList = JSON.parse(localStorage.getItem('businessList'))
+    this.getDataGet(publicApi.testPort).then(res => {
+      console.log(res)
+    })
   },
   methods: {
     mousedown (index) {
