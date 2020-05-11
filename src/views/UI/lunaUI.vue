@@ -18,7 +18,7 @@
         <Tree
           :data="tree"
           :width="300"
-          title="Luna Tree"
+          title="Luna Tr222ee"
           @onSelect="selectTree"
         ></Tree>
         <List>

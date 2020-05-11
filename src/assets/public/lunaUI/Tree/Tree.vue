@@ -5,8 +5,8 @@
         <img v-if="titleImg !== '' && !suffix" :src="titleImg" alt="" />
         <i v-if="titleIcon !== '' && !suffix" :class="titleIcon"></i>
         {{ title }}
-        <img v-if="titleImg !== '' && suffix" :src="titleImg" alt="" />
-        <i v-if="titleIcon !== '' && suffix" :class="titleIcon"></i>
+<!--        <img v-if="titleImg !== '' && suffix" :src="titleImg" alt="" />-->
+<!--        <i v-if="titleIcon !== '' && suffix" :class="titleIcon"></i>-->
       </slot>
     </div>
     <p v-if="data.length === 0">{{ emptyText }}</p>
