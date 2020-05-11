@@ -65,6 +65,8 @@
 
 <script>
 import Header from '../../components/pc/activeHeader'
+import { publicApi } from '../../assets/js/url'
+
 export default {
   name: 'lunaUI.vue',
   data () {
@@ -514,7 +516,19 @@ export default {
     submit () {
       if (!this.$refs.form.examine(this.createData)) {
         // Error
+        this.$Message.error('请检查填写错误项！')
       } else {
+        this.getData(publicApi.register, this.createData).then(res => {
+          if (res.data.success) {
+            this.$Message.success('注册成功！')
+          } else {
+            if (res.data.code === 1) {
+              this.$Message.error({ content: '密码不能少于6位！' })
+            } else if (res.data.code === 2) {
+              this.$Message.error({ content: '用户名长度不能少于4位！' })
+            }
+          }
+        })
         // Success
       }
     }

@@ -63,9 +63,9 @@ export default {
   mounted () {
     this.navigator.onLine = window.navigator.onLine
     setInterval(this.getNavigator, 1000)
-    this.getData(publicApi.imgCode, {}).then(res => {
-      this.imgSrc = res.data
-    })
+    // this.getData(publicApi.imgCode, {}).then(res => {
+    //   this.imgSrc = res.data
+    // })
   },
   beforeDestroy () {
     if (this.timer) {
