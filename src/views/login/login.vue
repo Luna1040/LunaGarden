@@ -6,7 +6,6 @@
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
-      @cgLang="cgLang"
     ></Header>
     <!--    <div class="loginSpare">-->
     <!--      <p class="desc">{{ $t('lang.login.desc') }}</p>-->
@@ -159,16 +158,7 @@ export default {
   components: {
     Header
   },
-  created () {
-    this.getLang()
-  },
   methods: {
-    cgLang () {
-      this.getLang()
-    },
-    getLang () {
-      this.lang = JSON.parse(JSON.stringify(this.$t('lang.login')))
-    },
     loginConfirm () {
       const params = JSON.parse(JSON.stringify(this.loginData))
       params.password = this.encrypt(params.password)
