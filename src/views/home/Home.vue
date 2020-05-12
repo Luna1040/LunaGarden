@@ -253,7 +253,6 @@
 
 <script>
 import Header from '../../components/pc/activeHeader'
-import {publicApi} from "../../assets/js/url";
 
 export default {
   name: 'home',
@@ -308,9 +307,6 @@ export default {
   created () {
     this.todoList = JSON.parse(localStorage.getItem('todoList'))
     this.businessList = JSON.parse(localStorage.getItem('businessList'))
-    this.getDataGet(publicApi.testPort).then(res => {
-      console.log(res)
-    })
   },
   methods: {
     mousedown (index) {

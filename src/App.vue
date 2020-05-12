@@ -4,21 +4,21 @@
       <router-view class="Router"></router-view>
     </transition>
     <div
-            :class="{ bcImage177: width177 === 177 , bcImage16: width177 === 16 , bcImage0: width177 === 0}"
+      :class="{ bcImage177: width177 === 177 , bcImage16: width177 === 16 , bcImage0: width177 === 0}"
     >
       <img src="bc1.jpg" alt />
     </div>
     <!-- 移动端通用footer -->
     <footer>
       <div
-              class="activeBar"
-              :class="{activeHome : footerActive === 'home' , activeNote : footerActive === 'note' , activeUI : footerActive === 'ui' , activeDiary : footerActive === 'diary'}"
+        class="activeBar"
+        :class="{activeHome : footerActive === 'home' , activeNote : footerActive === 'note' , activeUI : footerActive === 'ui' , activeDiary : footerActive === 'diary'}"
       ></div>
       <div class="figGroup">
         <router-link
-                to="/mHome"
-                :class="{active : footerActive === 'home'}"
-                @click="this.footerActive = 'home'"
+          to="/mHome"
+          :class="{active : footerActive === 'home'}"
+          @click="footerActive = 'home'"
         >
           <figure>
             <i class="iconfont"></i>
@@ -26,9 +26,9 @@
           </figure>
         </router-link>
         <router-link
-                to="/mNote"
-                :class="{active : footerActive === 'note'}"
-                @click="this.footerActive = 'note'"
+          to="/mNote"
+          :class="{active : footerActive === 'note'}"
+          @click="footerActive = 'note'"
         >
           <figure>
             <i class="iconfont"></i>
@@ -36,9 +36,9 @@
           </figure>
         </router-link>
         <router-link
-                to="/mDiary"
-                :class="{active : footerActive === 'diary'}"
-                @click="this.footerActive = 'diary'"
+          to="/mDiary"
+          :class="{active : footerActive === 'diary'}"
+          @click="footerActive = 'diary'"
         >
           <figure>
             <i class="iconfont"></i>
@@ -46,9 +46,9 @@
           </figure>
         </router-link>
         <router-link
-                to="/mUI"
-                :class="{active : footerActive === 'ui'}"
-                @click="this.footerActive = 'ui'"
+          to="/mUI"
+          :class="{active : footerActive === 'ui'}"
+          @click="footerActive = 'ui'"
         >
           <figure>
             <i class="iconfont"></i>
@@ -57,25 +57,25 @@
         </router-link>
       </div>
       <button
-              class="fluidBtn"
-              :class="{leftMove : footerActive === 'note' , rightMove : footerActive === 'home'}"
+        class="fluidBtn"
+        :class="{leftMove : footerActive === 'note' , rightMove : footerActive === 'home'}"
       >
         <i class="iconfont" :class="{show : footerActive === 'note'}"></i>
       </button>
     </footer>
     <Modal v-model="firstAlert" @on-cancel="hideModal">
       <div slot="header">
-        <p>{{$t('lang.firstAlert.attention')}}</p>
+        <p>{{ $t('lang.firstAlert.attention') }}</p>
       </div>
       <div>
-        <p>{{$t('lang.firstAlert.line1')}}</p>
-        <p>{{$t('lang.firstAlert.line2')}}</p>
-        <p class="error desc">{{$t('lang.firstAlert.line3')}}</p>
-        <p class="error desc">{{$t('lang.firstAlert.line4')}}</p>
+        <p>{{ $t('lang.firstAlert.line1') }}</p>
+        <p>{{ $t('lang.firstAlert.line2') }}</p>
+        <p class="error desc">{{ $t('lang.firstAlert.line3') }}</p>
+        <p class="error desc">{{ $t('lang.firstAlert.line4') }}</p>
       </div>
       <div slot="footer">
-        <button class="normalButton" v-ripple @click="hideModal">{{$t('lang.firstAlert.no')}}</button>
-        <button class="primaryButton" v-ripple @click="toGuide">{{$t('lang.firstAlert.sure')}}</button>
+        <button v-ripple class="normalButton" @click="hideModal">{{ $t('lang.firstAlert.no') }}</button>
+        <button v-ripple class="primaryButton" @click="toGuide">{{ $t('lang.firstAlert.sure') }}</button>
       </div>
     </Modal>
   </div>
@@ -111,6 +111,13 @@ export default {
       }
       if (!localStorage.getItem('businessList')) {
         localStorage.setItem('businessList', JSON.stringify([]))
+      }
+      if (localStorage.getItem('userInfo')) {
+        if (JSON.parse(localStorage.getItem('userInfo')).uid) {
+          this.getUserInfo(JSON.parse(localStorage.getItem('userInfo')).uid)
+        }
+      } else {
+        localStorage.setItem('userInfo', JSON.stringify({}))
       }
     } else {
       // 初次访问，创建默认数据格式保存于localstorage中

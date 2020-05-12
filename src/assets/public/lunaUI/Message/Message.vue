@@ -25,7 +25,7 @@ export default {
     }
   },
   created () {
-    console.log(this.notices)
+    // console.log(this.notices)
   },
   methods: {
     add (notice) {

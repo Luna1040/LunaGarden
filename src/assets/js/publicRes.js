@@ -8,14 +8,15 @@ import {
 const getData = function (branchUrl, info) {
   // let formdata = new FormData();
   // formdata.append('file','123');
-  let headData = {
+  const headData = {
     headers: {
-      'mac': info.mac
+      mac: info.mac
     }
-  };
+  }
   return axios.post(url + branchUrl, info, headData).then((msg) => {
+    console.log(msg);
     if (msg.status === 200) {
-      if (msg.data.code) {
+      if (msg.data.status) {
         if (msg.data.data) {
           // console.log("打印POST请求返回结果msg.data.data:" + JSON.stringify(msg.data.data));
           return msg.data
@@ -28,7 +29,7 @@ const getData = function (branchUrl, info) {
   })
 }
 const getDataGet = function (branchUrl, info) {
-  let infopage = info || ''
+  const infopage = info || ''
   return axios.get(url + branchUrl + infopage).then((msg) => {
     if (msg.status === 200) {
       if (msg.data.status) {
@@ -72,7 +73,7 @@ const getDataPutMsg = function (branchUrl, info) {
 }
 // delete删除
 const getDataDel = function (branchUrl, info) {
-  let infopage = info || ''
+  const infopage = info || ''
   return axios.delete(url + branchUrl + infopage).then((msg) => {
     if (msg.status === 200) {
       if (msg.data.status) {
@@ -117,14 +118,14 @@ const getDataDelMsg = function (branchUrl) {
 
 // 多个请求
 const getDataAll = function (branchUrls) {
-  let list = []
+  const list = []
   branchUrls.forEach((branchUrl) => {
     list.push(axios.get(url + branchUrl))
   })
 
   return axios.all(list)
     .then(axios.spread((...args) => {
-      let results = []
+      const results = []
       args.map(msg => {
         let result
         if (msg.status === 200) {

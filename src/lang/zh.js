@@ -1,4 +1,10 @@
 export const lang = {
+  unknownError: '未知错误，请刷新页面重试！',
+  getUserInfo: {
+    alert1: '您的身份已过期，请重新登录！',
+    alert2: '无法获取用户信息，请重新登录！',
+    alert3: '您的身份信息已更新！'
+  },
   titles: {
     online: '在线',
     offline: '离线',

@@ -76,6 +76,7 @@ export default {
   methods: {
     cgLang () {
       this.langSlideDown = this.langSlideDown !== true
+      this.$emit('cgLang')
     },
     setLang (value) {
       this.$i18n.locale = value

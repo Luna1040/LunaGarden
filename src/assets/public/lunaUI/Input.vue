@@ -180,7 +180,7 @@ export default {
   },
   computed: {
     inputStyle () {
-      let style = {
+      const style = {
         boxShadow: this.boxShadow
       }
       if (typeof this.width !== 'string') {
@@ -200,16 +200,16 @@ export default {
       } else {
         style.height = this.height
       }
-      if (typeof this.backgroundColor !== 'string') {
+      if (typeof this.background !== 'string') {
         style.backgroundColor = '#' + this.background
       } else {
         style.backgroundColor = this.background
       }
-      if (this.ghost && this.borderColor !== '') {
-        style.border = '1px solid ' + this.borderColor
-      } else {
-        style.border = '1px solid ' + this.borderColorStyle
-      }
+      // if (this.ghost && this.borderColor !== '') {
+      //   style.border = '1px solid ' + this.borderColor
+      // } else {
+      //   style.border = '1px solid ' + this.borderColorStyle
+      // }
       return style
     },
     inputFontSize () {
@@ -254,7 +254,7 @@ export default {
   data () {
     return {
       // boxShadow: '0 0 0 2px rgba(0,0,0, 0)',
-      // borderColorStyle: '#EEEEEE',
+      borderColorStyle: '#EEEEEE',
       focusing: false,
       textValue: this.value
     }

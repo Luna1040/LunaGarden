@@ -1,4 +1,10 @@
 export const lang = {
+  unknownError: 'Unknown error, please refresh the page and try again!',
+  getUserInfo: {
+    alert1: 'Your identity has expired, please log in again!',
+    alert2: 'Unable to get user information, please log in again!',
+    alert3: 'Your identity information has been updated!'
+  },
   titles: {
     online: 'Online',
     offline: 'Offline',
