@@ -12,6 +12,9 @@
         <Button :theme="theme" @click="dark = !dark">显示弹窗</Button>
         <Button :theme="theme" @click="showMessage">显示通知</Button>
         <Button :theme="theme" @click="cgTheme">切换模式</Button>
+        <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>
+        <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>
+        <Button :theme="theme" @click="reloadLang">重新获取语言(Luna18n)</Button>
       </div>
       <Container :theme="theme" :flex="false">
         <p>Luna Container</p>
@@ -533,6 +536,19 @@ export default {
         })
         // Success
       }
+    },
+    logLang () {
+      this.$lang()
+    },
+    setLang () {
+      if (localStorage.getItem('local') === 'zh') {
+        this.$setLang('en')
+      } else {
+        this.$setLang('zh')
+      }
+    },
+    reloadLang () {
+      this.$reloadLang()
     }
   }
 }

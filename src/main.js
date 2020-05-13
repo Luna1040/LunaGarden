@@ -12,6 +12,7 @@ import './assets/css/LunaAnimates.scss'
 import VueI18n from 'vue-i18n'
 import axios from 'axios'
 import md5 from 'js-md5'
+import './assets/js/luna18n/index.js'
 import './assets/js/publicRes.js'
 import './assets/js/publicReq.js'
 import './assets/js/timeFormat.js'
@@ -34,8 +35,8 @@ Vue.prototype.$md5 = md5
 const i18n = new VueI18n({
   locale: window.navigator.language,
   messages: {
-    'zh-CN': require('./lang/zh'), // 中文语言包
-    'en-US': require('./lang/en') // 英文语言包
+    'zh-CN': require('./assets/js/luna18n/lang/zh'), // 中文语言包
+    'en-US': require('./assets/js/luna18n/lang/en') // 英文语言包
   }
 })
 // Vue.use(VueI18n);

@@ -12,7 +12,7 @@
     <!--      <p class="desc">{{ $t('lang.login.desc2') }}</p>-->
     <!--      <div class="loginForm">-->
     <!--        <input type="text" :placeholder="$t('lang.login.userName')" />-->
-    <!--        <input type="password" :placeholder="$t('lang.login.password')" />-->
+    <!--        <input type="password" :placeholder="$lang('lang.login.password')" />-->
     <!--        <button class="button loginBtn" @click="loginConfirm">{{ $t('lang.login.login') }}</button>-->
     <!--      </div>-->
     <!--      <Form-->
@@ -61,7 +61,7 @@ export default {
       theme: 'light',
       form: [
         {
-          title: 'UserName',
+          title: this.$lang('login.userName'),
           validate: 'userName',
           validateOnChange: true,
           required: true,
@@ -154,6 +154,8 @@ export default {
         }
       ]
     }
+  },
+  created () {
   },
   components: {
     Header
