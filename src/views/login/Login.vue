@@ -28,7 +28,7 @@
     <!--        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>-->
     <!--      </div>-->
     <!--    </div>-->
-    <Container class-name="loginSpare" :flex="false" :width="1000" :height="400" background="rgba(255,255,255,0.3)">
+    <Container class-name="loginSpare" :flex="false" :width="1000" :height="434" background="rgba(255,255,255,0.3)">
       <div class="blurBc"></div>
       <p class="desc">{{ $t('lang.login.desc') }}</p>
       <p class="desc">{{ $t('lang.login.desc2') }}</p>
@@ -42,7 +42,13 @@
         :theme="theme"
         :width="640"
         label-position="top"
+        :label-width="150"
       ></Form>
+      <div class="linkGroup">
+        <p class="pink">{{ $t('lang.login.register') }}</p>
+        <router-link to="register" class="button">{{ $t('lang.login.register2') }}</router-link>
+        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>
+      </div>
     </Container>
   </div>
 </template>
@@ -61,7 +67,7 @@ export default {
       theme: 'light',
       form: [
         {
-          title: this.$lang('login.userName'),
+          title: this.$tc('lang.login.userName'),
           validate: 'userName',
           validateOnChange: true,
           required: true,

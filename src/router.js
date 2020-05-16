@@ -21,10 +21,14 @@ import mUser from './views/user/mUserCenter.vue'
 import AboutUs from './views/about/About.vue'
 import mAboutUs from './views/about/mAbout.vue'
 // 登录相关
-import Login from './views/login/login.vue'
-import Register from './views/login/register.vue'
-import Forgot from './views/login/forgot.vue'
-import ResetPsw from './views/login/resetPsw.vue'
+import Login from './views/login/Login.vue'
+import mLogin from './views/login/mLogin.vue'
+import Register from './views/login/Register.vue'
+import mRegister from './views/login/mRegister.vue'
+import Forgot from './views/login/Forgot.vue'
+import mForgot from './views/login/mForgot.vue'
+import ResetPsw from './views/login/ResetPsw.vue'
+import mResetPsw from './views/login/mResetPsw.vue'
 // LunaUI
 import LunaUI from './views/UI/lunaUI.vue'
 // 字节测试
@@ -61,10 +65,14 @@ const router = new Router({
     { path: '/mDiary', name: 'mDiary', component: mDiary },
     { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
     { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
-    { path: '/login', name: 'login', component: Login },
-    { path: '/register', name: 'register', component: Register },
-    { path: '/forgot', name: 'forgot', component: Forgot },
-    { path: '/reset', name: 'reset', component: ResetPsw }
+    { path: '/Login', name: 'Login', component: Login },
+    { path: '/mLogin', name: 'mLogin', component: mLogin },
+    { path: '/Register', name: 'Register', component: Register },
+    { path: '/mRegister', name: 'mRegister', component: mRegister },
+    { path: '/Forgot', name: 'Forgot', component: Forgot },
+    { path: '/mForgot', name: 'mForgot', component: mForgot },
+    { path: '/Reset', name: 'Reset', component: ResetPsw },
+    { path: '/mReset', name: 'mReset', component: mResetPsw }
   ]
 })
 

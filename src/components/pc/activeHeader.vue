@@ -8,47 +8,63 @@
       <div class="information">
         <div class="userInfo">
           <!--                    Username Area-->
-          <span class="userName">{{userName}}</span>
+          <span class="userName">{{ userName }}</span>
           <!--                    Viper Icon Area-->
-<!--          <div class="VIPer font-Gothic" v-show="isViper === 'true'">-->
-<!--            VIP-->
-<!--          </div>-->
+          <!--          <div class="VIPer font-Gothic" v-show="isViper === 'true'">-->
+          <!--            VIP-->
+          <!--          </div>-->
         </div>
-        <div class="netWorkStatus" :class="{networkError: !navigator.onLine}">
+        <div class="netWorkStatus" :class="{ networkError: !navigator.onLine }">
           <!--                        Network status-->
           <i
-                  class="iconfont"
-                  :class="{'icon-HotelDetails_icn_Internet' : navigator.onLine , 'icon-infonointernet' : !navigator.onLine}"
+            class="iconfont"
+            :class="{
+              'icon-HotelDetails_icn_Internet': navigator.onLine,
+              'icon-infonointernet': !navigator.onLine,
+            }"
           ></i>
-          <span v-show="navigator.onLine">{{$t('lang.titles.online')}}</span>
-          <span v-show="!navigator.onLine">{{$t('lang.titles.offline')}}</span>
+          <span v-show="navigator.onLine">{{ $t("lang.titles.online") }}</span>
+          <span v-show="!navigator.onLine">{{
+            $t("lang.titles.offline")
+          }}</span>
         </div>
       </div>
     </div>
     <!--        Title-->
     <div class="title">
-      <h2>{{msgHeader}}</h2>
+      <h2>{{ msgHeader }}</h2>
       <!-- <img :src="imgSrc" alt /> -->
     </div>
     <div class="guide">
       <div class="btnGroup">
-        <div @click="setLang('en-US')" :class="{languageActive: $i18n.locale !== 'zh-CN'}">
+        <div
+          :class="{ languageActive: $i18n.locale !== 'zh-CN' }"
+          @click="setLang('en-US')"
+        >
           <img src="../../assets/icons/language-english.svg" alt />
         </div>
-        <div @click="setLang('zh-CN')" :class="{languageActive: $i18n.locale === 'zh-CN'}">
+        <div
+          :class="{ languageActive: $i18n.locale === 'zh-CN' }"
+          @click="setLang('zh-CN')"
+        >
           <img src="../../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
-        <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
-          <span>{{$t('lang.titles.guide')}}</span>
-        </Button>
+      <Button
+        color="#eb7290"
+        background="#FFFFFF"
+        icon="iconfont icon-guide"
+        pre
+        :width="130"
+        @click="toAbout"
+      >
+        <span>{{ $t("lang.titles.guide") }}</span>
+      </Button>
     </div>
   </header>
 </template>
 
 <script>
-import { publicApi } from '../../assets/js/url.js'
-
 export default {
   name: 'app',
   data () {
@@ -59,6 +75,9 @@ export default {
       imgSrc: '',
       langSlideDown: ''
     }
+  },
+  created () {
+    this.$emit('cgLang', this.$t('lang'))
   },
   mounted () {
     this.navigator.onLine = window.navigator.onLine
@@ -76,11 +95,11 @@ export default {
   methods: {
     cgLang () {
       this.langSlideDown = this.langSlideDown !== true
-      this.$emit('cgLang')
     },
     setLang (value) {
       this.$i18n.locale = value
       this.langSlideDown = false
+      this.$emit('cgLang', this.$t('lang'))
     },
     getNavigator () {
       this.navigator.onLine = window.navigator.onLine
@@ -128,5 +147,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

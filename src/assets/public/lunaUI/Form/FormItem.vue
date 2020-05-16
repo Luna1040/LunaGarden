@@ -47,11 +47,11 @@ export default {
   props: {
     labelWidthCount: {
       type: Object,
-      default: {}
+      default: () => {}
     },
     itemData: {
       type: Object,
-      default: {}
+      default: () => {}
     },
     corner: {
       type: String,
@@ -65,6 +65,11 @@ export default {
   },
   created () {
     this.formItemData = this.itemData
+  },
+  watch: {
+    itemData() {
+      this.formItemData = this.itemData
+    }
   },
   methods: {}
 }

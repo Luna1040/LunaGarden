@@ -5,6 +5,39 @@ export const lang = {
     alert2: '无法获取用户信息，请重新登录！',
     alert3: '您的身份信息已更新！'
   },
+  register: {
+    userName: '用户名',
+    userNameDesc: '用户名不允许包含特殊符号,且必须多于四位字符。',
+    password: '密码',
+    passwordDesc: '密码应不少于6位，且必须包含大写字符，小写字符，数字。',
+    email: 'E-mail',
+    emailDesc: 'E-mail可用于登录，接收验证码，重置密码使用。',
+    bankId: '银行账号',
+    bankIdDesc: '此项为选填项目，您的银行账号将作为优质投稿发放奖金使用。',
+    alert1: '用户名不能为空！',
+    alert2: '用户名不能少于4位！',
+    alert3: '用户名不能包含特殊字符！',
+    alert4: '密码不能为空！',
+    alert5: '密码长度不能少于6位！',
+    alert6: '密码不能为简单组合之一，请换用其他密码！',
+    alert7: '邮箱格式错误！请务必填写正确邮箱以作为接收验证码与重置密码使用！',
+    alert8: '银行账号为选填项，您当前填写为空，当您在Luna Garden上有优质投稿时，我们会通过您的邮箱联系您，请务必确保邮箱准确无误！',
+    alert9: '用户名已存在！'
+  },
+  login: {
+    forgot: '忘记密码？点此重置',
+    register: 'Luna Garden的新用户？',
+    register2: '现在就来注册账号体验下吧！',
+    login: '登录',
+    userName: '用户名',
+    password: '密码',
+    desc: 'Luna Garden致力于提高工作效率，简化操作，以及提供干净快速的应用体验。',
+    desc2: 'Luna Garden的周边应用兼容PC、H5、Pad，并提供多设备同步服务。',
+    alert1: '用户名不能为空！',
+    alert2: '用户名或邮箱错误！',
+    alert3: '密码不能为空！',
+    alert4: '密码不正确！'
+  },
   titles: {
     online: '在线',
     offline: '离线',
@@ -82,15 +115,5 @@ export const lang = {
     organDesc4: 'Luna Garden部分图标以此绘制。',
     organ5: '必应',
     organDesc5: 'Luna Garden背景图片部分来自必应美图'
-  },
-  login: {
-    forgot: '忘记密码？点此重置',
-    register: 'Luna Garden的新用户？',
-    register2: '现在就来注册账号体验下吧！',
-    login: '登录',
-    userName: '用户名',
-    password: '密码',
-    desc: 'Luna Garden致力于提高工作效率，简化操作，以及提供干净快速的应用体验。',
-    desc2: 'Luna Garden的周边应用兼容PC、H5、Pad，并提供多设备同步服务。'
   }
 }

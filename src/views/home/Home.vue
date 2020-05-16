@@ -28,13 +28,13 @@
           class="searchInput"
           :placeholder="$t('lang.home.input')"
           border-color="rgba(0,0,0,0)"
+          box-shadow="none"
           ghost
           width="100%"
           font-size="32"
           @on-keyup="keyup($event)"
           @on-keydown="keydown($event)"
-        ></Input
-        >
+        ></Input>
         <Button
           :width="32"
           :height="32"
@@ -320,7 +320,7 @@ export default {
       ) {
       } else {
         if (this.todoText !== '') {
-          let url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su'
+          const url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su'
           this.$http
             .jsonp(url, {
               params: {
@@ -378,12 +378,12 @@ export default {
       if (this.todoText === '') {
         this.create = true
       } else {
-        let id = this.uuidGet()
-        let time = this.timeFormat(new Date())
+        const id = this.uuidGet()
+        const time = this.timeFormat(new Date())
         if (this.activeList === 'prev') {
-          let localData = JSON.parse(localStorage.getItem('todoList'))
+          const localData = JSON.parse(localStorage.getItem('todoList'))
           // 设置储存条目内容
-          let tempObj = {
+          const tempObj = {
             id: id,
             time: time,
             content: this.todoText,
@@ -397,9 +397,9 @@ export default {
           // 存入localStorage
           localStorage.setItem('todoList', JSON.stringify(localData))
         } else {
-          let localData = JSON.parse(localStorage.getItem('businessList'))
+          const localData = JSON.parse(localStorage.getItem('businessList'))
           // 设置储存条目内容
-          let tempObj = {
+          const tempObj = {
             id: id,
             time: time,
             content: this.todoText,
@@ -422,7 +422,7 @@ export default {
       }
     },
     createConfirm () {
-      let params = JSON.parse(JSON.stringify(this.createData))
+      const params = JSON.parse(JSON.stringify(this.createData))
       this.todoList.push(params)
       localStorage.setItem('todoList', this.todoList)
       this.createCancel()
@@ -439,14 +439,14 @@ export default {
     },
     hideModal () {
       this.addAlert = false
-      let _this = this
+      const _this = this
       setTimeout(function () {
         _this.addAlert = ''
       }, 500)
     },
     hideToast () {
       this.toastLaunch = false
-      let _this = this
+      const _this = this
       setTimeout(function () {
         _this.toastLaunch = ''
       }, 500)

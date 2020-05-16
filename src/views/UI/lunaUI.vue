@@ -14,7 +14,9 @@
         <Button :theme="theme" @click="cgTheme">切换模式</Button>
         <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>
         <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>
-        <Button :theme="theme" @click="reloadLang">重新获取语言(Luna18n)</Button>
+        <Button :theme="theme" @click="reloadLang"
+        >重新获取语言(Luna18n)</Button
+        >
       </div>
       <Container :theme="theme" :flex="false">
         <p>Luna Container</p>
@@ -96,7 +98,8 @@ export default {
                   expand: true,
                   children: [
                     {
-                      title: 'grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1',
+                      title:
+                        'grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1',
                       selected: true
                     },
                     {
@@ -522,7 +525,7 @@ export default {
         this.$Message.error({ content: '请检查填写错误项！' })
       } else {
         this.createData.uid = this.uuidGet()
-        this.getData(login.registerConfirm, this.createData).then(res => {
+        this.getData(login.registerConfirm, this.createData).then((res) => {
           if (res.success) {
             this.$Message.success({ content: '注册成功！' })
             localStorage.setItem('userInfo', JSON.stringify(res.data))
@@ -538,13 +541,13 @@ export default {
       }
     },
     logLang () {
-      this.$lang()
+      console.log(this.$lang())
     },
     setLang () {
-      if (localStorage.getItem('local') === 'zh') {
-        this.$setLang('en')
+      if (this.$i18n.locale === 'zh-CN') {
+        this.$i18n.locale = 'en-US'
       } else {
-        this.$setLang('zh')
+        this.$i18n.locale = 'zh-CN'
       }
     },
     reloadLang () {

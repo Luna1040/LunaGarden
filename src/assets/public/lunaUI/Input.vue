@@ -1,7 +1,7 @@
 <template>
   <div
-          class="lunaInput"
-          :class="[
+    class="lunaInput"
+    :class="[
       className,
       {
         squareCorner: corner === 'square',
@@ -15,42 +15,42 @@
       { lightInput: theme === 'light', darkInput: theme === 'dark' },
       {focusing: focusing}
     ]"
-          :style="[inputStyle]"
-          @focusin="focusEnter"
-          @focusout="focusLeave"
+    :style="[inputStyle]"
+    @focusin="focusEnter"
+    @focusout="focusLeave"
   >
     <i
-            v-if="pre"
-            :class="[icon, { spin: spin }]"
-            class="pre"
-            @click="handelIcon"
+      v-if="pre"
+      :class="[icon, { spin: spin }]"
+      class="pre"
+      @click="handelIcon"
     ></i>
     <slot name="pre"></slot>
     <input
-            :value="textValue"
-            :style="[textColor, inputFontSize, inputWidthCount]"
-            :type="type"
-            :maxlength="maxlength"
-            :placeholder="placeholder"
-            :disabled="disabled"
-            :readonly="readonly"
-            @input="cgValue"
-            @keyup="handelKeyUp"
-            @keyup.enter="handelEnter"
-            @keydown="handelKeyDown"
-            @keypress="handelKeyPress"
-            @focus="handelFocus"
-            @blur="handelBlur"
-            ref="input"
+      :value="textValue"
+      :style="[textColor, inputFontSize, inputWidthCount]"
+      :type="type"
+      :maxlength="maxlength"
+      :placeholder="placeholder"
+      ref="input"
+      :disabled="disabled"
+      :readonly="readonly"
+      @input="cgValue"
+      @keyup="handelKeyUp"
+      @keyup.enter="handelEnter"
+      @keydown="handelKeyDown"
+      @keypress="handelKeyPress"
+      @focus="handelFocus"
+      @blur="handelBlur"
     />
     <!--        清空按钮-->
     <i v-if="clearable" class="iconfont icon-cancel" @click="clearText"></i>
     <transition name="">
       <i
-              v-if="suffix"
-              :class="[icon, { spin: spin }]"
-              class="suffix"
-              @click="handelIcon"
+        v-if="suffix"
+        :class="[icon, { spin: spin }]"
+        class="suffix"
+        @click="handelIcon"
       ></i>
     </transition>
     <slot name="suffix"></slot>
@@ -126,6 +126,10 @@ export default {
       default: -1
     },
     borderColor: {
+      type: String,
+      default: ''
+    },
+    boxShadow: {
       type: String,
       default: ''
     },
@@ -205,11 +209,11 @@ export default {
       } else {
         style.backgroundColor = this.background
       }
-      // if (this.ghost && this.borderColor !== '') {
-      //   style.border = '1px solid ' + this.borderColor
-      // } else {
-      //   style.border = '1px solid ' + this.borderColorStyle
-      // }
+      if (this.ghost && this.borderColor !== '') {
+        style.border = '1px solid ' + this.borderColor
+      } else {
+        style.border = '1px solid ' + this.borderColorStyle
+      }
       return style
     },
     inputFontSize () {
@@ -306,7 +310,7 @@ export default {
     },
     examine (str) {
       const valid = this.validateMethods
-      let params = {
+      const params = {
         errStatus: false,
         errText: ''
       }

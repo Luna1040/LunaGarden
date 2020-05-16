@@ -21,11 +21,11 @@
     ]"
   >
     <FormItem
-      class="lunaFormItem"
       v-for="(i, index) in formData"
       :key="index"
-      :itemData="i"
-      :labelWidthCount="labelWidthCount"
+      class="lunaFormItem"
+      :item-data="i"
+      :label-width-count="labelWidthCount"
       :class="{leftLabel: labelPosition === 'left', topLabel: labelPosition === 'top'}"
       :corner="corner"
     ></FormItem>
@@ -117,7 +117,7 @@ export default {
     },
     form: {
       type: Array,
-      default: []
+      default: () => { return [] }
     }
   },
   computed: {
@@ -176,12 +176,20 @@ export default {
   },
   data () {
     return {
-      formData: this.form
+      formData: []
     }
   },
   created () {
-    // this.addAttr(this.form)
-    //   console.log(noChinese('ss'));
+    this.formData = this.form
+    this.$forceUpdate()
+  },
+  watch: {
+    form () {
+      console.log(this.form)
+        this.formData = this.form
+        this.$forceUpdate()
+      console.log(this.formData)
+    }
   },
   methods: {
     createContent (h) {
@@ -190,8 +198,8 @@ export default {
     examine (data) {
       for (let i = 0; i < this.formData.length; i++) {
         if (this.formData[i].validate) {
-          let str = data[this.formData[i].validate].trim()
-          let valid = this.formData[i].validateMethods
+          const str = data[this.formData[i].validate].trim()
+          const valid = this.formData[i].validateMethods
 
           this.formData[i].errStatus = false
           this.formData[i].errText = ''
