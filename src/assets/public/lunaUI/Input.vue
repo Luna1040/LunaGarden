@@ -27,12 +27,19 @@
     ></i>
     <slot name="pre"></slot>
     <input
+      ref="input"
+      :class="{
+        squareCorner: corner === 'square',
+        smallCorner: corner === 'small',
+        filletCorner: corner === 'fillet',
+        largeCorner: corner === 'large',
+        fullCorner: corner === 'full'
+      }"
       :value="textValue"
       :style="[textColor, inputFontSize, inputWidthCount]"
       :type="type"
       :maxlength="maxlength"
       :placeholder="placeholder"
-      ref="input"
       :disabled="disabled"
       :readonly="readonly"
       @input="cgValue"

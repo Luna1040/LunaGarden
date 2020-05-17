@@ -1,117 +1,118 @@
 <template>
-    <div class="mHome">
-        <Header
-                :msg-header="$t('lang.titles.home')"
-                user-icon="userIcon.jpg"
-                user-name="Luna Lovegood"
-                is-viper="true"
-                user-language="English"
-        ></Header>
-        <div class="searchArea">
-            <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
-                <Button
-                        :width="32"
-                        :height="32"
-                        corner="round"
-                        color="#333"
-                        class="searchBtn"
-                        @click="matchQuery"
-                        theme="primary"
-                        shadow
-                        border="0"
-                >
-                    <i class="iconfont icon-search1"></i>
-                </Button>
-                <Input
-                        type="text"
-                        class="searchInput"
-                        :placeholder="$t('lang.home.input')"
-                        v-model="todoText"
-                        border-color="rgba(0,0,0,0)"
-                        ghost
-                        width="100%"
-                        font-size="32"
-                        maxlength="150"
-                        @on-keyup="keyup($event)"
-                        @on-keydown="keydown($event)"
-                ></Input
-                ><br />
-                <Button
-                        :width="32"
-                        :height="32"
-                        corner="round"
-                        color="#333"
-                        class="searchBtn"
-                        @click="addTodo"
-                        theme="primary"
-                        shadow
-                        border="0"
-                >
-                    <i class="iconfont icon-add1"></i>
-                </Button>
-            </div>
-            <transition name="searchListAnimation">
-                <ul class="searchAssociation" v-if="todoText.trim() !== ''">
-                    <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
-                    <li
-                            class="list-group-item-text"
-                            v-for="(item, index) in searchArr"
-                            :key="index"
-                            @click="choice(item)"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
-            </transition>
-        </div>
-        <div id="navigation">
-            <div class="swiper-button-prev" slot="button-prev">
-                {{ $t("lang.home.prev") }}
-            </div>
-            <div class="swiper-button-next" slot="button-next">
-                {{ $t("lang.home.next") }}
-            </div>
-        </div>
-        <swiper :options="swiperOption" ref="mySwiper">
-            <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
-                <ul class="todoList">
-                    <li v-for="(i, index) in todoList" :key="i.id" @click="mousedown(index)" :class="{ dragActive: dragActive === index }">
-                        <div class="content">
-                            <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
-                            <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
-                        </div>
-                        <i v-if="dragActive !== index" @click="cgStatus(i.id)" class="cgStatusIcon iconfont icon-quedingx"></i>
-                        <div v-else class="btnGroup">
-                            <Button :height="24" @click="cgStatus(index)">{{$t("lang.home.button.finish")}}</Button>
-                            <Button :height="24" @click="editShow">{{$t("lang.home.button.edit")}}</Button>
-                            <Button :height="24" @click="editShow">{{$t("lang.home.button.copy")}}</Button>
-                            <Button :height="24" theme="error" @click="editShow">{{$t("lang.home.button.DEL")}}</Button>
-                        </div>
-                    </li>
-                </ul>
-            </swiper-slide>
-            <swiper-slide>
-                <ul
-                        class="todoList"
-                        :class="{ 'todoList-shorter': searchArr.length !== 0 }"
-                >
-                    <li v-for="(i, index) in businessList" :key="i.id" @click="mousedown(index)" :class="{ dragActive: dragActive === index }">
-                        <div class="content">
-                            <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
-                            <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
-                        </div>
-                        <i v-if="dragActive !== index" @click="cgStatus(i.id)" class="cgStatusIcon iconfont icon-quedingx"></i>
-                        <div v-else class="btnGroup">
-                            <Button :height="24" @click="cgStatus(index)">{{$t("lang.home.button.finish")}}</Button>
-                            <Button :height="24" @click="editShow">{{$t("lang.home.button.edit")}}</Button>
-                            <Button :height="24" @click="editShow">{{$t("lang.home.button.copy")}}</Button>
-                            <Button :height="24" theme="error" @click="editShow">{{$t("lang.home.button.DEL")}}</Button>
-                        </div>
-                    </li>
-                </ul>
-            </swiper-slide>
-        </swiper>
+  <div class="mHome">
+    <Header
+      :msg-header="$t('lang.titles.home')"
+      user-icon="userIcon.jpg"
+      user-name="Luna Lovegood"
+      is-viper="true"
+      user-language="English"
+    ></Header>
+    <div class="searchArea">
+      <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
+        <Button
+          :width="32"
+          :height="32"
+          corner="round"
+          color="#333"
+          class="searchBtn"
+          theme="primary"
+          shadow
+          border="0"
+          @click="matchQuery"
+        >
+          <i class="iconfont icon-search1"></i>
+        </Button>
+        <Input
+          v-model="todoText"
+          type="text"
+          class="searchInput"
+          :placeholder="$t('lang.home.input')"
+          border-color="rgba(0,0,0,0)!important"
+          box-shadow="none!important"
+          ghost
+          width="100%"
+          font-size="32"
+          maxlength="150"
+          @on-keyup="keyup($event)"
+          @on-keydown="keydown($event)"
+        ></Input
+        ><br />
+        <Button
+          :width="32"
+          :height="32"
+          corner="round"
+          color="#333"
+          class="searchBtn"
+          theme="primary"
+          shadow
+          border="0"
+          @click="addTodo"
+        >
+          <i class="iconfont icon-add1"></i>
+        </Button>
+      </div>
+      <transition name="searchListAnimation">
+        <ul v-if="todoText.trim() !== ''" class="searchAssociation">
+          <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
+          <li
+            v-for="(item, index) in searchArr"
+            :key="index"
+            class="list-group-item-text"
+            @click="choice(item)"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </transition>
     </div>
+    <div id="navigation">
+      <div slot="button-prev" class="swiper-button-prev">
+        {{ $t("lang.home.prev") }}
+      </div>
+      <div slot="button-next" class="swiper-button-next">
+        {{ $t("lang.home.next") }}
+      </div>
+    </div>
+    <swiper ref="mySwiper" :options="swiperOption">
+      <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
+        <ul class="todoList">
+          <li v-for="(i, index) in todoList" :key="i.id" :class="{ dragActive: dragActive === index }" @click="mousedown(index)">
+            <div class="content">
+              <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
+              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
+            </div>
+            <i v-if="dragActive !== index" class="cgStatusIcon iconfont icon-quedingx" @click="cgStatus(i.id)"></i>
+            <div v-else class="btnGroup">
+              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.home.button.finish") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.home.button.edit") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.home.button.copy") }}</Button>
+              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.home.button.DEL") }}</Button>
+            </div>
+          </li>
+        </ul>
+      </swiper-slide>
+      <swiper-slide>
+        <ul
+          class="todoList"
+          :class="{ 'todoList-shorter': searchArr.length !== 0 }"
+        >
+          <li v-for="(i, index) in businessList" :key="i.id" :class="{ dragActive: dragActive === index }" @click="mousedown(index)">
+            <div class="content">
+              <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
+              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
+            </div>
+            <i v-if="dragActive !== index" class="cgStatusIcon iconfont icon-quedingx" @click="cgStatus(i.id)"></i>
+            <div v-else class="btnGroup">
+              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.home.button.finish") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.home.button.edit") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.home.button.copy") }}</Button>
+              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.home.button.DEL") }}</Button>
+            </div>
+          </li>
+        </ul>
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 
 <script>
@@ -169,7 +170,7 @@ export default {
       ) {
       } else {
         if (this.todoText !== '') {
-          let url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su'
+          const url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su'
           this.$http
             .jsonp(url, {
               params: {
@@ -227,12 +228,12 @@ export default {
       if (this.todoText === '') {
         this.create = true
       } else {
-        let id = this.uuidGet()
-        let time = this.timeFormat(new Date())
+        const id = this.uuidGet()
+        const time = this.timeFormat(new Date())
         if (this.activeList === 'prev') {
-          let localData = JSON.parse(localStorage.getItem('todoList'))
+          const localData = JSON.parse(localStorage.getItem('todoList'))
           // 设置储存条目内容
-          let tempObj = {
+          const tempObj = {
             id: id,
             time: time,
             content: this.todoText,
@@ -246,9 +247,9 @@ export default {
           // 存入localStorage
           localStorage.setItem('todoList', JSON.stringify(localData))
         } else {
-          let localData = JSON.parse(localStorage.getItem('businessList'))
+          const localData = JSON.parse(localStorage.getItem('businessList'))
           // 设置储存条目内容
-          let tempObj = {
+          const tempObj = {
             id: id,
             time: time,
             content: this.todoText,

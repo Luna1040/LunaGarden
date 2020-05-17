@@ -184,19 +184,50 @@ a {
     display: none;
   }
 }
-.loginSpare::after{
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-image: url("../../../public/bc1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: blur(10px);
+.loginRegister {
+  .spare{
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+  }
+  .loginSpare{
+    top: calc(50% - 220px);
+  }
+  .registerSpare{
+    top: calc(50% - 350px);
+  }
+  .linkGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a{
+      color: $white;
+      margin-top: 18px;
+      font-size: 12px;
+    }
+    p{
+      margin-top: 18px;
+      color: $white;
+      font-size: 12px;
+    }
+  }
+  .spare::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("../../../public/bc1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(10px);
+  }
 }
 
 *::-webkit-scrollbar {

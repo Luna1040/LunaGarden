@@ -40,8 +40,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 *.disabled {
-  background-color: $disableBackground !important;
-  color: $disableText !important;
+  //background-color: $disableBackground !important;
+  //color: $disableText !important;
   cursor: no-drop !important;
 }
 
@@ -306,12 +306,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaInput:hover {
-  border: 1px solid $primary;
+  border: 1px solid $primary!important;
 }
 
 .lunaInput.focusing {
-  box-shadow: 0 0 0 2px $primaryOpacity;
-  border: 1px solid $primary;
+  box-shadow: 0 0 0 2px $primaryOpacity!important;
+  border: 1px solid $primary!important;
 }
 
 .lunaInput.lightInput {
@@ -992,7 +992,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   transition: all 0.5s;
 
   .lunaFormItem {
-    padding: 4px 8px 20px;
+    padding: 4px 8px 8px;
     margin-bottom: 6px;
     position: relative;
     transition: all 0.35s;
@@ -1013,13 +1013,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     p {
       font-size: 12px;
       line-height: 16px;
-      position: absolute;
       transition: all 0.35s;
+      position: relative;
       padding-top: 2px;
     }
 
-    .moveMargin {
-      margin-top: 16px;
+    .moveToBottom {
+      //top: 16px;
     }
   }
 
@@ -1043,10 +1043,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       display: inline-block;
       text-align: left;
     }
-  }
-
-  .lunaFormItem.morePadding {
-    padding-bottom: 40px;
   }
 
   .lunaFormItem.errBorder {

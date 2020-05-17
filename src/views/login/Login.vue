@@ -1,11 +1,12 @@
 <template>
-  <div class="login">
+  <div class="loginRegister">
     <Header
       :msg-header="$t('lang.titles.login')"
       user-icon="userIcon.jpg"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
+      @cgLang="cgLang"
     ></Header>
     <!--    <div class="loginSpare">-->
     <!--      <p class="desc">{{ $t('lang.login.desc') }}</p>-->
@@ -28,13 +29,19 @@
     <!--        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>-->
     <!--      </div>-->
     <!--    </div>-->
-    <Container class-name="loginSpare" :flex="false" :width="1000" :height="434" background="rgba(255,255,255,0.3)">
+    <Container
+      class-name="spare loginSpare"
+      :flex="false"
+      :width="1000"
+      :height="454"
+      background="rgba(255,255,255,0.3)"
+    >
       <div class="blurBc"></div>
-      <p class="desc">{{ $t('lang.login.desc') }}</p>
-      <p class="desc">{{ $t('lang.login.desc2') }}</p>
+      <p class="desc">{{ $t("lang.login.desc") }}</p>
+      <p class="desc">{{ $t("lang.login.desc2") }}</p>
       <Form
         ref="form"
-        style="margin: 0 auto"
+        style="margin: 0 auto;"
         background="rgba(0,0,0,0)"
         border="0"
         :shadow="false"
@@ -45,9 +52,12 @@
         :label-width="150"
       ></Form>
       <div class="linkGroup">
-        <p class="pink">{{ $t('lang.login.register') }}</p>
-        <router-link to="register" class="button">{{ $t('lang.login.register2') }}</router-link>
-        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>
+        <Button theme="primary" :width="590" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
+        <p>{{ $t("lang.login.register") }}</p>
+        <Button theme="primary" @click="toRegister">{{ $t('lang.login.register2') }}</Button>
+        <router-link to="forgot" class="pink">{{
+          $t("lang.login.forgot")
+        }}</router-link>
       </div>
     </Container>
   </div>
@@ -65,24 +75,61 @@ export default {
         password: ''
       },
       theme: 'light',
-      form: [
+      form: [],
+      lang: {}
+    }
+  },
+  created () {
+  },
+  components: {
+    Header
+  },
+  methods: {
+    loginConfirm () {
+      const params = JSON.parse(JSON.stringify(this.loginData))
+      params.password = this.encrypt(params.password)
+      this.getData(login.loginConfirm, params).then(res => {
+        if (res.success) {
+          this.$Message.success({ content: this.lang.login.alert5 })
+          this.$router.push('Home')
+        } else {
+          if (res.code === 1) {
+            this.$Message.error({ content: this.lang.login.alert1 })
+          } else if (res.code === 2) {
+            this.$Message.error({ content: this.lang.login.alert2 })
+          } else if (res.code === 3) {
+            this.$Message.error({ content: this.lang.login.alert3 })
+          } else if (res.code === 4) {
+            this.$Message.error({ content: this.lang.login.alert4 })
+          } else {
+            this.$Message.error({ content: this.lang.unknownError })
+          }
+        }
+      })
+    },
+    toRegister () {
+      this.$router.push('register')
+    },
+    cgLang (val) {
+      this.lang = val
+      this.getForm()
+    },
+    getForm () {
+      this.form = [
         {
-          title: this.$tc('lang.login.userName'),
+          title: this.$t('lang.login.userName'),
           validate: 'userName',
           validateOnChange: true,
           required: true,
-          emptyWarning: '用户名不能为空',
+          emptyWarning: this.$t('lang.login.alert1'),
+          description: this.$t('lang.login.userNameDesc'),
           validateMethods: [
             {
               type: 'length',
               max: 20,
-              maxErrText: '用户名不能多于20位字符！',
+              maxErrText: this.$t('lang.register.alert3'),
               min: 4,
-              minErrText: '用户名不能少于4位字符！'
-            },
-            {
-              type: 'noChara',
-              errText: '不允许输入特殊符号！'
+              minErrText: this.$t('lang.register.alert2')
             }
           ],
           render: (h, params) => {
@@ -97,7 +144,7 @@ export default {
               },
               on: {
                 input: (event) => {
-                  this.createData.userName = event
+                  this.loginData.userName = event
                 },
                 onValidate: (value) => {
                   params.data.errStatus = value.errStatus
@@ -110,27 +157,27 @@ export default {
           errText: ''
         },
         {
-          title: 'Password：',
+          title: this.lang.login.password,
           validate: 'password',
           validateOnChange: true,
           required: true,
-          emptyWarning: '密码不能为空',
-          description: '输入密码',
+          emptyWarning: this.lang.login.alert3,
+          description: this.lang.register.passwordDesc,
           validateMethods: [
             {
               type: 'length',
               max: 24,
-              maxErrText: '密码不能多于24位字符！',
+              maxErrText: this.$t('lang.register.alert8'),
               min: 6,
-              minErrText: '密码不能少于6位字符！'
+              minErrText: this.$t('lang.register.alert7')
             },
             {
               type: 'noChinese',
-              errText: '不允许输入中文！'
+              errText: this.$t('lang.register.alert14')
             },
             {
               type: 'noChineseChara',
-              errText: '不允许输入中文特殊符号！'
+              errText: this.$t('lang.register.alert15')
             }
           ],
           render: (h, params) => {
@@ -146,7 +193,7 @@ export default {
               },
               on: {
                 input: (event) => {
-                  this.createData.password = event
+                  this.loginData.password = event
                 },
                 onValidate: (value) => {
                   params.data.errStatus = value.errStatus
@@ -160,77 +207,6 @@ export default {
         }
       ]
     }
-  },
-  created () {
-  },
-  components: {
-    Header
-  },
-  methods: {
-    loginConfirm () {
-      const params = JSON.parse(JSON.stringify(this.loginData))
-      params.password = this.encrypt(params.password)
-      this.getData(login.loginConfirm, params)
-    }
   }
 }
 </script>
-<style lang="scss" scoped>
-.login{
-    width: 100%
-}
-.loginSpare{
-  position: relative;
-  overflow: hidden;
-  top: calc(50% - 200px);
-    margin: 0 auto;
-    background-color: rgba(255,255,255,0.7);
-    border-radius: 20px;
-    .desc{
-        font-size: 12px;
-        font-weight: 600!important;
-        padding-top: 18px
-    }
-    .loginForm{
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 300px;
-        input{
-            width: 100%;
-            margin-top: 16px;
-            border: 1px solid rgba(243, 88, 139, 1);
-            color: rgba(243, 88, 139, 1);
-            background-color: #FFFFFF;
-            padding: 8px 0;
-            padding-left: 18px;
-            border-radius: 20px;
-        }
-    }
-    .button{
-        background-color: rgba(243, 88, 139, 0.55);
-        color: #FFFFFF;
-        width: 318px;
-        display: block;
-        border-radius: 20px;
-        margin: 0 auto;
-        padding: 8px 0;
-        margin-bottom: 16px;
-        transition: all 0.5s;
-    }
-    .button:hover{
-        background-color: rgba(243, 88, 139, 0.75);
-    }
-    .pink{
-        color: rgba(243, 88, 139, 1);
-        font-weight: 600;
-    }
-    .loginBtn{
-        position: relative;
-        left: -9px;
-        margin-top: 16px;
-    }
-}
-</style>

@@ -2,7 +2,6 @@
   <div
     class="lunaFormItem"
     :class="[
-      { morePadding: formItemData.errStatus && formItemData.description },
       { errBorder: formItemData.errStatus },
       {
         squareCorner: corner === 'square',
@@ -25,14 +24,15 @@
           :render="formItemData.render"
         ></Render>
       </template>
-      <p
-        v-if="formItemData.description"
-        :class="{ moveMargin: formItemData.errStatus }"
-      >
-        {{ formItemData.description }}
-      </p>
       <p v-if="formItemData.errStatus" class="errorText">
         {{ formItemData.errText }}
+      </p>
+      <p
+        v-if="formItemData.description"
+        :class="{ moveToBottom: formItemData.errStatus }"
+        class="descriptionText"
+      >
+        {{ formItemData.description }}
       </p>
     </div>
   </div>

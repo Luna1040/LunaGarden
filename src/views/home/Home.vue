@@ -27,8 +27,8 @@
           type="text"
           class="searchInput"
           :placeholder="$t('lang.home.input')"
-          border-color="rgba(0,0,0,0)"
-          box-shadow="none"
+          border-color="rgba(0,0,0,0)!important"
+          box-shadow="none!important"
           ghost
           width="100%"
           font-size="32"
