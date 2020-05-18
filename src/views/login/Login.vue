@@ -6,7 +6,6 @@
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
-      @cgLang="cgLang"
     ></Header>
     <!--    <div class="loginSpare">-->
     <!--      <p class="desc">{{ $t('lang.login.desc') }}</p>-->
@@ -75,47 +74,7 @@ export default {
         password: ''
       },
       theme: 'light',
-      form: [],
-      lang: {}
-    }
-  },
-  created () {
-  },
-  components: {
-    Header
-  },
-  methods: {
-    loginConfirm () {
-      const params = JSON.parse(JSON.stringify(this.loginData))
-      params.password = this.encrypt(params.password)
-      this.getData(login.loginConfirm, params).then(res => {
-        if (res.success) {
-          this.$Message.success({ content: this.lang.login.alert5 })
-          this.$router.push('Home')
-        } else {
-          if (res.code === 1) {
-            this.$Message.error({ content: this.lang.login.alert1 })
-          } else if (res.code === 2) {
-            this.$Message.error({ content: this.lang.login.alert2 })
-          } else if (res.code === 3) {
-            this.$Message.error({ content: this.lang.login.alert3 })
-          } else if (res.code === 4) {
-            this.$Message.error({ content: this.lang.login.alert4 })
-          } else {
-            this.$Message.error({ content: this.lang.unknownError })
-          }
-        }
-      })
-    },
-    toRegister () {
-      this.$router.push('register')
-    },
-    cgLang (val) {
-      this.lang = val
-      this.getForm()
-    },
-    getForm () {
-      this.form = [
+      form: [
         {
           title: this.$t('lang.login.userName'),
           validate: 'userName',
@@ -157,12 +116,12 @@ export default {
           errText: ''
         },
         {
-          title: this.lang.login.password,
+          title: this.$t('lang.login.password'),
           validate: 'password',
           validateOnChange: true,
           required: true,
-          emptyWarning: this.lang.login.alert3,
-          description: this.lang.register.passwordDesc,
+          emptyWarning: this.$t('lang.login.alert3'),
+          description: this.$t('lang.register.passwordDesc'),
           validateMethods: [
             {
               type: 'length',
@@ -205,8 +164,41 @@ export default {
           errStatus: false,
           errText: ''
         }
-      ]
+      ],
+      lang: {}
     }
+  },
+  created () {
+  },
+  components: {
+    Header
+  },
+  methods: {
+    loginConfirm () {
+      const params = JSON.parse(JSON.stringify(this.loginData))
+      params.password = this.encrypt(params.password)
+      this.getData(login.loginConfirm, params).then(res => {
+        if (res.success) {
+          this.$Message.success({ content: this.$t('lang.login.alert5') })
+          this.$router.push('Home')
+        } else {
+          if (res.code === 1) {
+            this.$Message.error({ content: this.$t('lang.login.alert1') })
+          } else if (res.code === 2) {
+            this.$Message.error({ content: this.$t('lang.login.alert2') })
+          } else if (res.code === 3) {
+            this.$Message.error({ content: this.$t('lang.login.alert3') })
+          } else if (res.code === 4) {
+            this.$Message.error({ content: this.$t('lang.login.alert4') })
+          } else {
+            this.$Message.error({ content: this.$t('lang.unknownError') })
+          }
+        }
+      })
+    },
+    toRegister () {
+      this.$router.push('register')
+    },
   }
 }
 </script>

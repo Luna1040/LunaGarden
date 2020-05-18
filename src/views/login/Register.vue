@@ -6,7 +6,6 @@
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
-      @cgLang="cgLang"
     ></Header>
     <Container
       class-name="spare registerSpare"
@@ -61,56 +60,7 @@ export default {
       bankIdEmpty: false,
       lang: this.$t('lang'),
       theme: 'light',
-      form: []
-    }
-  },
-  components: {
-    Header
-  },
-  created () {
-  },
-  methods: {
-    registSubmit () {
-      if (!this.$refs.form.examine(this.loginData)) {
-        // Error
-        this.$Message.error({ content: '请检查填写错误项！' })
-        return
-      }
-      const params = JSON.parse(JSON.stringify(this.loginData))
-      params.uid = this.uuidGet()
-      if (params.bankId === '') {
-        this.bankIdEmpty = true
-      }
-      params.password = this.encrypt(params.password)
-      this.getData(login.registerConfirm, params).then((res) => {
-        if (res.success) {
-          this.$Message.success({ content: '注册成功！' })
-          delete res.data.password
-          localStorage.setItem('userInfo', JSON.stringify(res.data))
-          this.$router.push('Home')
-        } else {
-          if (res.code === 1) {
-            this.$Message.error({ content: this.lang.register.alert1 })
-          } else if (res.code === 2) {
-            this.$Message.error({ content: this.lang.register.alert2 })
-          } else if (res.code === 3) {
-            this.$Message.error({ content: this.lang.register.alert3 })
-          } else if (res.code === 5) {
-            this.$Message.error({ content: this.lang.register.alert5 })
-          } else if (res.code === 6) {
-            this.$Message.error({ content: this.lang.register.alert6 })
-          } else {
-            this.$Message.error({ content: this.lang.unknownError })
-          }
-        }
-      })
-    },
-    cgLang (val) {
-      this.lang = val
-      this.getForm()
-    },
-    getForm () {
-      this.form = [
+      form: [
         {
           title: this.$t('lang.register.userName'),
           validate: 'userName',
@@ -156,12 +106,12 @@ export default {
           errText: ''
         },
         {
-          title: this.lang.register.password,
+          title: this.$t('lang.register.password'),
           validate: 'password',
           validateOnChange: true,
           required: true,
-          emptyWarning: this.lang.register.alert4,
-          description: this.lang.register.passwordDesc,
+          emptyWarning: this.$t('lang.register.alert4'),
+          description: this.$t('lang.register.passwordDesc'),
           validateMethods: [
             {
               type: 'length',
@@ -205,7 +155,7 @@ export default {
           errText: ''
         },
         {
-          title: this.lang.register.email,
+          title: this.$t('lang.register.email'),
           validate: 'email',
           validateOnChange: true,
           required: true,
@@ -297,6 +247,48 @@ export default {
           errText: ''
         }
       ]
+    }
+  },
+  components: {
+    Header
+  },
+  created () {
+  },
+  methods: {
+    registSubmit () {
+      if (!this.$refs.form.examine(this.loginData)) {
+        // Error
+        this.$Message.error({ content: '请检查填写错误项！' })
+        return
+      }
+      const params = JSON.parse(JSON.stringify(this.loginData))
+      params.uid = this.uuidGet()
+      if (params.bankId === '') {
+        this.bankIdEmpty = true
+      }
+      params.password = this.encrypt(params.password)
+      this.getData(login.registerConfirm, params).then((res) => {
+        if (res.success) {
+          this.$Message.success({ content: '注册成功！' })
+          delete res.data.password
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
+          this.$router.push('Home')
+        } else {
+          if (res.code === 1) {
+            this.$Message.error({ content: this.$t('lang.register.alert1') })
+          } else if (res.code === 2) {
+            this.$Message.error({ content: this.$t('lang.register.alert2') })
+          } else if (res.code === 3) {
+            this.$Message.error({ content: this.$t('lang.register.alert3') })
+          } else if (res.code === 5) {
+            this.$Message.error({ content: this.$t('lang.register.alert5') })
+          } else if (res.code === 6) {
+            this.$Message.error({ content: this.$t('lang.register.alert6') })
+          } else {
+            this.$Message.error({ content: this.$t('lang.unknownError') })
+          }
+        }
+      })
     }
   }
 }
