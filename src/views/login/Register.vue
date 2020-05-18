@@ -270,7 +270,6 @@ export default {
       this.getData(login.registerConfirm, params).then((res) => {
         if (res.success) {
           this.$Message.success({ content: '注册成功！' })
-          delete res.data.password
           localStorage.setItem('userInfo', JSON.stringify(res.data))
           this.$router.push('Home')
         } else {
