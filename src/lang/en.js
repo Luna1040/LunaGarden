@@ -34,7 +34,7 @@ export const lang = {
     alert15: 'Special Chinese symbols are not allowed here!',
     alert16: 'The bank card number is not allowed lesser than 16!',
     alert17: 'The bank card number is not allowed mare than 19!',
-    alert18: 'English is not allowed here!',
+    alert18: 'English is not allowed here!'
   },
   login: {
     forgot: 'Forgot Password? Reset from here.',
