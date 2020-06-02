@@ -242,11 +242,23 @@
     </Modal>
     <Modal
       v-model="create"
-      :title="$t('lang.home.alert.create')"
+      :title="$t('lang.home.create.create')"
       type="primary"
-      theme="dark"
+      :theme="theme"
       @on-cancel="createCancel()"
     >
+      <Form
+        ref="form"
+        style="margin: 0 auto;"
+        background="rgba(0,0,0,0)"
+        border="0"
+        :shadow="false"
+        :form="form"
+        :theme="theme"
+        :width="320"
+        label-position="top"
+        :label-width="150"
+      ></Form>
     </Modal>
   </div>
 </template>
@@ -258,6 +270,7 @@ export default {
   name: 'home',
   data () {
     return {
+      theme: 'light',
       del: false,
       emptyWarning: false,
       create: false,
@@ -291,6 +304,47 @@ export default {
           }
         }
       },
+      form: [
+        {
+          title: this.$t('lang.home.create.title'),
+          validate: 'userName',
+          validateOnChange: true,
+          required: true,
+          emptyWarning: this.$t('lang.home.create.emptyTitle'),
+          validateMethods: [
+            {
+              type: 'length',
+              max: 100,
+              maxErrText: this.$t('lang.home.create.maxTitle'),
+              min: 1,
+              minErrText: this.$t('lang.home.create.maxTitle')
+            }
+          ],
+          render: (h, params) => {
+            return h('Input', {
+              props: {
+                value: this.createData.title,
+                theme: this.theme,
+                background: 'rgba(255,255,255,0.3)',
+                validateOnChange: params.validateOnChange,
+                validateMethods: params.validateMethods,
+                width: '100%'
+              },
+              on: {
+                input: (event) => {
+                  this.loginData.userName = event
+                },
+                onValidate: (value) => {
+                  params.data.errStatus = value.errStatus
+                  params.data.errText = value.errText
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        }
+      ],
       createData: {
         title: '',
         content: '',

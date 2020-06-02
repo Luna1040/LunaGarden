@@ -1,6 +1,7 @@
 import { publicApi } from './url'
 import Vue from 'vue'
 
+// 获取用户信息
 const getUserInfo = function (uid) {
   this.getData(publicApi.getUserInfo, { userId: uid }).then(res => {
     if (res.success) {
@@ -19,5 +20,6 @@ const getUserInfo = function (uid) {
     this.$Message.error({ content: err })
   })
 }
+// 获取主题
 
 Vue.prototype.getUserInfo = getUserInfo

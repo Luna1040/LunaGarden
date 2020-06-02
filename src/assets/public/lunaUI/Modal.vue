@@ -1,33 +1,33 @@
 <template>
   <transition name="modalAnimation">
-    <div class="lunaModal" v-if="showModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
+    <div v-if="showModal" class="lunaModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
       <transition name="maskAnimation">
         <div
-                class="modalMask"
-                @click="handleMask()"
-                v-show="showModal"
-                v-if="showMask"
-                :class="[{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}]"
+          v-show="showModal"
+          v-if="showMask"
+          class="modalMask"
+          :class="[{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}]"
+          @click="handleMask()"
         ></div>
       </transition>
       <div
-              class="modalContainer"
-              :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]"
-              :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightModal: theme === 'light', darkModal: theme === 'dark'}]"
+        class="modalContainer"
+        :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]"
+        :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightModal: theme === 'light', darkModal: theme === 'dark'}]"
       >
-        <div class="modalHeader" v-if="showHead">
+        <div v-if="showHead" class="modalHeader">
           <slot name="header">
-            <p :style="titleColor">{{title}}</p>
+            <p :style="titleColor">{{ title }}</p>
           </slot>
           <i class="iconfont icon-cancel" @click="close"></i>
         </div>
         <div class="modalBody" :style="[modalHeight, modalMaxHeight, modalScrollable]">
           <slot></slot>
         </div>
-        <div class="modalFooter" v-if="footerShow">
+        <div v-if="footerShow" class="modalFooter">
           <slot name="footer">
-            <button class="normalButton" v-ripple @click="close">{{$t('lang.home.button.cancel')}}</button>
-            <button class="primaryButton" v-ripple @click="confirm">{{$t('lang.home.button.confirm')}}</button>
+            <button v-ripple class="normalButton" @click="close">{{ $t('lang.home.button.cancel') }}</button>
+            <button v-ripple class="primaryButton" @click="confirm">{{ $t('lang.home.button.confirm') }}</button>
           </slot>
         </div>
       </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="aboutUs">
     <Header
-            :msg-header="$t('lang.titles.about')"
-            user-icon="userIcon.jpg"
-            user-name="Luna Lovegood"
-            is-viper="true"
-            user-language="English"
+      :msg-header="$t('lang.titles.about')"
+      user-icon="userIcon.jpg"
+      user-name="Luna Lovegood"
+      is-viper="true"
+      user-language="English"
     ></Header>
     <div class="about">
       <h1>{{ $t('lang.aboutUs.title') }}</h1>
