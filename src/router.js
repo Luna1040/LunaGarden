@@ -29,6 +29,8 @@ import Forgot from './views/login/Forgot.vue'
 import mForgot from './views/login/mForgot.vue'
 import ResetPsw from './views/login/ResetPsw.vue'
 import mResetPsw from './views/login/mResetPsw.vue'
+import Chatting from './views/chatting/Chatting.vue'
+import mChatting from './views/chatting/mChatting.vue'
 // LunaUI
 import LunaUI from './views/UI/lunaUI.vue'
 // 字节测试
@@ -72,7 +74,9 @@ const router = new Router({
     { path: '/Forgot', name: 'Forgot', component: Forgot },
     { path: '/mForgot', name: 'mForgot', component: mForgot },
     { path: '/Reset', name: 'Reset', component: ResetPsw },
-    { path: '/mReset', name: 'mReset', component: mResetPsw }
+    { path: '/mReset', name: 'mReset', component: mResetPsw },
+    { path: '/Chatting', name: 'Chatting', component: Chatting },
+    { path: '/mChatting', name: 'mChatting', component: mChatting }
   ]
 })
 

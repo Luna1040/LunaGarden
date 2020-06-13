@@ -1141,3 +1141,102 @@ footer {
     }
   }
 }
+.lunaChatting{
+  width: 100%;
+  ul {
+    max-width: 1366px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    height: calc(100vh - 44px - 44px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0 24px 24px 24px;
+    li.spaceReplace{
+      margin-left: 66px;
+      margin-top: 6px;
+    }
+    li{
+      display: flex;
+      margin-top: 24px;
+      .userIcon{
+        width: 66px;
+        height: 66px;
+        border-radius: 66px;
+        overflow: hidden;
+      }
+      .messageArea{
+        margin-left: 16px;
+        text-align: left;
+        p{
+          height: 16px;
+          line-height: 16px;
+          padding-left: 6px;
+          margin-bottom: 11px;
+          margin-top: 3px;
+          color: $normalDark;
+        }
+        .contentArea{
+          background-color: $white;
+          border-radius: 18px;
+          min-height: 36px;
+          line-height: 36px;
+          max-width: 1000px;
+          padding: 0 18px;
+          box-shadow: $aroundDarkShadow;
+          .imgList{
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 16px;
+            img{
+              max-width: 500px;
+              border-radius: 16px;
+              margin: 0 16px 16px 0;
+            }
+          }
+        }
+      }
+    }
+    li.self{
+      flex-direction: row-reverse;
+      .messageArea {
+        margin-right: 16px;
+        text-align: right;
+        p{
+          padding-right: 6px;
+          padding-left: 0;
+        }
+        .contentArea{
+          background-color: $primary;
+          color: $white;
+          .imgList{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            img{
+              max-width: 500px;
+              border-radius: 16px;
+              margin: 0 0 16px 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footerInput{
+    width: 100%;
+    height: 44px;
+    text-align: right;
+    background-color: $white;
+    padding: 0 24px;
+    >div{
+      max-width: 1366px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .lunaButton{
+        margin-left: 16px;
+      }
+    }
+  }
+}
