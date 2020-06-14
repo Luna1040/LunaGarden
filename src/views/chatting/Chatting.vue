@@ -7,7 +7,7 @@
       is-viper="true"
       user-language="English"
     ></Header>
-    <ul>
+    <ul ref="chatWindow" :class="{transHeight: imgList.length !== 0}">
       <li
         v-for="(i, index) in chatList"
         :key="index"
@@ -22,10 +22,10 @@
           class="userIcon"
           alt=""
         />
-        <div class="messageArea">
+        <div class="messageArea" :class="{self: i.uid === userInfo.uid}">
           <p v-if="ifRepeatChara(index)">{{ i.userName }}</p>
           <div class="contentArea">
-            <div v-if='i.imgList.length !== 0' class="imgList">
+            <div v-if="i.imgList.length !== 0" class="imgList">
               <img v-for="(x, index2) in i.imgList" :key="index2" :src="x" alt="" />
             </div>
             {{ i.content }}
@@ -33,8 +33,11 @@
         </div>
       </li>
     </ul>
-    <div class="footerInput">
-      <div>
+    <div class="footerInput" :class="{footerImgPreview: imgList.length !== 0}">
+      <div v-if="imgList.length !== 0" class="previewImgList">
+        <img v-for="(i, index) in imgList" :key="index" :src="i" alt="">
+      </div>
+      <div class="msgArea">
         <Input v-model="text" :width="400" placeholder="请输入消息"></Input>
         <Button theme="primary" @click="uploadImg">上传图片</Button>
         <Button theme="primary" @click="sendMessage">发送消息</Button>
@@ -69,7 +72,7 @@ export default {
         {
           uid: 'kjliagsg83770449pezi4jnjj86q4t8u',
           content:
-            '不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？',
+                            '不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？',
           imgList: [],
           userIcon: 'userIcon.jpg',
           userName: '素言阿姨'
@@ -133,6 +136,11 @@ export default {
       }
       if (imgList.length !== 0 || this.text !== '') {
         this.chatList.push(params)
+        this.$nextTick(() => {
+          this.$refs.chatWindow.scrollTop = this.$refs.chatWindow.scrollHeight
+        })
+        console.log(this.$refs.chatWindow.scrollHeight)
+        // console.log(this.$refs.chatWindow);
         this.imgList = []
         this.text = ''
         // this.getData(login.loginConfirm, params).then((res) => {

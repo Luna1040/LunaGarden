@@ -1,16 +1,12 @@
 <template>
-    <div>
-        <input type="text" v-model="test" ref="input">
-        <button @click="click">点击</button>
-    </div>
 </template>
 
 <script>
 export default {
   name: 'ByteCursor',
   data: function () {
-      return {
-        test: ''
+    return {
+      test: ''
     }
   },
   methods: {
