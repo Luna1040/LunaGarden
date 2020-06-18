@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import Header from '../../components/pc/activeHeader.vue'
+import Header from '../../components/pc/activeHeader.vue'
 
 export default {
   name: 'ByteCursor',
@@ -103,9 +103,9 @@ export default {
       boySkill: {}
     }
   },
-    components: {
-      Header
-    },
+  components: {
+    Header
+  },
   methods: {
     click () {
       let value = '爱上空间回复噶速度快捷回复噶快圣诞节好烦噶ASD'
