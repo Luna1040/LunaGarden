@@ -60,7 +60,9 @@ export const lang = {
     home: 'Luna Garden',
     about: '关于我们',
     login: '登录',
-    register: '注册'
+    register: '注册',
+    chatting: '花神通讯',
+    legend: '花神之战'
   },
   firstAlert: {
     attention: '提示',
@@ -139,5 +141,10 @@ export const lang = {
     organDesc4: 'Luna Garden部分图标以此绘制。',
     organ5: '必应',
     organDesc5: 'Luna Garden背景图片部分来自必应美图'
+  },
+  chatting: {
+    send: '发送消息',
+    recall: '撤回',
+    file: '上传文件'
   }
 }

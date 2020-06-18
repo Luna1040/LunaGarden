@@ -58,8 +58,16 @@
           :theme="theme"
         ></Table>
         <Page :limit="page" elevator counter :theme="theme"></Page>
-        <!-- <Select v-model="selectValue" :selectData="selectData" keyValue="id" keyLabel="name" :filterable="true" corner="large" :theme="theme"></Select> -->
-        <!-- <Input v-model="selectValue" :theme="theme"></Input> -->
+        <Select
+          v-model="selectValue"
+          :select-data="selectData"
+          key-value="id"
+          key-label="name"
+          :filterable="true"
+          corner="large"
+          :theme="theme"
+        ></Select>
+        <Input v-model="selectValue" :theme="theme"></Input>
         <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
           <p>弹窗</p>
         </Modal>

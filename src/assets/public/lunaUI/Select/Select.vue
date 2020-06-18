@@ -1,5 +1,6 @@
 <template>
   <div
+    v-click-outside="hideList"
     class="lunaSelect"
     :style="[selectStyles]"
     :class="[
@@ -14,7 +15,6 @@
       { lightSelect: theme === 'light', darkSelect: theme === 'dark' },
     ]"
     @click="handelClick"
-    v-click-outside="hideList"
     @keydown.esc="handleKeydown"
     @keydown.enter="handleKeydown"
     @keydown.up.prevent="handleKeydown"
@@ -23,6 +23,8 @@
     @keydown.delete="handleKeydown"
   >
     <Input
+      ref="input"
+      v-model="initValue"
       :readonly="!filterable"
       :disabled="disabled"
       :width="inputStyles.width"
@@ -31,11 +33,9 @@
       icon="iconfont icon-down"
       suffix
       :spin="showList"
-      v-model="initValue"
       :background="background"
       :theme="theme"
       @input="changeText"
-      ref="input"
     ></Input>
     <transition name="slideDown">
       <div
@@ -67,264 +67,265 @@
 
 <script>
 export default {
-  name: "Select",
+  name: 'Select',
   props: {
     value: {
       type: [String, Array, Number],
-      default: "",
+      default: ''
     },
     selectData: {
       type: Array,
-      // eslint-disable-next-line vue/require-valid-default-prop
-      default: [],
+      default: () => {
+        return []
+      }
     },
     keyValue: {
       type: String,
-      default: "",
+      default: ''
     },
     keyLabel: {
       type: String,
-      default: "",
+      default: ''
     },
     filterable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     returnLabel: {
       type: Boolean,
-      default: false,
+      default: false
     },
     width: {
       type: [String, Number],
-      default: 180,
+      default: 180
     },
     height: {
       type: [String, Number],
-      default: 32,
+      default: 32
     },
     className: {
       type: String,
-      default: "",
+      default: ''
     },
     corner: {
       type: String,
-      default: "large",
+      default: 'large'
     },
     radius: {
       type: Number,
-      default: -1,
+      default: -1
     },
     background: {
       type: String,
-      default: "#FFFFFF",
+      default: '#FFFFFF'
     },
     optionBackground: {
       type: String,
-      default: "none",
+      default: 'none'
     },
     color: {
       type: String,
-      default: "none",
+      default: 'none'
     },
     optionColor: {
       type: String,
-      default: "none",
+      default: 'none'
     },
     shadow: {
       type: Boolean,
-      default: true,
+      default: true
     },
     shadowStyle: {
       type: String,
-      default: "dark",
+      default: 'dark'
     },
     theme: {
       type: String,
-      default: "light",
+      default: 'light'
     },
     wrap: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
-  data() {
+  data () {
     return {
       showList: false,
-      initValue: "",
+      initValue: '',
       filterData: [],
       choiceIndex: -1,
-      chose: false,
-    };
+      chose: false
+    }
   },
   computed: {
-    selectStyles() {
-      const styleList = {};
-      if (typeof this.width !== "string") {
-        styleList.width = this.width + "px";
+    selectStyles () {
+      const styleList = {}
+      if (typeof this.width !== 'string') {
+        styleList.width = this.width + 'px'
       } else {
-        styleList.width = this.width;
+        styleList.width = this.width
       }
 
-      if (typeof this.height !== "string") {
-        styleList.paddingTop = this.height + 3 + "px";
+      if (typeof this.height !== 'string') {
+        styleList.paddingTop = this.height + 3 + 'px'
       } else {
-        styleList.paddingTop = "calc(" + this.height + "+ 3px)";
+        styleList.paddingTop = 'calc(' + this.height + '+ 3px)'
       }
 
-      return styleList;
+      return styleList
     },
-    inputStyles() {
-      const styleList = {};
-      if (typeof this.width !== "string") {
-        styleList.width = this.width + "px";
+    inputStyles () {
+      const styleList = {}
+      if (typeof this.width !== 'string') {
+        styleList.width = this.width + 'px'
       } else {
-        styleList.width = this.width;
+        styleList.width = this.width
       }
 
-      if (typeof this.height !== "string") {
-        styleList.paddingTop = this.height + "px";
+      if (typeof this.height !== 'string') {
+        styleList.paddingTop = this.height + 'px'
       } else {
-        styleList.height = this.height;
+        styleList.height = this.height
       }
 
-      return styleList;
+      return styleList
     },
-    optionStyles() {
-      if (this.optionBackground !== "none") {
+    optionStyles () {
+      if (this.optionBackground !== 'none') {
         return {
-          backgroundColor: this.optionBackground + "!important",
-        };
+          backgroundColor: this.optionBackground + '!important'
+        }
       } else {
-        return {};
+        return {}
       }
-    },
+    }
   },
   watch: {
-    initValue() {
-      let newData = [];
-      if (this.initValue !== "") {
+    initValue () {
+      let newData = []
+      if (this.initValue !== '') {
         this.selectData.forEach((item) => {
           if (item[this.keyLabel].indexOf(this.initValue) !== -1) {
-            newData.push(item);
+            newData.push(item)
           }
-        });
-        this.filterData = newData;
+        })
+        this.filterData = newData
       } else {
-        this.filterData = this.selectData;
-        this.choiceIndex = -1;
+        this.filterData = this.selectData
+        this.choiceIndex = -1
       }
-    },
+    }
   },
-  created() {
-    if (this.value !== "") {
+  created () {
+    if (this.value !== '') {
       for (let i = 0; i < this.selectData.length; i++) {
         if (this.selectData[i][this.keyValue] === this.value) {
-          this.initValue = this.selectData[i][this.keyLabel];
-          this.filterData.push(this.selectData[i]);
-          this.choiceIndex = 0;
-          break;
+          this.initValue = this.selectData[i][this.keyLabel]
+          this.filterData.push(this.selectData[i])
+          this.choiceIndex = 0
+          break
         }
       }
     } else {
-      this.initValue = this.value;
-      this.filterData = this.selectData;
+      this.initValue = this.value
+      this.filterData = this.selectData
     }
   },
   methods: {
-    changeText(value) {
-      this.initValue = value;
-      this.chose = false;
+    changeText (value) {
+      this.initValue = value
+      this.chose = false
     },
-    handelClick() {
-      this.showList = !this.showList;
+    handelClick () {
+      this.showList = !this.showList
       if (this.showList) {
-        this.$refs.input.getFocus();
+        this.$refs.input.getFocus()
       }
-      this.$emit("on-click");
+      this.$emit('on-click')
     },
-    optionSelect(obj) {
-      this.showList = false;
-      this.choiceIndex = 0;
-      this.$emit("input", obj.value);
-      this.initValue = obj.label;
-      this.chose = true;
+    optionSelect (obj) {
+      this.showList = false
+      this.choiceIndex = 0
+      this.$emit('input', obj.value)
+      this.initValue = obj.label
+      this.chose = true
       if (!this.returnLabel) {
-        this.$emit("on-change", obj.value);
+        this.$emit('on-change', obj.value)
       } else {
-        this.$emit("on-change", obj);
+        this.$emit('on-change', obj)
       }
     },
-    handleKeydown(e) {
-      const key = e.key || e.code;
-      if (key === "Backspace") {
-        return;
+    handleKeydown (e) {
+      const key = e.key || e.code
+      if (key === 'Backspace') {
+        return
       }
 
       if (this.showList) {
-        e.preventDefault();
-        if (key === "Tab") {
-          e.stopPropagation();
+        e.preventDefault()
+        if (key === 'Tab') {
+          e.stopPropagation()
         }
 
         // Esc slide-up
-        if (key === "Escape") {
-          e.stopPropagation();
-          this.hideList();
+        if (key === 'Escape') {
+          e.stopPropagation()
+          this.hideList()
         }
         // next
-        if (key === "ArrowUp") {
-          this.navigateOptions(-1);
+        if (key === 'ArrowUp') {
+          this.navigateOptions(-1)
         }
         // prev
-        if (key === "ArrowDown") {
-          this.navigateOptions(1);
+        if (key === 'ArrowDown') {
+          this.navigateOptions(1)
         }
         // enter
-        if (key === "Enter") {
+        if (key === 'Enter') {
           let choiceItem = {
             value: this.filterData[this.choiceIndex][this.keyValue],
-            label: this.filterData[this.choiceIndex][this.keyLabel],
-          };
-          this.optionSelect(choiceItem);
-          this.choiceIndex = 0;
+            label: this.filterData[this.choiceIndex][this.keyLabel]
+          }
+          this.optionSelect(choiceItem)
+          this.choiceIndex = 0
         }
       }
     },
-    navigateOptions(direction) {
+    navigateOptions (direction) {
       if (this.filterData.length !== 0) {
         if (this.choiceIndex === -1) {
           if (direction === 1) {
-            this.choiceIndex = 0;
+            this.choiceIndex = 0
           } else {
-            this.choiceIndex = this.filterData.length - 1;
+            this.choiceIndex = this.filterData.length - 1
           }
         } else {
           if (this.choiceIndex === 0 && direction === -1) {
-            this.choiceIndex = this.filterData.length - 1;
+            this.choiceIndex = this.filterData.length - 1
           } else if (
             this.choiceIndex === this.filterData.length - 1 &&
             direction === 1
           ) {
-            this.choiceIndex = 0;
+            this.choiceIndex = 0
           } else {
-            this.choiceIndex = this.choiceIndex + direction;
+            this.choiceIndex = this.choiceIndex + direction
           }
         }
       }
     },
-    hideList() {
+    hideList () {
       if (!this.chose) {
-        this.$emit("input", "");
-        this.initValue = "";
+        this.$emit('input', '')
+        this.initValue = ''
       }
-      this.showList = false;
-    },
-  },
-};
+      this.showList = false
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

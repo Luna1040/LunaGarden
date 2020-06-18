@@ -60,7 +60,9 @@ export const lang = {
     home: 'Luna Garden',
     about: 'About Us',
     login: 'Login',
-    register: 'Register'
+    register: 'Register',
+    chatting: 'Flower Chatting',
+    legend: 'Flower Legend'
   },
   firstAlert: {
     attention: 'Attention',
@@ -142,5 +144,10 @@ export const lang = {
     organDesc4: 'Some of icons for Luna Garden drew in this software',
     organ5: 'Bing',
     organDesc5: "Most of Luna Garden's background images quoted from Bing Images"
+  },
+  chatting: {
+    send: 'Send',
+    recall: 'Recall',
+    file: 'Upload File'
   }
 }
