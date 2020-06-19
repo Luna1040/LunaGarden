@@ -62,7 +62,7 @@ export const lang = {
     login: 'Login',
     register: 'Register',
     chatting: 'Flower Chatting',
-    legend: 'Flower Legend'
+    legend: 'Flower legend'
   },
   firstAlert: {
     attention: 'Attention',

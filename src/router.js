@@ -33,6 +33,9 @@ import Chatting from './views/chatting/Chatting.vue'
 import mChatting from './views/chatting/mChatting.vue'
 // LunaUI
 import LunaUI from './views/UI/lunaUI.vue'
+// legend
+import Legend from './views/legend/Legend.vue'
+import mLegend from './views/legend/mLegend.vue'
 // 字节测试
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
@@ -76,7 +79,9 @@ const router = new Router({
     { path: '/Reset', name: 'Reset', component: ResetPsw },
     { path: '/mReset', name: 'mReset', component: mResetPsw },
     { path: '/Chatting', name: 'Chatting', component: Chatting },
-    { path: '/mChatting', name: 'mChatting', component: mChatting }
+    { path: '/mChatting', name: 'mChatting', component: mChatting },
+    { path: '/Legend', name: 'Legend', component: Legend },
+    {path: 'mLegend', name: 'mLegend', component: mLegend}
   ]
 })
 
