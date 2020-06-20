@@ -1,48 +1,77 @@
 <template>
   <div class="lunaChatting">
     <Header
-      :msg-header="$t('lang.titles.about')"
+      :msg-header="$t('lang.titles.chatting')"
       user-icon="userIcon.jpg"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
     ></Header>
-    <ul ref="chatWindow" :class="{transHeight: imgList.length !== 0}">
-      <li
-        v-for="(i, index) in chatList"
-        :key="index"
-        :class="[
-          { self: i.uid === userInfo.uid },
-          { spaceReplace: !ifRepeatChara(index) },
-        ]"
-      >
-        <img
-          v-if="ifRepeatChara(index)"
-          :src="i.userIcon"
-          class="userIcon"
-          alt=""
-        />
-        <div class="messageArea" :class="{self: i.uid === userInfo.uid}">
-          <p v-if="ifRepeatChara(index)">{{ i.userName }}</p>
-          <div class="contentArea">
-            <div v-if="i.imgList.length !== 0" class="imgList">
-              <img v-for="(x, index2) in i.imgList" :key="index2" :src="x" alt="" />
+    <main>
+      <ul class="stories">
+        <li v-for="(i, index) in storiesList" :key="index" @click="jumpTo()">
+          <img :src="i.src" alt="">
+          <img src="lace.svg" alt="">
+          <p>{{ i.title }}</p>
+        </li>
+      </ul>
+      <ul ref="chatWindow" class="mainChat">
+        <li
+          v-for="(i, index) in chatList"
+          :key="index"
+          :class="[
+            { self: i.uid === userInfo.uid },
+            { spaceReplace: !ifRepeatChara(index) },
+          ]"
+        >
+          <div v-if="ifRepeatChara(index)" class="userIcon">
+            <img :src="i.userIcon" alt="" />
+          </div>
+          <div class="messageArea" :class="{ self: i.uid === userInfo.uid }">
+            <p v-if="ifRepeatChara(index)">{{ i.userName }}</p>
+            <div class="contentArea">
+              <div v-if="i.imgList.length !== 0" class="imgList">
+                <img
+                  v-for="(x, index2) in i.imgList"
+                  :key="index2"
+                  :src="x"
+                  alt=""
+                />
+              </div>
+              {{ i.content }}
             </div>
-            {{ i.content }}
+          </div>
+        </li>
+      </ul>
+      <div class="sendingArea">
+        <div class="notice">
+          <p>公告</p>
+          <ul>
+            <li class="upset">[置顶]花神传征文</li>
+            <li class="upset">[置顶]特战队服装选择</li>
+            <li class="upset">[置顶]医疗队队员服装选择</li>
+            <li>[更新提示]花神传520特典-Part2已更新中部！</li>
+            <li>[更新提示]花神传现有特工写真集已更新！</li>
+            <li>[更新提示]花神传520特典Part2已更新上部！</li>
+          </ul>
+          <div class="typeArea">
+            <div v-if="imgList.length !== 0" class="blurBc previewGroup" @mouseleave="showDelIcon(-1)">
+              <div v-for="(i, index) in imgList" :key="index">
+                <i v-show="delIconShowIndex === index" class="iconfont icon-cancel" @click="delImg(index)"></i>
+                <img :src="i" alt="" @mouseenter="showDelIcon(index)">
+              </div>
+            </div>
+            <div class="blurBc">
+              <textarea v-model="text"></textarea>
+            </div>
+            <div class="btnGroup">
+              <Button theme="primary" @click="uploadImg">上传图片</Button>
+              <Button theme="primary" @click="sendMessage">发送消息</Button>
+            </div>
           </div>
         </div>
-      </li>
-    </ul>
-    <div class="footerInput" :class="{footerImgPreview: imgList.length !== 0}">
-      <div v-if="imgList.length !== 0" class="previewImgList">
-        <img v-for="(i, index) in imgList" :key="index" :src="i" alt="">
       </div>
-      <div class="msgArea">
-        <Input v-model="text" :width="400" placeholder="请输入消息"></Input>
-        <Button theme="primary" @click="uploadImg">上传图片</Button>
-        <Button theme="primary" @click="sendMessage">发送消息</Button>
-      </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -72,7 +101,7 @@ export default {
         {
           uid: 'kjliagsg83770449pezi4jnjj86q4t8u',
           content:
-                            '不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？',
+            '不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？',
           imgList: [],
           userIcon: 'userIcon.jpg',
           userName: '素言阿姨'
@@ -94,7 +123,54 @@ export default {
       ],
       userInfo: {},
       text: '',
-      imgList: []
+      imgList: [],
+      delIconShowIndex: -1,
+      storiesList: [
+        {
+          src: 'chatting/1.AgentInTrouble.jpg',
+          title: '第一章：特工有难'
+        },
+        {
+          src: 'chatting/2.PoliceDetail.jpg',
+          title: '背景故事：警备队介绍'
+        },
+        {
+          src: 'chatting/3.SavePlan.jpg',
+          title: '第二章：营救计划'
+        },
+        {
+          src: 'chatting/4.dangerous.jpg',
+          title: '第三章：地牢之危'
+        },
+        {
+          src: 'chatting/4.dangerous2.jpg',
+          title: '第三章：地牢之危【外传】'
+        },
+        {
+          src: 'chatting/5.GodOfFlower.jpg',
+          title: '第四章：花神现身'
+        },
+        {
+          src: 'chatting/6.IntoBase.jpg',
+          title: '第五章：全面进攻'
+        },
+        {
+          src: 'chatting/7.SaveSuc.jpg',
+          title: '第六章：营救成功'
+        },
+        {
+          src: 'chatting/8.Toilet.jpg',
+          title: '第七章：厕所踩头'
+        },
+        {
+          src: 'chatting/9.School.jpg',
+          title: '第八章：校园之变'
+        },
+        {
+          src: 'chatting/10.DeathOfGod.jpg',
+          title: '第九章：花神之死'
+        }
+      ]
     }
   },
   components: {
@@ -123,7 +199,7 @@ export default {
     sendMessage () {
       const imgList = []
       if (this.imgList.length !== 0) {
-        this.imgList.forEach(item => {
+        this.imgList.forEach((item) => {
           imgList.push(item)
         })
       }
@@ -147,6 +223,15 @@ export default {
         //   console.log(res)
         // })
       }
+    },
+    delImg (index) {
+      this.imgList.splice(index, 1)
+    },
+    showDelIcon (index) {
+      this.delIconShowIndex = index
+    },
+    jumpTo (url) {
+      window.location(url)
     }
   }
 }

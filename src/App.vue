@@ -82,6 +82,7 @@
 </template>
 <script>
 import './assets/css/public.scss'
+import './components/pc/sideBar.vue'
 
 export default {
   name: 'app',

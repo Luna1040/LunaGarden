@@ -13,6 +13,7 @@ $errorText: #ff1919;
 $success: #00af57;
 $warning: #e9a600;
 $alert: #c5006a;
+$strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
 
 @import "./LunaUI/LunaUI.scss";
 
@@ -20,11 +21,11 @@ $alert: #c5006a;
   margin: 0;
   padding: 0;
   font-size: 16px;
-  -webkit-tap-highlight-color: rgba(255,0,0,0);
-  -webkit-appearance:none;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  -webkit-appearance: none;
   font-weight: 300;
 }
-body{
+body {
   overflow: hidden;
 }
 
@@ -45,8 +46,7 @@ p,
 section,
 span {
   font-family: PingFang SC, Microsoft YaHei UI Light, Microsoft YaHei Light,
-  WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue,
-  sans-serif;
+    WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
 }
 
 button {
@@ -185,37 +185,37 @@ a {
   }
 }
 .loginRegister {
-  .spare{
+  .spare {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
   }
-  .loginSpare{
+  .loginSpare {
     top: calc(50% - 220px);
   }
-  .registerSpare{
+  .registerSpare {
     top: calc(50% - 350px);
   }
-  .linkGroup{
+  .linkGroup {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    a{
+    a {
       color: $white;
       margin-top: 18px;
       font-size: 12px;
     }
-    p{
+    p {
       margin-top: 18px;
       color: $white;
       font-size: 12px;
     }
   }
   .spare::after {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     position: absolute;
@@ -252,9 +252,9 @@ footer {
     width: 100%;
     height: 60px;
     background: radial-gradient(
-                    75px at top,
-                    transparent 50%,
-                    rgb(235, 114, 144) 51%
+      75px at top,
+      transparent 50%,
+      rgb(235, 114, 144) 51%
     );
     background-position-y: -10px;
     position: fixed;
@@ -359,7 +359,7 @@ footer {
           margin-left: 4px;
         }
       }
-      .netWorkError{
+      .netWorkError {
         background-color: $error;
       }
     }
@@ -427,7 +427,7 @@ footer {
   }
 }
 
-.mHeader{
+.mHeader {
   width: 100%;
   height: 48px;
   background-color: $primary;
@@ -438,21 +438,21 @@ footer {
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   position: relative;
   z-index: 100;
-  .userArea{
+  .userArea {
     position: absolute;
     left: 16px;
     height: 36px;
     display: flex;
     align-items: baseline;
-    .userIcon{
+    .userIcon {
       height: 36px;
-      img{
+      img {
         width: 36px;
         height: 36px;
         border-radius: 36px;
       }
     }
-    .netWorkStatus{
+    .netWorkStatus {
       position: relative;
       right: 12px;
       background-color: rgba(243, 88, 139, 0.55);
@@ -463,7 +463,7 @@ footer {
       line-height: 18px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
-    .networkError{
+    .networkError {
       background-color: $error;
     }
   }
@@ -484,10 +484,10 @@ footer {
     height: 32px;
     display: flex;
     align-items: center;
-    .btnGroup{
+    .btnGroup {
       height: 32px;
       margin-right: 8px;
-      img{
+      img {
         width: 32px;
         height: 32px;
       }
@@ -888,7 +888,7 @@ footer {
   }
 }
 
-.mHome{
+.mHome {
   .searchArea {
     position: relative;
     width: calc(100% - 32px);
@@ -1016,7 +1016,7 @@ footer {
           margin-top: 4px;
         }
 
-        p.dragActive{
+        p.dragActive {
           height: auto;
           white-space: pre-wrap;
           text-overflow: unset;
@@ -1024,14 +1024,14 @@ footer {
           word-break: break-word;
         }
       }
-      .btnGroup{
+      .btnGroup {
         width: 90%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-top: 8px;
       }
-      .cgStatusIcon{
+      .cgStatusIcon {
         cursor: pointer;
         position: relative;
         z-index: 10;
@@ -1048,7 +1048,7 @@ footer {
         text-decoration: line-through;
       }
     }
-    li:first-of-type{
+    li:first-of-type {
       margin-top: 0;
     }
     li.dragActive {
@@ -1135,45 +1135,84 @@ footer {
       position: fixed;
       top: 44px;
       height: 48px;
-      background-color: #F7F7F7;
+      background-color: #f7f7f7;
       box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
       z-index: 15;
     }
   }
 }
-.lunaChatting{
+.lunaChatting {
   width: 100%;
-  ul {
-    width: 100%;
-    max-width: 1366px;
+  main {
+    display: flex;
+  }
+  .stories {
+    width: 20%;
+    height: calc(100vh - 44px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.5s;
+    li{
+      position: relative;
+      height: auto;
+      transition: all 0.5s;
+      img{
+        width: 100%;
+        display: block;
+        transition: all 0.5s;
+      }
+      img:last-of-type{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      p{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 4px;
+        background: rgba(0,0,0,0.5);
+        color: $white;
+        transition: all 0.5s;
+      }
+    }
+  }
+  .mainChat {
+    width: 60%;
     background-color: rgba(255, 255, 255, 0.5);
-    margin: 0 auto;
-    height: calc(100vh - 44px - 44px);
-    overflow-y: scroll;
+    height: calc(100vh - 44px);
+    overflow-y: auto;
     overflow-x: hidden;
     padding: 0 24px 24px 24px;
     transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-    li.spaceReplace{
+    box-shadow: $strongLightShadow;
+    border: 1px solid rgba(255,255,255,0.3);
+    li.spaceReplace {
       margin-left: 66px;
       margin-top: 6px;
     }
-    li.spaceReplace.self{
+    li.spaceReplace.self {
       margin-right: 66px;
       margin-left: 0;
     }
-    li{
+    li {
       display: flex;
       margin-top: 24px;
-      .userIcon{
+      .userIcon {
         width: 66px;
         height: 66px;
         border-radius: 66px;
         overflow: hidden;
+        flex-shrink: 0;
+        img {
+          width: 100%;
+        }
       }
-      .messageArea{
+      .messageArea {
         margin-left: 16px;
         text-align: left;
-        p{
+        p {
           height: 16px;
           line-height: 16px;
           padding-left: 6px;
@@ -1181,7 +1220,7 @@ footer {
           margin-top: 3px;
           color: $normalDark;
         }
-        .contentArea{
+        .contentArea {
           background-color: $white;
           border-radius: 18px;
           min-height: 36px;
@@ -1190,11 +1229,11 @@ footer {
           display: inline-block;
           padding: 0 18px;
           box-shadow: $aroundDarkShadow;
-          .imgList{
+          .imgList {
             display: flex;
             flex-wrap: wrap;
             padding-top: 16px;
-            img{
+            img {
               max-width: 500px;
               border-radius: 16px;
               margin: 0 16px 16px 0;
@@ -1203,23 +1242,23 @@ footer {
         }
       }
     }
-    li.self{
+    li.self {
       flex-direction: row-reverse;
       .messageArea {
         margin-right: 16px;
         text-align: right;
-        p{
+        p {
           padding-right: 6px;
           padding-left: 0;
         }
-        .contentArea{
+        .contentArea {
           background-color: $primary;
           color: $white;
-          .imgList{
+          .imgList {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-end;
-            img{
+            img {
               max-width: 500px;
               border-radius: 16px;
               margin: 0 0 16px 16px;
@@ -1229,34 +1268,103 @@ footer {
       }
     }
   }
-  ul.transHeight{
-    height: calc(100vh - 44px - 44px - 8px - 44px);
-  }
-  .footerInput{
-    width: 100%;
-    text-align: right;
-    height: 44px;
-    background-color: $white;
-    padding: 0 24px;
-    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-    .msgArea{
-      max-width: 1366px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      height: 44px;
-      margin: 0 auto;
-      .lunaButton{
-        margin-left: 16px;
+  .sendingArea {
+    width: 20%;
+    position: relative;
+    .notice{
+      p{
+        background-color: rgba(243, 88, 139, 0.55);
+        font-size: 24px;
+        width: 100%;
+        color: $white;
+      }
+      ul{
+        padding: 0 16px;
+        li{
+          text-align: left;
+          padding: 8px 0;
+        }
+        li.upset{
+          color: $errorText;
+        }
       }
     }
-  }
-  .footerInput.footerImgPreview{
-    height: 96px;
-    .previewImgList{
-      margin-bottom: 8px;
-      img{
-        height: 44px;
+    .typeArea {
+      padding: 0 16px;
+      position: absolute;
+      bottom: 32px;
+      width: 100%;
+      textarea {
+        width: 100%;
+        resize: none;
+        border: 1px solid rgba(255,255,255,0.5);
+        box-shadow: $darkShadow;
+        border-radius: 6px;
+        height: 100%;
+        outline: none;
+        padding: 8px;
+        background-color: rgba(255,255,255,0.3);
+        position: relative;
+      }
+      .blurBc{
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 16px;
+        border-radius: 6px;
+      }
+      .blurBc::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-image: url("../../../public/bc1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        filter: blur(10px);
+      }
+      .previewGroup {
+        width: 100%;
+        height: auto;
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: auto;
+
+        div {
+          position: relative;
+          margin-right: 4px;
+          i{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.5);
+            color: $white;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            border-radius: 6px;
+            cursor: pointer;
+          }
+          img {
+            height: 44px;
+            border-radius: 6px;
+          }
+
+          img:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .btnGroup {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
     }
   }
