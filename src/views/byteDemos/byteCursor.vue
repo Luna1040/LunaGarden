@@ -6,7 +6,6 @@
       user-name="Luna Lovegood"
       is-viper="true"
     ></Header>
-    <Select :select-data="girlData" key-value="id" key-label="name" filterable return-label @on-change="choiceGirl"></Select>
     <Button theme="primary" @click="autoBattleStart">开启自动战斗模式</Button>
     <Button @click="battleStart">开启手动战斗模式</Button>
     <Button @click="reset">重置战斗</Button>
@@ -28,20 +27,22 @@ export default {
         {
           name: '花神',
           id: 'flower',
-          attack: 150,
+          attack: 120,
           armor: 30,
           health: 100,
           speed: 100,
-          powerUp: 1
+          powerUp: 1,
+          charaPic: ''
         },
         {
           name: '暗花神',
           id: 'darkFlower',
-          attack: 120,
-          health: 80,
-          armor: 30,
-          speed: 120,
-          powerUp: 1
+          attack: 180,
+          armor: 25,
+          health: 70,
+          speed: 140,
+          powerUp: 1,
+          charaPic: ''
         }
       ],
       girl: {
@@ -57,52 +58,58 @@ export default {
       girlSkill: {
         flower: [
           {
+            id: 1,
             name: '花疗术',
-            effect: '治疗' + 'this.girl.name' + '20点生命！',
-            damage: 0,
-            treatment: 2,
-            powerUp: 0
+            skillType: 'Magic',
+            magicType: 'Treatment',
+            effectDetail: ['治疗了', '20点生命'],
+            treatment: 2
           },
           {
+            id: 2,
             name: '花之赐福',
-            effect: '提升' + 'this.girl.name' + '2倍的伤害！',
-            damage: 0,
-            treatment: 0,
+            skillType: 'Magic',
+            magicType: 'PowerUp',
+            effectDetail: ['提升了', '2倍的伤害！'],
             powerUp: 2
           },
           {
+            id: 3,
             name: '连环花矢',
-            effect: '射出连续的花枝箭，对' + 'this.boy.name' + '造成' + this.girl.attack * 2 * 'this.girl.powerUp' + '伤害！',
-            damage: 5,
-            treatment: 0,
-            powerUp: 0
+            skillType: 'Magic',
+            magicType: 'Attack',
+            effectDetail: ['对', '射出连续的花枝箭，造成了', '点伤害！'],
+            damage: 1
           },
           {
+            id: 4,
             name: '极花护铠',
-            effect: '对' + 'this.girl.name' + '释放了花瓣组成的护盾，可抵挡50点伤害！',
-            damage: 0,
-            treatment: 0,
-            powerUp: 0,
-            shield: 5
+            skillType: 'Magic',
+            magicType: 'Shield',
+            effectDetail: ['释放了花瓣组成的护盾，可抵挡50点伤害！'],
+            shield: 50
           },
           {
+            id: 5,
             name: '召唤花精灵',
-            effect: '召唤出一只花精灵，为自己抵挡一次伤害，且每回合对敌人各造成5点伤害',
-            damage: 5,
-            damageAOE: true,
-            treatment: 0,
-            powerUp: 0,
-            shield: 100000,
+            skillType: 'Magic',
+            magicType: 'Summon',
+            effectDetail: ['召唤出一只花精灵，为自己抵挡一次伤害，且每回合对敌人各造成10点伤害'],
+            summonDamage: 10,
+            shield: 999999999999999,
             disposableShield: true
           },
           {
+            id: 6,
             name: '花龙卷',
-            effect: '对' + 'this.boy.name' + '释放了由花海构成的龙卷风，造成了' + this.girl.attack * 3 * 'this.powerUp' + '点伤害！',
-            damage: 0,
-            treatment: 0,
-            powerUp: 0,
-            shield: 0
+            skillType: 'Magic',
+            magicType: 'Attack',
+            effectDetail: ['对', '释放了由花海构成的龙卷风，造成了', '点伤害！'],
+            damage: 2
           }
+        ],
+        darkFlower: [
+
         ]
       },
       boyData: [],
