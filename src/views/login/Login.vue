@@ -1,68 +1,42 @@
 <template>
-  <div class="loginRegister">
-    <Header
-      :msg-header="$t('lang.titles.login')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
-    <!--    <div class="loginSpare">-->
-    <!--      <p class="desc">{{ $t('lang.login.desc') }}</p>-->
-    <!--      <p class="desc">{{ $t('lang.login.desc2') }}</p>-->
-    <!--      <div class="loginForm">-->
-    <!--        <input type="text" :placeholder="$t('lang.login.userName')" />-->
-    <!--        <input type="password" :placeholder="$lang('lang.login.password')" />-->
-    <!--        <button class="button loginBtn" @click="loginConfirm">{{ $t('lang.login.login') }}</button>-->
-    <!--      </div>-->
-    <!--      <Form-->
-    <!--        ref="form"-->
-    <!--        :form="form"-->
-    <!--        :theme="theme"-->
-    <!--        :width="240"-->
-    <!--        label-position="top"-->
-    <!--      ></Form>-->
-    <!--      <div class="linkGroup">-->
-    <!--        <p class="pink">{{ $t('lang.login.register') }}</p>-->
-    <!--        <router-link to="register" class="button">{{ $t('lang.login.register2') }}</router-link>-->
-    <!--        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <Container
-      class-name="spare loginSpare"
-      :flex="false"
-      :width="1000"
-      :height="454"
-      background="rgba(255,255,255,0.3)"
-    >
-      <div class="blurBc"></div>
-      <p class="desc">{{ $t("lang.login.desc") }}</p>
-      <p class="desc">{{ $t("lang.login.desc2") }}</p>
-      <Form
-        ref="form"
-        style="margin: 0 auto;"
-        background="rgba(0,0,0,0)"
-        border="0"
-        :shadow="false"
-        :form="form"
-        :theme="theme"
-        :width="640"
-        label-position="top"
-        :label-width="150"
-      ></Form>
-      <div class="linkGroup">
-        <Button theme="primary" :width="590" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
-        <p>{{ $t("lang.login.register") }}</p>
-        <Button theme="primary" @click="toRegister">{{ $t('lang.login.register2') }}</Button>
-        <router-link to="forgot" class="pink">{{
-          $t("lang.login.forgot")
-        }}</router-link>
-      </div>
-    </Container>
-  </div>
+	<div class="loginRegister">
+		<Container
+			class-name="spare loginSpare"
+			:flex="false"
+			:width="1000"
+			:height="454"
+			background="rgba(255,255,255,0.3)"
+		>
+			<p class="desc">{{ $t("lang.login.desc") }}</p>
+			<p class="desc">{{ $t("lang.login.desc2") }}</p>
+			<Form
+				ref="form"
+				style="margin: 0 auto;"
+				background="rgba(0,0,0,0)"
+				border="0"
+				:shadow="false"
+				:form="form"
+				:theme="theme"
+				:width="640"
+				label-position="top"
+				:label-width="150"
+			></Form>
+			<div class="linkGroup">
+				<Button theme="primary" :width="590" @click="loginConfirm">{{
+					this.$t("lang.login.login2")
+				}}</Button>
+				<p>{{ $t("lang.login.register") }}</p>
+				<Button theme="primary" @click="toRegister">{{
+					$t("lang.login.register2")
+				}}</Button>
+				<router-link to="forgot" class="pink">{{
+					$t("lang.login.forgot")
+				}}</router-link>
+			</div>
+		</Container>
+	</div>
 </template>
 <script>
-import Header from '../../components/pc/activeHeader'
 import { login } from '../../assets/js/url.js'
 
 export default {
@@ -169,9 +143,6 @@ export default {
     }
   },
   created () {
-  },
-  components: {
-    Header
   },
   methods: {
     loginConfirm () {

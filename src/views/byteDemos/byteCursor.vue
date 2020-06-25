@@ -1,18 +1,5 @@
 <template>
-  <div>
-    <Header
-      :msg-header="$t('lang.titles.legend')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-    ></Header>
-    <Button theme="primary" @click="autoBattleStart">开启自动战斗模式</Button>
-    <Button @click="battleStart">开启手动战斗模式</Button>
-    <Button @click="reset">重置战斗</Button>
-    <Button @click="online">在线对战</Button>
-    <Button @click="showCards">查阅人物资料</Button>
-    <Button @click="getArmor">获取装甲(Alpha)</Button>
-  </div>
+	<div></div>
 </template>
 
 <script>

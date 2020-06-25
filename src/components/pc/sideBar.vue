@@ -1,28 +1,63 @@
 <template>
-    <div>
-        <div :class="{asideShowAnimate : asideShow === 'intro' , asideHideAnimate : asideShow === 'hiding' , '' : asideShow === 'hide'}">
-            <div class="blackHover" :class="{blackHoverShowAnimate : asideShow === 'intro' , blackHoverHideAnimate : asideShow === 'hiding'}"></div>
-            <aside :class="{asideShowAnimate : asideShow === 'intro' , asideHideAnimate : asideShow === 'hiding'}"></aside>
-        </div>
-    </div>
+  <transition name="slideBar">
+    <aside v-if="value" id="sideMenu">
+      <i class="iconfont icon-cancel" @click="hideSideMenu"></i>
+      <ul>
+        <li v-for="(i, index) in menuList" :key="index" @click="goLink(i.to)">
+          {{ i.name }}
+        </li>
+      </ul>
+    </aside>
+  </transition>
 </template>
 
 <script>
-    export default {
-        name: "sideBar",
-        data(){
-            return{
-                asideShow:'hide'
-            }
-        },
-        methods:{
-            sideBarToggle(){
-                this.asideShow = true;
-            }
-        }
+export default {
+  name: 'sideBar',
+  props: {
+    value: {
+      type: Boolean,
+      default: true
     }
+  },
+  data () {
+    return {
+      asideShow: 'hide',
+      menuList: [
+        {
+          name: '首页',
+          to: 'Home'
+        },
+        {
+          name: '关于',
+          to: 'AboutUs'
+        },
+        {
+          name: '日记',
+          to: 'Note'
+        },
+        {
+          name: '花神通讯',
+          to: 'Chatting'
+        },
+        {
+          name: '花神传说',
+          to: 'Legend'
+        }
+      ]
+    }
+  },
+  methods: {
+    goLink (url) {
+      this.$router.push(url)
+    },
+    hideSideMenu () {
+      this.$emit('input', false)
+    }
+  }
+}
+
 </script>
 
 <style scoped>
-
 </style>

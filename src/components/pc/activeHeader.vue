@@ -1,67 +1,67 @@
 <template>
-  <header class="header" :class="theme">
-    <!--        User Area-->
-    <div class="userArea">
-      <div class="userIcon">
-        <img :src="userIcon" alt />
-      </div>
-      <div class="information">
-        <div class="userInfo">
-          <!--                    Username Area-->
-          <span class="userName">{{ userName }}</span>
-          <!--                    Viper Icon Area-->
-          <!--          <div class="VIPer font-Gothic" v-show="isViper === 'true'">-->
-          <!--            VIP-->
-          <!--          </div>-->
-        </div>
-        <div class="netWorkStatus" :class="{ networkError: !navigator.onLine }">
-          <!--                        Network status-->
-          <i
-            class="iconfont"
-            :class="{
-              'icon-HotelDetails_icn_Internet': navigator.onLine,
-              'icon-infonointernet': !navigator.onLine,
-            }"
-          ></i>
-          <span v-show="navigator.onLine">{{ $t("lang.titles.online") }}</span>
-          <span v-show="!navigator.onLine">{{
-            $t("lang.titles.offline")
-          }}</span>
-        </div>
-      </div>
-    </div>
-    <!--        Title-->
-    <div class="title">
-      <h2>{{ msgHeader }}</h2>
-      <!-- <img :src="imgSrc" alt /> -->
-    </div>
-    <div class="guide">
-      <div class="btnGroup">
-        <div
-          :class="{ languageActive: $i18n.locale !== 'zh-CN' }"
-          @click="setLang('en-US')"
-        >
-          <img src="../../assets/icons/language-english.svg" alt />
-        </div>
-        <div
-          :class="{ languageActive: $i18n.locale === 'zh-CN' }"
-          @click="setLang('zh-CN')"
-        >
-          <img src="../../assets/icons/language-chinese.svg" alt />
-        </div>
-      </div>
-      <Button
-        color="#eb7290"
-        background="#FFFFFF"
-        icon="iconfont icon-guide"
-        pre
-        :width="130"
-        @click="toAbout"
-      >
-        <span>{{ $t("lang.titles.guide") }}</span>
-      </Button>
-    </div>
-  </header>
+	<header class="header" :class="theme">
+		<!--        User Area-->
+		<div class="userArea">
+			<div class="userIcon">
+				<img :src="userIcon" alt />
+			</div>
+			<div class="information">
+				<div class="userInfo">
+					<!--                    Username Area-->
+					<span class="userName">{{ userName }}</span>
+					<!--                    Viper Icon Area-->
+					<!--          <div class="VIPer font-Gothic" v-show="isViper === 'true'">-->
+					<!--            VIP-->
+					<!--          </div>-->
+				</div>
+				<div class="netWorkStatus" :class="{ networkError: !navigator.onLine }">
+					<!--                        Network status-->
+					<i
+						class="iconfont"
+						:class="{
+							'icon-HotelDetails_icn_Internet': navigator.onLine,
+							'icon-infonointernet': !navigator.onLine,
+						}"
+					></i>
+					<span v-show="navigator.onLine">{{ $t("lang.titles.online") }}</span>
+					<span v-show="!navigator.onLine">{{
+						$t("lang.titles.offline")
+					}}</span>
+				</div>
+			</div>
+		</div>
+		<!--        Title-->
+		<div class="title">
+			<h2>{{ msgHeader }}</h2>
+			<!-- <img :src="imgSrc" alt /> -->
+		</div>
+		<div class="guide">
+			<div class="btnGroup">
+				<div
+					:class="{ languageActive: $i18n.locale !== 'zh-CN' }"
+					@click="setLang('en-US')"
+				>
+					<img src="../../assets/icons/language-english.svg" alt />
+				</div>
+				<div
+					:class="{ languageActive: $i18n.locale === 'zh-CN' }"
+					@click="setLang('zh-CN')"
+				>
+					<img src="../../assets/icons/language-chinese.svg" alt />
+				</div>
+			</div>
+			<Button
+				color="#eb7290"
+				background="#FFFFFF"
+				icon="iconfont icon-guide"
+				pre
+				:width="130"
+				@click="toAbout"
+			>
+				<span>{{ $t("lang.titles.Guide") }}</span>
+			</Button>
+		</div>
+	</header>
 </template>
 
 <script>

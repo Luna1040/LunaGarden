@@ -1,270 +1,262 @@
 <template>
-  <div class="home">
-    <Header
-      :msg-header="$t('lang.titles.home')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
-    <div class="searchArea">
-      <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
-        <Button
-          :width="32"
-          :height="32"
-          corner="round"
-          color="#333"
-          class="searchBtn"
-          theme="primary"
-          shadow
-          border="0"
-          @click="matchQuery"
-        >
-          <i class="iconfont icon-search1"></i>
-        </Button>
-        <Input
-          v-model="todoText"
-          type="text"
-          class="searchInput"
-          :placeholder="$t('lang.home.input')"
-          border-color="rgba(0,0,0,0)!important"
-          box-shadow="none!important"
-          ghost
-          width="100%"
-          font-size="32"
-          @on-keyup="keyup($event)"
-          @on-keydown="keydown($event)"
-        ></Input>
-        <Button
-          :width="32"
-          :height="32"
-          corner="round"
-          color="#333"
-          class="searchBtn"
-          theme="primary"
-          shadow
-          border="0"
-          @click="addTodo"
-        >
-          <i class="iconfont icon-add1"></i>
-        </Button>
-      </div>
-      <transition name="searchListAnimation">
-        <ul v-if="todoText.trim() !== ''" class="searchAssociation">
-          <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
-          <li
-            v-for="(item, index) in searchArr"
-            :key="index"
-            class="list-group-item-text"
-            @click="choice(item)"
-          >
-            {{ item }}
-          </li>
-        </ul>
-      </transition>
-    </div>
-    <div id="navigation">
-      <div slot="button-prev" class="swiper-button-prev">
-        {{ $t("lang.home.prev") }}
-      </div>
-      <div slot="button-next" class="swiper-button-next">
-        {{ $t("lang.home.next") }}
-      </div>
-    </div>
-    <swiper ref="mySwiper" :options="swiperOption">
-      <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
-        <ul class="todoList">
-          <li v-for="(i, index) in todoList" :key="i.id">
-            <div>
-              <span :class="{ successText: i.completed === true }"
-              >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
-              >
-              <span :class="{ successText: i.completed === true }"
-              >{{ $t("lang.home.content") }}{{ i.content }}</span
-              >
-            </div>
-            <div class="dragBtn" @click="mousedown(index)">
-              <div
-                class="dragMenu"
-                :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-              >
-                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                <div @click.stop="cgStatus(i.id)">
-                  <!-- 完成计划 -->
-                  <button v-show="i.completed === false">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                  <button v-show="i.completed === true">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                </div>
-                <div @click.stop="editShow(i.id)">
-                  <!-- 编辑计划 -->
-                  <button>
-                    <i class="iconfont icon-remark"></i>
-                  </button>
-                </div>
-                <div @click.stop="copyContent(i.id)">
-                  <!-- 复制文本 -->
-                  <button>
-                    <i class="iconfont icon-copy-l"></i>
-                  </button>
-                </div>
-                <div @click.stop="delShow(i.id)">
-                  <!-- 删除计划 -->
-                  <button>
-                    <i class="iconfont icon-ICON_cancel"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </swiper-slide>
-      <swiper-slide>
-        <ul
-          class="todoList"
-          :class="{ 'todoList-shorter': searchArr.length !== 0 }"
-        >
-          <li v-for="(i, index) in businessList" :key="i.id">
-            <div>
-              <span :class="{ successText: i.completed === true }"
-              >{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
-              >
-              <span :class="{ successText: i.completed === true }"
-              >{{ $t("lang.home.content") }}{{ i.content }}</span
-              >
-            </div>
-            <div class="dragBtn" @click="mousedown(index)">
-              <div
-                class="dragMenu"
-                :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-              >
-                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                <div @click.stop="cgStatus(i.id)">
-                  <!-- 完成计划 -->
-                  <button v-show="i.completed === false">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                  <button v-show="i.completed === true">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                </div>
-                <div @click.stop="editShow(i.id)">
-                  <!-- 编辑计划 -->
-                  <button>
-                    <i class="iconfont icon-remark"></i>
-                  </button>
-                </div>
-                <div @click.stop="copyContent(i.id)">
-                  <!-- 复制文本 -->
-                  <button>
-                    <i class="iconfont icon-copy-l"></i>
-                  </button>
-                </div>
-                <div @click.stop="delShow(i.id)">
-                  <!-- 删除计划 -->
-                  <button>
-                    <i class="iconfont icon-ICON_cancel"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </swiper-slide>
-    </swiper>
-    <div
-      class="toast"
-      :class="{
-        showToast: toastLaunch === true,
-        hideToast: toastLaunch === false,
-        hide: toastLaunch === ''
-      }"
-    >
-      <p v-show="addStatus === 'successAdd'">
-        {{ $t("lang.home.alert.addAlertSuccess") }}
-      </p>
-      <p v-show="addStatus === 'failAdd'">
-        {{ $t("lang.home.alert.addAlertFail") }}
-      </p>
-      <p v-show="addStatus === 'errorAdd'">
-        {{ $t("lang.home.alert.addAlertNetError") }}
-      </p>
-      <p v-show="addStatus === 'successAdd'" class="error desc">
-        {{ $t("lang.home.alert.addAlertSuccess2") }}
-      </p>
-      <p v-show="addStatus === 'failAdd'" class="error desc">
-        {{ $t("lang.home.alert.addAlertFail2") }}
-      </p>
-      <p v-show="addStatus === 'errorAdd'" class="error desc">
-        {{ $t("lang.home.alert.addAlertNetError2") }}
-      </p>
-    </div>
-    <Modal
-      v-model="emptyWarning"
-      :title="$t('lang.firstAlert.attention')"
-      @on-cancel="emptyWarningCancel()"
-    >
-      <div>
-        <p class="primaryText">{{ $t("lang.home.alert.emptyAlert") }}</p>
-      </div>
-      <div slot="footer">
-        <button v-ripple class="primaryButton" @click="emptyWarningCancel()">
-          {{ $t("lang.home.button.OK") }}
-        </button>
-      </div>
-    </Modal>
-    <Modal
-      v-model="del"
-      :title="$t('lang.firstAlert.warning')"
-      type="error"
-      @on-cancel="delCancel()"
-    >
-      <div>
-        <p class="defaultTextColor">{{ $t("lang.home.alert.delMsg") }}</p>
-        <p class="errorText smFont">{{ $t("lang.home.alert.delMsg2") }}</p>
-      </div>
-      <div slot="footer">
-        <button v-ripple class="normalButton" @click="delCancel()">
-          {{ $t("lang.home.button.cancel") }}
-        </button>
-        <button v-ripple class="errorButton" @click="delConfirm()">
-          {{ $t("lang.home.button.DEL") }}
-        </button>
-      </div>
-    </Modal>
-    <Modal
-      v-model="create"
-      :title="$t('lang.home.create.create')"
-      type="primary"
-      :theme="theme"
-      @on-cancel="createCancel()"
-    >
-      <Form
-        ref="form"
-        style="margin: 0 auto;"
-        background="rgba(0,0,0,0)"
-        border="0"
-        :shadow="false"
-        :form="form"
-        :theme="theme"
-        :width="320"
-        label-position="top"
-        :label-width="150"
-      ></Form>
-    </Modal>
-  </div>
+	<div class="home">
+		<div class="searchArea">
+			<div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
+				<Button
+					:width="32"
+					:height="32"
+					corner="round"
+					color="#333"
+					class="searchBtn"
+					theme="primary"
+					shadow
+					border="0"
+					@click="matchQuery"
+				>
+					<i class="iconfont icon-search1"></i>
+				</Button>
+				<Input
+					v-model="todoText"
+					type="text"
+					class="searchInput"
+					:placeholder="$t('lang.home.input')"
+					border-color="rgba(0,0,0,0)!important"
+					box-shadow="none!important"
+					ghost
+					width="100%"
+					font-size="32"
+					@on-keyup="keyup($event)"
+					@on-keydown="keydown($event)"
+				></Input>
+				<Button
+					:width="32"
+					:height="32"
+					corner="round"
+					color="#333"
+					class="searchBtn"
+					theme="primary"
+					shadow
+					border="0"
+					@click="addTodo"
+				>
+					<i class="iconfont icon-add1"></i>
+				</Button>
+			</div>
+			<transition name="searchListAnimation">
+				<ul v-if="todoText.trim() !== ''" class="searchAssociation">
+					<li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>
+					<li
+						v-for="(item, index) in searchArr"
+						:key="index"
+						class="list-group-item-text"
+						@click="choice(item)"
+					>
+						{{ item }}
+					</li>
+				</ul>
+			</transition>
+		</div>
+		<div id="navigation">
+			<div slot="button-prev" class="swiper-button-prev">
+				{{ $t("lang.home.prev") }}
+			</div>
+			<div slot="button-next" class="swiper-button-next">
+				{{ $t("lang.home.next") }}
+			</div>
+		</div>
+		<swiper ref="mySwiper" :options="swiperOption">
+			<swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
+				<ul class="todoList">
+					<li v-for="(i, index) in todoList" :key="i.id">
+						<div>
+							<span :class="{ successText: i.completed === true }"
+								>{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+							>
+							<span :class="{ successText: i.completed === true }"
+								>{{ $t("lang.home.content") }}{{ i.content }}</span
+							>
+						</div>
+						<div class="dragBtn" @click="mousedown(index)">
+							<div
+								class="dragMenu"
+								:class="{
+									dragMenuShow: dragActive === index,
+									dragMenuHide: dragActive === -1,
+								}"
+							>
+								<i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
+								<div @click.stop="cgStatus(i.id)">
+									<!-- 完成计划 -->
+									<button v-show="i.completed === false">
+										<i class="iconfont icon-quedingx"></i>
+									</button>
+									<button v-show="i.completed === true">
+										<i class="iconfont icon-quedingx"></i>
+									</button>
+								</div>
+								<div @click.stop="editShow(i.id)">
+									<!-- 编辑计划 -->
+									<button>
+										<i class="iconfont icon-remark"></i>
+									</button>
+								</div>
+								<div @click.stop="copyContent(i.id)">
+									<!-- 复制文本 -->
+									<button>
+										<i class="iconfont icon-copy-l"></i>
+									</button>
+								</div>
+								<div @click.stop="delShow(i.id)">
+									<!-- 删除计划 -->
+									<button>
+										<i class="iconfont icon-ICON_cancel"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</swiper-slide>
+			<swiper-slide>
+				<ul
+					class="todoList"
+					:class="{ 'todoList-shorter': searchArr.length !== 0 }"
+				>
+					<li v-for="(i, index) in businessList" :key="i.id">
+						<div>
+							<span :class="{ successText: i.completed === true }"
+								>{{ $t("lang.home.timeStamp") }}{{ i.time }}</span
+							>
+							<span :class="{ successText: i.completed === true }"
+								>{{ $t("lang.home.content") }}{{ i.content }}</span
+							>
+						</div>
+						<div class="dragBtn" @click="mousedown(index)">
+							<div
+								class="dragMenu"
+								:class="{
+									dragMenuShow: dragActive === index,
+									dragMenuHide: dragActive === -1,
+								}"
+							>
+								<i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
+								<div @click.stop="cgStatus(i.id)">
+									<!-- 完成计划 -->
+									<button v-show="i.completed === false">
+										<i class="iconfont icon-quedingx"></i>
+									</button>
+									<button v-show="i.completed === true">
+										<i class="iconfont icon-quedingx"></i>
+									</button>
+								</div>
+								<div @click.stop="editShow(i.id)">
+									<!-- 编辑计划 -->
+									<button>
+										<i class="iconfont icon-remark"></i>
+									</button>
+								</div>
+								<div @click.stop="copyContent(i.id)">
+									<!-- 复制文本 -->
+									<button>
+										<i class="iconfont icon-copy-l"></i>
+									</button>
+								</div>
+								<div @click.stop="delShow(i.id)">
+									<!-- 删除计划 -->
+									<button>
+										<i class="iconfont icon-ICON_cancel"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</swiper-slide>
+		</swiper>
+		<div
+			class="toast"
+			:class="{
+				showToast: toastLaunch === true,
+				hideToast: toastLaunch === false,
+				hide: toastLaunch === '',
+			}"
+		>
+			<p v-show="addStatus === 'successAdd'">
+				{{ $t("lang.home.alert.addAlertSuccess") }}
+			</p>
+			<p v-show="addStatus === 'failAdd'">
+				{{ $t("lang.home.alert.addAlertFail") }}
+			</p>
+			<p v-show="addStatus === 'errorAdd'">
+				{{ $t("lang.home.alert.addAlertNetError") }}
+			</p>
+			<p v-show="addStatus === 'successAdd'" class="error desc">
+				{{ $t("lang.home.alert.addAlertSuccess2") }}
+			</p>
+			<p v-show="addStatus === 'failAdd'" class="error desc">
+				{{ $t("lang.home.alert.addAlertFail2") }}
+			</p>
+			<p v-show="addStatus === 'errorAdd'" class="error desc">
+				{{ $t("lang.home.alert.addAlertNetError2") }}
+			</p>
+		</div>
+		<Modal
+			v-model="emptyWarning"
+			:title="$t('lang.firstAlert.attention')"
+			@on-cancel="emptyWarningCancel()"
+		>
+			<div>
+				<p class="primaryText">{{ $t("lang.home.alert.emptyAlert") }}</p>
+			</div>
+			<div slot="footer">
+				<button v-ripple class="primaryButton" @click="emptyWarningCancel()">
+					{{ $t("lang.home.button.OK") }}
+				</button>
+			</div>
+		</Modal>
+		<Modal
+			v-model="del"
+			:title="$t('lang.firstAlert.warning')"
+			type="error"
+			@on-cancel="delCancel()"
+		>
+			<div>
+				<p class="defaultTextColor">{{ $t("lang.home.alert.delMsg") }}</p>
+				<p class="errorText smFont">{{ $t("lang.home.alert.delMsg2") }}</p>
+			</div>
+			<div slot="footer">
+				<button v-ripple class="normalButton" @click="delCancel()">
+					{{ $t("lang.home.button.cancel") }}
+				</button>
+				<button v-ripple class="errorButton" @click="delConfirm()">
+					{{ $t("lang.home.button.DEL") }}
+				</button>
+			</div>
+		</Modal>
+		<Modal
+			v-model="create"
+			:title="$t('lang.home.create.create')"
+			type="primary"
+			:theme="theme"
+			@on-cancel="createCancel()"
+		>
+			<Form
+				ref="form"
+				style="margin: 0 auto;"
+				background="rgba(0,0,0,0)"
+				border="0"
+				:shadow="false"
+				:form="form"
+				:theme="theme"
+				:width="320"
+				label-position="top"
+				:label-width="150"
+			></Form>
+		</Modal>
+	</div>
 </template>
 
 <script>
-import Header from '../../components/pc/activeHeader'
 
 export default {
   name: 'home',
@@ -354,9 +346,6 @@ export default {
       },
       activeList: 'prev'
     }
-  },
-  components: {
-    Header
   },
   created () {
     this.todoList = JSON.parse(localStorage.getItem('todoList'))
@@ -554,8 +543,8 @@ export default {
 <!--bing搜索List模块-->
 <!--https://cn.bing.com/AS/Suggestions?pt=page.home&mkt=zh-cn&ds=mobileweb&qry=luna&cp=0&cvid=4C94085CD28049A3AC1BBC34170774C3-->
 <style scoped lang="scss">
-.successText {
-  color: aquamarine;
-  text-decoration: line-through;
-}
+	.successText {
+		color: aquamarine;
+		text-decoration: line-through;
+	}
 </style>

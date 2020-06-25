@@ -1,88 +1,124 @@
 <template>
-  <div id="app">
-    <transition :name="transitionName">
-      <router-view class="Router"></router-view>
-    </transition>
-    <div
-      :class="{ bcImage177: width177 === 177 , bcImage16: width177 === 16 , bcImage0: width177 === 0}"
-    >
-      <img src="bc1.jpg" alt />
-    </div>
-    <!-- 移动端通用footer -->
-    <footer>
-      <div
-        class="activeBar"
-        :class="{activeHome : footerActive === 'home' , activeNote : footerActive === 'note' , activeUI : footerActive === 'ui' , activeDiary : footerActive === 'diary'}"
-      ></div>
-      <div class="figGroup">
-        <router-link
-          to="/mHome"
-          :class="{active : footerActive === 'home'}"
-          @click="footerActive = 'home'"
-        >
-          <figure>
-            <i class="iconfont"></i>
-            <figcaption>Home</figcaption>
-          </figure>
-        </router-link>
-        <router-link
-          to="/mNote"
-          :class="{active : footerActive === 'note'}"
-          @click="footerActive = 'note'"
-        >
-          <figure>
-            <i class="iconfont"></i>
-            <figcaption>Note</figcaption>
-          </figure>
-        </router-link>
-        <router-link
-          to="/mDiary"
-          :class="{active : footerActive === 'diary'}"
-          @click="footerActive = 'diary'"
-        >
-          <figure>
-            <i class="iconfont"></i>
-            <figcaption>Diary</figcaption>
-          </figure>
-        </router-link>
-        <router-link
-          to="/mUI"
-          :class="{active : footerActive === 'ui'}"
-          @click="footerActive = 'ui'"
-        >
-          <figure>
-            <i class="iconfont"></i>
-            <figcaption>Luna-UI</figcaption>
-          </figure>
-        </router-link>
-      </div>
-      <button
-        class="fluidBtn"
-        :class="{leftMove : footerActive === 'note' , rightMove : footerActive === 'home'}"
-      >
-        <i class="iconfont" :class="{show : footerActive === 'note'}"></i>
-      </button>
-    </footer>
-    <Modal v-model="firstAlert" @on-cancel="hideModal">
-      <div slot="header">
-        <p>{{ $t('lang.firstAlert.attention') }}</p>
-      </div>
-      <div>
-        <p>{{ $t('lang.firstAlert.line1') }}</p>
-        <p>{{ $t('lang.firstAlert.line2') }}</p>
-        <p class="error desc">{{ $t('lang.firstAlert.line3') }}</p>
-        <p class="error desc">{{ $t('lang.firstAlert.line4') }}</p>
-      </div>
-      <div slot="footer">
-        <button v-ripple class="normalButton" @click="hideModal">{{ $t('lang.firstAlert.no') }}</button>
-        <button v-ripple class="primaryButton" @click="toGuide">{{ $t('lang.firstAlert.sure') }}</button>
-      </div>
-    </Modal>
-  </div>
+	<div id="app">
+		<i
+			v-if="!showSideBar"
+			@click="showSideMenu"
+			class="iconfont icon-apply2"
+			id="showSideBarBtn"
+		>
+		</i>
+		<div class="headerBlur">
+			<Header
+				:msg-header="$t('lang.titles.' + $route.name)"
+				user-icon="userIcon.jpg"
+				user-name="Luna Lovegood"
+				is-viper="true"
+			></Header>
+		</div>
+		<SideBar v-model="showSideBar"></SideBar>
+		<transition :name="transitionName">
+			<router-view
+				class="Router"
+				:class="{ sideBarSpace: showSideBar }"
+			></router-view>
+		</transition>
+		<div
+			:class="{
+				bcImage177: width177 === 177,
+				bcImage16: width177 === 16,
+				bcImage0: width177 === 0,
+			}"
+		>
+			<img src="bc1.jpg" alt />
+		</div>
+		<!-- 移动端通用footer -->
+		<footer>
+			<div
+				class="activeBar"
+				:class="{
+					activeHome: footerActive === 'home',
+					activeNote: footerActive === 'note',
+					activeUI: footerActive === 'ui',
+					activeDiary: footerActive === 'diary',
+				}"
+			></div>
+			<div class="figGroup">
+				<router-link
+					to="/mHome"
+					:class="{ active: footerActive === 'home' }"
+					@click="footerActive = 'home'"
+				>
+					<figure>
+						<i class="iconfont"></i>
+						<figcaption>Home</figcaption>
+					</figure>
+				</router-link>
+				<router-link
+					to="/mNote"
+					:class="{ active: footerActive === 'note' }"
+					@click="footerActive = 'note'"
+				>
+					<figure>
+						<i class="iconfont"></i>
+						<figcaption>Note</figcaption>
+					</figure>
+				</router-link>
+				<router-link
+					to="/mDiary"
+					:class="{ active: footerActive === 'diary' }"
+					@click="footerActive = 'diary'"
+				>
+					<figure>
+						<i class="iconfont"></i>
+						<figcaption>Diary</figcaption>
+					</figure>
+				</router-link>
+				<router-link
+					to="/mUI"
+					:class="{ active: footerActive === 'ui' }"
+					@click="footerActive = 'ui'"
+				>
+					<figure>
+						<i class="iconfont"></i>
+						<figcaption>Luna-UI</figcaption>
+					</figure>
+				</router-link>
+			</div>
+			<button
+				class="fluidBtn"
+				:class="{
+					leftMove: footerActive === 'note',
+					rightMove: footerActive === 'home',
+				}"
+			>
+				<i class="iconfont" :class="{ show: footerActive === 'note' }"></i>
+			</button>
+		</footer>
+		<Modal v-model="firstAlert" @on-cancel="hideModal">
+			<div slot="header">
+				<p>{{ $t("lang.firstAlert.attention") }}</p>
+			</div>
+			<div>
+				<p>{{ $t("lang.firstAlert.line1") }}</p>
+				<p>{{ $t("lang.firstAlert.line2") }}</p>
+				<p class="error desc">{{ $t("lang.firstAlert.line3") }}</p>
+				<p class="error desc">{{ $t("lang.firstAlert.line4") }}</p>
+			</div>
+			<div slot="footer">
+				<button v-ripple class="normalButton" @click="hideModal">
+					{{ $t("lang.firstAlert.no") }}
+				</button>
+				<button v-ripple class="primaryButton" @click="toGuide">
+					{{ $t("lang.firstAlert.sure") }}
+				</button>
+			</div>
+		</Modal>
+	</div>
 </template>
 <script>
 import './assets/css/public.scss'
-import './components/pc/sideBar.vue'
+import SideBar from './components/pc/sideBar.vue'
+import Header from './components/pc/activeHeader.vue'
 
 export default {
   name: 'app',
@@ -91,8 +127,13 @@ export default {
       footerActive: 'home',
       firstAlert: false,
       width177: true,
-      transitionName: 'slide-right'
+      transitionName: 'slide-right',
+      showSideBar: true,
     }
+  },
+  components: {
+    SideBar,
+    Header
   },
   created () {
     // 计算窗口比例调整背景图
@@ -168,37 +209,41 @@ export default {
     }
   },
   methods: {
+    toggleSideBar() {
+      this.showSideBar != this.showSideBar
+    },
     hideModal () {
       this.firstAlert = false
     },
     toGuide () {
       this.$router.push('aboutUs')
       this.hideModal()
+    },
+    showSideMenu() {
+      this.showSideBar = true
     }
   }
 }
 </script>
 <style lang="scss">
-  .Router {
-    width: 100%;
-    position: absolute;
-    z-index: 0;
-    height: 100%;
-    transition: all 0.5s  cubic-bezier(0.8, 0, 0.2, 1) 0s;
-    will-change: transform;
-    top: 0;
-    backface-visibility: hidden;
-    overflow: hidden;
-  }
-  .slide-left-enter,
-  .slide-right-leave-active {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
+	.Router {
+		width: 100%;
+		position: absolute;
+		z-index: 0;
+		transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+		will-change: transform;
+		backface-visibility: hidden;
+		overflow: hidden;
+	}
+	.slide-left-enter,
+	.slide-right-leave-active {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
 
-  .slide-left-leave-active,
-  .slide-right-enter {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-  }
+	.slide-left-leave-active,
+	.slide-right-enter {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
 </style>

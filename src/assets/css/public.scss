@@ -15,6 +15,21 @@ $warning: #e9a600;
 $alert: #c5006a;
 $strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
 
+@mixin blurImg {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("../../../public/bc1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(8px);
+}
+
 @import "./LunaUI/LunaUI.scss";
 
 * {
@@ -25,6 +40,7 @@ $strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
   -webkit-appearance: none;
   font-weight: 300;
 }
+
 body {
   overflow: hidden;
 }
@@ -70,21 +86,25 @@ ul li {
 .smFont {
   font-size: 12px;
 }
+
 .defaultTextColor {
   color: #4a4a4a;
 }
+
 .primaryButton {
   background-color: $primary;
   color: $white;
   -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
+
 .errorButton {
   background-color: $error;
   color: $white;
   -webkit-box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
 }
+
 .normalButton {
   background-color: $white;
   color: #4a4a4a;
@@ -95,6 +115,7 @@ ul li {
 .errorText {
   color: $errorText;
 }
+
 .primaryText {
   color: $primaryText;
 }
@@ -137,6 +158,45 @@ a {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  z-index: 0;
+}
+
+#sideMenu {
+  position: absolute;
+  z-index: 9999999;
+  top: 44px;
+  left: 0;
+  height: calc(100vh - 44px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 2px solid #ffffff;
+  padding-top: 8px;
+  border-image: linear-gradient(rgba(255, 255, 255, 0) 15%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0)) 3;
+  color: #ffffff;
+
+  ul {
+    width: 88px;
+
+    li {
+      padding: 8px 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    li:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  i {
+    cursor: pointer;
+  }
+}
+
+#sideMenu::after {
+  @include blurImg
 }
 
 .bcImage16 {
@@ -167,6 +227,27 @@ a {
   }
 }
 
+.Router {
+  width: 100vw;
+  height: calc(100vh - 44px) !important;
+  top: 44px;
+}
+
+.Router.sideBarSpace {
+  width: calc(100vw - 88px);
+  margin-left: 88px;
+}
+
+#showSideBarBtn {
+  position: fixed;
+  top: 9px;
+  left: -12px;
+  z-index: 999999;
+  font-size: 24px;
+  color: $white;
+  cursor: pointer;
+}
+
 .bcImage0 {
   position: fixed;
   top: 0;
@@ -174,7 +255,7 @@ a {
   z-index: -1;
   width: 100%;
   height: 100vh;
-  background-image: url("../../../public/bc1.jpg");
+  // background-image: url("../../../public/bc1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -184,6 +265,7 @@ a {
     display: none;
   }
 }
+
 .loginRegister {
   .spare {
     position: relative;
@@ -192,41 +274,36 @@ a {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
   }
+
   .loginSpare {
     top: calc(50% - 220px);
   }
+
   .registerSpare {
     top: calc(50% - 350px);
   }
+
   .linkGroup {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     a {
       color: $white;
       margin-top: 18px;
       font-size: 12px;
     }
+
     p {
       margin-top: 18px;
       color: $white;
       font-size: 12px;
     }
   }
+
   .spare::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-image: url("../../../public/bc1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    filter: blur(10px);
+    @include blurImg
   }
 }
 
@@ -251,11 +328,9 @@ footer {
     display: block;
     width: 100%;
     height: 60px;
-    background: radial-gradient(
-      75px at top,
-      transparent 50%,
-      rgb(235, 114, 144) 51%
-    );
+    background: radial-gradient(75px at top,
+        transparent 50%,
+        rgb(235, 114, 144) 51%);
     background-position-y: -10px;
     position: fixed;
     bottom: -10px;
@@ -289,17 +364,27 @@ footer {
   border: 0;
 }
 
+.headerBlur {
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+}
+
 .header {
   width: 100%;
   height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(243, 88, 139, 0.55);
+  // background-color: rgba(243, 88, 139, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid #ffffff;
+  border-image: linear-gradient(rgba(255, 255, 255, 0) 15%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.5)) 1;
   color: $white;
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   position: relative;
-  z-index: 100;
+  overflow: hidden;
+  top: 0;
 
   .userArea {
     position: absolute;
@@ -310,6 +395,7 @@ footer {
 
     .userIcon {
       height: 36px;
+
       img {
         width: 36px;
         height: 36px;
@@ -359,6 +445,7 @@ footer {
           margin-left: 4px;
         }
       }
+
       .netWorkError {
         background-color: $error;
       }
@@ -385,7 +472,7 @@ footer {
     display: flex;
     align-items: center;
 
-    > .btnGroup {
+    >.btnGroup {
       color: $primaryText;
       background-color: $white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -394,7 +481,7 @@ footer {
       padding: 3px 12px;
       margin-right: 16px;
 
-      > div {
+      >div {
         box-sizing: content-box;
         width: 26px;
         height: 26px;
@@ -409,22 +496,27 @@ footer {
           filter: brightness(50%);
           transition: all 0.5s;
         }
+
         img:hover {
           filter: brightness(80%);
         }
       }
 
-      > div:last-of-type {
+      >div:last-of-type {
         margin-left: 8px;
       }
 
-      > div.languageActive {
+      >div.languageActive {
         img {
           filter: brightness(1);
         }
       }
     }
   }
+}
+
+.header::after {
+  @include blurImg
 }
 
 .mHeader {
@@ -438,20 +530,24 @@ footer {
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   position: relative;
   z-index: 100;
+
   .userArea {
     position: absolute;
     left: 16px;
     height: 36px;
     display: flex;
     align-items: baseline;
+
     .userIcon {
       height: 36px;
+
       img {
         width: 36px;
         height: 36px;
         border-radius: 36px;
       }
     }
+
     .netWorkStatus {
       position: relative;
       right: 12px;
@@ -463,10 +559,12 @@ footer {
       line-height: 18px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
+
     .networkError {
       background-color: $error;
     }
   }
+
   .title {
     display: flex;
     align-items: baseline;
@@ -478,15 +576,18 @@ footer {
       line-height: 44px;
     }
   }
+
   .guide {
     position: absolute;
     right: 16px;
     height: 32px;
     display: flex;
     align-items: center;
+
     .btnGroup {
       height: 32px;
       margin-right: 8px;
+
       img {
         width: 32px;
         height: 32px;
@@ -638,6 +739,7 @@ footer {
       }
     }
   }
+
   .swiper-container {
     position: relative;
 
@@ -651,6 +753,7 @@ footer {
     height: calc(100vh - 196px);
     padding-top: 36px;
   }
+
   #navigation {
     position: relative;
     height: 44px;
@@ -687,6 +790,7 @@ footer {
       color: $white;
       background-color: $primary;
     }
+
     .swiper-button-prev:hover,
     .swiper-button-next:hover {
       background-color: lightpink;
@@ -756,7 +860,7 @@ footer {
           transition: all 0.5s;
           overflow: hidden;
 
-          > .iconfont.icon-cancel {
+          >.iconfont.icon-cancel {
             display: none;
             position: absolute;
             top: calc(50% - 27px);
@@ -771,12 +875,12 @@ footer {
             border-radius: 40px;
           }
 
-          > .iconfont.icon-cancel:hover {
+          >.iconfont.icon-cancel:hover {
             background-color: $primary;
             color: $white;
           }
 
-          > div {
+          >div {
             display: none;
             position: absolute;
             overflow: hidden;
@@ -797,7 +901,7 @@ footer {
             }
           }
 
-          > div:first-of-type {
+          >div:first-of-type {
             left: 40px;
             top: -20px;
 
@@ -806,7 +910,7 @@ footer {
             }
           }
 
-          > div:nth-of-type(2) {
+          >div:nth-of-type(2) {
             left: -20px;
             top: 40px;
 
@@ -815,7 +919,7 @@ footer {
             }
           }
 
-          > div:nth-of-type(3) {
+          >div:nth-of-type(3) {
             left: 100px;
             top: 40px;
 
@@ -824,7 +928,7 @@ footer {
             }
           }
 
-          > div:last-of-type {
+          >div:last-of-type {
             left: 40px;
             top: 100px;
 
@@ -833,7 +937,7 @@ footer {
             }
           }
 
-          > div:hover {
+          >div:hover {
             background-color: $primary;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
@@ -856,11 +960,11 @@ footer {
           transform: rotate(0deg);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
-          > .iconfont.icon-cancel {
+          >.iconfont.icon-cancel {
             display: block;
           }
 
-          > div {
+          >div {
             display: block;
             width: 80px;
             height: 80px;
@@ -939,6 +1043,7 @@ footer {
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 22px 22px 0 0;
     }
+
     .searchAssociation {
       width: 100%;
       height: auto;
@@ -969,6 +1074,7 @@ footer {
       }
     }
   }
+
   .todoList {
     width: calc(100% - 32px);
     max-width: 1200px;
@@ -991,10 +1097,12 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .content {
         width: calc(100% - 36px);
         display: flex;
         flex-direction: column;
+
         p {
           transition: all 0.5s;
         }
@@ -1024,6 +1132,7 @@ footer {
           word-break: break-word;
         }
       }
+
       .btnGroup {
         width: 90%;
         display: flex;
@@ -1031,6 +1140,7 @@ footer {
         justify-content: space-between;
         margin-top: 8px;
       }
+
       .cgStatusIcon {
         cursor: pointer;
         position: relative;
@@ -1043,14 +1153,17 @@ footer {
         color: $primary;
         text-align: center;
       }
+
       .successText {
         color: #b1ffda;
         text-decoration: line-through;
       }
     }
+
     li:first-of-type {
       margin-top: 0;
     }
+
     li.dragActive {
       background-color: rgba(243, 88, 139, 0.85);
       padding: 8px 8px 8px 16px;
@@ -1061,6 +1174,7 @@ footer {
   .todoList-shorter {
     height: calc(100vh - 574px);
   }
+
   .swiper-container {
     position: relative;
 
@@ -1073,6 +1187,7 @@ footer {
     overflow-y: auto;
     height: calc(100vh - 194px);
   }
+
   #navigation {
     position: relative;
     height: 32px;
@@ -1122,11 +1237,13 @@ footer {
     }
   }
 }
+
 .lunaUIPage {
   .lunaUI {
     padding-top: 48px;
     overflow: auto;
     height: calc(100% - 45px);
+
     .controlPanel {
       width: 100%;
       display: flex;
@@ -1141,43 +1258,51 @@ footer {
     }
   }
 }
+
 .lunaChatting {
   width: 100%;
+
   main {
     display: flex;
   }
+
   .stories {
     width: 20%;
     height: calc(100vh - 44px);
     overflow-y: auto;
     overflow-x: hidden;
     transition: all 0.5s;
-    li{
+
+    li {
       position: relative;
       height: auto;
       transition: all 0.5s;
-      img{
+
+      img {
         width: 100%;
         display: block;
         transition: all 0.5s;
       }
-      img:last-of-type{
+
+      img:last-of-type {
         position: absolute;
         top: 0;
         left: 0;
       }
-      p{
+
+      p {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
         padding: 4px;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         color: $white;
         transition: all 0.5s;
       }
     }
   }
+
   .mainChat {
     width: 60%;
     background-color: rgba(255, 255, 255, 0.5);
@@ -1187,31 +1312,38 @@ footer {
     padding: 0 24px 24px 24px;
     transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
     box-shadow: $strongLightShadow;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
     li.spaceReplace {
       margin-left: 66px;
       margin-top: 6px;
     }
+
     li.spaceReplace.self {
       margin-right: 66px;
       margin-left: 0;
     }
+
     li {
       display: flex;
       margin-top: 24px;
+
       .userIcon {
         width: 66px;
         height: 66px;
         border-radius: 66px;
         overflow: hidden;
         flex-shrink: 0;
+
         img {
           width: 100%;
         }
       }
+
       .messageArea {
         margin-left: 16px;
         text-align: left;
+
         p {
           height: 16px;
           line-height: 16px;
@@ -1220,6 +1352,7 @@ footer {
           margin-top: 3px;
           color: $normalDark;
         }
+
         .contentArea {
           background-color: $white;
           border-radius: 18px;
@@ -1229,10 +1362,12 @@ footer {
           display: inline-block;
           padding: 0 18px;
           box-shadow: $aroundDarkShadow;
+
           .imgList {
             display: flex;
             flex-wrap: wrap;
             padding-top: 16px;
+
             img {
               max-width: 500px;
               border-radius: 16px;
@@ -1242,22 +1377,28 @@ footer {
         }
       }
     }
+
     li.self {
       flex-direction: row-reverse;
+
       .messageArea {
         margin-right: 16px;
         text-align: right;
+
         p {
           padding-right: 6px;
           padding-left: 0;
         }
+
         .contentArea {
           background-color: $primary;
           color: $white;
+
           .imgList {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-end;
+
             img {
               max-width: 500px;
               border-radius: 16px;
@@ -1268,65 +1409,64 @@ footer {
       }
     }
   }
+
   .sendingArea {
     width: 20%;
     position: relative;
-    .notice{
-      p{
+
+    .notice {
+      p {
         background-color: rgba(243, 88, 139, 0.55);
         font-size: 24px;
         width: 100%;
         color: $white;
       }
-      ul{
+
+      ul {
         padding: 0 16px;
-        li{
+
+        li {
           text-align: left;
           padding: 8px 0;
         }
-        li.upset{
+
+        li.upset {
           color: $errorText;
         }
       }
     }
+
     .typeArea {
       padding: 0 16px;
       position: absolute;
       bottom: 32px;
       width: 100%;
+
       textarea {
         width: 100%;
         resize: none;
-        border: 1px solid rgba(255,255,255,0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
         box-shadow: $darkShadow;
         border-radius: 6px;
         height: 100%;
         outline: none;
         padding: 8px;
-        background-color: rgba(255,255,255,0.3);
+        background-color: rgba(255, 255, 255, 0.3);
         position: relative;
       }
-      .blurBc{
+
+      .blurBc {
         height: 100px;
         overflow: hidden;
         position: relative;
         margin-bottom: 16px;
         border-radius: 6px;
       }
+
       .blurBc::after {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        background-image: url("../../../public/bc1.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        filter: blur(10px);
+        @include blurImg
       }
+
       .previewGroup {
         width: 100%;
         height: auto;
@@ -1337,11 +1477,12 @@ footer {
         div {
           position: relative;
           margin-right: 4px;
-          i{
+
+          i {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             color: $white;
             width: 100%;
             height: 44px;
@@ -1349,6 +1490,7 @@ footer {
             border-radius: 6px;
             cursor: pointer;
           }
+
           img {
             height: 44px;
             border-radius: 6px;

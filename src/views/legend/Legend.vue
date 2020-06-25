@@ -1,29 +1,29 @@
 <template>
-  <div>
-    <Header
-      :msg-header="$t('lang.titles.legend')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-    ></Header>
-    <Select :select-data="girlData" key-value="id" key-label="name" filterable return-label @on-change="choiceGirl"></Select>
-    <Button theme="primary" @click="autoBattleStart">开启自动战斗模式</Button>
-    <Button @click="battleStart">开启手动战斗模式</Button>
-    <Button @click="reset">重置战斗</Button>
-    <Button @click="online">在线对战</Button>
-    <Button @click="showCards">查阅人物资料</Button>
-    <Button @click="getArmor">获取装甲(Alpha)</Button>
-  </div>
+	<div>
+		<Select
+			:select-data="girlData"
+			key-value="id"
+			key-label="name"
+			filterable
+			return-label
+			@on-change="choiceGirl"
+		></Select>
+		<Button theme="primary" @click="autoBattleStart">开启自动战斗模式</Button>
+		<Button @click="battleStart">开启手动战斗模式</Button>
+		<Button @click="reset">重置战斗</Button>
+		<Button @click="online">在线对战</Button>
+		<Button @click="showCards">查阅人物资料</Button>
+		<Button @click="getArmor">获取装甲(Alpha)</Button>
+	</div>
 </template>
 
 <script>
-import Header from '../../components/pc/activeHeader.vue'
-
 export default {
   name: 'ByteCursor',
   data () {
     return {
       test: '',
+      loading: '',
       girlData: [
         {
           name: '花神',
@@ -103,8 +103,8 @@ export default {
       boySkill: {}
     }
   },
-  components: {
-    Header
+  created() {
+    this.$emit('sendMsgHeader', this.$t('lang.titles.legend'))
   },
   methods: {
     click () {
@@ -131,7 +131,7 @@ export default {
     online () {
       this.$Message.error({ content: '服务暂未开通！敬请期待！' })
       if (window.navigator.onLine) {
-
+        this.loading = true
       } else {
         this.$Message.error({ content: '您还未连接互联网或网络较差！请在网络良好的环境下重试！' })
       }

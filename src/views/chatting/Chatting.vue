@@ -1,17 +1,10 @@
 <template>
   <div class="lunaChatting">
-    <Header
-      :msg-header="$t('lang.titles.chatting')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
     <main>
       <ul class="stories">
         <li v-for="(i, index) in storiesList" :key="index" @click="jumpTo()">
-          <img :src="i.src" alt="">
-          <img src="lace.svg" alt="">
+          <img :src="i.src" alt="" />
+          <img src="lace.svg" alt="" />
           <p>{{ i.title }}</p>
         </li>
       </ul>
@@ -55,10 +48,18 @@
             <li>[更新提示]花神传520特典Part2已更新上部！</li>
           </ul>
           <div class="typeArea">
-            <div v-if="imgList.length !== 0" class="blurBc previewGroup" @mouseleave="showDelIcon(-1)">
+            <div
+              v-if="imgList.length !== 0"
+              class="blurBc previewGroup"
+              @mouseleave="showDelIcon(-1)"
+            >
               <div v-for="(i, index) in imgList" :key="index">
-                <i v-show="delIconShowIndex === index" class="iconfont icon-cancel" @click="delImg(index)"></i>
-                <img :src="i" alt="" @mouseenter="showDelIcon(index)">
+                <i
+                  v-show="delIconShowIndex === index"
+                  class="iconfont icon-cancel"
+                  @click="delImg(index)"
+                ></i>
+                <img :src="i" alt="" @mouseenter="showDelIcon(index)" />
               </div>
             </div>
             <div class="blurBc">
@@ -76,7 +77,6 @@
 </template>
 
 <script>
-import Header from '../../components/pc/activeHeader.vue'
 import { login } from '../../assets/js/url.js'
 
 export default {
@@ -172,9 +172,6 @@ export default {
         }
       ]
     }
-  },
-  components: {
-    Header
   },
   created () {
     this.getData()

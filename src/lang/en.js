@@ -56,13 +56,20 @@ export const lang = {
   titles: {
     online: 'Online',
     offline: 'Offline',
-    guide: 'Guide',
-    home: 'Luna Garden',
-    about: 'About Us',
-    login: 'Login',
-    register: 'Register',
-    chatting: 'Flower Chatting',
-    legend: 'Flower legend'
+    Guide: 'Guide',
+    Home: 'Luna Garden',
+    AboutUs: 'About Us',
+    Login: 'Login',
+    Register: 'Register',
+    Chatting: 'Flower Chatting',
+    Legend: 'Flower legend',
+    mGuide: 'Guide',
+    mHome: 'Luna Garden',
+    mAboutUs: 'About Us',
+    mLogin: 'Login',
+    mRegister: 'Register',
+    mChatting: 'Flower Chatting',
+    mLegend: 'Flower legend'
   },
   firstAlert: {
     attention: 'Attention',

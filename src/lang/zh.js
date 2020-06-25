@@ -56,13 +56,20 @@ export const lang = {
   titles: {
     online: '在线',
     offline: '离线',
-    guide: '引导模式',
-    home: 'Luna Garden',
-    about: '关于我们',
-    login: '登录',
-    register: '注册',
-    chatting: '花神通讯',
-    legend: '花神之战'
+    Guide: '引导模式',
+    Home: 'Luna Garden',
+    AboutUs: '关于我们',
+    Login: '登录',
+    Register: '注册',
+    Chatting: '花神通讯',
+    Legend: '花神之战',
+    Guide: '引导模式',
+    mHome: 'Luna Garden',
+    mAboutUs: '关于我们',
+    mLogin: '登录',
+    mRegister: '注册',
+    mChatting: '花神通讯',
+    mLegend: '花神之战'
   },
   firstAlert: {
     attention: '提示',
