@@ -27,7 +27,7 @@ $strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  filter: blur(8px);
+  filter: blur(3px);
 }
 
 @import "./LunaUI/LunaUI.scss";
@@ -598,13 +598,18 @@ footer {
 
 .aboutUs {
   .about {
-    max-width: 1366px;
+    // max-width: 1366px;
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0 auto;
     height: calc(100vh - 44px);
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 22px 0;
+    position: relative;
+  }
+
+  .about::after {
+    @include blurImg()
   }
 
   h1 {
@@ -672,6 +677,7 @@ footer {
       align-items: center;
       padding: 0 8px;
       transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+      position: relative;
 
       input {
         margin: 0 8px;
@@ -698,6 +704,10 @@ footer {
       }
     }
 
+    .inputArea::after {
+      @include blurImg()
+    }
+
     .inputArea:hover {
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       background-color: rgba(255, 255, 255, 0.8);
@@ -722,10 +732,12 @@ footer {
         height: 30px;
         line-height: 30px;
         font-size: 14px;
-        background-color: rgba(0, 0, 0, 0);
+        background-color: transparent;
         cursor: pointer;
         transition: all 0.25s;
-        border: 1px solid rgba(0, 0, 0, 0);
+        border: 1px solid transparent;
+        color: $white;
+        text-shadow: 0 0 5px $primaryText;
       }
 
       li:hover {
@@ -738,9 +750,16 @@ footer {
         border-radius: 0 0 22px 22px;
       }
     }
+
+    .searchAssociation::after {
+      @include blurImg()
+    }
   }
 
   .swiper-container {
+    width: calc(100% - 132px);
+    max-width: 1384px;
+    margin: 0 auto;
     position: relative;
 
     .swiper-wrapper {
@@ -749,6 +768,8 @@ footer {
   }
 
   .swiper-slide {
+    width: 100% !important;
+    max-width: 1384px !important;
     overflow: auto;
     height: calc(100vh - 196px);
     padding-top: 36px;
@@ -810,12 +831,13 @@ footer {
   .todoList {
     width: calc(100% - 132px);
     max-width: 1384px;
+    width: 100%;
     padding: 12px 8px 32px;
     min-height: 0;
-    margin: 0 auto 0;
+    margin: 0 auto;
 
     li {
-      width: calc(100% - 44px);
+      width: 100%;
       background-color: rgba(243, 88, 139, 0.35);
       margin-top: 16px;
       height: 44px;
@@ -829,6 +851,7 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
 
       span {
         margin-right: 16px;
@@ -977,6 +1000,10 @@ footer {
       }
     }
 
+    li::after {
+      @include blurImg()
+    }
+
     li:hover {
       background-color: rgba(243, 88, 139, 0.85);
     }
@@ -984,6 +1011,10 @@ footer {
 
   .todoList-shorter {
     height: calc(100vh - 574px);
+  }
+
+  #navigation.todoListShorter {
+    margin-top: 350px;
   }
 
   .successText {
@@ -1010,6 +1041,7 @@ footer {
       align-items: center;
       padding: 0 8px;
       transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+      position: relative;
 
       input {
         font-size: 14px;
@@ -1031,6 +1063,10 @@ footer {
           color: #ff91ac;
         }
       }
+    }
+
+    .inputArea::after {
+      @include blurImg()
     }
 
     .inputArea:hover {
@@ -1277,6 +1313,7 @@ footer {
       position: relative;
       height: auto;
       transition: all 0.5s;
+      cursor: pointer;
 
       img {
         width: 100%;
@@ -1299,6 +1336,13 @@ footer {
         background: rgba(0, 0, 0, 0.5);
         color: $white;
         transition: all 0.5s;
+      }
+    }
+
+    li:hover {
+
+      img {
+        filter: contrast(1.2);
       }
     }
   }
@@ -1507,6 +1551,65 @@ footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
+      }
+    }
+  }
+}
+
+.legend {
+  .charaSelectArea {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    figure {
+      position: relative;
+      width: calc(16.7% - 4px - 24px);
+      margin-bottom: 24px;
+      border: 2px solid $white;
+      overflow: hidden;
+      border-radius: 12px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: all 0.3s;
+      }
+
+      img.blur {
+        filter: blur(4px) brightness(0.5);
+      }
+
+      figcaption {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        padding: 16px;
+        left: 0;
+        color: $white;
+        text-shadow: 0 0 2px $primaryText;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        p:first-of-type {
+          position: absolute;
+          top: 16px;
+          font-size: 24px;
+        }
+
+        p:nth-of-type(2) {
+          font-size: 12px;
+        }
+
+        p:last-of-type {
+          position: absolute;
+          bottom: 16px;
+          font-size: 12px;
+        }
       }
     }
   }

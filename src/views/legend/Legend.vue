@@ -1,25 +1,16 @@
 <template>
-	<div>
-		<Select
-			:select-data="girlData"
-			key-value="id"
-			key-label="name"
-			filterable
-			return-label
-			@on-change="choiceGirl"
-		></Select>
-		<Button theme="primary" @click="autoBattleStart">开启自动战斗模式</Button>
-		<Button @click="battleStart">开启手动战斗模式</Button>
-		<Button @click="reset">重置战斗</Button>
-		<Button @click="online">在线对战</Button>
-		<Button @click="showCards">查阅人物资料</Button>
-		<Button @click="getArmor">获取装甲(Alpha)</Button>
+	<div class="legend">
+		<chara-select-area
+			:charaList="girlData"
+			:chooseChara="chooseChara"
+		></chara-select-area>
 	</div>
 </template>
 
 <script>
+import CharaSelectArea from './charaSelectArea.vue'
 export default {
-  name: 'ByteCursor',
+  name: 'Legend',
   data () {
     return {
       test: '',
@@ -28,80 +19,118 @@ export default {
         {
           name: '花神',
           id: 'flower',
+          src: 'legend/GodOfFlower.jpg',
+          previewSrc: 'legend/GodOfFlowerPreview.jpg',
+          desc: '能力均衡的远程法师类型，提供治疗、护盾、以及强大的增益攻击技能。',
+          camp: '花神特工组织',
           health: 100,
-          weak: 'chest',
           speed: 100
         },
         {
           name: '暗花神',
           id: 'darkFlower',
-          health: 80,
-          weak: 'torso',
-          speed: 120
+          src: 'legend/DarkFlower.jpg',
+          previewSrc: 'legend/DarkFlowerPreview.jpg',
+          desc: '隐匿在暗影中的魅魔刺客，拥有高加成的近战攻击技能与可抵挡任意伤害的一次性护盾技能',
+          camp: '花神特工组织',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '素言',
+          id: 'flower',
+          src: 'legend/SuYan.jpg',
+          previewSrc: 'legend/SuYanPreview.jpg',
+          desc: '擅长冰雪魔法的远程法师类型，拥有极高的攻击法术加成与增益攻击技能。',
+          camp: '神族',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '魔樱',
+          id: 'darkFlower',
+          src: 'legend/MoYing.jpg',
+          previewSrc: 'legend/MoyingPreview.jpg',
+          desc: '卓越的魔族刺客，拥有高基础伤害的攻击技能与可抵挡部分伤害的护盾技能。',
+          camp: '魔族',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '邵蔷',
+          id: 'darkFlower',
+          src: 'legend/ShaoQiang.jpg',
+          previewSrc: 'legend/ShaoQiangPreview.jpg',
+          desc: '强大的近战法师，拥有极高基础伤害的攻击技能，辅助技能可提升护甲、可抵挡任意伤害的一次性护盾。',
+          camp: '魅魔',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '撒贝丽',
+          id: 'darkFlower',
+          src: 'legend/Sabrey.jpg',
+          previewSrc: 'legend/SabreyPreview.jpg',
+          desc: '出色的魅魔战士，拥有高加成的近战攻击技能与回复类型法术。',
+          camp: '魅魔',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '依芈',
+          id: 'darkFlower',
+          src: 'legend/YiMi.jpg',
+          previewSrc: 'legend/YiMiPreview.jpg',
+          desc: '出色的远程攻击枪手，拥有高基础伤害的枪术技能与几率暴击技能。',
+          camp: '花神特工组织',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '柯林娜',
+          id: 'flower',
+          src: 'legend/Corlina.jpg',
+          previewSrc: 'legend/CorlinaPreview.jpg',
+          desc: '体术与枪术并驾齐驱的战士，拥有高加成的体术攻击技能与高基础伤害的枪术技能，且枪术技能自带较低的暴击几率。',
+          camp: '花神特工组织',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '玛丽',
+          id: 'flower',
+          src: 'legend/Marie.jpg',
+          previewSrc: 'legend/MariePreview.jpg',
+          desc: '卓越的远程攻击枪手，拥有独特的增加伤害机制(持续作战会逐步提升伤害)，拥有高加成的枪术技能。',
+          camp: '花神特工组织',
+          health: 100,
+          speed: 100
+        },
+        {
+          name: '苏舒',
+          id: 'darkFlower',
+          src: 'legend/SuShu.jpg',
+          previewSrc: 'legend/SuShuPreview.jpg',
+          desc: '综合能力较强的枪手，拥有独特的增加伤害机制(攻击技能有一定几率使目标永久降低基础护甲)，拥有较高加成且较高基础伤害的枪术技能。',
+          camp: '花神特工组织',
+          health: 100,
+          speed: 100
         }
       ],
-      girl: {
+      chara: {
         name: '',
         id: '',
         health: 0,
         weak: '',
         speed: 0
       },
-      girlSkill: {
-        flower: [
-          {
-            name: '花疗术',
-            effect: '治疗' + 'this.girl.name' + '2点生命！',
-            damage: 0,
-            treatment: 2,
-            powerUp: 0
-          },
-          {
-            name: '花之赐福',
-            effect: '提升' + 'this.girl.name' + '2倍的伤害！',
-            damage: 0,
-            treatment: 0,
-            powerUp: 2
-          },
-          {
-            name: '连环花矢',
-            effect: '射出连续的花枝箭，对' + 'this.boy.name' + '造成' + 5 * 'this.girl.powerUp' + '伤害！',
-            damage: 5,
-            treatment: 0,
-            powerUp: 0
-          },
-          {
-            name: '极花护铠',
-            effect: '对' + 'this.girl.name' + '释放了花瓣组成的护盾，可抵挡5点伤害！',
-            damage: 0,
-            treatment: 0,
-            powerUp: 0,
-            shield: 5
-          },
-          {
-            name: '召唤花精灵',
-            effect: '召唤出一只花精灵，为自己抵挡一次伤害，且每回合对敌人各造成1点伤害',
-            damage: 1,
-            damageAOE: true,
-            treatment: 0,
-            powerUp: 0,
-            shield: 100000,
-            disposableShield: true
-          },
-          {
-            name: '花龙卷',
-            effect: '对' + 'this.boy.name' + '释放了由花海构成的龙卷风，造成了' + 10 * 'this.powerUp' + '点伤害！',
-            damage: 0,
-            treatment: 0,
-            powerUp: 0,
-            shield: 0
-          }
-        ]
-      },
       boyData: [],
       boy: {},
       boySkill: {}
     }
+  },
+  components: {
+    CharaSelectArea
   },
   created() {
     this.$emit('sendMsgHeader', this.$t('lang.titles.legend'))
@@ -113,8 +142,8 @@ export default {
       this.test = value
       this.$refs['input'].focus()
     },
-    choiceGirl (val) {
-      this.girl = val
+    chooseChara (val) {
+      this.chara = val
     },
     battleStart () {
       this.boy = this.boyData[this.random(this.boyData)]
@@ -126,7 +155,7 @@ export default {
       return Math.floor(Math.random() * arr.length)
     },
     reset () {
-      this.girl = {}
+      this.chara = {}
     },
     online () {
       this.$Message.error({ content: '服务暂未开通！敬请期待！' })

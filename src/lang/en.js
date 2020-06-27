@@ -133,7 +133,7 @@ export const lang = {
     desc9: 'The current online version function can be used normally.The new features will only be released in beta Version,no impact on stable online versions,Please enjoy the best experience Luna Garden brings to you.',
     title2: 'List of developers',
     author: 'Luna',
-    authorDesc: 'author',
+    authorDesc: 'Author',
     people: 'Kritsu',
     people2: 'wangdi',
     people3: 'Naht',

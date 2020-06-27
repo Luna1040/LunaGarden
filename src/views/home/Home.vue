@@ -27,7 +27,7 @@
 					font-size="32"
 					@on-keyup="keyup($event)"
 					@on-keydown="keydown($event)"
-				></Input>
+				/>
 				<Button
 					:width="32"
 					:height="32"
@@ -56,7 +56,7 @@
 				</ul>
 			</transition>
 		</div>
-		<div id="navigation">
+		<div id="navigation" :class="{ todoListShorter: searchArr.length !== 0 }">
 			<div slot="button-prev" class="swiper-button-prev">
 				{{ $t("lang.home.prev") }}
 			</div>

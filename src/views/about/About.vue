@@ -19,20 +19,20 @@
 					<figcaption>{{ $t("lang.aboutUs.authorDesc") }}</figcaption>
 				</figure>
 				<figure>
-					<img src="userIcon.jpg" alt />
-					<figcaption>{{ $t("lang.aboutUs.people") }}</figcaption>
-					<figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
-				</figure>
-				<figure>
-					<img src="userIcon.jpg" alt />
+					<img src="userIcons/Suyan.jpg" alt />
 					<figcaption>{{ $t("lang.aboutUs.people4") }}</figcaption>
 					<figcaption>{{ $t("lang.aboutUs.UI") }}</figcaption>
 				</figure>
 				<figure>
 					<img src="userIcon.jpg" alt />
-					<figcaption>{{ $t("lang.aboutUs.people3") }}</figcaption>
+					<figcaption>{{ $t("lang.aboutUs.people") }}</figcaption>
 					<figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
 				</figure>
+				<!-- <figure>
+					<img src="userIcon.jpg" alt />
+					<figcaption>{{ $t("lang.aboutUs.people3") }}</figcaption>
+					<figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
+				</figure> -->
 				<figure>
 					<img src="userIcon.jpg" alt />
 					<figcaption>{{ $t("lang.aboutUs.people2") }}</figcaption>
