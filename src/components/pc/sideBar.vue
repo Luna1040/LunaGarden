@@ -1,14 +1,14 @@
 <template>
-	<transition name="slideBar">
-		<aside v-if="value" id="sideMenu">
-			<i class="iconfont icon-cancel" @click="hideSideMenu"></i>
-			<ul>
-				<li v-for="(i, index) in menuList" :key="index" @click="goLink(i.to)">
-					{{ i.name }}
-				</li>
-			</ul>
-		</aside>
-	</transition>
+  <transition name="slideBar">
+    <aside v-if="value" id="sideMenu">
+      <i class="iconfont icon-cancel" @click="hideSideMenu"></i>
+      <ul>
+        <li v-for="(i, index) in menuList" :key="index" @click="goLink(i.to)">
+          {{ i.name }}
+        </li>
+      </ul>
+    </aside>
+  </transition>
 </template>
 
 <script>

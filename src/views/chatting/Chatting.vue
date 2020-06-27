@@ -1,83 +1,83 @@
 <template>
-	<div class="lunaChatting">
-		<main>
-			<ul class="stories">
-				<li
-					v-for="(i, index) in storiesList"
-					:key="index"
-					@click="jumpTo(i.link)"
-				>
-					<img :src="i.src" alt="" />
-					<img src="lace.svg" alt="" />
-					<p>{{ i.title }}</p>
-				</li>
-			</ul>
-			<ul ref="chatWindow" class="mainChat">
-				<li
-					v-for="(i, index) in chatList"
-					:key="index"
-					:class="[
-						{ self: i.uid === userInfo.uid },
-						{ spaceReplace: !ifRepeatChara(index) },
-					]"
-				>
-					<div v-if="ifRepeatChara(index)" class="userIcon">
-						<img :src="i.userIcon" alt="" />
-					</div>
-					<div class="messageArea" :class="{ self: i.uid === userInfo.uid }">
-						<p v-if="ifRepeatChara(index)">{{ i.userName }}</p>
-						<div class="contentArea">
-							<div v-if="i.imgList.length !== 0" class="imgList">
-								<img
-									v-for="(x, index2) in i.imgList"
-									:key="index2"
-									:src="x"
-									alt=""
-								/>
-							</div>
-							{{ i.content }}
-						</div>
-					</div>
-				</li>
-			</ul>
-			<div class="sendingArea">
-				<div class="notice">
-					<p>公告</p>
-					<ul>
-						<li class="upset">[置顶]花神传征文</li>
-						<li class="upset">[置顶]特战队服装选择</li>
-						<li class="upset">[置顶]医疗队队员服装选择</li>
-						<li>[更新提示]花神传520特典-Part2已更新中部！</li>
-						<li>[更新提示]花神传现有特工写真集已更新！</li>
-						<li>[更新提示]花神传520特典Part2已更新上部！</li>
-					</ul>
-					<div class="typeArea">
-						<div
-							v-if="imgList.length !== 0"
-							class="blurBc previewGroup"
-							@mouseleave="showDelIcon(-1)"
-						>
-							<div v-for="(i, index) in imgList" :key="index">
-								<i
-									v-show="delIconShowIndex === index"
-									class="iconfont icon-cancel"
-									@click="delImg(index)"
-								></i>
-								<img :src="i" alt="" @mouseenter="showDelIcon(index)" />
-							</div>
-						</div>
-						<div class="blurBc">
-							<textarea v-model="text"></textarea>
-						</div>
-						<div class="btnGroup">
-							<Button theme="primary" @click="uploadImg">上传图片</Button>
-							<Button theme="primary" @click="sendMessage">发送消息</Button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
+  <div class="lunaChatting">
+    <main>
+      <ul class="stories">
+        <li
+          v-for="(i, index) in storiesList"
+          :key="index"
+          @click="jumpTo(i.link)"
+        >
+          <img :src="i.src" alt="" />
+          <img src="lace.svg" alt="" />
+          <p>{{ i.title }}</p>
+        </li>
+      </ul>
+      <ul ref="chatWindow" class="mainChat">
+        <li
+          v-for="(i, index) in chatList"
+          :key="index"
+          :class="[
+            { self: i.uid === userInfo.uid },
+            { spaceReplace: !ifRepeatChara(index) },
+          ]"
+        >
+          <div v-if="ifRepeatChara(index)" class="userIcon">
+            <img :src="i.userIcon" alt="" />
+          </div>
+          <div class="messageArea" :class="{ self: i.uid === userInfo.uid }">
+            <p v-if="ifRepeatChara(index)">{{ i.userName }}</p>
+            <div class="contentArea">
+              <div v-if="i.imgList.length !== 0" class="imgList">
+                <img
+                  v-for="(x, index2) in i.imgList"
+                  :key="index2"
+                  :src="x"
+                  alt=""
+                />
+              </div>
+              {{ i.content }}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="sendingArea">
+        <div class="notice">
+          <p>公告</p>
+          <ul>
+            <li class="upset">[置顶]花神传征文</li>
+            <li class="upset">[置顶]特战队服装选择</li>
+            <li class="upset">[置顶]医疗队队员服装选择</li>
+            <li>[更新提示]花神传520特典-Part2已更新中部！</li>
+            <li>[更新提示]花神传现有特工写真集已更新！</li>
+            <li>[更新提示]花神传520特典Part2已更新上部！</li>
+          </ul>
+          <div class="typeArea">
+            <div
+              v-if="imgList.length !== 0"
+              class="blurBc previewGroup"
+              @mouseleave="showDelIcon(-1)"
+            >
+              <div v-for="(i, index) in imgList" :key="index">
+                <i
+                  v-show="delIconShowIndex === index"
+                  class="iconfont icon-cancel"
+                  @click="delImg(index)"
+                ></i>
+                <img :src="i" alt="" @mouseenter="showDelIcon(index)" />
+              </div>
+            </div>
+            <div class="blurBc">
+              <textarea v-model="text"></textarea>
+            </div>
+            <div class="btnGroup">
+              <Button theme="primary" @click="uploadImg">上传图片</Button>
+              <Button theme="primary" @click="sendMessage">发送消息</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -133,7 +133,7 @@ export default {
         {
           src: 'chatting/1.AgentInTrouble.jpg',
           title: '第一章：特工有难',
-          link: 'https://www.pixiv.net/artworks/79396282',
+          link: 'https://www.pixiv.net/artworks/79396282'
         },
         {
           src: 'chatting/2.PoliceDetail.jpg',
@@ -189,7 +189,7 @@ export default {
           src: 'chatting/11.DarkFire.jpg',
           title: '第十章：黑暗之火',
           link: 'https://www.pixiv.net/artworks/82440690'
-        },
+        }
       ]
     }
   },
