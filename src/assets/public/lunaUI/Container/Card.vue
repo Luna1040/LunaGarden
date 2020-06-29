@@ -1,16 +1,46 @@
 <template>
   <div
     class="lunaCard"
-    :style="[cardPadding, cardWidth, cardHeight, cardMaxHeight, cardMaxWidth, cardBackground, cardBorder, cardRadius, cardShadow, cardImage, flexStyle]"
-    :class="[className, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {lightCard: theme === 'light', darkCard: theme === 'dark'},{darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'},{flex: flex, block: !flex}]"
+    :style="[
+      cardPadding,
+      cardWidth,
+      cardHeight,
+      cardBackground,
+      cardBorder,
+      cardRadius,
+      cardShadow,
+      cardImage,
+      flexStyle,
+    ]"
+    :class="[
+      className,
+      {
+        squareCorner: corner === 'square',
+        smallCorner: corner === 'small',
+        filletCorner: corner === 'fillet',
+        largeCorner: corner === 'large',
+        fullCorner: corner === 'full',
+        roundCorner: corner === 'round',
+      },
+      { lightCard: theme === 'light', darkCard: theme === 'dark' },
+      {
+        darkShadow: shadowTheme === 'dark',
+        lightShadow: shadowTheme === 'light',
+      },
+    ]"
   >
     <div class="lunaCardTitle" v-if="showHead">
       <slot name="header">
-        <i v-if="icon !== ''" :class="icon"></i>
-        <span :style="cardFontSize">{{title}}</span>
+        <i v-if="icon !== ''" :class="fontIcon"></i>
+        <img v-if="icon !== ''" :src="imageIcon" alt="" />
+        <span :style="cardFontSize">{{ title }}</span>
       </slot>
     </div>
-    <div class="lunaCardBody" :style="cardScrollable">
+    <div
+      class="lunaCardBody"
+      :style="cardScrollable"
+      :class="{ flex: flex, block: !flex }"
+    >
       <slot></slot>
     </div>
     <slot name="footer"></slot>
@@ -23,256 +53,304 @@ export default {
   props: {
     showHead: {
       type: Boolean,
-      default: true
+      default: true,
     },
     title: {
       type: String,
-      default: ''
+      default: "",
     },
     icon: {
       type: String,
-      default: ''
+      default: "",
+    },
+    iconColor: {
+      type: [Number, String],
+      default: "none",
+    },
+    iconSize: {
+      type: [Number, String],
+      default: "none",
     },
     fontSize: {
       type: Number,
-      default: 16
+      default: 16,
     },
     shadow: {
       type: Boolean,
-      default: true
+      default: true,
+    },
+    shadowTheme: {
+      type: String,
+      default: "dark",
     },
     shadowStyle: {
       type: String,
-      default: 'dark'
+      default: "",
     },
     theme: {
       type: String,
-      default: 'light'
+      default: "light",
     },
     radius: {
       type: Number,
-      default: -1
+      default: -1,
     },
     corner: {
       type: String,
-      default: 'large'
+      default: "large",
     },
     background: {
-      type: String,
-      default: '#FEFEFE'
+      type: [Number, String],
+      default: "#FEFEFE",
     },
     border: {
-      type: String,
-      default: '1px solid #EFEFEF'
+      type: [Number, String],
+      default: "1px solid #EFEFEF",
     },
     //宽度高度相关小于等于100为百分比，大于100为px
     width: {
       //可选auto
       type: [Number, String],
-      default: 100
+      default: 100,
     },
     maxWidth: {
       type: Number,
-      default: 100
+      default: 100,
     },
     height: {
       type: [Number, String],
-      default: 100
+      default: "auto",
     },
     padding: {
-      type: Number,
-      default: 0
+      type: [Number, String],
+      default: 0,
     },
     maxHeight: {
       type: [Number, String],
-      default: 'auto',
+      default: "auto",
     },
     scrollable: {
       type: Boolean,
-      default: false
+      default: true,
     },
     className: {
       type: String,
-      default: ''
+      default: "",
     },
     image: {
       type: String,
-      default: ''
+      default: "",
     },
     flex: {
       type: Boolean,
-      default: true
+      default: true,
     },
     direction: {
       type: String,
-      default: 'column'
+      default: "column",
     },
     justify: {
       type: String,
-      default: 'start'
+      default: "start",
     },
     align: {
       type: String,
-      default: 'baseline'
+      default: "baseline",
+    },
+  },
+  data() {
+    return {
+      fontIcon: "",
+      imageIcon: "",
+    };
+  },
+  mounted() {
+    let icon = this.icon;
+    // 为了避免转义反斜杠出问题，这里将对其进行转换
+    let re = /(\\+)/g;
+    let filename = icon.replace(re, "#");
+    // 对路径字符串进行剪切截取
+    let fileArray = filename.split("#");
+    // 获取数组中最后一个，即文件名
+    let fileName = fileArray[fileArray.length - 1];
+    // 再对文件名进行截取，以取得后缀名
+    let suffixName = fileName.split(".");
+    // 获取截取的最后一个字符串，即为后缀名
+    let last = suffixName[suffixName.length - 1];
+    // 添加需要判断的后缀名类型
+    let tp = "jpg,svg,png,JPG,SVG,PNG";
+    // 返回符合条件的后缀名在字符串中的位置
+    let rs = tp.indexOf(last);
+    // 如果返回的结果大于或等于0
+    if (rs >= 0) {
+      this.imageIcon = this.icon;
+    } else {
+      this.fontIcon = this.icon;
     }
   },
   computed: {
     cardFontSize() {
-      return {
-        fontSize: this.fontSize + 'px'
+      if (typeof this.fontSize === "string") {
+        return { fontSize: this.fontSize };
+      } else {
+        return { fontSize: this.fontSize + "px" };
       }
     },
     flexStyle() {
       return {
         flexDirection: this.direction,
         justifyContent: this.justify,
-        itemsAlign: this.align
-      }
+        itemsAlign: this.align,
+      };
     },
     cardBackground() {
-      return {
-        backgroundColor: this.background
+      if (typeof this.background === "string") {
+        return { backgroundColor: this.background };
+      } else {
+        return { backgroundColor: "#" + this.background };
       }
     },
     cardImage() {
       return {
-        backgroundImage: 'url("' + this.image + '")!important'
-      }
+        backgroundImage: 'url("' + this.image + '")!important',
+      };
     },
     cardBorder() {
-      return {
-        border: this.border
+      if (typeof this.border === "string") {
+        return { border: this.border };
+      } else {
+        return { border: this.border + "px solid #EFEFEF" };
       }
     },
     cardPadding() {
-      return {
-        padding: this.padding + 'px'
+      if (typeof this.padding === "string") {
+        return {
+          padding: this.padding,
+        };
+      } else {
+        return {
+          padding: this.padding + "px",
+        };
       }
     },
     cardWidth() {
-      if (this.border !== '0') {
+      if (this.border !== "0") {
         if (this.width <= 100) {
           return {
-            width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
-          }
+            width:
+              "calc(" + this.width + "% - " + this.padding * 2 + "px - 2px)",
+          };
         } else {
           return {
-            width: this.width - this.padding * 2 - 2 + 'px'
-          }
+            width: this.width - this.padding * 2 - 2 + "px",
+          };
         }
       } else {
         if (this.width <= 100) {
           return {
-            width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px)'
-          }
+            width: "calc(" + this.width + "% - " + this.padding * 2 + "px)",
+          };
         } else {
           return {
-            width: this.width - this.padding * 2 + 'px'
-          }
+            width: this.width - this.padding * 2 + "px",
+          };
         }
       }
     },
-    cardMaxWidth() {
-      if (this.border !== '0') {
-        if (this.maxWidth <= 100) {
-          return {
-            maxWidth: 'calc(' + this.maxWidth + '% - ' + this.padding * 2 + 'px - 2px)'
-          }
-        } else {
-          return {
-            maxWidth: this.maxWidth - this.padding * 2 - 2 + 'px'
-          }
-        }
-      } else {
-        if (this.maxWidth <= 100) {
-          return {
-            maxWidth: 'calc(' + this.maxWidth + '% - ' + this.padding * 2 + 'px)'
-          }
-        } else {
-          return {
-            maxWidth: this.maxWidth - this.padding * 2 + 'px'
-          }
-        }
+    containerShadowStyle() {
+      if (this.shadowStyle !== "") {
+        return { boxShadow: this.shadowStyle + "!important" };
       }
     },
     cardHeight() {
-      if (this.border !== '0') {
+      if (this.border !== "0") {
         if (this.height <= 100) {
           return {
-            height: 'calc(' + this.height + '% - ' + this.padding * 2 + 'px - 2px)'
-          }
+            height:
+              "calc(" + this.height + "% - " + this.padding * 2 + "px - 2px)",
+          };
         } else {
           return {
-            height: this.height - this.padding * 2 - 2 + 'px'
-          }
+            height: this.height - this.padding * 2 - 2 + "px",
+          };
         }
       } else {
         if (this.height <= 100) {
           return {
-            height: 'calc(' + this.height + '% - ' + this.padding * 2 + 'px)'
-          }
+            height: "calc(" + this.height + "% - " + this.padding * 2 + "px)",
+          };
         } else {
           return {
-            height: this.height - this.padding * 2 + 'px'
-          }
-        }
-      }
-    },
-    cardMaxHeight() {
-      if (this.border !== '0') {
-        if (this.maxHeight < 100) {
-          return {
-            maxHeight: 'calc(' + this.maxHeight + '% -' + this.padding * 2 - 2 + 'px)'
-          }
-        } else {
-          return {
-            maxHeight: this.maxHeight - this.padding * 2 - 2 + 'px'
-          }
-        }
-      } else {
-        if (this.maxHeight < 100) {
-          return {
-            maxHeight: 'calc(' + this.maxHeight + '% -' + this.padding * 2 + 'px)'
-          }
-        } else {
-          return {
-            maxHeight: this.maxHeight - this.padding * 2 + 'px'
-          }
+            height: this.height - this.padding * 2 + "px",
+          };
         }
       }
     },
     cardScrollable() {
       if (this.scrollable) {
         return {
-          overflow: 'auto!important'
-        }
+          overflow: "auto!important",
+        };
       } else {
         return {
-          overflow: 'hidden!important'
-        }
+          overflow: "hidden!important",
+        };
       }
     },
     cardRadius() {
       if (this.radius !== -1) {
         return {
-          borderRadius: this.radius + "px!important"
+          borderRadius: this.radius + "px!important",
         };
       } else {
         return {};
       }
     },
+    iconFontSize() {
+      if (this.iconSize !== "none") {
+        if (typeof this.iconSize === "string") {
+          return { fontSize: this.iconSize };
+        } else {
+          return { fontSize: this.iconSize + "px" };
+        }
+      } else {
+        if (typeof this.fontSize === "string") {
+          return { fontSize: this.fontsize };
+        } else {
+          return { fontSize: this.fontSize + "px" };
+        }
+      }
+    },
+    iconFontColor() {
+      if (this.iconColor !== "") {
+        if (this.iconColor !== "none") {
+          if (typeof this.iconColor === "string") {
+            return { color: this.iconColor };
+          } else {
+            return { color: "#" + this.iconColor };
+          }
+        }
+      } else {
+        if (this.color !== "none") {
+          if (typeof this.color === "string") {
+            return { color: this.color };
+          } else {
+            return { color: "#" + this.color };
+          }
+        }
+      }
+    },
     cardShadow() {
       if (!this.shadow) {
         return {
-          boxShadow: "0 0 0 rgba(0, 0, 0, 0)!important"
+          boxShadow: "0 0 0 rgba(0, 0, 0, 0)!important",
         };
       } else {
         return {};
       }
     },
   },
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

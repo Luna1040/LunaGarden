@@ -1,10 +1,10 @@
 <template>
-	<div class="legend">
-		<chara-select-area
-			:charaList="girlData"
-			:chooseChara="chooseChara"
-		></chara-select-area>
-	</div>
+  <div class="legend">
+    <chara-select-area
+      :chara-list="girlData"
+      :choose-chara="chooseChara"
+    ></chara-select-area>
+  </div>
 </template>
 
 <script>
@@ -132,7 +132,7 @@ export default {
   components: {
     CharaSelectArea
   },
-  created() {
+  created () {
     this.$emit('sendMsgHeader', this.$t('lang.titles.legend'))
   },
   methods: {

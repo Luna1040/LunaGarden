@@ -11,11 +11,11 @@
         primaryButton: theme === 'primary',
         alertButton: theme === 'alert',
         lightButton: theme === 'light',
-        darkButton: theme === 'dark'
+        darkButton: theme === 'dark',
       },
       {
         darkShadow: shadowTheme === 'dark',
-        lightShadow: shadowTheme === 'light'
+        lightShadow: shadowTheme === 'light',
       },
       {
         squareCorner: corner === 'square',
@@ -23,13 +23,13 @@
         filletCorner: corner === 'fillet',
         largeCorner: corner === 'large',
         fullCorner: corner === 'full',
-        roundCorner: corner === 'round'
+        roundCorner: corner === 'round',
       },
       {
         '': type === 'normal',
         textButton: type === 'text',
-        ghostButton: type === 'ghost'
-      }
+        ghostButton: type === 'ghost',
+      },
     ]"
     :disabled="disabled"
     @click="click()"
@@ -42,7 +42,7 @@
       v-if="pre && fontIcon !== ''"
     ></i>
     <img
-      :class="imageIcon"
+      :src="imageIcon"
       class="buttonImg pre"
       v-if="pre && imageIcon !== ''"
     />
@@ -54,7 +54,7 @@
       v-if="suffix && fontIcon !== ''"
     ></i>
     <img
-      :class="imageIcon"
+      :src="imageIcon"
       class="buttonImg suffix"
       v-if="suffix && imageIcon !== ''"
     />
@@ -66,274 +66,270 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: "Button",
   props: {
     width: {
       type: [Number, String],
-      default: 'auto'
+      default: "auto",
     },
     height: {
       type: [Number, String],
-      default: 32
+      default: 32,
     },
     color: {
       type: [Number, String],
-      default: 'none'
+      default: "none",
     },
     background: {
       type: [String, Number],
-      default: 'none'
+      default: "none",
     },
     fontSize: {
       type: [Number, String],
-      default: '12px'
+      default: "12px",
     },
     border: {
       type: [Number, String],
-      default: '1px solid #FFF'
+      default: "1px solid #FFF",
     },
     shadow: {
       type: Boolean,
-      default: true
+      default: true,
     },
     shadowTheme: {
       type: String,
-      default: 'dark'
+      default: "dark",
     },
     shadowStyle: {
       type: String,
-      default: ''
+      default: "",
     },
     theme: {
       type: String,
-      default: 'light'
-    },
-    colorTheme: {
-      type: String,
-      default: 'light'
+      default: "light",
     },
     className: {
       type: String,
-      default: ''
+      default: "",
     },
     styles: {
       type: Object,
-      default () {
-        return {}
-      }
+      default() {
+        return {};
+      },
     },
     padding: {
       type: [String, Number],
-      default: '0 16px'
+      default: "0 16px",
     },
     margin: {
       type: [String, Number],
-      default: ''
+      default: "",
     },
     radius: {
       type: [Number, String],
-      default: -1
+      default: -1,
     },
     corner: {
       type: String,
-      default: 'large'
+      default: "large",
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     type: {
       type: String,
-      default: 'normal'
+      default: "normal",
     },
     badge: {
       type: Boolean,
-      default: false
+      default: false,
     },
     badgeType: {
       type: String,
-      default: 'dot'
+      default: "dot",
     },
     badgeCount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     icon: {
       type: String,
-      default: ''
+      default: "",
     },
     pre: {
       type: Boolean,
-      default: false
+      default: false,
     },
     suffix: {
       type: Boolean,
-      default: false
+      default: false,
     },
     long: {
       type: Boolean,
-      default: false
+      default: false,
     },
     iconColor: {
       type: [Number, String],
-      default: 'none'
+      default: "none",
     },
     iconSize: {
       type: [Number, String],
-      default: 'none'
-    }
+      default: "none",
+    },
   },
-  data () {
+  data() {
     return {
-      fontIcon: '',
-      imageIcon: ''
-    }
+      fontIcon: "",
+      imageIcon: "",
+    };
   },
   computed: {
-    buttonStyles () {
-      let styles = {}
-      if (this.background !== 'none') {
-        if (typeof this.background === 'string') {
-          styles.background = this.background
+    buttonStyles() {
+      let styles = {};
+      if (this.background !== "none") {
+        if (typeof this.background === "string") {
+          styles.background = this.background;
         } else {
-          styles.background = '#' + this.background
+          styles.background = "#" + this.background;
         }
       }
-      if (typeof this.border === 'string') {
-        styles.border = this.border
+      if (typeof this.border === "string") {
+        styles.border = this.border;
       } else {
-        styles.border = '1px solid #' + this.border
+        styles.border = "1px solid #" + this.border;
       }
-      if (this.corner === 'round') {
-        if (typeof this.width === 'string' && this.width !== 'auto') {
-          styles.minWidth = this.width
-          styles.width = this.width
+      if (this.corner === "round") {
+        if (typeof this.width === "string" && this.width !== "auto") {
+          styles.minWidth = this.width;
+          styles.width = this.width;
         } else {
-          styles.minWidth = this.width + 'px'
-          styles.width = this.width + 'px'
+          styles.minWidth = this.width + "px";
+          styles.width = this.width + "px";
         }
       } else {
-        if (typeof this.width === 'string') {
-          styles.width = this.width
+        if (typeof this.width === "string") {
+          styles.width = this.width;
         } else {
-          styles.width = this.width + 'px'
+          styles.width = this.width + "px";
         }
       }
-      if (typeof this.height === 'string') {
-        styles.height = this.height
-        styles.lineHeight = this.height
+      if (typeof this.height === "string") {
+        styles.height = this.height;
+        styles.lineHeight = this.height;
       } else {
-        styles.height = this.height + 'px'
-        styles.lineHeight = this.height + 'px'
+        styles.height = this.height + "px";
+        styles.lineHeight = this.height + "px";
       }
-      if (typeof this.padding === 'string') {
-        styles.padding = this.padding
+      if (typeof this.padding === "string") {
+        styles.padding = this.padding;
       } else {
-        styles.padding = '0 ' + this.padding + 'px'
+        styles.padding = "0 " + this.padding + "px";
       }
-      if (this.margin !== '') {
-        if (typeof this.margin === 'string') {
-          styles.margin = this.margin
+      if (this.margin !== "") {
+        if (typeof this.margin === "string") {
+          styles.margin = this.margin;
         } else {
-          styles.margin = '0 ' + this.margin + 'px'
+          styles.margin = "0 " + this.margin + "px";
         }
       }
-      if (this.shadowStyle !== '') {
-        styles.boxShadow = this.shadowStyle + '!important'
+      if (this.shadowStyle !== "") {
+        styles.boxShadow = this.shadowStyle + "!important";
       }
       if (this.radius !== -1) {
-        if (typeof this.radius === 'string') {
-          styles.borderRadius = this.radius
+        if (typeof this.radius === "string") {
+          styles.borderRadius = this.radius;
         } else {
-          styles.borderRadius = this.radius + 'px'
+          styles.borderRadius = this.radius + "px";
         }
       }
-      if (this.color !== 'none') {
-        if (typeof this.color === 'string') {
-          styles.color = this.color
+      if (this.color !== "none") {
+        if (typeof this.color === "string") {
+          styles.color = this.color;
         } else {
-          styles.color = '#' + this.color
+          styles.color = "#" + this.color;
         }
       }
-      if (typeof this.fontSize === 'string') {
-        styles.fontSize = this.fontSize
+      if (typeof this.fontSize === "string") {
+        styles.fontSize = this.fontSize;
       } else {
-        styles.fontSize = this.fontSize + 'px'
+        styles.fontSize = this.fontSize + "px";
       }
       if (this.long) {
-        styles.width = '100%'
+        styles.width = "100%";
       }
-      return styles
+      return styles;
     },
-    iconFontSize () {
-      if (this.iconSize !== 'none') {
-        if (typeof this.iconSize === 'string') {
-          return { fontSize: this.iconSize }
+    iconFontSize() {
+      if (this.iconSize !== "none") {
+        if (typeof this.iconSize === "string") {
+          return { fontSize: this.iconSize };
         } else {
-          return { fontSize: this.iconSize + 'px' }
+          return { fontSize: this.iconSize + "px" };
         }
       } else {
-        if (typeof this.fontSize === 'string') {
-          return { fontSize: this.fontsize }
+        if (typeof this.fontSize === "string") {
+          return { fontSize: this.fontsize };
         } else {
-          return { fontSize: this.fontSize + 'px' }
+          return { fontSize: this.fontSize + "px" };
         }
       }
     },
-    iconFontColor () {
-      if (this.iconColor !== '') {
-        if (this.iconColor !== 'none') {
-          if (typeof this.iconColor === 'string') {
-            return { color: this.iconColor }
+    iconFontColor() {
+      if (this.iconColor !== "") {
+        if (this.iconColor !== "none") {
+          if (typeof this.iconColor === "string") {
+            return { color: this.iconColor };
           } else {
-            return { color: '#' + this.iconColor }
+            return { color: "#" + this.iconColor };
           }
         }
       } else {
-        if (this.color !== 'none') {
-          if (typeof this.color === 'string') {
-            return { color: this.color }
+        if (this.color !== "none") {
+          if (typeof this.color === "string") {
+            return { color: this.color };
           } else {
-            return { color: '#' + this.color }
+            return { color: "#" + this.color };
           }
         }
       }
-    }
+    },
   },
-  created () {
-    let icon = this.icon
+  mounted() {
+    let icon = this.icon;
     // 为了避免转义反斜杠出问题，这里将对其进行转换
-    let re = /(\\+)/g
-    let filename = icon.replace(re, '#')
+    let re = /(\\+)/g;
+    let filename = icon.replace(re, "#");
     // 对路径字符串进行剪切截取
-    let fileArray = filename.split('#')
+    let fileArray = filename.split("#");
     // 获取数组中最后一个，即文件名
-    let fileName = fileArray[fileArray.length - 1]
+    let fileName = fileArray[fileArray.length - 1];
     // 再对文件名进行截取，以取得后缀名
-    let suffixName = fileName.split('.')
+    let suffixName = fileName.split(".");
     // 获取截取的最后一个字符串，即为后缀名
-    let last = suffixName[suffixName.length - 1]
+    let last = suffixName[suffixName.length - 1];
     // 添加需要判断的后缀名类型
-    let tp = 'jpg,svg,png,JPG,SVG,PNG'
+    let tp = "jpg,svg,png,JPG,SVG,PNG";
     // 返回符合条件的后缀名在字符串中的位置
-    let rs = tp.indexOf(last)
-    // 如果返回的结果大于或等于0，说明包含允许上传的文件类型
+    let rs = tp.indexOf(last);
+    // 如果返回的结果大于或等于0
     if (rs >= 0) {
-      this.imageIcon = this.icon
+      this.imageIcon = this.icon;
     } else {
-      this.fontIcon = this.icon
+      this.fontIcon = this.icon;
     }
   },
   methods: {
-    click () {
-      this.$emit('click')
-    }
-  }
-}
+    click() {
+      this.$emit("click");
+    },
+  },
+};
 </script>
 
 <style scoped></style>

@@ -1,25 +1,25 @@
 @import "./lunaCol.scss";
 
-$white: #FFFFFF;
+$white: #ffffff;
 $primary: #eb7290;
 $primaryOpacity: #eb729050;
 $primaryHover: scale-color($primary, $lightness: +35%);
 $primaryActive: scale-color($primary, $lightness: +75%);
 $primaryDarkHover: scale-color($primaryText, $lightness: -35%, $alpha: -75%);
 $primaryDarkActive: scale-color($primaryText, $lightness: -35%, $alpha: -55%);
-$primaryText: #F3588B;
-$error: #FF483D;
+$primaryText: #f3588b;
+$error: #ff483d;
 $errorHover: scale-color($error, $lightness: +85%);
-$errorText: #FF1919;
-$success: #10D56E;
-$warning: #FECB37;
-$alert: #7636FF;
-$disableText: #CCC6C6;
-$disableBackground: #EEEEEE;
-$normalDark: #4A4A4A;
+$errorText: #ff1919;
+$success: #10d56e;
+$warning: #fecb37;
+$alert: #7636ff;
+$disableText: #ccc6c6;
+$disableBackground: #eeeeee;
+$normalDark: #4a4a4a;
 $lightDark: #555555;
-$lightGray: #F5F5F5;
-$normalGray: #E8E8E8;
+$lightGray: #f5f5f5;
+$normalGray: #e8e8e8;
 $darkShadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 $lightShadow: 0 3px 3px rgba(255, 255, 255, 0.3);
 $aroundDarkShadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -125,7 +125,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       position: relative;
       margin-bottom: 32px;
 
-      >div {
+      > div {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -153,7 +153,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         }
       }
 
-      >i {
+      > i {
         cursor: pointer;
         position: absolute;
         right: 16px;
@@ -181,7 +181,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         border-radius: 20px;
       }
 
-      >div {
+      > div {
         overflow: visible;
         width: 100%;
         display: flex;
@@ -268,7 +268,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   position: relative;
   outline: 0;
   border: 1px solid #eeeeee;
-
+  .iconfont.icon-cancel{
+    font-size: 12px;
+    margin-right: 8px;
+  }
   input {
     border: 0;
     outline: 0;
@@ -306,12 +309,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaInput:hover {
-  border: 1px solid $primary!important;
+  border: 1px solid $primary !important;
 }
 
 .lunaInput.focusing {
-  box-shadow: 0 0 0 2px $primaryOpacity!important;
-  border: 1px solid $primary!important;
+  box-shadow: 0 0 0 2px $primaryOpacity !important;
+  border: 1px solid $primary !important;
 }
 
 .lunaInput.lightInput {
@@ -361,6 +364,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   i {
     transition: all 0.5s;
     overflow: visible;
+  }
+  .buttonImg {
+    height: 18px;
+    flex-shrink: 0;
   }
 }
 
@@ -435,6 +442,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaButton.textButton {
   background-color: rgba(0, 0, 0, 0) !important;
   border: 1px solid rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
 }
 
 .lunaButton.ghostButton {
@@ -532,23 +540,24 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   overflow: auto;
   display: flex;
 
-  >.lunaCol {
+  > .lunaCol {
     border-left: 0 !important;
   }
 
-  >.lunaCol:last-of-type {
+  > .lunaCol:last-of-type {
     border-right: 0 !important;
   }
 }
 
 .lunaContainer {
   transition: all 0.5s;
+  overflow: auto;
+  height: 100%;
 }
 
 .lunaContainer.darkContainer {
   background-color: $normalDark !important;
   color: $white;
-
 }
 
 .lunaCard {
@@ -573,7 +582,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   .lunaCardBody {
     text-align: left;
     height: calc(100% - 36px);
-    padding: 4px 4px 4px 16px;
+    padding: 16px;
 
     p,
     span,
@@ -585,7 +594,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     div {
       font-size: 14px;
       overflow: visible;
-      white-space: pre-wrap;
       word-break: break-word;
     }
   }
@@ -639,7 +647,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         position: absolute;
         top: -10px;
         right: -15px;
-        content: '';
+        content: "";
         width: 20px;
         height: 20px;
         background-color: currentColor;
@@ -673,18 +681,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   thead {
-    >tr {
+    > tr {
       height: 32px;
       line-height: 32px;
       font-size: 14px;
 
-      >th {
+      > th {
         border-left: 0 !important;
         font-size: 12px;
         padding: 0 8px;
       }
 
-      >th:last-of-type {
+      > th:last-of-type {
         border-right: 0 !important;
       }
     }
@@ -924,7 +932,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     z-index: -1;
     overflow: hidden;
 
-    >div {
+    > div {
       overflow: auto;
       width: 100%;
       max-height: 175px;
@@ -975,7 +983,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .lunaOption {
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .lunaOption:hover {
@@ -990,6 +998,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaForm {
   text-align: left;
   transition: all 0.5s;
+  overflow: hidden;
 
   .lunaFormItem {
     padding: 4px 8px 8px;
@@ -998,7 +1007,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     transition: all 0.35s;
     overflow: visible;
 
-    >div {
+    > div {
       overflow: visible;
     }
 
@@ -1007,7 +1016,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       line-height: 1;
       color: $errorText;
       font-family: SimSun;
-      content: '*';
+      content: "*";
     }
 
     p {
@@ -1033,13 +1042,17 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       padding-right: 8px;
     }
   }
+  .lunaFormItem.rightLabel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
   .lunaFormItem.topLabel {
     display: flex;
     flex-direction: column;
 
     span {
-
       display: inline-block;
       text-align: left;
     }
@@ -1165,10 +1178,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         text-align: center;
         width: 22px;
         transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-        i{
+        i {
           font-size: 12px;
         }
-        i:before{
+        i:before {
           margin-top: 4px;
         }
       }
@@ -1177,10 +1190,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         transform: rotate(90deg);
       }
     }
-    .lunaItemInner:hover{
+    .lunaItemInner:hover {
       background: $primaryOpacity;
     }
-    .lunaTreeCell{
+    .lunaTreeCell {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -1189,8 +1202,41 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 }
 
+.lunaCollapse{
+  background-color: $white;
+  border: 1px solid #eeeeee;
+  .lunaPanel{
+    .lunaPanelTitle {
+      background-color: $lightGray;
+      box-shadow: $darkShadow;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      >div{
+        transition: all 0.25s;
+      }
+      .rotate90{
+        transform: rotate(-90deg);
+      }
+      .rotate180{
+        transform: rotate(180deg);
+      }
+      span{
+        margin-right: 8px;
+      }
+    }
+    .lunaPanelBody{
+      position: relative;
+      padding: 8px;
+    }
+  }
+}
+
 .flex {
   display: flex;
+  align-items: center;
 }
 
 .block {
