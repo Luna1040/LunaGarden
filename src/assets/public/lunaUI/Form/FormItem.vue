@@ -19,8 +19,8 @@
       <template v-if="formItemData.render">
         <Render
           :data="formItemData"
-          :validateMethods="formItemData.validateMethods"
-          :validateOnChange="formItemData.validateOnChange"
+          :validate-methods="formItemData.validateMethods"
+          :validate-on-change="formItemData.validateOnChange"
           :render="formItemData.render"
         ></Render>
       </template>
@@ -67,7 +67,7 @@ export default {
     this.formItemData = this.itemData
   },
   watch: {
-    itemData() {
+    itemData () {
       this.formItemData = this.itemData
     }
   },

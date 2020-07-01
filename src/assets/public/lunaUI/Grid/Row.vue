@@ -1,7 +1,15 @@
 <template>
   <div
     class="lunaRow"
-    :style="[rowPadding, rowWidth, rowHeight, rowMaxHeight, rowMaxWidth, rowScrollable, rowBackground, rowBorder]"
+    :style="[
+      rowPadding,
+      rowWidth,
+      rowHeight,
+      rowMaxHeight,
+      rowScrollable,
+      rowBackground,
+      rowBorder,
+    ]"
     :class="className"
   >
     <slot></slot>
@@ -9,43 +17,38 @@
 </template>
 
 <script>
-
 export default {
-  name: "Row",
+  name: 'Row',
   props: {
     background: {
-      type: String,
+      type: [Number, String],
       default: '#FEFEFE'
     },
     border: {
-      type: String,
-      default: '1px solid #EFEFEF'
-    },
-    //宽度高度相关小于等于100为百分比，大于100为px
-    width: {
-      //可选auto
       type: [Number, String],
-      default: 100
+      default: '0px solid #EFEFEF'
     },
-    maxWidth: {
-      type: Number,
+    // 宽度高度相关小于等于100为百分比，大于100为px
+    width: {
+      // 可选auto
+      type: [Number, String],
       default: 100
     },
     height: {
-      type: Number,
+      type: [Number, String],
       default: 32
     },
     padding: {
-      type: Number,
-      default: 0
-    },
-    maxHeight: {
       type: [Number, String],
-      default: 'auto',
+      default: 0
     },
     scrollable: {
       type: Boolean,
       default: false
+    },
+    maxHeight: {
+      type: [Number, String],
+      default: 'none'
     },
     className: {
       type: String,
@@ -53,73 +56,87 @@ export default {
     }
   },
   computed: {
-    rowBackground() {
+    rowBackground () {
       return {
         backgroundColor: this.background
       }
     },
-    rowBorder() {
-      return {
-        border: this.border
-      }
-    },
-    rowPadding() {
-      return {
-        padding: this.padding + 'px'
-      }
-    },
-    rowWidth() {
-      if (this.width <= 100) {
+    rowBorder () {
+      if (typeof this.border === 'string') {
         return {
-          width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
+          border: this.border
         }
       } else {
         return {
-          width: this.width - this.padding * 2 - 2 + 'px'
+          border: this.border + 'px solid #FFFFFF'
         }
       }
     },
-    rowMaxWidth() {
-      if (this.maxWidth <= 100) {
+    rowPadding () {
+      if (typeof this.padding === 'string') {
         return {
-          maxWidth: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
+          padding: this.padding
         }
       } else {
         return {
-          maxWidth: this.maxWidth - this.padding * 2 - 2 + 'px'
+          padding: this.padding + 'px'
         }
       }
     },
-    rowHeight() {
-      return {
-        height: this.height - this.padding * 2 - 2 + 'px'
-      }
-    },
-    rowMaxHeight() {
-      if (this.maxHeight < 100) {
-        return {
-          maxHeight: 'calc(' + this.maxHeight + '%-' + this.padding * 2 - 2 + 'px)'
+    rowWidth () {
+      if (typeof this.width !== 'string') {
+        if (this.width <= 100) {
+          return {
+            width: this.width + '%'
+          }
+        } else {
+          return {
+            width: this.width + 'px'
+          }
         }
       } else {
         return {
-          maxHeight: this.maxHeight - this.padding * 2 - 2 + 'px'
+          width: this.width
         }
       }
     },
-    rowScrollable() {
+    rowHeight () {
+      if (typeof this.height !== 'string') {
+        return {
+          height: this.height + 'px'
+        }
+      } else {
+        return {
+          height: this.height
+        }
+      }
+    },
+    rowScrollable () {
       if (this.scrollable) {
         return {
-          overFlow: 'auto'
+          overflow: 'auto'
         }
       } else {
         return {
-          overFlow: 'hidden'
+          overflow: 'hidden'
         }
       }
     },
-  },
+    rowMaxHeight () {
+      if (this.maxHeight !== 'none') {
+        if (typeof this.maxHeight === 'string') {
+          return {
+            maxHeight: this.maxHeight
+          }
+        } else {
+          return {
+            maxHeight: this.maxHeight + 'px'
+          }
+        }
+      }
+    }
+  }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

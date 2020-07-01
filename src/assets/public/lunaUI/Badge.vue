@@ -5,7 +5,7 @@
     :class="[className, {errorBadge: theme === 'error', successBadge: type === 'success',warningBadge: theme === 'warning',primaryBadge: theme === 'primary',alertBadge: theme === 'alert', '': theme === 'normal'}, {dotBadge: type === 'normal', textBadge: type === 'text', starBadge: type === 'star'}, {smallBadge: size === 'small', normalBadge: size === 'normal', largeBadge: size === 'large'}]"
   >
     <span :style="[fontColor, fontSize]">
-      111{{value}}
+      111{{ value }}
       <span v-if="badgeMax">+</span>
     </span>
   </div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Badge",
+  name: 'Badge',
   props: {
     value: {
       type: String,
@@ -35,15 +35,15 @@ export default {
       type: Number,
       default: 12
     },
-    //自定义宽度  作用于container
+    // 自定义宽度  作用于container
     width: {
       type: Number,
-      default: -1,
+      default: -1
     },
-    //自定义高度  作用于body
+    // 自定义高度  作用于body
     height: {
       type: Number,
-      default: -1,
+      default: -1
     },
     border: {
       type: String,
@@ -59,7 +59,7 @@ export default {
     },
     right: {
       type: Number,
-      default: -4,
+      default: -4
     },
     top: {
       type: Number,
@@ -83,7 +83,7 @@ export default {
     }
   },
   computed: {
-    badgeWidth() {
+    badgeWidth () {
       if (this.width !== -1) {
         return {
           width: this.width + 'px!important'
@@ -92,7 +92,7 @@ export default {
         return {}
       }
     },
-    badgeHeight() {
+    badgeHeight () {
       if (this.height !== -1) {
         return {
           height: this.height + 'px!important'
@@ -101,7 +101,7 @@ export default {
         return {}
       }
     },
-    badgeLineHeight() {
+    badgeLineHeight () {
       if (this.height !== -1) {
         return {
           lineHeight: this.height + 'px!important'
@@ -110,7 +110,7 @@ export default {
         return {}
       }
     },
-    badgeBorder() {
+    badgeBorder () {
       if (this.showBorder) {
         return {
           border: this.border
@@ -119,12 +119,12 @@ export default {
         return {}
       }
     },
-    badgeBackground() {
+    badgeBackground () {
       return {
         backgroundColor: this.background + '!important'
       }
     },
-    badgeRadius() {
+    badgeRadius () {
       if (this.radius !== -1) {
         return {
           borderRadius: this.radius + 'px!important'
@@ -133,23 +133,23 @@ export default {
         return {}
       }
     },
-    badgeMax() {
+    badgeMax () {
       if (this.value > this.maxSize) {
         return true
       } else {
         return false
       }
     },
-    fontColor() {
+    fontColor () {
       return {
         color: this.color
       }
     },
-    fontSize() {
+    fontSize () {
       return {
         fontSize: this.fontSize + 'px'
       }
-    },
+    }
   },
   methods: {
   }

@@ -1,8 +1,8 @@
 <template>
   <div class="lunaCollapse">
     <div
-      class="lunaPanel"
       v-for="(i, index) in panelList"
+      class="lunaPanel"
       :class="[
         className,
         {
@@ -17,22 +17,22 @@
       ]"
     >
       <div
+        v-if="i.title && i.title !== ''"
         class="lunaPanelTitle"
         @click="togglePanel(index)"
-        v-if="i.title && i.title !== ''"
       >
         <span>{{ i.title }}</span>
         <div :class="{ rotate90: value === index }">
           <i class="iconfont icon-youjiantou"></i>
         </div>
       </div>
-      <div class="lunaPanelTitle" @click="togglePanel(index)" v-else>
+      <div v-else class="lunaPanelTitle" @click="togglePanel(index)">
         <div :class="{ rotate180: value === index }">
           <i class="iconfont icon-down"></i>
         </div>
       </div>
       <transition name="slideDown">
-        <div class="lunaPanelBody" v-show="value === index">
+        <div v-show="value === index" class="lunaPanelBody">
           <pre v-if="code" v-highlight><code>{{ i.content }}</code></pre>
           <p v-else>{{ i.content }}</p>
         </div>
@@ -43,49 +43,49 @@
 
 <script>
 export default {
-  name: "collapse",
+  name: 'collapse',
   props: {
     panelList: {
       type: Array,
       default: () => {
-        return [];
-      },
+        return []
+      }
     },
     value: {
       type: Number,
-      default: -1,
+      default: -1
     },
     radius: {
       type: Number,
-      default: -1,
+      default: -1
     },
     corner: {
       type: String,
-      default: "large",
+      default: 'large'
     },
     theme: {
       type: String,
-      default: "light",
+      default: 'light'
     },
     code: {
       type: Boolean,
-      default: false,
+      default: false
     },
     className: {
       type: String,
-      default: "",
-    },
+      default: ''
+    }
   },
   methods: {
-    togglePanel(index) {
+    togglePanel (index) {
       if (index === this.value) {
-        this.$emit("input", -1);
+        this.$emit('input', -1)
       } else {
-        this.$emit("input", index);
+        this.$emit('input', index)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped></style>

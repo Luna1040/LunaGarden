@@ -609,7 +609,8 @@ footer {
   }
 
   .about::after {
-    @include blurImg()
+    @include blurImg();
+    position: fixed;
   }
 
   h1 {
@@ -647,6 +648,16 @@ footer {
 
       figcaption:last-of-type {
         font-size: 14px;
+      }
+    }
+    figure.company{
+      width: 400px;
+      img{
+        border-radius: 0;
+        width: auto;
+      }
+      p{
+        line-height: 24px;
       }
     }
   }

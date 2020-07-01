@@ -1,34 +1,18 @@
 <template>
   <li class="lunaTreeItem">
     <div class="lunaItemInner">
-      <div
-        :class="{ arrowActive: stateData.expand === true }"
-        class="arrowIcon"
-        @click.stop="expandTreeItem"
-      >
-        <i
-          v-if="stateData.children && stateData.children.length !== 0"
-          class="iconfont icon-youjiantou"
-        ></i>
+      <div :class="{ arrowActive: stateData.expand === true }" class="arrowIcon" @click.stop="expandTreeItem">
+        <i v-if="stateData.children && stateData.children.length !== 0" class="iconfont icon-youjiantou"></i>
       </div>
       <div class="lunaTreeCell" @click.stop="expandTreeItem">
         <Render v-if="data.render" :render="data.render" :data="data"></Render>
-        <Render
-          v-else-if="isParentRender"
-          :render="parentRender"
-          :data="data"
-        ></Render>
+        <Render v-else-if="isParentRender" :render="parentRender" :data="data"></Render>
         <template v-else>{{ stateData.title }}</template>
       </div>
     </div>
     <transition name="expand">
       <ul v-if="stateData.children" v-show="stateData.expand">
-        <TreeItem
-          v-for="(i, index) in stateData.children"
-          :key="index"
-          :data="i"
-          :index="index"
-        ></TreeItem>
+        <TreeItem v-for="(i, index) in stateData.children" :key="index" :data="i" :index="index" @onSelect="onSelect"></TreeItem>
       </ul>
     </transition>
   </li>
@@ -47,24 +31,26 @@ export default {
   props: {
     data: {
       type: Object,
-      default: {}
+      default: () => {
+        return {}
+      }
     },
     selectChange: {
       type: Boolean,
       default: true
     }
   },
-  data () {
+  data() {
     return {
       stateData: this.data
     }
   },
   computed: {
-    isParentRender () {
+    isParentRender() {
       const Tree = findComponentUpward(this, 'Tree')
       return Tree && Tree.render
     },
-    parentRender () {
+    parentRender() {
       const Tree = findComponentUpward(this, 'Tree')
       if (Tree && Tree.render) {
         return Tree.render
@@ -74,10 +60,13 @@ export default {
     }
   },
   methods: {
-    expandTreeItem (index) {
+    expandTreeItem(index) {
       this.stateData.expand = !this.stateData.expand
+      this.onSelect(this.data)
+    },
+    onSelect(data) {
       if (this.selectChange) {
-        this.$emit('onSelect', this.data)
+        this.$emit('onSelect', data)
       }
     }
   }

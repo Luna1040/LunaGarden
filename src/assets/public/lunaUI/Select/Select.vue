@@ -10,9 +10,9 @@
         smallCorner: corner === 'small',
         filletCorner: corner === 'fillet',
         largeCorner: corner === 'large',
-        fullCorner: corner === 'full',
+        fullCorner: corner === 'full'
       },
-      { lightSelect: theme === 'light', darkSelect: theme === 'dark' },
+      { lightSelect: theme === 'light', darkSelect: theme === 'dark' }
     ]"
     @click="handelClick"
     @keydown.esc="handleKeydown"
@@ -22,21 +22,7 @@
     @keydown.tab="handleKeydown"
     @keydown.delete="handleKeydown"
   >
-    <Input
-      ref="input"
-      v-model="initValue"
-      :readonly="!filterable"
-      :disabled="disabled"
-      :width="inputStyles.width"
-      :height="inputStyles.height"
-      :corner="corner"
-      icon="iconfont icon-down"
-      suffix
-      :spin="showList"
-      :background="background"
-      :theme="theme"
-      @input="changeText"
-    ></Input>
+    <Input ref="input" v-model="initValue" :readonly="!filterable" :disabled="disabled" :width="inputStyles.width" :corner="corner" icon="iconfont icon-down" suffix :spin="showList" :background="background" :theme="theme" @input="changeText"></Input>
     <transition name="slideDown">
       <div
         v-if="showList"
@@ -46,19 +32,12 @@
           smallCorner: corner === 'small',
           filletCorner: corner === 'fillet',
           largeCorner: corner === 'large',
-          fullCorner: corner === 'full',
+          fullCorner: corner === 'full'
         }"
         :style="[optionStyles]"
       >
         <div>
-          <Option
-            v-for="(i, index) in filterData"
-            :key="index"
-            :value="i[keyValue]"
-            :label="i[keyLabel]"
-            :class="{ optionActive: index === choiceIndex, optionWrap: wrap }"
-            @optionSelect="optionSelect"
-          ></Option>
+          <Option v-for="(i, index) in filterData" :key="index" :value="i[keyValue]" :label="i[keyLabel]" :class="{ optionActive: index === choiceIndex, optionWrap: wrap }" @optionSelect="optionSelect"></Option>
         </div>
       </div>
     </transition>
@@ -103,10 +82,6 @@ export default {
       type: [String, Number],
       default: 180
     },
-    height: {
-      type: [String, Number],
-      default: 32
-    },
     className: {
       type: String,
       default: ''
@@ -120,26 +95,26 @@ export default {
       default: -1
     },
     background: {
-      type: String,
+      type: [Number, String],
       default: '#FFFFFF'
     },
     optionBackground: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     color: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     optionColor: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     shadow: {
       type: Boolean,
       default: true
     },
-    shadowStyle: {
+    shadowTheme: {
       type: String,
       default: 'dark'
     },
@@ -152,7 +127,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       showList: false,
       initValue: '',
@@ -162,7 +137,7 @@ export default {
     }
   },
   computed: {
-    selectStyles () {
+    selectStyles() {
       const styleList = {}
       if (typeof this.width !== 'string') {
         styleList.width = this.width + 'px'
@@ -170,43 +145,51 @@ export default {
         styleList.width = this.width
       }
 
-      if (typeof this.height !== 'string') {
-        styleList.paddingTop = this.height + 3 + 'px'
-      } else {
-        styleList.paddingTop = 'calc(' + this.height + '+ 3px)'
-      }
-
       return styleList
     },
-    inputStyles () {
+    inputStyles() {
       const styleList = {}
       if (typeof this.width !== 'string') {
         styleList.width = this.width + 'px'
       } else {
         styleList.width = this.width
       }
-
-      if (typeof this.height !== 'string') {
-        styleList.paddingTop = this.height + 'px'
-      } else {
-        styleList.height = this.height
-      }
-
-      return styleList
-    },
-    optionStyles () {
-      if (this.optionBackground !== 'none') {
-        return {
-          backgroundColor: this.optionBackground + '!important'
+      if (this.color !== 'none') {
+        if (typeof this.color === 'string') {
+          styleList.color = this.color
+        } else {
+          styleList.color = '#' + this.color
         }
-      } else {
-        return {}
       }
+      if (typeof this.background === 'string') {
+        styleList.backgroundColor = this.background + '!important'
+      } else {
+        styleList.backgroundColor = '#' + this.background + '!important'
+      }
+      return styleList
+    },
+    optionStyles() {
+      const styleList = {}
+      if (this.optionBackground !== 'none') {
+        if (typeof this.optionBackground === 'string') {
+          styleList.backgroundColor = this.optionBackground + '!important'
+        } else {
+          styleList.backgroundColor = '#' + this.optionBackground + '!important'
+        }
+      }
+      if (this.optionColor !== 'none') {
+        if (typeof this.optionColor === 'string') {
+          styleList.optionColor = this.optionColor + '!important'
+        } else {
+          styleList.optionColor = '#' + this.optionColor + '!important'
+        }
+      }
+      return styleList
     }
   },
   watch: {
-    initValue () {
-      let newData = []
+    initValue() {
+      const newData = []
       if (this.initValue !== '') {
         this.selectData.forEach((item) => {
           if (item[this.keyLabel].indexOf(this.initValue) !== -1) {
@@ -218,48 +201,66 @@ export default {
         this.filterData = this.selectData
         this.choiceIndex = -1
       }
-    }
-  },
-  created () {
-    if (this.value !== '') {
-      for (let i = 0; i < this.selectData.length; i++) {
-        if (this.selectData[i][this.keyValue] === this.value) {
-          this.initValue = this.selectData[i][this.keyLabel]
-          this.filterData.push(this.selectData[i])
-          this.choiceIndex = 0
-          break
+    },
+    value() {
+      if (this.value !== '') {
+        for (let i = 0; i < this.selectData.length; i++) {
+          if (this.selectData[i][this.keyValue] === this.value) {
+            this.initValue = this.selectData[i][this.keyLabel]
+            this.choiceIndex = i
+            this.$emit('input', this.selectData[i][this.keyValue])
+            if (!this.returnLabel) {
+              this.$emit('on-change', this.selectData[i][this.keyValue])
+            } else {
+              this.$emit('on-change', this.selectData[i])
+            }
+            this.chose = true
+            break
+          }
         }
+      } else {
+        this.initValue = this.value
+        this.filterData = this.selectData
       }
-    } else {
-      this.initValue = this.value
-      this.filterData = this.selectData
     }
   },
   methods: {
-    changeText (value) {
+    changeText(value) {
       this.initValue = value
       this.chose = false
     },
-    handelClick () {
+    handelClick() {
+      if (!this.showList) {
+        this.filterData = this.selectData
+      }
+      if (this.value !== '') {
+        for (let i = 0; i < this.selectData.length; i++) {
+          if (this.selectData[i][this.keyValue] === this.value) {
+            this.initValue = this.selectData[i][this.keyLabel]
+            this.choiceIndex = i
+            break
+          }
+        }
+      }
       this.showList = !this.showList
       if (this.showList) {
         this.$refs.input.getFocus()
       }
       this.$emit('on-click')
     },
-    optionSelect (obj) {
+    optionSelect(obj) {
       this.showList = false
       this.choiceIndex = 0
-      this.$emit('input', obj.value)
-      this.initValue = obj.label
+      this.$emit('input', obj[this.keyValue])
+      this.initValue = obj[this.keyLabel]
       this.chose = true
       if (!this.returnLabel) {
-        this.$emit('on-change', obj.value)
+        this.$emit('on-change', obj[this.keyValue])
       } else {
         this.$emit('on-change', obj)
       }
     },
-    handleKeydown (e) {
+    handleKeydown(e) {
       const key = e.key || e.code
       if (key === 'Backspace') {
         return
@@ -286,7 +287,7 @@ export default {
         }
         // enter
         if (key === 'Enter') {
-          let choiceItem = {
+          const choiceItem = {
             value: this.filterData[this.choiceIndex][this.keyValue],
             label: this.filterData[this.choiceIndex][this.keyLabel]
           }
@@ -295,7 +296,7 @@ export default {
         }
       }
     },
-    navigateOptions (direction) {
+    navigateOptions(direction) {
       if (this.filterData.length !== 0) {
         if (this.choiceIndex === -1) {
           if (direction === 1) {
@@ -306,10 +307,7 @@ export default {
         } else {
           if (this.choiceIndex === 0 && direction === -1) {
             this.choiceIndex = this.filterData.length - 1
-          } else if (
-            this.choiceIndex === this.filterData.length - 1 &&
-            direction === 1
-          ) {
+          } else if (this.choiceIndex === this.filterData.length - 1 && direction === 1) {
             this.choiceIndex = 0
           } else {
             this.choiceIndex = this.choiceIndex + direction
@@ -317,7 +315,7 @@ export default {
         }
       }
     },
-    hideList () {
+    hideList() {
       if (!this.chose) {
         this.$emit('input', '')
         this.initValue = ''

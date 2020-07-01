@@ -1,13 +1,13 @@
 <template>
-<div class="lunaList">
+  <div class="lunaList">
     <slot></slot>
-</div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "List"
-    }
+export default {
+  name: 'List'
+}
 </script>
 
 <style scoped>

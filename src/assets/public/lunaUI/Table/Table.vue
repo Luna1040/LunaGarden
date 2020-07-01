@@ -22,23 +22,21 @@
   >
     <thead :style="[headerStyles]">
       <tr>
-        <th
-          v-for="col in columns"
-          :style="[baseBorder, { width: col.width + 'px' }]"
-        >
+        <th v-for="(col, index) in columns" :key="index" :style="[baseBorder, { width: col.width + 'px' }, { textAlign: col.align }]">
           {{ col.title }}
         </th>
       </tr>
     </thead>
-    <tbody :style="[bodyMaxHeight]" v-click-outside="blurRow">
+    <tbody v-click-outside="blurRow" :style="[bodyMaxHeight]">
       <tr v-if="data.length === 0">
         <td v-if="data.length === 0" :colspan="columns.length">
           <slot name="empty">{{ emptyText }}</slot>
         </td>
       </tr>
       <tr
-        v-else
         v-for="(row, rowIndex) in data"
+        v-else
+        :key="rowIndex"
         :class="[
           {
             currentRow: rowIndex === choiceIndex,
@@ -50,38 +48,25 @@
         @mouseenter="hoverEnter(rowIndex)"
         @mouseleave="hoverOut()"
       >
-        <td
-          v-for="(col, index) in columns"
-          :key="index"
-          :style="[
-            baseBorder,
-            { width: col.width + 'px' },
-            { textAlign: col.align }
-          ]"
-        >
+        <td v-for="(col, index) in columns" :key="index" :style="[baseBorder, { width: col.width + 'px' }, { textAlign: col.align }]">
           <template v-if="'render' in col">
-            <Render
-              :row="row"
-              :column="col"
-              :index="rowIndex"
-              :render="col.render"
-            ></Render>
+            <Render :row="row" :column="col" :index="rowIndex" :render="col.render"></Render>
           </template>
-          <template v-else-if="col.type === 'index'">{{
-            rowIndex + 1
-          }}</template>
+          <template v-else-if="col.type === 'index'">{{ rowIndex + 1 }}</template>
           <template v-else>{{ row[col.key] }}</template>
         </td>
       </tr>
     </tbody>
-    <div v-if="loading" class="lunaLoading">
-      <div class="face">
-        <div class="circle"></div>
+    <transition name="maskAnimation">
+      <div v-if="loading" class="lunaLoading">
+        <div class="face">
+          <div class="circle"></div>
+        </div>
+        <div class="face">
+          <div class="circle"></div>
+        </div>
       </div>
-      <div class="face">
-        <div class="circle"></div>
-      </div>
-    </div>
+    </transition>
   </table>
 </template>
 
@@ -91,17 +76,21 @@ import Render from './tableRender.js'
 export default {
   name: 'Table',
   components: { Render },
-  render (h) {
+  render(h) {
     return h('div', [this.createContent(h)])
   },
   props: {
     data: {
       type: Array,
-      default: []
+      default: () => {
+        return []
+      }
     },
     columns: {
       type: Array,
-      default: []
+      default: () => {
+        return []
+      }
     },
     maxHeight: {
       type: [String, Number],
@@ -128,35 +117,35 @@ export default {
       default: false
     },
     borderStyle: {
-      type: String,
+      type: [Number, String],
       default: '#F5F5F5'
     },
     background: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     color: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     headerBackground: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     headerColor: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     },
     shadow: {
       type: Boolean,
-      default: false
+      default: true
     },
     shadowStyle: {
       type: String,
       default: 'dark'
     },
     radius: {
-      type: Number,
+      type: [Number, String],
       default: -1
     },
     corner: {
@@ -176,17 +165,17 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       hoverRowBorder: '',
-      hoverRow: this.borderStyle,
-      currentRow: this.borderStyle,
+      // hoverRow: this.borderStyle,
+      // currentRow: this.borderStyle,
       choiceIndex: -1,
       hoverIndex: -1
     }
   },
   computed: {
-    bodyMaxHeight () {
+    bodyMaxHeight() {
       if (typeof this.maxHeight !== 'string') {
         if (this.maxHeight <= 100) {
           return {
@@ -203,13 +192,21 @@ export default {
         }
       }
     },
-    tableStyles () {
-      let styleList = {}
+    tableStyles() {
+      const styleList = {}
       if (this.background !== 'none') {
-        styleList.backgroundColor = this.background + '!important'
+        if (typeof this.background === 'string') {
+          styleList.backgroundColor = this.background + '!important'
+        } else {
+          styleList.backgroundColor = '#' + this.background + '!important'
+        }
       }
       if (this.color !== 'none') {
-        styleList.color = this.color + '!important'
+        if (typeof this.color === 'string') {
+          styleList.color = this.color + '!important'
+        } else {
+          styleList.color = '#' + this.color + '!important'
+        }
       }
       if (this.shadow === false) {
         styleList.boxShadow = 'none'
@@ -224,47 +221,66 @@ export default {
         }
       }
       if (this.radius !== -1) {
-        styleList.borderRadius = this.radius + 'px'
-      }
-      return styleList
-    },
-    headerStyles () {
-      let styleList = {}
-      if (this.headerBackground !== 'none') {
-        styleList.backgroundColor = this.headerBackground + '!important'
-      }
-      if (this.headerColor !== 'none') {
-        styleList.color = this.headerColor + '!important'
-      }
-      return styleList
-    },
-    baseBorder () {
-      if (this.border) {
-        return {
-          border: '1px solid ' + this.borderStyle
+        if (typeof this.radians === 'string') {
+          styleList.borderRadius = this.radius
+        } else {
+          styleList.borderRadius = this.radius + 'px'
         }
       }
+      return styleList
+    },
+    headerStyles() {
+      const styleList = {}
+      if (this.headerBackground !== 'none') {
+        if (typeof this.headerBackground === 'string') {
+          styleList.backgroundColor = this.headerBackground + '!important'
+        } else {
+          styleList.backgroundColor = '#' + this.headerBackground + '!important'
+        }
+      }
+      if (this.headerColor !== 'none') {
+        if (typeof this.headerColor === 'string') {
+          styleList.color = this.headerColor + '!important'
+        } else {
+          styleList.color = '#' + this.headerColor + '!important'
+        }
+      }
+      return styleList
+    },
+    baseBorder() {
+      if (this.border) {
+        if (typeof this.borderStyle === 'string') {
+          return {
+            border: this.borderStyle
+          }
+        } else {
+          return {
+            border: this.borderStyle + 'px solid #F5F5F5'
+          }
+        }
+      }
+      return {}
     }
   },
   methods: {
-    createContent (h) {
+    createContent(h) {
       return h('div', this.$slots.default)
     },
-    choiceRow (params, index) {
+    choiceRow(params, index) {
       if (this.highlightRow) {
         this.choiceIndex = index
         this.$emit('on-row-click', params)
       }
     },
-    blurRow () {
+    blurRow() {
       if (this.highlightRow && this.choiceIndex !== -1) {
         this.choiceIndex = -1
       }
     },
-    hoverEnter (index) {
+    hoverEnter(index) {
       this.hoverIndex = index
     },
-    hoverOut () {
+    hoverOut() {
       this.hoverIndex = -1
     }
   }

@@ -1,6 +1,7 @@
 import Message from './Message.js'
 
 let Instance
+
 function notice ({ content = '', icon = '', theme = '', duration = 3 }) {
   Instance = Instance || Message.newInstance()
   Instance.add({

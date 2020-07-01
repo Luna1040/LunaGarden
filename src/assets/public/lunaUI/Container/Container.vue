@@ -37,198 +37,191 @@
 
 <script>
 export default {
-  name: "Container",
+  name: 'Container',
   props: {
     shadow: {
       type: Boolean,
-      default: true,
+      default: true
     },
     shadowTheme: {
       type: String,
-      default: "dark",
+      default: 'dark'
     },
     shadowStyle: {
       type: String,
-      default: "",
+      default: ''
     },
     theme: {
       type: String,
-      default: "light",
+      default: 'light'
     },
     radius: {
       type: Number,
-      default: -1,
+      default: -1
     },
     corner: {
       type: String,
-      default: "large",
+      default: 'large'
     },
     background: {
       type: [Number, String],
-      default: "#FEFEFE",
+      default: '#FEFEFE'
     },
     border: {
       type: [Number, String],
-      default: "1px solid #EFEFEF",
+      default: '1px solid #EFEFEF'
     },
     // 宽度高度相关小于等于100为百分比，大于100为px
     width: {
       // 可选auto
       type: [Number, String],
-      default: 100,
+      default: 100
     },
     height: {
       type: [Number, String],
-      default: "auto",
+      default: 'auto'
     },
     padding: {
       type: Number,
-      default: 16,
+      default: 16
     },
     scrollable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     className: {
       type: String,
-      default: "",
+      default: ''
     },
     image: {
       type: String,
-      default: "",
+      default: ''
     },
     flex: {
       type: Boolean,
-      default: true,
+      default: true
     },
     direction: {
       type: String,
-      default: "start",
+      default: 'start'
     },
     justify: {
       type: String,
-      default: "flex-start",
+      default: 'flex-start'
     },
     align: {
       type: String,
-      default: "baseline",
+      default: 'baseline'
     },
     styles: {
       type: Object,
       default: () => {
-        return {};
-      },
-    },
+        return {}
+      }
+    }
   },
   computed: {
-    flexStyle() {
+    flexStyle () {
       return {
         flexDirection: this.direction,
         justifyContent: this.justify,
-        alignItems: this.align,
-      };
+        alignItems: this.align
+      }
     },
-    containerBackground() {
-      if (typeof this.background === "string") {
-        return { backgroundColor: this.background };
+    containerBackground () {
+      if (typeof this.background === 'string') {
+        return { backgroundColor: this.background }
       } else {
-        return { backgroundColor: "#" + this.background };
+        return { backgroundColor: '#' + this.background }
       }
     },
-    containerImage() {
+    containerImage () {
       return {
-        backgroundImage: 'url("' + this.image + '")!important',
-      };
+        backgroundImage: 'url("' + this.image + '")!important'
+      }
     },
-    containerBorder() {
-      if (typeof this.border === "string") {
-        return { border: this.border };
+    containerBorder () {
+      if (typeof this.border === 'string') {
+        return { border: this.border }
       } else {
-        return { border: this.border + "px solid #EFEFEF" };
+        return { border: this.border + 'px solid #EFEFEF' }
       }
     },
-    containerShadowStyle() {
-      if (this.shadowStyle !== "") {
-        return { boxShadow: this.shadowStyle + "!important" };
+    containerShadowStyle () {
+      if (this.shadowStyle !== '') {
+        return { boxShadow: this.shadowStyle + '!important' }
       }
     },
-    containerPadding() {
+    containerPadding () {
       return {
-        padding: this.padding + "px",
-      };
+        padding: this.padding + 'px'
+      }
     },
-    containerWidth() {
-      if (typeof this.width !== "string") {
+    containerWidth () {
+      if (typeof this.width !== 'string') {
         if (this.width <= 100) {
           return {
-            width: this.width + "%",
-          };
+            width: this.width + '%'
+          }
         } else {
           return {
-            width: this.width + "px",
-          };
+            width: this.width + 'px'
+          }
         }
       } else {
         return {
-          width: this.width,
-        };
-      }
-    },
-    containerHeight() {
-      if (this.border !== "0") {
-        if (this.height <= 100) {
-          return {
-            height:
-              "calc(" + this.height + "% - " + this.padding * 2 + "px - 2px)",
-          };
-        } else {
-          return {
-            height: this.height - this.padding * 2 - 2 + "px",
-          };
-        }
-      } else {
-        if (this.height <= 100) {
-          return {
-            height: "calc(" + this.height + "% - " + this.padding * 2 + "px)",
-          };
-        } else {
-          return {
-            height: this.height - this.padding * 2 + "px",
-          };
+          width: this.width
         }
       }
     },
-    containerScrollable() {
+    containerHeight () {
+        if(typeof this.height === 'string') {
+            return {
+                height: this.height
+            }
+        } else {
+            if (this.height <= 100) {
+                return {
+                    height: this.height + '%'
+                }
+            } else {
+                return {
+                    height: this.height + 'px'
+                }
+            }
+        }
+    },
+    containerScrollable () {
       if (this.scrollable) {
         return {
-          overFlow: "auto",
-        };
+          overflow: 'auto'
+        }
       } else {
         return {
-          overFlow: "hidden",
-        };
+          overflow: 'hidden'
+        }
       }
     },
-    containerRadius() {
+    containerRadius () {
       if (this.radius !== -1) {
         return {
-          borderRadius: this.radius + "px!important",
-        };
+          borderRadius: this.radius + 'px!important'
+        }
       } else {
-        return {};
+        return {}
       }
     },
-    containerShadow() {
+    containerShadow () {
       if (!this.shadow) {
         return {
-          boxShadow: "0 0 0 rgba(0, 0, 0, 0)!important",
-        };
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
+        }
       } else {
-        return {};
+        return {}
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped></style>

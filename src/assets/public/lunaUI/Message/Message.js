@@ -4,7 +4,6 @@ import Vue from 'vue'
 
 Message.newInstance = properties => {
   const props = properties || {}
-
   const Instance = new Vue({
     data: props,
     render (h) {

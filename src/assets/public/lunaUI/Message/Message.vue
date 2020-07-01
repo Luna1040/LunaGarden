@@ -2,7 +2,7 @@
   <div class="lunaMessage">
     <transition-group name="messageAnimation">
       <div v-for="item in notices" :key="item.name">
-        <div :class="item.theme"  class="messageBody">
+        <div :class="item.theme" class="messageBody">
           <i v-if="item.icon" :class="item.icon"></i>
           <span v-if="typeof item === 'object'">{{ item.content }}</span>
           <span v-else>{{ item }}</span>
@@ -15,7 +15,7 @@
 let seed = 0
 
 function getUuid () {
-  return 'alert_' + (seed++)
+  return 'alert_' + seed++
 }
 
 export default {
@@ -24,16 +24,16 @@ export default {
       notices: []
     }
   },
-  created () {
-    // console.log(this.notices)
-  },
   methods: {
     add (notice) {
       const name = getUuid()
 
-      let _notice = Object.assign({
-        name: name
-      }, notice)
+      const _notice = Object.assign(
+        {
+          name: name
+        },
+        notice
+      )
 
       this.notices.push(_notice)
 
@@ -59,16 +59,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
-  .messageAnimation-enter-active,.messageAnimation-leave-active{
-    transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-  }
-  .messageAnimation-leave,.messageAnimation-enter-to{
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .messageAnimation-enter, .messageAnimation-leave-to {
-    opacity: 0;
-    transform: translateY(-24px);
-  }
+.messageAnimation-enter-active,
+.messageAnimation-leave-active {
+  transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+.messageAnimation-leave,
+.messageAnimation-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.messageAnimation-enter,
+.messageAnimation-leave-to {
+  opacity: 0;
+  transform: translateY(-24px);
+}
 </style>

@@ -1,33 +1,65 @@
 <template>
   <transition name="modalAnimation">
-    <div v-if="showModal" class="lunaModal" :class="{zIndexHide: !showModal}" :style="wrapStyles">
+    <div v-if="showModal" class="lunaModal" :class="{ zIndexHide: !showModal }" :style="wrapStyles">
       <transition name="maskAnimation">
         <div
           v-show="showModal"
           v-if="showMask"
           class="modalMask"
-          :class="[{darkMask: maskStyle === 'dark', lightMask: maskStyle === 'light'}]"
+          :class="[
+            {
+              darkMask: maskStyle === 'dark',
+              lightMask: maskStyle === 'light'
+            }
+          ]"
           @click="handleMask()"
         ></div>
       </transition>
       <div
         class="modalContainer"
-        :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground]"
-        :class="[className, {errorModal: type === 'error', successModal: type === 'success',warningModal: type === 'warning',primaryModal: type === 'primary',alertModal: type === 'alert', '': type === 'normal'}, {darkShadow: shadowStyle === 'dark', lightShadow: shadowStyle === 'light'}, {squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full'}, {lightModal: theme === 'light', darkModal: theme === 'dark'}]"
+        :style="[styles, modalWidth, modalRadius, modalShadow, modalBackground, modalColor]"
+        :class="[
+          className,
+          {
+            errorModal: type === 'error',
+            successModal: type === 'success',
+            warningModal: type === 'warning',
+            primaryModal: type === 'primary',
+            alertModal: type === 'alert',
+            '': type === 'normal'
+          },
+          {
+            darkShadow: shadowStyle === 'dark',
+            lightShadow: shadowStyle === 'light'
+          },
+          {
+            squareCorner: corner === 'square',
+            smallCorner: corner === 'small',
+            filletCorner: corner === 'fillet',
+            largeCorner: corner === 'large',
+            fullCorner: corner === 'full'
+          },
+          { lightModal: theme === 'light', darkModal: theme === 'dark' }
+        ]"
       >
         <div v-if="showHead" class="modalHeader">
           <slot name="header">
-            <p :style="titleColor">{{ title }}</p>
+            <i v-if="icon !== ''" class="titleIcon" :class="icon" :style="[iconColorCount, iconFontSizeCount]"></i>
+            <p :style="titleColorCount">{{ title }}</p>
           </slot>
-          <i class="iconfont icon-cancel" @click="close"></i>
+          <i class="iconfont icon-cancel closeIcon" @click="close"></i>
         </div>
-        <div class="modalBody" :style="[modalHeight, modalMaxHeight, modalScrollable]">
+        <div class="modalBody" :style="[modalHeight, modalMaxHeight, modalScrollable, modalBodyCount]">
           <slot></slot>
         </div>
         <div v-if="footerShow" class="modalFooter">
           <slot name="footer">
-            <button v-ripple class="normalButton" @click="close">{{ $t('lang.home.button.cancel') }}</button>
-            <button v-ripple class="primaryButton" @click="confirm">{{ $t('lang.home.button.confirm') }}</button>
+            <button v-ripple class="normalButton" @click="close">
+              {{ $t('lang.home.button.cancel') }}
+            </button>
+            <button v-ripple class="primaryButton" @click="confirm">
+              {{ $t('lang.home.button.confirm') }}
+            </button>
           </slot>
         </div>
       </div>
@@ -43,6 +75,18 @@ export default {
       type: Boolean,
       default: false
     },
+    icon: {
+      type: String,
+      default: ''
+    },
+    iconColor: {
+      type: [Number, String],
+      default: ''
+    },
+    iconFontSize: {
+      type: [Number, String],
+      default: 16
+    },
     // 是否显示遮罩层
     showMask: {
       type: Boolean,
@@ -55,7 +99,7 @@ export default {
     },
     // title文字
     title: {
-      type: String
+      type: [Number, String]
     },
     // 是否显示右上角关闭按钮图标  关闭后 Esc 按键也将屏蔽
     closeable: {
@@ -73,12 +117,12 @@ export default {
     },
     type: {
       type: String,
-      default: 'Normal'
+      default: 'normal'
     },
     // 自定义样式
     styles: {
       type: Object,
-      default () {
+      default() {
         return {}
       }
     },
@@ -133,15 +177,19 @@ export default {
       default: 'large'
     },
     color: {
-      type: String,
-      default: '#4a4a4a'
+      type: [Number, String],
+      default: ''
+    },
+    titleColor: {
+      type: [Number, String],
+      default: ''
     },
     background: {
-      type: String,
+      type: [Number, String],
       default: 'none'
     }
   },
-  data () {
+  data() {
     return {
       showModal: this.value,
       showHead: true,
@@ -150,40 +198,44 @@ export default {
   },
   methods: {
     // 点击右上角和默认关闭按钮时触发函数  外部调用@on-cancel()
-    close () {
+    close() {
       this.showModal = false
       this.$emit('input', false)
       this.$emit('on-cancel')
     },
-    confirm () {
+    confirm() {
       this.$emit('on-ok')
       this.close()
     },
     // 点击遮罩层触发事件
-    handleMask () {
+    handleMask() {
       if (this.closeable && this.showMask) {
         this.close()
       }
     },
     // 默认的底部按钮取消事件
-    cancel () {
+    cancel() {
       this.close()
     }
   },
-  mounted () {
-    let showHead = true
+  mounted() {
     if (this.$slots.header === undefined && !this.title) {
-      showHead = false
+      this.showHead = false
     }
-    this.showHead = showHead
   },
   computed: {
-    wrapStyles () {
+    modalBodyCount() {
+      if (!this.showHead) {
+        return { paddingTop: '48px' }
+      }
+      return {}
+    },
+    wrapStyles() {
       return {
         zIndex: this.zIndex
       }
     },
-    modalWidth () {
+    modalWidth() {
       if (typeof this.width !== 'string') {
         if (this.width <= 100) {
           return {
@@ -200,7 +252,7 @@ export default {
         }
       }
     },
-    modalRadius () {
+    modalRadius() {
       if (this.radius !== -1) {
         return {
           borderRadius: this.radius + 'px!important'
@@ -209,7 +261,17 @@ export default {
         return {}
       }
     },
-    modalShadow () {
+    modalColor() {
+      if (this.color !== '') {
+        if (typeof this.color === 'string') {
+          return { color: this.color + '!important' }
+        } else {
+          return { color: '#' + this.color + '!important' }
+        }
+      }
+      return {}
+    },
+    modalShadow() {
       if (!this.shadow) {
         return {
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
@@ -218,7 +280,7 @@ export default {
         return {}
       }
     },
-    modalHeight () {
+    modalHeight() {
       if (this.height !== 'auto') {
         return {
           height: this.height + 'px'
@@ -229,7 +291,7 @@ export default {
         }
       }
     },
-    modalMaxHeight () {
+    modalMaxHeight() {
       if (this.maxHeight !== 'auto') {
         return {
           maxHeight: this.maxHeight + 'px'
@@ -240,7 +302,7 @@ export default {
         }
       }
     },
-    modalScrollable () {
+    modalScrollable() {
       if (this.scrollable && this.maxHeight !== 'auto') {
         return {
           overflow: 'auto'
@@ -251,26 +313,58 @@ export default {
         }
       }
     },
-    modalBackground () {
+    modalBackground() {
       if (this.background !== 'none') {
-        return {
-          backgroundColor: this.background + '!important'
+        if (typeof this.background === 'string') {
+          return {
+            backgroundColor: this.background + '!important'
+          }
+        } else {
+          return {
+            backgroundColor: '#' + this.background + '!important'
+          }
         }
       }
+      return {}
     },
-    titleColor () {
-      return {
-        color: this.color
+    iconColorCount() {
+      if (this.iconColor !== '') {
+        if (typeof this.iconColor === 'string') {
+          return { color: this.iconColor }
+        } else {
+          return { color: '#' + this.iconColor }
+        }
       }
+      return {}
+    },
+    iconFontSizeCount() {
+      if (typeof this.iconFontSize === 'string') {
+        return { fontSize: this.iconFontSize }
+      } else {
+        return { fontSize: this.iconFontSize + 'px' }
+      }
+    },
+    titleColorCount() {
+      if (this.titleColor !== '') {
+        if (typeof this.titleColor === 'string') {
+          return {
+            color: this.titleColor + '!important'
+          }
+        } else {
+          return {
+            color: '#' + this.titleColor + '!important'
+          }
+        }
+      }
+      return {}
     }
   },
   watch: {
-    value (val) {
+    value(val) {
       this.showModal = val
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

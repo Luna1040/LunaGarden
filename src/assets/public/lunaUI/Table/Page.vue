@@ -2,41 +2,18 @@
   <div
     class="lunaPage"
     :style="[styles]"
-    :class="[{squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round'}, {lightPage: theme === 'light', darkPage: theme === 'dark'}]"
+    :class="[
+      { squareCorner: corner === 'square', smallCorner: corner === 'small', filletCorner: corner === 'fillet', largeCorner: corner === 'large', fullCorner: corner === 'full', roundCorner: corner === 'round' },
+      { lightPage: theme === 'light', darkPage: theme === 'dark' }
+    ]"
   >
-    <span v-if="counter" class="pageCounter">共{{limit}}条</span>
+    <span v-if="counter" class="pageCounter">共{{ limit }}条</span>
     <slot name="pre"></slot>
-    <Button
-      class="lunaPageCell pagination"
-      @click="prev"
-      :disabled="prevDisable"
-      :width="24"
-      :height="24"
-      corner="round"
-      :theme="theme"
-    >
+    <Button class="lunaPageCell pagination" :disabled="prevDisable" :width="cellStyles.width" :background="cellStyles.background" :radius="cellStyles.borderRadius" :height="cellStyles.width" :corner="cellStyles.cellCorner" :theme="theme" @click="prev">
       <i class="iconfont icon-fanhui"></i>
     </Button>
-    <Button
-      class="lunaPageCell"
-      v-for="i in limitCount"
-      :key="i"
-      :width="24"
-      :height="24"
-      corner="round"
-      :theme="theme"
-      @click="handelClick(i)"
-      :class="[{pageCellActive:i === choiceIndex}]"
-    >{{i}}</Button>
-    <Button
-      class="lunaPageCell pagination"
-      @click="next"
-      :disabled="nextDisable"
-      :width="24"
-      :height="24"
-      corner="round"
-      :theme="theme"
-    >
+    <Button v-for="i in limitCount" :key="i" class="lunaPageCell" :width="cellStyles.width" :background="cellStyles.background" :radius="cellStyles.borderRadius" :height="cellStyles.width" :corner="cellStyles.cellCorner" :theme="theme" :class="[{ pageCellActive: i === choiceIndex }]" @click="handelClick(i)">{{ i }}</Button>
+    <Button class="lunaPageCell pagination" :disabled="nextDisable" :width="cellStyles.width" :background="cellStyles.background" :radius="cellStyles.borderRadius" :height="cellStyles.width" :corner="cellStyles.cellCorner" :theme="theme" @click="next">
       <i class="iconfont icon-youjiantou"></i>
     </Button>
     <div class="pageSizer">
@@ -44,15 +21,7 @@
     </div>
     <div class="pageElevator">
       <span>前往第</span>
-      <Input
-        v-if="elevator"
-        :value="1"
-        :width="40"
-        :height="24"
-        border-color="#cfcfcf"
-        font-size="12px"
-        :theme="theme"
-      ></Input>
+      <Input v-if="elevator" :value="1" :width="40" :height="24" border-color="#cfcfcf" font-size="12px" :theme="theme"></Input>
       <span>页</span>
     </div>
     <slot name="suffix"></slot>
@@ -71,8 +40,8 @@ export default {
       type: [Number, String],
       default: 100
     },
-    backgroundColor: {
-      type: String,
+    background: {
+      type: [Number, String],
       default: 'none'
     },
     theme: {
@@ -81,13 +50,17 @@ export default {
     },
     cellWidth: {
       type: [Number, String],
-      default: '24px'
+      default: 24
     },
     cellBackgroundColor: {
-      type: String,
+      type: [Number, String],
       default: '#FFFFFF'
     },
     radius: {
+      type: Number,
+      default: -1
+    },
+    cellRadius: {
       type: Number,
       default: -1
     },
@@ -108,7 +81,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       choiceIndex: -1,
       prevDisable: false,
@@ -116,14 +89,14 @@ export default {
     }
   },
   computed: {
-    limitCount () {
+    limitCount() {
       const count = []
       for (let i = 0; i < this.limit; i++) {
         count.push(i + 1)
       }
       return count
     },
-    styles () {
+    styles() {
       const styleList = {}
       if (typeof this.width !== 'string') {
         if (this.width <= 100) {
@@ -134,44 +107,56 @@ export default {
       } else {
         styleList.width = this.width
       }
-      if (this.backgroundColor !== 'none') {
-        styleList.backgroundColor = this.backgroundColor
-      }
-
-      return styleList
-    },
-    cellStyles () {
-      const styleList = []
-      if (typeof this.cellWidth !== 'string') {
-        styleList.width = this.width + 'px'
-      } else {
-        styleList.width = this.width
-      }
-      if (this.cellBackgroundColor !== 'none') {
-        styleList.backgroundColor = this.cellBackgroundColor
+      if (this.background !== 'none') {
+        if (typeof this.background === 'string') {
+          styleList.backgroundColor = this.background
+        } else {
+          styleList.backgroundColor = '#' + this.background
+        }
       }
       if (this.radius !== -1) {
         styleList.borderRadius = this.radius + 'px'
       }
 
       return styleList
+    },
+    cellStyles() {
+      const styleList = {}
+      if (typeof this.cellWidth !== 'string') {
+        styleList.width = this.cellWidth + 'px'
+      } else {
+        styleList.width = this.cellWidth
+      }
+      if (this.cellBackgroundColor !== 'none') {
+        if (typeof this.cellBackgroundColor === 'string') {
+          styleList.background = this.cellBackgroundColor
+        } else {
+          styleList.background = '#' + this.cellBackgroundColor
+        }
+      }
+      if (this.cellRadius !== -1) {
+        styleList.borderRadius = this.cellRadius + 'px'
+      }
+      styleList.cellCorner = this.cellCorner
+
+      return styleList
     }
   },
   methods: {
-    handelClick (value) {
+    handelClick(value) {
       this.choiceIndex = value
       this.examineIndex()
       this.$emit('on-click', value)
     },
-    prev () {
+    prev() {
       this.choiceIndex--
       this.handelClick(this.choiceIndex)
     },
-    next () {
+    next() {
       this.choiceIndex++
       this.handelClick(this.choiceIndex)
     },
-    examineIndex () {
+    examineIndex() {
       if (this.choiceIndex === 1) {
         this.prevDisable = true
         this.nextDisable = false
@@ -184,7 +169,7 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     if (this.page !== 0) {
       this.choiceIndex = 1
       this.examineIndex()
@@ -193,5 +178,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

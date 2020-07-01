@@ -36,7 +36,7 @@ export default {
     //     }
     // },
     handelSelect () {
-      let obj = {
+      const obj = {
         value: this.value,
         label: this.label
       }

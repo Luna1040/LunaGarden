@@ -4,8 +4,9 @@
 }
 
 .lunaCol-span-24 {
-    display: inline-block;
-    width: 100%
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
 }
 
 .lunaCol-push-24 {

@@ -2,7 +2,7 @@
   <div
     class="lunaCol"
     :class="[className, classes, {block: !flex, flex: flex}]"
-    :style="[colPadding, colHeight, colMaxHeight, colScrollable, colBackground, colBorder, colColor]"
+    :style="[colPadding, colHeight, colBackground, colBorder, colColor, colFontSize]"
   >
     <slot></slot>
   </div>
@@ -10,35 +10,27 @@
 
 <script>
 export default {
-  name: "Col",
+  name: 'Col',
   props: {
     background: {
-      type: String,
+      type: [Number, String],
       default: '#FFFFFF'
     },
     border: {
-      type: String,
-      default: '1px solid #FFFFFF'
+      type: [Number, String],
+      default: '0px solid #FFFFFF'
     },
     color: {
-      type: String,
+      type: [Number, String],
       default: '#4A4A4A'
     },
     height: {
-      type: Number,
+      type: [Number, String],
       default: 32
     },
-    maxHeight: {
-      type: [Number, String],
-      default: 'auto'
-    },
     padding: {
-      type: Number,
+      type: [Number, String],
       default: 8
-    },
-    scrollable: {
-      type: Boolean,
-      default: false
     },
     flex: {
       type: Boolean,
@@ -68,6 +60,10 @@ export default {
       type: String,
       default: ''
     },
+    fontsize: {
+      type: [Number, String],
+      default: 16
+    },
     xs: [Number, Object],
     sm: [Number, Object],
     md: [Number, Object],
@@ -76,8 +72,8 @@ export default {
     xxl: [Number, Object]
   },
   computed: {
-    classes() {
-      let classList = [
+    classes () {
+      const classList = [
         'lunaCol',
         {
           [`lunaCol-span-${this.span}`]: this.span,
@@ -90,69 +86,69 @@ export default {
 
       ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach(size => {
         if (typeof this[size] === 'number') {
-          classList.push(`lunaCol-span-${size}-${this[size]}`);
+          classList.push(`lunaCol-span-${size}-${this[size]}`)
         } else if (typeof this[size] === 'object') {
-          let props = this[size];
+          const props = this[size]
           Object.keys(props).forEach(prop => {
             classList.push(
               prop !== 'span'
                 ? `lunaCol-${size}-${prop}-${props[prop]}`
                 : `lunaCol-span-${size}-${props[prop]}`
-            );
-          });
+            )
+          })
         }
-      });
+      })
 
-      return classList;
+      return classList
     },
-    colBackground() {
-      return {
-        backgroundColor: this.background
+    colBackground () {
+      if (typeof this.background === 'string') {
+        return { backgroundColor: this.background }
+      } else {
+        return { backgroundColor: '#' + this.background }
       }
     },
-    colColor() {
-      return {
-        color: this.color
+    colColor () {
+      if (typeof this.color === 'string') {
+        return { color: this.color }
+      } else {
+        return { color: '#' + this.color }
       }
     },
-    colBorder() {
-      return {
-        border: this.border
+    colBorder () {
+      if (typeof this.border === 'string') {
+        return { border: this.border }
+      } else {
+        return { border: this.border + 'px solid #FFFFFF' }
       }
     },
-    colPadding() {
-      return {
-        padding: this.padding + 'px'
+    colFontSize () {
+      if (typeof this.fontsize === 'string') {
+        return { fontSize: this.fontsize }
+      } else {
+        return { fontSize: this.fontsize + 'px' }
       }
     },
-    colHeight() {
-      return {
-        height: this.height - this.padding * 2 - 2 + 'px',
-        lineHeight: this.height - this.padding * 2 - 2 + 'px'
+    colPadding () {
+      if (typeof this.padding === 'string') {
+        return { padding: this.padding }
+      } else {
+        return { padding: this.padding + 'px' }
       }
     },
-    colMaxHeight() {
-      if (this.maxHeight < 100) {
+    colHeight () {
+      if (typeof this.height === 'string') {
         return {
-          maxHeight: 'calc(' + this.maxHeight + '%' + '-' + this.padding * 2 + 'px)'
+          height: this.height,
+          lineHeight: parseInt(this.height.split('px')[0]) - this.padding * 2 + 'px'
         }
       } else {
         return {
-          maxHeight: this.maxHeight - this.padding * 2 + 'px'
+          height: this.height + 'px',
+          lineHeight: this.height - this.padding * 2 + 'px'
         }
       }
-    },
-    colScrollable() {
-      if (this.scrollable) {
-        return {
-          overFlow: 'auto'
-        }
-      } else {
-        return {
-          overFlow: 'hidden'
-        }
-      }
-    },
+    }
   }
 }
 </script>

@@ -152,8 +152,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
           margin-right: 8px;
         }
       }
-
-      > i {
+      .titleIcon {
+        margin-right: 8px;
+      }
+      > .closeIcon {
         cursor: pointer;
         position: absolute;
         right: 16px;
@@ -162,6 +164,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
     .modalBody {
       padding: 0 16px;
+      text-align: center;
 
       p {
         line-height: 24px;
@@ -268,7 +271,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   position: relative;
   outline: 0;
   border: 1px solid #eeeeee;
-  .iconfont.icon-cancel{
+  .iconfont.icon-cancel {
     font-size: 12px;
     margin-right: 8px;
   }
@@ -500,6 +503,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     top: 35%;
   }
 }
+.lunaButtonGroup{
+
+}
 
 .pre {
   margin-right: 6px;
@@ -552,7 +558,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaContainer {
   transition: all 0.5s;
   overflow: auto;
-  height: 100%;
 }
 
 .lunaContainer.darkContainer {
@@ -713,7 +718,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       border-bottom: 0 !important;
       border-left: 0 !important;
       height: 42px;
-      line-height: 42px;
+      line-height: 20px;
       transition: all 0.5s;
 
       td {
@@ -735,6 +740,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         border-top: 0 !important;
       }
     }
+  }
+}
+.lunaTable.stripeRow{
+  >tbody>tr:nth-child(even){
+    background-color: #f8f8f9;
   }
 }
 
@@ -774,13 +784,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 
+  .hoverRow {
+    background-color: $primaryActive!important;
+  }
   .currentRow {
     background-color: $primary !important;
     color: $white;
-  }
-
-  .hoverRow {
-    background-color: $primaryActive;
   }
 }
 
@@ -930,7 +939,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     position: absolute;
     width: 100%;
     z-index: -1;
-    overflow: hidden;
+    overflow: hidden!important;
 
     > div {
       overflow: auto;
@@ -1202,10 +1211,10 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 }
 
-.lunaCollapse{
+.lunaCollapse {
   background-color: $white;
   border: 1px solid #eeeeee;
-  .lunaPanel{
+  .lunaPanel {
     .lunaPanelTitle {
       background-color: $lightGray;
       box-shadow: $darkShadow;
@@ -1214,20 +1223,20 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      >div{
+      > div {
         transition: all 0.25s;
       }
-      .rotate90{
+      .rotate90 {
         transform: rotate(-90deg);
       }
-      .rotate180{
+      .rotate180 {
         transform: rotate(180deg);
       }
-      span{
+      span {
         margin-right: 8px;
       }
     }
-    .lunaPanelBody{
+    .lunaPanelBody {
       position: relative;
       padding: 8px;
     }

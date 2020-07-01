@@ -5,8 +5,8 @@
         <img v-if="titleImg !== '' && !suffix" :src="titleImg" alt="" />
         <i v-if="titleIcon !== '' && !suffix" :class="titleIcon"></i>
         {{ title }}
-<!--        <img v-if="titleImg !== '' && suffix" :src="titleImg" alt="" />-->
-<!--        <i v-if="titleIcon !== '' && suffix" :class="titleIcon"></i>-->
+        <!--        <img v-if="titleImg !== '' && suffix" :src="titleImg" alt="" />-->
+        <!--        <i v-if="titleIcon !== '' && suffix" :class="titleIcon"></i>-->
       </slot>
     </div>
     <p v-if="data.length === 0">{{ emptyText }}</p>
@@ -19,6 +19,7 @@
           :index="index"
           :list-name="i.title"
           :select-change="selectChange"
+          @onSelect="onSelect"
         ></TreeItem>
       </ul>
     </div>
@@ -85,7 +86,7 @@ export default {
     },
     scrollable: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data () {
@@ -107,13 +108,17 @@ export default {
         styles.height = this.height + 'px'
       }
       if (this.scrollable) {
-        styles.overFlow = 'auto'
+        styles.overflow = 'auto'
       }
 
       return styles
     }
   },
-  methods: {}
+  methods: {
+      onSelect(data) {
+          this.$emit('onSelect', data)
+      }
+  }
 }
 </script>
 
