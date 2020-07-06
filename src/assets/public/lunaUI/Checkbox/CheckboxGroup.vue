@@ -1,10 +1,10 @@
 <template>
   <div
-    class="lunaButtonGroup"
+    class="lunaCheckboxGroup"
     :class="[
       {
-        light: theme === 'light',
-        dark: theme === 'dark'
+        lightGroup: theme === 'light',
+        darkGroup: theme === 'dark'
       },
       {
         darkShadow: shadowTheme === 'dark',
@@ -22,21 +22,45 @@
         block: !flex
       }
     ]"
-    :style="[btnGroupStyle]"
+    :style="[checkboxGroupStyle]"
   >
-    <Button v-for="(i, index) in btnGroup" :key="index" :style="spanCount" :styles="i.styles" :theme="i.theme" :width="i.width" :height="i.height" :color="i.color" :background="i.background" :font-size="i.fontSize" :border="i.border" :shadow="i.shadow" :shadow-theme="i.shadowTheme" :shadow-style="i.shadowStyle" :class-name="i.className" :padding="i.padding" :margin="i.margin" :corner="i.corner" :radius="i.radius" :loading="i.loading" :disabled="i.disabled" :type="i.type" :icon="i.icon" :icon-color="i.iconColor" :icon-size="i.iconSize" :pre="i.pre" :suffix="i.suffix" :long="i.long" @click="emit(i.methods, index)">{{ i.name }}</Button>
+    <Checkbox v-if="allIn" v-model="isAllIn" :style="spanCount" before-checked :half-check="isHalfCheck" :corner="checkboxPropsStyle.corner" :radius="checkboxPropsStyle.radius" :checked-with-light="checkboxPropsStyle.checkedWithLight" :icon="checkboxPropsStyle.icon" :icon-font-size="checkboxPropsStyle.iconFontSize" :icon-font-color="checkboxPropsStyle.iconFontColor" :border="checkboxPropsStyle.border" :border-corner="checkboxPropsStyle.borderCorner" :border-radius="checkboxPropsStyle.borderRadius" :border-style="checkboxPropsStyle.borderStyle" :padding="checkboxPropsStyle.padding" @onBeforeChange="handelAllIn">全选</Checkbox>
+    <Checkbox v-for="(i, index) in checkboxData" :key="index" v-model="i.value" :style="spanCount" :true-value="i.trueValue" :disabled="i.disabled" :corner="checkboxPropsStyle.corner" :radius="checkboxPropsStyle.radius" :checked-with-light="checkboxPropsStyle.checkedWithLight" :icon="checkboxPropsStyle.icon" :icon-font-size="checkboxPropsStyle.iconFontSize" :icon-font-color="checkboxPropsStyle.iconFontColor" :border="checkboxPropsStyle.border" :border-corner="checkboxPropsStyle.borderCorner" :border-radius="checkboxPropsStyle.borderRadius" :border-style="checkboxPropsStyle.borderStyle" :padding="checkboxPropsStyle.padding" @onChange="handelChange(i.beforeChecked, index, i.value, i.trueValue)">
+      <template v-if="i.label">
+        {{ i.label }}
+      </template>
+      <template v-else>
+        {{ i.value }}
+      </template>
+    </Checkbox>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ButtonGroup',
+  name: 'CheckboxGroup',
   props: {
-    btnGroup: {
+    checkboxData: {
       type: Array,
       default: () => {
         return []
       }
+    },
+    value: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
+    checkboxPropsStyle: {
+        type: Object,
+        default: () => {
+            return {}
+        }
+    },
+    allIn: {
+      type: Boolean,
+      default: false
     },
     flex: {
       type: Boolean,
@@ -96,10 +120,26 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      isAllIn: false,
+      isHalfCheck: false,
+      choiceArr: []
+    }
+  },
+  mounted() {
+    this.choiceArr = this.value
+    if(this.choiceArr.length !== 0) {
+      this.choiceArr.forEach(item => {
+        this.checkboxData.forEach((i, index) => {
+          if(item === i.trueValue) {
+            this.checkboxData[index].value = item
+          }
+        })
+      })
+    }
   },
   computed: {
-    btnGroupStyle() {
+    checkboxGroupStyle() {
       const styles = {}
       if (!this.shadow) {
         styles.boxShadow = 'none'
@@ -176,8 +216,53 @@ export default {
     }
   },
   methods: {
-    emit(methods, index) {
-      this.$emit(methods, index)
+    handelChange(before, index, value, trueValue) {
+      if (!before) {
+        let find = false
+        for (let i = 0; i < this.choiceArr.length; i++) {
+          if (this.choiceArr[i] === trueValue) {
+            this.choiceArr.splice(i, 1)
+            find = true
+          }
+        }
+        if (!find) {
+          this.choiceArr.push(value)
+        }
+        this.$emit('input', this.choiceArr)
+
+        this.$emit('onChange', this.choiceArr)
+      } else {
+        this.$emit('onBeforeChange', index, value, trueValue, this.choiceArr)
+      }
+      if (this.choiceArr.length > 0) {
+        this.isHalfCheck = true
+        this.isAllIn = false
+        if (this.choiceArr.length === this.checkboxData.length) {
+          this.isAllIn = true
+          this.isHalfCheck = false
+        }
+      } else if (this.choiceArr.length === 0) {
+        this.isAllIn = false
+        this.isHalfCheck = false
+      }
+    },
+    handelAllIn() {
+      this.choiceArr = []
+      if (!this.isAllIn) {
+        this.checkboxData.forEach((item, index) => {
+          this.choiceArr.push(item.trueValue)
+          this.checkboxData[index].value = item.trueValue
+        })
+        this.isAllIn = true
+      } else {
+        this.checkboxData.forEach((item, index) => {
+          this.checkboxData[index].value = ''
+        })
+        this.isAllIn = false
+        this.isHalfCheck = false
+      }
+      this.$emit('input', this.choiceArr)
+      this.$emit('onChange', this.choiceArr)
     }
   }
 }

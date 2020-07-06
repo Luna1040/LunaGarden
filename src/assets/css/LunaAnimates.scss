@@ -253,3 +253,31 @@
   transform: translateY(-18px) scale(1.1);
   opacity: 0;
 }
+
+.slideBar-enter-active {
+  transition: all 0.5s cubic-bezier(0, 0, 1, 1) 0s;
+}
+
+.slideBar-leave-active {
+  transition: all 0.5s cubic-bezier(0.5, 0.6, 0, 1) 0s;
+}
+
+.slideBar-enter,
+.slideBar-leave-to {
+  transform: translateX(-66px);
+  opacity: 0;
+}
+
+.scaleCheckboxIcon-enter-active {
+  transition: all ease-in 0.15s;
+}
+
+.scaleCheckboxIcon-leave-active {
+  transition: all ease-in 0.15s ;
+}
+
+.scaleCheckboxIcon-enter,
+.scaleCheckboxIcon-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}

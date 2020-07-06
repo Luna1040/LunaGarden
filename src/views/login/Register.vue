@@ -1,50 +1,50 @@
 <template>
-	<div class="loginRegister">
-		<Container
-			class-name="spare registerSpare"
-			:flex="false"
-			:width="1000"
-			:height="620"
-			background="rgba(255,255,255,0.3)"
-		>
-			<div class="blurBc"></div>
-			<p class="desc">{{ $t("lang.login.desc") }}</p>
-			<p class="desc">{{ $t("lang.login.desc2") }}</p>
-			<Form
-				ref="form"
-				style="margin: 0 auto;"
-				background="rgba(0,0,0,0)"
-				border="0"
-				:shadow="false"
-				:form="form"
-				:theme="theme"
-				:width="640"
-				label-position="top"
-				:label-width="150"
-			></Form>
-			<div class="linkGroup">
-				<!--        <router-link to="register" class="button">{{ $t('lang.register.register') }}</router-link>-->
-				<Button theme="primary" :width="590" @click="registSubmit">{{
-					$t("lang.register.register")
-				}}</Button>
-				<router-link to="login" class="pink">{{
-					$t("lang.register.login")
-				}}</router-link>
-			</div>
-		</Container>
-		<Modal
-			v-model="bankIdEmpty"
-			:title="$t('lang.register.bankIdEmpty')"
-			type="primary"
-		>
-			<p>{{ this.$t("lang.register.alert12") }}</p>
-			<div slot="footer">
-				<Button theme="primary" @click="bankIdEmpty = false">{{
-					this.$t("lang.home.button.OK")
-				}}</Button>
-			</div>
-		</Modal>
-	</div>
+  <div class="loginRegister">
+    <Container
+      class-name="spare registerSpare"
+      :flex="false"
+      :width="1000"
+      :height="620"
+      background="rgba(255,255,255,0.3)"
+    >
+      <div class="blurBc"></div>
+      <p class="desc">{{ $t("lang.login.desc") }}</p>
+      <p class="desc">{{ $t("lang.login.desc2") }}</p>
+      <Form
+        ref="form"
+        style="margin: 0 auto;"
+        background="rgba(0,0,0,0)"
+        border="0"
+        :shadow="false"
+        :form="form"
+        :theme="theme"
+        :width="640"
+        label-position="top"
+        :label-width="150"
+      ></Form>
+      <div class="linkGroup">
+        <!--        <router-link to="register" class="button">{{ $t('lang.register.register') }}</router-link>-->
+        <Button theme="primary" :width="590" @click="registSubmit">{{
+          $t("lang.register.register")
+        }}</Button>
+        <router-link to="login" class="pink">{{
+          $t("lang.register.login")
+        }}</router-link>
+      </div>
+    </Container>
+    <Modal
+      v-model="bankIdEmpty"
+      :title="$t('lang.register.bankIdEmpty')"
+      type="primary"
+    >
+      <p>{{ this.$t("lang.register.alert12") }}</p>
+      <div slot="footer">
+        <Button theme="primary" @click="bankIdEmpty = false">{{
+          this.$t("lang.home.button.OK")
+        }}</Button>
+      </div>
+    </Modal>
+  </div>
 </template>
 <script>
 import { login } from '../../assets/js/url.js'

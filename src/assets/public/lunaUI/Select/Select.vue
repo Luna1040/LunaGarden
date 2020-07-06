@@ -249,13 +249,13 @@ export default {
       this.$emit('on-click')
     },
     optionSelect(obj) {
-      this.showList = false
+        this.showList = false
       this.choiceIndex = 0
-      this.$emit('input', obj[this.keyValue])
-      this.initValue = obj[this.keyLabel]
+      this.$emit('input', obj.value)
+      this.initValue = obj.label
       this.chose = true
       if (!this.returnLabel) {
-        this.$emit('on-change', obj[this.keyValue])
+        this.$emit('on-change', obj.value)
       } else {
         this.$emit('on-change', obj)
       }

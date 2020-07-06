@@ -15,26 +15,15 @@
     <span :style="labelWidthCount" :class="{ required: formItemData.required }">
       {{ formItemData.title }}
     </span>
-    <div>
-      <template v-if="formItemData.render">
-        <Render
-          :data="formItemData"
-          :validate-methods="formItemData.validateMethods"
-          :validate-on-change="formItemData.validateOnChange"
-          :render="formItemData.render"
-        ></Render>
-      </template>
-      <p v-if="formItemData.errStatus" class="errorText">
-        {{ formItemData.errText }}
-      </p>
-      <p
-        v-if="formItemData.description"
-        :class="{ moveToBottom: formItemData.errStatus }"
-        class="descriptionText"
-      >
-        {{ formItemData.description }}
-      </p>
-    </div>
+    <template v-if="formItemData.render">
+      <Render :data="formItemData" :validate-methods="formItemData.validateMethods" :validate-on-change="formItemData.validateOnChange" :render="formItemData.render"></Render>
+    </template>
+    <p v-if="formItemData.errStatus" class="errorText">
+      {{ formItemData.errText }}
+    </p>
+    <p v-if="formItemData.description" :class="{ moveToBottom: formItemData.errStatus }" class="descriptionText">
+      {{ formItemData.description }}
+    </p>
   </div>
 </template>
 
@@ -58,16 +47,16 @@ export default {
       default: 'large'
     }
   },
-  data () {
+  data() {
     return {
       formItemData: {}
     }
   },
-  created () {
+  created() {
     this.formItemData = this.itemData
   },
   watch: {
-    itemData () {
+    itemData() {
       this.formItemData = this.itemData
     }
   },

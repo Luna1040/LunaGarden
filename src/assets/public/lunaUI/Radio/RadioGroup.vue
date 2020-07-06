@@ -1,10 +1,10 @@
 <template>
   <div
-    class="lunaButtonGroup"
+    class="lunaRadioGroup"
     :class="[
       {
-        light: theme === 'light',
-        dark: theme === 'dark'
+        lightGroup: theme === 'light',
+        darkGroup: theme === 'dark'
       },
       {
         darkShadow: shadowTheme === 'dark',
@@ -22,20 +22,37 @@
         block: !flex
       }
     ]"
-    :style="[btnGroupStyle]"
+    :style="[radioGroupStyle]"
   >
-    <Button v-for="(i, index) in btnGroup" :key="index" :style="spanCount" :styles="i.styles" :theme="i.theme" :width="i.width" :height="i.height" :color="i.color" :background="i.background" :font-size="i.fontSize" :border="i.border" :shadow="i.shadow" :shadow-theme="i.shadowTheme" :shadow-style="i.shadowStyle" :class-name="i.className" :padding="i.padding" :margin="i.margin" :corner="i.corner" :radius="i.radius" :loading="i.loading" :disabled="i.disabled" :type="i.type" :icon="i.icon" :icon-color="i.iconColor" :icon-size="i.iconSize" :pre="i.pre" :suffix="i.suffix" :long="i.long" @click="emit(i.methods, index)">{{ i.name }}</Button>
+    <Radio v-for="(i, index) in radioData" :key="index" v-model="i.value" :style="spanCount" :true-value="i.trueValue" :disabled="i.disabled" :corner="radioPropsStyle.corner" :radius="radioPropsStyle.radius" :checked-with-light="radioPropsStyle.checkedWithLight" :icon="radioPropsStyle.icon" :icon-font-size="radioPropsStyle.iconFontSize" :icon-font-color="radioPropsStyle.iconFontColor" :border="radioPropsStyle.border" :border-corner="radioPropsStyle.borderCorner" :border-radius="radioPropsStyle.borderRadius" :border-style="radioPropsStyle.borderStyle" :padding="radioPropsStyle.padding" @onChange="handelChange(i.beforeChecked, index, i.value, i.trueValue)">
+      <template v-if="i.label">
+        {{ i.label }}
+      </template>
+      <template v-else>
+        {{ i.value }}
+      </template>
+    </Radio>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ButtonGroup',
+  name: 'RadioGroup',
   props: {
-    btnGroup: {
+    radioData: {
       type: Array,
       default: () => {
         return []
+      }
+    },
+    value: {
+      type: [String, Number, Boolean],
+      default: false
+    },
+    radioPropsStyle: {
+      type: Object,
+      default: () => {
+        return {}
       }
     },
     flex: {
@@ -96,10 +113,20 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      choiceValue: false
+    }
+  },
+  mounted() {
+    this.choiceValue = this.value
+    this.radioData.forEach((item, index) => {
+      if (this.choiceValue === item.trueValue) {
+        this.radioData[index].value = this.choiceValue
+      }
+    })
   },
   computed: {
-    btnGroupStyle() {
+    radioGroupStyle() {
       const styles = {}
       if (!this.shadow) {
         styles.boxShadow = 'none'
@@ -176,8 +203,22 @@ export default {
     }
   },
   methods: {
-    emit(methods, index) {
-      this.$emit(methods, index)
+    handelChange(before, index, value, trueValue) {
+      if (!before) {
+        this.choiceValue = value
+        for (let i = 0; i < this.radioData.length; i++) {
+          if (i === index) {
+            this.radioData[i].value = this.choiceValue
+          } else {
+            this.radioData[i].value = false
+          }
+        }
+        this.$emit('input', this.choiceValue)
+
+        this.$emit('onChange', this.choiceValue)
+      } else {
+        this.$emit('onBeforeChange', index, value, trueValue, this.choiceValue)
+      }
     }
   }
 }

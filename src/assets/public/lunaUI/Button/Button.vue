@@ -32,9 +32,10 @@
         ghostButton: type === 'ghost',
       },
     ]"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     @click="click()"
   >
+    <span class="lunaLoadingDot" v-if="loading"></span>
     <i
       v-if="pre && fontIcon !== ''"
       :style="[iconFontSize, iconFontColor]"
