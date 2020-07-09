@@ -1,4 +1,4 @@
-@import "./lunaCol.scss";
+@import './lunaCol.scss';
 
 $white: #ffffff;
 $primary: #eb7290;
@@ -150,6 +150,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         i,
         img {
           margin-right: 8px;
+        }
+        img {
+          height: 75%;
         }
       }
       .titleIcon {
@@ -503,9 +506,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     top: 35%;
   }
 }
-.lunaButtonGroup{
-
-}
 
 .pre {
   margin-right: 6px;
@@ -514,7 +514,28 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .suffix {
   margin-left: 6px;
 }
-
+.lunaLoadingDot {
+  position: relative;
+  margin-right: 8px;
+  display: block;
+  border-radius: 50%;
+  background-color: $primary;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: ani-spin-bounce 1s 0s ease-in-out infinite;
+  animation: bounce 1s 0s ease-in-out infinite;
+  @keyframes bounce {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+}
 .lunaBadge {
   width: 6px;
   height: 6px;
@@ -598,7 +619,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     figcaption,
     div {
       font-size: 14px;
-      overflow: visible;
       word-break: break-word;
     }
   }
@@ -652,9 +672,9 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         position: absolute;
         top: -10px;
         right: -15px;
-        content: "";
-        width: 20px;
-        height: 20px;
+        content: '';
+        width: 10px;
+        height: 10px;
         background-color: currentColor;
         border-radius: 50%;
         box-shadow: 0 0 30px rgba(255, 255, 255, 1);
@@ -663,8 +683,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .face:nth-child(1) {
-      width: 200px;
-      height: 200px;
+      width: 20px;
+      height: 20px;
       color: $white;
       border-color: currentColor transparent transparent currentColor;
       border-width: 6px 6px 0 0;
@@ -674,8 +694,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .face:nth-child(2) {
-      width: 200px;
-      height: 200px;
+      width: 20px;
+      height: 20px;
       color: $primary;
       border-color: currentColor currentColor transparent transparent;
       border-width: 6px 0 0 6px;
@@ -742,8 +762,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 }
-.lunaTable.stripeRow{
-  >tbody>tr:nth-child(even){
+.lunaTable.stripeRow {
+  > tbody > tr:nth-child(even) {
     background-color: #f8f8f9;
   }
 }
@@ -785,7 +805,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .hoverRow {
-    background-color: $primaryActive!important;
+    background-color: $primaryActive !important;
   }
   .currentRow {
     background-color: $primary !important;
@@ -924,6 +944,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   overflow: visible;
   position: relative;
   z-index: 5;
+  height: 32px;
 
   .lunaInput {
     position: absolute;
@@ -939,7 +960,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     position: absolute;
     width: 100%;
     z-index: -1;
-    overflow: hidden!important;
+    overflow: hidden !important;
 
     > div {
       overflow: auto;
@@ -1025,7 +1046,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       line-height: 1;
       color: $errorText;
       font-family: SimSun;
-      content: "*";
+      content: '*';
     }
 
     p {
@@ -1241,6 +1262,145 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       padding: 8px;
     }
   }
+}
+
+.lunaCheckbox {
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: inline-flex;
+  .emptyCheckbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dcdee2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all ease-in 0.15s;
+    flex-shrink: 0;
+    margin-right: 4px;
+    box-shadow: 0 0 2px transparent;
+    position: relative;
+    i {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      background-color: $primary;
+      color: $white;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  > img,
+  > i {
+    margin-right: 2px;
+  }
+  .emptyCheckbox.checked {
+    border: 1px solid $primaryOpacity;
+  }
+  .emptyCheckbox.checkedWithLight {
+    border: 1px solid $primaryOpacity;
+    box-shadow: 0 0 2px $primary;
+  }
+}
+
+.lunaCheckbox.checked {
+  color: $primary;
+  border-color: $primary !important;
+}
+
+.lunaCheckbox.disabled {
+  .emptyCheckbox {
+    background-color: $disableBackground !important;
+    i {
+      background-color: $disableBackground;
+      color: $disableText;
+    }
+  }
+  .emptyCheckbox.checked {
+    border: 1px solid $disableBackground;
+  }
+  .emptyCheckbox.checkedWithLight {
+    border: 1px solid $disableBackground;
+    box-shadow: 0 0 2px $disableBackground;
+  }
+  color: $disableText !important;
+  cursor: no-drop !important;
+}
+
+.lunaRadio {
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: inline-flex;
+  .emptyRadio {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dcdee2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all ease-in 0.15s;
+    flex-shrink: 0;
+    margin-right: 4px;
+    box-shadow: 0 0 2px transparent;
+    position: relative;
+    .radioDot {
+      width: 70%;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $primary;
+      box-shadow: 0 0 2px $primary;
+      position: absolute;
+    }
+  }
+  > img,
+  > i {
+    margin-right: 2px;
+  }
+  .emptyRadio.checked {
+    border: 1px solid $primaryOpacity;
+  }
+  .emptyRadio.checkedWithLight {
+    border: 1px solid $primaryOpacity;
+    box-shadow: 0 0 2px $primary;
+  }
+}
+.lunaRadio.checked {
+  color: $primary;
+  border-color: $primary !important;
+}
+
+.lunaRadio.disabled {
+  .emptyRadio {
+    background-color: $disableBackground !important;
+    .radioDot {
+      background-color: $disableText;
+      box-shadow: none;
+    }
+  }
+  .emptyRadio.checked {
+    border: 1px solid $disableBackground;
+  }
+  .emptyRadio.checkedWithLight {
+    border: 1px solid $disableBackground;
+    box-shadow: 0 0 2px $disableBackground;
+  }
+  color: $disableText !important;
+  cursor: no-drop !important;
+}
+
+.lunaCheckboxGroup.darkGroup,.lunaRadioGroup.darkGroup {
+  background-color: $normalDark;
+  color: #ffffff;
 }
 
 .flex {

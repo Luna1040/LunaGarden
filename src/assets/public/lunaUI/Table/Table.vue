@@ -60,10 +60,10 @@
     <transition name="maskAnimation">
       <div v-if="loading" class="lunaLoading">
         <div class="face">
-          <div class="circle"></div>
+          <!--          <div class="circle"></div>-->
         </div>
         <div class="face">
-          <div class="circle"></div>
+          <!--          <div class="circle"></div>-->
         </div>
       </div>
     </transition>

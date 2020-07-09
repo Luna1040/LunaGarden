@@ -18,7 +18,11 @@ import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
 import Message from './Message/index.js'
 import Tree from './Tree/index.js'
-import Collapse from './Collapse/collapse.vue'
+import Collapse from './Collapse/Collapse.vue'
+import Checkbox from './Checkbox/Checkbox.vue'
+import CheckboxGroup from './Checkbox/CheckboxGroup.vue'
+import Radio from './Radio/Radio.vue'
+import RadioGroup from './Radio/RadioGroup.vue'
 import './util/clickoutside.js'
 
 const LunaUI = {
@@ -40,7 +44,11 @@ const LunaUI = {
   Select,
   Option,
   Tree,
-  Collapse
+  Collapse,
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup
 }
 
 Object.keys(LunaUI).forEach((name) => {

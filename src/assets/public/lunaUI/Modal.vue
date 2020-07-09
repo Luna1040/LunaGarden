@@ -44,7 +44,8 @@
       >
         <div v-if="showHead" class="modalHeader">
           <slot name="header">
-            <i v-if="icon !== ''" class="titleIcon" :class="icon" :style="[iconColorCount, iconFontSizeCount]"></i>
+            <i v-if="fontIcon !== ''" :style="[iconFontSizeCount, iconColorCount]" :class="fontIcon"></i>
+            <img v-if="imageIcon !== ''" :src="imageIcon" />
             <p :style="titleColorCount">{{ title }}</p>
           </slot>
           <i class="iconfont icon-cancel closeIcon" @click="close"></i>
@@ -193,7 +194,36 @@ export default {
     return {
       showModal: this.value,
       showHead: true,
-      colorTheme: this.type
+      colorTheme: this.type,
+      fontIcon: '',
+      imageIcon: ''
+    }
+  },
+  mounted() {
+    if (this.$slots.header === undefined && !this.title) {
+      this.showHead = false
+    }
+    const icon = this.icon
+    // 为了避免转义反斜杠出问题，这里将对其进行转换
+    const re = /(\\+)/g
+    const filename = icon.replace(re, '#')
+    // 对路径字符串进行剪切截取
+    const fileArray = filename.split('#')
+    // 获取数组中最后一个，即文件名
+    const fileName = fileArray[fileArray.length - 1]
+    // 再对文件名进行截取，以取得后缀名
+    const suffixName = fileName.split('.')
+    // 获取截取的最后一个字符串，即为后缀名
+    const last = suffixName[suffixName.length - 1]
+    // 添加需要判断的后缀名类型
+    const tp = 'jpg,svg,png,JPG,SVG,PNG'
+    // 返回符合条件的后缀名在字符串中的位置
+    const rs = tp.indexOf(last)
+    // 如果返回的结果大于或等于0
+    if (rs >= 0) {
+      this.imageIcon = this.icon
+    } else {
+      this.fontIcon = this.icon
     }
   },
   methods: {
@@ -216,11 +246,6 @@ export default {
     // 默认的底部按钮取消事件
     cancel() {
       this.close()
-    }
-  },
-  mounted() {
-    if (this.$slots.header === undefined && !this.title) {
-      this.showHead = false
     }
   },
   computed: {
