@@ -6,11 +6,53 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "959229",
+      "name": "check",
+      "font_class": "check",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "12736666",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "12736667",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "10997775",
+      "name": "search",
+      "font_class": "search1",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
       "icon_id": "527045",
       "name": "add",
       "font_class": "add1",
       "unicode": "e67b",
       "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "11348960",
+      "name": "copy-l",
+      "font_class": "copy-l",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "10467430",
+      "name": "down",
+      "font_class": "down",
+      "unicode": "e600",
+      "unicode_decimal": 58880
     },
     {
       "icon_id": "547164",
@@ -111,46 +153,11 @@
       "unicode_decimal": 58896
     },
     {
-      "icon_id": "10467430",
-      "name": "down",
-      "font_class": "down",
-      "unicode": "e600",
-      "unicode_decimal": 58880
-    },
-    {
-      "icon_id": "10997775",
-      "name": "search",
-      "font_class": "search1",
-      "unicode": "e699",
-      "unicode_decimal": 59033
-    },
-    {
       "icon_id": "11044295",
       "name": "HotelDetails_icn_Internet",
       "font_class": "HotelDetails_icn_Internet",
       "unicode": "e60e",
       "unicode_decimal": 58894
-    },
-    {
-      "icon_id": "11348960",
-      "name": "copy-l",
-      "font_class": "copy-l",
-      "unicode": "e61a",
-      "unicode_decimal": 58906
-    },
-    {
-      "icon_id": "12736666",
-      "name": "返回",
-      "font_class": "fanhui",
-      "unicode": "e60a",
-      "unicode_decimal": 58890
-    },
-    {
-      "icon_id": "12736667",
-      "name": "右箭头",
-      "font_class": "youjiantou",
-      "unicode": "e60b",
-      "unicode_decimal": 58891
     }
   ]
 }
