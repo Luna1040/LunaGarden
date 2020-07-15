@@ -1,20 +1,31 @@
 <template>
   <div class="legend">
-    <chara-select-area
-      :chara-list="girlData"
-      :choose-chara="chooseChara"
-    ></chara-select-area>
+    <div class="legendIntro">
+      <h1>花神传说</h1>
+      <Loading></Loading>
+      <Button theme="primary" :width="150" :loading="loading" @click="startBattle">开始战斗</Button>
+      <Button theme="primary" :width="150" :loading="loading" @click="startBattle">获取装甲</Button>
+      <Button theme="primary" :width="150" :loading="loading" @click="startBattle">可用人物</Button>
+      <Button :width="150" @click="setting = true">设置</Button>
+    </div>
+    <!--    <charaSelect-area :chara-list="girlData" :choose-chara="chooseChara"></charaSelect-area>-->
+    <Modal v-model="setting">
+      <Setting></Setting>
+    </Modal>
   </div>
 </template>
 
 <script>
 import CharaSelectArea from './charaSelectArea.vue'
+import Setting from './setting'
 export default {
   name: 'Legend',
-  data () {
+  data() {
     return {
-      test: '',
-      loading: '',
+      loading: false,
+      setting: false,
+      // test: '',
+      // loading: '',
       girlData: [
         {
           name: '花神',
@@ -130,34 +141,35 @@ export default {
     }
   },
   components: {
-    CharaSelectArea
+    CharaSelectArea,
+    Setting
   },
-  created () {
+  created() {
     this.$emit('sendMsgHeader', this.$t('lang.titles.legend'))
   },
   methods: {
-    click () {
+    click() {
       let value = '爱上空间回复噶速度快捷回复噶快圣诞节好烦噶ASD'
       this.$refs['input'].value = value
       this.test = value
       this.$refs['input'].focus()
     },
-    chooseChara (val) {
+    chooseChara(val) {
       this.chara = val
     },
-    battleStart () {
+    battleStart() {
       this.boy = this.boyData[this.random(this.boyData)]
     },
-    autoBattleStart () {
+    autoBattleStart() {
       this.boy = this.boyData[this.random(this.boyData)]
     },
-    random (arr) {
+    random(arr) {
       return Math.floor(Math.random() * arr.length)
     },
-    reset () {
+    reset() {
       this.chara = {}
     },
-    online () {
+    online() {
       this.$Message.error({ content: '服务暂未开通！敬请期待！' })
       if (window.navigator.onLine) {
         this.loading = true
@@ -165,11 +177,10 @@ export default {
         this.$Message.error({ content: '您还未连接互联网或网络较差！请在网络良好的环境下重试！' })
       }
     },
-    showCards () {
-
-    },
-    getArmor () {
-
+    showCards() {},
+    getArmor() {},
+    startBattle() {
+      this.loading = true
     }
   }
 }
