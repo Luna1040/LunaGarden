@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    require.resolve('eslint-config-standard'),
   ],
   rules: {
     // vue 相关规则 plugin:vue/essential 中提供了较为松散的校验规则
