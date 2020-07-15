@@ -151,13 +151,16 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         img {
           margin-right: 8px;
         }
+
         img {
           height: 75%;
         }
       }
+
       .titleIcon {
         margin-right: 8px;
       }
+
       > .closeIcon {
         cursor: pointer;
         position: absolute;
@@ -274,10 +277,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   position: relative;
   outline: 0;
   border: 1px solid #eeeeee;
+
   .iconfont.icon-cancel {
     font-size: 12px;
     margin-right: 8px;
   }
+
   input {
     border: 0;
     outline: 0;
@@ -371,6 +376,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     transition: all 0.5s;
     overflow: visible;
   }
+
   .buttonImg {
     height: 18px;
     flex-shrink: 0;
@@ -514,6 +520,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .suffix {
   margin-left: 6px;
 }
+
 .lunaLoadingDot {
   position: relative;
   margin-right: 8px;
@@ -524,11 +531,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   height: 20px;
   -webkit-animation: ani-spin-bounce 1s 0s ease-in-out infinite;
   animation: bounce 1s 0s ease-in-out infinite;
+
   @keyframes bounce {
     0% {
       -webkit-transform: scale(0);
       transform: scale(0);
     }
+
     100% {
       -webkit-transform: scale(1);
       transform: scale(1);
@@ -536,6 +545,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 }
+
 .lunaBadge {
   width: 6px;
   height: 6px;
@@ -683,8 +693,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .face:nth-child(1) {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
       color: $white;
       border-color: currentColor transparent transparent currentColor;
       border-width: 6px 6px 0 0;
@@ -694,8 +704,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .face:nth-child(2) {
-      width: 20px;
-      height: 20px;
+      width: 60px;
+      height: 60px;
       color: $primary;
       border-color: currentColor currentColor transparent transparent;
       border-width: 6px 0 0 6px;
@@ -762,6 +772,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 }
+
 .lunaTable.stripeRow {
   > tbody > tr:nth-child(even) {
     background-color: #f8f8f9;
@@ -807,6 +818,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   .hoverRow {
     background-color: $primaryActive !important;
   }
+
   .currentRow {
     background-color: $primary !important;
     color: $white;
@@ -958,6 +970,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
   .optionScrollBarHidden {
     position: absolute;
+    top: 36px;
     width: 100%;
     z-index: -1;
     overflow: hidden !important;
@@ -1072,6 +1085,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       padding-right: 8px;
     }
   }
+
   .lunaFormItem.rightLabel {
     display: flex;
     align-items: center;
@@ -1208,9 +1222,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         text-align: center;
         width: 22px;
         transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+
         i {
           font-size: 12px;
         }
+
         i:before {
           margin-top: 4px;
         }
@@ -1220,9 +1236,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         transform: rotate(90deg);
       }
     }
+
     .lunaItemInner:hover {
       background: $primaryOpacity;
     }
+
     .lunaTreeCell {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1235,6 +1253,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaCollapse {
   background-color: $white;
   border: 1px solid #eeeeee;
+
   .lunaPanel {
     .lunaPanelTitle {
       background-color: $lightGray;
@@ -1244,19 +1263,24 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       align-items: center;
       justify-content: center;
       cursor: pointer;
+
       > div {
         transition: all 0.25s;
       }
+
       .rotate90 {
         transform: rotate(-90deg);
       }
+
       .rotate180 {
         transform: rotate(180deg);
       }
+
       span {
         margin-right: 8px;
       }
     }
+
     .lunaPanelBody {
       position: relative;
       padding: 8px;
@@ -1269,6 +1293,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.5s;
   display: inline-flex;
+
   .emptyCheckbox {
     width: 16px;
     height: 16px;
@@ -1282,6 +1307,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     margin-right: 4px;
     box-shadow: 0 0 2px transparent;
     position: relative;
+
     i {
       width: 100%;
       height: 100%;
@@ -1296,13 +1322,16 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       left: 0;
     }
   }
+
   > img,
   > i {
     margin-right: 2px;
   }
+
   .emptyCheckbox.checked {
     border: 1px solid $primaryOpacity;
   }
+
   .emptyCheckbox.checkedWithLight {
     border: 1px solid $primaryOpacity;
     box-shadow: 0 0 2px $primary;
@@ -1317,18 +1346,22 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaCheckbox.disabled {
   .emptyCheckbox {
     background-color: $disableBackground !important;
+
     i {
       background-color: $disableBackground;
       color: $disableText;
     }
   }
+
   .emptyCheckbox.checked {
     border: 1px solid $disableBackground;
   }
+
   .emptyCheckbox.checkedWithLight {
     border: 1px solid $disableBackground;
     box-shadow: 0 0 2px $disableBackground;
   }
+
   color: $disableText !important;
   cursor: no-drop !important;
 }
@@ -1338,6 +1371,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.5s;
   display: inline-flex;
+
   .emptyRadio {
     width: 16px;
     height: 16px;
@@ -1351,6 +1385,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     margin-right: 4px;
     box-shadow: 0 0 2px transparent;
     position: relative;
+
     .radioDot {
       width: 70%;
       height: 70%;
@@ -1362,45 +1397,345 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       position: absolute;
     }
   }
+
   > img,
   > i {
     margin-right: 2px;
   }
+
   .emptyRadio.checked {
     border: 1px solid $primaryOpacity;
   }
+
   .emptyRadio.checkedWithLight {
     border: 1px solid $primaryOpacity;
     box-shadow: 0 0 2px $primary;
   }
 }
+
 .lunaRadio.checked {
   color: $primary;
   border-color: $primary !important;
 }
 
 .lunaRadio.disabled {
+  cursor: no-drop !important;
+
   .emptyRadio {
     background-color: $disableBackground !important;
+
     .radioDot {
       background-color: $disableText;
       box-shadow: none;
     }
   }
+
   .emptyRadio.checked {
     border: 1px solid $disableBackground;
   }
+
   .emptyRadio.checkedWithLight {
     border: 1px solid $disableBackground;
     box-shadow: 0 0 2px $disableBackground;
   }
+
   color: $disableText !important;
   cursor: no-drop !important;
 }
 
-.lunaCheckboxGroup.darkGroup,.lunaRadioGroup.darkGroup {
+.lunaCheckboxGroup,
+.lunaRadioGroup,
+.lunaSwitchGroup {
+  flex-wrap: wrap;
+}
+
+.lunaSwitch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2px;
+  min-width: 44px;
+  height: 22px;
+  background: #efefef;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.35s;
+
+  .switchBtn {
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 2px;
+    transition: all 0.35s cubic-bezier(1, 0.3, 0.3, 1) 0s;
+  }
+
+  .lunaLoadingDot {
+    position: absolute;
+    width: 18px !important;
+    height: 18px !important;
+    background-color: $primary !important;
+  }
+
+  .switchBtn.switchKeyModern {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid $white;
+    }
+  }
+
+  .falseSetPlace {
+    padding-left: 20px;
+    margin-right: 8px;
+  }
+
+  .trueSetPlace {
+    padding-right: 20px;
+    margin-left: 8px;
+  }
+}
+
+.lunaSwitch.disabled {
+  background-color: #cccccc !important;
+  color: $disableText !important;
+  cursor: no-drop !important;
+}
+
+.lunaSwitch.switchBoxOn {
+  background-color: $primary;
+  box-shadow: 0 0 5px $primary;
+  justify-content: flex-start;
+
+  .switchBtn.switchKeyModern {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      width: 12px;
+      height: 12px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.darkSwitchShadow {
+  box-shadow: $aroundDarkShadow;
+}
+
+.lightSwitchShadow {
+  box-shadow: $aroundLightShadow;
+}
+
+.lunaSwitchGroup {
+  .lunaSwitchItem {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+
+    .lunaSwitch {
+      margin-left: 4px;
+    }
+  }
+}
+
+.lunaCheckboxGroup.darkGroup,
+.lunaRadioGroup.darkGroup,
+.lunaSwitchGroup.darkGroup {
   background-color: $normalDark;
   color: #ffffff;
+}
+
+.lunaDatePicker {
+  display: inline-block;
+
+  .lunaDatePickerPanelNormalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 32px;
+    padding: 0 8px;
+    .dateItemGroup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+    }
+    .cgItemBtn,
+    i {
+      cursor: pointer;
+      transition: 0.25s;
+      padding: 0 4px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    .cgItemBtn:hover {
+      background-color: $primaryOpacity;
+      color: $primaryText;
+    }
+
+    i {
+      font-size: 8px;
+      padding: 4px;
+    }
+
+    i:hover {
+      background-color: $primaryOpacity;
+      color: $primaryText;
+    }
+  }
+
+  .lunaInput {
+    input {
+      cursor: pointer;
+    }
+  }
+
+  .lunaDatePickerPanel {
+    width: 200px;
+    margin-top: 4px;
+    box-shadow: $aroundDarkShadow;
+    position: relative;
+    overflow: hidden;
+    .lunaDatePickerPanelYear {
+      width: 100%;
+      .lunaYearCell {
+        text-align: center;
+        height: 31.2px;
+        line-height: 31.2px;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      .lunaYearCell:hover {
+        background-color: $primaryOpacity;
+        color: $primaryText;
+      }
+      .lunaYearCell.lunaActiveYear {
+        background-color: $primaryOpacity;
+        color: $primaryText;
+        box-shadow: 0 0 2px $primary;
+      }
+    }
+
+    .lunaDatePickerPanelMonth {
+      width: 100%;
+      height: 156px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .lunaMonthCell {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        margin: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.25s;
+        border-radius: 5px;
+      }
+      .lunaMonthCell:hover {
+        background-color: $primaryOpacity;
+        color: $primaryText;
+      }
+      .lunaMonthCell.lunaActiveMonth {
+        background-color: $primaryOpacity;
+        color: $primaryText;
+        box-shadow: 0 0 2px $primary;
+      }
+    }
+
+    .lunaDatePickerPanelDay {
+      width: 100%;
+      .lunaDayRangeActive {
+        background-color: $primaryOpacity;
+      }
+      .lunaDayCell,
+      .lunaWeekCell,
+      .lunaDayCellOtherMonth {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        font-size: 12px;
+        transition: all 0.25s;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+      }
+      .todayDot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background-color: $primary;
+      }
+
+      .lunaDatePickerPanelDayList {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 6px;
+      }
+      .lunaDayCell.lunaActiveDay {
+        background-color: $primary;
+        color: $white;
+        box-shadow: 0 0 2px $primary;
+      }
+      .lunaDayCell:hover {
+        background-color: $primaryHover;
+        color: $white;
+      }
+      .lunaDayCellOtherMonth:hover {
+        color: $primaryText;
+      }
+      .lunaDayCellOtherMonth {
+        color: lightgray;
+      }
+
+      .lunaDatePickerPanelWeekList {
+        display: flex;
+        padding: 0 6px;
+        background-color: $lightGray;
+        .lunaWeekCell {
+          color: darkgray;
+        }
+      }
+    }
+  }
+
+  .lunaDatePickerPanel.rangeContainer {
+    width: 400px;
+    .rangeBody {
+      display: flex;
+      .startDate,
+      .endDate {
+        width: 200px;
+        display: flex;
+        .lunaDatePickerPanelYear {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .lunaDatePickerPanelMonth {
+          height: 100%;
+        }
+      }
+    }
+  }
 }
 
 .flex {

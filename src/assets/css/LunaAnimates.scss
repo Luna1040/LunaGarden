@@ -273,11 +273,29 @@
 }
 
 .scaleCheckboxIcon-leave-active {
-  transition: all ease-in 0.15s ;
+  transition: all ease-in 0.15s;
 }
 
 .scaleCheckboxIcon-enter,
 .scaleCheckboxIcon-leave-to {
   transform: scale(0);
   opacity: 0;
+}
+
+.datePickerTransFade-leave-active,
+.datePickerTransFade-enter-active {
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.8, 1);
+}
+
+.datePickerTransFade-enter,
+.datePickerTransFade-leave-to {
+  position: absolute;
+  transform: translateY(-18px);
+  opacity: 0;
+}
+.switchBtn.switchOn {
+  left: calc(100% - 20px);
+}
+.switchBtn.switchMoving {
+  transform: scaleX(3.5);
 }

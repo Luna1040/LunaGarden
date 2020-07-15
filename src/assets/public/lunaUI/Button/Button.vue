@@ -12,11 +12,11 @@
         primaryButton: theme === 'primary',
         alertButton: theme === 'alert',
         lightButton: theme === 'light',
-        darkButton: theme === 'dark',
+        darkButton: theme === 'dark'
       },
       {
         darkShadow: shadowTheme === 'dark',
-        lightShadow: shadowTheme === 'light',
+        lightShadow: shadowTheme === 'light'
       },
       {
         squareCorner: corner === 'square',
@@ -24,41 +24,23 @@
         filletCorner: corner === 'fillet',
         largeCorner: corner === 'large',
         fullCorner: corner === 'full',
-        roundCorner: corner === 'round',
+        roundCorner: corner === 'round'
       },
       {
         '': type === 'normal',
         textButton: type === 'text',
-        ghostButton: type === 'ghost',
-      },
+        ghostButton: type === 'ghost'
+      }
     ]"
     :disabled="disabled || loading"
     @click="click()"
   >
     <span class="lunaLoadingDot" v-if="loading"></span>
-    <i
-      v-if="pre && fontIcon !== ''"
-      :style="[iconFontSize, iconFontColor]"
-      :class="fontIcon"
-      class="pre"
-    ></i>
-    <img
-      v-if="pre && imageIcon !== ''"
-      :src="imageIcon"
-      class="buttonImg pre"
-    />
+    <i v-if="pre && fontIcon !== ''" :style="[iconFontSize, iconFontColor]" :class="fontIcon" class="pre"></i>
+    <img v-if="pre && imageIcon !== ''" :src="imageIcon" class="buttonImg pre" />
     <slot></slot>
-    <i
-      v-if="suffix && fontIcon !== ''"
-      :style="[iconFontSize, iconColor]"
-      :class="fontIcon"
-      class="suffix"
-    ></i>
-    <img
-      v-if="suffix && imageIcon !== ''"
-      :src="imageIcon"
-      class="buttonImg suffix"
-    />
+    <i v-if="suffix && fontIcon !== ''" :style="[iconFontSize, iconColor]" :class="fontIcon" class="suffix"></i>
+    <img v-if="suffix && imageIcon !== ''" :src="imageIcon" class="buttonImg suffix" />
     <div v-if="badge" class="lunaBadge">
       <span v-if="badgeType === 'number'">{{ badgeCount }}</span>
     </div>
@@ -115,7 +97,7 @@ export default {
     },
     styles: {
       type: Object,
-      default () {
+      default() {
         return {}
       }
     },
@@ -184,14 +166,14 @@ export default {
       default: 'none'
     }
   },
-  data () {
+  data() {
     return {
       fontIcon: '',
       imageIcon: ''
     }
   },
   computed: {
-    buttonStyles () {
+    buttonStyles() {
       const styles = {}
       if (this.background !== 'none') {
         if (typeof this.background === 'string') {
@@ -266,7 +248,7 @@ export default {
       }
       return styles
     },
-    iconFontSize () {
+    iconFontSize() {
       if (this.iconSize !== 'none') {
         if (typeof this.iconSize === 'string') {
           return { fontSize: this.iconSize }
@@ -281,7 +263,7 @@ export default {
         }
       }
     },
-    iconFontColor () {
+    iconFontColor() {
       if (this.iconColor !== '') {
         if (this.iconColor !== 'none') {
           if (typeof this.iconColor === 'string') {
@@ -301,7 +283,7 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     const icon = this.icon
     // 为了避免转义反斜杠出问题，这里将对其进行转换
     const re = /(\\+)/g
@@ -326,8 +308,10 @@ export default {
     }
   },
   methods: {
-    click () {
-      this.$emit('click')
+    click() {
+      if (!this.disabled && !this.loading) {
+        this.$emit('click')
+      }
     }
   }
 }
