@@ -19,7 +19,7 @@
           <figcaption>{{ $t("lang.aboutUs.authorDesc") }}</figcaption>
         </figure>
         <figure>
-          <img src="userIcons/Suyan.jpg" alt />
+          <img src="userIcons/SuYan.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people4") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.UI") }}</figcaption>
         </figure>
@@ -27,12 +27,12 @@
       <h1>{{ $t("lang.aboutUs.title5") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="userIcons/Xirang.jpg" alt />
+          <img src="userIcons/XiRang.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
         </figure>
         <figure>
-          <img src="userIcons/WangDi.jpg" alt />
+          <img src="userIcons/Wangdi.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people2") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.mystery") }}</figcaption>
         </figure>

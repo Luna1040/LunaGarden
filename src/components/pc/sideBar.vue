@@ -29,27 +29,64 @@ export default {
           to: 'Home'
         },
         {
-          name: '关于',
-          to: 'AboutUs'
-        },
-        {
           name: '日记',
           to: 'Note'
         },
-        {
-          name: '花神通讯',
-          to: 'Chatting'
-        },
-        {
-          name: '花神传说',
-          to: 'Legend'
-        }
+          {
+              name: '团队看板',
+              to: 'Legend'
+          },
+          {
+              name: '团队进度',
+              to: 'Legend'
+          },
+          {
+              name: '测试团队',
+              to: 'Legend'
+          },
+          {
+              name: '前端团队',
+              to: 'Legend'
+          },
+          {
+              name: '后端团队',
+              to: 'Legend'
+          },
+          {
+              name: '运营团队',
+              to: 'Legend'
+          },
+          {
+              name: '填报中心',
+              to: 'Legend'
+          },
+          // {
+          //     name: '花神传说',
+          //     to: 'Legend'
+          // },
+        // {
+        //   name: '花神通讯',
+        //   to: 'Chatting'
+        // },
+        // {
+        //   name: '花神传说',
+        //   to: 'Legend'
+        // },
+          {
+              name: '关于',
+              to: 'AboutUs'
+          },
       ]
     }
   },
   methods: {
     goLink (url) {
-      this.$router.push(url)
+      // this.$router.push(url)
+        if(url === 'Legend' || url === 'Chatting' || url === 'Note') {
+            this.$Message.error({content: 'You have no limit to this page!'})
+        } else {
+            this.$router.push(url)
+        }
     },
     hideSideMenu () {
       this.$emit('input', false)
