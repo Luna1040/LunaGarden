@@ -1,10 +1,10 @@
 <template>
-  <div class="legend">
-    <chara-select-area
-      :chara-list="girlData"
-      :choose-chara="chooseChara"
-    ></chara-select-area>
-  </div>
+	<div class="legend">
+		<chara-select-area
+			:chara-list="girlData"
+			:choose-chara="chooseChara"
+		></chara-select-area>
+	</div>
 </template>
 
 <script>
@@ -166,7 +166,7 @@ export default {
       }
     },
     showCards () {
-
+      
     },
     getArmor () {
 
