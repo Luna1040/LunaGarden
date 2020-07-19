@@ -16,21 +16,21 @@ $alert: #c5006a;
 $strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
 
 @mixin blurImg {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  background-image: url("../../../public/bc1.jpg");
+  background-image: url('../../../public/bc1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   filter: blur(3px);
 }
 
-@import "./LunaUI/LunaUI.scss";
+@import './LunaUI/LunaUI.scss';
 
 * {
   margin: 0;
@@ -61,8 +61,7 @@ main,
 p,
 section,
 span {
-  font-family: PingFang SC, Microsoft YaHei UI Light, Microsoft YaHei Light,
-    WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
+  font-family: PingFang SC, Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
 }
 
 button {
@@ -179,7 +178,7 @@ a {
     width: 88px;
 
     li {
-      padding: 8px 0;
+      padding: 16px 0;
       font-size: 12px;
       cursor: pointer;
       transition: 0.5s;
@@ -196,7 +195,7 @@ a {
 }
 
 #sideMenu::after {
-  @include blurImg
+  @include blurImg;
 }
 
 .bcImage16 {
@@ -303,7 +302,7 @@ a {
   }
 
   .spare::after {
-    @include blurImg
+    @include blurImg;
   }
 }
 
@@ -328,9 +327,7 @@ footer {
     display: block;
     width: 100%;
     height: 60px;
-    background: radial-gradient(75px at top,
-        transparent 50%,
-        rgb(235, 114, 144) 51%);
+    background: radial-gradient(75px at top, transparent 50%, rgb(235, 114, 144) 51%);
     background-position-y: -10px;
     position: fixed;
     bottom: -10px;
@@ -472,7 +469,7 @@ footer {
     display: flex;
     align-items: center;
 
-    >.btnGroup {
+    > .btnGroup {
       color: $primaryText;
       background-color: $white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -481,7 +478,7 @@ footer {
       padding: 3px 12px;
       margin-right: 16px;
 
-      >div {
+      > div {
         box-sizing: content-box;
         width: 26px;
         height: 26px;
@@ -502,11 +499,11 @@ footer {
         }
       }
 
-      >div:last-of-type {
+      > div:last-of-type {
         margin-left: 8px;
       }
 
-      >div.languageActive {
+      > div.languageActive {
         img {
           filter: brightness(1);
         }
@@ -516,7 +513,7 @@ footer {
 }
 
 .header::after {
-  @include blurImg
+  @include blurImg;
 }
 
 .mHeader {
@@ -650,13 +647,13 @@ footer {
         font-size: 14px;
       }
     }
-    figure.company{
+    figure.company {
       width: 400px;
-      img{
+      img {
         border-radius: 0;
         width: auto;
       }
-      p{
+      p {
         line-height: 24px;
       }
     }
@@ -716,7 +713,7 @@ footer {
     }
 
     .inputArea::after {
-      @include blurImg()
+      @include blurImg();
     }
 
     .inputArea:hover {
@@ -763,7 +760,7 @@ footer {
     }
 
     .searchAssociation::after {
-      @include blurImg()
+      @include blurImg();
     }
   }
 
@@ -894,7 +891,7 @@ footer {
           transition: all 0.5s;
           overflow: hidden;
 
-          >.iconfont.icon-cancel {
+          > .iconfont.icon-cancel {
             display: none;
             position: absolute;
             top: calc(50% - 27px);
@@ -909,12 +906,12 @@ footer {
             border-radius: 40px;
           }
 
-          >.iconfont.icon-cancel:hover {
+          > .iconfont.icon-cancel:hover {
             background-color: $primary;
             color: $white;
           }
 
-          >div {
+          > div {
             display: none;
             position: absolute;
             overflow: hidden;
@@ -935,7 +932,7 @@ footer {
             }
           }
 
-          >div:first-of-type {
+          > div:first-of-type {
             left: 40px;
             top: -20px;
 
@@ -944,7 +941,7 @@ footer {
             }
           }
 
-          >div:nth-of-type(2) {
+          > div:nth-of-type(2) {
             left: -20px;
             top: 40px;
 
@@ -953,7 +950,7 @@ footer {
             }
           }
 
-          >div:nth-of-type(3) {
+          > div:nth-of-type(3) {
             left: 100px;
             top: 40px;
 
@@ -962,7 +959,7 @@ footer {
             }
           }
 
-          >div:last-of-type {
+          > div:last-of-type {
             left: 40px;
             top: 100px;
 
@@ -971,7 +968,7 @@ footer {
             }
           }
 
-          >div:hover {
+          > div:hover {
             background-color: $primary;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
@@ -994,11 +991,11 @@ footer {
           transform: rotate(0deg);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
-          >.iconfont.icon-cancel {
+          > .iconfont.icon-cancel {
             display: block;
           }
 
-          >div {
+          > div {
             display: block;
             width: 80px;
             height: 80px;
@@ -1012,7 +1009,7 @@ footer {
     }
 
     li::after {
-      @include blurImg()
+      @include blurImg();
     }
 
     li:hover {
@@ -1077,7 +1074,7 @@ footer {
     }
 
     .inputArea::after {
-      @include blurImg()
+      @include blurImg();
     }
 
     .inputArea:hover {
@@ -1351,7 +1348,6 @@ footer {
     }
 
     li:hover {
-
       img {
         filter: contrast(1.2);
       }
@@ -1519,7 +1515,7 @@ footer {
       }
 
       .blurBc::after {
-        @include blurImg
+        @include blurImg;
       }
 
       .previewGroup {
@@ -1568,21 +1564,21 @@ footer {
 }
 
 .legend {
-  .legendIntro{
+  .legendIntro {
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1{
+    h1 {
       font-size: 42px;
       color: $white;
       margin-top: 24px;
     }
   }
-  .legendIntro::after{
-    @include blurImg
+  .legendIntro::after {
+    @include blurImg;
   }
-  .legendSetting{
-    li{
+  .legendSetting {
+    li {
       display: flex;
       align-items: center;
     }
@@ -1639,6 +1635,67 @@ footer {
           position: absolute;
           bottom: 16px;
           font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.reportCenter {
+  overflow: scroll;
+  ul {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    padding: 16px;
+    li {
+      background-color: $primaryOpacity;
+      color: $white;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-right: 16px;
+      transition: all 0.35s;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+  ul::after {
+    @include blurImg();
+  }
+  .reportView {
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: transparent;
+  }
+  .reportView.daily {
+    .dailyContainer {
+      .cardAvatar{
+        width: 24px;
+        height: 24px;
+        overflow: hidden;
+        border-radius: 24px;
+
+        img{
+          width: 100%;
+        }
+      }
+      .lunaCardTitle {
+        >div{
+          width: 100%;
+          border-radius: 36px;
+          height: 16px;
+          line-height: 16px;
+          text-align: center;
+          font-size: 12px;
+        }
+      }
+      .urgent {
+        >div {
+          background-color: $error;
+          color: $white;
         }
       }
     }

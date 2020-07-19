@@ -608,6 +608,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     padding: 0 16px;
     border-bottom: 1px solid $lightGray;
     text-align: left;
+    display: flex;
+    align-items: center;
 
     i,
     img {

@@ -165,6 +165,12 @@ export const lang = {
     monthReport: '月度汇报',
     seasonReport: '季度汇报',
     halfYearReport: '半年总结',
-    yearReport: '年度汇报'
+    yearReport: '年度汇报',
+      daily: {},
+      week: {},
+      month: {},
+      season: {},
+      halfYear: {},
+      year: {}
   }
 }

@@ -170,6 +170,12 @@ export const lang = {
     monthReport: 'Month Report',
     seasonReport: 'Season Report',
     halfYearReport: 'Half Year Report',
-    yearReport: 'Year Report'
+    yearReport: 'Year Report',
+      daily: {},
+      week: {},
+      month: {},
+      season: {},
+      halfYear: {},
+      year: {}
   }
 }

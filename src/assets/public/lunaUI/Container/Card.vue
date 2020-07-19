@@ -1,17 +1,7 @@
 <template>
   <div
     class="lunaCard"
-    :style="[
-      cardPadding,
-      cardWidth,
-      cardHeight,
-      cardBackground,
-      cardBorder,
-      cardRadius,
-      cardShadow,
-      cardImage,
-      flexStyle,
-    ]"
+    :style="[cardPadding, cardWidth, cardHeight, cardBackground, cardBorder, cardRadius, cardShadow, cardImage, flexStyle]"
     :class="[
       className,
       {
@@ -20,27 +10,21 @@
         filletCorner: corner === 'fillet',
         largeCorner: corner === 'large',
         fullCorner: corner === 'full',
-        roundCorner: corner === 'round',
+        roundCorner: corner === 'round'
       },
       { lightCard: theme === 'light', darkCard: theme === 'dark' },
       {
         darkShadow: shadowTheme === 'dark',
-        lightShadow: shadowTheme === 'light',
-      },
+        lightShadow: shadowTheme === 'light'
+      }
     ]"
   >
-    <div v-if="showHead" class="lunaCardTitle">
-      <slot name="header">
-        <i v-if="icon !== ''" :class="fontIcon"></i>
-        <img v-if="icon !== ''" :src="imageIcon" alt="" />
-        <span :style="cardFontSize">{{ title }}</span>
-      </slot>
-    </div>
-    <div
-      class="lunaCardBody"
-      :style="cardScrollable"
-      :class="{ flex: flex, block: !flex }"
-    >
+    <slot v-if="showHead" class="lunaCardTitle" name="header">
+      <i v-if="icon !== ''" :class="fontIcon"></i>
+      <img v-if="icon !== ''" :src="imageIcon" alt="" />
+      <span :style="cardFontSize">{{ title }}</span>
+    </slot>
+    <div class="lunaCardBody" :style="cardScrollable" :class="{ flex: flex, block: !flex }">
       <slot></slot>
     </div>
     <slot name="footer"></slot>
@@ -158,13 +142,13 @@ export default {
       default: 'baseline'
     }
   },
-  data () {
+  data() {
     return {
       fontIcon: '',
       imageIcon: ''
     }
   },
-  mounted () {
+  mounted() {
     const icon = this.icon
     // 为了避免转义反斜杠出问题，这里将对其进行转换
     const re = /(\\+)/g
@@ -189,40 +173,40 @@ export default {
     }
   },
   computed: {
-    cardFontSize () {
+    cardFontSize() {
       if (typeof this.fontSize === 'string') {
         return { fontSize: this.fontSize }
       } else {
         return { fontSize: this.fontSize + 'px' }
       }
     },
-    flexStyle () {
+    flexStyle() {
       return {
         flexDirection: this.direction,
         justifyContent: this.justify,
         itemsAlign: this.align
       }
     },
-    cardBackground () {
+    cardBackground() {
       if (typeof this.background === 'string') {
         return { backgroundColor: this.background }
       } else {
         return { backgroundColor: '#' + this.background }
       }
     },
-    cardImage () {
+    cardImage() {
       return {
         backgroundImage: 'url("' + this.image + '")!important'
       }
     },
-    cardBorder () {
+    cardBorder() {
       if (typeof this.border === 'string') {
         return { border: this.border }
       } else {
         return { border: this.border + 'px solid #EFEFEF' }
       }
     },
-    cardPadding () {
+    cardPadding() {
       if (typeof this.padding === 'string') {
         return {
           padding: this.padding
@@ -233,12 +217,11 @@ export default {
         }
       }
     },
-    cardWidth () {
+    cardWidth() {
       if (this.border !== '0') {
         if (this.width <= 100) {
           return {
-            width:
-              'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
+            width: 'calc(' + this.width + '% - ' + this.padding * 2 + 'px - 2px)'
           }
         } else {
           return {
@@ -257,17 +240,16 @@ export default {
         }
       }
     },
-    containerShadowStyle () {
+    containerShadowStyle() {
       if (this.shadowStyle !== '') {
         return { boxShadow: this.shadowStyle + '!important' }
       }
     },
-    cardHeight () {
+    cardHeight() {
       if (this.border !== '0') {
         if (this.height <= 100) {
           return {
-            height:
-              'calc(' + this.height + '% - ' + this.padding * 2 + 'px - 2px)'
+            height: 'calc(' + this.height + '% - ' + this.padding * 2 + 'px - 2px)'
           }
         } else {
           return {
@@ -286,7 +268,7 @@ export default {
         }
       }
     },
-    cardScrollable () {
+    cardScrollable() {
       if (this.scrollable) {
         return {
           overflow: 'auto!important'
@@ -297,7 +279,7 @@ export default {
         }
       }
     },
-    cardRadius () {
+    cardRadius() {
       if (this.radius !== -1) {
         return {
           borderRadius: this.radius + 'px!important'
@@ -306,7 +288,7 @@ export default {
         return {}
       }
     },
-    iconFontSize () {
+    iconFontSize() {
       if (this.iconSize !== 'none') {
         if (typeof this.iconSize === 'string') {
           return { fontSize: this.iconSize }
@@ -321,7 +303,7 @@ export default {
         }
       }
     },
-    iconFontColor () {
+    iconFontColor() {
       if (this.iconColor !== '') {
         if (this.iconColor !== 'none') {
           if (typeof this.iconColor === 'string') {
@@ -340,7 +322,7 @@ export default {
         }
       }
     },
-    cardShadow () {
+    cardShadow() {
       if (!this.shadow) {
         return {
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)!important'
