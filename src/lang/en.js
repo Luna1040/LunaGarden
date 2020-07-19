@@ -63,13 +63,15 @@ export const lang = {
     Register: 'Register',
     Chatting: 'Flower Chatting',
     Legend: 'Flower legend',
+    Report: 'Report Center',
     mGuide: 'Guide',
     mHome: 'Luna Garden',
     mAboutUs: 'About Us',
     mLogin: 'Login',
     mRegister: 'Register',
     mChatting: 'Flower Chatting',
-    mLegend: 'Flower legend'
+    mLegend: 'Flower legend',
+    mReport: 'Report Center',
   },
   firstAlert: {
     attention: 'Attention',
@@ -161,5 +163,13 @@ export const lang = {
     send: 'Send',
     recall: 'Recall',
     file: 'Upload File'
+  },
+  report: {
+    dailyReport: 'Daily Report',
+    weekReport: 'Week Report',
+    monthReport: 'Month Report',
+    seasonReport: 'Season Report',
+    halfYearReport: 'Half Year Report',
+    yearReport: 'Year Report'
   }
 }

@@ -63,12 +63,14 @@ export const lang = {
     Register: '注册',
     Chatting: '花神通讯',
     Legend: '花神传说',
+    Report: '汇报中心',
     mHome: 'Luna Garden',
     mAboutUs: '关于我们',
     mLogin: '登录',
     mRegister: '注册',
     mChatting: '花神通讯',
-    mLegend: '花神传说'
+    mLegend: '花神传说',
+    mReport: '汇报中心',
   },
   firstAlert: {
     attention: '提示',
@@ -156,5 +158,13 @@ export const lang = {
     send: '发送消息',
     recall: '撤回',
     file: '上传文件'
+  },
+  report: {
+    dailyReport: '每日汇报',
+    weekReport: '每周汇报',
+    monthReport: '月度汇报',
+    seasonReport: '季度汇报',
+    halfYearReport: '半年总结',
+    yearReport: '年度汇报'
   }
 }

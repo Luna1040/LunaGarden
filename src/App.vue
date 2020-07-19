@@ -255,7 +255,6 @@ export default {
       if (window.Notification && Notification.permission !== 'denied') {
         Notification.requestPermission(function (status) {
           if (status === 'granted') {
-            _this.setNotification()
           } else {
             var n = new Notification(
               '拒绝后无法获取最新消息通知。'

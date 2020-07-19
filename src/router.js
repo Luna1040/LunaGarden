@@ -33,6 +33,8 @@ import Chatting from './views/chatting/Chatting.vue'
 import mChatting from './views/chatting/mChatting.vue'
 // LunaUI
 import LunaUI from './views/UI/lunaUI.vue'
+import Report from './views/report/Report.vue'
+import mReport from './views/report/mReport.vue'
 // legend
 import Legend from './views/legend/Legend.vue'
 import mLegend from './views/legend/mLegend.vue'
@@ -81,7 +83,9 @@ const router = new Router({
     { path: '/Chatting', name: 'Chatting', component: Chatting },
     { path: '/mChatting', name: 'mChatting', component: mChatting },
     { path: '/Legend', name: 'Legend', component: Legend },
-    {path: 'mLegend', name: 'mLegend', component: mLegend}
+    { path: '/mLegend', name: 'mLegend', component: mLegend },
+    { path: '/Report', name: 'Report', component: Report },
+    { path: '/mReport', name: 'mReport', component: mReport }
   ]
 })
 

@@ -225,10 +225,8 @@ export default {
   },
   watch: {
     form () {
-      console.log(this.form)
       this.formData = this.form
       this.$forceUpdate()
-      console.log(this.formData)
     }
   },
   methods: {
