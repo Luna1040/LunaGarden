@@ -23,6 +23,9 @@ import Checkbox from './Checkbox/Checkbox.vue'
 import CheckboxGroup from './Checkbox/CheckboxGroup.vue'
 import Radio from './Radio/Radio.vue'
 import RadioGroup from './Radio/RadioGroup.vue'
+import Switches from './Switches/Switches.vue'
+import SwitchesGroup from './Switches/SwitchesGroup.vue'
+import DatePicker from './DatePicker/DatePicker.vue'
 import './util/clickoutside.js'
 
 const LunaUI = {
@@ -48,7 +51,10 @@ const LunaUI = {
   Checkbox,
   CheckboxGroup,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Switches,
+  SwitchesGroup,
+  DatePicker
 }
 
 Object.keys(LunaUI).forEach((name) => {

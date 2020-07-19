@@ -26,7 +26,7 @@
       :class="{
         bcImage177: width177 === 177,
         bcImage16: width177 === 16,
-        bcImage0: width177 === 0,
+        bcImage0: width177 === 0
       }"
     >
       <img src="bc1.jpg" alt />
@@ -39,7 +39,7 @@
           activeHome: footerActive === 'home',
           activeNote: footerActive === 'note',
           activeUI: footerActive === 'ui',
-          activeDiary: footerActive === 'diary',
+          activeDiary: footerActive === 'diary'
         }"
       ></div>
       <div class="figGroup">
@@ -88,7 +88,7 @@
         class="fluidBtn"
         :class="{
           leftMove: footerActive === 'note',
-          rightMove: footerActive === 'home',
+          rightMove: footerActive === 'home'
         }"
       >
         <i class="iconfont" :class="{ show: footerActive === 'note' }"></i>
@@ -136,34 +136,6 @@ export default {
     Header
   },
   created () {
-    const notify = new Notification('花神通讯：花神给您发送了一条消息', {
-      body: '不给人急啊？',
-      lang: 'zh-CN',
-      icon:
-            'userIcon.jpg'
-    })
-    notify.onshow = function () {
-      console.log('Notification showning!')
-    }
-    notify.onclick = function () {
-      console.log('Notification have be click!')
-    }
-    notify.onerror = function () {
-      console.log('error!')
-      // 手动关闭
-      notify.close()
-    }
-    notify.onclose = function () {
-      console.log('close')
-    }
-    if (window.Notification) {
-    // 支持
-    // console.log("支持"+"Web Notifications API");
-      this.isAllowNotify()
-    } else {
-    // 不支持
-      console.log('不支持' + 'Web Notifications API')
-    }
     // 计算窗口比例调整背景图
     if (window.innerWidth / window.innerHeight > 1.777) {
       this.width177 = 177
@@ -217,6 +189,34 @@ export default {
     }
   },
   mounted () {
+    const notify = new Notification('花神通讯：花神给您发送了一条消息', {
+      body: '不给人急啊？',
+      lang: 'zh-CN',
+      icon:
+        'userIcon.jpg'
+    })
+    notify.onshow = function () {
+      console.log('Notification showning!')
+    }
+    notify.onclick = function () {
+      console.log('Notification have be click!')
+    }
+    notify.onerror = function () {
+      console.log('error!')
+      // 手动关闭
+      notify.close()
+    }
+    notify.onclose = function () {
+      console.log('close')
+    }
+    if (window.Notification) {
+      // 支持
+      // console.log("支持"+"Web Notifications API");
+      this.isAllowNotify()
+    } else {
+      // 不支持
+      console.log('不支持' + 'Web Notifications API')
+    }
     window.onresize = () => {
       if (window.innerWidth / window.innerHeight >= 1.777) {
         this.width177 = 177

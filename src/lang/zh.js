@@ -62,13 +62,13 @@ export const lang = {
     Login: '登录',
     Register: '注册',
     Chatting: '花神通讯',
-    Legend: '花神之战',
+    Legend: '花神传说',
     mHome: 'Luna Garden',
     mAboutUs: '关于我们',
     mLogin: '登录',
     mRegister: '注册',
     mChatting: '花神通讯',
-    mLegend: '花神之战'
+    mLegend: '花神传说'
   },
   firstAlert: {
     attention: '提示',

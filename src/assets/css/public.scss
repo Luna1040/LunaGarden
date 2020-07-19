@@ -1568,6 +1568,25 @@ footer {
 }
 
 .legend {
+  .legendIntro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+      font-size: 42px;
+      color: $white;
+      margin-top: 24px;
+    }
+  }
+  .legendIntro::after{
+    @include blurImg
+  }
+  .legendSetting{
+    li{
+      display: flex;
+      align-items: center;
+    }
+  }
   .charaSelectArea {
     display: flex;
     align-items: center;
