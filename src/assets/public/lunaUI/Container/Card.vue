@@ -19,11 +19,13 @@
       }
     ]"
   >
-    <slot v-if="showHead" class="lunaCardTitle" name="header">
-      <i v-if="icon !== ''" :class="fontIcon"></i>
-      <img v-if="icon !== ''" :src="imageIcon" alt="" />
-      <span :style="cardFontSize">{{ title }}</span>
-    </slot>
+    <div v-if="showHead" class="lunaCardTitle">
+      <slot name="header">
+        <i v-if="icon !== ''" :class="fontIcon"></i>
+        <img v-if="icon !== ''" :src="imageIcon" alt="" />
+        <span :style="cardFontSize">{{ title }}</span>
+      </slot>
+    </div>
     <div class="lunaCardBody" :style="cardScrollable" :class="{ flex: flex, block: !flex }">
       <slot></slot>
     </div>

@@ -1669,6 +1669,8 @@ footer {
     width: 100%;
     height: calc(100% - 70px);
     background-color: transparent;
+    padding: 16px 20px;
+    overflow: auto;
   }
   .reportView.daily {
     .dailyContainer {
@@ -1677,26 +1679,33 @@ footer {
         height: 24px;
         overflow: hidden;
         border-radius: 24px;
+        margin-right: 16px;
 
         img{
           width: 100%;
         }
       }
       .lunaCardTitle {
-        >div{
-          width: 100%;
-          border-radius: 36px;
-          height: 16px;
-          line-height: 16px;
-          text-align: center;
-          font-size: 12px;
-        }
       }
-      .urgent {
-        >div {
-          background-color: $error;
-          color: $white;
-        }
+      .urgentStatus{
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+      }
+      .urgentStatus.urgent{
+        background-color: $error;
+      }
+      .urgentStatus.important{
+        background-color: $alert;
+      }
+      .urgentStatus.warning{
+        background-color: $warning;
+      }
+      .urgentStatus.normal{
+        background-color: $primaryOpacity;
+      }
+      .urgentStatus.notNecessary{
+        background-color: $disableBackground;
       }
     }
   }

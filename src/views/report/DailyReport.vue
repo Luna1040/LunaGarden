@@ -1,16 +1,24 @@
 <template>
   <div class="reportView daily">
     <div class="dailyContainer">
-      <Card flex :width="550">
-        <div slot="header" class="lunaCardTitle" :class="{ urgent: formData.urgent === 1, important: formData.urgent === 2, warning: formData.urgent === 3, normal: formData.urgent === 4, notNecessary: formData.urgent === 5 }">
-          <!--          <div class="cardAvatar">-->
-          <!--            <img :src="userInfo.userIcon" alt="" />-->
-          <!--          </div>-->
-          <div>{{ urgentStatus(formData.urgent) }}</div>
+      <Card :width="550">
+        <div slot="header" class="lunaCardTitle">
+          <div class="cardAvatar">
+            <img :src="userInfo.userIcon" alt="" />
+          </div>
+          {{ currentDay }}
+          <!--          <div>{{ urgentStatus(formData.urgent) }}</div>-->
         </div>
-        <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :theme="theme" :width="640" label-position="top" :label-width="150"></Form>
+        <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :theme="theme" :width="500" label-position="top" :label-width="150"></Form>
+        <Card title="今日工作" :width="470" style="margin: 0 auto">
+          <ul>
+            <li v-for="(i, index) in currentList" :key="index">
+              <div class="urgentStatus" :class="{ urgent: formData.urgent === 1, important: formData.urgent === 2, warning: formData.urgent === 3, normal: formData.urgent === 4, notNecessary: formData.urgent === 5 }"></div>
+            </li>
+          </ul>
+        </Card>
       </Card>
-      <Card v-for="(i, index) in listData" flex :width="550">
+      <Card v-for="(i, index) in listData" :key="index" flex :width="550">
         <div slot="header" class="lunaCardTitle" :class="{ urgent: i.urgent === 1, important: i.urgent === 2, warning: i.urgent === 3, normal: i.urgent === 4, notNecessary: i.urgent === 5 }">
           <div class="cardAvatar">
             <img :src="userInfo.userIcon" alt="" />
@@ -48,6 +56,7 @@ export default {
         urgent: 5,
         index: ''
       },
+      currentList: [],
       listData: [],
       form: [],
       radioData: [
@@ -140,6 +149,12 @@ export default {
         errText: ''
       }
     ]
+  },
+  computed: {
+    currentDay() {
+      const myDate = new Date()
+      return myDate.toLocaleDateString()
+    }
   },
   methods: {
     getData() {},
