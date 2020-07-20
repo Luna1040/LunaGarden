@@ -299,3 +299,46 @@
 .switchBtn.switchMoving {
   transform: scaleX(3.5);
 }
+//.listSlideDown-leave-active,.listSlideDown-enter-active {
+//  animation: slide-out 0.2s ease-out;
+//  position: absolute;
+//}
+//.listSlideDown-move {
+//  transition: all 0.2s;
+//}
+//.listSlideDown-enter, .listSlideDown-leave-to {
+//transform: scale(1.5);
+//}
+//.listSlideDown-enter-to {
+//  transform: scale(1.5);
+//}
+//.listSlideDown-leave{
+//  transform: scale(0);
+//}
+.listSlideDown-enter-active {
+  animation: listSlideDown-in 0.25s ease-out forwards;
+}
+.listSlideDown-leave-active {
+  animation: listSlideDown-out 0.25s ease-out forwards;
+  position: absolute;
+}
+.listSlideDown-move {
+  transition: all 2s;
+}
+
+@keyframes listSlideDown-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1)
+  }
+}
+@keyframes listSlideDown-out {
+  from {
+    transform: translateX(10px)
+  }
+  to {
+    transform: translateX(550px)
+  }
+}

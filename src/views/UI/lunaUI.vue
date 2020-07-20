@@ -528,7 +528,7 @@ export default {
       }
     },
     submit () {
-      if (!this.$refs.form.examine(this.createData)) {
+      if (this.$refs.form.examine(this.createData)) {
         // Error
         this.$Message.error({ content: '请检查填写错误项！' })
       } else {

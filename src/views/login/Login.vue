@@ -27,12 +27,12 @@ export default {
       theme: 'light',
       form: [],
       lang: {},
-      logLang: {},
+      logLang: {}
     }
   },
   created() {
     this.lang = this.t
-		this.logLang = this.logT
+    this.logLang = this.logT
     this.form = [
       {
         title: this.lang.userName,
@@ -128,7 +128,7 @@ export default {
   watch: {
     t() {
       this.lang = this.t
-			this.logLang = this.logT
+      this.logLang = this.logT
       this.form = [
         {
           title: this.lang.userName,
@@ -220,15 +220,15 @@ export default {
           errText: ''
         }
       ]
-    },
+    }
   },
   computed: {
     t() {
       return this.$t('lang.register')
     },
-		logT() {
-			return this.$t('lang.login')
-		}
+    logT() {
+      return this.$t('lang.login')
+    }
   },
   methods: {
     loginConfirm() {

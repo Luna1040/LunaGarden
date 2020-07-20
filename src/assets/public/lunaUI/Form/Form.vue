@@ -236,7 +236,7 @@ export default {
     examine (data) {
       for (let i = 0; i < this.formData.length; i++) {
         if (this.formData[i].validate) {
-          const str = data[this.formData[i].validate].trim()
+          const str = data[this.formData[i].validate]
           const valid = this.formData[i].validateMethods
 
           this.formData[i].errStatus = false

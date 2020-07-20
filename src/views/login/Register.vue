@@ -24,7 +24,7 @@
       ></Form>
       <div class="linkGroup">
         <!--        <router-link to="register" class="button">{{ $t('lang.register.register') }}</router-link>-->
-        <Button theme="primary" :width="590" @click="registSubmit">{{
+        <Button theme="primary" :width="590" @click="registSubmit" :loading="loading">{{
           $t("lang.register.register")
         }}</Button>
         <router-link to="login" class="pink">{{
@@ -39,7 +39,7 @@
     >
       <p>{{ this.$t("lang.register.alert12") }}</p>
       <div slot="footer">
-        <Button theme="primary" @click="bankIdEmpty = false">{{
+        <Button theme="primary" @click="bankIdEmpty = false" :loading="loading">{{
           this.$t("lang.home.button.OK")
         }}</Button>
       </div>
@@ -53,6 +53,7 @@ export default {
   name: 'login',
   data () {
     return {
+        loading: false,
       loginData: {
         userName: '',
         password: '',
@@ -255,11 +256,12 @@ export default {
   },
   methods: {
     registSubmit () {
-      if (!this.$refs.form.examine(this.loginData)) {
+      if (this.$refs.form.examine(this.loginData)) {
         // Error
         this.$Message.error({ content: '请检查填写错误项！' })
         return
       }
+      this.loading = true
       const params = JSON.parse(JSON.stringify(this.loginData))
       params.uid = this.uuidGet()
       if (params.bankId === '') {

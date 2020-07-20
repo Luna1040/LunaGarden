@@ -1642,7 +1642,7 @@ footer {
 }
 .reportCenter {
   overflow: scroll;
-  ul {
+  >ul {
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
@@ -1662,7 +1662,7 @@ footer {
       color: $white;
     }
   }
-  ul::after {
+  >ul::after {
     @include blurImg();
   }
   .reportView {
@@ -1674,38 +1674,110 @@ footer {
   }
   .reportView.daily {
     .dailyContainer {
-      .cardAvatar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .cardAvatar {
         width: 24px;
         height: 24px;
         overflow: hidden;
         border-radius: 24px;
         margin-right: 16px;
 
-        img{
+        img {
           width: 100%;
         }
       }
       .lunaCardTitle {
       }
-      .urgentStatus{
+      .urgentStatus {
         width: 36px;
         height: 36px;
         border-radius: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        i{
+          position: absolute;
+        }
       }
-      .urgentStatus.urgent{
+      .urgentStatus.urgent {
         background-color: $error;
+        color: $white;
       }
-      .urgentStatus.important{
+      .urgentStatus.important {
         background-color: $alert;
+        color: $white;
       }
-      .urgentStatus.warning{
+      .urgentStatus.warning {
         background-color: $warning;
+        color: $error;
       }
-      .urgentStatus.normal{
+      .urgentStatus.normal {
         background-color: $primaryOpacity;
+        color: $error;
       }
-      .urgentStatus.notNecessary{
+      .urgentStatus.notNecessary {
         background-color: $disableBackground;
+        color: $error;
+      }
+      .workList {
+        position: relative;
+        .lunaCardBody{
+          min-height: 50px;
+        }
+        p{
+          text-align: center;
+          color: $disableText;
+          position: absolute;
+          width: calc(100% - 32px);
+        }
+        ul {
+          overflow: hidden;
+          display: block;
+          position: relative;
+          li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent !important;
+            color: $normalDark;
+            padding: 8px 16px;
+            margin-right: 16px;
+            transition: all 0.35s;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f1f1;
+            border-radius: 0;
+            >span{
+              font-weight: 600;
+            }
+            span.success {
+              color: $success;
+            }
+            span.normal {
+              color: $alert;
+            }
+            span.error {
+              color: $error;
+            }
+            > div {
+              display: flex;
+              align-items: center;
+              >span{
+                width: 270px;
+              }
+            }
+            .urgentStatus {
+              margin-right: 16px;
+            }
+          }
+          li:last-of-type{
+            border-bottom: 0;
+          }
+        }
       }
     }
   }

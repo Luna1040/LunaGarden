@@ -1,13 +1,9 @@
-<template>
-  
-</template>
-
+<template> </template>
 <script>
-    export default {
-        name: "WeekReport"
-    }
+export default {
+  data() {
+    return {}
+  },
+  methods: {}
+}
 </script>
-
-<style scoped>
-
-</style>
