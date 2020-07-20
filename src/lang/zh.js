@@ -70,7 +70,7 @@ export const lang = {
     mRegister: '注册',
     mChatting: '花神通讯',
     mLegend: '花神传说',
-    mReport: '汇报中心',
+    mReport: '汇报中心'
   },
   firstAlert: {
     attention: '提示',
@@ -166,11 +166,22 @@ export const lang = {
     seasonReport: '季度汇报',
     halfYearReport: '半年总结',
     yearReport: '年度汇报',
-      daily: {},
-      week: {},
-      month: {},
-      season: {},
-      halfYear: {},
-      year: {}
+    daily: {
+      content: '工作项',
+      alert1: '工作项内容不能为空！',
+      alert2: '进度不能为空！',
+      process: '进度',
+      urgentText: '重要程度',
+      urgent: '紧急',
+      important: '重要',
+      warning: '警告',
+      normal: '正常',
+      notNecessary: '不重要'
+    },
+    week: {},
+    month: {},
+    season: {},
+    halfYear: {},
+    year: {}
   }
 }

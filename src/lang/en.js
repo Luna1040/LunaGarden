@@ -71,7 +71,7 @@ export const lang = {
     mRegister: 'Register',
     mChatting: 'Flower Chatting',
     mLegend: 'Flower legend',
-    mReport: 'Report Center',
+    mReport: 'Report Center'
   },
   firstAlert: {
     attention: 'Attention',
@@ -171,11 +171,22 @@ export const lang = {
     seasonReport: 'Season Report',
     halfYearReport: 'Half Year Report',
     yearReport: 'Year Report',
-      daily: {},
-      week: {},
-      month: {},
-      season: {},
-      halfYear: {},
-      year: {}
+    daily: {
+      content: 'Content',
+      alert1: 'The content cannot be empty!',
+      alert2: 'The process cannot be empty！',
+      process: 'Process',
+      urgentText: 'Emergency degree',
+      urgent: 'Urgent',
+      important: 'Important',
+      warning: 'Warning',
+      normal: 'Normal',
+      notNecessary: 'Not Necessary'
+    },
+    week: {},
+    month: {},
+    season: {},
+    halfYear: {},
+    year: {}
   }
 }
