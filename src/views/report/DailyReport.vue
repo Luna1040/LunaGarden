@@ -71,7 +71,7 @@ export default {
       },
       currentList: [
         {
-            id: '12',
+          id: '12',
           content: 'LunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGardenLunaGarden',
           process: '100',
           urgent: 5,
@@ -79,32 +79,32 @@ export default {
           deleting: false
         },
         {
-            id: '1x',
-            content: 'Luna Garden Bug修复，样式修正。',
+          id: '1x',
+          content: 'Luna Garden Bug修复，样式修正。',
           process: '75',
           urgent: 4,
           showDelIcon: false,
           deleting: false
         },
         {
-            id: '12c',
-            content: 'Luna Garden Bug修复，样式修正。',
+          id: '12c',
+          content: 'Luna Garden Bug修复，样式修正。',
           process: '40',
           urgent: 3,
           showDelIcon: false,
           deleting: false
         },
         {
-            id: '12qwe',
-            content: 'Luna Garden Bug修复，样式修正。',
+          id: '12qwe',
+          content: 'Luna Garden Bug修复，样式修正。',
           process: 0,
           urgent: 2,
           showDelIcon: false,
           deleting: false
         },
         {
-            id: '12zzz',
-            content: 'Luna Garden Bug修复，样式修正。',
+          id: '12zzz',
+          content: 'Luna Garden Bug修复，样式修正。',
           process: 0,
           urgent: 1,
           showDelIcon: false,
@@ -315,7 +315,7 @@ export default {
         return
       }
       const params = JSON.parse(JSON.stringify(this.formData))
-        params.id = this.uuidGet()
+      params.id = this.uuidGet()
       this.currentList.push(params)
     },
     showDelIcon(i) {
@@ -330,7 +330,7 @@ export default {
     },
     delList(status, i) {
       if (status) {
-          this.currentList.splice(i, 1)
+        this.currentList.splice(i, 1)
       }
     }
   }

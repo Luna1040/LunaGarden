@@ -6,7 +6,7 @@
       className,
       {
         darkShadow: shadow && shadowTheme === 'dark',
-        lightShadow: shadow && shadowTheme === 'light',
+        lightShadow: shadow && shadowTheme === 'light'
       },
       { scrollable: scrollable },
       {
@@ -14,10 +14,10 @@
         smallCorner: corner === 'small',
         filletCorner: corner === 'fillet',
         largeCorner: corner === 'large',
-        fullCorner: corner === 'full',
+        fullCorner: corner === 'full'
       },
       { lightForm: theme === 'light', darkForm: theme === 'dark' },
-      { formColumn: direction === 'column', formRow: direction === 'row' },
+      { formColumn: direction === 'column', formRow: direction === 'row' }
     ]"
   >
     <FormItem
@@ -28,7 +28,7 @@
       :label-width-count="labelWidthCount"
       :class="{
         leftLabel: labelPosition === 'left',
-        topLabel: labelPosition === 'top',
+        topLabel: labelPosition === 'top'
       }"
       :corner="corner"
     ></FormItem>
@@ -37,7 +37,7 @@
       :label-width-count="labelWidthCount"
       :class="{
         rightLabel: labelPosition === 'left',
-        topLabel: labelPosition === 'top',
+        topLabel: labelPosition === 'top'
       }"
       :corner="corner"
     >
@@ -47,18 +47,7 @@
 </template>
 
 <script>
-import {
-  noChara,
-  noChinese,
-  noChineseChara,
-  noEnglish,
-  noEnglishChara,
-  noNumber,
-  email,
-  phone,
-  IDNumber,
-  urlLink
-} from '../js/validate'
+import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../js/validate'
 
 export default {
   name: 'Form',
@@ -141,7 +130,7 @@ export default {
     }
   },
   computed: {
-    formStyles () {
+    formStyles() {
       const styleList = {}
       if (this.shadowStyle !== '') {
         styleList.boxShadow = this.shadowStyle + '!important'
@@ -206,7 +195,7 @@ export default {
 
       return styleList
     },
-    labelWidthCount () {
+    labelWidthCount() {
       if (typeof this.labelWidth === 'string') {
         return { width: this.labelWidth }
       } else {
@@ -214,26 +203,26 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
       formData: []
     }
   },
-  created () {
+  created() {
     this.formData = this.form
     this.$forceUpdate()
   },
   watch: {
-    form () {
+    form() {
       this.formData = this.form
       this.$forceUpdate()
     }
   },
   methods: {
-    createContent (h) {
+    createContent(h) {
       return h('div', this.$slots.default)
     },
-    examine (data) {
+    examine(data) {
       for (let i = 0; i < this.formData.length; i++) {
         if (this.formData[i].validate) {
           const str = data[this.formData[i].validate]
@@ -258,55 +247,37 @@ export default {
                   this.formData[i].errText = valid[ins].maxErrText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noChara'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChara') {
                 if (!noChara(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noChinese'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChinese') {
                 if (!noChinese(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noChineseChara'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noChineseChara') {
                 if (!noChineseChara(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noEnglish'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglish') {
                 if (!noEnglish(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noEnglishChara'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noEnglishChara') {
                 if (!noEnglishChara(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'noNumber'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'noNumber') {
                 if (!noNumber(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
@@ -324,19 +295,13 @@ export default {
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'IDNumber'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'IDNumber') {
                 if (!IDNumber(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText
                 }
               }
-              if (
-                !this.formData[i].errStatus &&
-                valid[ins].type === 'urlLink'
-              ) {
+              if (!this.formData[i].errStatus && valid[ins].type === 'urlLink') {
                 if (!urlLink(str)) {
                   this.formData[i].errStatus = true
                   this.formData[i].errText = valid[ins].errText

@@ -32,8 +32,8 @@ export default {
       contractForm: {
         file: [],
         cost: [
-          { before_area: null, pay_type: 0, cost_type: 1, cost: '200', cost_unit: 0, begin_date: '2020-07-12', end_date: '2020-10-11', room_position_arr: [], seat_position_arr: [{ id: 2171, name: '测试工位1', status: 0, status_choice: '未租', seat_room: '101', floor: '1', building: 'ds测试1栋' }], room_position: [], seat_position: [2171] },
-          { before_area: null, pay_type: 0, cost_type: 0, cost: '100', begin_date: '2020-07-12', cost_unit: 0, end_date: '2020-10-11', room_position_arr: [], seat_position_arr: [{ id: 2171, name: '测试工位1', status: 0, status_choice: '未租', seat_room: '101', floor: '1', building: 'ds测试1栋' }], room_position: [], seat_position: [2171] }
+          { before_area: null, pay_type: 0, cost_type: 1, cost: '200', cost_unit: 0, begin_date: '2020-07-01', end_date: '2020-07-31', room_position_arr: [], seat_position_arr: [{ id: 2171, name: '测试工位1', status: 0, status_choice: '未租', seat_room: '101', floor: '1', building: 'ds测试1栋' }], room_position: [], seat_position: [2171] },
+          { before_area: null, pay_type: 0, cost_type: 0, cost: '100', begin_date: '2020-07-01', cost_unit: 0, end_date: '2020-07-31', room_position_arr: [], seat_position_arr: [{ id: 2171, name: '测试工位1', status: 0, status_choice: '未租', seat_room: '101', floor: '1', building: 'ds测试1栋' }], room_position: [], seat_position: [2171] }
         ],
         arr: [
           { charging_subject: 2, start_date: '2020-07-01', end_date: '2020-07-31', receivable_amount: '200', receivable_amounts: '200', customer_settled_id: 150, remark: '200元' },
@@ -304,37 +304,37 @@ export default {
                 break
 
               case 1:
-                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 2:
-                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 3:
-                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 4:
-                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 5:
-                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 6:
-                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
@@ -382,37 +382,37 @@ export default {
                 break
 
               case 1:
-                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 2:
-                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 3:
-                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 4:
-                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 5:
-                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 6:
-                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
@@ -570,42 +570,28 @@ export default {
             endMonths[1].value = 29
         }
         // 月份数量差异
-        const diffMonth = this.getNatureMonthDayDiff(item.begin_date, item.end_date, beginMonths[beginDate.month - 1].value, endMonths[endDate.month - 1].value)
+        const diffMonth = this.getNatureMonthDayDiff(beginDate, endDate, beginMonths[beginDate.month - 1].value, endMonths[endDate.month - 1].value)
         //
         // 时间差异类型
         //
         const timeline = 0
-
+        console.log(diffMonth[1])
         // 首先判断是否为1号起始，否则均视为非满月情况
-        console.log(beginDate.day)
-        if (parseInt(beginDate.day) !== 1) {
-          console.log('非1号起始')
-          if (diffMonth[0] < 1) {
-            //
-            // 不满一个周期N，且不满一个月
-            //
-            //sss
-            console.log('不满整周期且不满一月')
+        if (diffMonth[1] !== 0) {
+          if (diffMonth[0] < 1 || (diffMonth[0] === 1 && diffMonth[2] !== 0)) {
+            console.log('非一号起始且前后不满整周期且不满一月')
           } else if (diffMonth[0] < this.contractForm.payment_period && diffMonth[0] >= 1) {
-            console.log('前后均不满整周期且不满一月，但有不满周期且满月情况')
-          } else if (diffMonth[0] < this.contractForm.payment_period && diffMonth[0] >= 1 && endDate.day === endMonths[endDate.month - 1].value) {
-            console.log('不满整周期但满整月且余出N天')
-          } else if (diffMonth[0] % this.contractForm.payment_period) {
-            console.log('满整周期且余出N天')
-          } else if (diffMonth[0] % this.contractForm.payment_period < 1 && diffMonth[0] / this.contractForm.payment_period > 0) {
-            console.log('满整周期且余出N天')
-          } else if (diffMonth[0] % this.contractForm.payment_period > 0 && diffMonth[0] / this.contractForm.payment_period > 0) {
-            console.log('满整周期且是整数月多N天')
+            console.log('非一号起始不满周期且满月情况，余出N天')
+          } else if ((diffMonth[0] % this.contractForm.payment_period === 0 && diffMonth[0] / this.contractForm.payment_period >= 1) || (diffMonth[0] % this.contractForm.payment_period !== 0 && diffMonth[0] / this.contractForm.payment_period >= 1 && diffMonth[2] !== 0)) {
+            console.log('非一号起始满整周期，余出N天')
+          } else if ((diffMonth[0] % this.contractForm.payment_period === 0 && diffMonth[0] / this.contractForm.payment_period >= 1) || (diffMonth[0] % this.contractForm.payment_period !== 0 && diffMonth[0] / this.contractForm.payment_period >= 1 && diffMonth[2] === 0)) {
+            console.log('非一号起始满整周期，余出整月且余出N天')
           }
-          // 非1号起始
         } else {
-          console.log('1号起始')
-          // 1号起始
-          if (diffMonth[0] < 1) {
-            console.log('不满一月')
-          } else if (diffMonth[0] < this.contractForm.payment_period && diffMonth[1] === 0) {
-            // 小于一月且
-            console.log('不满一个周期的整月')
+          if ((diffMonth[0] === 0 && diffMonth[2] !== 0) || diffMonth[2] !== 0) {
+            console.log('一号起始且不满整周期且不满整月')
+          } else if (diffMonth[0] < this.contractForm.payment_period && diffMonth[2] === 0) {
+            console.log('一号起始且不满整周期但满整月')
           }
         }
 
@@ -634,37 +620,37 @@ export default {
                 break
 
               case 1:
-                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 2:
-                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 3:
-                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 4:
-                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 5:
-                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
 
               case 6:
-                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 1))
                 })
                 break
@@ -712,37 +698,37 @@ export default {
                 break
 
               case 1:
-                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByDay(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 2:
-                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payByMonth(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 3:
-                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach(item => {
+                this.payBySeason(timeline, item.cost, item.begin_date, item.end_date).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 4:
-                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByDay(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 5:
-                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeByMonth(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
 
               case 6:
-                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach(item => {
+                this.paySizeBySeason(timeline, item.cost, item.begin_date, item.end_date, size).forEach((item) => {
                   this.contractForm.arr.push(this.stashInf(item, 2))
                 })
                 break
@@ -763,8 +749,8 @@ export default {
           sums[index] = '合计'
           return
         }
-        const values = data.map(item => Number(item[column.property]))
-        if (!values.every(value => isNaN(value))) {
+        const values = data.map((item) => Number(item[column.property]))
+        if (!values.every((value) => isNaN(value))) {
           sums[index] = values.reduce((prev, curr) => {
             const value = Number(curr)
             if (!isNaN(value)) {
@@ -1972,17 +1958,17 @@ export default {
     },
     getData() {
       getCostUnit()
-        .then(res => {
+        .then((res) => {
           this.costUnit = res.data
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err)
         })
       getPayType()
-        .then(res => {
+        .then((res) => {
           this.payType = res.data
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err)
         })
     },
@@ -1992,7 +1978,7 @@ export default {
         this.contractForm.contract_parameter = this.contractParameter.form
       }
       this.contractForm.status = 0 // 创建状态为0
-      this.contractForm.arr.forEach(item => {
+      this.contractForm.arr.forEach((item) => {
         delete item.receivable_amounts
         const contractParameter = this.contractParameter.form ? this.contractParameter.form : this.contractParameter
         if (contractParameter.is_method === 1) {
@@ -2028,7 +2014,7 @@ export default {
     editCost() {
       this.editCosts = 1
       // this.contractForm.arr.s = this.contractForm.arr.receivable_amount
-      this.contractForm.arr.forEach(item => {
+      this.contractForm.arr.forEach((item) => {
         console.log('hah', item)
         // this.contractForm.arr.s = Object.assign(this.contractForm.arr.s, item)
         // console.log(this.contractForm.arr.s)
@@ -2063,7 +2049,7 @@ export default {
       }
       if (day < 0) {
         month--
-        const index = flag.findIndex(temp => {
+        const index = flag.findIndex((temp) => {
           return temp === start.getMonth() + 1
         })
         let monthLength
@@ -2083,21 +2069,25 @@ export default {
     getNatureMonthDayDiff(startDate, endDate, smd, emd) {
       // 合同开始日期，截止日期相差多少月多少天
       const flag = [1, 3, 5, 7, 8, 10, 12, 4, 6, 9, 11, 2]
-      let year = endDate.year - startDate.year
-      let month = endDate.month - startDate.month
+      let year = parseInt(endDate.year) - parseInt(startDate.year)
+      let month = parseInt(endDate.month) - parseInt(startDate.month)
+      const monthCount = 12 * year + month
       let endDays = 0
       let startDays = 0
-      if (endDate.day !== emd) {
+      if (parseInt(endDate.day) !== emd) {
         // 结束日期有余
-        endDays = endDate.day
+        endDays = parseInt(endDate.day)
       }
-      if (year === 0 && month === 0 && startDays === 1 && endDays === emd) {
+      if (year === 0 && monthCount === 0 && startDays === 1 && parseInt(endDate.day) === emd) {
         // 同月且一号起始且满月
+      } else if (year === 0 && month === 0 && startDays === 1) {
+        // 同月且一号起始且不满月
+        startDays = parseInt(endDate.day - startDate.day)
       } else {
-        startDays = smd - startDate.day
+        // 非同月情况下
+        startDays = smd - parseInt(startDate.day)
       }
-      const monthCount = 12 * year + month
-      return [monthCount, dayCount]
+      return [monthCount, startDays, endDays]
     },
     DateDiff(sDate1, sDate2) {
       const startDate = Date.parse(sDate1)
@@ -2331,17 +2321,17 @@ export default {
     },
     getSeasonDay(begin, end) {},
     createStagingContract(form) {
-      this.contractForm.cost.forEach(item => {
+      this.contractForm.cost.forEach((item) => {
         delete item.room_position_arr
         delete item.seat_position_arr
       })
-      this.contractForm.arr.forEach(item => {
+      this.contractForm.arr.forEach((item) => {
         delete item.receivable_amounts
         item.receivable_amount = Number(item.receivable_amount).toFixed(2)
         return item.receivable_amount
       })
       createContract(this.contractForm)
-        .then(res => {
+        .then((res) => {
           console.log(res)
           this.stagingVisible = false
           this.$emit('closeContract')
@@ -2350,7 +2340,7 @@ export default {
             type: 'success'
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err)
           if (err.data.customer_settled) {
             this.$message({
@@ -2366,13 +2356,13 @@ export default {
         })
     }, // 新建合同之后，暂存状态保存为待审核状态
     createContract() {
-      this.contractForm.cost.forEach(item => {
+      this.contractForm.cost.forEach((item) => {
         delete item.room_position_arr
         delete item.seat_position_arr
       })
       // this.contractForm.contract_parameter = this.contractParameter.form
       createContract(this.contractForm)
-        .then(res => {
+        .then((res) => {
           console.log(res)
           this.$message({
             message: '合同创建成功',
@@ -2380,7 +2370,7 @@ export default {
           })
           this.$emit('closeContract')
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err)
           if (err.data.customer_settled) {
             this.$message({

@@ -1642,7 +1642,7 @@ footer {
 }
 .reportCenter {
   overflow: scroll;
-  >ul {
+  > ul {
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
@@ -1662,7 +1662,7 @@ footer {
       color: $white;
     }
   }
-  >ul::after {
+  > ul::after {
     @include blurImg();
   }
   .reportView {
@@ -1700,7 +1700,7 @@ footer {
         justify-content: center;
         flex-shrink: 0;
         position: relative;
-        i{
+        i {
           position: absolute;
         }
       }
@@ -1726,10 +1726,10 @@ footer {
       }
       .workList {
         position: relative;
-        .lunaCardBody{
+        .lunaCardBody {
           min-height: 50px;
         }
-        p{
+        p {
           text-align: center;
           color: $disableText;
           position: absolute;
@@ -1751,7 +1751,7 @@ footer {
             cursor: pointer;
             border-bottom: 1px solid #f1f1f1;
             border-radius: 0;
-            >span{
+            > span {
               font-weight: 600;
             }
             span.success {
@@ -1766,7 +1766,7 @@ footer {
             > div {
               display: flex;
               align-items: center;
-              >span{
+              > span {
                 width: 270px;
               }
             }
@@ -1774,7 +1774,7 @@ footer {
               margin-right: 16px;
             }
           }
-          li:last-of-type{
+          li:last-of-type {
             border-bottom: 0;
           }
         }

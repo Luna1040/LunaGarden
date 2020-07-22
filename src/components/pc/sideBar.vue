@@ -37,7 +37,7 @@ export default {
           to: 'Legend'
         },
         {
-          name: '团队进度',
+          name: '项目进度',
           to: 'Legend'
         },
         {

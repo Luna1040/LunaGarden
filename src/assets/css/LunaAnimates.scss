@@ -331,14 +331,14 @@
     transform: scale(0);
   }
   to {
-    transform: scale(1)
+    transform: scale(1);
   }
 }
 @keyframes listSlideDown-out {
   from {
-    transform: translateX(10px)
+    transform: translateX(10px);
   }
   to {
-    transform: translateX(550px)
+    transform: translateX(550px);
   }
 }
