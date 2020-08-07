@@ -22,3 +22,7 @@ export const userInfo = {
   userIconModified: 'user/userIconModified', // Post
   userConfigModified: 'user/userConfigModified'// Post
 }
+export const home = {
+  addTodoList: 'home/addTodoList',
+  getTodoList: 'home/getTodoList',
+}
