@@ -10,9 +10,7 @@
     <div class="headerBlur">
       <Header
         :msg-header="$t('lang.titles.' + $route.name)"
-        user-icon="userIcon.jpg"
-        user-name="Luna Lovegood"
-        is-viper="true"
+        :userInfo="userInfo"
       ></Header>
     </div>
     <SideBar v-model="showSideBar"></SideBar>
@@ -158,6 +156,7 @@ export default {
         if (JSON.parse(localStorage.getItem('userInfo')).uid) {
           this.getUserInfo(JSON.parse(localStorage.getItem('userInfo')).uid)
         }
+        this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
       } else {
         localStorage.setItem('userInfo', JSON.stringify({}))
       }

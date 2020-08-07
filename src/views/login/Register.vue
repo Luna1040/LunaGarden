@@ -288,6 +288,7 @@ export default {
             this.$Message.error({ content: this.$t('lang.unknownError') })
           }
         }
+        this.loading = false
       })
     }
   }
