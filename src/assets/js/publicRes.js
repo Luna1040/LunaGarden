@@ -14,7 +14,6 @@ const getData = function (branchUrl, info) {
     }
   }
   return axios.post(url + branchUrl, info, headData).then((msg) => {
-    console.log(msg);
     if (msg.status === 200) {
       if (msg.data.status) {
         if (msg.data.data) {

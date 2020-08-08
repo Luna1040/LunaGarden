@@ -176,6 +176,17 @@
         </button>
       </div>
     </Modal>
+    <Modal v-model="diffModal" title="不同步的内容" type="primary" :theme="theme" :footer-show="false" :closeable="false" @on-cancel="createCancel()">
+      <ul class="diffList">
+        <li v-for="(i, index) in diffList" :key="i.id">
+          <span>{{ i.content }}</span>
+          <div class="btnGroup">
+            <Button theme="primary" @click="mergeDiff(i.flag, i, index)">添加</Button>
+            <Button theme="error" @click="delDiff(i.flag, i, index)">删除</Button>
+          </div>
+        </li>
+      </ul>
+    </Modal>
     <Modal v-model="create" :title="$t('lang.home.create.create')" type="primary" :theme="theme" @on-cancel="createCancel()">
       <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :theme="theme" :width="320" label-position="top" :label-width="150"></Form>
     </Modal>
@@ -272,17 +283,67 @@ export default {
         notice: true
       },
       activeList: 'prev',
-      userInfo: {}
+      userInfo: {},
+      diffList: [],
+      diffModal: false
     }
   },
   created() {
     this.todoList = JSON.parse(localStorage.getItem('todoList'))
     this.businessList = JSON.parse(localStorage.getItem('businessList'))
-    if(localStorage.getItem('userInfo')) {
+    if (localStorage.getItem('userInfo')) {
       this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
     }
+    this.Data()
   },
   methods: {
+    Data() {
+      this.getData(home.getTodoList, { uid: this.userInfo.uid }).then((res) => {
+        let that = this
+        if (res.success === true) {
+          let temp = res.data
+          if (JSON.stringify(temp) !== JSON.stringify(this.todoList)) {
+            this.$Message.error({ content: '本地数据与线上内容有差异，请选择保留内容或需要删除的内容！' })
+            let local = []
+            let cloud = []
+            this.todoList.forEach((i) => {
+              local.push(i.id)
+            })
+            temp.forEach((i) => {
+              cloud.push(i.id)
+            })
+            local.concat(cloud).filter(function (v, i, arr) {
+              // 找出差异ID
+              if (arr.indexOf(v) === arr.lastIndexOf(v)) {
+                //确认在本地有差异还是在云端有差异
+                //本地判断
+                for (let index = 0; index < local.length; index++) {
+                  if (arr[i] === local[index]) {
+                    for (let a = 0; a < that.todoList.length; a++) {
+                      if (that.todoList[a].id === arr[i]) {
+                        let inf = that.todoList[a]
+                        inf.flag = 'local'
+                        that.diffList.push(inf)
+                      }
+                    }
+                  } else {
+                    //云端储存
+                    for (let a = 0; a < temp.length; a++) {
+                      if (temp[a].id === arr[i]) {
+                        let inf = temp[a]
+                        inf.flag = 'cloud'
+                        that.diffList.push(inf)
+                      }
+                    }
+                  }
+                }
+              }
+            })
+          }
+          this.diffModal = true
+        }
+      })
+    },
     mousedown(index) {
       this.dragActive = index
     },
@@ -358,34 +419,43 @@ export default {
           content: this.todoText,
           completed: false
         }
-        if(this.userInfo === {}) {
-          this.$Message.error({content: '请先登录后再进行操作！'})
+        if (this.userInfo === {}) {
+          this.$Message.error({ content: '请先登录后再进行操作！' })
           return
-        } else if(!this.userInfo.uid) {
-          this.$Message.error({content: '登录过期，请重新登录！'})
+        } else if (!this.userInfo.uid) {
+          this.$Message.error({ content: '登录过期，请重新登录！' })
           return
-        }else {
+        } else {
           tempObj.uid = this.userInfo.uid
         }
-        this.getData(home.addTodoList, tempObj).then(res => {
-          if(res.success) {
-            this.$Message.success({content: '添加成功！'})
-            // 添加li
-            delete tempObj.uid
-            this.todoList.push(tempObj)
-            localData.push(tempObj)
-            // 定义textContent以方便删除
-            this.textContent = localData
-            // 存入localStorage
-            localStorage.setItem('todoList', JSON.stringify(localData))
-            // 清空输入框
-            this.todoText = ''
-            // 发送空值查询请求
-            this.keyup({ keyCode: 10 })
-          } else {
-            this.$Message.error({content: '添加失败！'})
-          }
-        })
+        if (window.navigator.onLine) {
+          this.getData(home.addTodoList, tempObj).then((res) => {
+            if (res.success) {
+              this.$Message.success({ content: '添加成功！' })
+              // 添加li
+              this.todoList.push(tempObj)
+              localData.push(tempObj)
+              // 存入localStorage
+              localStorage.setItem('todoList', JSON.stringify(localData))
+              // 清空输入框
+              this.todoText = ''
+              // 发送空值查询请求
+              this.keyup({ keyCode: 10 })
+            } else {
+              this.$Message.error({ content: '添加失败！' })
+            }
+          })
+        } else {
+          this.$Message.warning({ content: '无法连接网络，当前内容已保存在本地，将于联网后进行同步！' })
+          this.todoList.push(tempObj)
+          localData.push(tempObj)
+          // 存入localStorage
+          localStorage.setItem('todoList', JSON.stringify(localData))
+          // 清空输入框
+          this.todoText = ''
+          // 发送空值查询请求
+          this.keyup({ keyCode: 10 })
+        }
         // addStatus
         // 成功 successAdd  //未登录 failAdd //未联网 errorAdd
       }
@@ -456,8 +526,50 @@ export default {
     copyContent() {
       this.dragClose()
     },
-    test() {
-      alert('111')
+    mergeDiff(flag, item) {
+      if (flag === 'local') {
+        item.uid = this.userInfo.uid
+        this.getData(home.addTodoList, item).then((res) => {
+          if (res.success) {
+            this.$Message.success({ content: '添加成功！' })
+          } else {
+            this.$Message.error({ content: '添加失败！' })
+          }
+        })
+      } else {
+        this.$Message.success({ content: '添加成功！' })
+        this.todoList.push(item)
+        localStorage.setItem('todoList', JSON.stringify(this.todoList))
+      }
+      this.diffList.splice(index, 1)
+      if (this.diffList.length === 0) {
+        this.diffModal = false
+      }
+    },
+    delDiff(flag, item, index) {
+      if (flag === 'local') {
+        item.uid = this.userInfo.uid
+        this.getData(home.addTodoList, item).then((res) => {
+          if (res.success) {
+            this.$Message.success({ content: '添加成功！' })
+            // 添加li
+            this.todoList.push(item)
+            item.push(item)
+            // 存入localStorage
+            localStorage.setItem('todoList', JSON.stringify(this.todoList))
+          } else {
+            this.$Message.error({ content: '添加失败！' })
+          }
+        })
+      } else {
+        this.$Message.success({ content: '添加成功！' })
+        this.todoList.push(item)
+        localStorage.setItem('todoList', JSON.stringify(this.todoList))
+      }
+      this.diffList.splice(index, 1)
+      if (this.diffList.length === 0) {
+        this.diffModal = false
+      }
     }
   }
 }

@@ -195,18 +195,18 @@ export default {
         'userIcon.jpg'
     })
     notify.onshow = function () {
-      console.log('Notification showning!')
+      // console.log('Notification showning!')
     }
     notify.onclick = function () {
-      console.log('Notification have be click!')
+      // console.log('Notification have be click!')
     }
     notify.onerror = function () {
-      console.log('error!')
+      // console.log('error!')
       // 手动关闭
       notify.close()
     }
     notify.onclose = function () {
-      console.log('close')
+      // console.log('close')
     }
     if (window.Notification) {
       // 支持
@@ -214,7 +214,7 @@ export default {
       this.isAllowNotify()
     } else {
       // 不支持
-      console.log('不支持' + 'Web Notifications API')
+      // console.log('不支持' + 'Web Notifications API')
     }
     window.onresize = () => {
       if (window.innerWidth / window.innerHeight >= 1.777) {
