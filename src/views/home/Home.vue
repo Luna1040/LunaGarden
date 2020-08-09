@@ -339,8 +339,8 @@ export default {
                 }
               }
             })
+            this.diffModal = true
           }
-          this.diffModal = true
         }
       })
     },
@@ -526,7 +526,8 @@ export default {
     copyContent() {
       this.dragClose()
     },
-    mergeDiff(flag, item) {
+    mergeDiff(flag, item, index) {
+      delete item.flag
       if (flag === 'local') {
         item.uid = this.userInfo.uid
         this.getData(home.addTodoList, item).then((res) => {
@@ -547,6 +548,7 @@ export default {
       }
     },
     delDiff(flag, item, index) {
+      delete item.flag
       if (flag === 'local') {
         item.uid = this.userInfo.uid
         this.getData(home.addTodoList, item).then((res) => {
