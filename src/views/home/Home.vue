@@ -295,6 +295,25 @@ export default {
       this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
     }
     this.Data()
+    if(window.WebSocket) {
+      const ws = new WebSocket('ws://10.18.190.188:3001')
+      ws.onopen = e => {
+        console.log('服务器连接成功')
+        ws.send(JSON.stringify({
+          id: '111',
+          name: '卢娜',
+          time: '2020/08/10',
+          icon: 'userIcon.jpg',
+          msg: '经由WebSocket获取的消息'
+        }))
+      }
+      ws.onclose = () => {
+        console.log('连接出错，请刷新重试')
+      }
+      ws.onmessage = e => {
+        console.log(JSON.parse(e.data))
+      }
+    }
   },
   methods: {
     Data() {
