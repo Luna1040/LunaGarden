@@ -1,6 +1,7 @@
 <template>
   <div>
     <!--      <div style="position: absolute;top: 0; left: 0; width: 100px;height: 100px;background: red; cursor: pointer" @mousedown="drag"></div>-->
+    <p style="background: #FFF">{{list}}</p>
     <ul
       @dragstart="onDragStart"
       @dragover="onDragOver"
@@ -81,7 +82,7 @@ export default {
           words: item.words
         }
       })
-      console.log(data)
+      this.list = data
     },
     _index (el) {
       let domData = Array.from(this.$refs.listBody.childNodes)
