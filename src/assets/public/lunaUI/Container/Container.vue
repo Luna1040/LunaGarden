@@ -65,11 +65,11 @@ export default {
     },
     background: {
       type: [Number, String],
-      default: '#FEFEFE'
+      default: ''
     },
     border: {
       type: [Number, String],
-      default: '1px solid #EFEFEF'
+      default: '0px solid #EFEFEF'
     },
     // 宽度高度相关小于等于100为百分比，大于100为px
     width: {
@@ -129,10 +129,12 @@ export default {
       }
     },
     containerBackground () {
-      if (typeof this.background === 'string') {
-        return { backgroundColor: this.background }
-      } else {
-        return { backgroundColor: '#' + this.background }
+      if(this.background !== '') {
+        if (typeof this.background === 'string') {
+          return { backgroundColor: this.background }
+        } else {
+          return { backgroundColor: '#' + this.background }
+        }
       }
     },
     containerImage () {

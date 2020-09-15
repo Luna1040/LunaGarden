@@ -30,7 +30,7 @@ $strongLightShadow: 0 0 10px rgba(255, 255, 255, 0.6);
   filter: blur(3px);
 }
 
-//@import './LunaUI/LunaUI.scss';
+@import './LunaUI/LunaUI.scss';
 
 * {
   margin: 0;
@@ -440,1288 +440,1288 @@ footer {
   }
 }
 
-//.mHeader {
-//  width: 100%;
-//  height: 48px;
-//  background-color: $primary;
-//  color: $white;
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-//  position: relative;
-//  z-index: 100;
-//
-//  .userArea {
-//    position: absolute;
-//    left: 16px;
-//    height: 36px;
-//    display: flex;
-//    align-items: baseline;
-//
-//    .userIcon {
-//      height: 36px;
-//
-//      img {
-//        width: 36px;
-//        height: 36px;
-//        border-radius: 36px;
-//      }
-//    }
-//
-//    .netWorkStatus {
-//      position: relative;
-//      right: 12px;
-//      background-color: rgba(243, 88, 139, 0.55);
-//      width: 18px;
-//      height: 18px;
-//      border-radius: 18px;
-//      text-align: center;
-//      line-height: 18px;
-//      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-//    }
-//
-//    .networkError {
-//      background-color: $error;
-//    }
-//  }
-//
-//  .title {
-//    display: flex;
-//    align-items: baseline;
-//    position: relative;
-//
-//    h2 {
-//      font-size: 24px;
-//      height: 44px;
-//      line-height: 44px;
-//    }
-//  }
-//
-//  .guide {
-//    position: absolute;
-//    right: 16px;
-//    height: 32px;
-//    display: flex;
-//    align-items: center;
-//
-//    .btnGroup {
-//      height: 32px;
-//      margin-right: 8px;
-//
-//      img {
-//        width: 32px;
-//        height: 32px;
-//      }
-//    }
-//  }
-//}
-//
-//.aboutUs {
-//  .about {
-//    // max-width: 1366px;
-//    background-color: rgba(255, 255, 255, 0.5);
-//    margin: 0 auto;
-//    height: calc(100vh - 44px);
-//    overflow-y: scroll;
-//    overflow-x: hidden;
-//    padding: 22px 0;
-//    position: relative;
-//  }
-//
-//  .about::after {
-//    @include blurImg();
-//    position: fixed;
-//  }
-//
-//  h1 {
-//    line-height: 48px;
-//    font-size: 22px;
-//    margin-top: 24px;
-//  }
-//
-//  p {
-//    line-height: 36px;
-//  }
-//
-//  .cardGroup {
-//    display: flex;
-//    justify-content: space-around;
-//
-//    figure {
-//      width: 200px;
-//      border: 2px solid $white;
-//      text-align: center;
-//      background-color: rgba(255, 255, 255, 0.5);
-//      border-radius: 20px;
-//      padding: 20px 18px;
-//
-//      img {
-//        width: 100px;
-//        height: 100px;
-//        border-radius: 100px;
-//      }
-//
-//      figcaption:first-of-type {
-//        font-size: 22px;
-//        font-weight: 600;
-//      }
-//
-//      figcaption:last-of-type {
-//        font-size: 14px;
-//      }
-//    }
-//    figure.company {
-//      width: 400px;
-//      img {
-//        border-radius: 0;
-//        width: auto;
-//      }
-//      p {
-//        line-height: 24px;
-//      }
-//    }
-//  }
-//
-//  .cardGroup:last-of-type {
-//    figcaption:last-of-type {
-//      text-align: left;
-//      margin-top: 8px;
-//    }
-//  }
-//}
-//
-//.home {
-//  .searchArea {
-//    position: relative;
-//    width: calc(100% - 132px);
-//    max-width: 1384px;
-//    margin: 0 auto;
-//
-//    .inputArea {
-//      margin: 32px auto 0;
-//      height: 44px;
-//      line-height: 44px;
-//      background-color: rgba(255, 255, 255, 0.5);
-//      display: flex;
-//      width: 100%;
-//      border-radius: 44px;
-//      align-items: center;
-//      padding: 0 8px;
-//      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-//      position: relative;
-//
-//      input {
-//        margin: 0 8px;
-//        height: 44px;
-//        line-height: 44px;
-//        font-size: 24px;
-//        border: 0;
-//        background-color: rgba(0, 0, 0, 0);
-//      }
-//
-//      .lunaButton {
-//        i {
-//          color: $white;
-//          font-size: 16px;
-//        }
-//      }
-//
-//      button:hover {
-//        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-//
-//        i {
-//          color: #ff91ac;
-//        }
-//      }
-//    }
-//
-//    .inputArea::after {
-//      @include blurImg();
-//    }
-//
-//    .inputArea:hover {
-//      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//      background-color: rgba(255, 255, 255, 0.8);
-//    }
-//
-//    .inputAreaActive {
-//      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//      background-color: rgba(255, 255, 255, 0.8);
-//      border-radius: 22px 22px 0 0;
-//    }
-//
-//    .searchAssociation {
-//      width: 100%;
-//      height: auto;
-//      min-height: 0;
-//      background-color: rgba(255, 255, 255, 0.8);
-//      border-radius: 0 0 22px 22px;
-//      position: absolute;
-//      z-index: 99;
-//
-//      li {
-//        height: 30px;
-//        line-height: 30px;
-//        font-size: 14px;
-//        background-color: transparent;
-//        cursor: pointer;
-//        transition: all 0.25s;
-//        border: 1px solid transparent;
-//        color: $white;
-//        text-shadow: 0 0 5px $primaryText;
-//      }
-//
-//      li:hover {
-//        background-color: $primary;
-//        color: $white;
-//        border: 1px solid $white;
-//      }
-//
-//      li:last-of-type {
-//        border-radius: 0 0 22px 22px;
-//      }
-//    }
-//
-//    .searchAssociation::after {
-//      @include blurImg();
-//    }
-//  }
-//
-//  .swiper-container {
-//    width: calc(100% - 132px);
-//    max-width: 1384px;
-//    margin: 0 auto;
-//    position: relative;
-//
-//    .swiper-wrapper {
-//      position: relative;
-//    }
-//  }
-//
-//  .swiper-slide {
-//    width: 100% !important;
-//    max-width: 1384px !important;
-//    overflow: auto;
-//    height: calc(100vh - 196px);
-//    padding-top: 36px;
-//  }
-//
-//  #navigation {
-//    position: relative;
-//    height: 44px;
-//    width: 280px;
-//    top: 0;
-//    left: 0;
-//    margin: 32px auto 0;
-//    display: flex;
-//    justify-content: space-between;
-//    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//    border-radius: 44px;
-//
-//    .swiper-button-prev,
-//    .swiper-button-next {
-//      width: 50%;
-//      max-width: 600px;
-//      background-image: none;
-//      height: 44px;
-//      line-height: 44px;
-//      transition: all 0.3s;
-//      outline: 0;
-//      background-color: $white;
-//      color: $primaryText;
-//      left: 0;
-//      right: 0;
-//      position: relative;
-//    }
-//
-//    .swiper-button-prev.swiper-button-disabled,
-//    .swiper-button-next.swiper-button-disabled {
-//      opacity: 1;
-//      cursor: auto;
-//      pointer-events: none;
-//      color: $white;
-//      background-color: $primary;
-//    }
-//
-//    .swiper-button-prev:hover,
-//    .swiper-button-next:hover {
-//      background-color: lightpink;
-//    }
-//
-//    .swiper-button-prev {
-//      border-top-left-radius: 44px;
-//      border-bottom-left-radius: 44px;
-//    }
-//
-//    .swiper-button-next {
-//      border-top-right-radius: 44px;
-//      border-bottom-right-radius: 44px;
-//    }
-//  }
-//
-//  .todoList {
-//    width: calc(100% - 132px);
-//    max-width: 1384px;
-//    width: 100%;
-//    padding: 12px 8px 32px;
-//    min-height: 0;
-//    margin: 0 auto;
-//
-//    li {
-//      width: 100%;
-//      background-color: rgba(243, 88, 139, 0.35);
-//      margin-top: 16px;
-//      height: 44px;
-//      line-height: 44px;
-//      border-radius: 44px;
-//      transition: all 0.5s;
-//      cursor: pointer;
-//      color: $white;
-//      text-align: left;
-//      padding: 0 22px;
-//      display: flex;
-//      justify-content: space-between;
-//      align-items: center;
-//      position: relative;
-//
-//      span {
-//        margin-right: 16px;
-//        transition: all 0.5s;
-//      }
-//
-//      .dragBtn {
-//        width: 36px;
-//        height: 36px;
-//        border-radius: 36px;
-//        background-color: $white;
-//        position: relative;
-//        left: 16px;
-//        transition: all 0.5s;
-//        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//
-//        .dragMenu {
-//          width: 0;
-//          height: 0;
-//          border-radius: 0;
-//          background-color: rgba(0, 0, 0, 0);
-//          position: absolute;
-//          z-index: 200;
-//          bottom: 18px;
-//          right: 18px;
-//          border: 0;
-//          box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
-//          transform: rotate(360deg);
-//          transition: all 0.5s;
-//          overflow: hidden;
-//
-//          > .iconfont.icon-cancel {
-//            display: none;
-//            position: absolute;
-//            top: calc(50% - 27px);
-//            left: calc(50% - 28px);
-//            width: 60px;
-//            height: 60px;
-//            line-height: 60px;
-//            text-align: center;
-//            background-color: $white;
-//            color: $primaryText;
-//            transition: all 0.35s;
-//            border-radius: 40px;
-//          }
-//
-//          > .iconfont.icon-cancel:hover {
-//            background-color: $primary;
-//            color: $white;
-//          }
-//
-//          > div {
-//            display: none;
-//            position: absolute;
-//            overflow: hidden;
-//            transform: rotate(45deg) skew(0deg);
-//            text-align: center;
-//            line-height: 80px;
-//            transition: all 0.35s;
-//
-//            button {
-//              transition: all 0.35s;
-//              background-color: rgba(0, 0, 0, 0);
-//              border: 0;
-//              transform: rotate(-45deg) skew(0deg);
-//
-//              i {
-//                font-size: 18px;
-//              }
-//            }
-//          }
-//
-//          > div:first-of-type {
-//            left: 40px;
-//            top: -20px;
-//
-//            button {
-//              color: $primaryText;
-//            }
-//          }
-//
-//          > div:nth-of-type(2) {
-//            left: -20px;
-//            top: 40px;
-//
-//            button {
-//              color: $primaryText;
-//            }
-//          }
-//
-//          > div:nth-of-type(3) {
-//            left: 100px;
-//            top: 40px;
-//
-//            button {
-//              color: $primaryText;
-//            }
-//          }
-//
-//          > div:last-of-type {
-//            left: 40px;
-//            top: 100px;
-//
-//            button {
-//              color: $primaryText;
-//            }
-//          }
-//
-//          > div:hover {
-//            background-color: $primary;
-//            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//
-//            button {
-//              color: $white;
-//            }
-//          }
-//        }
-//
-//        .dragMenuShow {
-//          width: 160px;
-//          height: 160px;
-//          border-radius: 160px;
-//          background-color: $white;
-//          position: absolute;
-//          z-index: 200;
-//          bottom: -64px;
-//          right: -64px;
-//          border: 2px solid $white;
-//          transform: rotate(0deg);
-//          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//
-//          > .iconfont.icon-cancel {
-//            display: block;
-//          }
-//
-//          > div {
-//            display: block;
-//            width: 80px;
-//            height: 80px;
-//          }
-//        }
-//      }
-//
-//      .dragBtn:hover {
-//        background-color: rgba(255, 255, 255, 0.35);
-//      }
-//    }
-//
-//    li::after {
-//      @include blurImg();
-//    }
-//
-//    li:hover {
-//      background-color: rgba(243, 88, 139, 0.85);
-//    }
-//  }
-//
-//  .todoList-shorter {
-//    height: calc(100vh - 574px);
-//  }
-//
-//  #navigation.todoListShorter {
-//    margin-top: 350px;
-//  }
-//
-//  .successText {
-//    color: #b1ffda;
-//    text-decoration: line-through;
-//  }
-//  .diffList {
-//    li {
-//      display: flex;
-//      justify-content: space-between;
-//      align-items: center;
-//      padding: 6px 0;
-//      margin-bottom: 8px;
-//      border-bottom: 1px solid #e8e8e8;
-//      > div {
-//        display: flex;
-//        .lunaButton {
-//          margin-left: 16px;
-//        }
-//      }
-//    }
-//    li:first-of-type{
-//      border-top: 1px solid #e8e8e8;
-//    }
-//  }
-//}
-//
-//.mHome {
-//  .searchArea {
-//    position: relative;
-//    width: calc(100% - 32px);
-//    max-width: 1200px;
-//    margin: 0 auto;
-//
-//    .inputArea {
-//      margin: 32px auto 0;
-//      height: 44px;
-//      line-height: 44px;
-//      background-color: rgba(255, 255, 255, 0.5);
-//      display: flex;
-//      width: 100%;
-//      border-radius: 44px;
-//      align-items: center;
-//      padding: 0 8px;
-//      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-//      position: relative;
-//
-//      input {
-//        font-size: 14px;
-//        border: 0;
-//        background-color: rgba(0, 0, 0, 0);
-//      }
-//
-//      .lunaButton {
-//        i {
-//          color: $white;
-//          font-size: 16px;
-//        }
-//      }
-//
-//      button:hover {
-//        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-//
-//        i {
-//          color: #ff91ac;
-//        }
-//      }
-//    }
-//
-//    .inputArea::after {
-//      @include blurImg();
-//    }
-//
-//    .inputArea:hover {
-//      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//      background-color: rgba(255, 255, 255, 0.8);
-//    }
-//
-//    .inputAreaActive {
-//      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//      background-color: rgba(255, 255, 255, 0.8);
-//      border-radius: 22px 22px 0 0;
-//    }
-//
-//    .searchAssociation {
-//      width: 100%;
-//      height: auto;
-//      min-height: 0;
-//      background-color: rgba(255, 255, 255, 0.8);
-//      border-radius: 0 0 22px 22px;
-//      position: absolute;
-//      z-index: 99;
-//
-//      li {
-//        height: 30px;
-//        line-height: 30px;
-//        font-size: 14px;
-//        background-color: rgba(0, 0, 0, 0);
-//        cursor: pointer;
-//        transition: all 0.25s;
-//        border: 1px solid rgba(0, 0, 0, 0);
-//      }
-//
-//      li:hover {
-//        background-color: $primary;
-//        color: $white;
-//        border: 1px solid $white;
-//      }
-//
-//      li:last-of-type {
-//        border-radius: 0 0 22px 22px;
-//      }
-//    }
-//  }
-//
-//  .todoList {
-//    width: calc(100% - 32px);
-//    max-width: 1200px;
-//    padding: 0 8px 90px;
-//    min-height: 0;
-//    margin: 0 auto 0;
-//
-//    li {
-//      width: 100%;
-//      background-color: rgba(243, 88, 139, 0.35);
-//      margin-top: 16px;
-//      min-height: 44px;
-//      height: auto;
-//      border-radius: 44px;
-//      transition: all 0.5s;
-//      cursor: pointer;
-//      color: $white;
-//      text-align: left;
-//      padding: 0 8px 0 16px;
-//      display: flex;
-//      justify-content: space-between;
-//      align-items: center;
-//
-//      .content {
-//        width: calc(100% - 36px);
-//        display: flex;
-//        flex-direction: column;
-//
-//        p {
-//          transition: all 0.5s;
-//        }
-//
-//        p.text {
-//          font-size: 16px;
-//          height: 20px;
-//          line-height: 20px;
-//          width: 100%;
-//          white-space: nowrap;
-//          text-overflow: ellipsis;
-//          overflow: hidden;
-//        }
-//
-//        p.timer {
-//          font-size: 12px;
-//          height: 14px;
-//          line-height: 14px;
-//          margin-top: 4px;
-//        }
-//
-//        p.dragActive {
-//          height: auto;
-//          white-space: pre-wrap;
-//          text-overflow: unset;
-//          overflow: visible;
-//          word-break: break-word;
-//        }
-//      }
-//
-//      .btnGroup {
-//        width: 90%;
-//        display: flex;
-//        align-items: center;
-//        justify-content: space-between;
-//        margin-top: 8px;
-//      }
-//
-//      .cgStatusIcon {
-//        cursor: pointer;
-//        position: relative;
-//        z-index: 10;
-//        background-color: $white;
-//        width: 32px;
-//        height: 32px;
-//        line-height: 32px;
-//        border-radius: 32px;
-//        color: $primary;
-//        text-align: center;
-//      }
-//
-//      .successText {
-//        color: #b1ffda;
-//        text-decoration: line-through;
-//      }
-//    }
-//
-//    li:first-of-type {
-//      margin-top: 0;
-//    }
-//
-//    li.dragActive {
-//      background-color: rgba(243, 88, 139, 0.85);
-//      padding: 8px 8px 8px 16px;
-//      flex-direction: column;
-//    }
-//  }
-//
-//  .todoList-shorter {
-//    height: calc(100vh - 574px);
-//  }
-//
-//  .swiper-container {
-//    position: relative;
-//
-//    .swiper-wrapper {
-//      position: relative;
-//    }
-//  }
-//
-//  .swiper-slide {
-//    overflow-y: auto;
-//    height: calc(100vh - 194px);
-//  }
-//
-//  #navigation {
-//    position: relative;
-//    height: 32px;
-//    width: 280px;
-//    top: 0;
-//    left: 0;
-//    margin: 16px auto;
-//    display: flex;
-//    justify-content: space-between;
-//    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//    border-radius: 32px;
-//
-//    .swiper-button-prev,
-//    .swiper-button-next {
-//      width: 50%;
-//      max-width: 600px;
-//      background-image: none;
-//      height: 32px;
-//      line-height: 32px;
-//      transition: all 0.3s;
-//      outline: 0;
-//      background-color: $white;
-//      color: $primaryText;
-//      left: 0;
-//      right: 0;
-//      position: relative;
-//      margin-top: -16px;
-//    }
-//
-//    .swiper-button-prev.swiper-button-disabled,
-//    .swiper-button-next.swiper-button-disabled {
-//      opacity: 1;
-//      cursor: auto;
-//      pointer-events: none;
-//      color: $white;
-//      background-color: $primary;
-//    }
-//
-//    .swiper-button-prev {
-//      border-top-left-radius: 32px;
-//      border-bottom-left-radius: 32px;
-//    }
-//
-//    .swiper-button-next {
-//      border-top-right-radius: 32px;
-//      border-bottom-right-radius: 32px;
-//    }
-//  }
-//}
-//
-//.lunaUIPage {
-//  .lunaUI {
-//    padding-top: 48px;
-//    overflow: auto;
-//    height: calc(100% - 45px);
-//
-//    .controlPanel {
-//      width: 100%;
-//      display: flex;
-//      align-items: center;
-//      padding: 8px 16px;
-//      position: fixed;
-//      top: 44px;
-//      height: 48px;
-//      background-color: #f7f7f7;
-//      box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
-//      z-index: 15;
-//    }
-//  }
-//}
-//
-//.lunaChatting {
-//  width: 100%;
-//
-//  main {
-//    display: flex;
-//  }
-//
-//  .stories {
-//    width: 20%;
-//    height: calc(100vh - 44px);
-//    overflow-y: auto;
-//    overflow-x: hidden;
-//    transition: all 0.5s;
-//
-//    li {
-//      position: relative;
-//      height: auto;
-//      transition: all 0.5s;
-//      cursor: pointer;
-//
-//      img {
-//        width: 100%;
-//        display: block;
-//        transition: all 0.5s;
-//      }
-//
-//      img:last-of-type {
-//        position: absolute;
-//        top: 0;
-//        left: 0;
-//      }
-//
-//      p {
-//        position: absolute;
-//        bottom: 0;
-//        left: 0;
-//        width: 100%;
-//        padding: 4px;
-//        background: rgba(0, 0, 0, 0.5);
-//        color: $white;
-//        transition: all 0.5s;
-//      }
-//    }
-//
-//    li:hover {
-//      img {
-//        filter: contrast(1.2);
-//      }
-//    }
-//  }
-//
-//  .mainChat {
-//    width: 60%;
-//    background-color: rgba(255, 255, 255, 0.5);
-//    height: calc(100vh - 44px);
-//    overflow-y: auto;
-//    overflow-x: hidden;
-//    padding: 0 24px 24px 24px;
-//    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-//    box-shadow: $strongLightShadow;
-//    border: 1px solid rgba(255, 255, 255, 0.3);
-//
-//    li.spaceReplace {
-//      margin-left: 66px;
-//      margin-top: 6px;
-//    }
-//
-//    li.spaceReplace.self {
-//      margin-right: 66px;
-//      margin-left: 0;
-//    }
-//
-//    li {
-//      display: flex;
-//      margin-top: 24px;
-//
-//      .userIcon {
-//        width: 66px;
-//        height: 66px;
-//        border-radius: 66px;
-//        overflow: hidden;
-//        flex-shrink: 0;
-//
-//        img {
-//          width: 100%;
-//        }
-//      }
-//
-//      .messageArea {
-//        margin-left: 16px;
-//        text-align: left;
-//
-//        p {
-//          height: 16px;
-//          line-height: 16px;
-//          padding-left: 6px;
-//          margin-bottom: 11px;
-//          margin-top: 3px;
-//          color: $normalDark;
-//        }
-//
-//        .contentArea {
-//          background-color: $white;
-//          border-radius: 18px;
-//          min-height: 36px;
-//          line-height: 36px;
-//          max-width: 1000px;
-//          display: inline-block;
-//          padding: 0 18px;
-//          box-shadow: $aroundDarkShadow;
-//
-//          .imgList {
-//            display: flex;
-//            flex-wrap: wrap;
-//            padding-top: 16px;
-//
-//            img {
-//              max-width: 500px;
-//              border-radius: 16px;
-//              margin: 0 16px 16px 0;
-//            }
-//          }
-//        }
-//      }
-//    }
-//
-//    li.self {
-//      flex-direction: row-reverse;
-//
-//      .messageArea {
-//        margin-right: 16px;
-//        text-align: right;
-//
-//        p {
-//          padding-right: 6px;
-//          padding-left: 0;
-//        }
-//
-//        .contentArea {
-//          background-color: $primary;
-//          color: $white;
-//
-//          .imgList {
-//            display: flex;
-//            flex-wrap: wrap;
-//            justify-content: flex-end;
-//
-//            img {
-//              max-width: 500px;
-//              border-radius: 16px;
-//              margin: 0 0 16px 16px;
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
-//
-//  .sendingArea {
-//    width: 20%;
-//    position: relative;
-//
-//    .notice {
-//      p {
-//        background-color: rgba(243, 88, 139, 0.55);
-//        font-size: 24px;
-//        width: 100%;
-//        color: $white;
-//      }
-//
-//      ul {
-//        padding: 0 16px;
-//
-//        li {
-//          text-align: left;
-//          padding: 8px 0;
-//        }
-//
-//        li.upset {
-//          color: $errorText;
-//        }
-//      }
-//    }
-//
-//    .typeArea {
-//      padding: 0 16px;
-//      position: absolute;
-//      bottom: 32px;
-//      width: 100%;
-//
-//      textarea {
-//        width: 100%;
-//        resize: none;
-//        border: 1px solid rgba(255, 255, 255, 0.5);
-//        box-shadow: $darkShadow;
-//        border-radius: 6px;
-//        height: 100%;
-//        outline: none;
-//        padding: 8px;
-//        background-color: rgba(255, 255, 255, 0.3);
-//        position: relative;
-//      }
-//
-//      .blurBc {
-//        height: 100px;
-//        overflow: hidden;
-//        position: relative;
-//        margin-bottom: 16px;
-//        border-radius: 6px;
-//      }
-//
-//      .blurBc::after {
-//        @include blurImg;
-//      }
-//
-//      .previewGroup {
-//        width: 100%;
-//        height: auto;
-//        display: flex;
-//        overflow-y: hidden;
-//        overflow-x: auto;
-//
-//        div {
-//          position: relative;
-//          margin-right: 4px;
-//
-//          i {
-//            position: absolute;
-//            top: 0;
-//            left: 0;
-//            background-color: rgba(0, 0, 0, 0.5);
-//            color: $white;
-//            width: 100%;
-//            height: 44px;
-//            line-height: 44px;
-//            border-radius: 6px;
-//            cursor: pointer;
-//          }
-//
-//          img {
-//            height: 44px;
-//            border-radius: 6px;
-//          }
-//
-//          img:last-of-type {
-//            margin-right: 0;
-//          }
-//        }
-//      }
-//
-//      .btnGroup {
-//        width: 100%;
-//        display: flex;
-//        align-items: center;
-//        justify-content: space-between;
-//      }
-//    }
-//  }
-//}
-//
-//.legend {
-//  .legendIntro {
-//    display: flex;
-//    flex-direction: column;
-//    align-items: center;
-//    h1 {
-//      font-size: 42px;
-//      color: $white;
-//      margin-top: 24px;
-//    }
-//  }
-//  .legendIntro::after {
-//    @include blurImg;
-//  }
-//  .legendSetting {
-//    li {
-//      display: flex;
-//      align-items: center;
-//    }
-//  }
-//  .charaSelectArea {
-//    display: flex;
-//    align-items: center;
-//    flex-wrap: wrap;
-//    justify-content: space-around;
-//
-//    figure {
-//      position: relative;
-//      width: calc(16.7% - 4px - 24px);
-//      margin-bottom: 24px;
-//      border: 2px solid $white;
-//      overflow: hidden;
-//      border-radius: 12px;
-//      flex-shrink: 0;
-//
-//      img {
-//        width: 100%;
-//        display: block;
-//        transition: all 0.3s;
-//      }
-//
-//      img.blur {
-//        filter: blur(4px) brightness(0.5);
-//      }
-//
-//      figcaption {
-//        position: absolute;
-//        height: 100%;
-//        top: 0;
-//        padding: 16px;
-//        left: 0;
-//        color: $white;
-//        text-shadow: 0 0 2px $primaryText;
-//        display: flex;
-//        flex-direction: column;
-//        align-items: center;
-//        justify-content: space-around;
-//
-//        p:first-of-type {
-//          position: absolute;
-//          top: 16px;
-//          font-size: 24px;
-//        }
-//
-//        p:nth-of-type(2) {
-//          font-size: 12px;
-//        }
-//
-//        p:last-of-type {
-//          position: absolute;
-//          bottom: 16px;
-//          font-size: 12px;
-//        }
-//      }
-//    }
-//  }
-//}
-//.reportCenter {
-//  overflow: scroll;
-//  > ul {
-//    display: flex;
-//    align-items: center;
-//    background-color: rgba(255, 255, 255, 0.3);
-//    position: relative;
-//    padding: 16px;
-//    li {
-//      background-color: $primaryOpacity;
-//      color: $white;
-//      padding: 8px 16px;
-//      border-radius: 100px;
-//      margin-right: 16px;
-//      transition: all 0.35s;
-//      cursor: pointer;
-//    }
-//    li.active {
-//      background-color: $primary;
-//      color: $white;
-//    }
-//  }
-//  > ul::after {
-//    @include blurImg();
-//  }
-//  .reportView {
-//    width: 100%;
-//    height: calc(100% - 70px);
-//    background-color: transparent;
-//    padding: 16px 20px;
-//    overflow: auto;
-//  }
-//  .reportView.daily {
-//    .dailyContainer {
-//      display: flex;
-//      align-items: center;
-//      justify-content: space-between;
-//      flex-wrap: wrap;
-//      .cardAvatar {
-//        width: 24px;
-//        height: 24px;
-//        overflow: hidden;
-//        border-radius: 24px;
-//        margin-right: 16px;
-//
-//        img {
-//          width: 100%;
-//        }
-//      }
-//      .lunaCardTitle {
-//      }
-//      .urgentStatus {
-//        width: 36px;
-//        height: 36px;
-//        border-radius: 36px;
-//        display: flex;
-//        align-items: center;
-//        justify-content: center;
-//        flex-shrink: 0;
-//        position: relative;
-//        i {
-//          position: absolute;
-//        }
-//      }
-//      .urgentStatus.urgent {
-//        background-color: $error;
-//        color: $white;
-//      }
-//      .urgentStatus.important {
-//        background-color: $alert;
-//        color: $white;
-//      }
-//      .urgentStatus.warning {
-//        background-color: $warning;
-//        color: $error;
-//      }
-//      .urgentStatus.normal {
-//        background-color: $primaryOpacity;
-//        color: $error;
-//      }
-//      .urgentStatus.notNecessary {
-//        background-color: $disableBackground;
-//        color: $error;
-//      }
-//      .workList {
-//        position: relative;
-//        .lunaCardBody {
-//          min-height: 50px;
-//        }
-//        p {
-//          text-align: center;
-//          color: $disableText;
-//          position: absolute;
-//          width: calc(100% - 32px);
-//        }
-//        ul {
-//          overflow: hidden;
-//          display: block;
-//          position: relative;
-//          li {
-//            display: flex;
-//            align-items: center;
-//            justify-content: space-between;
-//            background-color: transparent !important;
-//            color: $normalDark;
-//            padding: 8px 16px;
-//            margin-right: 16px;
-//            transition: all 0.35s;
-//            cursor: pointer;
-//            border-bottom: 1px solid #f1f1f1;
-//            border-radius: 0;
-//            > span {
-//              font-weight: 600;
-//            }
-//            span.success {
-//              color: $success;
-//            }
-//            span.normal {
-//              color: $alert;
-//            }
-//            span.error {
-//              color: $error;
-//            }
-//            > div {
-//              display: flex;
-//              align-items: center;
-//              > span {
-//                width: 270px;
-//              }
-//            }
-//            .urgentStatus {
-//              margin-right: 16px;
-//            }
-//          }
-//          li:last-of-type {
-//            border-bottom: 0;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
+.mHeader {
+  width: 100%;
+  height: 48px;
+  background-color: $primary;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+  position: relative;
+  z-index: 100;
+
+  .userArea {
+    position: absolute;
+    left: 16px;
+    height: 36px;
+    display: flex;
+    align-items: baseline;
+
+    .userIcon {
+      height: 36px;
+
+      img {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+      }
+    }
+
+    .netWorkStatus {
+      position: relative;
+      right: 12px;
+      background-color: rgba(243, 88, 139, 0.55);
+      width: 18px;
+      height: 18px;
+      border-radius: 18px;
+      text-align: center;
+      line-height: 18px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .networkError {
+      background-color: $error;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+
+    h2 {
+      font-size: 24px;
+      height: 44px;
+      line-height: 44px;
+    }
+  }
+
+  .guide {
+    position: absolute;
+    right: 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    .btnGroup {
+      height: 32px;
+      margin-right: 8px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+.aboutUs {
+  .about {
+    // max-width: 1366px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    height: calc(100vh - 44px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 22px 0;
+    position: relative;
+  }
+
+  .about::after {
+    @include blurImg();
+    position: fixed;
+  }
+
+  h1 {
+    line-height: 48px;
+    font-size: 22px;
+    margin-top: 24px;
+  }
+
+  p {
+    line-height: 36px;
+  }
+
+  .cardGroup {
+    display: flex;
+    justify-content: space-around;
+
+    figure {
+      width: 200px;
+      border: 2px solid $white;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 20px 18px;
+
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+      }
+
+      figcaption:first-of-type {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      figcaption:last-of-type {
+        font-size: 14px;
+      }
+    }
+    figure.company {
+      width: 400px;
+      img {
+        border-radius: 0;
+        width: auto;
+      }
+      p {
+        line-height: 24px;
+      }
+    }
+  }
+
+  .cardGroup:last-of-type {
+    figcaption:last-of-type {
+      text-align: left;
+      margin-top: 8px;
+    }
+  }
+}
+
+.home {
+  .searchArea {
+    position: relative;
+    width: calc(100% - 132px);
+    max-width: 1384px;
+    margin: 0 auto;
+
+    .inputArea {
+      margin: 32px auto 0;
+      height: 44px;
+      line-height: 44px;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      border-radius: 44px;
+      align-items: center;
+      padding: 0 8px;
+      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+      position: relative;
+
+      input {
+        margin: 0 8px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 24px;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      .lunaButton {
+        i {
+          color: $white;
+          font-size: 16px;
+        }
+      }
+
+      button:hover {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+
+        i {
+          color: #ff91ac;
+        }
+      }
+    }
+
+    .inputArea::after {
+      @include blurImg();
+    }
+
+    .inputArea:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .inputAreaActive {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 22px 22px 0 0;
+    }
+
+    .searchAssociation {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 22px 22px;
+      position: absolute;
+      z-index: 99;
+
+      li {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.25s;
+        border: 1px solid transparent;
+        color: $white;
+        text-shadow: 0 0 5px $primaryText;
+      }
+
+      li:hover {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $white;
+      }
+
+      li:last-of-type {
+        border-radius: 0 0 22px 22px;
+      }
+    }
+
+    .searchAssociation::after {
+      @include blurImg();
+    }
+  }
+
+  .swiper-container {
+    width: calc(100% - 132px);
+    max-width: 1384px;
+    margin: 0 auto;
+    position: relative;
+
+    .swiper-wrapper {
+      position: relative;
+    }
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+    max-width: 1384px !important;
+    overflow: auto;
+    height: calc(100vh - 196px);
+    padding-top: 36px;
+  }
+
+  #navigation {
+    position: relative;
+    height: 44px;
+    width: 280px;
+    top: 0;
+    left: 0;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 44px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 50%;
+      max-width: 600px;
+      background-image: none;
+      height: 44px;
+      line-height: 44px;
+      transition: all 0.3s;
+      outline: 0;
+      background-color: $white;
+      color: $primaryText;
+      left: 0;
+      right: 0;
+      position: relative;
+    }
+
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled {
+      opacity: 1;
+      cursor: auto;
+      pointer-events: none;
+      color: $white;
+      background-color: $primary;
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background-color: lightpink;
+    }
+
+    .swiper-button-prev {
+      border-top-left-radius: 44px;
+      border-bottom-left-radius: 44px;
+    }
+
+    .swiper-button-next {
+      border-top-right-radius: 44px;
+      border-bottom-right-radius: 44px;
+    }
+  }
+
+  .todoList {
+    width: calc(100% - 132px);
+    max-width: 1384px;
+    width: 100%;
+    padding: 12px 8px 32px;
+    min-height: 0;
+    margin: 0 auto;
+
+    li {
+      width: 100%;
+      background-color: rgba(243, 88, 139, 0.35);
+      margin-top: 16px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 44px;
+      transition: all 0.5s;
+      cursor: pointer;
+      color: $white;
+      text-align: left;
+      padding: 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      span {
+        margin-right: 16px;
+        transition: all 0.5s;
+      }
+
+      .dragBtn {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        background-color: $white;
+        position: relative;
+        left: 16px;
+        transition: all 0.5s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+        .dragMenu {
+          width: 0;
+          height: 0;
+          border-radius: 0;
+          background-color: rgba(0, 0, 0, 0);
+          position: absolute;
+          z-index: 200;
+          bottom: 18px;
+          right: 18px;
+          border: 0;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+          transform: rotate(360deg);
+          transition: all 0.5s;
+          overflow: hidden;
+
+          > .iconfont.icon-cancel {
+            display: none;
+            position: absolute;
+            top: calc(50% - 27px);
+            left: calc(50% - 28px);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: $white;
+            color: $primaryText;
+            transition: all 0.35s;
+            border-radius: 40px;
+          }
+
+          > .iconfont.icon-cancel:hover {
+            background-color: $primary;
+            color: $white;
+          }
+
+          > div {
+            display: none;
+            position: absolute;
+            overflow: hidden;
+            transform: rotate(45deg) skew(0deg);
+            text-align: center;
+            line-height: 80px;
+            transition: all 0.35s;
+
+            button {
+              transition: all 0.35s;
+              background-color: rgba(0, 0, 0, 0);
+              border: 0;
+              transform: rotate(-45deg) skew(0deg);
+
+              i {
+                font-size: 18px;
+              }
+            }
+          }
+
+          > div:first-of-type {
+            left: 40px;
+            top: -20px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:nth-of-type(2) {
+            left: -20px;
+            top: 40px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:nth-of-type(3) {
+            left: 100px;
+            top: 40px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:last-of-type {
+            left: 40px;
+            top: 100px;
+
+            button {
+              color: $primaryText;
+            }
+          }
+
+          > div:hover {
+            background-color: $primary;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+            button {
+              color: $white;
+            }
+          }
+        }
+
+        .dragMenuShow {
+          width: 160px;
+          height: 160px;
+          border-radius: 160px;
+          background-color: $white;
+          position: absolute;
+          z-index: 200;
+          bottom: -64px;
+          right: -64px;
+          border: 2px solid $white;
+          transform: rotate(0deg);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+          > .iconfont.icon-cancel {
+            display: block;
+          }
+
+          > div {
+            display: block;
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+
+      .dragBtn:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+    }
+
+    li::after {
+      @include blurImg();
+    }
+
+    li:hover {
+      background-color: rgba(243, 88, 139, 0.85);
+    }
+  }
+
+  .todoList-shorter {
+    height: calc(100vh - 574px);
+  }
+
+  #navigation.todoListShorter {
+    margin-top: 350px;
+  }
+
+  .successText {
+    color: #b1ffda;
+    text-decoration: line-through;
+  }
+  .diffList {
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #e8e8e8;
+      > div {
+        display: flex;
+        .lunaButton {
+          margin-left: 16px;
+        }
+      }
+    }
+    li:first-of-type{
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+}
+
+.mHome {
+  .searchArea {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .inputArea {
+      margin: 32px auto 0;
+      height: 44px;
+      line-height: 44px;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      border-radius: 44px;
+      align-items: center;
+      padding: 0 8px;
+      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+      position: relative;
+
+      input {
+        font-size: 14px;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      .lunaButton {
+        i {
+          color: $white;
+          font-size: 16px;
+        }
+      }
+
+      button:hover {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+
+        i {
+          color: #ff91ac;
+        }
+      }
+    }
+
+    .inputArea::after {
+      @include blurImg();
+    }
+
+    .inputArea:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .inputAreaActive {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 22px 22px 0 0;
+    }
+
+    .searchAssociation {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 22px 22px;
+      position: absolute;
+      z-index: 99;
+
+      li {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        transition: all 0.25s;
+        border: 1px solid rgba(0, 0, 0, 0);
+      }
+
+      li:hover {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $white;
+      }
+
+      li:last-of-type {
+        border-radius: 0 0 22px 22px;
+      }
+    }
+  }
+
+  .todoList {
+    width: calc(100% - 32px);
+    max-width: 1200px;
+    padding: 0 8px 90px;
+    min-height: 0;
+    margin: 0 auto 0;
+
+    li {
+      width: 100%;
+      background-color: rgba(243, 88, 139, 0.35);
+      margin-top: 16px;
+      min-height: 44px;
+      height: auto;
+      border-radius: 44px;
+      transition: all 0.5s;
+      cursor: pointer;
+      color: $white;
+      text-align: left;
+      padding: 0 8px 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .content {
+        width: calc(100% - 36px);
+        display: flex;
+        flex-direction: column;
+
+        p {
+          transition: all 0.5s;
+        }
+
+        p.text {
+          font-size: 16px;
+          height: 20px;
+          line-height: 20px;
+          width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        p.timer {
+          font-size: 12px;
+          height: 14px;
+          line-height: 14px;
+          margin-top: 4px;
+        }
+
+        p.dragActive {
+          height: auto;
+          white-space: pre-wrap;
+          text-overflow: unset;
+          overflow: visible;
+          word-break: break-word;
+        }
+      }
+
+      .btnGroup {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+
+      .cgStatusIcon {
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+        background-color: $white;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 32px;
+        color: $primary;
+        text-align: center;
+      }
+
+      .successText {
+        color: #b1ffda;
+        text-decoration: line-through;
+      }
+    }
+
+    li:first-of-type {
+      margin-top: 0;
+    }
+
+    li.dragActive {
+      background-color: rgba(243, 88, 139, 0.85);
+      padding: 8px 8px 8px 16px;
+      flex-direction: column;
+    }
+  }
+
+  .todoList-shorter {
+    height: calc(100vh - 574px);
+  }
+
+  .swiper-container {
+    position: relative;
+
+    .swiper-wrapper {
+      position: relative;
+    }
+  }
+
+  .swiper-slide {
+    overflow-y: auto;
+    height: calc(100vh - 194px);
+  }
+
+  #navigation {
+    position: relative;
+    height: 32px;
+    width: 280px;
+    top: 0;
+    left: 0;
+    margin: 16px auto;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 32px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 50%;
+      max-width: 600px;
+      background-image: none;
+      height: 32px;
+      line-height: 32px;
+      transition: all 0.3s;
+      outline: 0;
+      background-color: $white;
+      color: $primaryText;
+      left: 0;
+      right: 0;
+      position: relative;
+      margin-top: -16px;
+    }
+
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled {
+      opacity: 1;
+      cursor: auto;
+      pointer-events: none;
+      color: $white;
+      background-color: $primary;
+    }
+
+    .swiper-button-prev {
+      border-top-left-radius: 32px;
+      border-bottom-left-radius: 32px;
+    }
+
+    .swiper-button-next {
+      border-top-right-radius: 32px;
+      border-bottom-right-radius: 32px;
+    }
+  }
+}
+
+.lunaUIPage {
+  .lunaUI {
+    padding-top: 48px;
+    overflow: auto;
+    height: calc(100% - 45px);
+
+    .controlPanel {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      position: fixed;
+      top: 44px;
+      height: 48px;
+      background-color: #f7f7f7;
+      box-shadow: 0 2px 5px rgba(33, 33, 33, 0.3);
+      z-index: 15;
+    }
+  }
+}
+
+.lunaChatting {
+  width: 100%;
+
+  main {
+    display: flex;
+  }
+
+  .stories {
+    width: 20%;
+    height: calc(100vh - 44px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.5s;
+
+    li {
+      position: relative;
+      height: auto;
+      transition: all 0.5s;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: all 0.5s;
+      }
+
+      img:last-of-type {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      p {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 4px;
+        background: rgba(0, 0, 0, 0.5);
+        color: $white;
+        transition: all 0.5s;
+      }
+    }
+
+    li:hover {
+      img {
+        filter: contrast(1.2);
+      }
+    }
+  }
+
+  .mainChat {
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: calc(100vh - 44px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 24px 24px 24px;
+    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    box-shadow: $strongLightShadow;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    li.spaceReplace {
+      margin-left: 66px;
+      margin-top: 6px;
+    }
+
+    li.spaceReplace.self {
+      margin-right: 66px;
+      margin-left: 0;
+    }
+
+    li {
+      display: flex;
+      margin-top: 24px;
+
+      .userIcon {
+        width: 66px;
+        height: 66px;
+        border-radius: 66px;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .messageArea {
+        margin-left: 16px;
+        text-align: left;
+
+        p {
+          height: 16px;
+          line-height: 16px;
+          padding-left: 6px;
+          margin-bottom: 11px;
+          margin-top: 3px;
+          //color: $normalDark;
+        }
+
+        .contentArea {
+          background-color: $white;
+          border-radius: 18px;
+          min-height: 36px;
+          line-height: 36px;
+          max-width: 1000px;
+          display: inline-block;
+          padding: 0 18px;
+          //box-shadow: $aroundDarkShadow;
+
+          .imgList {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 16px;
+
+            img {
+              max-width: 500px;
+              border-radius: 16px;
+              margin: 0 16px 16px 0;
+            }
+          }
+        }
+      }
+    }
+
+    li.self {
+      flex-direction: row-reverse;
+
+      .messageArea {
+        margin-right: 16px;
+        text-align: right;
+
+        p {
+          padding-right: 6px;
+          padding-left: 0;
+        }
+
+        .contentArea {
+          background-color: $primary;
+          color: $white;
+
+          .imgList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+            img {
+              max-width: 500px;
+              border-radius: 16px;
+              margin: 0 0 16px 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sendingArea {
+    width: 20%;
+    position: relative;
+
+    .notice {
+      p {
+        background-color: rgba(243, 88, 139, 0.55);
+        font-size: 24px;
+        width: 100%;
+        color: $white;
+      }
+
+      ul {
+        padding: 0 16px;
+
+        li {
+          text-align: left;
+          padding: 8px 0;
+        }
+
+        li.upset {
+          color: $errorText;
+        }
+      }
+    }
+
+    .typeArea {
+      padding: 0 16px;
+      position: absolute;
+      bottom: 32px;
+      width: 100%;
+
+      textarea {
+        width: 100%;
+        resize: none;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        //box-shadow: $darkShadow;
+        border-radius: 6px;
+        height: 100%;
+        outline: none;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.3);
+        position: relative;
+      }
+
+      .blurBc {
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 16px;
+        border-radius: 6px;
+      }
+
+      .blurBc::after {
+        @include blurImg;
+      }
+
+      .previewGroup {
+        width: 100%;
+        height: auto;
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: auto;
+
+        div {
+          position: relative;
+          margin-right: 4px;
+
+          i {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: $white;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            border-radius: 6px;
+            cursor: pointer;
+          }
+
+          img {
+            height: 44px;
+            border-radius: 6px;
+          }
+
+          img:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .btnGroup {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.legend {
+  .legendIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-size: 42px;
+      color: $white;
+      margin-top: 24px;
+    }
+  }
+  .legendIntro::after {
+    @include blurImg;
+  }
+  .legendSetting {
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .charaSelectArea {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    figure {
+      position: relative;
+      width: calc(16.7% - 4px - 24px);
+      margin-bottom: 24px;
+      border: 2px solid $white;
+      overflow: hidden;
+      border-radius: 12px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: all 0.3s;
+      }
+
+      img.blur {
+        filter: blur(4px) brightness(0.5);
+      }
+
+      figcaption {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        padding: 16px;
+        left: 0;
+        color: $white;
+        text-shadow: 0 0 2px $primaryText;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        p:first-of-type {
+          position: absolute;
+          top: 16px;
+          font-size: 24px;
+        }
+
+        p:nth-of-type(2) {
+          font-size: 12px;
+        }
+
+        p:last-of-type {
+          position: absolute;
+          bottom: 16px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.reportCenter {
+  overflow: scroll;
+  > ul {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    padding: 16px;
+    li {
+      //background-color: $primaryOpacity;
+      color: $white;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-right: 16px;
+      transition: all 0.35s;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+  > ul::after {
+    @include blurImg();
+  }
+  .reportView {
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: transparent;
+    padding: 16px 20px;
+    overflow: auto;
+  }
+  .reportView.daily {
+    .dailyContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .cardAvatar {
+        width: 24px;
+        height: 24px;
+        overflow: hidden;
+        border-radius: 24px;
+        margin-right: 16px;
+
+        img {
+          width: 100%;
+        }
+      }
+      .lunaCardTitle {
+      }
+      .urgentStatus {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        i {
+          position: absolute;
+        }
+      }
+      .urgentStatus.urgent {
+        background-color: $error;
+        color: $white;
+      }
+      .urgentStatus.important {
+        background-color: $alert;
+        color: $white;
+      }
+      .urgentStatus.warning {
+        background-color: $warning;
+        color: $error;
+      }
+      .urgentStatus.normal {
+        //background-color: $primaryOpacity;
+        color: $error;
+      }
+      .urgentStatus.notNecessary {
+        //background-color: $disableBackground;
+        color: $error;
+      }
+      .workList {
+        position: relative;
+        .lunaCardBody {
+          min-height: 50px;
+        }
+        p {
+          text-align: center;
+          //color: $disableText;
+          position: absolute;
+          width: calc(100% - 32px);
+        }
+        ul {
+          overflow: hidden;
+          display: block;
+          position: relative;
+          li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent !important;
+            //color: $normalDark;
+            padding: 8px 16px;
+            margin-right: 16px;
+            transition: all 0.35s;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f1f1;
+            border-radius: 0;
+            > span {
+              font-weight: 600;
+            }
+            span.success {
+              color: $success;
+            }
+            span.normal {
+              color: $alert;
+            }
+            span.error {
+              color: $error;
+            }
+            > div {
+              display: flex;
+              align-items: center;
+              > span {
+                width: 270px;
+              }
+            }
+            .urgentStatus {
+              margin-right: 16px;
+            }
+          }
+          li:last-of-type {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

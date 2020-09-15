@@ -30,6 +30,7 @@ $ErrorOpacity: #ff483d65;
 $ErrorOpacityLighter: #ff483d25;
 $ErrorHover: scale-color($Error, $lightness: +35%);
 $ErrorActive: scale-color($Error, $lightness: -15%);
+$WHITE: #ffffff;
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
 }
@@ -42,7 +43,7 @@ $ErrorActive: scale-color($Error, $lightness: -15%);
 @mixin MagicTrick {
   background: linear-gradient(to bottom right, #ef65b0, #aa24cb, #4f4cc4, #00fffc);
 }
-$WHITE: #ffffff;
+
 .LightTheme {
   $PrimaryText: #4a4a4a;
   $SecondaryText: #7b7b7b;
@@ -52,8 +53,8 @@ $WHITE: #ffffff;
   $LightDark: #e9e9e9;
   $MaskOpacity: #00000050;
   $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-  $aroundShadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  $hoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  $AroundShadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   @mixin PrimaryGradients {
     background: linear-gradient(#f3aac4, #eb7290);
   }
@@ -70,11 +71,215 @@ $WHITE: #ffffff;
     background: linear-gradient(#ff938d, #ff483d);
   }
   .lunaModal {
-    .modalMask{
+    .modalMask {
       background: $MaskOpacity;
     }
     .modalContainer {
       background-color: $NormalBackground;
+    }
+  }
+  .lunaInput {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+    span{
+      color: $PrimaryText;
+    }
+  }
+  .darkShadow {
+    box-shadow: $Shadow;
+  }
+  .lunaButton {
+    color: $NormalBackground;
+  }
+  .lunaButton:hover {
+    box-shadow: $HoverShadow;
+  }
+  .lunaButton {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaContainer {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaCard {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+    .lunaCardTitle {
+      border-bottom: 1px solid $LightDark;
+    }
+  }
+  .lunaTable {
+    box-shadow: $Shadow;
+    .lunaLoading {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  .lunaTable:hover {
+    box-shadow: $HoverShadow;
+  }
+  .lunaTable.stripeRow {
+    > tbody > tr:nth-child(even) {
+      background-color: $DividerDarkColor;
+      box-shadow: none;
+    }
+  }
+  .lunaTable {
+    background: $WHITE;
+
+    thead {
+      background: $LightDark;
+    }
+
+    tbody {
+      tr {
+        box-shadow: 0 1px 0 $DividerDarkColor;
+      }
+    }
+    .currentRow {
+      color: $WHITE;
+    }
+  }
+  .lunaPage {
+    background-color: $LightDark;
+    span {
+      color: $WHITE;
+    }
+    .lunaPageCell {
+      color: $PrimaryText;
+    }
+  }
+  .lunaButton:disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+
+    i {
+      color: $Ex-secondaryText !important;
+    }
+  }
+  .lunaInput.disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+
+    input {
+      background-color: $LightDark !important;
+      color: $Ex-secondaryText !important;
+    }
+  }
+  .lunaPageCell:disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+  }
+  .lunaSelect {
+    .optionScrollBarHidden {
+      background-color: $NormalBackground;
+      box-shadow: $AroundShadow;
+    }
+    .lunaOption {
+      color: $PrimaryText;
+      border-bottom: 1px solid $LightDark;
+    }
+    .lunaOption.optionActive {
+      color: $WHITE;
+    }
+  }
+  .lunaMessage {
+    .messageBody {
+      box-shadow: $Shadow;
+    }
+  }
+  .lunaForm {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaPanel {
+    .lunaPanelTitle {
+      box-shadow: $Shadow;
+      background-color: $LightDark;
+    }
+  }
+  .lunaSwitch {
+    box-shadow: $AroundShadow;
+  }
+  .lunaCheckbox.disabled {
+    .emptyCheckbox {
+      background-color: $LightDark !important;
+
+      i {
+        background-color: $LightDark;
+        color: $Ex-secondaryText;
+      }
+    }
+
+    .emptyCheckbox.checked {
+      border: 1px solid $LightDark;
+    }
+
+    .emptyCheckbox.checkedWithLight {
+      border: 1px solid $LightDark;
+      box-shadow: 0 0 2px $LightDark;
+    }
+
+    color: $Ex-secondaryText !important;
+  }
+  .lunaRadio.disabled {
+    .emptyRadio {
+      background-color: $LightDark !important;
+
+      .radioDot {
+        background-color: $Ex-secondaryText;
+        box-shadow: none;
+      }
+    }
+
+    .emptyRadio.checked {
+      border: 1px solid $LightDark;
+    }
+
+    .emptyRadio.checkedWithLight {
+      border: 1px solid $LightDark;
+      box-shadow: 0 0 2px $LightDark;
+    }
+
+    color: $Ex-secondaryText !important;
+  }
+  .lunaSwitch.disabled {
+    color: $Ex-secondaryText !important;
+  }
+  .lunaCheckboxGroup.darkGroup,
+  .lunaRadioGroup.darkGroup,
+  .lunaSwitchGroup.darkGroup {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaDatePickerPanel {
+    box-shadow: $AroundShadow;
+    .lunaDatePickerPanelYear {
+      .lunaYearCell:hover {
+        color: $PrimaryText;
+      }
+      .lunaYearCell.lunaActiveYear {
+        color: $PrimaryText;
+      }
+    }
+    .lunaDatePickerPanelMonth {
+      .lunaMonthCell:hover {
+        color: $PrimaryText;
+      }
+      .lunaMonthCell.lunaActiveMonth {
+        color: $PrimaryText;
+      }
+    }
+    .lunaDatePickerPanelDayList {
+      .lunaDayCellOtherMonth:hover {
+        color: $PrimaryText;
+      }
+      .lunaDayCellOtherMonth {
+        color: $Ex-secondaryText;
+      }
+    }
+    .lunaDatePickerPanelWeekList {
+      background-color: $LightDark;
     }
   }
 }
@@ -87,8 +292,8 @@ $WHITE: #ffffff;
   $LightDark: #3f3f3f;
   $MaskOpacity: #ffffff50;
   $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
-  $aroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+  $AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  $HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   @mixin PrimaryGradients {
     background: linear-gradient(#835868, #eb7290);
   }
@@ -105,12 +310,215 @@ $WHITE: #ffffff;
     background: linear-gradient(#744542, #ff483d);
   }
   .lunaModal {
-    .modalMask{
+    .modalMask {
       background: $MaskOpacity;
     }
     .modalContainer {
       background-color: $NormalBackground;
-      color: $WHITE !important;
+    }
+  }
+  .lunaInput {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+    span{
+      color: $PrimaryText;
+    }
+  }
+  .darkShadow {
+    box-shadow: $Shadow;
+  }
+  .lunaButton {
+    color: $NormalBackground;
+  }
+  .lunaButton:hover {
+    box-shadow: $HoverShadow;
+  }
+  .lunaButton {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaContainer {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaCard {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+    .lunaCardTitle {
+      border-bottom: 1px solid $LightDark;
+    }
+  }
+  .lunaTable {
+    box-shadow: $Shadow;
+    .lunaLoading {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  .lunaTable:hover {
+    box-shadow: $HoverShadow;
+  }
+  .lunaTable.stripeRow {
+    > tbody > tr:nth-child(even) {
+      background-color: $DividerDarkColor;
+      box-shadow: none;
+    }
+  }
+  .lunaTable {
+    background: $WHITE;
+
+    thead {
+      background: $LightDark;
+    }
+
+    tbody {
+      tr {
+        box-shadow: 0 1px 0 $DividerDarkColor;
+      }
+    }
+    .currentRow {
+      color: $WHITE;
+    }
+  }
+  .lunaPage {
+    background-color: $LightDark;
+    span {
+      color: $WHITE;
+    }
+    .lunaPageCell {
+      color: $PrimaryText;
+    }
+  }
+  .lunaButton:disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+
+    i {
+      color: $Ex-secondaryText !important;
+    }
+  }
+  .lunaInput.disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+
+    input {
+      background-color: $LightDark !important;
+      color: $Ex-secondaryText !important;
+    }
+  }
+  .lunaPageCell:disabled {
+    background-color: $LightDark !important;
+    color: $Ex-secondaryText !important;
+  }
+  .lunaSelect {
+    .optionScrollBarHidden {
+      background-color: $NormalBackground;
+      box-shadow: $AroundShadow;
+    }
+    .lunaOption {
+      color: $PrimaryText;
+      border-bottom: 1px solid $LightDark;
+    }
+    .lunaOption.optionActive {
+      color: $WHITE;
+    }
+  }
+  .lunaMessage {
+    .messageBody {
+      box-shadow: $Shadow;
+    }
+  }
+  .lunaForm {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaPanel {
+    .lunaPanelTitle {
+      box-shadow: $Shadow;
+      background-color: $LightDark;
+    }
+  }
+  .lunaSwitch {
+    box-shadow: $AroundShadow;
+  }
+  .lunaCheckbox.disabled {
+    .emptyCheckbox {
+      background-color: $LightDark !important;
+
+      i {
+        background-color: $LightDark;
+        color: $Ex-secondaryText;
+      }
+    }
+
+    .emptyCheckbox.checked {
+      border: 1px solid $LightDark;
+    }
+
+    .emptyCheckbox.checkedWithLight {
+      border: 1px solid $LightDark;
+      box-shadow: 0 0 2px $LightDark;
+    }
+
+    color: $Ex-secondaryText !important;
+  }
+  .lunaRadio.disabled {
+    .emptyRadio {
+      background-color: $LightDark !important;
+
+      .radioDot {
+        background-color: $Ex-secondaryText;
+        box-shadow: none;
+      }
+    }
+
+    .emptyRadio.checked {
+      border: 1px solid $LightDark;
+    }
+
+    .emptyRadio.checkedWithLight {
+      border: 1px solid $LightDark;
+      box-shadow: 0 0 2px $LightDark;
+    }
+
+    color: $Ex-secondaryText !important;
+  }
+  .lunaSwitch.disabled {
+    color: $Ex-secondaryText !important;
+  }
+  .lunaCheckboxGroup.darkGroup,
+  .lunaRadioGroup.darkGroup,
+  .lunaSwitchGroup.darkGroup {
+    background-color: $NormalBackground;
+    color: $PrimaryText;
+  }
+  .lunaDatePickerPanel {
+    box-shadow: $AroundShadow;
+    .lunaDatePickerPanelYear {
+      .lunaYearCell:hover {
+        color: $PrimaryText;
+      }
+      .lunaYearCell.lunaActiveYear {
+        color: $PrimaryText;
+      }
+    }
+    .lunaDatePickerPanelMonth {
+      .lunaMonthCell:hover {
+        color: $PrimaryText;
+      }
+      .lunaMonthCell.lunaActiveMonth {
+        color: $PrimaryText;
+      }
+    }
+    .lunaDatePickerPanelDayList {
+      .lunaDayCellOtherMonth:hover {
+        color: $PrimaryText;
+      }
+      .lunaDayCellOtherMonth {
+        color: $Ex-secondaryText;
+      }
+    }
+    .lunaDatePickerPanelWeekList {
+      background-color: $LightDark;
     }
   }
 }
@@ -186,7 +594,6 @@ $WHITE: #ffffff;
     position: relative;
     padding-bottom: 16px;
     z-index: 250;
-    background-color: $WHITE;
 
     .modalHeader {
       display: flex;
@@ -377,7 +784,6 @@ $WHITE: #ffffff;
 
   span {
     position: absolute;
-    color: $NormalBackground;
     font-size: 8px;
     right: 4px;
   }
@@ -392,36 +798,14 @@ $WHITE: #ffffff;
   border: 1px solid $Primary !important;
 }
 
-.lunaInput.lightInput {
-  background-color: $WHITE;
-  color: $NormalBackground;
-}
-
-.lunaInput.darkInput {
-  background-color: $NormalBackground !important;
-  color: $WHITE !important;
-
-  input {
-    color: $WHITE !important;
-  }
-
-  i {
-    color: $WHITE !important;
-  }
-}
-
 .lunaInput.ghostInput {
-  background-color: rgba(0, 0, 0, 0) !important;
+  background-color: transparent !important;
 }
 
 .lunaInput.disabled {
-  background-color: $disableBackground !important;
-  color: $disableText !important;
   cursor: no-drop !important;
 
   input {
-    background-color: $disableBackground !important;
-    color: $disableText !important;
     cursor: no-drop !important;
   }
 }
@@ -449,31 +833,7 @@ $WHITE: #ffffff;
 
 .lunaButton:disabled {
   pointer-events: unset;
-  background-color: $disableBackground !important;
-  color: $disableText !important;
   cursor: no-drop !important;
-
-  i {
-    color: $disableText !important;
-  }
-}
-
-.darkShadow {
-  box-shadow: $darkShadow;
-}
-
-.lightShadow {
-  box-shadow: $lightShadow;
-}
-
-.lunaButton.darkButton {
-  background-color: #000;
-  color: $WHITE;
-}
-
-.lunaButton.lightButton {
-  background-color: $WHITE;
-  color: $NormalBackground;
 }
 
 .lunaButton.PrimaryButton {
@@ -516,13 +876,13 @@ $WHITE: #ffffff;
 }
 
 .lunaButton.textButton {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border: 1px solid rgba(0, 0, 0, 0) !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
   box-shadow: none;
 }
 
 .lunaButton.ghostButton {
-  background-color: rgba(0, 0, 0, 0) !important;
+  background-color: transparent !important;
 }
 
 .lunaButton.ghostButton.PrimaryButton {
@@ -543,10 +903,6 @@ $WHITE: #ffffff;
 
 .lunaButton.ghostButton.AlertButton {
   color: $Alert !important;
-}
-
-.lunaButton:hover {
-  box-shadow: $hoverDarkShadow;
 }
 
 .lunaButton {
@@ -655,14 +1011,7 @@ $WHITE: #ffffff;
   overflow: auto;
 }
 
-.lunaContainer.darkContainer {
-  background-color: $NormalBackground !important;
-  color: $WHITE;
-}
-
 .lunaCard {
-  background-color: $LightDark;
-  color: $NormalBackground;
   transition: all 0.5s;
 
   .lunaCardTitle {
@@ -670,7 +1019,6 @@ $WHITE: #ffffff;
     height: 36px;
     line-height: 36px;
     padding: 0 16px;
-    border-bottom: 1px solid $LightDark;
     text-align: left;
     display: flex;
     align-items: center;
@@ -700,11 +1048,6 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaCard.darkCard {
-  background-color: $NormalBackground !important;
-  color: $WHITE;
-}
-
 .lunaTable {
   width: 100%;
   position: relative;
@@ -722,7 +1065,6 @@ $WHITE: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.8);
     overflow: visible;
 
     .face {
@@ -753,7 +1095,7 @@ $WHITE: #ffffff;
         height: 10px;
         background-color: currentColor;
         border-radius: 50%;
-        box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        box-shadow: 0 0 30px #fff;
         overflow: visible;
       }
     }
@@ -839,12 +1181,6 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaTable.stripeRow {
-  > tbody > tr:nth-child(even) {
-    background-color: #f8f8f9;
-  }
-}
-
 .lunaTable.headerFixed {
   thead {
     display: table;
@@ -868,67 +1204,14 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaTable.lightTable {
-  background: $WHITE;
-
-  thead {
-    background: $normalGray;
-  }
-
-  tbody {
-    tr {
-      box-shadow: 0 1px 0 $LightDark;
-    }
-  }
-
+.lunaTable {
   .hoverRow {
-    background-color: $PrimaryActive !important;
+    background-color: $PrimaryHover !important;
   }
 
   .currentRow {
     background-color: $Primary !important;
-    color: $WHITE;
   }
-}
-
-.lunaTable.darkTable {
-  background: $lightDark;
-
-  thead {
-    background: $NormalBackground;
-    color: $LightDark;
-  }
-
-  tbody {
-    tr {
-      box-shadow: 0 1px 0 $LightDark;
-      color: $WHITE;
-    }
-  }
-
-  .currentRow {
-    background-color: $PrimaryDarkActive !important;
-  }
-
-  .hoverRow {
-    background-color: $PrimaryDarkHover;
-  }
-}
-
-.lunaTable.darkShadow {
-  box-shadow: $darkShadow;
-}
-
-.lunaTable.darkShadow:hover {
-  box-shadow: $hoverDarkShadow;
-}
-
-.lunaTable.lightShadow {
-  box-shadow: $lightShadow;
-}
-
-.lunaTable.lightShadow:hover {
-  box-shadow: $hoverLightShadow;
 }
 
 .lunaPage {
@@ -959,8 +1242,6 @@ $WHITE: #ffffff;
   }
 
   .lunaPageCell:disabled {
-    background-color: $disableBackground !important;
-    color: $disableText !important;
     cursor: no-drop !important;
   }
 
@@ -982,32 +1263,9 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaPage.lightPage {
-  background-color: $LightDark;
-
+.lunaPage {
   .lunaPageCell:hover {
-    background-color: $PrimaryActive !important;
-  }
-
-  .lunaPageCell.pageCellActive {
-    background-color: $Primary !important;
-    color: $WHITE;
-  }
-}
-
-.lunaPage.darkPage {
-  background-color: $NormalBackground;
-
-  span {
-    color: $WHITE;
-  }
-
-  .lunaPageCell {
-    color: $WHITE;
-  }
-
-  .lunaPageCell:hover {
-    background-color: $PrimaryDarkActive !important;
+    background-color: $PrimaryHover !important;
   }
 
   .lunaPageCell.pageCellActive {
@@ -1048,7 +1306,6 @@ $WHITE: #ffffff;
     }
 
     .lunaOption {
-      border-bottom: 1px solid $LightDark;
       padding: 6px 8px;
       transition: all 0.5s;
       width: 100%;
@@ -1069,32 +1326,7 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaSelect.lightSelect {
-  .optionScrollBarHidden {
-    background-color: $WHITE;
-    box-shadow: $aroundDarkShadow;
-  }
-
-  .lunaOption:hover {
-    background-color: $PrimaryHover;
-  }
-
-  .lunaOption.optionActive {
-    background-color: $Primary;
-    color: $WHITE;
-  }
-}
-
-.lunaSelect.darkSelect {
-  .optionScrollBarHidden {
-    background-color: $NormalBackground;
-    box-shadow: $aroundLightShadow;
-  }
-
-  .lunaOption {
-    color: #ffffff;
-  }
-
+.lunaSelect {
   .lunaOption:hover {
     background-color: $PrimaryHover;
   }
@@ -1173,15 +1405,6 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaForm.lightForm {
-  background-color: $WHITE;
-}
-
-.lunaForm.darkForm {
-  background-color: $NormalBackground;
-  color: $WHITE;
-}
-
 .lunaMessage {
   position: fixed;
   width: 100%;
@@ -1200,7 +1423,6 @@ $WHITE: #ffffff;
     //width: auto!important;
     padding: 8px 16px;
     border-radius: 3px;
-    box-shadow: $darkShadow;
     margin-bottom: 8px;
     font-weight: 600;
   }
@@ -1322,8 +1544,6 @@ $WHITE: #ffffff;
 
   .lunaPanel {
     .lunaPanelTitle {
-      background-color: $LightDark;
-      box-shadow: $darkShadow;
       padding: 4px;
       display: flex;
       align-items: center;
@@ -1410,25 +1630,6 @@ $WHITE: #ffffff;
 }
 
 .lunaCheckbox.disabled {
-  .emptyCheckbox {
-    background-color: $disableBackground !important;
-
-    i {
-      background-color: $disableBackground;
-      color: $disableText;
-    }
-  }
-
-  .emptyCheckbox.checked {
-    border: 1px solid $disableBackground;
-  }
-
-  .emptyCheckbox.checkedWithLight {
-    border: 1px solid $disableBackground;
-    box-shadow: 0 0 2px $disableBackground;
-  }
-
-  color: $disableText !important;
   cursor: no-drop !important;
 }
 
@@ -1485,27 +1686,6 @@ $WHITE: #ffffff;
 }
 
 .lunaRadio.disabled {
-  cursor: no-drop !important;
-
-  .emptyRadio {
-    background-color: $disableBackground !important;
-
-    .radioDot {
-      background-color: $disableText;
-      box-shadow: none;
-    }
-  }
-
-  .emptyRadio.checked {
-    border: 1px solid $disableBackground;
-  }
-
-  .emptyRadio.checkedWithLight {
-    border: 1px solid $disableBackground;
-    box-shadow: 0 0 2px $disableBackground;
-  }
-
-  color: $disableText !important;
   cursor: no-drop !important;
 }
 
@@ -1570,7 +1750,6 @@ $WHITE: #ffffff;
 
 .lunaSwitch.disabled {
   background-color: #cccccc !important;
-  color: $disableText !important;
   cursor: no-drop !important;
 }
 
@@ -1592,15 +1771,6 @@ $WHITE: #ffffff;
     }
   }
 }
-
-.darkSwitchShadow {
-  box-shadow: $aroundDarkShadow;
-}
-
-.lightSwitchShadow {
-  box-shadow: $aroundLightShadow;
-}
-
 .lunaSwitchGroup {
   .lunaSwitchItem {
     margin-bottom: 16px;
@@ -1611,13 +1781,6 @@ $WHITE: #ffffff;
       margin-left: 4px;
     }
   }
-}
-
-.lunaCheckboxGroup.darkGroup,
-.lunaRadioGroup.darkGroup,
-.lunaSwitchGroup.darkGroup {
-  background-color: $NormalBackground;
-  color: #ffffff;
 }
 
 .lunaDatePicker {
@@ -1646,7 +1809,7 @@ $WHITE: #ffffff;
 
     .cgItemBtn:hover {
       background-color: $PrimaryOpacity;
-      color: $PrimaryText;
+      color: $FocusText;
     }
 
     i {
@@ -1656,7 +1819,7 @@ $WHITE: #ffffff;
 
     i:hover {
       background-color: $PrimaryOpacity;
-      color: $PrimaryText;
+      color: $FocusText;
     }
   }
 
@@ -1669,7 +1832,6 @@ $WHITE: #ffffff;
   .lunaDatePickerPanel {
     width: 200px;
     margin-top: 4px;
-    box-shadow: $aroundDarkShadow;
     position: relative;
     overflow: hidden;
     .lunaDatePickerPanelYear {
@@ -1683,11 +1845,9 @@ $WHITE: #ffffff;
       }
       .lunaYearCell:hover {
         background-color: $PrimaryOpacity;
-        color: $PrimaryText;
       }
       .lunaYearCell.lunaActiveYear {
         background-color: $PrimaryOpacity;
-        color: $PrimaryText;
         box-shadow: 0 0 2px $Primary;
       }
     }
@@ -1712,11 +1872,9 @@ $WHITE: #ffffff;
       }
       .lunaMonthCell:hover {
         background-color: $PrimaryOpacity;
-        color: $PrimaryText;
       }
       .lunaMonthCell.lunaActiveMonth {
         background-color: $PrimaryOpacity;
-        color: $PrimaryText;
         box-shadow: 0 0 2px $Primary;
       }
     }
@@ -1764,17 +1922,10 @@ $WHITE: #ffffff;
         background-color: $PrimaryHover;
         color: $WHITE;
       }
-      .lunaDayCellOtherMonth:hover {
-        color: $PrimaryText;
-      }
-      .lunaDayCellOtherMonth {
-        color: lightgray;
-      }
 
       .lunaDatePickerPanelWeekList {
         display: flex;
         padding: 0 6px;
-        background-color: $LightDark;
         .lunaWeekCell {
           color: darkgray;
         }
