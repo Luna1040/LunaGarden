@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 启动画面
-import Start from './start.vue'
+import Start from './App.vue'
 // 主页引入
 import Home from './views/home/Home.vue'
 import mHome from './views/home/mHome.vue'

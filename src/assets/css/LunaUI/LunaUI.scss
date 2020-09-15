@@ -1,32 +1,119 @@
 @import './lunaCol.scss';
-
-$white: #ffffff;
-$primary: #eb7290;
-$primaryOpacity: #eb729050;
-$primaryHover: scale-color($primary, $lightness: +35%);
-$primaryActive: scale-color($primary, $lightness: +75%);
-$primaryDarkHover: scale-color($primaryText, $lightness: -35%, $alpha: -75%);
-$primaryDarkActive: scale-color($primaryText, $lightness: -35%, $alpha: -55%);
-$primaryText: #f3588b;
-$error: #ff483d;
-$errorHover: scale-color($error, $lightness: +85%);
-$errorText: #ff1919;
-$success: #10d56e;
-$warning: #fecb37;
-$alert: #7636ff;
-$disableText: #ccc6c6;
-$disableBackground: #eeeeee;
-$normalDark: #4a4a4a;
-$lightDark: #555555;
-$lightGray: #f5f5f5;
-$normalGray: #e8e8e8;
-$darkShadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-$lightShadow: 0 3px 3px rgba(255, 255, 255, 0.3);
-$aroundDarkShadow: 0 0 5px rgba(0, 0, 0, 0.3);
-$aroundLightShadow: 0 0 5px rgba(255, 255, 255, 0.3);
-$hoverDarkShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-$hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
-
+$BackgroundText: #ffffff;
+$FocusText: #d84f71;
+$WarningText: #dca400;
+$SuccessText: #2fae47;
+$AlertText: #9128b4;
+$ErrorText: #bd2c23;
+$Primary: #eb7290;
+$PrimaryOpacity: #eb729065;
+$PrimaryOpacityLighter: #eb729025;
+$PrimaryHover: scale-color($Primary, $lightness: +35%);
+$PrimaryActive: scale-color($Primary, $lightness: -15%);
+$Warning: #fecb37;
+$WarningOpacity: #fecb3765;
+$WarningOpacityLighter: #fecb3725;
+$WarningHover: scale-color($Warning, $lightness: +35%);
+$WarningActive: scale-color($Warning, $lightness: -15%);
+$Success: #10d56e;
+$SuccessOpacity: #10d56e65;
+$SuccessOpacityLighter: #10d56e25;
+$SuccessHover: scale-color($Success, $lightness: +35%);
+$SuccessActive: scale-color($Success, $lightness: -15%);
+$Alert: #7636ff;
+$AlertOpacity: #7636ff65;
+$AlertOpacityLight: #7636ff25;
+$AlertHover: scale-color($Alert, $lightness: +35%);
+$AlertActive: scale-color($Alert, $lightness: -15%);
+$Error: #ff483d;
+$ErrorOpacity: #ff483d65;
+$ErrorOpacityLighter: #ff483d25;
+$ErrorHover: scale-color($Error, $lightness: +35%);
+$ErrorActive: scale-color($Error, $lightness: -15%);
+@mixin ModernColor {
+  background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
+}
+@mixin StarSky {
+  background: linear-gradient(to bottom right, #7891fc, #6ec9e9, #ff7398);
+}
+@mixin ElegantNight {
+  background: linear-gradient(to bottom right, #002180, #1d5fc9, #001e9e);
+}
+@mixin MagicTrick {
+  background: linear-gradient(to bottom right, #ef65b0, #aa24cb, #4f4cc4, #00fffc);
+}
+$WHITE: #ffffff;
+.LightTheme {
+  $PrimaryText: #4a4a4a;
+  $SecondaryText: #7b7b7b;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #ffffff;
+  $DividerDarkColor: #efefef;
+  $LightDark: #e9e9e9;
+  $MaskOpacity: #00000050;
+  $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  $aroundShadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  $hoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#f3aac4, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#fde7a7, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#89e1b3, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#b390ff, #7636ff);
+  }
+  @mixin PrimaryGradients {
+    background: linear-gradient(#ff938d, #ff483d);
+  }
+  .lunaModal {
+    .modalMask{
+      background: $MaskOpacity;
+    }
+    .modalContainer {
+      background-color: $NormalBackground;
+    }
+  }
+}
+.DarkTheme {
+  $PrimaryText: #f3f3f3;
+  $SecondaryText: #cccccc;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #010101;
+  $DividerDarkColor: #252525;
+  $LightDark: #3f3f3f;
+  $MaskOpacity: #ffffff50;
+  $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+  $aroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#835868, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#978b67, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#3c835e, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#4e3781, #7636ff);
+  }
+  @mixin PrimaryGradients {
+    background: linear-gradient(#744542, #ff483d);
+  }
+  .lunaModal {
+    .modalMask{
+      background: $MaskOpacity;
+    }
+    .modalContainer {
+      background-color: $NormalBackground;
+      color: $WHITE !important;
+    }
+  }
+}
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -35,13 +122,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: $primary;
+  background-color: $Primary;
   border-radius: 500px;
 }
 
 *.disabled {
-  //background-color: $disableBackground !important;
-  //color: $disableText !important;
   cursor: no-drop !important;
 }
 
@@ -77,10 +162,6 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   border-radius: 50% !important;
 }
 
-.primaryHover {
-  background-color: $primaryHover;
-}
-
 .lunaModal {
   display: flex;
   position: fixed;
@@ -101,27 +182,19 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     height: 100%;
   }
 
-  .modalMask.darkMask {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .modalMask.lightMask {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
   .modalContainer {
     position: relative;
     padding-bottom: 16px;
     z-index: 250;
-    background-color: $white;
+    background-color: $WHITE;
 
     .modalHeader {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8px 16px;
-      border-bottom: 1px solid $primaryActive;
-      background-color: $white;
+      border-bottom: 1px solid $PrimaryActive;
+      background-color: $WHITE;
       position: relative;
       margin-bottom: 32px;
 
@@ -204,68 +277,59 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
   }
 
-  .modalContainer.errorModal {
+  .modalContainer.ErrorModal {
     .modalHeader {
-      background-color: $error;
-      color: $white;
+      background-color: $Error;
+      color: $WHITE;
 
       p {
-        color: $white !important;
+        color: $WHITE !important;
       }
     }
   }
 
-  .modalContainer.successModal {
+  .modalContainer.SuccessModal {
     .modalHeader {
-      background-color: $success;
-      color: $white;
+      background-color: $Success;
+      color: $WHITE;
 
       p {
-        color: $white !important;
+        color: $WHITE !important;
       }
     }
   }
 
-  .modalContainer.warningModal {
+  .modalContainer.WarningModal {
     .modalHeader {
-      background-color: $warning;
-      color: $white;
+      background-color: $Warning;
+      color: $WHITE;
 
       p {
-        color: $white !important;
+        color: $WHITE !important;
       }
     }
   }
 
-  .modalContainer.alertModal {
+  .modalContainer.AlertModal {
     .modalHeader {
-      background-color: $alert;
-      color: $white;
+      background-color: $Alert;
+      color: $WHITE;
 
       p {
-        color: $white !important;
+        color: $WHITE !important;
       }
     }
   }
 
-  .modalContainer.primaryModal {
+  .modalContainer.PrimaryModal {
     .modalHeader {
-      background-color: $primary;
-      color: $white;
+      background-color: $Primary;
+      color: $WHITE;
 
       p {
-        color: $white !important;
+        color: $WHITE !important;
       }
     }
-  }
-
-  .modalContainer.lightModal {
-    background-color: $white;
-  }
-
-  .modalContainer.darkModal {
-    background-color: $normalDark;
-    color: $white !important;
   }
 }
 
@@ -287,7 +351,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     border: 0;
     outline: 0;
     height: 100%;
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
     padding: 0 12px;
   }
 
@@ -313,36 +377,36 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
   span {
     position: absolute;
-    color: $normalDark;
+    color: $NormalBackground;
     font-size: 8px;
     right: 4px;
   }
 }
 
 .lunaInput:hover {
-  border: 1px solid $primary !important;
+  border: 1px solid $Primary !important;
 }
 
 .lunaInput.focusing {
-  box-shadow: 0 0 0 2px $primaryOpacity !important;
-  border: 1px solid $primary !important;
+  box-shadow: 0 0 0 2px $PrimaryOpacity !important;
+  border: 1px solid $Primary !important;
 }
 
 .lunaInput.lightInput {
-  background-color: $white;
-  color: $normalDark;
+  background-color: $WHITE;
+  color: $NormalBackground;
 }
 
 .lunaInput.darkInput {
-  background-color: $normalDark !important;
-  color: $white !important;
+  background-color: $NormalBackground !important;
+  color: $WHITE !important;
 
   input {
-    color: $white !important;
+    color: $WHITE !important;
   }
 
   i {
-    color: $white !important;
+    color: $WHITE !important;
   }
 }
 
@@ -404,51 +468,51 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
 .lunaButton.darkButton {
   background-color: #000;
-  color: $white;
+  color: $WHITE;
 }
 
 .lunaButton.lightButton {
-  background-color: $white;
-  color: $normalDark;
+  background-color: $WHITE;
+  color: $NormalBackground;
 }
 
-.lunaButton.primaryButton {
-  background-color: $primary;
-  color: $white;
-  border-color: $primary;
+.lunaButton.PrimaryButton {
+  background-color: $Primary;
+  color: $WHITE;
+  border-color: $Primary;
 }
 
-.lunaButton.primaryButton:hover {
-  background-color: $primaryHover;
-  color: $primary;
+.lunaButton.PrimaryButton:hover {
+  background-color: $PrimaryHover;
+  color: $Primary;
 
   i {
-    color: $primary;
+    color: $Primary;
   }
 }
 
-.lunaButton.errorButton {
-  background-color: $error;
-  color: $white;
-  border-color: $error;
+.lunaButton.ErrorButton {
+  background-color: $Error;
+  color: $WHITE;
+  border-color: $Error;
 }
 
-.lunaButton.successButton {
-  background-color: $success;
-  color: $white;
-  border-color: $success;
+.lunaButton.SuccessButton {
+  background-color: $Success;
+  color: $WHITE;
+  border-color: $Success;
 }
 
-.lunaButton.warningButton {
-  background-color: $warning;
-  color: $white;
-  border-color: $warning;
+.lunaButton.WarningButton {
+  background-color: $Warning;
+  color: $WHITE;
+  border-color: $Warning;
 }
 
-.lunaButton.alertButton {
-  background-color: $alert;
-  color: $white;
-  border-color: $alert;
+.lunaButton.AlertButton {
+  background-color: $Alert;
+  color: $WHITE;
+  border-color: $Alert;
 }
 
 .lunaButton.textButton {
@@ -461,24 +525,24 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.lunaButton.ghostButton.primaryButton {
-  color: $primary !important;
+.lunaButton.ghostButton.PrimaryButton {
+  color: $Primary !important;
 }
 
-.lunaButton.ghostButton.errorButton {
-  color: $error !important;
+.lunaButton.ghostButton.ErrorButton {
+  color: $Error !important;
 }
 
-.lunaButton.ghostButton.successButton {
-  color: $success !important;
+.lunaButton.ghostButton.SuccessButton {
+  color: $Success !important;
 }
 
-.lunaButton.ghostButton.warningButton {
-  color: $warning !important;
+.lunaButton.ghostButton.WarningButton {
+  color: $Warning !important;
 }
 
-.lunaButton.ghostButton.alertButton {
-  color: $alert !important;
+.lunaButton.ghostButton.AlertButton {
+  color: $Alert !important;
 }
 
 .lunaButton:hover {
@@ -526,7 +590,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   margin-right: 8px;
   display: block;
   border-radius: 50%;
-  background-color: $primary;
+  background-color: $Primary;
   width: 20px;
   height: 20px;
   -webkit-animation: ani-spin-bounce 1s 0s ease-in-out infinite;
@@ -550,27 +614,27 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   width: 6px;
   height: 6px;
   border-radius: 6px;
-  background-color: $error;
+  background-color: $Error;
   position: absolute;
   right: -4px;
   top: -4px;
-  border: 1px solid $white;
+  border: 1px solid $WHITE;
 }
 
-.lunaBadge.errorBadge {
-  background-color: $error;
+.lunaBadge.ErrorBadge {
+  background-color: $Error;
 }
 
-.lunaBadge.successBadge {
-  background-color: $success;
+.lunaBadge.SuccessBadge {
+  background-color: $Success;
 }
 
-.lunaBadge.alertBadge {
-  background-color: $alert;
+.lunaBadge.AlertBadge {
+  background-color: $Alert;
 }
 
-.lunaBadge.warningBadge {
-  background-color: $warning;
+.lunaBadge.WarningBadge {
+  background-color: $Warning;
 }
 
 .lunaRow {
@@ -592,13 +656,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaContainer.darkContainer {
-  background-color: $normalDark !important;
-  color: $white;
+  background-color: $NormalBackground !important;
+  color: $WHITE;
 }
 
 .lunaCard {
-  background-color: $lightGray;
-  color: $normalDark;
+  background-color: $LightDark;
+  color: $NormalBackground;
   transition: all 0.5s;
 
   .lunaCardTitle {
@@ -606,7 +670,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     height: 36px;
     line-height: 36px;
     padding: 0 16px;
-    border-bottom: 1px solid $lightGray;
+    border-bottom: 1px solid $LightDark;
     text-align: left;
     display: flex;
     align-items: center;
@@ -637,8 +701,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaCard.darkCard {
-  background-color: $normalDark !important;
-  color: $white;
+  background-color: $NormalBackground !important;
+  color: $WHITE;
 }
 
 .lunaTable {
@@ -697,7 +761,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     .face:nth-child(1) {
       width: 40px;
       height: 40px;
-      color: $white;
+      color: $WHITE;
       border-color: currentColor transparent transparent currentColor;
       border-width: 6px 6px 0 0;
       --deg: -45deg;
@@ -708,7 +772,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     .face:nth-child(2) {
       width: 60px;
       height: 60px;
-      color: $primary;
+      color: $Primary;
       border-color: currentColor currentColor transparent transparent;
       border-width: 6px 0 0 6px;
       --deg: -135deg;
@@ -805,7 +869,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaTable.lightTable {
-  background: $white;
+  background: $WHITE;
 
   thead {
     background: $normalGray;
@@ -813,17 +877,17 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
   tbody {
     tr {
-      box-shadow: 0 1px 0 $lightGray;
+      box-shadow: 0 1px 0 $LightDark;
     }
   }
 
   .hoverRow {
-    background-color: $primaryActive !important;
+    background-color: $PrimaryActive !important;
   }
 
   .currentRow {
-    background-color: $primary !important;
-    color: $white;
+    background-color: $Primary !important;
+    color: $WHITE;
   }
 }
 
@@ -831,23 +895,23 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   background: $lightDark;
 
   thead {
-    background: $normalDark;
-    color: $lightGray;
+    background: $NormalBackground;
+    color: $LightDark;
   }
 
   tbody {
     tr {
-      box-shadow: 0 1px 0 $lightGray;
-      color: $white;
+      box-shadow: 0 1px 0 $LightDark;
+      color: $WHITE;
     }
   }
 
   .currentRow {
-    background-color: $primaryDarkActive !important;
+    background-color: $PrimaryDarkActive !important;
   }
 
   .hoverRow {
-    background-color: $primaryDarkHover;
+    background-color: $PrimaryDarkHover;
   }
 }
 
@@ -887,7 +951,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .pagination {
-    color: $primary;
+    color: $Primary;
 
     i {
       font-size: 10px;
@@ -919,36 +983,36 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaPage.lightPage {
-  background-color: $lightGray;
+  background-color: $LightDark;
 
   .lunaPageCell:hover {
-    background-color: $primaryActive !important;
+    background-color: $PrimaryActive !important;
   }
 
   .lunaPageCell.pageCellActive {
-    background-color: $primary !important;
-    color: $white;
+    background-color: $Primary !important;
+    color: $WHITE;
   }
 }
 
 .lunaPage.darkPage {
-  background-color: $normalDark;
+  background-color: $NormalBackground;
 
   span {
-    color: $white;
+    color: $WHITE;
   }
 
   .lunaPageCell {
-    color: $white;
+    color: $WHITE;
   }
 
   .lunaPageCell:hover {
-    background-color: $primaryDarkActive !important;
+    background-color: $PrimaryDarkActive !important;
   }
 
   .lunaPageCell.pageCellActive {
-    background-color: $primary !important;
-    color: $white;
+    background-color: $Primary !important;
+    color: $WHITE;
   }
 }
 
@@ -984,7 +1048,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .lunaOption {
-      border-bottom: 1px solid $lightGray;
+      border-bottom: 1px solid $LightDark;
       padding: 6px 8px;
       transition: all 0.5s;
       width: 100%;
@@ -1007,23 +1071,23 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 
 .lunaSelect.lightSelect {
   .optionScrollBarHidden {
-    background-color: $white;
+    background-color: $WHITE;
     box-shadow: $aroundDarkShadow;
   }
 
   .lunaOption:hover {
-    background-color: $primaryHover;
+    background-color: $PrimaryHover;
   }
 
   .lunaOption.optionActive {
-    background-color: $primary;
-    color: $white;
+    background-color: $Primary;
+    color: $WHITE;
   }
 }
 
 .lunaSelect.darkSelect {
   .optionScrollBarHidden {
-    background-color: $normalDark;
+    background-color: $NormalBackground;
     box-shadow: $aroundLightShadow;
   }
 
@@ -1032,11 +1096,11 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .lunaOption:hover {
-    background-color: $primaryHover;
+    background-color: $PrimaryHover;
   }
 
   .lunaOption.optionActive {
-    background-color: $primary;
+    background-color: $Primary;
   }
 }
 
@@ -1059,7 +1123,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     span.required:before {
       display: inline-block;
       line-height: 1;
-      color: $errorText;
+      color: $ErrorText;
       font-family: SimSun;
       content: '*';
     }
@@ -1105,17 +1169,17 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .lunaFormItem.errBorder {
-    border: 1px solid $error;
+    border: 1px solid $Error;
   }
 }
 
 .lunaForm.lightForm {
-  background-color: $white;
+  background-color: $WHITE;
 }
 
 .lunaForm.darkForm {
-  background-color: $normalDark;
-  color: $white;
+  background-color: $NormalBackground;
+  color: $WHITE;
 }
 
 .lunaMessage {
@@ -1141,66 +1205,66 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     font-weight: 600;
   }
 
-  .messageBody.warningMessage {
-    border: 1px solid $warning;
-    background-color: $warning;
+  .messageBody.WarningMessage {
+    border: 1px solid $Warning;
+    background-color: $Warning;
 
     i,
     span {
-      color: $white;
+      color: $WHITE;
     }
   }
 
-  .messageBody.errorMessage {
-    border: 1px solid $error;
-    background-color: $error;
+  .messageBody.ErrorMessage {
+    border: 1px solid $Error;
+    background-color: $Error;
 
     i,
     span {
-      color: $white;
+      color: $WHITE;
     }
   }
 
-  .messageBody.successMessage {
-    border: 1px solid $success;
-    background-color: $success;
+  .messageBody.SuccessMessage {
+    border: 1px solid $Success;
+    background-color: $Success;
 
     i,
     span {
-      color: $white;
+      color: $WHITE;
     }
   }
 
-  .messageBody.primaryMessage {
-    border: 1px solid $primary;
-    background-color: $primary;
+  .messageBody.PrimaryMessage {
+    border: 1px solid $Primary;
+    background-color: $Primary;
 
     i,
     span {
-      color: $white;
+      color: $WHITE;
     }
   }
 
-  .messageBody.alertMessage {
-    border: 1px solid $alert;
-    background-color: $alert;
+  .messageBody.AlertMessage {
+    border: 1px solid $Alert;
+    background-color: $Alert;
 
     i,
     span {
-      color: $white;
+      color: $WHITE;
     }
   }
 
   .messageBody.normalMessage {
-    border: 1px solid $primary;
-    background-color: $white;
+    border: 1px solid $Primary;
+    background-color: $WHITE;
 
     i {
-      color: $primary;
+      color: $Primary;
     }
   }
 
-  .alertClose {
+  .AlertClose {
     margin-right: 0;
     margin-left: 6px;
     border: 1px solid #333;
@@ -1240,7 +1304,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .lunaItemInner:hover {
-      background: $primaryOpacity;
+      background: $PrimaryOpacity;
     }
 
     .lunaTreeCell {
@@ -1253,12 +1317,12 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaCollapse {
-  background-color: $white;
+  background-color: $WHITE;
   border: 1px solid #eeeeee;
 
   .lunaPanel {
     .lunaPanelTitle {
-      background-color: $lightGray;
+      background-color: $LightDark;
       box-shadow: $darkShadow;
       padding: 4px;
       display: flex;
@@ -1317,8 +1381,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      background-color: $primary;
-      color: $white;
+      background-color: $Primary;
+      color: $WHITE;
       position: absolute;
       top: 0;
       left: 0;
@@ -1331,18 +1395,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .emptyCheckbox.checked {
-    border: 1px solid $primaryOpacity;
+    border: 1px solid $PrimaryOpacity;
   }
 
   .emptyCheckbox.checkedWithLight {
-    border: 1px solid $primaryOpacity;
-    box-shadow: 0 0 2px $primary;
+    border: 1px solid $PrimaryOpacity;
+    box-shadow: 0 0 2px $Primary;
   }
 }
 
 .lunaCheckbox.checked {
-  color: $primary;
-  border-color: $primary !important;
+  color: $Primary;
+  border-color: $Primary !important;
 }
 
 .lunaCheckbox.disabled {
@@ -1394,8 +1458,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $primary;
-      box-shadow: 0 0 2px $primary;
+      background-color: $Primary;
+      box-shadow: 0 0 2px $Primary;
       position: absolute;
     }
   }
@@ -1406,18 +1470,18 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
   }
 
   .emptyRadio.checked {
-    border: 1px solid $primaryOpacity;
+    border: 1px solid $PrimaryOpacity;
   }
 
   .emptyRadio.checkedWithLight {
-    border: 1px solid $primaryOpacity;
-    box-shadow: 0 0 2px $primary;
+    border: 1px solid $PrimaryOpacity;
+    box-shadow: 0 0 2px $Primary;
   }
 }
 
 .lunaRadio.checked {
-  color: $primary;
-  border-color: $primary !important;
+  color: $Primary;
+  border-color: $Primary !important;
 }
 
 .lunaRadio.disabled {
@@ -1476,7 +1540,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     position: absolute;
     width: 18px !important;
     height: 18px !important;
-    background-color: $primary !important;
+    background-color: $Primary !important;
   }
 
   .switchBtn.switchKeyModern {
@@ -1489,7 +1553,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       width: 10px;
       height: 10px;
       background-color: rgba(0, 0, 0, 0.2);
-      border: 1px solid $white;
+      border: 1px solid $WHITE;
     }
   }
 
@@ -1511,8 +1575,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .lunaSwitch.switchBoxOn {
-  background-color: $primary;
-  box-shadow: 0 0 5px $primary;
+  background-color: $Primary;
+  box-shadow: 0 0 5px $Primary;
   justify-content: flex-start;
 
   .switchBtn.switchKeyModern {
@@ -1552,7 +1616,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 .lunaCheckboxGroup.darkGroup,
 .lunaRadioGroup.darkGroup,
 .lunaSwitchGroup.darkGroup {
-  background-color: $normalDark;
+  background-color: $NormalBackground;
   color: #ffffff;
 }
 
@@ -1581,8 +1645,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     .cgItemBtn:hover {
-      background-color: $primaryOpacity;
-      color: $primaryText;
+      background-color: $PrimaryOpacity;
+      color: $PrimaryText;
     }
 
     i {
@@ -1591,8 +1655,8 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
     }
 
     i:hover {
-      background-color: $primaryOpacity;
-      color: $primaryText;
+      background-color: $PrimaryOpacity;
+      color: $PrimaryText;
     }
   }
 
@@ -1618,13 +1682,13 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         transition: all 0.25s;
       }
       .lunaYearCell:hover {
-        background-color: $primaryOpacity;
-        color: $primaryText;
+        background-color: $PrimaryOpacity;
+        color: $PrimaryText;
       }
       .lunaYearCell.lunaActiveYear {
-        background-color: $primaryOpacity;
-        color: $primaryText;
-        box-shadow: 0 0 2px $primary;
+        background-color: $PrimaryOpacity;
+        color: $PrimaryText;
+        box-shadow: 0 0 2px $Primary;
       }
     }
 
@@ -1647,20 +1711,20 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         border-radius: 5px;
       }
       .lunaMonthCell:hover {
-        background-color: $primaryOpacity;
-        color: $primaryText;
+        background-color: $PrimaryOpacity;
+        color: $PrimaryText;
       }
       .lunaMonthCell.lunaActiveMonth {
-        background-color: $primaryOpacity;
-        color: $primaryText;
-        box-shadow: 0 0 2px $primary;
+        background-color: $PrimaryOpacity;
+        color: $PrimaryText;
+        box-shadow: 0 0 2px $Primary;
       }
     }
 
     .lunaDatePickerPanelDay {
       width: 100%;
       .lunaDayRangeActive {
-        background-color: $primaryOpacity;
+        background-color: $PrimaryOpacity;
       }
       .lunaDayCell,
       .lunaWeekCell,
@@ -1682,7 +1746,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         width: 8px;
         height: 8px;
         border-radius: 8px;
-        background-color: $primary;
+        background-color: $Primary;
       }
 
       .lunaDatePickerPanelDayList {
@@ -1692,16 +1756,16 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
         padding: 6px;
       }
       .lunaDayCell.lunaActiveDay {
-        background-color: $primary;
-        color: $white;
-        box-shadow: 0 0 2px $primary;
+        background-color: $Primary;
+        color: $WHITE;
+        box-shadow: 0 0 2px $Primary;
       }
       .lunaDayCell:hover {
-        background-color: $primaryHover;
-        color: $white;
+        background-color: $PrimaryHover;
+        color: $WHITE;
       }
       .lunaDayCellOtherMonth:hover {
-        color: $primaryText;
+        color: $PrimaryText;
       }
       .lunaDayCellOtherMonth {
         color: lightgray;
@@ -1710,7 +1774,7 @@ $hoverLightShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
       .lunaDatePickerPanelWeekList {
         display: flex;
         padding: 0 6px;
-        background-color: $lightGray;
+        background-color: $LightDark;
         .lunaWeekCell {
           color: darkgray;
         }

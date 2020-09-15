@@ -1,34 +1,9 @@
 <template>
-  <header class="header" :class="theme">
-    <!--        User Area-->
+  <header class="header">
     <div class="userArea">
-      <div class="userIcon">
-        <img v-if="userInfo.userIcon" :src="userInfo.userIcon" alt />
-        <img v-else src="userIcons/emptyIcon.svg" alt="">
+      <div class="userIcon" @click="showSettings">
+        <img src="userIcon.jpg" alt="">
       </div>
-      <div class="information">
-        <div class="userInfo">
-          <span class="userName">{{ userInfo.userName }}</span>
-        </div>
-        <div class="netWorkStatus" :class="{ networkError: !navigator.onLine }">
-          <i
-            class="iconfont"
-            :class="{
-              'icon-HotelDetails_icn_Internet': navigator.onLine,
-              'icon-infonointernet': !navigator.onLine,
-            }"
-          ></i>
-          <span v-show="navigator.onLine">{{ $t("lang.titles.online") }}</span>
-          <span v-show="!navigator.onLine">{{
-            $t("lang.titles.offline")
-          }}</span>
-        </div>
-      </div>
-    </div>
-    <!--        Title-->
-    <div class="title">
-      <h2>{{ msgHeader }}</h2>
-      <!-- <img :src="imgSrc" alt /> -->
     </div>
     <div class="guide">
       <div class="btnGroup">
@@ -88,6 +63,9 @@ export default {
     }
   },
   methods: {
+    showSettings() {
+
+    },
     cgLang () {
       this.langSlideDown = this.langSlideDown !== true
     },
@@ -114,10 +92,6 @@ export default {
     }
   },
   props: {
-    theme: {
-      type: String,
-      default: 'glass'
-    },
     msgHeader: {
       type: String,
       required: true

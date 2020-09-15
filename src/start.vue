@@ -929,7 +929,7 @@ div {
     position: absolute;
     top: calc(40% - 150px);
     left: calc(50% - 150px);
-    animation: spin 1s ease-out forwards;
+    //animation: spin 1s ease-out forwards;
     @keyframes spin {
       0% {
         top: 0;
