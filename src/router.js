@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 启动画面
-import Start from './App.vue'
+import Start from './start.vue'
 // 主页引入
 import Home from './views/home/Home.vue'
 import mHome from './views/home/mHome.vue'
@@ -11,10 +11,10 @@ import mNote from './views/note/mNote.vue'
 // 日记引入
 import Diary from './views/diary/Diary.vue'
 import mDiary from './views/diary/mDiary.vue'
-// 引导模式引入
+// 引导模式
 import Guide from './views/guide/Guide.vue'
 import mGuide from './views/guide/mGuide.vue'
-// 用户中心引入
+// 用户中心
 import User from './views/user/UserCenter.vue'
 import mUser from './views/user/mUserCenter.vue'
 // 关于我们
@@ -49,7 +49,9 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     // 首屏展示加载动画
-    { path: '/', name: 'start', component: Start },
+    { path: '/', name: 'Start', component: Start },
+    { path: '/Start', name: 'Start', component: Start },
+    { path: '/mStart', name: 'mStart', component: Start },
     { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
     { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
     { path: '/Cursor', name: 'Cursor', component: ByteCursor },

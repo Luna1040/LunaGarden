@@ -57,7 +57,7 @@ export const lang = {
     online: '在线',
     offline: '离线',
     Guide: '引导模式',
-    Home: 'Luna Garden',
+    Home: '待办事项',
     AboutUs: '关于我们',
     Login: '登录',
     Register: '注册',

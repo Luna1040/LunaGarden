@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{ LightTheme: theme === 'light', DarkTheme: theme === 'dark' }">
-    <Header :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo"></Header>
+    <Header :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"></Header>
     <transition :name="transitionName">
       <router-view class="Router"></router-view>
     </transition>
@@ -90,12 +90,11 @@ export default {
     Header
   },
   created() {
-    // 是否为初次访问
-    if (!localStorage.getItem('firstLoad')) {
+    if (localStorage.getItem('firstLoad') === null) {
       // 直接生成基于localstorage的todoList
       localStorage.setItem('todoList', JSON.stringify([]))
       localStorage.setItem('firstLoad', JSON.stringify(1))
-      this.$router.push('Home')
+      this.$router.push('/Start')
     } else {
       // 若local中无todoList，则创建
       if (!localStorage.getItem('todoList')) {
@@ -154,13 +153,6 @@ export default {
     }
     // 监听窗口改变，路由跳转实时导向移动端或pc端
     window.onresize = () => {
-      // if (window.innerWidth / window.innerHeight >= 1.777) {
-      //   this.width177 = 177
-      // } else if (window.innerWidth / window.innerHeight < 1) {
-      //   this.width177 = 0
-      // } else {
-      //   this.width177 = 16
-      // }
       if (window.innerWidth >= window.innerHeight) {
         if (this.$route.name.indexOf('m') === 0) {
           this.$router.push(this.$route.name.substr(1))
@@ -191,24 +183,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.Router {
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-  will-change: transform;
-  backface-visibility: hidden;
-  overflow: hidden;
-}
-.slide-left-enter,
-.slide-right-leave-active {
-  opacity: 0;
-  transform: translate3d(-100%, 0, 0);
-}
 
-.slide-left-leave-active,
-.slide-right-enter {
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-}
 </style>

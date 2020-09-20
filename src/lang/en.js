@@ -57,7 +57,7 @@ export const lang = {
     online: 'Online',
     offline: 'Offline',
     Guide: 'Guide',
-    Home: 'Luna Garden',
+    Home: 'Todo Panel',
     AboutUs: 'About Us',
     Login: 'Login',
     Register: 'Register',

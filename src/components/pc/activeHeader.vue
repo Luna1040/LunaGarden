@@ -2,33 +2,30 @@
   <header class="header">
     <div class="userArea">
       <div class="userIcon" @click="showSettings">
-        <img src="userIcon.jpg" alt="">
+        <img src="userIcon.jpg" alt="" />
       </div>
     </div>
+    <div class="title">
+      <p>Luna Garden</p>
+      <h2>{{ msgHeader }}</h2>
+    </div>
+    <nav class="menuGroup">
+      <figure class="menuItem" v-for="i in menuList" :key="i.id">
+        <i class="iconfont" :class="i.icon"></i>
+        <figcaption>{{ i.title }}</figcaption>
+      </figure>
+    </nav>
     <div class="guide">
       <div class="btnGroup">
-        <div
-          :class="{ languageActive: $i18n.locale !== 'zh-CN' }"
-          @click="setLang('en-US')"
-        >
+        <div :class="{ languageActive: $i18n.locale !== 'zh-CN' }" @click="setLang('en-US')">
           <img src="../../assets/icons/language-english.svg" alt />
         </div>
-        <div
-          :class="{ languageActive: $i18n.locale === 'zh-CN' }"
-          @click="setLang('zh-CN')"
-        >
+        <div :class="{ languageActive: $i18n.locale === 'zh-CN' }" @click="setLang('zh-CN')">
           <img src="../../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
-      <Button
-        color="#eb7290"
-        background="#FFFFFF"
-        icon="iconfont icon-guide"
-        pre
-        :width="130"
-        @click="toAbout"
-      >
-        <span>{{ $t("lang.titles.Guide") }}</span>
+      <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
+        <span>{{ $t('lang.titles.Guide') }}</span>
       </Button>
     </div>
   </header>
@@ -37,52 +34,48 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       navigator: {
         onLine: true
       },
       imgSrc: '',
-      langSlideDown: ''
+      langSlideDown: '',
     }
   },
-  created () {
+  created() {
     this.$emit('cgLang', this.$t('lang'))
   },
-  mounted () {
+  mounted() {
     this.navigator.onLine = window.navigator.onLine
     setInterval(this.getNavigator, 1000)
     // this.getData(publicApi.imgCode, {}).then(res => {
     //   this.imgSrc = res.data
     // })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.timer) {
       // 如果定时器还在运行 或者直接关闭，不用判断
       clearInterval(this.timer) // 关闭
     }
   },
   methods: {
-    showSettings() {
-
-    },
-    cgLang () {
+    showSettings() {},
+    cgLang() {
       this.langSlideDown = this.langSlideDown !== true
     },
-    setLang (value) {
+    setLang(value) {
       this.$i18n.locale = value
-      this.langSlideDown = false
-      this.$emit('cgLang', this.$t('lang'))
     },
-    getNavigator () {
+    getNavigator() {
       this.navigator.onLine = window.navigator.onLine
     },
-    toAbout () {
+    toAbout() {
       this.$router.push('AboutUs')
     }
   },
   filters: {
-    languageTrans (value) {
+    languageTrans(value) {
       if (value === 'zh-CN') {
         value = '中文'
       } else {
@@ -100,6 +93,12 @@ export default {
       type: Object,
       default: () => {
         return {}
+      }
+    },
+    menuList: {
+      type: Object,
+      default: () => {
+        return []
       }
     }
   }
