@@ -31,6 +31,7 @@ $ErrorOpacityLighter: #ff483d25;
 $ErrorHover: scale-color($Error, $lightness: +35%);
 $ErrorActive: scale-color($Error, $lightness: -15%);
 $WHITE: #ffffff;
+$WHITE-OPACITY: #ffffff50;
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
 }
@@ -67,7 +68,7 @@ $WHITE: #ffffff;
   @mixin AlertGradients {
     background: linear-gradient(#b390ff, #7636ff);
   }
-  @mixin PrimaryGradients {
+  @mixin ErrorGradients {
     background: linear-gradient(#ff938d, #ff483d);
   }
   .lunaModal {
@@ -684,7 +685,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .modalContainer.ErrorModal {
+  .modalContainer.errorModal {
     .modalHeader {
       background-color: $Error;
       color: $WHITE;
@@ -695,7 +696,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .modalContainer.SuccessModal {
+  .modalContainer.successModal {
     .modalHeader {
       background-color: $Success;
       color: $WHITE;
@@ -706,7 +707,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .modalContainer.WarningModal {
+  .modalContainer.warningModal {
     .modalHeader {
       background-color: $Warning;
       color: $WHITE;
@@ -717,7 +718,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .modalContainer.AlertModal {
+  .modalContainer.alertModal {
     .modalHeader {
       background-color: $Alert;
       color: $WHITE;
@@ -728,7 +729,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .modalContainer.PrimaryModal {
+  .modalContainer.primaryModal {
     .modalHeader {
       background-color: $Primary;
       color: $WHITE;
@@ -836,13 +837,13 @@ $WHITE: #ffffff;
   cursor: no-drop !important;
 }
 
-.lunaButton.PrimaryButton {
+.lunaButton.primaryButton {
   background-color: $Primary;
   color: $WHITE;
   border-color: $Primary;
 }
 
-.lunaButton.PrimaryButton:hover {
+.lunaButton.primaryButton:hover {
   background-color: $PrimaryHover;
   color: $Primary;
 
@@ -851,25 +852,25 @@ $WHITE: #ffffff;
   }
 }
 
-.lunaButton.ErrorButton {
+.lunaButton.errorButton {
   background-color: $Error;
   color: $WHITE;
   border-color: $Error;
 }
 
-.lunaButton.SuccessButton {
+.lunaButton.successButton {
   background-color: $Success;
   color: $WHITE;
   border-color: $Success;
 }
 
-.lunaButton.WarningButton {
+.lunaButton.warningButton {
   background-color: $Warning;
   color: $WHITE;
   border-color: $Warning;
 }
 
-.lunaButton.AlertButton {
+.lunaButton.alertButton {
   background-color: $Alert;
   color: $WHITE;
   border-color: $Alert;
@@ -885,23 +886,23 @@ $WHITE: #ffffff;
   background-color: transparent !important;
 }
 
-.lunaButton.ghostButton.PrimaryButton {
+.lunaButton.ghostButton.primaryButton {
   color: $Primary !important;
 }
 
-.lunaButton.ghostButton.ErrorButton {
+.lunaButton.ghostButton.errorButton {
   color: $Error !important;
 }
 
-.lunaButton.ghostButton.SuccessButton {
+.lunaButton.ghostButton.successButton {
   color: $Success !important;
 }
 
-.lunaButton.ghostButton.WarningButton {
+.lunaButton.ghostButton.warningButton {
   color: $Warning !important;
 }
 
-.lunaButton.ghostButton.AlertButton {
+.lunaButton.ghostButton.alertButton {
   color: $Alert !important;
 }
 
@@ -977,19 +978,19 @@ $WHITE: #ffffff;
   border: 1px solid $WHITE;
 }
 
-.lunaBadge.ErrorBadge {
+.lunaBadge.errorBadge {
   background-color: $Error;
 }
 
-.lunaBadge.SuccessBadge {
+.lunaBadge.successBadge {
   background-color: $Success;
 }
 
-.lunaBadge.AlertBadge {
+.lunaBadge.alertBadge {
   background-color: $Alert;
 }
 
-.lunaBadge.WarningBadge {
+.lunaBadge.warningBadge {
   background-color: $Warning;
 }
 
@@ -1421,7 +1422,7 @@ $WHITE: #ffffff;
     font-weight: 600;
   }
 
-  .messageBody.WarningMessage {
+  .messageBody.warningMessage {
     border: 1px solid $Warning;
     background-color: $Warning;
 
@@ -1431,7 +1432,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .messageBody.ErrorMessage {
+  .messageBody.errorMessage {
     border: 1px solid $Error;
     background-color: $Error;
 
@@ -1441,7 +1442,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .messageBody.SuccessMessage {
+  .messageBody.successMessage {
     border: 1px solid $Success;
     background-color: $Success;
 
@@ -1451,7 +1452,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .messageBody.PrimaryMessage {
+  .messageBody.primaryMessage {
     border: 1px solid $Primary;
     background-color: $Primary;
 
@@ -1461,7 +1462,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .messageBody.AlertMessage {
+  .messageBody.alertMessage {
     border: 1px solid $Alert;
     background-color: $Alert;
 
@@ -1480,7 +1481,7 @@ $WHITE: #ffffff;
     }
   }
 
-  .AlertClose {
+  .alertClose {
     margin-right: 0;
     margin-left: 6px;
     border: 1px solid #333;

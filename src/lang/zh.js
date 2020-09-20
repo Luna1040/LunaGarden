@@ -72,6 +72,10 @@ export const lang = {
     mLegend: '花神传说',
     mReport: '汇报中心'
   },
+  header: {
+    lock: '锁定',
+    unlock: '解锁'
+  },
   firstAlert: {
     attention: '提示',
     warning: '警告',

@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{ LightTheme: theme === 'light', DarkTheme: theme === 'dark' }">
-    <Header :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"></Header>
+    <Header :msg-header="$t('lang.titles.' + $route.name)" v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'" :user-info="userInfo" :menu-list="menuList"></Header>
     <transition :name="transitionName">
       <router-view class="Router"></router-view>
     </transition>
@@ -83,7 +83,57 @@ export default {
       transitionName: 'slide-right',
       // showSideBar: true,
       theme: 'light',
-      userInfo: {}
+      userInfo: {},
+      menuList: [
+        {
+          id: 1,
+          title: 'Todo Panel',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 2,
+          title: 'Report Center',
+          icon: 'icon-cancel',
+          link: '/Report'
+        },
+        {
+          id: 3,
+          title: 'Team Center',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 4,
+          title: 'Task Panel',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 5,
+          title: 'Request Panel',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 6,
+          title: 'Team Control',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 7,
+          title: 'Luna UI',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+        {
+          id: 8,
+          title: 'About Us',
+          icon: 'icon-cancel',
+          link: '/Home'
+        },
+      ]
     }
   },
   components: {

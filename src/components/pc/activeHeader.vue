@@ -10,7 +10,7 @@
       <h2>{{ msgHeader }}</h2>
     </div>
     <nav class="menuGroup">
-      <figure class="menuItem" v-for="i in menuList" :key="i.id">
+      <figure class="menuItem" :class="{menuItemActive: activeID === i.id}" v-for="i in menuList" :key="i.id" @click="choiceMenu(i.id, i.link)">
         <i class="iconfont" :class="i.icon"></i>
         <figcaption>{{ i.title }}</figcaption>
       </figure>
@@ -24,7 +24,7 @@
           <img src="../../assets/icons/language-chinese.svg" alt />
         </div>
       </div>
-      <Button color="#eb7290" background="#FFFFFF" icon="iconfont icon-guide" pre :width="130" @click="toAbout">
+      <Button color="#eb7290" icon="iconfont icon-guide" :icon-size="22" pre :width="130" :height="44" corner="full" @click="toAbout">
         <span>{{ $t('lang.titles.Guide') }}</span>
       </Button>
     </div>
@@ -41,6 +41,7 @@ export default {
       },
       imgSrc: '',
       langSlideDown: '',
+      activeID: 1
     }
   },
   created() {
@@ -72,6 +73,10 @@ export default {
     },
     toAbout() {
       this.$router.push('AboutUs')
+    },
+    choiceMenu(id, link) {
+      this.activeID = id
+      this.$router.push(link)
     }
   },
   filters: {
@@ -100,7 +105,7 @@ export default {
       default: () => {
         return []
       }
-    }
+    },
   }
 }
 </script>

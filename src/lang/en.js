@@ -73,6 +73,10 @@ export const lang = {
     mLegend: 'Flower legend',
     mReport: 'Report Center'
   },
+  header: {
+    lock: 'Lock',
+    unlock: 'Unlock'
+  },
   firstAlert: {
     attention: 'Attention',
     warning: 'Warning',
