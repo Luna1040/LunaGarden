@@ -12,8 +12,7 @@ export default {
       width177: 0
     }
   },
-  created() {},
-  mounted() {
+  created() {
     if (window.innerWidth / window.innerHeight >= 1.777) {
       this.width177 = 177
     } else if (window.innerWidth / window.innerHeight < 1) {
@@ -21,7 +20,7 @@ export default {
     } else {
       this.width177 = 16
     }
-  }
+  },
 }
 </script>
 

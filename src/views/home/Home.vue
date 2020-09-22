@@ -27,104 +27,7 @@
         {{ $t('lang.home.next') }}
       </div>
     </div>
-    <swiper ref="mySwiper" :options="swiperOption">
-      <swiper-slide :class="{ 'todoList-shorter': searchArr.length !== 0 }">
-        <ul class="todoList">
-          <li v-for="(i, index) in todoList" :key="i.id">
-            <div>
-              <span :class="{ successText: i.completed === true }">{{ $t('lang.home.timeStamp') }}{{ i.time }}</span>
-              <span :class="{ successText: i.completed === true }">{{ $t('lang.home.content') }}{{ i.content }}</span>
-            </div>
-            <div class="dragBtn" @click="mousedown(index)">
-              <div
-                class="dragMenu"
-                :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-              >
-                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                <div @click.stop="cgStatus(i.id)">
-                  <!-- 完成计划 -->
-                  <button v-show="i.completed === false">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                  <button v-show="i.completed === true">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                </div>
-                <div @click.stop="editShow(i.id)">
-                  <!-- 编辑计划 -->
-                  <button>
-                    <i class="iconfont icon-remark"></i>
-                  </button>
-                </div>
-                <div @click.stop="copyContent(i.id)">
-                  <!-- 复制文本 -->
-                  <button>
-                    <i class="iconfont icon-copy-l"></i>
-                  </button>
-                </div>
-                <div @click.stop="delShow(i.id)">
-                  <!-- 删除计划 -->
-                  <button>
-                    <i class="iconfont icon-ICON_cancel"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </swiper-slide>
-      <swiper-slide>
-        <ul class="todoList" :class="{ 'todoList-shorter': searchArr.length !== 0 }">
-          <li v-for="(i, index) in businessList" :key="i.id">
-            <div>
-              <span :class="{ successText: i.completed === true }">{{ $t('lang.home.timeStamp') }}{{ i.time }}</span>
-              <span :class="{ successText: i.completed === true }">{{ $t('lang.home.content') }}{{ i.content }}</span>
-            </div>
-            <div class="dragBtn" @click="mousedown(index)">
-              <div
-                class="dragMenu"
-                :class="{
-                  dragMenuShow: dragActive === index,
-                  dragMenuHide: dragActive === -1
-                }"
-              >
-                <i class="iconfont icon-cancel" @click.stop="dragClose()"></i>
-                <div @click.stop="cgStatus(i.id)">
-                  <!-- 完成计划 -->
-                  <button v-show="i.completed === false">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                  <button v-show="i.completed === true">
-                    <i class="iconfont icon-quedingx"></i>
-                  </button>
-                </div>
-                <div @click.stop="editShow(i.id)">
-                  <!-- 编辑计划 -->
-                  <button>
-                    <i class="iconfont icon-remark"></i>
-                  </button>
-                </div>
-                <div @click.stop="copyContent(i.id)">
-                  <!-- 复制文本 -->
-                  <button>
-                    <i class="iconfont icon-copy-l"></i>
-                  </button>
-                </div>
-                <div @click.stop="delShow(i.id)">
-                  <!-- 删除计划 -->
-                  <button>
-                    <i class="iconfont icon-ICON_cancel"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </swiper-slide>
-    </swiper>
+
     <div
       class="toast"
       :class="{
@@ -214,26 +117,6 @@ export default {
       todoList: [],
       businessList: [],
       dragActive: -1,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      swiperOption: {
-        notNextTick: true,
-        autoplay: false,
-        navigation: {
-          nextEl: '#navigation>.swiper-button-next', // 前进按钮的css选择器或HTML元素。
-          prevEl: '#navigation>.swiper-button-prev' // 后退按钮的css选择器或HTML元素。
-        },
-        autoplayDisableOnInteraction: false,
-        loop: false,
-        on: {
-          slideChange: () => {
-            this.dragActive = -1
-            this.activeList = this.$refs.mySwiper.swiper.swipeDirection
-          }
-        }
-      },
       form: [
         {
           title: this.$t('lang.home.create.title'),

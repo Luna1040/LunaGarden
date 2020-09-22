@@ -1,6 +1,9 @@
 <template>
   <div id="app" :class="{ LightTheme: theme === 'light', DarkTheme: theme === 'dark' }">
-    <Header :msg-header="$t('lang.titles.' + $route.name)" v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'" :user-info="userInfo" :menu-list="menuList"></Header>
+    <Header
+      v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"
+      :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" :menu-list="menuList"
+      :is-collapse="isCollapse"></Header>
     <transition :name="transitionName">
       <router-view class="Router"></router-view>
     </transition>
@@ -82,57 +85,58 @@ export default {
       // width177: true,
       transitionName: 'slide-right',
       // showSideBar: true,
-      theme: 'light',
+      theme: 'dark',
       userInfo: {},
+      isCollapse: false,
       menuList: [
         {
           id: 1,
-          title: 'Todo Panel',
+          title: 'TodoPanel',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 2,
-          title: 'Report Center',
+          title: 'ReportCenter',
           icon: 'icon-cancel',
           link: '/Report'
         },
         {
           id: 3,
-          title: 'Team Center',
+          title: 'TeamCenter',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 4,
-          title: 'Task Panel',
+          title: 'TaskPanel',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 5,
-          title: 'Request Panel',
+          title: 'RequestPanel',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 6,
-          title: 'Team Control',
+          title: 'TeamControl',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 7,
-          title: 'Luna UI',
+          title: 'LunaUI',
           icon: 'icon-cancel',
           link: '/Home'
         },
         {
           id: 8,
-          title: 'About Us',
+          title: 'AboutUs',
           icon: 'icon-cancel',
           link: '/Home'
-        },
+        }
       ]
     }
   },
@@ -213,12 +217,19 @@ export default {
         }
       }
     }
+    window.onwheel = (ev) => {
+      if (ev.wheelDeltaY < 0) {
+        this.isCollapse = true
+        return
+      }
+      this.isCollapse = false
+    }
   },
   methods: {
     //
     isAllowNotify() {
       if (window.Notification && Notification.permission !== 'denied') {
-        Notification.requestPermission(function (status) {
+        Notification.requestPermission(function(status) {
           //若status非granted，则为拒绝通知，保存至线上用户信息，同时更新vueX状态
           // if (status === 'granted') {
           // } else {

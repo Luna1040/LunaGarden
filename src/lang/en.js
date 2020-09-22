@@ -1,5 +1,15 @@
 export const lang = {
   unknownError: 'Unknown error, please refresh the page and try again!',
+  menus: {
+    TodoPanel: 'Todo Panel',
+    ReportCenter: 'Report Center',
+    TeamCenter: 'Team Center',
+    TaskPanel: 'Task Panel',
+    RequestPanel: 'Request Panel',
+    TeamControl: 'Team Control',
+    LunaUI: 'Luna UI',
+    AboutUs: 'About Us'
+  },
   getUserInfo: {
     alert1: 'Your identity has expired, please log in again!',
     alert2: 'Unable to get user information, please log in again!',

@@ -1,5 +1,15 @@
 export const lang = {
   unknownError: '未知错误，请刷新页面重试！',
+  menus: {
+    TodoPanel: '待办事项',
+    ReportCenter: '报告中心',
+    TeamCenter: '团队中心',
+    TaskPanel: '任务面板',
+    RequestPanel: '申请面板',
+    TeamControl: '团队管理',
+    LunaUI: 'Luna UI',
+    AboutUs: '关于我们'
+  },
   getUserInfo: {
     alert1: '您的身份已过期，请重新登录！',
     alert2: '无法获取用户信息，请重新登录！',

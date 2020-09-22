@@ -1,10 +1,3 @@
-//元素遮盖范围规范如下
-//通用元素适用默认z-index
-//背景层,z-index:-1
-//header＆footer,z-index:100
-//浮动元素&浮动按钮,z-index:150,
-//遮罩层,z-index:200
-//弹窗层,z-index:250
 @import './LunaUI/LunaUI.scss';
 
 @mixin blurImg {
@@ -52,7 +45,7 @@ main,
 p,
 section,
 span {
-  font-family: PingFang SC, Consolas, Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
+  font-family: Menlo, PingFang SC, Consolas, Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -75,30 +68,86 @@ a {
   text-decoration: none;
 }
 
-//@font-face {
-//  font-family: Cute;
-//  src: url(../fonts/ZnikomitNo24.otf)
-//}
-//
-//@font-face {
-//  font-family: Curve;
-//  src: url(./fonts/Horatio-D-Light-2.ttf)
-//}
-//
-//@font-face {
-//  font-family: Radiu;
-//  src: url(../fonts/Amira-Light-2.ttf)
-//}
-//
-//@font-face {
-//  font-family: Gorgeous;
-//  src: url(../fonts/Starway-2.otf)
-//}
-//
-//@font-face {
-//  font-family: Gorgeous_light;
-//  src: url(../fonts/Starway-Light-4.otf)
-//}
+.LightTheme {
+  $PrimaryText: #4a4a4a;
+  $SecondaryText: #7b7b7b;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #ffffff;
+  $DividerDarkColor: #efefef;
+  $LightDark: #e9e9e9;
+  $MaskOpacity: #00000050;
+  $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  $AroundShadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#f3aac4, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#fde7a7, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#89e1b3, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#b390ff, #7636ff);
+  }
+  @mixin ErrorGradients {
+    background: linear-gradient(#ff938d, #ff483d);
+  }
+
+  .header {
+    box-shadow: $Shadow;
+
+    * {
+      color: $PrimaryText;
+    }
+
+    .userIcon {
+      box-shadow: $Shadow;
+    }
+
+    .guide {
+      .btnGroup {
+        box-shadow: $AroundShadow;
+      }
+    }
+
+    .menuGroup {
+      .menuItem {
+        transition: all 0.35s;
+        box-shadow: $AroundShadow;
+      }
+    }
+  }
+}
+
+.DarkTheme {
+  $PrimaryText: #f3f3f3;
+  $SecondaryText: #cccccc;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #010101;
+  $DividerDarkColor: #252525;
+  $LightDark: #3f3f3f;
+  $MaskOpacity: #ffffff50;
+  $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+  $AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  $HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#835868, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#978b67, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#3c835e, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#4e3781, #7636ff);
+  }
+  @mixin PrimaryGradients {
+    background: linear-gradient(#744542, #ff483d);
+  }
+}
 
 .Router {
   width: 100vw;
@@ -176,60 +225,13 @@ footer {
   border: 0;
 }
 
-.LightTheme {
-  $PrimaryText: #4a4a4a;
-  $SecondaryText: #7b7b7b;
-  $Ex-secondaryText: #b4b4b4;
-  $NormalBackground: #ffffff;
-  $DividerDarkColor: #efefef;
-  $LightDark: #e9e9e9;
-  $MaskOpacity: #00000050;
-  $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-  $AroundShadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  @mixin PrimaryGradients {
-    background: linear-gradient(#f3aac4, #eb7290);
-  }
-  @mixin WarningGradients {
-    background: linear-gradient(#fde7a7, #fecb37);
-  }
-  @mixin SuccessGradients {
-    background: linear-gradient(#89e1b3, #10d56e);
-  }
-  @mixin AlertGradients {
-    background: linear-gradient(#b390ff, #7636ff);
-  }
-  @mixin ErrorGradients {
-    background: linear-gradient(#ff938d, #ff483d);
-  }
-  .header{
-    box-shadow: $Shadow;
-    *{
-      color: $PrimaryText;
-    }
-    .userIcon{
-      box-shadow: $Shadow;
-    }
-    .guide{
-      .btnGroup{
-        box-shadow: $AroundShadow;
-      }
-    }
-    .menuGroup{
-      .menuItem{
-        transition: all 0.35s;
-        box-shadow: $AroundShadow;
-      }
-    }
-  }
-}
 .header {
   padding: 0 32px;
   width: 100vw;
-  height: 320px;
+  height: 260px;
   background: url('../../../public/bc1Blur.jpg') no-repeat center -100px;
   background-size: 100%;
-
+  transition: all 0.5s;
 
   .userArea {
     position: absolute;
@@ -284,18 +286,22 @@ footer {
       > div:first-of-type {
         margin-right: 8px;
       }
-      > div:hover{
+
+      > div:hover {
         filter: brightness(0.8);
       }
-      >div.languageActive{
+
+      > div.languageActive {
         filter: brightness(1);
       }
     }
-    .lunaButton{
-      i{
+
+    .lunaButton {
+      i {
         color: $Primary;
       }
-      span{
+
+      span {
         color: $Primary;
       }
     }
@@ -323,41 +329,77 @@ footer {
     align-items: center;
     justify-content: center;
     padding-top: 56px;
+
     .menuItem {
       flex-shrink: 0;
-      width: 140px;
-      height: 140px;
+      width: 80px;
+      height: 80px;
       margin-right: 32px;
       background: $WHITE-OPACITY;
       cursor: pointer;
       text-align: center;
-      border-radius: 40px;
-      i{
-        font-size: 60px;
-        line-height: 105px;
+      border-radius: 24px;
+      position: relative;
+
+      i {
+        font-size: 32px;
+        line-height: 58px;
+      }
+
+      figcaption {
+        font-size: 12px;
       }
     }
-    .menuItem:hover{
+
+    .menuItem:hover {
       background: $PrimaryOpacity;
     }
+
     .menuItem:last-of-type {
       margin-right: 0;
     }
-    .menuItem.menuItemActive{
+
+    .menuItem.menuItemActive {
       background: $Primary;
-      i{
+
+      i {
         color: $WHITE;
       }
+
       figcaption {
         color: $WHITE;
       }
     }
   }
-  @media screen and (max-width: 1407px){
-    .menuGroup {
-      overflow-x: auto;
-      overflow-y: visible;
-      justify-content: flex-start;
-    }
-  }
 }
+.header.collapse{
+  height: 88px;
+}
+.home{
+  height:100px;
+  overflow: scroll;
+}
+//@font-face {
+//  font-family: Cute;
+//  src: url(../fonts/ZnikomitNo24.otf)
+//}
+//
+//@font-face {
+//  font-family: Curve;
+//  src: url(./fonts/Horatio-D-Light-2.ttf)
+//}
+//
+//@font-face {
+//  font-family: Radiu;
+//  src: url(../fonts/Amira-Light-2.ttf)
+//}
+//
+//@font-face {
+//  font-family: Gorgeous;
+//  src: url(../fonts/Starway-2.otf)
+//}
+//
+//@font-face {
+//  font-family: Gorgeous_light;
+//  src: url(../fonts/Starway-Light-4.otf)
+//}

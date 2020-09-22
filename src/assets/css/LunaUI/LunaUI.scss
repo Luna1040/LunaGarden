@@ -82,7 +82,7 @@ $WHITE-OPACITY: #ffffff50;
   .lunaInput {
     background-color: $NormalBackground;
     color: $PrimaryText;
-    span{
+    span {
       color: $PrimaryText;
     }
   }
@@ -321,7 +321,7 @@ $WHITE-OPACITY: #ffffff50;
   .lunaInput {
     background-color: $NormalBackground;
     color: $PrimaryText;
-    span{
+    span {
       color: $PrimaryText;
     }
   }
@@ -845,11 +845,6 @@ $WHITE-OPACITY: #ffffff50;
 
 .lunaButton.primaryButton:hover {
   background-color: $PrimaryHover;
-  color: $Primary;
-
-  i {
-    color: $Primary;
-  }
 }
 
 .lunaButton.errorButton {
@@ -857,25 +852,33 @@ $WHITE-OPACITY: #ffffff50;
   color: $WHITE;
   border-color: $Error;
 }
-
+.lunaButton.errorButton:hover {
+  background-color: $ErrorHover;
+}
 .lunaButton.successButton {
   background-color: $Success;
   color: $WHITE;
   border-color: $Success;
 }
-
+.lunaButton.successButton:hover {
+  background-color: $SuccessHover;
+}
 .lunaButton.warningButton {
   background-color: $Warning;
   color: $WHITE;
   border-color: $Warning;
 }
-
+.lunaButton.warningButton:hover {
+  background-color: $WarningHover;
+}
 .lunaButton.alertButton {
   background-color: $Alert;
   color: $WHITE;
   border-color: $Alert;
 }
-
+.lunaButton.alertButton:hover {
+  background-color: $AlertHover;
+}
 .lunaButton.textButton {
   background-color: transparent !important;
   border: 1px solid transparent !important;
@@ -1966,4 +1969,3 @@ $WHITE-OPACITY: #ffffff50;
 .scrollable {
   overflow: auto;
 }
-
