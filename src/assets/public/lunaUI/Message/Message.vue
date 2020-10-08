@@ -59,18 +59,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.messageAnimation-enter-active,
-.messageAnimation-leave-active {
-  transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
-}
-.messageAnimation-leave,
-.messageAnimation-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-.messageAnimation-enter,
-.messageAnimation-leave-to {
-  opacity: 0;
-  transform: translateY(-24px);
-}
+
 </style>

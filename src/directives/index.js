@@ -10,7 +10,7 @@ function bind (el, binding) {
     }, customOpts)
     const target = opts.ele
     if (target) {
-      target.style.position = 'relative'
+      // target.style.position = 'relative'
       target.style.overflow = 'hidden'
       const rect = target.getBoundingClientRect()
       let ripple = target.querySelector('.waves-ripple')

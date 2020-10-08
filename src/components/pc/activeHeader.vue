@@ -24,14 +24,18 @@
         <!--        这里的:class是v-bind:class的缩写，语法糖。:class可以利用函数判断进行自动赋值，这里的函数意思为：当activeID等于这个menuItem的id时，为它增加一个叫做menuItemActive的class类名-->
         <figure v-for="i in menuList" :key="i.id" class="menuItem" :class="{ menuItemActive: activeID === i.id }" @click="choiceMenu(i.id, i.link)">
           <!--        这里的:class并没有书写函数表达式，意思为遍历数组内容时，用icon属性填充至class内-->
-          <i class="iconfont" :class="i.icon"></i>
+          <i class="font_family" :class="i.icon"></i>
           <!--        -->
           <!--        这里是i-18n的表达式，通常是{{ $t('lang.menus.xx') }}这样书写，以调用对象下的值，但我们需要动态赋值xx时，可以利用[xx]进行赋值，与上述的写法是一样的效果-->
           <figcaption>{{ $t('lang.menus')[i.title] }}</figcaption>
         </figure>
       </nav>
     </transition>
-    <div class="guide">
+    <div class="guide" :class="{guideCollapse: isCollapse}">
+      <div class="messageBtnGroup">
+        <i class="font_family icon-LunaRing"></i>
+        <p v-show="!isCollapse">{{newMessage}}条未读消息</p>
+      </div>
       <div class="btnGroup">
         <!--        这里的:class表达式，意为：当全局变量$i18n.locale不为'zh-CN'这个字符串时，为这个英文的图标添加名为languageActive的class，实现选中的高亮效果(注：因为目前只有中英双语，那么只能用中文做判断)-->
         <div :class="{ languageActive: $i18n.locale !== 'zh-CN' }" @click="setLang('en-US')">
@@ -43,9 +47,9 @@
         </div>
       </div>
       <!--      这里是LunaUI中的Button组件，其中的属性均是自定义的属性，需要注意的是，当你需要往属性中填充数字类型，布尔类型值，或者函数的时候，需要在属性前加入:，即v-bind:属性名-->
-      <Button color="#eb7290" icon="iconfont icon-guide" :icon-size="22" pre :width="130" :height="44" corner="full" @click="toAbout">
+      <Button icon="font_family icon-LunaGuide" :icon-size="22" pre color="#eb7290" :width="collapseElementCounter.width" :height="collapseElementCounter.height" :corner="collapseElementCounter.corner" @click="toAbout">
         <!--        由于LunaUI的Button组件内使用了插槽，所以可以在这个标签内包含自定义的信息，会将预设的组件内容改为自定义的内容-->
-        <span>{{ $t('lang.titles.Guide') }}</span>
+        <span v-show="!isCollapse">{{ $t('lang.titles.Guide') }}</span>
       </Button>
     </div>
   </header>
@@ -95,13 +99,30 @@ export default {
       imgSrc: '',
       langSlideDown: '',
       // 不加引号就是数字类型
-      activeID: 1
+      activeID: 1,
+      newMessage: 0
     }
   },
   // 页面初始化完成后，立刻执行的函数，可以放在created内或mounted内，但mounted中一般存放钩子函数
   created() {
     // 这里的emit是向父组件传值，告诉父组件触发了这个事件，父组件可以利用函数@xx(即你定义的函数名)接收并进行接下来的处理
     this.$emit('cgLang', this.$t('lang'))
+  },
+  computed: {
+    collapseElementCounter() {
+      if(this.isCollapse) {
+        return {
+          width: 32,
+          height: 32,
+          corner: 'round'
+        }
+      }
+      return {
+        width: 130,
+        height: 44,
+        corner: 'full'
+      }
+    }
   },
   mounted() {
     this.navigator.onLine = window.navigator.onLine
@@ -140,7 +161,8 @@ export default {
       this.navigator.onLine = window.navigator.onLine
     },
     toAbout() {
-      this.$router.push('AboutUs')
+      // 利用this.$router.push('/xx')实现路由跳转
+      this.$router.push('/AboutUs')
     },
     choiceMenu(id, link) {
       this.activeID = id

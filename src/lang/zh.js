@@ -97,11 +97,21 @@ export const lang = {
     no: '晚些时候'
   },
   home: {
-    input: '想要做些什么？',
+    input: '在此查找您的项目',
     timeStamp: '创建日期：',
     content: '待办事项：',
     prev: '私人记事板',
     next: '团队记事板',
+    projectView: '项目看板',
+    PST: '项目创建日期',
+    PET: '项目结束日期',
+    Content: '计划内容：',
+    CreateTime: '创建时间：',
+    Deadline: '结束日期：',
+    SpentTime: '花费时间：',
+    Day: ' 天',
+    Urgent: '紧急程度：',
+    Progress: '进度',
     alert: {
       addAlertSuccess: '添加成功！',
       addAlertSuccess2: '您的数据已位于云端，可在另一设备查看。',

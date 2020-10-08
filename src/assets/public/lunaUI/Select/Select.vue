@@ -22,7 +22,7 @@
     @keydown.tab="handleKeydown"
     @keydown.delete="handleKeydown"
   >
-    <Input ref="input" v-model="initValue" :readonly="!filterable" :disabled="disabled" :width="inputStyles.width" :corner="corner" icon="iconfont icon-down" suffix :spin="showList" :background="background" :theme="theme" @input="changeText"></Input>
+    <Input ref="input" v-model="initValue" :placeholder="placeholder" :readonly="!filterable" :disabled="disabled" :width="inputStyles.width" :corner="corner" icon="iconfont icon-down" suffix :spin="showList" :background="background" :theme="theme" @input="changeText"></Input>
     <transition name="slideDown">
       <div
         v-if="showList"
@@ -50,6 +50,10 @@ export default {
   props: {
     value: {
       type: [String, Array, Number],
+      default: ''
+    },
+    placeholder: {
+      type: String,
       default: ''
     },
     selectData: {

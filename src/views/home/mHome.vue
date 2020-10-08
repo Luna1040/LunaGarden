@@ -1,12 +1,5 @@
 <template>
   <div class="mHome">
-    <Header
-      :msg-header="$t('lang.titles.home')"
-      user-icon="userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
     <div class="searchArea">
       <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">
         <Button
@@ -116,7 +109,6 @@
 </template>
 
 <script>
-import Header from '../../components/mobile/activeHeader'
 export default {
   data () {
     return {
@@ -146,9 +138,6 @@ export default {
         }
       }
     }
-  },
-  components: {
-    Header
   },
   created () {
     this.todoList = JSON.parse(localStorage.getItem('todoList'))

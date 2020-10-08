@@ -98,11 +98,21 @@ export const lang = {
     no: 'Not now'
   },
   home: {
-    input: 'What are you going to do?',
+    input: 'Search your project',
     timeStamp: 'Create Time:',
     content: 'Todo:',
     prev: 'Private List',
     next: 'Team List',
+    projectView: 'Project View',
+    PST: 'Project Start Time',
+    PET: 'Project End Time',
+    Content: 'Content: ',
+    CreateTime: 'Create Time: ',
+    Deadline: 'Deadline: ',
+    SpentTime: 'Spent Time: ',
+    Day: ' Day(s)',
+    Urgent: 'Urgent: ',
+    Progress: 'Progress',
     alert: {
       addAlertSuccess: 'Added successfully!',
       addAlertSuccess2: 'Your data is already in the cloud and can be viewed on another device.',

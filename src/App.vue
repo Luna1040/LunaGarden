@@ -5,7 +5,7 @@
       :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" :menu-list="menuList"
       :is-collapse="isCollapse"></Header>
     <transition :name="transitionName">
-      <router-view class="Router"></router-view>
+      <router-view class="Router" :class="{collapse: isCollapse}"></router-view>
     </transition>
     <!-- 移动端通用footer -->
     <!--    <footer>-->
@@ -75,6 +75,7 @@
 <script>
 import './assets/css/public.scss'
 import Header from './components/pc/activeHeader.vue'
+import mHeader from './components/mobile/activeHeader'
 
 export default {
   name: 'app',
@@ -85,63 +86,64 @@ export default {
       // width177: true,
       transitionName: 'slide-right',
       // showSideBar: true,
-      theme: 'dark',
+      theme: 'light',
       userInfo: {},
       isCollapse: false,
       menuList: [
         {
           id: 1,
           title: 'TodoPanel',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaTodoPanel',
           link: '/Home'
         },
         {
           id: 2,
           title: 'ReportCenter',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaReportCenter',
           link: '/Report'
         },
         {
           id: 3,
           title: 'TeamCenter',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaTeamCenter',
           link: '/Home'
         },
         {
           id: 4,
           title: 'TaskPanel',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaTaskPanel',
           link: '/Home'
         },
         {
           id: 5,
           title: 'RequestPanel',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaRequestPanel',
           link: '/Home'
         },
         {
           id: 6,
           title: 'TeamControl',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaTeamControl',
           link: '/Home'
         },
         {
           id: 7,
           title: 'LunaUI',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaLunaUI',
           link: '/Home'
         },
         {
           id: 8,
           title: 'AboutUs',
-          icon: 'icon-cancel',
+          icon: 'icon-LunaAboutUs',
           link: '/Home'
         }
       ]
     }
   },
   components: {
-    Header
+    Header,
+    mHeader,
   },
   created() {
     if (localStorage.getItem('firstLoad') === null) {
@@ -155,7 +157,7 @@ export default {
         localStorage.setItem('todoList', JSON.stringify([]))
       }
       // 检测是否有用户信息留存
-      if (!localStorage.getItem('userInfo')) {
+      if (localStorage.getItem('userInfo') === null) {
         let userInfo = JSON.parse(localStorage.getItem('userInfo'))
         // 若用户信息内有用户id
         if (userInfo.uid) {
@@ -164,6 +166,8 @@ export default {
             this.userInfo = res.data
           })
         }
+      } else {
+        localStorage.setItem('userInfo', JSON.stringify({}))
       }
     }
   },
@@ -217,7 +221,7 @@ export default {
         }
       }
     }
-    window.onwheel = (ev) => {
+    window.onmousewheel = (ev) => {
       if (ev.wheelDeltaY < 0) {
         this.isCollapse = true
         return

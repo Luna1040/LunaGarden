@@ -14,7 +14,6 @@ import './assets/js/timeFormat.js'
 import './assets/js/getId.js'
 import './assets/js/colorMatch.js'
 import './assets/js/encrypt.js'
-import './assets/icon/iconfont.css'
 import './assets/public/lunaUI'
 
 const zh = require('./lang/zh.js')

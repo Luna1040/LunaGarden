@@ -1,12 +1,20 @@
 <template>
   <div class="lunaList">
-    <slot></slot>
+    <ListItem v-for="(i, index) in list" :key="index"></ListItem>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'List'
+  name: 'List',
+  props: {
+    list: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  }
 }
 </script>
 

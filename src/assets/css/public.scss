@@ -75,10 +75,11 @@ a {
   $NormalBackground: #ffffff;
   $DividerDarkColor: #efefef;
   $LightDark: #e9e9e9;
-  $MaskOpacity: #00000050;
+  $MaskOpacity: rgba(0, 0, 0, 0.5);
   $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
   $AroundShadow: 0 0 6px rgba(0, 0, 0, 0.3);
   $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  $SideShadow: 4px 0 8px 0 rgba(0, 0, 0, 0.35);
   @mixin PrimaryGradients {
     background: linear-gradient(#f3aac4, #eb7290);
   }
@@ -119,6 +120,80 @@ a {
       }
     }
   }
+
+  .home {
+    background-color: $NormalBackground;
+
+    .fluidButton {
+      box-shadow: $AroundShadow;
+    }
+
+    .homeSideBar {
+      box-shadow: $SideShadow;
+      background: rgba(239, 114, 144, 0.20);
+
+      h1 {
+        color: $PrimaryText;
+      }
+
+      ul {
+        .activeBar {
+          background: linear-gradient(135deg, #F3AAC4 0%, #EB7290 100%);
+        }
+
+        li {
+          color: $PrimaryText;
+        }
+      }
+    }
+
+    .homeMainView {
+      h1 {
+        color: $PrimaryText;
+        border-bottom: 1px solid $MaskOpacity;
+      }
+
+      > p {
+        color: $PrimaryText;
+      }
+
+      ul {
+        li {
+          color: $PrimaryText;
+          border-bottom: 1px solid $LightDark;
+
+          > div {
+            > div {
+              > div {
+                background: $MaskOpacity;
+
+                > span.errorPro {
+                  background: linear-gradient(135deg, #ff938d 0%, #ff483d 100%);
+                }
+
+                > span.warningPro {
+                  background: linear-gradient(135deg, #fde7a7 0%, #fecb37 100%);
+                }
+
+                > span.primaryPro {
+                  background: linear-gradient(135deg, #f3aac4 0%, #eb7290 100%);
+                }
+
+                > span.successPro {
+                  background: linear-gradient(135deg, #89e1b3 0%, #10d56e 100%);
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    .lunaLoading {
+      background-color: $MaskOpacity;
+    }
+  }
 }
 
 .DarkTheme {
@@ -128,10 +203,11 @@ a {
   $NormalBackground: #010101;
   $DividerDarkColor: #252525;
   $LightDark: #3f3f3f;
-  $MaskOpacity: #ffffff50;
+  $MaskOpacity: rgba(255, 255, 255, 0.5);
   $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
   $AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
   $HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+  $SideShadow: 4px 0 8px 0 rgba(255, 255, 255, 0.35);
   @mixin PrimaryGradients {
     background: linear-gradient(#835868, #eb7290);
   }
@@ -144,20 +220,122 @@ a {
   @mixin AlertGradients {
     background: linear-gradient(#4e3781, #7636ff);
   }
-  @mixin PrimaryGradients {
+  @mixin ErrorGradients {
     background: linear-gradient(#744542, #ff483d);
+  }
+
+  .header {
+    box-shadow: $Shadow;
+
+    * {
+      color: $PrimaryText;
+    }
+
+    .userIcon {
+      box-shadow: $Shadow;
+    }
+
+    .guide {
+      .btnGroup {
+        box-shadow: $AroundShadow;
+      }
+    }
+
+    .menuGroup {
+      .menuItem {
+        transition: all 0.35s;
+        box-shadow: $AroundShadow;
+      }
+    }
+  }
+
+  .home {
+    background-color: $NormalBackground;
+
+    .fluidButton {
+      box-shadow: $AroundShadow;
+    }
+
+    .homeSideBar {
+      background: rgba(239, 114, 144, 0.50);
+      box-shadow: $SideShadow;
+
+      h1 {
+        color: $PrimaryText;
+      }
+
+      ul {
+        .activeBar {
+          background: linear-gradient(135deg, #835868 0%, #EB7290 100%);
+        }
+
+        li {
+          color: $PrimaryText;
+        }
+      }
+    }
+
+    .homeMainView {
+      h1 {
+        color: $PrimaryText;
+        border-bottom: 1px solid $MaskOpacity;
+      }
+
+      > p {
+        color: $PrimaryText;
+      }
+
+      ul {
+        li {
+          color: $PrimaryText;
+          border-bottom: 1px solid $LightDark;
+
+          > div {
+            > div {
+              > div {
+                background: $MaskOpacity;
+
+                > span.errorPro {
+                  background: linear-gradient(135deg, #744542 0%, #ff483d 100%);
+                }
+
+                > span.warningPro {
+                  background: linear-gradient(135deg, #978b67 0%, #fecb37 100%);
+                }
+
+                > span.primaryPro {
+                  background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+                }
+
+                > span.successPro {
+                  background: linear-gradient(135deg, #3c835e 0%, #10d56e 100%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .lunaLoading {
+      background-color: $MaskOpacity;
+    }
   }
 }
 
 .Router {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 260px);
   position: absolute;
   z-index: 0;
   transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
   will-change: transform;
   backface-visibility: hidden;
   overflow: hidden;
+}
+
+.Router.collapse {
+  height: calc(100vh - 88px);
 }
 
 #showSideBarBtn {
@@ -187,6 +365,8 @@ footer {
 }
 
 @media screen and (max-width: 420px) {
+  .header {
+  }
   footer {
     display: block;
     width: 100%;
@@ -208,177 +388,550 @@ footer {
   }
 }
 
-.fluidBtn {
-  background: $Primary;
-  color: $WHITE;
-  width: 60px;
-  height: 60px;
-  font-size: 50px;
-  text-align: center;
-  line-height: 60px;
-  border-radius: 100px;
-  position: fixed;
-  bottom: 30px;
-  left: calc(50% - 30px);
-  -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
-  box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
-  border: 0;
-}
-
-.header {
-  padding: 0 32px;
-  width: 100vw;
-  height: 260px;
-  background: url('../../../public/bc1Blur.jpg') no-repeat center -100px;
-  background-size: 100%;
-  transition: all 0.5s;
-
-  .userArea {
-    position: absolute;
-    top: 22px;
-    left: 32px;
-    display: flex;
-    align-items: center;
-
-    .userIcon {
-      overflow: hidden;
-      width: 44px;
-      height: 44px;
-      border-radius: 44px;
-      margin-right: 32px;
-      cursor: pointer;
-
-      img {
-        width: 100%;
-      }
-    }
+@media screen and (min-width: 420px) {
+  .fluidBtn {
+    background: $Primary;
+    color: $WHITE;
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 100px;
+    position: fixed;
+    bottom: 30px;
+    left: calc(50% - 30px);
+    -webkit-box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
+    box-shadow: 0 2px 10px rgba(33, 33, 33, 0.5);
+    border: 0;
   }
 
-  .guide {
-    position: absolute;
-    top: 22px;
-    right: 32px;
-    display: flex;
-    align-items: center;
+  .header {
+    padding: 0 32px;
+    width: 100vw;
+    height: 260px;
+    background: url('../../../public/bc1Blur.jpg') no-repeat center -100px;
+    background-size: 100%;
+    transition: all 0.5s;
 
-    .btnGroup {
+    .userArea {
+      position: absolute;
+      top: 22px;
+      left: 32px;
       display: flex;
       align-items: center;
-      height: 44px;
-      border-radius: 44px;
-      padding: 8px;
-      background: $WHITE-OPACITY;
-      margin-right: 32px;
 
-      > div {
-        width: 36px;
-        height: 36px;
-        filter: brightness(0.4);
-        transition: all 0.35s;
+      .userIcon {
+        overflow: hidden;
+        width: 44px;
+        height: 44px;
+        border-radius: 44px;
+        margin-right: 32px;
+        cursor: pointer;
 
         img {
-          width: 36px;
-          height: 36px;
-          cursor: pointer;
+          width: 100%;
+        }
+      }
+    }
+
+    .guide {
+      position: absolute;
+      top: 22px;
+      right: 32px;
+      display: flex;
+      align-items: center;
+
+      .messageBtnGroup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        border-radius: 44px;
+        padding: 8px;
+        background: $WHITE;
+        margin-right: 32px;
+        transition: all 0.35s;
+        overflow: hidden;
+        cursor: pointer;
+        min-width: 32px;
+        i{
+          font-size: 18px;
+        }
+
+        p {
+          margin-left: 6px;
         }
       }
 
-      > div:first-of-type {
-        margin-right: 8px;
+      .btnGroup {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        border-radius: 44px;
+        padding: 8px;
+        background: $WHITE;
+        margin-right: 32px;
+        transition: all 0.35s;
+
+        > div {
+          width: 36px;
+          height: 36px;
+          filter: brightness(0.4);
+          transition: all 0.35s;
+
+          img {
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            transition: all 0.35s;
+          }
+        }
+
+        > div:first-of-type {
+          margin-right: 8px;
+        }
+
+        > div:hover {
+          filter: brightness(0.8);
+        }
+
+        > div.languageActive {
+          filter: brightness(1);
+        }
       }
 
-      > div:hover {
-        filter: brightness(0.8);
-      }
+      .lunaButton {
+        i {
+          color: $Primary;
+          transition: all 0.35s;
+          font-size: 22px;
+          margin-right: 6px;
+        }
 
-      > div.languageActive {
-        filter: brightness(1);
+        span {
+          color: $Primary;
+          overflow: hidden;
+          white-space: nowrap;
+        }
       }
     }
 
-    .lunaButton {
-      i {
-        color: $Primary;
+    .guideCollapse {
+      .messageBtnGroup {
+        height: 32px;
+        width: 32px;
       }
 
-      span {
-        color: $Primary;
+      .btnGroup {
+        height: 32px;
+        padding: 2px;
+
+        > div {
+          width: 28px;
+          height: 28px;
+
+          img {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+
+      .lunaButton {
+        i {
+          color: $Primary;
+          margin-right: 0 !important;
+        }
       }
     }
-  }
 
-  .title {
-    padding-top: 22px;
-    text-align: center;
-    height: 66px;
-
-    p {
-      font-size: 12px;
-      color: $WHITE;
-    }
-
-    h2 {
-      font-size: 22px;
-      color: $WHITE;
-    }
-  }
-
-  .menuGroup {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 56px;
-
-    .menuItem {
-      flex-shrink: 0;
-      width: 80px;
-      height: 80px;
-      margin-right: 32px;
-      background: $WHITE-OPACITY;
-      cursor: pointer;
+    .title {
+      padding-top: 22px;
       text-align: center;
-      border-radius: 24px;
+      height: 66px;
+
+      p {
+        font-size: 12px;
+        color: $WHITE;
+      }
+
+      h2 {
+        font-size: 22px;
+        color: $WHITE;
+      }
+    }
+
+    .menuGroup {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 56px;
+
+      .menuItem {
+        flex-shrink: 0;
+        width: 120px;
+        height: 120px;
+        margin-right: 32px;
+        background: $WHITE-OPACITY;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 24px;
+        position: relative;
+
+        i {
+          font-size: 68px;
+          line-height: 92px;
+        }
+
+        figcaption {
+          font-size: 12px;
+        }
+      }
+
+      .menuItem:hover {
+        background: $PrimaryOpacity;
+      }
+
+      .menuItem:last-of-type {
+        margin-right: 0;
+      }
+
+      .menuItem.menuItemActive {
+        background: $Primary;
+
+        i {
+          color: $WHITE;
+        }
+
+        figcaption {
+          color: $WHITE;
+        }
+      }
+    }
+  }
+
+  .header.collapse {
+    height: 88px;
+  }
+  .home {
+    display: flex;
+    height: 100%;
+    overflow: visible;
+
+    .fluidButton {
+      width: 48px;
+      height: 48px;
+      background-color: $Primary;
+      color: $WHITE;
+      position: absolute;
+      top: -24px;
+      right: 32px;
+      border-radius: 100px;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 99999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i{
+        font-size: 28px;
+      }
+    }
+    .dashboard{
+      right: 112px;
+      i{
+        font-size: 32px;
+      }
+    }
+
+    .lunaLoading {
+      border-radius: inherit;
+      width: 100%;
+      height: 100%;
+      font-size: 10px;
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+
+      .face {
+        position: absolute;
+        border-radius: 50%;
+        border-style: solid;
+        animation: animate 3s ease-in-out infinite;
+        overflow: visible;
+
+        .circle {
+          position: absolute;
+          width: 50%;
+          height: 0.1em;
+          top: 50%;
+          left: 50%;
+          background-color: transparent;
+          transform: rotate(var(--deg));
+          transform-origin: left;
+          overflow: visible;
+        }
+
+        .circle::before {
+          position: absolute;
+          top: -10px;
+          right: -15px;
+          content: '';
+          width: 10px;
+          height: 10px;
+          background-color: currentColor;
+          border-radius: 50%;
+          box-shadow: 0 0 30px #fff;
+          overflow: visible;
+        }
+      }
+
+      .face:nth-child(1) {
+        width: 40px;
+        height: 40px;
+        color: $WHITE;
+        border-color: currentColor transparent transparent currentColor;
+        border-width: 6px 6px 0 0;
+        --deg: -45deg;
+        animation-direction: normal;
+        overflow: visible;
+      }
+
+      .face:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        color: $Primary;
+        border-color: currentColor currentColor transparent transparent;
+        border-width: 6px 0 0 6px;
+        --deg: -135deg;
+        animation-direction: reverse;
+        overflow: visible;
+      }
+    }
+
+    .homeSideBar {
+      height: 100%;
+      width: 400px;
+      border-radius: 0 100px 0 0;
+
+      h1 {
+        padding: 16px 64px 16px 32px;
+        font-size: 24px;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+        height: 65px;
+        line-height: 65px;
+
+        i {
+          font-size: 24px;
+          cursor: pointer;
+          transition: all 0.35s;
+        }
+
+        i:hover {
+          color: $Primary;
+        }
+      }
+
+      .searchProject {
+        padding: 0 64px 0 32px;
+      }
+
+      ul {
+        overflow: auto;
+        position: relative;
+        margin-top: 16px;
+
+        .activeBar {
+          position: absolute;
+          z-index: 1;
+          height: 49px;
+          width: 100%;
+          transition: all 0.3s;
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          padding: 12px 64px 12px 32px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          position: relative;
+          z-index: 2;
+
+          i {
+            font-size: 18px;
+            margin-right: 16px;
+            transition: all 0.2s;
+          }
+
+          p {
+            font-size: 20px;
+            transition: all 0.2s;
+          }
+        }
+
+        li:last-of-type {
+          border-bottom: 0;
+        }
+
+        li:hover {
+          color: $Primary;
+        }
+
+        li.active {
+          color: #FFFFFF;
+          border-bottom: 1px solid $WHITE-OPACITY;
+        }
+      }
+
+    }
+
+    .homeMainView {
+      width: calc(100% - 400px);
+      height: 100%;
       position: relative;
 
-      i {
-        font-size: 32px;
-        line-height: 58px;
+      h1 {
+        padding: 65px 32px 24px;
+        font-size: 24px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        border-bottom: 1px solid #FFFFFF;
+
+        i {
+          font-size: 18px;
+          margin-right: 16px;
+        }
       }
 
-      figcaption {
-        font-size: 12px;
-      }
-    }
-
-    .menuItem:hover {
-      background: $PrimaryOpacity;
-    }
-
-    .menuItem:last-of-type {
-      margin-right: 0;
-    }
-
-    .menuItem.menuItemActive {
-      background: $Primary;
-
-      i {
-        color: $WHITE;
+      > p {
+        font-size: 14px;
+        padding-left: 32px;
+        margin-top: 8px;
+        height: 20px;
+        line-height: 20px;
       }
 
-      figcaption {
-        color: $WHITE;
+      ul {
+        margin-top: 16px;
+        padding: 0 32px 16px;
+        box-sizing: border-box;
+        overflow: auto;
+        height: calc(100% - 190px);
+
+        li {
+          margin-bottom: 16px;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px;
+          background: $SuccessOpacity;
+          border-radius: 44px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+          max-height: 65px;
+          position: relative;
+          overflow: hidden;
+
+          > span {
+            display: inline-block;
+            position: relative;
+            width: calc(100% - 64px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          > div {
+            h2 {
+              font-size: 20px;
+              line-height: 28px;
+              overflow: auto;
+              max-height: 210px;
+              width: calc(100% - 36px);
+            }
+
+            p {
+              margin-top: 8px;
+              font-size: 12px;
+              line-height: 17px;
+            }
+
+            > div {
+              font-size: 12px;
+              margin-top: 16px;
+              display: flex;
+              align-items: center;
+              height: 17px;
+
+              > div {
+                width: 200px;
+                height: 4px;
+                position: relative;
+                border-radius: 4px;
+                margin: 0 16px;
+
+                > span {
+                  display: inline-block;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  height: 4px;
+                  border-radius: 4px;
+                  transition: all 0.5s;
+                }
+              }
+            }
+          }
+
+          .moreAction {
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 32px;
+            text-align: center;
+            color: $WHITE;
+            background-color: $Primary;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 9px;
+            right: 8px;
+            transition: all 0.15s;
+          }
+        }
+
+        li:last-of-type {
+          border-bottom: 0;
+        }
+
+        li.expanded {
+          max-height: 400px;
+
+          .moreAction {
+            top: 16px;
+            right: 16px;
+          }
+        }
       }
     }
   }
 }
-.header.collapse{
-  height: 88px;
-}
-.home{
-  height:100px;
-  overflow: scroll;
-}
+
 //@font-face {
 //  font-family: Cute;
 //  src: url(../fonts/ZnikomitNo24.otf)
