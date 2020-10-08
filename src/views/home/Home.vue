@@ -1,24 +1,5 @@
 <template>
   <div class="home">
-    <!--    <div class="searchArea">-->
-    <!--      <div class="inputArea" :class="{ inputAreaActive: todoText !== '' }">-->
-    <!--        <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" theme="primary" shadow border="0" @click="matchQuery">-->
-    <!--          <i class="iconfont icon-search1"></i>-->
-    <!--        </Button>-->
-    <!--        <Input v-model="todoText" type="text" class="searchInput" :placeholder="$t('lang.home.input')" border-color="rgba(0,0,0,0)!important" box-shadow="none!important" ghost width="100%" font-size="32" @on-keyup="keyup($event)" @on-keydown="keydown($event)" />-->
-    <!--        <Button :width="32" :height="32" corner="round" color="#333" class="searchBtn" theme="primary" shadow border="0" @click="addTodo">-->
-    <!--          <i class="iconfont icon-add1"></i>-->
-    <!--        </Button>-->
-    <!--      </div>-->
-    <!--      <transition name="searchListAnimation">-->
-    <!--        <ul v-if="todoText.trim() !== ''" class="searchAssociation">-->
-    <!--          <li v-if="todoText !== '' && searchArr.length === 0">暂无搜索数据</li>-->
-    <!--          <li v-for="(item, index) in searchArr" :key="index" class="list-group-item-text" @click="choice(item)">-->
-    <!--            {{ item }}-->
-    <!--          </li>-->
-    <!--        </ul>-->
-    <!--      </transition>-->
-    <!--    </div>-->
     <transition name="messageAnimation">
       <button v-if="!listLoading" v-ripple class="fluidButton" :title="$t('lang.home.PST')">
         <i class="font_family icon-LunaPlus"></i>
@@ -106,17 +87,17 @@ export default {
       this.projectList = [
         {
           id: 1,
-          icon: 'iconfont icon-cancel',
+          icon: 'font_family icon-LunaLunaUI',
           name: 'Luna Garden'
         },
         {
           id: 2,
-          icon: 'iconfont icon-cancel',
+          icon: 'font_family icon-LunaTeamControl',
           name: 'Luna UI'
         },
         {
           id: 3,
-          icon: 'iconfont icon-cancel',
+          icon: 'font_family icon-LunaTaskPanel',
           name: 'Luna Components'
         }
       ]
@@ -125,7 +106,7 @@ export default {
     setTimeout(() => {
       this.projectDetail = {
         id: 1,
-        icon: 'iconfont icon-cancel',
+        icon: 'font_family icon-LunaLunaUI',
         name: 'Luna Garden',
         startTime: '2020-09-13',
         endTime: '2020-12-12',
@@ -214,7 +195,7 @@ export default {
           case 1:
             this.projectDetail = {
               id: 1,
-              icon: 'iconfont icon-cancel',
+              icon: 'font_family icon-LunaLunaUI',
               name: 'Luna Garden',
               startTime: '2020-09-13',
               endTime: '2020-12-12',
@@ -269,7 +250,7 @@ export default {
           case 2:
             this.projectDetail = {
               id: 2,
-              icon: 'iconfont icon-cancel',
+              icon: 'font_family icon-LunaTeamControl',
               name: 'Luna UI',
               startTime: '2020-09-13',
               endTime: '2020-12-12',
@@ -313,7 +294,7 @@ export default {
           case 3:
             this.projectDetail = {
               id: 3,
-              icon: 'iconfont icon-cancel',
+              icon: 'font_family icon-LunaTaskPanel',
               name: 'Luna Components',
               startTime: '2020-09-13',
               endTime: '2020-12-12',
