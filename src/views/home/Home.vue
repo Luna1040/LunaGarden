@@ -164,7 +164,7 @@ export default {
   computed: {
     activeBarMoveDistance() {
       return {
-        top: 49 * (this.choiceId - 1) + 'px'
+        top: 66 * (this.choiceId - 1) + 'px'
       }
     }
   },

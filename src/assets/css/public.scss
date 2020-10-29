@@ -129,8 +129,6 @@ a {
     }
 
     .homeSideBar {
-      box-shadow: $SideShadow;
-      background: rgba(239, 114, 144, 0.20);
 
       h1 {
         color: $PrimaryText;
@@ -257,8 +255,6 @@ a {
     }
 
     .homeSideBar {
-      background: rgba(239, 114, 144, 0.50);
-      box-shadow: $SideShadow;
 
       h1 {
         color: $PrimaryText;
@@ -755,22 +751,23 @@ footer {
         .activeBar {
           position: absolute;
           z-index: 1;
-          height: 49px;
+          height: 48px;
           width: 100%;
           transition: all 0.3s;
+          border-radius: 0 50px 50px 0;
         }
 
         li {
           display: flex;
           align-items: center;
           padding: 12px 64px 12px 32px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           cursor: pointer;
           position: relative;
           z-index: 2;
+          margin-bottom: 18px;
 
           i {
-            font-size: 18px;
+            font-size: 20px;
             margin-right: 16px;
             transition: all 0.2s;
           }
@@ -791,7 +788,6 @@ footer {
 
         li.active {
           color: #FFFFFF;
-          border-bottom: 1px solid $WHITE-OPACITY;
         }
       }
 
@@ -812,7 +808,7 @@ footer {
         border-bottom: 1px solid #FFFFFF;
 
         i {
-          font-size: 18px;
+          font-size: 26px;
           margin-right: 16px;
         }
       }
