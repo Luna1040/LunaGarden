@@ -92,14 +92,14 @@ export default {
           uid: 'kjliagsg83770449pezi4jnjj8vq4t8u',
           content: '这是卢娜酱发的消息呀！',
           imgList: [],
-          userIcon: 'userIcon.jpg',
+          userIcon: 'images/userIcons/userIcon.jpg',
           userName: 'LunaLovegood'
         },
         {
           uid: 'kjliagsg83770449pe2i4jnjj8vq4t8u',
           content: '随便一个人吧！！',
           imgList: [],
-          userIcon: 'userIcon.jpg',
+          userIcon: 'images/userIcons/userIcon.jpg',
           userName: '申佳'
         },
         {
@@ -107,21 +107,21 @@ export default {
           content:
             '不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？不会没有素言阿姨吧？',
           imgList: [],
-          userIcon: 'userIcon.jpg',
+          userIcon: 'images/userIcons/userIcon.jpg',
           userName: '素言阿姨'
         },
         {
           uid: 'kjliagsg83770449pezi4jnjj86q4t8u',
           content: '重复的消息是不会重复展示头像和名称的哦！',
           imgList: [],
-          userIcon: 'userIcon.jpg',
+          userIcon: 'images/userIcons/userIcon.jpg',
           userName: '素言阿姨'
         },
         {
           uid: 'kjliagsg83770449pe2i4jnjj8vq4t8u',
           content: '有一说一，确实不显示！',
           imgList: [],
-          userIcon: 'userIcon.jpg',
+          userIcon: 'images/userIcons/userIcon.jpg',
           userName: '申佳'
         }
       ],
@@ -131,12 +131,12 @@ export default {
       delIconShowIndex: -1,
       storiesList: [
         {
-          src: 'chatting/1.AgentInTrouble.jpg',
+          src: 'images/chatting/1.AgentInTrouble.jpg',
           title: '第一章：特工有难',
           link: 'https://www.pixiv.net/artworks/79396282'
         },
         {
-          src: 'chatting/2.PoliceDetail.jpg',
+          src: 'images/chatting/2.PoliceDetail.jpg',
           title: '背景故事：警备队介绍',
           link: 'https://www.pixiv.net/artworks/79407664'
         },
@@ -146,47 +146,47 @@ export default {
           link: 'https://www.pixiv.net/artworks/79439304'
         },
         {
-          src: 'chatting/4.dangerous.jpg',
+          src: 'images/chatting/4.dangerous.jpg',
           title: '第三章：地牢之危',
           link: 'https://www.pixiv.net/artworks/79458243'
         },
         {
-          src: 'chatting/4.dangerous2.jpg',
+          src: 'images/chatting/4.dangerous2.jpg',
           title: '第三章：地牢之危【外传】',
           link: 'https://www.pixiv.net/artworks/79458275'
         },
         {
-          src: 'chatting/5.GodOfFlower.jpg',
+          src: 'images/chatting/5.GodOfFlower.jpg',
           title: '第四章：花神现身',
           link: 'https://www.pixiv.net/artworks/79520451'
         },
         {
-          src: 'chatting/6.IntoBase.jpg',
+          src: 'images/chatting/6.IntoBase.jpg',
           title: '第五章：全面进攻',
           link: 'https://www.pixiv.net/artworks/80201805'
         },
         {
-          src: 'chatting/7.SaveSuc.jpg',
+          src: 'images/chatting/7.SaveSuc.jpg',
           title: '第六章：营救成功',
           link: 'https://www.pixiv.net/artworks/81521942'
         },
         {
-          src: 'chatting/8.Toilet.jpg',
+          src: 'images/chatting/8.Toilet.jpg',
           title: '第七章：厕所踩头',
           link: 'https://www.pixiv.net/artworks/81776964'
         },
         {
-          src: 'chatting/9.School.jpg',
+          src: 'images/chatting/9.School.jpg',
           title: '第八章：校园之变',
           link: 'https://www.pixiv.net/artworks/82079514'
         },
         {
-          src: 'chatting/10.DeathOfGod.jpg',
+          src: 'images/chatting/10.DeathOfGod.jpg',
           title: '第九章：花神之死',
           link: 'https://www.pixiv.net/artworks/82322297'
         },
         {
-          src: 'chatting/11.DarkFire.jpg',
+          src: 'images/chatting/11.DarkFire.jpg',
           title: '第十章：黑暗之火',
           link: 'https://www.pixiv.net/artworks/82440690'
         }
@@ -210,7 +210,7 @@ export default {
       }
     },
     uploadImg () {
-      this.imgList.push('userIcon.jpg')
+      this.imgList.push('images/userIcons/userIcon.jpg')
       this.$Message.success({ content: '添加成功！' })
     },
     sendMessage () {
@@ -223,7 +223,7 @@ export default {
       const params = {
         uid: this.userInfo.uid,
         userName: this.userInfo.userName,
-        userIcon: 'userIcon.jpg',
+        userIcon: 'images/userIcons/userIcon.jpg',
         imgList: imgList,
         content: this.text
       }

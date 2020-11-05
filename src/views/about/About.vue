@@ -14,12 +14,12 @@
       <h1>{{ $t("lang.aboutUs.title2") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="userIcon.jpg" alt />
+          <img src="images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.author") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.authorDesc") }}</figcaption>
         </figure>
         <figure>
-          <img src="userIcons/SuYan.jpg" alt />
+          <img src="images/userIcons/SuYan.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people4") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.UI") }}</figcaption>
         </figure>
@@ -27,12 +27,12 @@
       <h1>{{ $t("lang.aboutUs.title5") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="userIcons/XiRang.jpg" alt />
+          <img src="images/userIcons/XiRang.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
         </figure>
         <figure>
-          <img src="userIcons/Wangdi.jpg" alt />
+          <img src="images/userIcons/Wangdi.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.people2") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.mystery") }}</figcaption>
         </figure>
@@ -40,12 +40,12 @@
       <h1>{{ $t("lang.aboutUs.title4") }}</h1>
       <div class="cardGroup">
         <figure class="company">
-          <img src="company/eguCol.png" alt="" />
+          <img src="images/company/eguCol.png" alt="" />
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com1") }}</p>
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com2") }}</p>
         </figure>
         <figure class="company">
-          <img src="company/rrCol.png" alt=""/>
+          <img src="images/company/rrCol.png" alt=""/>
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com1") }}</p>
         </figure>
       </div>

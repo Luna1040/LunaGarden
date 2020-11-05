@@ -2,7 +2,7 @@
   <div class="login">
     <Header
       :msg-header="$t('lang.titles.login')"
-      user-icon="userIcon.jpg"
+      user-icon="images/userIcons/userIcon.jpg"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
