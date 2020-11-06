@@ -67,6 +67,75 @@ ul li {
 a {
   text-decoration: none;
 }
+.lunaGardenLoading {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+
+  .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate 3s ease-in-out infinite;
+    overflow: visible;
+
+    .circle {
+      position: absolute;
+      width: 50%;
+      height: 0.1em;
+      top: 50%;
+      left: 50%;
+      background-color: transparent;
+      transform: rotate(var(--deg));
+      transform-origin: left;
+      overflow: visible;
+    }
+
+    .circle::before {
+      position: absolute;
+      top: -10px;
+      right: -15px;
+      content: '';
+      width: 10px;
+      height: 10px;
+      background-color: currentColor;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #fff;
+      overflow: visible;
+    }
+  }
+
+  .face:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    color: $WHITE;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 6px 6px 0 0;
+    --deg: -45deg;
+    animation-direction: normal;
+    overflow: visible;
+  }
+
+  .face:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    color: $Primary;
+    border-color: currentColor currentColor transparent transparent;
+    border-width: 6px 0 0 6px;
+    --deg: -135deg;
+    animation-direction: reverse;
+    overflow: visible;
+  }
+}
 
 .LightTheme {
   $PrimaryText: #4a4a4a;
@@ -95,7 +164,9 @@ a {
   @mixin ErrorGradients {
     background: linear-gradient(#ff938d, #ff483d);
   }
-
+  .lunaGardenLoading {
+    background-color: $MaskOpacity;
+  }
   .header {
     box-shadow: $Shadow;
 
@@ -129,14 +200,13 @@ a {
     }
 
     .homeSideBar {
-
       h1 {
         color: $PrimaryText;
       }
 
       ul {
         .activeBar {
-          background: linear-gradient(135deg, #F3AAC4 0%, #EB7290 100%);
+          background: linear-gradient(135deg, #f3aac4 0%, #eb7290 100%);
         }
 
         li {
@@ -183,13 +253,8 @@ a {
               }
             }
           }
-
         }
       }
-    }
-
-    .lunaLoading {
-      background-color: $MaskOpacity;
     }
   }
 }
@@ -221,7 +286,9 @@ a {
   @mixin ErrorGradients {
     background: linear-gradient(#744542, #ff483d);
   }
-
+  .lunaGardenLoading {
+    background-color: $MaskOpacity;
+  }
   .header {
     box-shadow: $Shadow;
 
@@ -255,14 +322,13 @@ a {
     }
 
     .homeSideBar {
-
       h1 {
         color: $PrimaryText;
       }
 
       ul {
         .activeBar {
-          background: linear-gradient(135deg, #835868 0%, #EB7290 100%);
+          background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
         }
 
         li {
@@ -311,10 +377,6 @@ a {
           }
         }
       }
-    }
-
-    .lunaLoading {
-      background-color: $MaskOpacity;
     }
   }
 }
@@ -451,7 +513,7 @@ footer {
         overflow: hidden;
         cursor: pointer;
         min-width: 32px;
-        i{
+        i {
           font-size: 18px;
         }
 
@@ -631,84 +693,14 @@ footer {
       display: flex;
       align-items: center;
       justify-content: center;
-      i{
+      i {
         font-size: 28px;
       }
     }
-    .dashboard{
+    .dashboard {
       right: 112px;
-      i{
+      i {
         font-size: 32px;
-      }
-    }
-
-    .lunaLoading {
-      border-radius: inherit;
-      width: 100%;
-      height: 100%;
-      font-size: 10px;
-      position: absolute;
-      z-index: 100;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-
-      .face {
-        position: absolute;
-        border-radius: 50%;
-        border-style: solid;
-        animation: animate 3s ease-in-out infinite;
-        overflow: visible;
-
-        .circle {
-          position: absolute;
-          width: 50%;
-          height: 0.1em;
-          top: 50%;
-          left: 50%;
-          background-color: transparent;
-          transform: rotate(var(--deg));
-          transform-origin: left;
-          overflow: visible;
-        }
-
-        .circle::before {
-          position: absolute;
-          top: -10px;
-          right: -15px;
-          content: '';
-          width: 10px;
-          height: 10px;
-          background-color: currentColor;
-          border-radius: 50%;
-          box-shadow: 0 0 30px #fff;
-          overflow: visible;
-        }
-      }
-
-      .face:nth-child(1) {
-        width: 40px;
-        height: 40px;
-        color: $WHITE;
-        border-color: currentColor transparent transparent currentColor;
-        border-width: 6px 6px 0 0;
-        --deg: -45deg;
-        animation-direction: normal;
-        overflow: visible;
-      }
-
-      .face:nth-child(2) {
-        width: 60px;
-        height: 60px;
-        color: $Primary;
-        border-color: currentColor currentColor transparent transparent;
-        border-width: 6px 0 0 6px;
-        --deg: -135deg;
-        animation-direction: reverse;
-        overflow: visible;
       }
     }
 
@@ -787,10 +779,9 @@ footer {
         }
 
         li.active {
-          color: #FFFFFF;
+          color: #ffffff;
         }
       }
-
     }
 
     .homeMainView {
@@ -805,7 +796,7 @@ footer {
         display: flex;
         align-items: center;
         font-weight: 500;
-        border-bottom: 1px solid #FFFFFF;
+        border-bottom: 1px solid #ffffff;
 
         i {
           font-size: 26px;

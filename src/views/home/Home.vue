@@ -1,20 +1,17 @@
 <template>
   <div class="home">
+    <transition name="maskAnimation">
+      <Loading v-model="listLoading"></Loading>
+    </transition>
     <transition name="messageAnimation">
-      <button v-if="!listLoading" v-ripple class="fluidButton" :title="$t('lang.home.PST')">
+      <button v-if="!listLoading && projectDetail.canAdd" v-ripple class="fluidButton" :title="$t('lang.home.PST')">
         <i class="font_family icon-LunaPlus"></i>
       </button>
     </transition>
     <transition name="messageAnimation">
-      <button v-if="!listLoading" v-ripple class="fluidButton dashboard">
+      <button v-if="!listLoading && projectDetail.dashboard" v-ripple class="fluidButton dashboard">
         <i class="font_family icon-LunaDashboard"></i>
       </button>
-    </transition>
-    <transition name="maskAnimation">
-      <div v-if="listLoading" class="lunaLoading">
-        <div class="face" />
-        <div class="face" />
-      </div>
     </transition>
     <div class="homeSideBar">
       <h1>{{ $t('lang.home.projectView') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
@@ -68,21 +65,33 @@
 
 <script>
 import { home } from '@/assets/js/url'
+import Loading from '../../components/pc/loading'
 
 export default {
   name: 'home',
   data() {
     return {
+      // Select内用的绑定值，输入后进行搜索
       searchText: '',
+      // 工程的数组，用于生成在Select内的Option
       projectList: [],
+      // 当前工程的详情内容
       projectDetail: {},
+      // 选择的工程id
       choiceId: 0,
-      listLoading: true,
+      // 选择的工程内listItem的id
       checkId: 0,
-      actionId: 0
+      // 展开操作项的id
+      actionId: 0,
+      // 控制显示隐藏加载动画
+      listLoading: true
     }
   },
+  components: {
+    Loading
+  },
   created() {
+    // 模拟接口获取所有项目的数组
     setTimeout(() => {
       this.projectList = [
         {
@@ -102,66 +111,12 @@ export default {
         }
       ]
       this.choiceId = this.projectList[0].id
+      // 模拟接口获取当前项目的详情
+      this.changeProjectList(this.choiceId)
     }, 1000)
-    setTimeout(() => {
-      this.projectDetail = {
-        id: 1,
-        icon: 'font_family icon-LunaLunaUI',
-        name: 'Luna Garden',
-        startTime: '2020-09-13',
-        endTime: '2020-12-12',
-        list: [
-          {
-            id: 1,
-            urgent: 0,
-            content: 'Luna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home RemakeLuna Garden Home Remake',
-            sort: 'Web Develop Group',
-            createTime: '2020-09-30',
-            deadline: '2020-10-30',
-            spentTime: '5',
-            percent: 30,
-            success: false
-          },
-          {
-            id: 2,
-            urgent: 1,
-            content: 'Luna Garden Header Remake',
-            sort: 'Web Develop Group',
-            createTime: '2020-09-12',
-            deadline: '2020-09-22',
-            spentTime: '10',
-            percent: 60,
-            success: true
-          },
-          {
-            id: 3,
-            urgent: 2,
-            content: 'Luna Garden Login Module Remake',
-            sort: 'UI Group',
-            createTime: '2020-09-30',
-            deadline: '2020-10-30',
-            spentTime: '5',
-            percent: 99,
-            success: false
-          },
-          {
-            id: 4,
-            urgent: 2,
-            content: 'Luna Garden Login Module Remake',
-            sort: 'UI Group',
-            createTime: '2020-09-30',
-            deadline: '2020-10-30',
-            spentTime: '5',
-            percent: 100,
-            success: true
-          }
-        ]
-      }
-      this.listLoading = false
-    }, 2000)
-
   },
   computed: {
+    // 计算侧栏的高亮块移动到当前点击的工程上
     activeBarMoveDistance() {
       return {
         top: 66 * (this.choiceId - 1) + 'px'
@@ -169,6 +124,7 @@ export default {
     }
   },
   filters: {
+    // 将紧急程度从代号翻译为文字
     urgentFilter(val) {
       switch (val) {
         case 0:
@@ -185,6 +141,7 @@ export default {
     }
   },
   methods: {
+    // 点击工程后，切换显示的详情到当前工程
     changeProjectList(id) {
       this.choiceId = id
       this.checkId = 0
@@ -195,6 +152,8 @@ export default {
           case 1:
             this.projectDetail = {
               id: 1,
+              canAdd: true,
+              dashboard: true,
               icon: 'font_family icon-LunaLunaUI',
               name: 'Luna Garden',
               startTime: '2020-09-13',
@@ -250,6 +209,8 @@ export default {
           case 2:
             this.projectDetail = {
               id: 2,
+              canAdd: true,
+              dashboard: false,
               icon: 'font_family icon-LunaTeamControl',
               name: 'Luna UI',
               startTime: '2020-09-13',
@@ -294,6 +255,8 @@ export default {
           case 3:
             this.projectDetail = {
               id: 3,
+              canAdd: false,
+              dashboard: true,
               icon: 'font_family icon-LunaTaskPanel',
               name: 'Luna Components',
               startTime: '2020-09-13',
@@ -337,8 +300,15 @@ export default {
             break
         }
         this.listLoading = false
-      }, 1500)
+      }, 1000)
     },
+    // 初始化加载进度条的函数
+    progressBarLength(val) {
+      return {
+        width: val + '%'
+      }
+    },
+    // 点击listItem调用的函数
     checkDetail(id) {
       if (id === this.checkId) {
         this.checkId = 0
@@ -347,11 +317,7 @@ export default {
       }
       this.checkId = id
     },
-    progressBarLength(val) {
-      return {
-        width: val + '%'
-      }
-    },
+    // 点击操作按钮调用函数
     showActionExpanded(id) {
       this.actionId = id
     }
