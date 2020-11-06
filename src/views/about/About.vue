@@ -14,12 +14,12 @@
       <h1>{{ $t("lang.aboutUs.title2") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="images/userIcons/userIcon.jpg" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
           <figcaption>{{ $t("lang.aboutUs.author") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.authorDesc") }}</figcaption>
         </figure>
         <figure>
-          <img src="images/userIcons/SuYan.jpg" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/SuYan.jpg?token=AHM7AP2JM4HQB4J3KXQLEZS7UUAPC" alt />
           <figcaption>{{ $t("lang.aboutUs.people4") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.UI") }}</figcaption>
         </figure>
@@ -27,12 +27,12 @@
       <h1>{{ $t("lang.aboutUs.title5") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="images/userIcons/XiRang.jpg" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/XiRang.jpg?token=AHM7AP3ELNFEXO3KB33EVQK7UUATY" alt />
           <figcaption>{{ $t("lang.aboutUs.people") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.developer") }}</figcaption>
         </figure>
         <figure>
-          <img src="images/userIcons/Wangdi.jpg" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/Wangdi.jpg?token=AHM7AP5XC7T2BB74IQ5JB6C7UUASK" alt />
           <figcaption>{{ $t("lang.aboutUs.people2") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.mystery") }}</figcaption>
         </figure>
@@ -40,12 +40,12 @@
       <h1>{{ $t("lang.aboutUs.title4") }}</h1>
       <div class="cardGroup">
         <figure class="company">
-          <img src="images/company/eguCol.png" alt="" />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/company/eguCol.png?token=AHM7APYF7LOZ6JGLPJOFK2K7UUAWQ" alt="" />
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com1") }}</p>
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com2") }}</p>
         </figure>
         <figure class="company">
-          <img src="images/company/rrCol.png" alt=""/>
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/company/rrCol.png?token=AHM7AP3GPXCIUR7CXDQYSHS7UUAX2" alt=""/>
           <p style="font-size: 12px">{{ $t("lang.aboutUs.com1") }}</p>
         </figure>
       </div>

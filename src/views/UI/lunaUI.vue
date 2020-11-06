@@ -2,7 +2,7 @@
   <div class="lunaUIPage">
     <Header
       :msg-header="$t('lang.titles.about')"
-      user-icon="images/userIcons/userIcon.jpg"
+      user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
@@ -428,7 +428,7 @@ export default {
         {
           userName: '卢娜',
           describe: 'Luna-UI的作者',
-          img: 'images/userIcons/userIcon.jpg'
+          img: 'https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M'
         }
       ]
     }

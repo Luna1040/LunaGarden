@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background-image: url('../../../public/bc1.jpg');
+  background-image: url('https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -67,12 +67,13 @@ ul li {
 a {
   text-decoration: none;
 }
+
 .lunaGardenLoading {
   border-radius: inherit;
   width: 100%;
   height: 100%;
   font-size: 10px;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
@@ -164,9 +165,11 @@ a {
   @mixin ErrorGradients {
     background: linear-gradient(#ff938d, #ff483d);
   }
+
   .lunaGardenLoading {
     background-color: $MaskOpacity;
   }
+
   .header {
     box-shadow: $Shadow;
 
@@ -286,9 +289,11 @@ a {
   @mixin ErrorGradients {
     background: linear-gradient(#744542, #ff483d);
   }
+
   .lunaGardenLoading {
     background-color: $MaskOpacity;
   }
+
   .header {
     box-shadow: $Shadow;
 
@@ -468,7 +473,7 @@ footer {
     padding: 0 32px;
     width: 100vw;
     height: 260px;
-    background: url('../../../public/bc1Blur.jpg') no-repeat center -100px;
+    background: url('https://raw.githubusercontent.com/Luna1040/projectImages/master/images/background/bc1Blur.jpg?token=AHM7AP4TD3GQATBZWRAANBC7UUA3S') no-repeat center -100px;
     background-size: 100%;
     transition: all 0.5s;
 
@@ -513,6 +518,7 @@ footer {
         overflow: hidden;
         cursor: pointer;
         min-width: 32px;
+
         i {
           font-size: 18px;
         }
@@ -693,12 +699,15 @@ footer {
       display: flex;
       align-items: center;
       justify-content: center;
+
       i {
         font-size: 28px;
       }
     }
+
     .dashboard {
       right: 112px;
+
       i {
         font-size: 32px;
       }
