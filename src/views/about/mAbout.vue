@@ -2,7 +2,7 @@
   <div class="aboutUs">
     <Header
       :msg-header="$t('lang.titles.about')"
-      user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M"
+      user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"
@@ -21,22 +21,22 @@
       <h1>{{ $t('lang.aboutUs.title2') }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.author') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.authorDesc') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people3') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people2') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.mystery') }}</figcaption>
         </figure>

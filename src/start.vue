@@ -28,7 +28,7 @@ export default {
 .normalBc{
   width: 100vw;
   height: 100vh;
-  background: url("https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M") no-repeat;
+  background: url("https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg") no-repeat;
   background-size: cover;
 }
 </style>

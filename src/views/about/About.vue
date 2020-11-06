@@ -14,7 +14,7 @@
       <h1>{{ $t("lang.aboutUs.title2") }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt />
+          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t("lang.aboutUs.author") }}</figcaption>
           <figcaption>{{ $t("lang.aboutUs.authorDesc") }}</figcaption>
         </figure>

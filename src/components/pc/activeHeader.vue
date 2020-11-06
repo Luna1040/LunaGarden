@@ -7,7 +7,7 @@
       <!--      @click即v-on:click的简写  语法糖-->
       <div class="userIcon" @click="showSettings">
         <!--        用户头像图片-->
-        <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg?token=AHM7AP6WQA4C52Z5VTSU4NS7UT72M" alt="" />
+        <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt="" />
       </div>
     </div>
     <!--    Luna Garden的标题区域，分上面的写死标题Luna Garden与下方随页面更改的标题-->
