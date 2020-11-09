@@ -2,9 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueResource from 'vue-resource'
-import directives from './directives'
 import './assets/css/public.scss'
-import './assets/css/LunaAnimates.scss'
+import './assets/lunaUI/css/LunaAnimates.scss'
 import VueI18n from 'vue-i18n'
 import axios from 'axios'
 import md5 from 'js-md5'
@@ -14,12 +13,11 @@ import './assets/js/timeFormat.js'
 import './assets/js/getId.js'
 import './assets/js/colorMatch.js'
 import './assets/js/encrypt.js'
-import './assets/public/lunaUI'
+import './assets/lunaUI'
 
 const zh = require('./lang/zh.js')
 const en = require('./lang/en.js')
 Vue.config.productionTip = false
-Vue.use(directives)
 Vue.use(VueI18n)
 Vue.use(VueResource)
 Vue.prototype.$ajax = axios

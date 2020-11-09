@@ -19,7 +19,7 @@
           v-model="todoText"
           type="text"
           class="searchInput"
-          :placeholder="$t('lang.home.input')"
+          :placeholder="$t('lang.todoPanel.input')"
           border-color="rgba(0,0,0,0)!important"
           box-shadow="none!important"
           ghost
@@ -60,10 +60,10 @@
     </div>
     <div id="navigation">
       <div slot="button-prev" class="swiper-button-prev">
-        {{ $t("lang.home.prev") }}
+        {{ $t("lang.todoPanel.prev") }}
       </div>
       <div slot="button-next" class="swiper-button-next">
-        {{ $t("lang.home.next") }}
+        {{ $t("lang.todoPanel.next") }}
       </div>
     </div>
     <swiper ref="mySwiper" :options="swiperOption">
@@ -72,14 +72,14 @@
           <li v-for="(i, index) in todoList" :key="i.id" :class="{ dragActive: dragActive === index }" @click="mousedown(index)">
             <div class="content">
               <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
-              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
+              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.todoPanel.timeStamp") }}{{ i.time }}</p>
             </div>
             <i v-if="dragActive !== index" class="cgStatusIcon iconfont icon-quedingx" @click="cgStatus(i.id)"></i>
             <div v-else class="btnGroup">
-              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.home.button.finish") }}</Button>
-              <Button :height="24" @click="editShow">{{ $t("lang.home.button.edit") }}</Button>
-              <Button :height="24" @click="editShow">{{ $t("lang.home.button.copy") }}</Button>
-              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.home.button.DEL") }}</Button>
+              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.todoPanel.button.finish") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.todoPanel.button.edit") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.todoPanel.button.copy") }}</Button>
+              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.todoPanel.button.DEL") }}</Button>
             </div>
           </li>
         </ul>
@@ -92,14 +92,14 @@
           <li v-for="(i, index) in businessList" :key="i.id" :class="{ dragActive: dragActive === index }" @click="mousedown(index)">
             <div class="content">
               <p class="text" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ i.content }}</p>
-              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.home.timeStamp") }}{{ i.time }}</p>
+              <p class="timer" :class="{ successText: i.completed === true, dragActive: dragActive === index }">{{ $t("lang.todoPanel.timeStamp") }}{{ i.time }}</p>
             </div>
             <i v-if="dragActive !== index" class="cgStatusIcon iconfont icon-quedingx" @click="cgStatus(i.id)"></i>
             <div v-else class="btnGroup">
-              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.home.button.finish") }}</Button>
-              <Button :height="24" @click="editShow">{{ $t("lang.home.button.edit") }}</Button>
-              <Button :height="24" @click="editShow">{{ $t("lang.home.button.copy") }}</Button>
-              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.home.button.DEL") }}</Button>
+              <Button :height="24" @click="cgStatus(index)">{{ $t("lang.todoPanel.button.finish") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.todoPanel.button.edit") }}</Button>
+              <Button :height="24" @click="editShow">{{ $t("lang.todoPanel.button.copy") }}</Button>
+              <Button :height="24" theme="error" @click="editShow">{{ $t("lang.todoPanel.button.DEL") }}</Button>
             </div>
           </li>
         </ul>

@@ -40,7 +40,7 @@
       <p>{{ this.$t("lang.register.alert12") }}</p>
       <div slot="footer">
         <Button theme="primary" @click="bankIdEmpty = false" :loading="loading">{{
-          this.$t("lang.home.button.OK")
+          this.$t("lang.todoPanel.button.OK")
         }}</Button>
       </div>
     </Modal>

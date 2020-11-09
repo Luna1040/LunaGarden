@@ -12,7 +12,7 @@
     <!--      <div-->
     <!--        class="activeBar"-->
     <!--        :class="{-->
-    <!--          activeHome: footerActive === 'home',-->
+    <!--          activeHome: footerActive === 'todoPanel',-->
     <!--          activeNote: footerActive === 'note',-->
     <!--          activeUI: footerActive === 'ui',-->
     <!--          activeDiary: footerActive === 'diary'-->
@@ -21,8 +21,8 @@
     <!--      <div class="figGroup">-->
     <!--        <router-link-->
     <!--          to="/mHome"-->
-    <!--          :class="{ active: footerActive === 'home' }"-->
-    <!--          @click="footerActive = 'home'"-->
+    <!--          :class="{ active: footerActive === 'todoPanel' }"-->
+    <!--          @click="footerActive = 'todoPanel'"-->
     <!--        >-->
     <!--          <figure>-->
     <!--            <i class="iconfont"></i>-->
@@ -64,7 +64,7 @@
     <!--        class="fluidBtn"-->
     <!--        :class="{-->
     <!--          leftMove: footerActive === 'note',-->
-    <!--          rightMove: footerActive === 'home'-->
+    <!--          rightMove: footerActive === 'todoPanel'-->
     <!--        }"-->
     <!--      >-->
     <!--        <i class="iconfont" :class="{ show: footerActive === 'note' }"></i>-->
@@ -81,7 +81,7 @@ export default {
   name: 'app',
   data() {
     return {
-      // footerActive: 'home',
+      // footerActive: 'todoPanel',
       // firstAlert: false,
       // width177: true,
       transitionName: 'slide-right',

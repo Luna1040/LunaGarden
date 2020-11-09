@@ -23,6 +23,6 @@ export const userInfo = {
   userConfigModified: 'user/userConfigModified'// Post
 }
 export const home = {
-  addTodoList: 'home/addTodoList',
-  getTodoList: 'home/getTodoList',
+  addTodoList: 'todoPanel/addTodoList',
+  getTodoList: 'todoPanel/getTodoList',
 }

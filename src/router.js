@@ -3,20 +3,11 @@ import Router from 'vue-router'
 // 启动画面
 import Start from './start.vue'
 // 主页引入
-import Home from './views/home/Home.vue'
-import mHome from './views/home/mHome.vue'
-// 笔记本引入
-import Note from './views/note/Note.vue'
-import mNote from './views/note/mNote.vue'
-// 日记引入
-import Diary from './views/diary/Diary.vue'
-import mDiary from './views/diary/mDiary.vue'
+import TodoPanel from './views/todoPanel/TodoPanel.vue'
+import mTodoPanel from './views/todoPanel/mTodoPanel.vue'
 // 引导模式
 import Guide from './views/guide/Guide.vue'
 import mGuide from './views/guide/mGuide.vue'
-// 用户中心
-import User from './views/user/UserCenter.vue'
-import mUser from './views/user/mUserCenter.vue'
 // 关于我们
 import AboutUs from './views/about/About.vue'
 import mAboutUs from './views/about/mAbout.vue'
@@ -31,13 +22,10 @@ import ResetPsw from './views/login/ResetPsw.vue'
 import mResetPsw from './views/login/mResetPsw.vue'
 import Chatting from './views/chatting/Chatting.vue'
 import mChatting from './views/chatting/mChatting.vue'
-// LunaUI
+// css
 import LunaUI from './views/UI/lunaUI.vue'
 import Report from './views/report/Report.vue'
 import mReport from './views/report/mReport.vue'
-// legend
-import Legend from './views/legend/Legend.vue'
-import mLegend from './views/legend/mLegend.vue'
 // 字节测试
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
@@ -52,42 +40,43 @@ const router = new Router({
     { path: '/', name: 'Start', component: Start },
     { path: '/Start', name: 'Start', component: Start },
     { path: '/mStart', name: 'mStart', component: Start },
+    // LunaUI的展示
+    { path: '/LunaUI', name: 'LunaUI', component: LunaUI },
+    { path: '/mLunaUI', name: 'LunaUI', component: LunaUI },
+    // 待办事项面板
+    { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 1 } },
+    { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 1 } },
+    // 聊天页面
+    { path: '/Chatting', name: 'Chatting', component: Chatting },
+    { path: '/mChatting', name: 'mChatting', component: mChatting },
+    // 汇报中心
+    { path: '/Report', name: 'Report', component: Report },
+    { path: '/mReport', name: 'mReport', component: mReport },
+    // 引导页面
+    { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },
+    { path: '/mGuide', name: 'mGuide', component: mGuide, meta: { index: 999 } },
+    // 关于我们
+    { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
+    { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
+    // 登录
+    { path: '/Login', name: 'Login', component: Login },
+    { path: '/mLogin', name: 'mLogin', component: mLogin },
+    // 注册
+    { path: '/Register', name: 'Register', component: Register },
+    { path: '/mRegister', name: 'mRegister', component: mRegister },
+    // 忘记密码
+    { path: '/Forgot', name: 'Forgot', component: Forgot },
+    { path: '/mForgot', name: 'mForgot', component: mForgot },
+    // 修改密码
+    { path: '/Reset', name: 'Reset', component: ResetPsw },
+    { path: '/mReset', name: 'mReset', component: mResetPsw },
+    // Demos
     { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
     { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
     { path: '/Cursor', name: 'Cursor', component: ByteCursor },
     { path: '/mCursor', name: 'mCursor', component: ByteCursor },
     { path: '/Discuss', name: 'Discuss', component: ByteDiscuss },
     { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss },
-    { path: '/LunaUI', name: 'LunaUI', component: LunaUI },
-    { path: '/mLunaUI', name: 'LunaUI', component: LunaUI },
-    // PC页面统一整合
-    { path: '/Home', name: 'Home', component: Home, meta: { index: 0 } },
-    { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },
-    { path: '/User', name: 'User', component: User },
-    { path: '/Note', name: 'Note', component: Note },
-    { path: '/Diary', name: 'Diary', component: Diary },
-    // 移动端页面统一整合
-    { path: '/mHome', name: 'mHome', component: mHome, meta: { index: 0 } },
-    { path: '/mGuide', name: 'mGuide', component: mGuide, meta: { index: 999 } },
-    { path: '/mUser', name: 'mUser', component: mUser },
-    { path: '/mNote', name: 'mNote', component: mNote },
-    { path: '/mDiary', name: 'mDiary', component: mDiary },
-    { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
-    { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
-    { path: '/Login', name: 'Login', component: Login },
-    { path: '/mLogin', name: 'mLogin', component: mLogin },
-    { path: '/Register', name: 'Register', component: Register },
-    { path: '/mRegister', name: 'mRegister', component: mRegister },
-    { path: '/Forgot', name: 'Forgot', component: Forgot },
-    { path: '/mForgot', name: 'mForgot', component: mForgot },
-    { path: '/Reset', name: 'Reset', component: ResetPsw },
-    { path: '/mReset', name: 'mReset', component: mResetPsw },
-    { path: '/Chatting', name: 'Chatting', component: Chatting },
-    { path: '/mChatting', name: 'mChatting', component: mChatting },
-    { path: '/Legend', name: 'Legend', component: Legend },
-    { path: '/mLegend', name: 'mLegend', component: mLegend },
-    { path: '/Report', name: 'Report', component: Report },
-    { path: '/mReport', name: 'mReport', component: mReport }
   ]
 })
 

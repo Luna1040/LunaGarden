@@ -4,7 +4,7 @@
       <Loading v-model="listLoading"></Loading>
     </transition>
     <transition name="messageAnimation">
-      <button v-if="!listLoading && projectDetail.canAdd" v-ripple class="fluidButton" :title="$t('lang.home.PST')">
+      <button v-if="!listLoading && projectDetail.canAdd" v-ripple class="fluidButton" :title="$t('lang.todoPanel.PST')">
         <i class="font_family icon-LunaPlus"></i>
       </button>
     </transition>
@@ -14,9 +14,9 @@
       </button>
     </transition>
     <div class="homeSideBar">
-      <h1>{{ $t('lang.home.projectView') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
+      <h1>{{ $t('lang.todoPanel.projectView') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
       <div class="searchProject">
-        <Select v-model="searchText" :select-data="projectList" :placeholder="$t('lang.home.input')" filterable
+        <Select v-model="searchText" :select-data="projectList" :placeholder="$t('lang.todoPanel.input')" filterable
                 width="100%" key-label="name" key-value="id" @on-change="changeProjectList(searchText)"></Select>
       </div>
       <ul>
@@ -31,19 +31,19 @@
     <transition name="modalAnimation">
       <div v-if="!listLoading" class="homeMainView">
         <h1><i :class="projectDetail.icon"></i>{{ projectDetail.name }}</h1>
-        <p>{{ $t('lang.home.PST') }}: {{ projectDetail.startTime }}</p>
-        <p>{{ $t('lang.home.PST') }}: {{ projectDetail.endTime }}</p>
+        <p>{{ $t('lang.todoPanel.PST') }}: {{ projectDetail.startTime }}</p>
+        <p>{{ $t('lang.todoPanel.PST') }}: {{ projectDetail.endTime }}</p>
         <ul id="scrollView">
           <li v-for="i in projectDetail.list" :key="i.id" :class="{expanded: checkId === i.id}"
               @click="checkDetail(i.id)">
             <span v-if="checkId !== i.id" :title="i.content">{{ i.content }}</span>
             <div v-else>
-              <h2>{{ $t('lang.home.Content') }}{{ i.content }}</h2>
-              <p>{{ $t('lang.home.CreateTime') }}{{ i.createTime }}</p>
-              <p>{{ $t('lang.home.Deadline') }}{{ i.deadline }}</p>
-              <p>{{ $t('lang.home.SpentTime') }}{{ i.spentTime }}{{ $t('lang.home.Day') }}</p>
-              <p>{{ $t('lang.home.Urgent') }}{{ i.urgent | urgentFilter }}</p>
-              <div>{{ $t('lang.home.Progress') }}
+              <h2>{{ $t('lang.todoPanel.Content') }}{{ i.content }}</h2>
+              <p>{{ $t('lang.todoPanel.CreateTime') }}{{ i.createTime }}</p>
+              <p>{{ $t('lang.todoPanel.Deadline') }}{{ i.deadline }}</p>
+              <p>{{ $t('lang.todoPanel.SpentTime') }}{{ i.spentTime }}{{ $t('lang.todoPanel.Day') }}</p>
+              <p>{{ $t('lang.todoPanel.Urgent') }}{{ i.urgent | urgentFilter }}</p>
+              <div>{{ $t('lang.todoPanel.Progress') }}
                 <div><span class="progressBar" :style="progressBarLength(i.percent)"
                            :class="{errorPro: i.percent <= 30, warningPro: 30 < i.percent && i.percent <= 60, primaryPro: 60 < i.percent && i.percent <= 99, successPro: i.percent === 100}"></span>
                 </div>

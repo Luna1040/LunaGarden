@@ -16,8 +16,8 @@ import Form from './Form/Form.vue'
 import FormItem from './Form/FormItem.vue'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
-import Message from './Message/index.js'
-import Tree from './Tree/index.js'
+import Message from './Message'
+import Tree from './Tree'
 import Collapse from './Collapse/Collapse.vue'
 import Checkbox from './Checkbox/Checkbox.vue'
 import CheckboxGroup from './Checkbox/CheckboxGroup.vue'
@@ -27,6 +27,7 @@ import Switches from './Switches/Switches.vue'
 import SwitchesGroup from './Switches/SwitchesGroup.vue'
 import DatePicker from './DatePicker/DatePicker.vue'
 import './util/clickoutside.js'
+import ripple from './util/ripple'
 
 const LunaUI = {
   Modal,
@@ -60,6 +61,7 @@ const LunaUI = {
 Object.keys(LunaUI).forEach((name) => {
   Vue.component(name, LunaUI[name])
 })
+Vue.use(ripple)
 
 Vue.prototype.$Message = Message
 
