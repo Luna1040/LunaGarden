@@ -38,45 +38,6 @@ const router = new Router({
   routes: [
     // 首屏展示加载动画
     { path: '/', name: 'Start', component: Start },
-    { path: '/Start', name: 'Start', component: Start },
-    { path: '/mStart', name: 'mStart', component: Start },
-    // LunaUI的展示
-    { path: '/LunaUI', name: 'LunaUI', component: LunaUI },
-    { path: '/mLunaUI', name: 'LunaUI', component: LunaUI },
-    // 待办事项面板
-    { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 1 } },
-    { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 1 } },
-    // 聊天页面
-    { path: '/Chatting', name: 'Chatting', component: Chatting },
-    { path: '/mChatting', name: 'mChatting', component: mChatting },
-    // 汇报中心
-    { path: '/Report', name: 'Report', component: Report },
-    { path: '/mReport', name: 'mReport', component: mReport },
-    // 引导页面
-    { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },
-    { path: '/mGuide', name: 'mGuide', component: mGuide, meta: { index: 999 } },
-    // 关于我们
-    { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
-    { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
-    // 登录
-    { path: '/Login', name: 'Login', component: Login },
-    { path: '/mLogin', name: 'mLogin', component: mLogin },
-    // 注册
-    { path: '/Register', name: 'Register', component: Register },
-    { path: '/mRegister', name: 'mRegister', component: mRegister },
-    // 忘记密码
-    { path: '/Forgot', name: 'Forgot', component: Forgot },
-    { path: '/mForgot', name: 'mForgot', component: mForgot },
-    // 修改密码
-    { path: '/Reset', name: 'Reset', component: ResetPsw },
-    { path: '/mReset', name: 'mReset', component: mResetPsw },
-    // Demos
-    { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
-    { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
-    { path: '/Cursor', name: 'Cursor', component: ByteCursor },
-    { path: '/mCursor', name: 'mCursor', component: ByteCursor },
-    { path: '/Discuss', name: 'Discuss', component: ByteDiscuss },
-    { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss },
   ]
 })
 
