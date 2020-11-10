@@ -21,7 +21,7 @@
 <script>
 import TreeItem from './TreeItem.vue'
 import Render from './render'
-import { findComponentUpward } from '../util/components.js'
+import { findComponentUpward } from '../../js/Luna-FindComponents.js'
 export default {
   name: 'TreeItem',
   components: {

@@ -53,6 +53,7 @@ $WHITE-OPACITY: #ffffff50;
   $DividerDarkColor: #efefef;
   $LightDark: #e9e9e9;
   $MaskOpacity: #00000050;
+  $reverseColor: #000000;
   $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
   $AroundShadow: 0 0 5px rgba(0, 0, 0, 0.3);
   $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -292,6 +293,7 @@ $WHITE-OPACITY: #ffffff50;
   $DividerDarkColor: #252525;
   $LightDark: #3f3f3f;
   $MaskOpacity: #ffffff50;
+  $reverseColor: #FFFFFF;
   $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
   $AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
   $HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
@@ -1968,4 +1970,26 @@ $WHITE-OPACITY: #ffffff50;
 
 .scrollable {
   overflow: auto;
+}
+.LunaRipple {
+  position: absolute;
+  border-radius: 100%;
+  background-clip: padding-box;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 1;
+}
+
+.LunaRipple.z-active {
+  opacity: 0;
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(2);
+  transition: opacity 1.5s ease-out, transform 1s ease-out;
 }

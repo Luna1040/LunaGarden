@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { login } from '../../assets/js/res/url.js'
+import { login } from '../../assets/js/Luna-GetData/url.js'
 
 export default {
   name: 'chatting',
@@ -236,8 +236,8 @@ export default {
         // console.log(this.$refs.chatWindow);
         this.imgList = []
         this.text = ''
-        // this.getData(login.loginConfirm, params).then((res) => {
-        //   console.log(res)
+        // this.getData(login.loginConfirm, params).then((Luna-GetData) => {
+        //   console.log(Luna-GetData)
         // })
       }
     },

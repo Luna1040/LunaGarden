@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import '../js/public'
-
 export default {
   name: 'Option',
   props: {

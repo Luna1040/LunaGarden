@@ -77,7 +77,7 @@ import {
   noNumber,
   phone,
   urlLink
-} from './js/validate'
+} from '../js/Luna-Validater'
 
 export default {
   name: 'Input',

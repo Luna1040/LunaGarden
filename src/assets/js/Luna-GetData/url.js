@@ -1,3 +1,4 @@
+// 此文件应当包含所有项目内接口的url
 export const url = 'api/'
 // 加密接口
 export const publicApi = {

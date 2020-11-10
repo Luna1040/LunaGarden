@@ -1,3 +1,4 @@
+// 此文件存在的意义是封装全局公用的获取数据函数，方便调用，也可不使用
 import { publicApi } from './url'
 import Vue from 'vue'
 

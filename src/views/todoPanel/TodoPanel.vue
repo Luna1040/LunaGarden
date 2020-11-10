@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { home } from '@/assets/js/res/url'
+import { home } from '@/assets/js/Luna-GetData/url'
 import Loading from '../../components/pc/loading'
 
 export default {

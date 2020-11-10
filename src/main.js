@@ -2,14 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/css/public.scss'
-import './assets/lunaUI/css/LunaAnimates.scss'
+import './assets/LunaUI/css/LunaAnimates.scss'
 import VueI18n from 'vue-i18n'
 import axios from 'axios'
 import md5 from 'js-md5'
-import './assets/js/res/publicRes.js'
-import './assets/js/res/publicReq.js'
+import './assets/js/Luna-GetData'
 import './assets/js/publicFunction.js'
-import './assets/lunaUI'
+import './assets/LunaUI'
 
 const zh = require('./lang/zh.js')
 const en = require('./lang/en.js')

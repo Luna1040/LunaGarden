@@ -1,3 +1,4 @@
+// 此文件内函数封装了大多数常用获取数据的方法，
 import vue from 'vue'
 import axios from 'axios'
 import {

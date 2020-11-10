@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../js/validate'
+import { noChara, noChinese, noChineseChara, noEnglish, noEnglishChara, noNumber, email, phone, IDNumber, urlLink } from '../../js/Luna-Validater'
 
 export default {
   name: 'Form',

@@ -49,7 +49,7 @@
 </template>
 <script>
 import Header from '../../components/pc/activeHeader'
-import { login } from '../../assets/js/res/url.js'
+import { login } from '../../assets/js/Luna-GetData/url.js'
 
 export default {
   name: 'login',

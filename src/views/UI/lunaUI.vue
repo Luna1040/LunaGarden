@@ -78,7 +78,7 @@
 
 <script>
 import Header from '../../components/pc/activeHeader'
-import { login } from '../../assets/js/res/url'
+import { login } from '../../assets/js/Luna-GetData/url'
 
 export default {
   name: 'lunaUI.vue',

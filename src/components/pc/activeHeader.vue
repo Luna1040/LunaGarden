@@ -128,8 +128,8 @@ export default {
     this.navigator.onLine = window.navigator.onLine
     // 一个js的计时器，每过一秒都会获取浏览器的联网状态并更新数据至data下挂载的this.navigator对象中的online键下
     setInterval(this.getNavigator, 1000)
-    // this.getData(publicApi.imgCode, {}).then(res => {
-    //   this.imgSrc = res.data
+    // this.getData(publicApi.imgCode, {}).then(Luna-GetData => {
+    //   this.imgSrc = Luna-GetData.data
     // })
   },
   // 这是vue的过滤器，通过接收一个值，来返回你想让用户看到的值
