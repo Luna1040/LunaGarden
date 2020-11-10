@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { home } from '@/assets/js/url'
+import { home } from '@/assets/js/res/url'
 import Loading from '../../components/pc/loading'
 
 export default {

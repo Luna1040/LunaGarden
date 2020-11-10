@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { login } from '../../assets/js/url.js'
+import { login } from '../../assets/js/res/url.js'
 
 export default {
   name: 'chatting',
