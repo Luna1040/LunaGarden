@@ -27,7 +27,7 @@
           <i class="font_family" :class="i.icon"></i>
           <!--        -->
           <!--        这里是i-18n的表达式，通常是{{ $t('lang.menus.xx') }}这样书写，以调用对象下的值，但我们需要动态赋值xx时，可以利用[xx]进行赋值，与上述的写法是一样的效果-->
-          <figcaption>{{ $t('lang.menus')[i.title] }}</figcaption>
+          <figcaption>{{ $t('lang.titles')[i.title] }}</figcaption>
         </figure>
       </nav>
     </transition>

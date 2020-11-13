@@ -1,14 +1,36 @@
 export const lang = {
   unknownError: '未知错误，请刷新页面重试！',
-  menus: {
+  titles: {
+    online: '在线',
+    offline: '离线',
     TodoPanel: '待办事项',
+    mTodoPanel: '待办事项',
     ReportCenter: '报告中心',
+    mReportCenter: '报告中心',
     TeamCenter: '团队中心',
+    mTeamCenter: '团队中心',
     TaskPanel: '任务面板',
+    mTaskPanel: '任务面板',
     RequestPanel: '申请面板',
+    mRequestPanel: '申请面板',
     TeamControl: '团队管理',
+    mTeamControl: '团队管理',
     LunaUI: 'Luna UI',
-    AboutUs: '关于我们'
+    mLunaUI: 'Luna UI',
+    Guide: '引导模式',
+    mGuide: '引导模式',
+    AboutUs: '关于我们',
+    mAboutUs: '关于我们',
+    Login: '登录',
+    mLogin: '登录',
+    Register: '注册',
+    mRegister: '注册',
+    Chatting: '花神通讯',
+    mChatting: '花神通讯',
+    Report: '汇报中心',
+    mReport: '汇报中心',
+    Legend: '花神传说',
+    mLegend: '花神传说'
   },
   getUserInfo: {
     alert1: '您的身份已过期，请重新登录！',
@@ -63,25 +85,6 @@ export const lang = {
     alert4: '密码不正确！',
     alert5: '登录成功！'
   },
-  titles: {
-    online: '在线',
-    offline: '离线',
-    Guide: '引导模式',
-    Home: '待办事项',
-    AboutUs: '关于我们',
-    Login: '登录',
-    Register: '注册',
-    Chatting: '花神通讯',
-    Legend: '花神传说',
-    Report: '汇报中心',
-    mHome: 'Luna Garden',
-    mAboutUs: '关于我们',
-    mLogin: '登录',
-    mRegister: '注册',
-    mChatting: '花神通讯',
-    mLegend: '花神传说',
-    mReport: '汇报中心'
-  },
   header: {
     lock: '锁定',
     unlock: '解锁'
@@ -119,7 +122,6 @@ export const lang = {
       addAlertFail2: '您的数据已位于本地浏览器，登录后即可同步。',
       addAlertNetError: '添加成功！但您当前设备似乎未接入互联网。',
       addAlertNetError2: '当您的设备接入互联网时，再次访问Luna Garden且保持登录状态，我们会将您的数据同步至云端。',
-      emptyAlert: '你必须先输入搜索内容，才可以进行下一步操作！',
       delMsg: '您确定要删除此待办事项吗？',
       delMsg2: '删除后无法恢复该记录!'
     },
@@ -127,7 +129,10 @@ export const lang = {
       OK: '好的',
       cancel: '取消',
       confirm: '确认',
-      DEL: '删除'
+      DEL: '删除',
+      edit: '编辑',
+      copy: '复制',
+      finish: '完成'
     },
     create: {
       create: '创建计划',

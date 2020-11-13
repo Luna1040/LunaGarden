@@ -1,14 +1,36 @@
 export const lang = {
   unknownError: 'Unknown error, please refresh the page and try again!',
-  menus: {
+  titles: {
+    online: 'Online',
+    offline: 'Offline',
     TodoPanel: 'Todo Panel',
+    mTodoPanel: 'Todo Panel',
     ReportCenter: 'Report Center',
+    mReportCenter: 'Report Center',
     TeamCenter: 'Team Center',
+    mTeamCenter: 'Team Center',
     TaskPanel: 'Task Panel',
+    mTaskPanel: 'Task Panel',
     RequestPanel: 'Request Panel',
+    mRequestPanel: 'Request Panel',
     TeamControl: 'Team Control',
+    mTeamControl: 'Team Control',
     LunaUI: 'Luna UI',
-    AboutUs: 'About Us'
+    mLunaUI: 'Luna UI',
+    Guide: 'Guide',
+    mGuide: 'Guide',
+    AboutUs: 'About Us',
+    mAboutUs: 'About Us',
+    Login: 'Login',
+    mLogin: 'Login',
+    Register: 'Register',
+    mRegister: 'Register',
+    Chatting: 'Flower Chatting',
+    mChatting: 'Flower Chatting',
+    Report: 'Report Center',
+    mReport: 'Report Center',
+    Legend: 'Flower Legend',
+    mLegend: 'Flower Legend',
   },
   getUserInfo: {
     alert1: 'Your identity has expired, please log in again!',
@@ -63,26 +85,6 @@ export const lang = {
     alert4: 'The password is not Correct!',
     alert5: 'Login success!'
   },
-  titles: {
-    online: 'Online',
-    offline: 'Offline',
-    Guide: 'Guide',
-    Home: 'Todo Panel',
-    AboutUs: 'About Us',
-    Login: 'Login',
-    Register: 'Register',
-    Chatting: 'Flower Chatting',
-    Legend: 'Flower legend',
-    Report: 'Report Center',
-    mGuide: 'Guide',
-    mHome: 'Luna Garden',
-    mAboutUs: 'About Us',
-    mLogin: 'Login',
-    mRegister: 'Register',
-    mChatting: 'Flower Chatting',
-    mLegend: 'Flower legend',
-    mReport: 'Report Center'
-  },
   header: {
     lock: 'Lock',
     unlock: 'Unlock'
@@ -120,7 +122,6 @@ export const lang = {
       addAlertFail2: 'Your data is already in the local browser and can be synchronized after logging in.',
       addAlertNetError: "Added successfully!But your current device doesn't seem to be connected to the Internet.",
       addAlertNetError2: 'When your device is connected to the Internet,If you access Luna Garden again and stay logged in, we will synchronize your data to the cloud.',
-      emptyAlert: 'You must enter search content before you can proceed to the next step!',
       delMsg: 'Are you sure delete this todo record?',
       delMsg2: 'It can not recover after your confirm!'
     },
