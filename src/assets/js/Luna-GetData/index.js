@@ -1,2 +1,2 @@
-import './publicRes.js'
-import './publicReq.js'
+import "./publicRes.js";
+import "./publicReq.js";
