@@ -219,7 +219,7 @@ export default {
       LoginForm: [],
       lang: {},
       logLang: {},
-      ProjectListData: {
+      ProjectData: {
         creatorID: '',
         creatorName: '',
         id: '',
@@ -231,29 +231,15 @@ export default {
       },
       AddProjectForm: [
         {
-          title: this.$t('lang.project.ProjectName'),
-          validate: 'userName',
+          title: this.$t('lang.project.projectName'),
+          validate: 'projectName',
           validateOnChange: true,
           required: true,
-          emptyWarning: this.$t('lang.register.alert1'),
-          description: this.$t('lang.register.userNameDesc'),
-          validateMethods: [
-            {
-              type: 'length',
-              max: 20,
-              maxErrText: this.$t('lang.register.alert3'),
-              min: 4,
-              minErrText: this.$t('lang.register.alert2')
-            },
-            {
-              type: 'noChara',
-              errText: this.$t('lang.register.alert13')
-            }
-          ],
+          emptyWarning: this.$t('lang.project.alert1'),
           render: (h, params) => {
             return h('Input', {
               props: {
-                value: this.registerData.userName,
+                value: this.ProjectData.projectName,
                 theme: this.theme,
                 background: 'rgba(255,255,255,0.3)',
                 validateOnChange: params.validateOnChange,
@@ -262,7 +248,7 @@ export default {
               },
               on: {
                 input: (event) => {
-                  this.registerData.userName = event
+                  this.ProjectData.projectName = event
                 },
                 onValidate: (value) => {
                   params.data.errStatus = value.errStatus
@@ -275,33 +261,11 @@ export default {
           errText: ''
         },
         {
-          title: this.$t('lang.register.password'),
-          validate: 'password',
-          validateOnChange: true,
-          required: true,
-          emptyWarning: this.$t('lang.register.alert4'),
-          description: this.$t('lang.register.passwordDesc'),
-          validateMethods: [
-            {
-              type: 'length',
-              max: 24,
-              maxErrText: this.$t('lang.register.alert8'),
-              min: 6,
-              minErrText: this.$t('lang.register.alert7')
-            },
-            {
-              type: 'noChinese',
-              errText: this.$t('lang.register.alert14')
-            },
-            {
-              type: 'noChineseChara',
-              errText: this.$t('lang.register.alert15')
-            }
-          ],
+          title: this.$t('lang.project.important'),
           render: (h, params) => {
-            return h('Input', {
+            return h('ButtonGroup', {
               props: {
-                value: this.registerData.password,
+                'btn-group': this.importantGroup,
                 theme: this.theme,
                 type: 'password',
                 validateOnChange: params.validateOnChange,
@@ -361,45 +325,16 @@ export default {
           errText: ''
         },
         {
-          title: this.$t('lang.register.bankId'),
-          validate: 'bankId',
+          title: this.$t('lang.project.projectMember'),
+          validate: 'projectMember',
           required: false,
-          description: this.$t('lang.register.bankIdDesc'),
-          validateMethods: [
-            // {
-            //   type: 'length',
-            //   max: 19,
-            //   maxErrText: this.$t('lang.register.alert17'),
-            //   min: 16,
-            //   minErrText: this.$t('lang.register.alert16')
-            // },
-            // {
-            //   type: 'noChinese',
-            //   errText: this.$t('lang.register.alert14')
-            // },
-            // {
-            //   type: 'noEnglish',
-            //   errText: this.$t('lang.register.alert18')
-            // },
-            // {
-            //   type: 'noChara',
-            //   errText: this.$t('lang.register.alert13')
-            // },
-            // {
-            //   type: 'noChineseChara',
-            //   errText: this.$t('lang.register.alert15')
-            // }
-          ],
           render: (h, params) => {
-            return h('Input', {
+            return h('Select', {
               props: {
-                value: this.registerData.bankId,
+                value: this.ProjectData.projectMember,
                 theme: this.theme,
                 background: 'rgba(255,255,255,0.3)',
-                validateOnChange: params.validateOnChange,
-                validateMethods: params.validateMethods,
                 width: '100%',
-                disabled: true
               },
               on: {
                 input: (event) => {
@@ -416,6 +351,40 @@ export default {
           errText: ''
         }
       ],
+      importantGroup: [
+        {
+          name: 'Very Important',
+          theme: 'error',
+          methods: 'choiceImportantStatus',
+          width: 140
+        },
+        {
+          name: 'Important',
+          theme: 'warning',
+          methods: 'choiceImportantStatus',
+          width: 140
+        },
+        {
+          name: 'Normal',
+          theme: 'primary',
+          methods: 'choiceImportantStatus',
+          width: 140
+        },
+        {
+          name: 'Not Important',
+          theme: 'alert',
+          methods: 'choiceImportantStatus',
+          width: 140,
+          styles: {marginTop: '16px'}
+        },
+        {
+          name: 'Not Necessary',
+          theme: 'normal',
+          methods: 'choiceImportantStatus',
+          width: 140,
+          styles: {marginTop: '16px'}
+        },
+      ]
     }
   },
   created() {

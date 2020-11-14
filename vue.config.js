@@ -5,8 +5,8 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       '/api': {
-        // target: 'http://192.144.202.13:9099/api', // 服务器
-        target: 'http://10.18.190.72:3000/api/',
+        target: 'http://192.168.31.180:3000/api', // 服务器
+        // target: 'http://10.18.190.188:3000/api/',
         pathRewrite: {
           '^/api': ''
         },

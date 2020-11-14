@@ -212,5 +212,10 @@ export const lang = {
     season: {},
     halfYear: {},
     year: {}
+  },
+  project: {
+    projectName: '项目名称',
+    important: '重要程度',
+    alert1: '项目名称不能为空',
   }
 }

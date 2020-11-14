@@ -213,5 +213,10 @@ export const lang = {
     season: {},
     halfYear: {},
     year: {}
+  },
+  project: {
+    projectName: 'Project Name',
+    important: 'Importance',
+    alert1: 'The Project Name cannot be empty',
   }
 }

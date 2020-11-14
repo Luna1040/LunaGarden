@@ -822,6 +822,7 @@ $WHITE-OPACITY: #ffffff50;
   justify-content: center;
   position: relative;
   overflow: visible;
+  flex-shrink: 0;
 
   i {
     transition: all 0.5s;
@@ -1347,6 +1348,9 @@ $WHITE-OPACITY: #ffffff50;
     position: relative;
     transition: all 0.35s;
     overflow: visible;
+    .errorText{
+      color: $Error;
+    }
 
     > div {
       overflow: visible;
@@ -1958,6 +1962,7 @@ $WHITE-OPACITY: #ffffff50;
 .flex {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .block {
