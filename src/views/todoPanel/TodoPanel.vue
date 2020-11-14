@@ -14,7 +14,7 @@
       </button>
     </transition>
     <div class="homeSideBar">
-      <h1>{{ $t('lang.todoPanel.projectView') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
+      <h1>{{ $t('lang.todoPanel.projectList') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
       <div class="searchProject">
         <Select v-model="searchText" :select-data="projectList" :placeholder="$t('lang.todoPanel.input')" filterable
                 width="100%" key-label="name" key-value="id" @on-change="changeProjectList(searchText)"></Select>

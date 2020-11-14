@@ -213,6 +213,9 @@ export const lang = {
     halfYear: {},
     year: {}
   },
+  todoPanel: {
+    projectList: '项目列表'
+  },
   project: {
     projectName: '项目名称',
     important: '重要程度',

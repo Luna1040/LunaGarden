@@ -95,7 +95,7 @@ export default {
           id: 1,
           title: 'TodoPanel',
           icon: 'icon-LunaTodoPanel',
-          link: '/Home'
+          link: '/TodoPanel'
         },
         {
           id: 2,

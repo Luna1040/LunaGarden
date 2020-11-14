@@ -214,6 +214,9 @@ export const lang = {
     halfYear: {},
     year: {}
   },
+  todoPanel: {
+    projectList: 'Project List'
+  },
   project: {
     projectName: 'Project Name',
     important: 'Importance',
