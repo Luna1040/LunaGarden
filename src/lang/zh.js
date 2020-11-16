@@ -30,7 +30,8 @@ export const lang = {
     Report: '汇报中心',
     mReport: '汇报中心',
     Legend: '花神传说',
-    mLegend: '花神传说'
+    mLegend: '花神传说',
+    discuss: '评论组件'
   },
   getUserInfo: {
     alert1: '您的身份已过期，请重新登录！',

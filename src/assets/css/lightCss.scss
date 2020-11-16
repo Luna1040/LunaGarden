@@ -1,0 +1,26 @@
+$PrimaryText: #4a4a4a;
+$SecondaryText: #7b7b7b;
+$Ex-secondaryText: #b4b4b4;
+$NormalBackground: #ffffff;
+$DividerDarkColor: #efefef;
+$LightDark: #e9e9e9;
+$MaskOpacity: rgba(0, 0, 0, 0.5);
+$Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+$AroundShadow: 0 0 6px rgba(0, 0, 0, 0.3);
+$HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+$SideShadow: 4px 0 8px 0 rgba(0, 0, 0, 0.35);
+@mixin PrimaryGradients {
+  background: linear-gradient(#f3aac4, #eb7290);
+}
+@mixin WarningGradients {
+  background: linear-gradient(#fde7a7, #fecb37);
+}
+@mixin SuccessGradients {
+  background: linear-gradient(#89e1b3, #10d56e);
+}
+@mixin AlertGradients {
+  background: linear-gradient(#b390ff, #7636ff);
+}
+@mixin ErrorGradients {
+  background: linear-gradient(#ff938d, #ff483d);
+}

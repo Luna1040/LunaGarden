@@ -1,17 +1,22 @@
 module.exports = {
   lintOnSave: false,
   publicPath: './',
+  configureWebpack: {
+    watch: true
+  },
   devServer: {
     disableHostCheck: true,
-    proxy: {
-      '/api': {
-        target: 'http://192.168.31.180:3000/api', // 服务器
+    port: 7230,
+    // proxy: {
+    //   '/api': {
+        // target: 'http://192.168.31.180:3000/api', // 服务器
         // target: 'http://10.18.190.188:3000/api/',
-        pathRewrite: {
-          '^/api': ''
-        },
-        changeOrigin: true
-      }
-    }
+        // target: 'https://lunagarden.net/api/',
+        // pathRewrite: {
+        //   '^/api': ''
+        // },
+        // changeOrigin: true
+      // }
+    // }
   }
 };
