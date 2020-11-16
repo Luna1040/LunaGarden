@@ -139,7 +139,32 @@ a {
 }
 
 .LightTheme {
-  @import './lightCss.scss';
+  $PrimaryText: #4a4a4a;
+  $SecondaryText: #7b7b7b;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #ffffff;
+  $DividerDarkColor: #efefef;
+  $LightDark: #e9e9e9;
+  $MaskOpacity: rgba(0, 0, 0, 0.5);
+  $Shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  $AroundShadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  $HoverShadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  $SideShadow: 4px 0 8px 0 rgba(0, 0, 0, 0.35);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#f3aac4, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#fde7a7, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#89e1b3, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#b390ff, #7636ff);
+  }
+  @mixin ErrorGradients {
+    background: linear-gradient(#ff938d, #ff483d);
+  }
   .lunaGardenLoading {
     background-color: $MaskOpacity;
   }
@@ -237,94 +262,120 @@ a {
 }
 
 .DarkTheme {
-  @import './darkCss.scss';
-}
-.lunaGardenLoading {
-  background-color: $MaskOpacity;
-}
-
-.header {
-  box-shadow: $Shadow;
-
-  * {
-    color: $PrimaryText;
+  $PrimaryText: #f3f3f3;
+  $SecondaryText: #cccccc;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #010101;
+  $DividerDarkColor: #252525;
+  $LightDark: #3f3f3f;
+  $MaskOpacity: rgba(255, 255, 255, 0.5);
+  $Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+  $AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  $HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+  $SideShadow: 4px 0 8px 0 rgba(255, 255, 255, 0.35);
+  @mixin PrimaryGradients {
+    background: linear-gradient(#835868, #eb7290);
+  }
+  @mixin WarningGradients {
+    background: linear-gradient(#978b67, #fecb37);
+  }
+  @mixin SuccessGradients {
+    background: linear-gradient(#3c835e, #10d56e);
+  }
+  @mixin AlertGradients {
+    background: linear-gradient(#4e3781, #7636ff);
+  }
+  @mixin ErrorGradients {
+    background: linear-gradient(#744542, #ff483d);
   }
 
-  .userIcon {
+  .lunaGardenLoading {
+    background-color: $MaskOpacity;
+  }
+
+  .header {
     box-shadow: $Shadow;
-  }
 
-  .guide {
-    .btnGroup {
-      box-shadow: $AroundShadow;
-    }
-  }
-
-  .menuGroup {
-    .menuItem {
-      transition: all 0.35s;
-      box-shadow: $AroundShadow;
-    }
-  }
-}
-
-.home {
-  background-color: $NormalBackground;
-
-  .fluidButton {
-    box-shadow: $AroundShadow;
-  }
-
-  .homeSideBar {
-    h1 {
+    * {
       color: $PrimaryText;
     }
 
-    ul {
-      .activeBar {
-        background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
-      }
+    .userIcon {
+      box-shadow: $Shadow;
+    }
 
-      li {
-        color: $PrimaryText;
+    .guide {
+      .btnGroup {
+        box-shadow: $AroundShadow;
+      }
+    }
+
+    .menuGroup {
+      .menuItem {
+        transition: all 0.35s;
+        box-shadow: $AroundShadow;
       }
     }
   }
 
-  .homeMainView {
-    h1 {
-      color: $PrimaryText;
-      border-bottom: 1px solid $MaskOpacity;
+  .home {
+    background-color: $NormalBackground;
+
+    .fluidButton {
+      box-shadow: $AroundShadow;
     }
 
-    > p {
-      color: $PrimaryText;
-    }
-
-    ul {
-      li {
+    .homeSideBar {
+      h1 {
         color: $PrimaryText;
-        border-bottom: 1px solid $LightDark;
+      }
 
-        > div {
+      ul {
+        .activeBar {
+          background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+        }
+
+        li {
+          color: $PrimaryText;
+        }
+      }
+    }
+
+    .homeMainView {
+      h1 {
+        color: $PrimaryText;
+        border-bottom: 1px solid $MaskOpacity;
+      }
+
+      > p {
+        color: $PrimaryText;
+      }
+
+      ul {
+        li {
+          color: $PrimaryText;
+          border-bottom: 1px solid $LightDark;
+
           > div {
             > div {
-              background: $MaskOpacity;
+              > div {
+                background: $MaskOpacity;
 
-              > span.errorPro {
-                background: linear-gradient(135deg, #744542 0%, #ff483d 100%);
-              }
+                > span.errorPro {
+                  background: linear-gradient(135deg, #744542 0%, #ff483d 100%);
+                }
 
-              > span.warningPro {
-                background: linear-gradient(135deg, #978b67 0%, #fecb37 100%);
-              }
+                > span.warningPro {
+                  background: linear-gradient(135deg, #978b67 0%, #fecb37 100%);
+                }
 
-              > span.primaryPro {
-                background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
-              }
+                > span.primaryPro {
+                  background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+                }
 
-              > span.successPro {
-                background: linear-gradient(135deg, #3c835e 0%, #10d56e 100%);
+                > span.successPro {
+                  background: linear-gradient(135deg, #3c835e 0%, #10d56e 100%);
+                }
               }
             }
           }
