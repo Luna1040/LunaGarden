@@ -1,4 +1,6 @@
 @import 'lunaCol';
+@import 'LunaAnimates';
+
 $BackgroundText: #ffffff;
 $FocusText: #d84f71;
 $WarningText: #dca400;
@@ -35,21 +37,28 @@ $WHITE-OPACITY: #ffffff50;
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
 }
+
 @mixin StarSky {
   background: linear-gradient(to bottom right, #7891fc, #6ec9e9, #ff7398);
 }
+
 @mixin ElegantNight {
   background: linear-gradient(to bottom right, #002180, #1d5fc9, #001e9e);
 }
+
 @mixin MagicTrick {
   background: linear-gradient(to bottom right, #ef65b0, #aa24cb, #4f4cc4, #00fffc);
 }
+
+//
 // Public Color Config
-@mixin colorConfig{
+//
+@mixin colorConfig {
   .lunaModal {
     .modalMask {
       background: $MaskOpacity;
     }
+
     .modalContainer {
       background-color: $NormalBackground;
     }
@@ -57,6 +66,7 @@ $WHITE-OPACITY: #ffffff50;
   .lunaInput {
     background-color: $NormalBackground;
     color: $PrimaryText;
+
     span {
       color: $PrimaryText;
     }
@@ -81,12 +91,14 @@ $WHITE-OPACITY: #ffffff50;
   .lunaCard {
     background-color: $NormalBackground;
     color: $PrimaryText;
+
     .lunaCardTitle {
       border-bottom: 1px solid $LightDark;
     }
   }
   .lunaTable {
     box-shadow: $Shadow;
+
     .lunaLoading {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -112,15 +124,18 @@ $WHITE-OPACITY: #ffffff50;
         box-shadow: 0 1px 0 $DividerDarkColor;
       }
     }
+
     .currentRow {
       color: $WHITE;
     }
   }
   .lunaPage {
     background-color: $LightDark;
+
     span {
       color: $WHITE;
     }
+
     .lunaPageCell {
       color: $PrimaryText;
     }
@@ -151,10 +166,12 @@ $WHITE-OPACITY: #ffffff50;
       background-color: $NormalBackground;
       box-shadow: $AroundShadow;
     }
+
     .lunaOption {
       color: $PrimaryText;
       border-bottom: 1px solid $LightDark;
     }
+
     .lunaOption.optionActive {
       color: $WHITE;
     }
@@ -230,43 +247,57 @@ $WHITE-OPACITY: #ffffff50;
   }
   .lunaDatePickerPanel {
     box-shadow: $AroundShadow;
+
     .lunaDatePickerPanelYear {
       .lunaYearCell:hover {
         color: $PrimaryText;
       }
+
       .lunaYearCell.lunaActiveYear {
         color: $PrimaryText;
       }
     }
+
     .lunaDatePickerPanelMonth {
       .lunaMonthCell:hover {
         color: $PrimaryText;
       }
+
       .lunaMonthCell.lunaActiveMonth {
         color: $PrimaryText;
       }
     }
+
     .lunaDatePickerPanelDayList {
       .lunaDayCellOtherMonth:hover {
         color: $PrimaryText;
       }
+
       .lunaDayCellOtherMonth {
         color: $Ex-secondaryText;
       }
     }
+
     .lunaDatePickerPanelWeekList {
       background-color: $LightDark;
     }
   }
 }
+
+//
+//Light & Dark Theme
+//
 .LightTheme {
   @import './LunaUI-LightColor';
   @include colorConfig();
 }
+
 .DarkTheme {
   @import './LunaUI-DarkColor';
   @include colorConfig();
 }
+
+// Css Reset
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -597,33 +628,41 @@ $WHITE-OPACITY: #ffffff50;
   color: $WHITE;
   border-color: $Error;
 }
+
 .lunaButton.errorButton:hover {
   background-color: $ErrorHover;
 }
+
 .lunaButton.successButton {
   background-color: $Success;
   color: $WHITE;
   border-color: $Success;
 }
+
 .lunaButton.successButton:hover {
   background-color: $SuccessHover;
 }
+
 .lunaButton.warningButton {
   background-color: $Warning;
   color: $WHITE;
   border-color: $Warning;
 }
+
 .lunaButton.warningButton:hover {
   background-color: $WarningHover;
 }
+
 .lunaButton.alertButton {
   background-color: $Alert;
   color: $WHITE;
   border-color: $Alert;
 }
+
 .lunaButton.alertButton:hover {
   background-color: $AlertHover;
 }
+
 .lunaButton.textButton {
   background-color: transparent !important;
   border: 1px solid transparent !important;
@@ -1010,6 +1049,7 @@ $WHITE-OPACITY: #ffffff50;
     font-size: 12px;
     left: 16px;
   }
+
   .lunaPageCell:hover {
     background-color: $PrimaryHover !important;
   }
@@ -1070,6 +1110,7 @@ $WHITE-OPACITY: #ffffff50;
       border-bottom: 0;
     }
   }
+
   .lunaOption:hover {
     background-color: $PrimaryHover;
   }
@@ -1090,7 +1131,8 @@ $WHITE-OPACITY: #ffffff50;
     position: relative;
     transition: all 0.35s;
     overflow: visible;
-    .errorText{
+
+    .errorText {
       color: $Error;
     }
 
@@ -1517,6 +1559,7 @@ $WHITE-OPACITY: #ffffff50;
     }
   }
 }
+
 .lunaSwitchGroup {
   .lunaSwitchItem {
     margin-bottom: 16px;
@@ -1538,12 +1581,14 @@ $WHITE-OPACITY: #ffffff50;
     justify-content: space-around;
     height: 32px;
     padding: 0 8px;
+
     .dateItemGroup {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 120px;
     }
+
     .cgItemBtn,
     i {
       cursor: pointer;
@@ -1580,8 +1625,10 @@ $WHITE-OPACITY: #ffffff50;
     margin-top: 4px;
     position: relative;
     overflow: hidden;
+
     .lunaDatePickerPanelYear {
       width: 100%;
+
       .lunaYearCell {
         text-align: center;
         height: 31.2px;
@@ -1589,9 +1636,11 @@ $WHITE-OPACITY: #ffffff50;
         cursor: pointer;
         transition: all 0.25s;
       }
+
       .lunaYearCell:hover {
         background-color: $PrimaryOpacity;
       }
+
       .lunaYearCell.lunaActiveYear {
         background-color: $PrimaryOpacity;
         box-shadow: 0 0 2px $Primary;
@@ -1606,6 +1655,7 @@ $WHITE-OPACITY: #ffffff50;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+
       .lunaMonthCell {
         width: 32px;
         height: 32px;
@@ -1616,9 +1666,11 @@ $WHITE-OPACITY: #ffffff50;
         transition: all 0.25s;
         border-radius: 5px;
       }
+
       .lunaMonthCell:hover {
         background-color: $PrimaryOpacity;
       }
+
       .lunaMonthCell.lunaActiveMonth {
         background-color: $PrimaryOpacity;
         box-shadow: 0 0 2px $Primary;
@@ -1627,9 +1679,11 @@ $WHITE-OPACITY: #ffffff50;
 
     .lunaDatePickerPanelDay {
       width: 100%;
+
       .lunaDayRangeActive {
         background-color: $PrimaryOpacity;
       }
+
       .lunaDayCell,
       .lunaWeekCell,
       .lunaDayCellOtherMonth {
@@ -1643,6 +1697,7 @@ $WHITE-OPACITY: #ffffff50;
         cursor: pointer;
         position: relative;
       }
+
       .todayDot {
         position: absolute;
         top: 0;
@@ -1659,11 +1714,13 @@ $WHITE-OPACITY: #ffffff50;
         flex-wrap: wrap;
         padding: 6px;
       }
+
       .lunaDayCell.lunaActiveDay {
         background-color: $Primary;
         color: $WHITE;
         box-shadow: 0 0 2px $Primary;
       }
+
       .lunaDayCell:hover {
         background-color: $PrimaryHover;
         color: $WHITE;
@@ -1672,6 +1729,7 @@ $WHITE-OPACITY: #ffffff50;
       .lunaDatePickerPanelWeekList {
         display: flex;
         padding: 0 6px;
+
         .lunaWeekCell {
           color: darkgray;
         }
@@ -1681,18 +1739,22 @@ $WHITE-OPACITY: #ffffff50;
 
   .lunaDatePickerPanel.rangeContainer {
     width: 400px;
+
     .rangeBody {
       display: flex;
+
       .startDate,
       .endDate {
         width: 200px;
         display: flex;
+
         .lunaDatePickerPanelYear {
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
         }
+
         .lunaDatePickerPanelMonth {
           height: 100%;
         }
@@ -1718,6 +1780,7 @@ $WHITE-OPACITY: #ffffff50;
 .scrollable {
   overflow: auto;
 }
+
 .LunaRipple {
   position: absolute;
   border-radius: 100%;
