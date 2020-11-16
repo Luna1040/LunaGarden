@@ -4,11 +4,11 @@ $Ex-secondaryText: #b4b4b4;
 $NormalBackground: #010101;
 $DividerDarkColor: #252525;
 $LightDark: #3f3f3f;
-$MaskOpacity: transparentize(#FFFFFF, 0.5);
-$Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
-$AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
-$HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
-$SideShadow: 4px 0 8px 0 transparentize(#FFFFFF, 0.35);
+$MaskOpacity: #ffffff50;
+$reverseColor: #FFFFFF;
+$Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+$AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
+$HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
 @mixin PrimaryGradients {
   background: linear-gradient(#835868, #eb7290);
 }
@@ -21,9 +21,6 @@ $SideShadow: 4px 0 8px 0 transparentize(#FFFFFF, 0.35);
 @mixin AlertGradients {
   background: linear-gradient(#4e3781, #7636ff);
 }
-@mixin ErrorGradients {
+@mixin PrimaryGradients {
   background: linear-gradient(#744542, #ff483d);
-}
-@mixin ActiveBarBackgroundColor{
-  background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
 }
