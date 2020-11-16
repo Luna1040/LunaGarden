@@ -37,9 +37,11 @@ $WHITE-OPACITY: Opacity($WHITE);
 @function Opacity($e) {
   @return transparentize($e, 0.65)
 }
+
 @function OpacityLighter($e) {
   @return transparentize($e, 0.25)
 }
+
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
 }
@@ -60,6 +62,9 @@ $WHITE-OPACITY: Opacity($WHITE);
 // Public Color Config
 //
 @mixin colorConfig {
+  .lunaLoading {
+    background-color: $MaskOpacity;
+  }
   .lunaModal {
     .modalMask {
       background: $MaskOpacity;
@@ -104,10 +109,6 @@ $WHITE-OPACITY: Opacity($WHITE);
   }
   .lunaTable {
     box-shadow: $Shadow;
-
-    .lunaLoading {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
   }
   .lunaTable:hover {
     box-shadow: $HoverShadow;
@@ -847,75 +848,6 @@ $WHITE-OPACITY: Opacity($WHITE);
   position: relative;
   transition: all 0.5s;
   overflow: hidden;
-
-  .lunaLoading {
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    font-size: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-
-    .face {
-      position: absolute;
-      border-radius: 50%;
-      border-style: solid;
-      animation: animate 3s ease-in-out infinite;
-      overflow: visible;
-
-      .circle {
-        position: absolute;
-        width: 50%;
-        height: 0.1em;
-        top: 50%;
-        left: 50%;
-        background-color: transparent;
-        transform: rotate(var(--deg));
-        transform-origin: left;
-        overflow: visible;
-      }
-
-      .circle::before {
-        position: absolute;
-        top: -10px;
-        right: -15px;
-        content: '';
-        width: 10px;
-        height: 10px;
-        background-color: currentColor;
-        border-radius: 50%;
-        box-shadow: 0 0 30px #fff;
-        overflow: visible;
-      }
-    }
-
-    .face:nth-child(1) {
-      width: 40px;
-      height: 40px;
-      color: $WHITE;
-      border-color: currentColor transparent transparent currentColor;
-      border-width: 6px 6px 0 0;
-      --deg: -45deg;
-      animation-direction: normal;
-      overflow: visible;
-    }
-
-    .face:nth-child(2) {
-      width: 60px;
-      height: 60px;
-      color: $Primary;
-      border-color: currentColor currentColor transparent transparent;
-      border-width: 6px 0 0 6px;
-      --deg: -135deg;
-      animation-direction: reverse;
-      overflow: visible;
-    }
-  }
 
   thead {
     > tr {
@@ -1808,4 +1740,73 @@ $WHITE-OPACITY: Opacity($WHITE);
   -ms-transform: scale(2);
   transform: scale(2);
   transition: opacity 1.5s ease-out, transform 1s ease-out;
+}
+
+.lunaLoading {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+
+  .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate 3s ease-in-out infinite;
+    overflow: visible;
+
+    .circle {
+      position: absolute;
+      width: 50%;
+      height: 0.1em;
+      top: 50%;
+      left: 50%;
+      background-color: transparent;
+      transform: rotate(var(--deg));
+      transform-origin: left;
+      overflow: visible;
+    }
+
+    .circle::before {
+      position: absolute;
+      top: -10px;
+      right: -15px;
+      content: '';
+      width: 10px;
+      height: 10px;
+      background-color: currentColor;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #fff;
+      overflow: visible;
+    }
+  }
+
+  .face:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    color: $WHITE;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 6px 6px 0 0;
+    --deg: -45deg;
+    animation-direction: normal;
+    overflow: visible;
+  }
+
+  .face:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    color: $Primary;
+    border-color: currentColor currentColor transparent transparent;
+    border-width: 6px 0 0 6px;
+    --deg: -135deg;
+    animation-direction: reverse;
+    overflow: visible;
+  }
 }

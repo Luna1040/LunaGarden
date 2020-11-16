@@ -1,5 +1,5 @@
 <template>
-  <div v-if="value" class="lunaGardenLoading">
+  <div v-if="value" class="lunaLoading lunaGardenLoading">
     <div class="face" />
     <div class="face" />
   </div>
