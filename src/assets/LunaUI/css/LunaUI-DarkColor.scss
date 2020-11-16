@@ -4,7 +4,7 @@ $Ex-secondaryText: #b4b4b4;
 $NormalBackground: #010101;
 $DividerDarkColor: #252525;
 $LightDark: #3f3f3f;
-$MaskOpacity: #ffffff50;
+$MaskOpacity: transparentize(#FFFFFF, 0.5);
 $reverseColor: #FFFFFF;
 $Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
 $AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
