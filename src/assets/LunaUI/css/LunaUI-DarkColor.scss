@@ -6,9 +6,9 @@ $DividerDarkColor: #252525;
 $LightDark: #3f3f3f;
 $MaskOpacity: #ffffff50;
 $reverseColor: #FFFFFF;
-$Shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
-$AroundShadow: 0 0 5px rgba(255, 255, 255, 0.3);
-$HoverShadow: 0 2px 5px rgba(255, 255, 255, 0.4);
+$Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
+$AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
+$HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
 @mixin PrimaryGradients {
   background: linear-gradient(#835868, #eb7290);
 }

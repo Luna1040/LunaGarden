@@ -8,32 +8,38 @@ $SuccessText: #2fae47;
 $AlertText: #9128b4;
 $ErrorText: #bd2c23;
 $Primary: #eb7290;
-$PrimaryOpacity: #eb729065;
-$PrimaryOpacityLighter: #eb729025;
+$PrimaryOpacity: Opacity($Primary);
+$PrimaryOpacityLighter: OpacityLighter($Primary);
 $PrimaryHover: scale-color($Primary, $lightness: +35%);
 $PrimaryActive: scale-color($Primary, $lightness: -15%);
 $Warning: #fecb37;
-$WarningOpacity: #fecb3765;
-$WarningOpacityLighter: #fecb3725;
+$WarningOpacity: Opacity($Warning);
+$WarningOpacityLighter: OpacityLighter($Warning);
 $WarningHover: scale-color($Warning, $lightness: +35%);
 $WarningActive: scale-color($Warning, $lightness: -15%);
 $Success: #10d56e;
-$SuccessOpacity: #10d56e65;
-$SuccessOpacityLighter: #10d56e25;
+$SuccessOpacity: Opacity($Success);
+$SuccessOpacityLighter: OpacityLighter($Success);
 $SuccessHover: scale-color($Success, $lightness: +35%);
 $SuccessActive: scale-color($Success, $lightness: -15%);
 $Alert: #7636ff;
-$AlertOpacity: #7636ff65;
-$AlertOpacityLight: #7636ff25;
+$AlertOpacity: Opacity($Alert);
+$AlertOpacityLighter: OpacityLighter($Alert);
 $AlertHover: scale-color($Alert, $lightness: +35%);
 $AlertActive: scale-color($Alert, $lightness: -15%);
 $Error: #ff483d;
-$ErrorOpacity: #ff483d65;
-$ErrorOpacityLighter: #ff483d25;
+$ErrorOpacity: Opacity($Error);
+$ErrorOpacityLighter: OpacityLighter($Error);
 $ErrorHover: scale-color($Error, $lightness: +35%);
 $ErrorActive: scale-color($Error, $lightness: -15%);
 $WHITE: #ffffff;
-$WHITE-OPACITY: #ffffff50;
+$WHITE-OPACITY: Opacity($WHITE);
+@function Opacity($e) {
+  @return transparentize($e, 0.65)
+}
+@function OpacityLighter($e) {
+  @return transparentize($e, 0.25)
+}
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
 }
