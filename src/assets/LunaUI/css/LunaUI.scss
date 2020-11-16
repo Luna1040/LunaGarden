@@ -592,6 +592,13 @@ $WHITE-OPACITY: Opacity($WHITE);
     cursor: no-drop !important;
   }
 }
+@each $type, $color in (primary, $Primary), (warning, $Warning), (success, $Success), (error, $Error), (alert, $Alert){
+  .lunaButton.#{type}Button{
+    background-color: $color;
+    border-color: $color;
+    color: $WHITE;
+  }
+}
 
 .lunaButton {
   min-width: 64px;
