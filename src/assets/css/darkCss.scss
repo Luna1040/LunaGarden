@@ -24,3 +24,6 @@ $SideShadow: 4px 0 8px 0 rgba(255, 255, 255, 0.35);
 @mixin ErrorGradients {
   background: linear-gradient(#744542, #ff483d);
 }
+@mixin ActiveBarBackgroundColor{
+  background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+}
