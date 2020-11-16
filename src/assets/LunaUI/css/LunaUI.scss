@@ -1300,6 +1300,21 @@ $WHITE-OPACITY: Opacity($WHITE);
   }
 }
 
+@mixin emptyFrame {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #dcdee2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all ease-in 0.15s;
+  flex-shrink: 0;
+  margin-right: 4px;
+  box-shadow: 0 0 2px transparent;
+  position: relative;
+}
+
 .lunaCheckbox {
   align-items: center;
   cursor: pointer;
@@ -1307,18 +1322,7 @@ $WHITE-OPACITY: Opacity($WHITE);
   display: inline-flex;
 
   .emptyCheckbox {
-    width: 16px;
-    height: 16px;
-    border: 1px solid #dcdee2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: all ease-in 0.15s;
-    flex-shrink: 0;
-    margin-right: 4px;
-    box-shadow: 0 0 2px transparent;
-    position: relative;
+    @include emptyFrame();
 
     i {
       width: 100%;
@@ -1366,18 +1370,7 @@ $WHITE-OPACITY: Opacity($WHITE);
   display: inline-flex;
 
   .emptyRadio {
-    width: 16px;
-    height: 16px;
-    border: 1px solid #dcdee2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: all ease-in 0.15s;
-    flex-shrink: 0;
-    margin-right: 4px;
-    box-shadow: 0 0 2px transparent;
-    position: relative;
+    @include emptyFrame();
 
     .radioDot {
       width: 70%;
