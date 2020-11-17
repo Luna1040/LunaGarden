@@ -236,5 +236,13 @@ export const lang = {
       Guide4: 'Customization footer SLOT, the default emit methods are on-ok and on-cancel, or anyone you want',
       Confirm: 'Got It'
     },
+    GuideMessage: {
+      Guide1: '您可以在js区域书写this.$Message.info()触发一个消息提醒',
+      Guide2: 'info也可以改为error warning success primary alert来切换不同的主题',
+      Guide3: '通过向括号内传递一个选项对象来更改文本、图标等内容，或者控制显示时间',
+      Guide4: 'content属性可以改变文本',
+      Guide5: 'icon属性用以书写一个字体图标或图片',
+      Guide6: 'duration属性传入一个数字，以改变显示时长'
+    }
   }
 }

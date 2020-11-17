@@ -1,12 +1,12 @@
 <template>
   <div class="lunaUIViewer Container">
-    <div class="controlPanel">
-      <Button :theme="theme" @click="showModal">显示弹窗</Button>
-      <Button :theme="theme" @click="showMessage">显示通知</Button>
-      <Button :theme="theme" @click="cgTheme">切换模式</Button>
-      <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>
-      <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>
-    </div>
+<!--    <div class="controlPanel">-->
+<!--      <Button :theme="theme" @click="showModal">显示弹窗</Button>-->
+<!--      <Button :theme="theme" @click="showMessage">显示通知</Button>-->
+<!--      <Button :theme="theme" @click="cgTheme">切换模式</Button>-->
+<!--      <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>-->
+<!--      <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>-->
+<!--    </div>-->
     <ButtonGroup :btn-group="controlButtonsData" :theme="theme" @showModal="showModal" @showMessage="showMessage" @cgTheme="cgTheme" @setLang="setLang" @logLang="logLang"></ButtonGroup>
     <Container :theme="theme" :flex="false">
       <p>Luna Container</p>
@@ -467,36 +467,36 @@ export default {
     },
     showMessage() {
       this.$Message.info({
-        content: 'Info Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide1'),
         icon: 'iconfont icon-search1',
         duration: 3
       })
       this.$Message.error({
-        content: 'Error Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide2'),
         icon: 'iconfont icon-search1',
         theme: 'light',
         duration: 3
       })
       this.$Message.warning({
-        content: 'Warning Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide3'),
         icon: 'iconfont icon-search1',
         theme: 'light',
         duration: 3
       })
       this.$Message.success({
-        content: 'Success Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide4'),
         icon: 'iconfont icon-search1',
         theme: 'light',
         duration: 3
       })
       this.$Message.primary({
-        content: 'Primary Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide5'),
         icon: 'iconfont icon-search1',
         theme: 'light',
         duration: 3
       })
       this.$Message.alert({
-        content: 'Alert Message',
+        content: this.$t('lang.LunaUI.GuideMessage.Guide6'),
         icon: 'iconfont icon-search1',
         theme: 'light',
         duration: 3
