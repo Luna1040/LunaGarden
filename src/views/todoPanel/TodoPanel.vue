@@ -14,7 +14,6 @@
       </button>
     </transition>
     <div class="homeSideBar">
-      <Button theme="primary" type="ghost">111</Button>
       <h1>{{ $t('lang.todoPanel.projectList') }}<i class="iconfont icon-lianjieshangchuan"></i></h1>
       <div class="searchProject">
         <Select v-model="searchText" :select-data="projectList" :placeholder="$t('lang.todoPanel.input')" filterable

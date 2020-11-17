@@ -4,11 +4,11 @@ $Ex-secondaryText: #b4b4b4;
 $NormalBackground: #010101;
 $DividerDarkColor: #252525;
 $LightDark: #3f3f3f;
-$MaskOpacity: transparentize(#FFFFFF, 0.5);
 $reverseColor: #FFFFFF;
-$Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
-$AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
-$HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
+$MaskOpacity: transparentize($reverseColor, 0.5);
+$Shadow: 0 3px 3px transparentize($reverseColor, 0.7);
+$AroundShadow: 0 0 5px transparentize($reverseColor, 0.7);
+$HoverShadow: 0 2px 5px transparentize($reverseColor, 0.6);
 @mixin PrimaryGradients {
   background: linear-gradient(#835868, #eb7290);
 }

@@ -1,6 +1,14 @@
 @import 'lunaCol';
 @import 'LunaAnimates';
 
+@function Opacity($e) {
+  @return transparentize($e, 0.45);
+}
+
+@function OpacityLighter($e) {
+  @return transparentize($e, 0.75);
+}
+
 $BackgroundText: #ffffff;
 $FocusText: #d84f71;
 $WarningText: #dca400;
@@ -34,13 +42,6 @@ $ErrorHover: scale-color($Error, $lightness: +35%);
 $ErrorActive: scale-color($Error, $lightness: -15%);
 $WHITE: #ffffff;
 $WHITE-OPACITY: Opacity($WHITE);
-@function Opacity($e) {
-  @return transparentize($e, 0.65);
-}
-
-@function OpacityLighter($e) {
-  @return transparentize($e, 0.25);
-}
 
 @mixin ModernColor {
   background: linear-gradient(to bottom right, #ffa290 20%, #ffbd7d 58%, #ff7398 100%);
