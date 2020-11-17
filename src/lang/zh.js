@@ -221,5 +221,20 @@ export const lang = {
     projectName: '项目名称',
     important: '重要程度',
     alert1: '项目名称不能为空',
+  },
+  LunaUI: {
+    showModal: '显示弹窗',
+    showMessage: '显示消息',
+    cgTheme: '改变主题',
+    logLang: '显示当前的语言包',
+    setLang: '切换语言包',
+    GuideModal: {
+      GuideModal: '弹窗说明',
+      Guide1: '您可以在页面上利用<Modal>标签配合v-model属性来制作一个弹窗',
+      Guide2: '弹窗包含三个插槽，header default footer',
+      Guide3: '利用title属性或header插槽来改变弹窗顶部的内容或样式',
+      Guide4: '可客制化的footer插槽，默认返回的事件为on-ok与on-cancel，或任何您自定义的事件',
+      Confirm: '明白'
+    },
   }
 }

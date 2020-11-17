@@ -1,91 +1,51 @@
 <template>
-  <div class="lunaUIPage">
-    <Header
-      :msg-header="$t('lang.titles.about')"
-      user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg"
-      user-name="Luna Lovegood"
-      is-viper="true"
-      user-language="English"
-    ></Header>
-    <div class="lunaUI">
-      <div class="controlPanel">
-        <Button :theme="theme" @click="dark = !dark">显示弹窗</Button>
-        <Button :theme="theme" @click="showMessage">显示通知</Button>
-        <Button :theme="theme" @click="cgTheme">切换模式</Button>
-        <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>
-        <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>
-        <Button :theme="theme" @click="reloadLang"
-        >重新获取语言(Luna18n)</Button
-        >
-      </div>
-      <Container :theme="theme" :flex="false">
-        <p>Luna Container</p>
-        <Tree
-          :data="tree"
-          :width="300"
-          title="Luna Tr222ee"
-          @onSelect="selectTree"
-        ></Tree>
-        <List>
-          <ListItem
-            v-for="(i, index) in listData"
-            :key="index"
-            :img="i.img"
-            :title="i.userName"
-            :label="i.discribe"
-          ></ListItem>
-        </List>
-        <Form
-          ref="form"
-          :form="form"
-          :theme="theme"
-          :width="240"
-          label-position="top"
-        ></Form>
-        <Button theme="primary" @click="submit">提交</Button>
-        <Button @click="submit">重置</Button>
-        <Card :theme="theme" :width="200" :height="200" title="Luna Card">
-          <p>LUNA CARD</p>
-        </Card>
-        <Table
-          :data="tableData"
-          :columns="columns"
-          border
-          :loading="loading"
-          header-fixed
-          :shadow="true"
-          :width="100"
-          :theme="theme"
-        ></Table>
-        <Page :limit="page" elevator counter :theme="theme"></Page>
-        <Select
-          v-model="selectValue"
-          :select-data="selectData"
-          key-value="id"
-          key-label="name"
-          :filterable="true"
-          corner="large"
-          :theme="theme"
-        ></Select>
-        <Input v-model="selectValue" :theme="theme"></Input>
-        <Modal v-model="dark" title="NIGHT MODE" :theme="theme" type="primary">
-          <p>弹窗</p>
-        </Modal>
-      </Container>
+  <div class="lunaUIViewer Container">
+    <div class="controlPanel">
+      <Button :theme="theme" @click="showModal">显示弹窗</Button>
+      <Button :theme="theme" @click="showMessage">显示通知</Button>
+      <Button :theme="theme" @click="cgTheme">切换模式</Button>
+      <Button :theme="theme" @click="setLang">切换语言(Luna18n)</Button>
+      <Button :theme="theme" @click="logLang">获取当前语言包(Luna18n)</Button>
     </div>
+    <ButtonGroup :btn-group="controlButtonsData" :theme="theme" @showModal="showModal" @showMessage="showMessage" @cgTheme="cgTheme" @setLang="setLang" @logLang="logLang"></ButtonGroup>
+    <Container :theme="theme" :flex="false">
+      <p>Luna Container</p>
+      <Tree :data="tree" :width="300" title="Luna Tr222ee" @onSelect="selectTree"></Tree>
+      <List>
+        <ListItem v-for="(i, index) in listData" :key="index" :img="i.img" :title="i.userName" :label="i.discribe"></ListItem>
+      </List>
+      <Form ref="form" :form="form" :theme="theme" :width="240" label-position="top"></Form>
+      <Button theme="primary" @click="submit">提交</Button>
+      <Button @click="submit">重置</Button>
+      <Card :theme="theme" :width="200" :height="200" title="Luna Card">
+        <p>LUNA CARD</p>
+      </Card>
+      <Table :data="tableData" :columns="columns" border :loading="loading" header-fixed :shadow="true" :width="100" :theme="theme"></Table>
+      <Page :limit="page" elevator counter :theme="theme"></Page>
+      <Select v-model="selectValue" :select-data="selectData" key-value="id" key-label="name" :filterable="true" corner="large" :theme="theme"></Select>
+      <Input v-model="selectValue" :theme="theme"></Input>
+      <Modal v-model="GuideModal" :title="$t('lang.LunaUI.GuideModal.GuideModal')" :theme="theme" type="primary">
+        <p>{{ $t('lang.LunaUI.GuideModal.Guide1') }}</p>
+        <p>{{ $t('lang.LunaUI.GuideModal.Guide2') }}</p>
+        <p>{{ $t('lang.LunaUI.GuideModal.Guide3') }}</p>
+        <p>{{ $t('lang.LunaUI.GuideModal.Guide4') }}</p>
+        <template slot="footer">
+          <Button theme="primary" @click="GuideModal = false">{{ $t('lang.LunaUI.GuideModal.Confirm') }}</Button>
+        </template>
+      </Modal>
+    </Container>
   </div>
 </template>
 
 <script>
-import Header from '../../components/pc/activeHeader'
 import { login } from '../../assets/js/Luna-GetData/url'
 
 export default {
   name: 'lunaUI.vue',
-  data () {
+  data() {
     return {
       loading: false,
-      dark: false,
+      GuideModal: false,
       theme: 'light',
       page: 22,
       selectValue: '',
@@ -106,8 +66,7 @@ export default {
                   expand: true,
                   children: [
                     {
-                      title:
-                        'grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1',
+                      title: 'grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1grandChild 1-1-2-2-2-2-2-1',
                       selected: true
                     },
                     {
@@ -433,10 +392,33 @@ export default {
       ]
     }
   },
-  components: {
-    Header
+  computed: {
+    controlButtonsData() {
+      return [
+        {
+          name: this.$t('lang.LunaUI.showModal'),
+          methods: 'showModal'
+        },
+        {
+          name: this.$t('lang.LunaUI.showMessage'),
+          methods: 'showMessage'
+        },
+        {
+          name: this.$t('lang.LunaUI.cgTheme'),
+          methods: 'cgTheme'
+        },
+        {
+          name: this.$t('lang.LunaUI.logLang'),
+          methods: 'logLang'
+        },
+        {
+          name: this.$t('lang.LunaUI.setLang'),
+          methods: 'setLang'
+        }
+      ]
+    }
   },
-  created () {
+  created() {
     // 弹窗拦截其余弹窗
     // let fileList = [
     //   {
@@ -480,10 +462,10 @@ export default {
     // console.log(frontName)
   },
   methods: {
-    selectTree (value) {
+    selectTree(value) {
       console.log(value)
     },
-    showMessage () {
+    showMessage() {
       this.$Message.info({
         content: 'Info Message',
         icon: 'iconfont icon-search1',
@@ -520,14 +502,14 @@ export default {
         duration: 3
       })
     },
-    cgTheme () {
+    cgTheme() {
       if (this.theme === 'light') {
         this.theme = 'dark'
       } else {
         this.theme = 'light'
       }
     },
-    submit () {
+    submit() {
       if (this.$refs.form.examine(this.createData)) {
         // Error
         this.$Message.error({ content: '请检查填写错误项！' })
@@ -548,18 +530,18 @@ export default {
         // Success
       }
     },
-    logLang () {
-      console.log(this.$lang())
+    logLang() {
+      this.$Message.primary({ content: this.$lang() })
     },
-    setLang () {
+    setLang() {
       if (this.$i18n.locale === 'zh-CN') {
         this.$i18n.locale = 'en-US'
       } else {
         this.$i18n.locale = 'zh-CN'
       }
     },
-    reloadLang () {
-      this.$reloadLang()
+    showModal() {
+      this.GuideModal = !this.GuideModal
     }
   }
 }

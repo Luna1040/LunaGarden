@@ -9,20 +9,21 @@ $Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
 $AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
 $HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
 $SideShadow: 4px 0 8px 0 transparentize(#FFFFFF, 0.35);
-@mixin PrimaryGradients {
-  background: linear-gradient(#835868, #eb7290);
+//$deg: 0,
+@mixin PrimaryGradients($deg) {
+  background: linear-gradient(#{$deg}deg, #835868, #eb7290);
 }
-@mixin WarningGradients {
-  background: linear-gradient(#978b67, #fecb37);
+@mixin WarningGradients($deg) {
+  background: linear-gradient(#{$deg}deg, #978b67, #fecb37);
 }
-@mixin SuccessGradients {
-  background: linear-gradient(#3c835e, #10d56e);
+@mixin SuccessGradients($deg) {
+  background: linear-gradient(#{$deg}deg, #3c835e, #10d56e);
 }
-@mixin AlertGradients {
-  background: linear-gradient(#4e3781, #7636ff);
+@mixin AlertGradients($deg) {
+  background: linear-gradient(#{$deg}deg, #4e3781, #7636ff);
 }
-@mixin ErrorGradients {
-  background: linear-gradient(#744542, #ff483d);
+@mixin ErrorGradients($deg) {
+  background: linear-gradient(#{$deg}deg, #744542, #ff483d);
 }
 @mixin ActiveBarBackgroundColor{
   background: linear-gradient(135deg, #835868 0%, #eb7290 100%);

@@ -131,7 +131,7 @@ export default {
           id: 7,
           title: 'LunaUI',
           icon: 'icon-LunaLunaUI',
-          link: '/Home'
+          link: '/LunaUI'
         },
         {
           id: 8,

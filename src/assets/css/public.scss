@@ -366,10 +366,12 @@ footer {
   .header.collapse {
     height: 88px;
   }
-  .home {
-    display: flex;
+  .container {
     height: 100%;
     overflow: visible;
+  }
+  .home {
+    display: flex;
 
     .fluidButton {
       width: 48px;
@@ -617,6 +619,11 @@ footer {
     height: 100%;
     overflow: auto;
   }
+  .lunaUIViewer {
+    .controlPanel {
+      display: flex;
+    }
+  }
 }
 
 @mixin colorConfig {
@@ -663,7 +670,7 @@ footer {
 
       ul {
         .activeBar {
-          @include ActiveBarBackgroundColor();
+          @include PrimaryGradients(135);
         }
 
         li {
@@ -693,19 +700,22 @@ footer {
                 background: $MaskOpacity;
 
                 > span.errorPro {
-                  background: linear-gradient(135deg, #744542 0%, #ff483d 100%);
+                  @include ErrorGradients(135);
                 }
 
                 > span.warningPro {
-                  background: linear-gradient(135deg, #978b67 0%, #fecb37 100%);
+                  @include WarningGradients(135);
                 }
 
                 > span.primaryPro {
-                  background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+                  @include PrimaryGradients(135);
                 }
 
                 > span.successPro {
-                  background: linear-gradient(135deg, #3c835e 0%, #10d56e 100%);
+                  @include SuccessGradients(135);
+                }
+                > span.alertPro {
+                  @include AlertGradients(135);
                 }
               }
             }

@@ -221,5 +221,20 @@ export const lang = {
     projectName: 'Project Name',
     important: 'Importance',
     alert1: 'The Project Name cannot be empty',
+  },
+  LunaUI: {
+    showModal: 'Show Modal',
+    showMessage: 'Show Message',
+    cgTheme: 'Change Theme',
+    logLang: 'Show Current Language Pack',
+    setLang: 'Change Language Pack',
+    GuideModal: {
+      GuideModal: 'Modal Guide',
+      Guide1: 'You can use the <Modal> tag with v-model attr to make a modal',
+      Guide2: 'There is three SLOT in it. header default footer',
+      Guide3: 'Use the title attr or header SLOT to change the content or style at the top of modal',
+      Guide4: 'Customization footer SLOT, the default emit methods are on-ok and on-cancel, or anyone you want',
+      Confirm: 'Got It'
+    },
   }
 }

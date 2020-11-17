@@ -21,6 +21,6 @@ $HoverShadow: 0 2px 5px transparentize($reverseColor, 0.6);
 @mixin AlertGradients {
   background: linear-gradient(#4e3781, #7636ff);
 }
-@mixin PrimaryGradients {
+@mixin ErrorGradients {
   background: linear-gradient(#744542, #ff483d);
 }

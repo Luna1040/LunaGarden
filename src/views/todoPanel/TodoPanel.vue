@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <transition name="maskAnimation">
       <Loading v-model="listLoading"></Loading>
     </transition>
