@@ -35,11 +35,11 @@ $ErrorActive: scale-color($Error, $lightness: -15%);
 $WHITE: #ffffff;
 $WHITE-OPACITY: Opacity($WHITE);
 @function Opacity($e) {
-  @return transparentize($e, 0.65)
+  @return transparentize($e, 0.65);
 }
 
 @function OpacityLighter($e) {
-  @return transparentize($e, 0.25)
+  @return transparentize($e, 0.25);
 }
 
 @mixin ModernColor {
@@ -592,13 +592,6 @@ $WHITE-OPACITY: Opacity($WHITE);
     cursor: no-drop !important;
   }
 }
-@each $type, $color in (primary, $Primary), (warning, $Warning), (success, $Success), (error, $Error), (alert, $Alert){
-  .lunaButton.#{type}Button{
-    background-color: $color;
-    border-color: $color;
-    color: $WHITE;
-  }
-}
 
 .lunaButton {
   min-width: 64px;
@@ -620,6 +613,11 @@ $WHITE-OPACITY: Opacity($WHITE);
     height: 18px;
     flex-shrink: 0;
   }
+
+  .lunaBadge {
+    right: 0;
+    top: 0;
+  }
 }
 
 .lunaButton:disabled {
@@ -627,54 +625,16 @@ $WHITE-OPACITY: Opacity($WHITE);
   cursor: no-drop !important;
 }
 
-.lunaButton.primaryButton {
-  background-color: $Primary;
-  color: $WHITE;
-  border-color: $Primary;
-}
+@each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
+  .lunaButton.#{$type}Button {
+    background-color: $color;
+    border-color: $color;
+    color: $WHITE;
 
-.lunaButton.primaryButton:hover {
-  background-color: $PrimaryHover;
-}
-
-.lunaButton.errorButton {
-  background-color: $Error;
-  color: $WHITE;
-  border-color: $Error;
-}
-
-.lunaButton.errorButton:hover {
-  background-color: $ErrorHover;
-}
-
-.lunaButton.successButton {
-  background-color: $Success;
-  color: $WHITE;
-  border-color: $Success;
-}
-
-.lunaButton.successButton:hover {
-  background-color: $SuccessHover;
-}
-
-.lunaButton.warningButton {
-  background-color: $Warning;
-  color: $WHITE;
-  border-color: $Warning;
-}
-
-.lunaButton.warningButton:hover {
-  background-color: $WarningHover;
-}
-
-.lunaButton.alertButton {
-  background-color: $Alert;
-  color: $WHITE;
-  border-color: $Alert;
-}
-
-.lunaButton.alertButton:hover {
-  background-color: $AlertHover;
+    &:hover {
+      background-color: $hover;
+    }
+  }
 }
 
 .lunaButton.textButton {
@@ -687,30 +647,24 @@ $WHITE-OPACITY: Opacity($WHITE);
   background-color: transparent !important;
 }
 
-.lunaButton.ghostButton.primaryButton {
-  color: $Primary !important;
+@each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
+  .lunaButton.textButton.#{$type}Button,
+  .lunaButton.ghostButton.#{$type}Button {
+    color: $color !important;
+
+    &:hover {
+      color: $hover !important;
+    }
+  }
 }
 
-.lunaButton.ghostButton.errorButton {
-  color: $Error !important;
-}
+@each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
+  .lunaButton.ghostButton.#{$type}Button {
+    border-color: $color !important;
 
-.lunaButton.ghostButton.successButton {
-  color: $Success !important;
-}
-
-.lunaButton.ghostButton.warningButton {
-  color: $Warning !important;
-}
-
-.lunaButton.ghostButton.alertButton {
-  color: $Alert !important;
-}
-
-.lunaButton {
-  .lunaBadge {
-    right: 0;
-    top: 0;
+    &:hover {
+      border-color: $hover !important;
+    }
   }
 }
 

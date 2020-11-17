@@ -86,8 +86,8 @@ export default {
       // width177: true,
       transitionName: 'slide-right',
       // showSideBar: true,
-      // theme: 'light',
-      theme: 'dark',
+      theme: 'light',
+      // theme: 'dark',
       userInfo: {},
       isCollapse: false,
       menuList: [
