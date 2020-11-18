@@ -2,7 +2,7 @@
   <div
     class="lunaBadge"
     :style="[badgeWidth, badgeHeight, badgeLineHeight, badgeRadius, badgeBorder, badgeBackground]"
-    :class="[className, {errorBadge: theme === 'error', successBadge: type === 'success',warningBadge: theme === 'warning',primaryBadge: theme === 'primary',alertBadge: theme === 'alert', '': theme === 'normal'}, {dotBadge: type === 'normal', textBadge: type === 'text', starBadge: type === 'star'}, {smallBadge: size === 'small', normalBadge: size === 'normal', largeBadge: size === 'large'}]"
+    :class="[className, {errorBadge: theme === 'error', successBadge: type === 'success',warningBadge: theme === 'warning',primaryBadge: theme === 'primary' || theme === 'normal',alertBadge: theme === 'alert'}, {dotBadge: type === 'normal', textBadge: type === 'text', starBadge: type === 'star'}, {smallBadge: size === 'small', normalBadge: size === 'normal', largeBadge: size === 'large'}]"
   >
     <span :style="[fontColor, fontSize]">
       111{{ value }}

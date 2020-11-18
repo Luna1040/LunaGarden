@@ -626,18 +626,6 @@ $WHITE-OPACITY: Opacity($WHITE);
   cursor: no-drop !important;
 }
 
-@each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
-  .lunaButton.#{$type}Button {
-    background-color: $color;
-    border-color: $color;
-    color: $WHITE;
-
-    &:hover {
-      background-color: $hover;
-    }
-  }
-}
-
 .lunaButton.textButton {
   background-color: transparent !important;
   border: 1px solid transparent !important;
@@ -648,7 +636,17 @@ $WHITE-OPACITY: Opacity($WHITE);
   background-color: transparent !important;
 }
 
+// 根据配色更改
 @each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
+  .lunaButton.#{$type}Button {
+    background-color: $color;
+    border-color: $color;
+    color: $WHITE;
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
   .lunaButton.textButton.#{$type}Button,
   .lunaButton.ghostButton.#{$type}Button {
     color: $color !important;
@@ -657,14 +655,23 @@ $WHITE-OPACITY: Opacity($WHITE);
       color: $hover !important;
     }
   }
-}
-
-@each $type, $color, $hover in (primary, $Primary, $PrimaryHover), (warning, $Warning, $WarningHover), (success, $Success, $SuccessHover), (error, $Error, $ErrorHover), (alert, $Alert, $AlertHover) {
   .lunaButton.ghostButton.#{$type}Button {
     border-color: $color !important;
 
     &:hover {
       border-color: $hover !important;
+    }
+  }
+  .lunaBadge.#{$type}Badge{
+    background-color: $color;
+  }
+  .lunaMessage .messageBody.#{$type}Message{
+    border: 1px solid $color;
+    background-color: $color;
+
+    i,
+    span {
+      color: $WHITE;
     }
   }
 }
@@ -727,27 +734,10 @@ $WHITE-OPACITY: Opacity($WHITE);
   width: 6px;
   height: 6px;
   border-radius: 6px;
-  background-color: $Error;
   position: absolute;
   right: -4px;
   top: -4px;
   border: 1px solid $WHITE;
-}
-
-.lunaBadge.errorBadge {
-  background-color: $Error;
-}
-
-.lunaBadge.successBadge {
-  background-color: $Success;
-}
-
-.lunaBadge.alertBadge {
-  background-color: $Alert;
-}
-
-.lunaBadge.warningBadge {
-  background-color: $Warning;
 }
 
 .lunaRow {
@@ -1113,56 +1103,6 @@ $WHITE-OPACITY: Opacity($WHITE);
     border-radius: 3px;
     margin-bottom: 8px;
     font-weight: 600;
-  }
-
-  .messageBody.warningMessage {
-    border: 1px solid $Warning;
-    background-color: $Warning;
-
-    i,
-    span {
-      color: $WHITE;
-    }
-  }
-
-  .messageBody.errorMessage {
-    border: 1px solid $Error;
-    background-color: $Error;
-
-    i,
-    span {
-      color: $WHITE;
-    }
-  }
-
-  .messageBody.successMessage {
-    border: 1px solid $Success;
-    background-color: $Success;
-
-    i,
-    span {
-      color: $WHITE;
-    }
-  }
-
-  .messageBody.primaryMessage {
-    border: 1px solid $Primary;
-    background-color: $Primary;
-
-    i,
-    span {
-      color: $WHITE;
-    }
-  }
-
-  .messageBody.alertMessage {
-    border: 1px solid $Alert;
-    background-color: $Alert;
-
-    i,
-    span {
-      color: $WHITE;
-    }
   }
 
   .messageBody.normalMessage {
