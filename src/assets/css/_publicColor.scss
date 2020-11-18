@@ -1,0 +1,98 @@
+.lunaGardenLoading {
+  background-color: $MaskOpacity;
+}
+
+.header {
+  box-shadow: $Shadow;
+
+  * {
+    color: $PrimaryText;
+  }
+
+  .userIcon {
+    box-shadow: $Shadow;
+  }
+
+  .guide {
+    .btnGroup {
+      box-shadow: $AroundShadow;
+    }
+  }
+
+  .menuGroup {
+    .menuItem {
+      transition: all 0.35s;
+      box-shadow: $AroundShadow;
+    }
+  }
+}
+
+.home {
+  background-color: $NormalBackground;
+
+  .fluidButton {
+    box-shadow: $AroundShadow;
+  }
+
+  .homeSideBar {
+    h1 {
+      color: $PrimaryText;
+    }
+
+    ul {
+      .activeBar {
+        @include PrimaryGradients(135);
+      }
+
+      li {
+        color: $PrimaryText;
+      }
+    }
+  }
+
+  .homeMainView {
+    h1 {
+      color: $PrimaryText;
+      border-bottom: 1px solid $MaskOpacity;
+    }
+
+    > p {
+      color: $PrimaryText;
+    }
+
+    ul {
+      li {
+        color: $PrimaryText;
+        border-bottom: 1px solid $LightDark;
+
+        > div {
+          > div {
+            > div {
+              background: $MaskOpacity;
+
+              > span.errorPro {
+                @include ErrorGradients(135);
+              }
+
+              > span.warningPro {
+                @include WarningGradients(135);
+              }
+
+              > span.primaryPro {
+                @include PrimaryGradients(135);
+              }
+
+              > span.successPro {
+                @include SuccessGradients(135);
+              }
+
+              > span.alertPro {
+                @include AlertGradients(135);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1320113",
+      "name": "iconfont",
+      "font_class": "iconfont",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2183059",
+      "name": "Bing",
+      "font_class": "Bing",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "3876534",
+      "name": "microsoft",
+      "font_class": "microsoft",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "6496026",
+      "name": "Vue",
+      "font_class": "Vue",
+      "unicode": "e799",
+      "unicode_decimal": 59289
+    },
+    {
+      "icon_id": "10473488",
+      "name": "logo_google_text",
+      "font_class": "logo_google_text",
+      "unicode": "f3c3",
+      "unicode_decimal": 62403
+    }
+  ]
+}

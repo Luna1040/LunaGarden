@@ -1,0 +1,26 @@
+$PrimaryText: #f3f3f3;
+$SecondaryText: #cccccc;
+$Ex-secondaryText: #b4b4b4;
+$NormalBackground: #010101;
+$DividerDarkColor: #252525;
+$LightDark: #3f3f3f;
+$reverseColor: #FFFFFF;
+$MaskOpacity: transparentize($reverseColor, 0.5);
+$Shadow: 0 3px 3px transparentize($reverseColor, 0.7);
+$AroundShadow: 0 0 5px transparentize($reverseColor, 0.7);
+$HoverShadow: 0 2px 5px transparentize($reverseColor, 0.6);
+@mixin PrimaryGradients {
+  background: linear-gradient(#835868, #eb7290);
+}
+@mixin WarningGradients {
+  background: linear-gradient(#978b67, #fecb37);
+}
+@mixin SuccessGradients {
+  background: linear-gradient(#3c835e, #10d56e);
+}
+@mixin AlertGradients {
+  background: linear-gradient(#4e3781, #7636ff);
+}
+@mixin ErrorGradients {
+  background: linear-gradient(#744542, #ff483d);
+}

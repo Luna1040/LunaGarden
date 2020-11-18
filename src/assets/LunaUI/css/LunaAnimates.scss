@@ -1,0 +1,374 @@
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+@keyframes animate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.maskAnimation-enter-active,
+.maskAnimation-leave-active {
+  transition: opacity 0.5s;
+}
+
+.maskAnimation-enter,
+.maskAnimation-leave-to {
+  opacity: 0;
+}
+
+.maskAnimation-leave,
+.maskAnimation-enter-to {
+  opacity: 1;
+}
+
+.modalAnimation-enter-active,
+.modalAnimation-leave-active {
+  transition: all 0.3s;
+}
+
+.modalAnimation-leave,
+.modalAnimation-enter-to {
+  opacity: 1;
+  top: 0;
+}
+
+.modalAnimation-enter,
+.modalAnimation-leave-to {
+  opacity: 0;
+  top: -24px;
+}
+
+.showAlert {
+  animation: 0.5s ease-in showAlert forwards;
+
+  @keyframes showAlert {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.hideAlert {
+  animation: 0.5s ease-in hideAlert forwards;
+
+  @keyframes hideAlert {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.showModal {
+  animation: 0.25s ease-in showModal forwards;
+
+  @keyframes showModal {
+    0% {
+      opacity: 0;
+      top: 24px;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+
+.hideModal {
+  animation: 0.25s ease-in hideModal forwards;
+
+  @keyframes hideModal {
+    0% {
+      opacity: 1;
+      top: 0;
+    }
+
+    100% {
+      opacity: 0;
+      top: -24px;
+    }
+  }
+}
+
+.leftMove {
+  animation: leftMove 0.5s ease-out forwards;
+
+  @keyframes leftMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
+
+.rightMove {
+  animation: rightMove 0.5s ease-out forwards;
+
+  @keyframes rightMove {
+    0% {
+      background-position-x: 110px;
+    }
+
+    40% {
+      background-position-x: 20px;
+    }
+
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  //适配iPhoneX&XS MAX的按钮动画
+  @media screen and (max-device-width: 375px) {
+    @keyframes leftMove {
+      0% {
+        background-position-x: 100px;
+      }
+
+      40% {
+        background-position-x: 15px;
+      }
+
+      100% {
+        background-position-x: 0;
+      }
+    }
+  }
+}
+
+.langSlideUp {
+  animation: 0.3s ease-in langSlideUp forwards;
+
+  @keyframes langSlideUp {
+    0% {
+      height: 75px;
+    }
+
+    100% {
+      height: 0;
+    }
+  }
+}
+
+.langSlideDown {
+  animation: 0.3s ease-in langSlideDown forwards;
+
+  @keyframes langSlideDown {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 75px;
+    }
+  }
+}
+.messageAnimation-enter-active,
+.messageAnimation-leave-active {
+  transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+.messageAnimation-leave,
+.messageAnimation-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.messageAnimation-enter,
+.messageAnimation-leave-to {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+.searchListAnimation-enter-active,
+.searchListAnimation-leave-active {
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+
+.searchListAnimation-leave,
+.searchListAnimation-enter-to {
+  opacity: 1;
+  top: 44px;
+}
+
+.searchListAnimation-enter,
+.searchListAnimation-leave-to {
+  opacity: 0;
+  top: 100px;
+}
+
+.langSlideDown-enter-active,
+.langSlideDown-leave-active {
+  transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+
+.langSlideDown-leave,
+.langSlideDown-enter-to {
+  opacity: 1;
+  top: 44px;
+}
+
+.langSlideDown-enter,
+.langSlideDown-leave-to {
+  opacity: 0;
+  top: 100px;
+}
+
+.slideDown-enter-active {
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.8, 1) 0s;
+}
+
+.slideDown-leave-active {
+  transition: all 0.2s cubic-bezier(0.5, 0, 0, 1) 0s;
+}
+
+.slideDown-enter,
+.slideDown-leave-to {
+  transform: translateY(-18px);
+  opacity: 0;
+}
+
+.expand-enter-active {
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.8, 1) 0s;
+}
+
+.expand-leave-active {
+  transition: all 0.2s cubic-bezier(0.5, 0, 0, 1) 0s;
+}
+
+.expand-enter,
+.expand-leave-to {
+  transform: translateY(-18px) scale(1.1);
+  opacity: 0;
+}
+
+.slideBar-enter-active {
+  transition: all 0.5s cubic-bezier(0, 0, 1, 1) 0s;
+}
+
+.slideBar-leave-active {
+  transition: all 0.5s cubic-bezier(0.5, 0.6, 0, 1) 0s;
+}
+
+.slideBar-enter,
+.slideBar-leave-to {
+  transform: translateX(-66px);
+  opacity: 0;
+}
+
+.scaleCheckboxIcon-enter-active {
+  transition: all ease-in 0.15s;
+}
+
+.scaleCheckboxIcon-leave-active {
+  transition: all ease-in 0.15s;
+}
+
+.scaleCheckboxIcon-enter,
+.scaleCheckboxIcon-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.datePickerTransFade-leave-active,
+.datePickerTransFade-enter-active {
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.8, 1);
+}
+
+.datePickerTransFade-enter,
+.datePickerTransFade-leave-to {
+  position: absolute;
+  transform: translateY(-18px);
+  opacity: 0;
+}
+.switchBtn.switchOn {
+  left: calc(100% - 20px);
+}
+.switchBtn.switchMoving {
+  transform: scaleX(3.5);
+}
+//.listSlideDown-leave-active,.listSlideDown-enter-active {
+//  animation: slide-out 0.2s ease-out;
+//  position: absolute;
+//}
+//.listSlideDown-move {
+//  transition: all 0.2s;
+//}
+//.listSlideDown-enter, .listSlideDown-leave-to {
+//transform: scale(1.5);
+//}
+//.listSlideDown-enter-to {
+//  transform: scale(1.5);
+//}
+//.listSlideDown-leave{
+//  transform: scale(0);
+//}
+.listSlideDown-enter-active {
+  animation: listSlideDown-in 0.25s ease-out forwards;
+}
+.listSlideDown-leave-active {
+  animation: listSlideDown-out 0.25s ease-out forwards;
+  position: absolute;
+}
+.listSlideDown-move {
+  transition: all 2s;
+}
+
+@keyframes listSlideDown-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes listSlideDown-out {
+  from {
+    transform: translateX(10px);
+  }
+  to {
+    transform: translateX(550px);
+  }
+}

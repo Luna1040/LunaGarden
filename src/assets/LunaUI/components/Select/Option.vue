@@ -1,0 +1,47 @@
+<template>
+  <div class="lunaOption" @click.stop="handelSelect">
+    <slot>{{ label }}</slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Option',
+  props: {
+    label: {
+      type: [String, Number],
+      default: ''
+    },
+    value: {
+      type: [String, Number],
+      default: ''
+    }
+  },
+  methods: {
+    // dispatch(componentName, eventName, params) {
+    //     let parent = this.$parent || this.$root;
+    //     let name = parent.$options.name;
+    //
+    //     while (parent && (!name || name !== componentName)) {
+    //         parent = parent.$parent;
+    //
+    //         if (parent) {
+    //             name = parent.$options.name;
+    //         }
+    //     }
+    //     if (parent) {
+    //         parent.$emit.apply(parent, [eventName].concat(params));
+    //     }
+    // },
+    handelSelect () {
+      const obj = {
+        value: this.value,
+        label: this.label
+      }
+      this.$emit('optionSelect', obj)
+    }
+  }
+}
+</script>
+
+<style scoped></style>
