@@ -295,15 +295,16 @@ $WHITE-OPACITY: Opacity($WHITE);
 //
 //Light & Dark Theme
 //
-.LightTheme {
-  @import './LunaUI-LightColor';
+@import './LunaUI-LightColor';
+.LightTheme{
+  //@import './LunaUI-LightColor';
   @include colorConfig();
 }
-
 .DarkTheme {
   @import './LunaUI-DarkColor';
   @include colorConfig();
 }
+
 
 // Css Reset
 *::-webkit-scrollbar {
@@ -662,10 +663,10 @@ $WHITE-OPACITY: Opacity($WHITE);
       border-color: $hover !important;
     }
   }
-  .lunaBadge.#{$type}Badge{
+  .lunaBadge.#{$type}Badge {
     background-color: $color;
   }
-  .lunaMessage .messageBody.#{$type}Message{
+  .lunaMessage .messageBody.#{$type}Message {
     border: 1px solid $color;
     background-color: $color;
 

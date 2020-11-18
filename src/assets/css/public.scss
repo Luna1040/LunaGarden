@@ -15,6 +15,72 @@
   filter: blur(3px);
 }
 
+@mixin LightTheme {
+  $PrimaryText: #4a4a4a;
+  $SecondaryText: #7b7b7b;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #ffffff;
+  $DividerDarkColor: #efefef;
+  $LightDark: #e9e9e9;
+  $MaskOpacity: transparentize(#000000, 0.5);
+  $Shadow: 0 3px 3px transparentize(#000000, 0.3);
+  $AroundShadow: 0 0 6px transparentize(#000000, 0.3);
+  $HoverShadow: 0 2px 5px transparentize(#000000, 0.4);
+  $SideShadow: 4px 0 8px 0 transparentize(#000000, 0.35);
+  @mixin PrimaryGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #f3aac4, #eb7290);
+  }
+  @mixin WarningGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #fde7a7, #fecb37);
+  }
+  @mixin SuccessGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #89e1b3, #10d56e);
+  }
+  @mixin AlertGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #b390ff, #7636ff);
+  }
+  @mixin ErrorGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #ff938d, #ff483d);
+  }
+  @mixin ActiveBarBackgroundColor {
+    background: linear-gradient(135deg, #f3aac4 0%, #eb7290 100%);
+  }
+}
+
+@mixin DarkTheme {
+  $PrimaryText: #f3f3f3;
+  $SecondaryText: #cccccc;
+  $Ex-secondaryText: #b4b4b4;
+  $NormalBackground: #010101;
+  $DividerDarkColor: #252525;
+  $LightDark: #3f3f3f;
+  $MaskOpacity: transparentize(#FFFFFF, 0.5);
+  $Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
+  $AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
+  $HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
+  $SideShadow: 4px 0 8px 0 transparentize(#FFFFFF, 0.35);
+  //$deg: 0,
+  @mixin PrimaryGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #835868, #eb7290);
+  }
+  @mixin WarningGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #978b67, #fecb37);
+  }
+  @mixin SuccessGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #3c835e, #10d56e);
+  }
+  @mixin AlertGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #4e3781, #7636ff);
+  }
+  @mixin ErrorGradients($deg) {
+    background: linear-gradient(#{$deg}deg, #744542, #ff483d);
+  }
+  @mixin ActiveBarBackgroundColor {
+    background: linear-gradient(135deg, #835868 0%, #eb7290 100%);
+  }
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -626,114 +692,14 @@ footer {
   }
 }
 
-@mixin colorConfig {
-  .lunaGardenLoading {
-    background-color: $MaskOpacity;
-  }
-
-  .header {
-    box-shadow: $Shadow;
-
-    * {
-      color: $PrimaryText;
-    }
-
-    .userIcon {
-      box-shadow: $Shadow;
-    }
-
-    .guide {
-      .btnGroup {
-        box-shadow: $AroundShadow;
-      }
-    }
-
-    .menuGroup {
-      .menuItem {
-        transition: all 0.35s;
-        box-shadow: $AroundShadow;
-      }
-    }
-  }
-
-  .home {
-    background-color: $NormalBackground;
-
-    .fluidButton {
-      box-shadow: $AroundShadow;
-    }
-
-    .homeSideBar {
-      h1 {
-        color: $PrimaryText;
-      }
-
-      ul {
-        .activeBar {
-          @include PrimaryGradients(135);
-        }
-
-        li {
-          color: $PrimaryText;
-        }
-      }
-    }
-
-    .homeMainView {
-      h1 {
-        color: $PrimaryText;
-        border-bottom: 1px solid $MaskOpacity;
-      }
-
-      > p {
-        color: $PrimaryText;
-      }
-
-      ul {
-        li {
-          color: $PrimaryText;
-          border-bottom: 1px solid $LightDark;
-
-          > div {
-            > div {
-              > div {
-                background: $MaskOpacity;
-
-                > span.errorPro {
-                  @include ErrorGradients(135);
-                }
-
-                > span.warningPro {
-                  @include WarningGradients(135);
-                }
-
-                > span.primaryPro {
-                  @include PrimaryGradients(135);
-                }
-
-                > span.successPro {
-                  @include SuccessGradients(135);
-                }
-                > span.alertPro {
-                  @include AlertGradients(135);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 .LightTheme {
-  @import './lightCss';
-  @include colorConfig();
+  @import './lightCss.scss';
+  @import './publicColor';
 }
 
 .DarkTheme {
-  @import './darkCss';
-  @include colorConfig();
+  @import './darkCss.scss';
+  @import './publicColor';
 }
 
 //@font-face {
