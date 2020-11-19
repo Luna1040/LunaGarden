@@ -164,6 +164,9 @@ const timeFormat = function (timeStamp) {
         : new Date(timeStamp).getMinutes();
     return year + "-" + month + "-" + date + " " + hh + ":" + mm;
 }
+const commitX = function (stateEvent, val) {
+    this.$store.commit(stateEvent, val)
+}
 
 Vue.prototype.uuidGet = uuidGet;
 Vue.prototype.encrypt = encrypt;
@@ -171,3 +174,4 @@ Vue.prototype.updateMenu = updateMenu;
 Vue.prototype.toRGB = toRGB;
 Vue.prototype.toHash = toHash;
 Vue.prototype.timeFormat = timeFormat;
+Vue.prototype.commitX = commitX;

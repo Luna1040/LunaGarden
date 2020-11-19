@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{ LightTheme: theme === 'light', DarkTheme: theme === 'dark' }">
+  <div id="app" :class="{ LightTheme: $store.state.theme === 'light', DarkTheme: $store.state.theme === 'dark' }">
     <Header
       v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"
       :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" :menu-list="menuList"
@@ -87,7 +87,7 @@ export default {
       transitionName: 'slide-right',
       // showSideBar: true,
       // theme: 'light',
-      theme: 'dark',
+      // theme: 'dark',
       userInfo: {},
       isCollapse: false,
       menuList: [
@@ -147,6 +147,7 @@ export default {
     // mHeader,
   },
   created() {
+    this.commitX('changeTheme', 'dark')
     // 动态路由
     this.updateMenu('111')
     if (localStorage.getItem('firstLoad') === null) {
@@ -246,7 +247,7 @@ export default {
           // }
         })
       }
-    }
+    },
   }
 }
 </script>
