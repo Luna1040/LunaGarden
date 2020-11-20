@@ -35,7 +35,9 @@ export const lang = {
   getUserInfo: {
     alert1: 'Your identity has expired, please log in again!',
     alert2: 'Unable to get user information, please log in again!',
-    alert3: 'Your identity information has been updated!'
+    alert3: 'Your identity information has been updated!',
+    alert4: 'Your account settings has been updated!',
+    alert5: 'Unable to get your account settings, please log in again!',
   },
   register: {
     userName: 'Username',

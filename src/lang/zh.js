@@ -36,7 +36,9 @@ export const lang = {
   getUserInfo: {
     alert1: '您的身份已过期，请重新登录！',
     alert2: '无法获取用户信息，请重新登录！',
-    alert3: '您的身份信息已更新！'
+    alert3: '您的身份信息已更新！',
+    alert4: '您的账户设置已更新！',
+    alert5: '无法获取您的账户设置，请重新登录！',
   },
   register: {
     userName: '用户名',

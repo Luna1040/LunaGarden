@@ -48,20 +48,20 @@ const encrypt = function (password) {
 // 根据uid获取菜单
 const updateMenu = function (uid) {
     let arr = [
-        { path: '/Start', name: 'Start', component: Start },
-        { path: '/mStart', name: 'mStart', component: Start },
+        { path: '/Start', name: 'Start', component: Start, meta: { index: 0 } },
+        { path: '/mStart', name: 'mStart', component: Start, meta: { index: 0 } },
         // LunaUI的展示
-        { path: '/LunaUI', name: 'LunaUI', component: LunaUI },
-        { path: '/mLunaUI', name: 'LunaUI', component: LunaUI },
+        { path: '/LunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
+        { path: '/mLunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
         // 待办事项面板
-        { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 1 } },
-        { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 1 } },
+        { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 5 } },
+        { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 5 } },
         // 聊天页面
-        { path: '/Chatting', name: 'Chatting', component: Chatting },
-        { path: '/mChatting', name: 'mChatting', component: mChatting },
+        { path: '/Chatting', name: 'Chatting', component: Chatting, meta: { index: 995 } },
+        { path: '/mChatting', name: 'mChatting', component: mChatting, meta: { index: 995 } },
         // 汇报中心
-        { path: '/Report', name: 'Report', component: Report },
-        { path: '/mReport', name: 'mReport', component: mReport },
+        { path: '/ReportCenter', name: 'Report', component: Report, meta: { index: 6 } },
+        { path: '/mReportCenter', name: 'mReport', component: mReport, meta: { index: 6 } },
         // 引导页面
         { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },
         { path: '/mGuide', name: 'mGuide', component: mGuide, meta: { index: 999 } },
@@ -69,24 +69,24 @@ const updateMenu = function (uid) {
         { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
         { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
         // 登录
-        { path: '/Login', name: 'Login', component: Login },
-        { path: '/mLogin', name: 'mLogin', component: mLogin },
+        { path: '/Login', name: 'Login', component: Login, meta: { index: 1 } },
+        { path: '/mLogin', name: 'mLogin', component: mLogin, meta: { index: 1 } },
         // 注册
-        { path: '/Register', name: 'Register', component: Register },
-        { path: '/mRegister', name: 'mRegister', component: mRegister },
+        { path: '/Register', name: 'Register', component: Register, meta: { index: 2 } },
+        { path: '/mRegister', name: 'mRegister', component: mRegister, meta: { index: 2 } },
         // 忘记密码
-        { path: '/Forgot', name: 'Forgot', component: Forgot },
-        { path: '/mForgot', name: 'mForgot', component: mForgot },
+        { path: '/Forgot', name: 'Forgot', component: Forgot, meta: { index: 3 } },
+        { path: '/mForgot', name: 'mForgot', component: mForgot, meta: { index: 3 } },
         // 修改密码
-        { path: '/Reset', name: 'Reset', component: ResetPsw },
-        { path: '/mReset', name: 'mReset', component: mResetPsw },
+        { path: '/Reset', name: 'Reset', component: ResetPsw, meta: { index: 4 } },
+        { path: '/mReset', name: 'mReset', component: mResetPsw, meta: { index: 4 } },
         // Demos
-        { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo },
-        { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo },
-        { path: '/Cursor', name: 'Cursor', component: ByteCursor },
-        { path: '/mCursor', name: 'mCursor', component: ByteCursor },
-        { path: '/Discuss', name: 'Discuss', component: ByteDiscuss },
-        { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss },
+        { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo, meta: { index: 998 } },
+        { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo, meta: { index: 998 } },
+        { path: '/Cursor', name: 'Cursor', component: ByteCursor, meta: { index: 997 } },
+        { path: '/mCursor', name: 'mCursor', component: ByteCursor, meta: { index: 997 } },
+        { path: '/Discuss', name: 'Discuss', component: ByteDiscuss, meta: { index: 996 } },
+        { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss, meta: { index: 996 } },
     ]
     this.$router.options.routes = arr
     this.$router.addRoutes(arr)
@@ -164,8 +164,17 @@ const timeFormat = function (timeStamp) {
         : new Date(timeStamp).getMinutes();
     return year + "-" + month + "-" + date + " " + hh + ":" + mm;
 }
+// 调用vueX函数
 const commitX = function (stateEvent, val) {
     this.$store.commit(stateEvent, val)
+}
+// 获取localstorage
+const getLocal = function (key) {
+    return JSON.parse(localStorage.getItem(key))
+}
+// 设置localstorage
+const setLocal = function (key, val) {
+    localStorage.setItem(key, JSON.stringify(val))
 }
 
 Vue.prototype.uuidGet = uuidGet;
@@ -175,3 +184,5 @@ Vue.prototype.toRGB = toRGB;
 Vue.prototype.toHash = toHash;
 Vue.prototype.timeFormat = timeFormat;
 Vue.prototype.commitX = commitX;
+Vue.prototype.getLocal = getLocal;
+Vue.prototype.setLocal = setLocal;

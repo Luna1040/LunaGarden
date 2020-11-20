@@ -2,7 +2,7 @@
   <div id="app" :class="{ LightTheme: $store.state.theme === 'light', DarkTheme: $store.state.theme === 'dark' }">
     <Header
       v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"
-      :msg-header="$t('lang.titles.' + $route.name)" :user-info="userInfo" :menu-list="menuList"
+      :msg-header="$t('lang.titles.' + $route.name)" :user-info="$store.state.userInfo" :menu-list="menuList"
       :is-collapse="isCollapse"></Header>
     <transition :name="transitionName">
       <router-view class="Router" :class="{collapse: isCollapse}"></router-view>
@@ -88,7 +88,6 @@ export default {
       // showSideBar: true,
       // theme: 'light',
       // theme: 'dark',
-      userInfo: {},
       isCollapse: false,
       menuList: [
         {
@@ -101,31 +100,31 @@ export default {
           id: 2,
           title: 'ReportCenter',
           icon: 'icon-LunaReportCenter',
-          link: '/Report'
+          link: '/ReportCenter'
         },
         {
           id: 3,
           title: 'TeamCenter',
           icon: 'icon-LunaTeamCenter',
-          link: '/Home'
+          link: '/TeamCenter'
         },
         {
           id: 4,
           title: 'TaskPanel',
           icon: 'icon-LunaTaskPanel',
-          link: '/Home'
+          link: '/TaskPanel'
         },
         {
           id: 5,
           title: 'RequestPanel',
           icon: 'icon-LunaRequestPanel',
-          link: '/Home'
+          link: '/RequestPanel'
         },
         {
           id: 6,
           title: 'TeamControl',
           icon: 'icon-LunaTeamControl',
-          link: '/Home'
+          link: '/TeamControl'
         },
         {
           id: 7,
@@ -137,7 +136,7 @@ export default {
           id: 8,
           title: 'AboutUs',
           icon: 'icon-LunaAboutUs',
-          link: '/Home'
+          link: '/AboutUs'
         }
       ]
     }
@@ -147,36 +146,43 @@ export default {
     // mHeader,
   },
   created() {
-    this.commitX('changeTheme', 'dark')
-    // 动态路由
-    this.updateMenu('111')
-    if (localStorage.getItem('firstLoad') === null) {
-      // 直接生成基于localstorage的todoList
-      localStorage.setItem('todoList', JSON.stringify([]))
-      localStorage.setItem('firstLoad', JSON.stringify(1))
-      this.$router.push('/Start')
-    } else {
-      // 若local中无todoList，则创建
-      if (!localStorage.getItem('todoList')) {
-        localStorage.setItem('todoList', JSON.stringify([]))
-      }
-      // 检测是否有用户信息留存
-      if (localStorage.getItem('userInfo') === null) {
-        let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-        // 若用户信息内有用户id
-        if (userInfo.uid) {
-          // 刷新登录信息
-          this.getUserInfo(userInfo.uid).then((res) => {
-            this.userInfo = res.data
-          })
-        }
+    // 检测是否有用户信息留存
+    // 从localstorage取userInfo获取id后，刷新用户信息
+    if(this.getLocal('userInfo') === null) {
+      // 若用户信息内有用户id
+      if(this.getLocal('userInfo').uid) {
+        //有 -> 获取设置&获取菜单 -> publicReq.js
+        this.getUserInfo(this.getLocal('userInfo').uid)
       } else {
-        localStorage.setItem('userInfo', JSON.stringify({}))
+        // 没有 -> 跳转登录
+        this.$router.push('/login')
       }
+    } else {
+      //没有留存 -> 跳转登录
+      this.$router.push('/login')
     }
+    //根据时间设置主题
+    // 设置时间对象
+    const Date = new Date()
+    const Month = Date.getMonth() + 1
+    const Hour = Date.getHours() + 1
+    // 初始化调用一次判断是否需要切换主题
+    this.ThemeChange()
+    // 定时器5分钟调用一次判断是否需要切换主题
+    setInterval(() => {this.ThemeChange()}, 30000)
   },
   watch: {
     $route(to, from) {
+      // 路由跳转时，判断是否切换pc移动端页面
+      if (window.innerWidth >= window.innerHeight) {
+        if (this.$route.name.indexOf('m') === 0) {
+          this.$router.push(this.$route.name.substr(1))
+        }
+      } else {
+        if (this.$route.name.indexOf('m') !== 0) {
+          this.$router.push('m' + this.$route.name)
+        }
+      }
       // 切换动画
       if (to.meta.index <= from.meta.index) {
         this.transitionName = 'slide-left'
@@ -213,18 +219,6 @@ export default {
     } else {
       // 不支持
     }
-    // 监听窗口改变，路由跳转实时导向移动端或pc端
-    window.onresize = () => {
-      if (window.innerWidth >= window.innerHeight) {
-        if (this.$route.name.indexOf('m') === 0) {
-          this.$router.push(this.$route.name.substr(1))
-        }
-      } else {
-        if (this.$route.name.indexOf('m') !== 0) {
-          this.$router.push('m' + this.$route.name)
-        }
-      }
-    }
     window.onmousewheel = (ev) => {
       if (ev.wheelDeltaY < 0) {
         this.isCollapse = true
@@ -248,6 +242,24 @@ export default {
         })
       }
     },
+    ThemeChange(Month, Hour){
+      // 首先判断季节
+      if(Month < 2 || Month > 10) {
+        // 冬季
+        if(Hour < 7 || Hour > 17) {
+          this.commitX('changeTheme', 'dark')
+        } else {
+          this.commitX('changeTheme', 'light')
+        }
+      } else {
+        // 夏季
+        if(Hour < 6 || Hour > 19) {
+          this.commitX('changeTheme', 'dark')
+        } else {
+          this.commitX('changeTheme', 'light')
+        }
+      }
+    }
   }
 }
 </script>
