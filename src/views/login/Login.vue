@@ -234,10 +234,11 @@ export default {
     loginConfirm() {
       const params = JSON.parse(JSON.stringify(this.loginData))
       params.password = this.encrypt(params.password)
-      this.getData(login.loginConfirm, params).then((res) => {
+      this.getData(login.loginConfirm, params).then(res => {
         if (res.success) {
           this.$Message.success({ content: this.$t('lang.login.alert5') })
-          this.$router.push('Home')
+          this.getUserInfo(res.data.uid)
+          this.$router.push('/TodoPanel')
         } else {
           if (res.code === 1) {
             this.$Message.error({ content: this.$t('lang.login.alert1') })
@@ -254,7 +255,7 @@ export default {
       })
     },
     toRegister() {
-      this.$router.push('register')
+      this.$router.push('/Register')
     }
   }
 }

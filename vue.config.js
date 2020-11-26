@@ -7,16 +7,16 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     port: 7230,
-    // proxy: {
-    //   '/api': {
+    proxy: {
+      '/api': {
         // target: 'http://192.168.31.180:3000/api', // 服务器
-        // target: 'http://10.18.190.188:3000/api/',
+        target: 'http://192.168.68.125:3000/api/',
         // target: 'https://lunagarden.net/api/',
-        // pathRewrite: {
-        //   '^/api': ''
-        // },
-        // changeOrigin: true
-      // }
-    // }
+        pathRewrite: {
+          '^/api': ''
+        },
+        changeOrigin: true
+      }
+    }
   }
 };

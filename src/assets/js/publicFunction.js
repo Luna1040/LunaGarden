@@ -11,18 +11,6 @@ import Guide from '@/views/guide/Guide'
 import mGuide from '@/views/guide/mGuide'
 import AboutUs from '@/views/about/About'
 import mAboutUs from '@/views/about/mAbout'
-import Login from '@/views/login/Login'
-import mLogin from '@/views/login/mLogin'
-import Register from '@/views/login/Register'
-import mRegister from '@/views/login/mRegister'
-import Forgot from '@/views/login/Forgot'
-import mForgot from '@/views/login/mForgot'
-import ResetPsw from '@/views/login/ResetPsw'
-import mResetPsw from '@/views/login/mResetPsw'
-import ByteDemo from '@/views/byteDemos/byteDemo'
-import mByteDemo from '@/views/byteDemos/mByteDemo'
-import ByteCursor from '@/views/byteDemos/byteCursor'
-import ByteDiscuss from '@/views/byteDemos/byteDiscuss'
 // Luna Garden默认生成的UUID，可自行更改私钥公钥或计算方式
 const uuidGet = function () {
     let s = [];
@@ -48,8 +36,6 @@ const encrypt = function (password) {
 // 根据uid获取菜单
 const updateMenu = function (uid) {
     let arr = [
-        { path: '/Start', name: 'Start', component: Start, meta: { index: 0 } },
-        { path: '/mStart', name: 'mStart', component: Start, meta: { index: 0 } },
         // LunaUI的展示
         { path: '/LunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
         { path: '/mLunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
@@ -68,25 +54,6 @@ const updateMenu = function (uid) {
         // 关于我们
         { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
         { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } },
-        // 登录
-        { path: '/Login', name: 'Login', component: Login, meta: { index: 1 } },
-        { path: '/mLogin', name: 'mLogin', component: mLogin, meta: { index: 1 } },
-        // 注册
-        { path: '/Register', name: 'Register', component: Register, meta: { index: 2 } },
-        { path: '/mRegister', name: 'mRegister', component: mRegister, meta: { index: 2 } },
-        // 忘记密码
-        { path: '/Forgot', name: 'Forgot', component: Forgot, meta: { index: 3 } },
-        { path: '/mForgot', name: 'mForgot', component: mForgot, meta: { index: 3 } },
-        // 修改密码
-        { path: '/Reset', name: 'Reset', component: ResetPsw, meta: { index: 4 } },
-        { path: '/mReset', name: 'mReset', component: mResetPsw, meta: { index: 4 } },
-        // Demos
-        { path: '/ByteDemo', name: 'ByteDemo', component: ByteDemo, meta: { index: 998 } },
-        { path: '/mByteDemo', name: 'mByteDemo', component: mByteDemo, meta: { index: 998 } },
-        { path: '/Cursor', name: 'Cursor', component: ByteCursor, meta: { index: 997 } },
-        { path: '/mCursor', name: 'mCursor', component: ByteCursor, meta: { index: 997 } },
-        { path: '/Discuss', name: 'Discuss', component: ByteDiscuss, meta: { index: 996 } },
-        { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss, meta: { index: 996 } },
     ]
     this.$router.options.routes = arr
     this.$router.addRoutes(arr)

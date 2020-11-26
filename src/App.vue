@@ -148,24 +148,26 @@ export default {
   created() {
     // 检测是否有用户信息留存
     // 从localstorage取userInfo获取id后，刷新用户信息
-    if(this.getLocal('userInfo') === null) {
+    if(this.getLocal('userInfo') !== null) {
       // 若用户信息内有用户id
       if(this.getLocal('userInfo').uid) {
         //有 -> 获取设置&获取菜单 -> publicReq.js
         this.getUserInfo(this.getLocal('userInfo').uid)
       } else {
+        this.setLocal('userInfo', {})
         // 没有 -> 跳转登录
-        this.$router.push('/login')
+        this.$router.push('/Login')
       }
     } else {
+      this.setLocal('userInfo', {})
       //没有留存 -> 跳转登录
-      this.$router.push('/login')
+      this.$router.push('/Login')
     }
     //根据时间设置主题
     // 设置时间对象
-    const Date = new Date()
-    const Month = Date.getMonth() + 1
-    const Hour = Date.getHours() + 1
+    const date = new Date()
+    const Month = date.getMonth() + 1
+    const Hour = date.getHours() + 1
     // 初始化调用一次判断是否需要切换主题
     this.ThemeChange()
     // 定时器5分钟调用一次判断是否需要切换主题
