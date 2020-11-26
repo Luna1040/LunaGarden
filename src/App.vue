@@ -1,11 +1,8 @@
 <template>
   <div id="app" :class="{ LightTheme: $store.state.theme === 'light', DarkTheme: $store.state.theme === 'dark' }">
-    <Header
-      v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'"
-      :msg-header="$t('lang.titles.' + $route.name)" :user-info="$store.state.userInfo" :menu-list="menuList"
-      :is-collapse="isCollapse"></Header>
+    <Header v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'" :msg-header="$t('lang.titles.' + $route.name)" :user-info="$store.state.userInfo" :menu-list="menuList" :is-collapse="isCollapse"></Header>
     <transition :name="transitionName">
-      <router-view class="Router" :class="{collapse: isCollapse}"></router-view>
+      <router-view class="Router" :class="{ collapse: isCollapse }"></router-view>
     </transition>
     <!-- 移动端通用footer -->
     <!--    <footer>-->
@@ -142,15 +139,15 @@ export default {
     }
   },
   components: {
-    Header,
+    Header
     // mHeader,
   },
   created() {
     // 检测是否有用户信息留存
     // 从localstorage取userInfo获取id后，刷新用户信息
-    if(this.getLocal('userInfo') !== null) {
+    if (this.getLocal('userInfo') !== null) {
       // 若用户信息内有用户id
-      if(this.getLocal('userInfo').uid) {
+      if (this.getLocal('userInfo').uid) {
         //有 -> 获取设置&获取菜单 -> publicReq.js
         this.getUserInfo(this.getLocal('userInfo').uid)
       } else {
@@ -171,7 +168,9 @@ export default {
     // 初始化调用一次判断是否需要切换主题
     this.ThemeChange()
     // 定时器5分钟调用一次判断是否需要切换主题
-    setInterval(() => {this.ThemeChange()}, 30000)
+    setInterval(() => {
+      this.ThemeChange()
+    }, 30000)
   },
   watch: {
     $route(to, from) {
@@ -233,7 +232,7 @@ export default {
     //
     isAllowNotify() {
       if (window.Notification && Notification.permission !== 'denied') {
-        Notification.requestPermission(function(status) {
+        Notification.requestPermission(function (status) {
           //若status非granted，则为拒绝通知，保存至线上用户信息，同时更新vueX状态
           // if (status === 'granted') {
           // } else {
@@ -244,18 +243,18 @@ export default {
         })
       }
     },
-    ThemeChange(Month, Hour){
+    ThemeChange(Month, Hour) {
       // 首先判断季节
-      if(Month < 2 || Month > 10) {
+      if (Month < 2 || Month > 10) {
         // 冬季
-        if(Hour < 7 || Hour > 17) {
+        if (Hour < 7 || Hour > 17) {
           this.commitX('changeTheme', 'dark')
         } else {
           this.commitX('changeTheme', 'light')
         }
       } else {
         // 夏季
-        if(Hour < 6 || Hour > 19) {
+        if (Hour < 6 || Hour > 19) {
           this.commitX('changeTheme', 'dark')
         } else {
           this.commitX('changeTheme', 'light')
@@ -265,6 +264,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

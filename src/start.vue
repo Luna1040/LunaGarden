@@ -881,15 +881,15 @@ export default {
     } else {
       this.width177 = 16
     }
-  },
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.normalBc{
+.normalBc {
   width: 100vw;
   height: 100vh;
-  background: url("https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg") no-repeat;
+  background: url('https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg') no-repeat;
   background-size: cover;
 }
 </style>
