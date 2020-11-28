@@ -1,16 +1,16 @@
 <template>
-  <div class="loginRegister">
-    <Container class-name="spare loginSpare" :flex="false" :width="1000" :height="454" background="rgba(255,255,255,0.3)">
+  <div class="publicNormalBc">
+    <div class="leftBlurArea">
       <p class="desc">{{ $t('lang.login.desc') }}</p>
       <p class="desc">{{ $t('lang.login.desc2') }}</p>
-      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :theme="theme" :width="640" label-position="top" :label-width="150"></Form>
+      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="150"></Form>
       <div class="linkGroup">
-        <Button theme="primary" :width="590" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
-        <p>{{ $t('lang.login.register') }}</p>
-        <Button theme="primary" @click="toRegister">{{ $t('lang.login.register2') }}</Button>
-        <router-link to="forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>
+        <Button theme="primary" :width="502" style="margin: 0 auto;" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
+        <p style="text-align: center;">{{ $t('lang.login.register') }}</p>
+        <Button :width="502" style="margin: 0 auto;" theme="primary" to="/Register">{{ $t('lang.login.register2') }}</Button>
+        <router-link to="/Forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>
       </div>
-    </Container>
+    </div>
   </div>
 </template>
 <script>
@@ -40,7 +40,7 @@ export default {
         validateOnChange: true,
         required: true,
         emptyWarning: this.lang.alert1,
-        description: this.logLang.userNameDesc,
+        // description: this.logLang.userNameDesc,
         validateMethods: [
           {
             type: 'length',
@@ -54,7 +54,6 @@ export default {
           return h('Input', {
             props: {
               value: this.loginData.userName,
-              theme: this.theme,
               background: 'rgba(255,255,255,0.3)',
               validateOnChange: params.validateOnChange,
               validateMethods: params.validateMethods,
@@ -80,7 +79,7 @@ export default {
         validateOnChange: true,
         required: true,
         emptyWarning: this.lang.alert3,
-        description: this.lang.passwordDesc,
+        // description: this.lang.passwordDesc,
         validateMethods: [
           {
             type: 'length',
@@ -102,7 +101,6 @@ export default {
           return h('Input', {
             props: {
               value: this.loginData.password,
-              theme: this.theme,
               type: 'password',
               validateOnChange: params.validateOnChange,
               validateMethods: params.validateMethods,
@@ -150,7 +148,6 @@ export default {
             return h('Input', {
               props: {
                 value: this.loginData.userName,
-                theme: this.theme,
                 background: 'rgba(255,255,255,0.3)',
                 validateOnChange: params.validateOnChange,
                 validateMethods: params.validateMethods,
@@ -198,7 +195,6 @@ export default {
             return h('Input', {
               props: {
                 value: this.loginData.password,
-                theme: this.theme,
                 type: 'password',
                 validateOnChange: params.validateOnChange,
                 validateMethods: params.validateMethods,
@@ -234,7 +230,7 @@ export default {
     loginConfirm() {
       const params = JSON.parse(JSON.stringify(this.loginData))
       params.password = this.encrypt(params.password)
-      this.getData(login.loginConfirm, params).then(res => {
+      this.getData(login.loginConfirm, params).then((res) => {
         if (res.success) {
           this.$Message.success({ content: this.$t('lang.login.alert5') })
           this.getUserInfo(res.data.uid)
@@ -253,9 +249,6 @@ export default {
           }
         }
       })
-    },
-    toRegister() {
-      this.$router.push('/Register')
     }
   }
 }

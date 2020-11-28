@@ -38,7 +38,7 @@ export const lang = {
     alert2: '无法获取用户信息，请重新登录！',
     alert3: '您的身份信息已更新！',
     alert4: '您的账户设置已更新！',
-    alert5: '无法获取您的账户设置，请重新登录！',
+    alert5: '无法获取您的账户设置，请重新登录！'
   },
   register: {
     userName: '用户名',
@@ -74,9 +74,9 @@ export const lang = {
   login: {
     forgot: '忘记密码？点此重置',
     register: 'Luna Garden的新用户？',
-    register2: '现在就来注册账号体验下吧！',
+    register2: '注册Luna Garden',
     login: '登录',
-    login2: '点击这里登录',
+    login2: '登录',
     userName: '用户名',
     password: '密码',
     userNameDesc: '请输入注册时用户名或邮箱。',
@@ -222,7 +222,7 @@ export const lang = {
   project: {
     projectName: '项目名称',
     important: '重要程度',
-    alert1: '项目名称不能为空',
+    alert1: '项目名称不能为空'
   },
   LunaUI: {
     showModal: '显示弹窗',
@@ -246,5 +246,22 @@ export const lang = {
       Guide5: 'icon属性用以书写一个字体图标或图片',
       Guide6: 'duration属性传入一个数字，以改变显示时长'
     }
+  },
+  Start: {
+    desc1: '现在，这一日终于到来。',
+    desc2: '是时候向您展现全新的Luna Garden了。愿您优雅从容地面对一切。',
+    desc3: '您可以和您的团队共同为一个目标而努力。',
+    desc4: 'Luna Garden对于个人开发者是完全免费的。',
+    desc5: '如果您愿意的话。',
+    desc6: '您可以创建一个组织或注册您的公司。',
+    desc7: '然后您就可以轻松地使用todo面板并查看全自动的仪表板。',
+    desc8: '从繁重的工作中解脱出来，并享受您的提升。',
+    desc9: 'Luna Garden也可以作为您和您的家庭之间的桥梁',
+    desc10: '您可以记录爱情的时间线，或者时刻记录孩子们的成长。',
+    desc11: '我们提供了一个开关以便于您在两种身份之间随时切换。',
+    desc12: '这可能会帮助您找到工作与生活的平衡点。',
+    join: '加入Luna Garden',
+    desc13: '想要更多的了解Luna Garden吗？请来这边。',
+    about: '了解更多Luna Garden'
   }
 }

@@ -164,6 +164,10 @@ export default {
     iconSize: {
       type: [Number, String],
       default: 'none'
+    },
+    to: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -310,6 +314,9 @@ export default {
   methods: {
     click() {
       if (!this.disabled && !this.loading) {
+        if (this.to !== '') {
+          this.$router.push(this.to)
+        }
         this.$emit('click')
       }
     }

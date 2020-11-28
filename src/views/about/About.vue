@@ -94,7 +94,7 @@
 <script>
 import '../../assets/icons/logo/iconfont.js'
 export default {
-  name: 'app'
+  name: 'AboutUs'
 }
 </script>
 <style lang="scss" scoped>

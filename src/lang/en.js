@@ -30,14 +30,14 @@ export const lang = {
     Report: 'Report Center',
     mReport: 'Report Center',
     Legend: 'Flower Legend',
-    mLegend: 'Flower Legend',
+    mLegend: 'Flower Legend'
   },
   getUserInfo: {
     alert1: 'Your identity has expired, please log in again!',
     alert2: 'Unable to get user information, please log in again!',
     alert3: 'Your identity information has been updated!',
     alert4: 'Your account settings has been updated!',
-    alert5: 'Unable to get your account settings, please log in again!',
+    alert5: 'Unable to get your account settings, please log in again!'
   },
   register: {
     userName: 'Username',
@@ -73,9 +73,9 @@ export const lang = {
   login: {
     forgot: 'Forgot Password? Reset from here.',
     register: 'New to Luna Garden?',
-    register2: 'Create an account to get started today',
+    register2: 'Sign Up',
     login: 'Login',
-    login2: 'Login from here',
+    login2: 'Sign In',
     userName: 'Username/E-mail',
     password: 'Password',
     userNameDesc: 'Please enter your user name or mailbox at the time of registration.',
@@ -222,7 +222,7 @@ export const lang = {
   project: {
     projectName: 'Project Name',
     important: 'Importance',
-    alert1: 'The Project Name cannot be empty',
+    alert1: 'The Project Name cannot be empty'
   },
   LunaUI: {
     showModal: 'Show Modal',
@@ -246,5 +246,22 @@ export const lang = {
       Guide5: 'icon属性用以书写一个字体图标或图片',
       Guide6: 'duration属性传入一个数字，以改变显示时长'
     }
+  },
+  Start: {
+    desc1: 'Now, the day has come.',
+    desc2: "It's time to show you the new Luna Garden. Elegant and calm to face everything",
+    desc3: 'You can work with your team for a goal.',
+    desc4: 'Luna Garden is free for personal developer.',
+    desc5: 'And if you like.',
+    desc6: 'You can create a group for company.',
+    desc7: 'Then you can easily to use the todo panel and watch the automaticaly dashboard.',
+    desc8: 'Free from the heave work and enjoy your lift.',
+    desc9: 'Luna Garden is also a bridge for you and your family.',
+    desc10: 'You can create a timeline for your lover, or a growline for your children.',
+    desc11: 'We provide you witch a switch to facilitate your conversion between the two identities.',
+    desc12: 'That is the Balance between your work and life.',
+    join: 'Join The Luna Garden',
+    desc13: 'Want know more about Luna Garden? Come here!',
+    about: 'About the Luna Garden'
   }
 }

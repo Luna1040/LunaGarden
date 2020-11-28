@@ -1,7 +1,105 @@
 <template>
-  <div>
-    <div class="normalBc" :class="width177"></div>
-    <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128" width="300" height="300" xml:space="preserve">
+  <div class="publicNormalBc">
+    <div class="leftBlurArea">
+      <h1>Luna Garden</h1>
+      <p>{{ $t('lang.Start.desc1') }}</p>
+      <p>{{ $t('lang.Start.desc2') }}</p>
+      <br />
+      <p>{{ $t('lang.Start.desc3') }}</p>
+      <p>{{ $t('lang.Start.desc4') }}</p>
+      <br />
+      <p>{{ $t('lang.Start.desc5') }}</p>
+      <p>{{ $t('lang.Start.desc6') }}</p>
+      <p>{{ $t('lang.Start.desc7') }}</p>
+      <p>{{ $t('lang.Start.desc8') }}</p>
+      <br />
+      <p>{{ $t('lang.Start.desc9') }}</p>
+      <p>{{ $t('lang.Start.desc10') }}</p>
+      <p>{{ $t('lang.Start.desc11') }}</p>
+      <br />
+      <p>{{ $t('lang.Start.desc12') }}</p>
+      <Button theme="primary" style="width: 100%; margin: 16px 0;" to="/Login">{{ $t('lang.Start.join') }}</Button>
+      <p>{{ $t('lang.Start.desc13') }}</p>
+      <Button theme="primary" style="width: 100%; margin: 16px 0;" to="/AboutUs">{{ $t('lang.Start.about') }}</Button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'start',
+  data() {
+    return {
+      width177: 0
+    }
+  },
+  created() {
+    if (window.innerWidth / window.innerHeight >= 1.777) {
+      this.width177 = 177
+    } else if (window.innerWidth / window.innerHeight < 1) {
+      this.width177 = 0
+    } else {
+      this.width177 = 16
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.normalBc {
+  width: 100vw;
+  height: 100vh;
+  background: url('https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg') no-repeat;
+  background-size: cover;
+}
+</style>
+<style scoped lang="scss">
+.st0 {
+  fill: #ffffff;
+}
+
+.st1 {
+  fill: #eb7290;
+}
+
+.st2 {
+  fill: none;
+}
+
+.st3 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 0.25;
+  stroke-miterlimit: 1;
+}
+
+div {
+  width: 100%;
+  height: 100%;
+
+  svg {
+    position: absolute;
+    top: calc(40% - 150px);
+    left: calc(50% - 150px);
+    //animation: spin 1s ease-out forwards;
+    @keyframes spin {
+      0% {
+        top: 0;
+        opacity: 1;
+      }
+      40% {
+        top: calc(40% - 150px);
+        opacity: 1;
+      }
+      100% {
+        top: calc(40% - 150px);
+        opacity: 0;
+      }
+    }
+  }
+}
+</style>
+<!-- <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128" width="300" height="300" xml:space="preserve">
       <circle class="st0" cx="64" cy="64" r="63" />
       <g>
         <path
@@ -861,81 +959,4 @@
           />
         </g>
       </g>
-    </svg>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'start',
-  data() {
-    return {
-      width177: 0
-    }
-  },
-  created() {
-    if (window.innerWidth / window.innerHeight >= 1.777) {
-      this.width177 = 177
-    } else if (window.innerWidth / window.innerHeight < 1) {
-      this.width177 = 0
-    } else {
-      this.width177 = 16
-    }
-  }
-}
-</script>
-
-<style scoped lang="scss">
-.normalBc {
-  width: 100vw;
-  height: 100vh;
-  background: url('https://github.com/Luna1040/projectImages/blob/master/images/background/bc1.jpg') no-repeat;
-  background-size: cover;
-}
-</style>
-<style scoped lang="scss">
-.st0 {
-  fill: #ffffff;
-}
-
-.st1 {
-  fill: #eb7290;
-}
-
-.st2 {
-  fill: none;
-}
-
-.st3 {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 0.25;
-  stroke-miterlimit: 1;
-}
-
-div {
-  width: 100%;
-  height: 100%;
-
-  svg {
-    position: absolute;
-    top: calc(40% - 150px);
-    left: calc(50% - 150px);
-    //animation: spin 1s ease-out forwards;
-    @keyframes spin {
-      0% {
-        top: 0;
-        opacity: 1;
-      }
-      40% {
-        top: calc(40% - 150px);
-        opacity: 1;
-      }
-      100% {
-        top: calc(40% - 150px);
-        opacity: 0;
-      }
-    }
-  }
-}
-</style>
+    </svg> -->

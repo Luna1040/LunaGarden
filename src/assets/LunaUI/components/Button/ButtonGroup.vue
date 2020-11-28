@@ -24,7 +24,7 @@
     ]"
     :style="[btnGroupStyle]"
   >
-    <Button v-for="(i, index) in btnGroup" :key="index" :style="spanCount" :styles="i.styles" :theme="i.theme" :width="i.width" :height="i.height" :color="i.color" :background="i.background" :font-size="i.fontSize" :border="i.border" :shadow="i.shadow" :shadow-theme="i.shadowTheme" :shadow-style="i.shadowStyle" :class-name="i.className" :padding="i.padding" :margin="i.margin" :corner="i.corner" :radius="i.radius" :loading="i.loading" :disabled="i.disabled" :type="i.type" :icon="i.icon" :icon-color="i.iconColor" :icon-size="i.iconSize" :pre="i.pre" :suffix="i.suffix" :long="i.long" @click="emit(i.methods, index)">{{ i.name }}</Button>
+    <Button v-for="(i, index) in btnGroup" :key="index" :style="spanCount" :styles="i.styles" :theme="i.theme" :width="i.width" :height="i.height" :color="i.color" :background="i.background" :font-size="i.fontSize" :border="i.border" :shadow="i.shadow" :shadow-theme="i.shadowTheme" :shadow-style="i.shadowStyle" :class-name="i.className" :padding="i.padding" :margin="i.margin" :corner="i.corner" :radius="i.radius" :loading="i.loading" :disabled="i.disabled" :type="i.type" :icon="i.icon" :icon-color="i.iconColor" :icon-size="i.iconSize" :pre="i.pre" :suffix="i.suffix" :long="i.long" :to="i.to" @click="emit(i.methods, index)">{{ i.name }}</Button>
   </div>
 </template>
 

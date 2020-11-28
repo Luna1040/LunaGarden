@@ -2,9 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 启动画面
 import Start from './start.vue'
-// 主页引入
-import TodoPanel from './views/todoPanel/TodoPanel.vue'
-import mTodoPanel from './views/todoPanel/mTodoPanel.vue'
 // 引导模式
 import Guide from './views/guide/Guide.vue'
 import mGuide from './views/guide/mGuide.vue'
@@ -26,6 +23,9 @@ import mChatting from './views/chatting/mChatting.vue'
 import LunaUI from './views/UI/lunaUI.vue'
 import Report from './views/report/Report.vue'
 import mReport from './views/report/mReport.vue'
+// 主页引入
+import TodoPanel from './views/todoPanel/TodoPanel.vue'
+import mTodoPanel from './views/todoPanel/mTodoPanel.vue'
 // 字节测试
 import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
@@ -58,7 +58,13 @@ const router = new Router({
     { path: '/Cursor', name: 'Cursor', component: ByteCursor, meta: { index: 997 } },
     { path: '/mCursor', name: 'mCursor', component: ByteCursor, meta: { index: 997 } },
     { path: '/Discuss', name: 'Discuss', component: ByteDiscuss, meta: { index: 996 } },
-    { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss, meta: { index: 996 } }
+    { path: '/mDiscuss', name: 'mDiscuss', component: ByteDiscuss, meta: { index: 996 } },
+    // 引导页面
+    { path: '/Guide', name: 'Guide', component: Guide, meta: { index: 999 } },
+    { path: '/mGuide', name: 'mGuide', component: mGuide, meta: { index: 999 } },
+    // 关于我们
+    { path: '/AboutUs', name: 'AboutUs', component: AboutUs, meta: { index: 999 } },
+    { path: '/mAboutUs', name: 'mAboutUs', component: mAboutUs, meta: { index: 999 } }
   ]
 })
 

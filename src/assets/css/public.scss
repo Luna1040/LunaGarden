@@ -45,7 +45,7 @@ main,
 p,
 section,
 span {
-  font-family: Menlo, PingFang SC, Consolas, Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
+  font-family: Menlo, Consolas, PingFang SC, Microsoft YaHei UI Light, Microsoft YaHei Light, WenQuanYi Micro Hei, San Francisco, Helvetica, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -365,6 +365,35 @@ footer {
 
   .header.collapse {
     height: 88px;
+  }
+  .publicNormalBc {
+    width: 100%;
+    height: 100%;
+    background: url(https://raw.githubusercontent.com/Luna1040/projectImages/master/images/background/bc1.jpg) no-repeat;
+    background-size: 120vw;
+
+    .leftBlurArea {
+      width: 600px;
+      height: 100%;
+      background: url(https://raw.githubusercontent.com/Luna1040/projectImages/master/images/background/bc1Blur.jpg) no-repeat;
+      background-size: 120vw;
+      padding: 18px;
+      overflow: auto;
+      transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+
+      h1 {
+        color: $WHITE;
+        font-size: 28px;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 28px;
+        color: $WHITE;
+      }
+    }
   }
   .container {
     height: 100%;

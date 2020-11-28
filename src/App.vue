@@ -1,8 +1,10 @@
 <template>
   <div id="app" :class="{ LightTheme: $store.state.theme === 'light', DarkTheme: $store.state.theme === 'dark' }">
-    <Header v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'" :msg-header="$t('lang.titles.' + $route.name)" :user-info="$store.state.userInfo" :menu-list="menuList" :is-collapse="isCollapse"></Header>
+    <transition name="datePickerTransFade">
+      <Header v-if="$route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister'" :msg-header="$t('lang.titles.' + $route.name)" :user-info="$store.state.userInfo" :menu-list="menuList" :is-collapse="(isCollapse && $route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister')"></Header>
+    </transition>
     <transition :name="transitionName">
-      <router-view class="Router" :class="{ collapse: isCollapse }"></router-view>
+      <router-view class="Router" :class="{ collapse: isCollapse && $route.name !== 'Start' && $route.name !== 'mStart' && $route.name !== 'Login' && $route.name !== 'mLogin' && $route.name !== 'Register' && $route.name !== 'mRegister' }"></router-view>
     </transition>
     <!-- 移动端通用footer -->
     <!--    <footer>-->
