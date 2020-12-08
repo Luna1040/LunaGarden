@@ -43,6 +43,8 @@ export const lang = {
   register: {
     userName: '用户名',
     userNameDesc: '用户名不允许包含特殊符号,且必须多于四位字符。',
+    company: '公司或组织',
+    companyDesc: '您必须选择正确的公司才能用分配给您的账户登录，若您并非公司员工而是私人使用者，请选择Luna Org',
     password: '密码',
     passwordDesc: '密码应不少于6位，且必须包含大写字符，小写字符，数字。',
     email: 'E-mail',
@@ -69,7 +71,9 @@ export const lang = {
     alert15: '不允许输入中文特殊符号！',
     alert16: '银行卡号不允许少于16位',
     alert17: '银行卡号不允许多余19位',
-    alert18: '不允许输入英文'
+    alert18: '不允许输入英文',
+    alert19: '抱歉，您所选择的公司已被封禁',
+    alert20: '您选择的公司或组织正在审核中，请您稍候等待其通过。',
   },
   login: {
     forgot: '忘记密码？点此重置',
@@ -86,7 +90,8 @@ export const lang = {
     alert2: '用户名或邮箱错误！',
     alert3: '密码不能为空！',
     alert4: '密码不正确！',
-    alert5: '登录成功！'
+    alert5: '登录成功！',
+    alert6: '公司或组织不能为空！'
   },
   header: {
     lock: '锁定',

@@ -27,30 +27,31 @@ const encrypt = function (password) {
 }
 // 根据uid获取菜单
 const updateMenu = function (uid) {
-  let arr = [
-    // LunaUI的展示
-    { path: '/LunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
-    { path: '/mLunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
-    // 待办事项面板
-    { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 5 } },
-    { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 5 } },
-    // 聊天页面
-    { path: '/Chatting', name: 'Chatting', component: Chatting, meta: { index: 995 } },
-    { path: '/mChatting', name: 'mChatting', component: mChatting, meta: { index: 995 } },
-    // 汇报中心
-    { path: '/ReportCenter', name: 'Report', component: Report, meta: { index: 6 } },
-    { path: '/mReportCenter', name: 'mReport', component: mReport, meta: { index: 6 } }
-  ]
-  this.$router.options.routes = arr
-  this.$router.addRoutes(arr)
-  this.$router
-    .push(window.location.hash.split('#')[1])
-    .then((r) => {
+  return new Promise((res, rej) => {
+    let arr = [
+      // LunaUI的展示
+      { path: '/LunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
+      { path: '/mLunaUI', name: 'LunaUI', component: LunaUI, meta: { index: 990 } },
+      // 待办事项面板
+      { path: '/TodoPanel', name: 'TodoPanel', component: TodoPanel, meta: { index: 5 } },
+      { path: '/mTodoPanel', name: 'mTodoPanel', component: mTodoPanel, meta: { index: 5 } },
+      // 聊天页面
+      { path: '/Chatting', name: 'Chatting', component: Chatting, meta: { index: 995 } },
+      { path: '/mChatting', name: 'mChatting', component: mChatting, meta: { index: 995 } },
+      // 汇报中心
+      { path: '/ReportCenter', name: 'Report', component: Report, meta: { index: 6 } },
+      { path: '/mReportCenter', name: 'mReport', component: mReport, meta: { index: 6 } }
+    ]
+    this.$router.options.routes = arr
+    this.$router.addRoutes(arr)
+    this.$router.push(window.location.hash.split('#')[1]).then(r => {
       this.$Message.success({ content: '更新菜单成功！' })
-    })
-    .catch((r) => {
+      res(true)
+    }).catch(r => {
       this.$Message.error({ content: '更新菜单失败！' })
+      rej(false)
     })
+  })
 }
 //用于将rgb色值转为哈希色值
 const toHash = function (value) {

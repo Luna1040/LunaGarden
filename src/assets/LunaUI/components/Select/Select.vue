@@ -22,7 +22,7 @@
     @keydown.tab="handleKeydown"
     @keydown.delete="handleKeydown"
   >
-    <Input ref="input" v-model="initValue" :placeholder="placeholder" :readonly="!filterable" :disabled="disabled" :width="inputStyles.width" :corner="corner" icon="iconfont icon-down" suffix :spin="showList" :background="background" :theme="theme" @input="changeText"></Input>
+    <Input ref="input" v-model="initValue" :placeholder="placeholder" :readonly="!filterable" :disabled="disabled" :width="inputStyles.width" :corner="corner" icon="font_family icon-LunaDown" suffix :spin="showList" :background="background" :theme="theme" @input="changeText"></Input>
     <transition name="slideDown">
       <div
         v-if="showList"
@@ -138,6 +138,27 @@ export default {
       filterData: [],
       choiceIndex: -1,
       chose: false
+    }
+  },
+  created() {
+    if (this.value !== '') {
+      for (let i = 0; i < this.selectData.length; i++) {
+        if (this.selectData[i][this.keyValue] === this.value) {
+          this.initValue = this.selectData[i][this.keyLabel]
+          this.choiceIndex = i
+          this.$emit('input', this.selectData[i][this.keyValue])
+          if (!this.returnLabel) {
+            this.$emit('on-change', this.selectData[i][this.keyValue])
+          } else {
+            this.$emit('on-change', this.selectData[i])
+          }
+          this.chose = true
+          break
+        }
+      }
+    } else {
+      this.initValue = this.value
+      this.filterData = this.selectData
     }
   },
   computed: {

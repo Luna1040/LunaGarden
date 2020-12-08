@@ -1,37 +1,20 @@
 <template>
-  <div class="loginRegister">
-    <Container
-      class-name="spare registerSpare"
-      :flex="false"
-      :width="1000"
-      :height="620"
-      background="rgba(255,255,255,0.3)"
-    >
-      <div class="blurBc"></div>
+  <div class="publicNormalBc">
+    <div class="leftBlurArea">
+      <h1>{{ $t('lang.titles.Register') }}</h1>
       <p class="desc">{{ $t("lang.login.desc") }}</p>
       <p class="desc">{{ $t("lang.login.desc2") }}</p>
-      <Form
-        ref="form"
-        style="margin: 0 auto;"
-        background="rgba(0,0,0,0)"
-        border="0"
-        :shadow="false"
-        :form="form"
-        :theme="theme"
-        :width="640"
-        label-position="top"
-        :label-width="150"
-      ></Form>
+      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" label-color="#FFFFFF" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="150"></Form>
       <div class="linkGroup">
         <!--        <router-link to="register" class="button">{{ $t('lang.register.register') }}</router-link>-->
-        <Button theme="primary" :width="590" @click="registSubmit" :loading="loading">{{
+        <Button theme="primary" style="margin: 0 auto;" :width="502" :loading="loading" @click="registSubmit">{{
           $t("lang.register.register")
         }}</Button>
-        <router-link to="login" class="pink">{{
+        <router-link to="login" class="forgot">{{
           $t("lang.register.login")
         }}</router-link>
       </div>
-    </Container>
+    </div>
     <Modal
       v-model="bankIdEmpty"
       :title="$t('lang.register.bankIdEmpty')"
@@ -39,7 +22,7 @@
     >
       <p>{{ this.$t("lang.register.alert12") }}</p>
       <div slot="footer">
-        <Button theme="primary" @click="bankIdEmpty = false" :loading="loading">{{
+        <Button theme="primary" :loading="loading" @click="bankIdEmpty = false">{{
           this.$t("lang.todoPanel.button.OK")
         }}</Button>
       </div>
@@ -284,6 +267,10 @@ export default {
             this.$Message.error({ content: this.$t('lang.register.alert5') })
           } else if (res.code === 6) {
             this.$Message.error({ content: this.$t('lang.register.alert6') })
+          } else if (res.code === 19) {
+            this.$Message.error({ content: this.$t('lang.register.alert19') })
+          } else if (res.code === 20) {
+            this.$Message.error({ content: this.$t('lang.register.alert20') })
           } else {
             this.$Message.error({ content: this.$t('lang.unknownError') })
           }

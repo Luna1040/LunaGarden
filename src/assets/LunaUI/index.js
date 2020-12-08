@@ -55,7 +55,7 @@ const LunaUI = {
   RadioGroup,
   Switches,
   SwitchesGroup,
-  DatePicker
+  DatePicker,
 }
 
 Object.keys(LunaUI).forEach((name) => {

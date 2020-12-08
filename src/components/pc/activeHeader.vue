@@ -7,7 +7,7 @@
       <!--      @click即v-on:click的简写  语法糖-->
       <div class="userIcon" @click="showSettings">
         <!--        用户头像图片-->
-        <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt="" />
+        <img src="https://lunagarden.net/res/userIcons/userIcon.jpg" alt="" />
       </div>
     </div>
     <!--    Luna Garden的标题区域，分上面的写死标题Luna Garden与下方随页面更改的标题-->
@@ -34,7 +34,7 @@
     <div class="guide" :class="{guideCollapse: isCollapse}">
       <div class="messageBtnGroup">
         <i class="font_family icon-LunaRing"></i>
-        <p v-show="!isCollapse">{{newMessage}}条未读消息</p>
+        <p v-show="!isCollapse">{{ newMessage }}条未读消息</p>
       </div>
       <div class="btnGroup">
         <!--        这里的:class表达式，意为：当全局变量$i18n.locale不为'zh-CN'这个字符串时，为这个英文的图标添加名为languageActive的class，实现选中的高亮效果(注：因为目前只有中英双语，那么只能用中文做判断)-->

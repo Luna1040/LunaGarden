@@ -42,7 +42,9 @@ export const lang = {
   register: {
     userName: 'Username',
     userNameDesc: 'User names do not allow for special symbols and must be more than four characters.',
-    password: 'password',
+    company: 'Company or Organization',
+    companyDesc: 'You must select your own company and use your own account,if you are not an employer of any company, you must select the Luna Org.',
+    password: 'Password',
     passwordDesc: 'The password should be no less than 6 characters and must contain uppercase characters, lowercase characters, and numbers.',
     email: 'e-mail',
     emailDesc: 'E-mail can be used for login, receive authentication code, reset password usage.',
@@ -68,7 +70,9 @@ export const lang = {
     alert15: 'Special Chinese symbols are not allowed here!',
     alert16: 'The bank card number is not allowed lesser than 16!',
     alert17: 'The bank card number is not allowed mare than 19!',
-    alert18: 'English is not allowed here!'
+    alert18: 'English is not allowed here!',
+    alert19: 'Sorry, your selected company is baned now!',
+    alert20: 'Company or Organization is not support current now! Please wait until it ready.',
   },
   login: {
     forgot: 'Forgot Password? Reset from here.',
@@ -85,7 +89,8 @@ export const lang = {
     alert2: 'The username or e-mail is undefined!',
     alert3: 'The password cannot be empty!',
     alert4: 'The password is not Correct!',
-    alert5: 'Login success!'
+    alert5: 'Login success!',
+    alert6: 'The company or Organization cannot be empty!'
   },
   header: {
     lock: 'Lock',

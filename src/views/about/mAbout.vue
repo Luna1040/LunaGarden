@@ -1,6 +1,6 @@
 <template>
   <div class="aboutUs">
-    <Header :msg-header="$t('lang.titles.about')" user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" user-name="Luna Lovegood" is-viper="true" user-language="English"></Header>
+    <Header :msg-header="$t('lang.titles.about')" user-icon="https://lunagarden.net/res/userIcons/userIcon.jpg" user-name="Luna Lovegood" is-viper="true" user-language="English"></Header>
     <div class="about">
       <h1>{{ $t('lang.aboutUs.title') }}</h1>
       <p>{{ $t('lang.aboutUs.desc') }}</p>
@@ -15,22 +15,22 @@
       <h1>{{ $t('lang.aboutUs.title2') }}</h1>
       <div class="cardGroup">
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
+          <img src="https://lunagarden.net/res/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.author') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.authorDesc') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
+          <img src="https://lunagarden.net/res/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
+          <img src="https://lunagarden.net/res/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people3') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.developer') }}</figcaption>
         </figure>
         <figure>
-          <img src="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg" alt />
+          <img src="https://lunagarden.net/res/userIcons/userIcon.jpg" alt />
           <figcaption>{{ $t('lang.aboutUs.people2') }}</figcaption>
           <figcaption>{{ $t('lang.aboutUs.mystery') }}</figcaption>
         </figure>

@@ -1,14 +1,15 @@
 <template>
   <div class="publicNormalBc">
     <div class="leftBlurArea">
+      <h1>{{ $t('lang.titles.Login') }}</h1>
       <p class="desc">{{ $t('lang.login.desc') }}</p>
       <p class="desc">{{ $t('lang.login.desc2') }}</p>
-      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="150"></Form>
+      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" label-color="#FFFFFF" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="150"></Form>
       <div class="linkGroup">
+        <router-link to="/Forgot" class="forgot">{{ $t('lang.login.forgot') }}</router-link>
         <Button theme="primary" :width="502" style="margin: 0 auto;" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
         <p style="text-align: center;">{{ $t('lang.login.register') }}</p>
         <Button :width="502" style="margin: 0 auto;" theme="primary" to="/Register">{{ $t('lang.login.register2') }}</Button>
-        <router-link to="/Forgot" class="pink">{{ $t('lang.login.forgot') }}</router-link>
       </div>
     </div>
   </div>
@@ -22,9 +23,41 @@ export default {
     return {
       loginData: {
         userName: '',
-        password: ''
+        password: '',
+        // Default Value
+        company: '_1040657022X'
       },
       theme: 'light',
+      companyList: [
+        {
+          id: '_1040657022X',
+          name: 'Luna Org'
+        },
+        {
+          id: '_786623314V',
+          name: '锐融天下'
+        },
+        {
+          id: '_cncuf88791Z',
+          name: '中关村E谷'
+        },
+        {
+          id: '_ubff898989',
+          name: '清华零壹实验室'
+        },
+        {
+          id: 'uf8897546632V',
+          name: '清华非名实验室'
+        },
+        {
+          id: '_786661234406G',
+          name: '西安鎏金药业'
+        },
+        {
+          id: '_8897GH',
+          name: '北京青鸟科技'
+        }
+      ],
       form: [],
       lang: {},
       logLang: {}
@@ -34,6 +67,31 @@ export default {
     this.lang = this.t
     this.logLang = this.logT
     this.form = [
+      {
+        title: this.lang.company,
+        required: true,
+        description: this.logLang.companyDesc,
+        render: (h, params) => {
+          return h('Select', {
+            props: {
+              value: this.loginData.company,
+              background: 'rgba(255,255,255,0.3)',
+              width: '100%',
+              selectData: this.companyList,
+              filterable: true,
+              keyValue: 'id',
+              keyLabel: 'name'
+            },
+            on: {
+              input: (event) => {
+                this.loginData.company = event
+              }
+            }
+          })
+        },
+        errStatus: false,
+        errText: ''
+      },
       {
         title: this.lang.userName,
         validate: 'userName',
@@ -128,6 +186,31 @@ export default {
       this.lang = this.t
       this.logLang = this.logT
       this.form = [
+        {
+          title: this.lang.company,
+          required: true,
+          description: this.logLang.companyDesc,
+          render: (h, params) => {
+            return h('Select', {
+              props: {
+                value: this.loginData.company,
+                background: 'rgba(255,255,255,0.3)',
+                width: '100%',
+                selectData: this.companyList,
+                filterable: true,
+                keyValue: 'id',
+                keyLabel: 'name'
+              },
+              on: {
+                input: (event) => {
+                  this.loginData.company = event
+                }
+              }
+            })
+          },
+          errStatus: false,
+          errText: ''
+        },
         {
           title: this.lang.userName,
           validate: 'userName',
@@ -234,7 +317,13 @@ export default {
         if (res.success) {
           this.$Message.success({ content: this.$t('lang.login.alert5') })
           this.getUserInfo(res.data.uid)
-          this.$router.push('/TodoPanel')
+            .then((r) => {
+              this.$router.push('/TodoPanel')
+            })
+            .catch((r) => {
+              this.$Message.error(this.$t('lang.unknownError'))
+              // console.log(r)
+            })
         } else {
           if (res.code === 1) {
             this.$Message.error({ content: this.$t('lang.login.alert1') })
@@ -244,6 +333,8 @@ export default {
             this.$Message.error({ content: this.$t('lang.login.alert3') })
           } else if (res.code === 4) {
             this.$Message.error({ content: this.$t('lang.login.alert4') })
+          } else if (res.code === 6) {
+            this.$Message.error({ content: this.$t('lang.login.alert6') })
           } else {
             this.$Message.error({ content: this.$t('lang.unknownError') })
           }

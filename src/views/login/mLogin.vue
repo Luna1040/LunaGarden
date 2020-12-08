@@ -2,7 +2,7 @@
   <div class="login">
     <Header
       :msg-header="$t('lang.titles.login')"
-      user-icon="https://raw.githubusercontent.com/Luna1040/projectImages/master/images/userIcons/userIcon.jpg"
+      user-icon="https://lunagarden.net/res/userIcons/userIcon.jpg"
       user-name="Luna Lovegood"
       is-viper="true"
       user-language="English"

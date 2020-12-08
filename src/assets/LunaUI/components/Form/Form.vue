@@ -26,6 +26,7 @@
       class="lunaFormItem"
       :item-data="i"
       :label-width-count="labelWidthCount"
+      :label-color-count="labelColorCount"
       :class="{
         leftLabel: labelPosition === 'left',
         topLabel: labelPosition === 'top'
@@ -35,6 +36,7 @@
     <div
       class="lunaFormItem"
       :label-width-count="labelWidthCount"
+      :label-color-count="labelColorCount"
       :class="{
         rightLabel: labelPosition === 'left',
         topLabel: labelPosition === 'top'
@@ -122,6 +124,10 @@ export default {
       type: [Number, String],
       default: 120
     },
+    labelColor: {
+      type: [Number, String],
+      default: 'none'
+    },
     form: {
       type: Array,
       default: () => {
@@ -201,6 +207,16 @@ export default {
       } else {
         return { width: this.labelWidth + 'px' }
       }
+    },
+    labelColorCount() {
+      if (this.labelColor !== 'none') {
+        if (typeof this.labelColor === 'string') {
+          return { color: this.labelColor }
+        } else {
+          return { color: '#' + this.labelColor }
+        }
+      }
+      return {}
     }
   },
   data() {

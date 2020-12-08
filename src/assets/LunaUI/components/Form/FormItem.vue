@@ -12,7 +12,7 @@
       }
     ]"
   >
-    <span :style="labelWidthCount" :class="{ required: formItemData.required }">
+    <span :style="[labelWidthCount, labelColorCount]" :class="{ required: formItemData.required }">
       {{ formItemData.title }}
     </span>
     <template v-if="formItemData.render">
@@ -35,6 +35,10 @@ export default {
   components: { Render },
   props: {
     labelWidthCount: {
+      type: Object,
+      default: () => {}
+    },
+    labelColorCount: {
       type: Object,
       default: () => {}
     },

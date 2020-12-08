@@ -155,12 +155,12 @@ export default {
       } else {
         this.setLocal('userInfo', {})
         // 没有 -> 跳转登录
-        this.$router.push('/Login')
+        this.$router.push('/Start')
       }
     } else {
       this.setLocal('userInfo', {})
       //没有留存 -> 跳转登录
-      this.$router.push('/Login')
+      this.$router.push('/Start')
     }
     //根据时间设置主题
     // 设置时间对象

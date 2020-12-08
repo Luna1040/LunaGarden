@@ -31,7 +31,10 @@ import ByteDemo from './views/byteDemos/byteDemo'
 import mByteDemo from './views/byteDemos/mByteDemo'
 import ByteCursor from './views/byteDemos/byteCursor'
 import ByteDiscuss from './views/byteDemos/byteDiscuss'
-
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 Vue.use(Router)
 
 const router = new Router({
