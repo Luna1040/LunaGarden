@@ -3,9 +3,9 @@ import { publicApi } from './url'
 import Vue from 'vue'
 
 // 获取用户信息
-const getUserInfo = function (uid) {
+const getUserInfo = function (uid, company) {
   return new Promise((resolve, reject) => {
-    this.getData(publicApi.getUserInfo, { userId: uid })
+    this.getData(publicApi.getUserInfo, { userId: uid, company: company })
       .then((res) => {
         if (res.success) {
           this.commitX('setUserInfo', res.data)

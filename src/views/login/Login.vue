@@ -4,7 +4,7 @@
       <h1>{{ $t('lang.titles.Login') }}</h1>
       <p class="desc">{{ $t('lang.login.desc') }}</p>
       <p class="desc">{{ $t('lang.login.desc2') }}</p>
-      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" label-color="#FFFFFF" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="150"></Form>
+      <Form ref="form" style="margin: 0 auto;" background="rgba(0,0,0,0)" label-color="#FFFFFF" border="0" :shadow="false" :form="form" :width="552" label-position="top" :label-width="220"></Form>
       <div class="linkGroup">
         <router-link to="/Forgot" class="forgot">{{ $t('lang.login.forgot') }}</router-link>
         <Button theme="primary" :width="502" style="margin: 0 auto;" @click="loginConfirm">{{ this.$t('lang.login.login2') }}</Button>
@@ -35,14 +35,14 @@ export default {
         },
         {
           id: '_786623314V',
-          name: '锐融天下'
+          name: '北京锐融天下'
         },
         {
           id: '_cncuf88791Z',
-          name: '中关村E谷'
+          name: '北京中关村E谷'
         },
         {
-          id: '_ubff898989',
+          id: '_ubff89638989',
           name: '清华零壹实验室'
         },
         {
@@ -51,10 +51,10 @@ export default {
         },
         {
           id: '_786661234406G',
-          name: '西安鎏金药业'
+          name: '西安鎏金热工'
         },
         {
-          id: '_8897GH',
+          id: '_88112635397GH',
           name: '北京青鸟科技'
         }
       ],
@@ -316,7 +316,7 @@ export default {
       this.getData(login.loginConfirm, params).then((res) => {
         if (res.success) {
           this.$Message.success({ content: this.$t('lang.login.alert5') })
-          this.getUserInfo(res.data.uid)
+          this.getUserInfo(res.data.uid, res.data.company)
             .then((r) => {
               this.$router.push('/TodoPanel')
             })

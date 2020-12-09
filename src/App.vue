@@ -151,7 +151,7 @@ export default {
       // 若用户信息内有用户id
       if (this.getLocal('userInfo').uid) {
         //有 -> 获取设置&获取菜单 -> publicReq.js
-        this.getUserInfo(this.getLocal('userInfo').uid)
+        this.getUserInfo(this.getLocal('userInfo').uid, this.getLocal('userInfo').company)
       } else {
         this.setLocal('userInfo', {})
         // 没有 -> 跳转登录
