@@ -6,6 +6,8 @@ import Chatting from '@/views/chatting/Chatting'
 import mChatting from '@/views/chatting/mChatting'
 import Report from '@/views/report/Report'
 import mReport from '@/views/report/mReport'
+import ImgHosting from '@/views/imgHosting/ImgHosting'
+import mImgHosting from '@/views/imgHosting/ImgHosting'
 // Luna Garden默认生成的UUID，可自行更改私钥公钥或计算方式
 const uuidGet = function () {
   let s = []
@@ -40,7 +42,9 @@ const updateMenu = function (uid) {
       { path: '/mChatting', name: 'mChatting', component: mChatting, meta: { index: 995 } },
       // 汇报中心
       { path: '/ReportCenter', name: 'Report', component: Report, meta: { index: 6 } },
-      { path: '/mReportCenter', name: 'mReport', component: mReport, meta: { index: 6 } }
+      { path: '/mReportCenter', name: 'mReport', component: mReport, meta: { index: 6 } },
+      { path: '/ImgHosting', name: 'ImgHosting', component: ImgHosting, meta: { index: 7 } },
+      { path: '/mImgHosting', name: 'mImgHosting', component: mImgHosting, meta: { index: 7 } },
     ]
     this.$router.options.routes = arr
     this.$router.addRoutes(arr)

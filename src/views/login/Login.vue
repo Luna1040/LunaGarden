@@ -167,7 +167,11 @@ export default {
             },
             on: {
               input: (event) => {
+                console.log(event)
                 this.loginData.password = event
+              },
+              'keyup.enter': (event) => {
+                this.loginConfirm()
               },
               onValidate: (value) => {
                 params.data.errStatus = value.errStatus

@@ -5,9 +5,9 @@ $NormalBackground: #010101;
 $DividerDarkColor: #252525;
 $LightDark: #3f3f3f;
 $MaskOpacity: transparentize(#FFFFFF, 0.5);
-$Shadow: 0 3px 3px transparentize(#FFFFFF, 0.3);
-$AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.3);
-$HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.4);
+$Shadow: 0 3px 3px transparentize(#FFFFFF, 0.5);
+$AroundShadow: 0 0 5px transparentize(#FFFFFF, 0.7);
+$HoverShadow: 0 2px 5px transparentize(#FFFFFF, 0.6);
 $SideShadow: 4px 0 8px 0 transparentize(#FFFFFF, 0.35);
 //$deg: 0,
 @mixin PrimaryGradients($deg) {

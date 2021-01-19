@@ -395,9 +395,10 @@ footer {
       }
 
       .linkGroup {
-        p{
+        p {
           margin-top: 16px;
         }
+
         .forgot {
           text-align: center;
           text-decoration: underline;
@@ -672,16 +673,240 @@ footer {
       display: flex;
     }
   }
+  .imgHosting {
+    overflow: visible;
+    transition: all 0.5s;
+    .viewArea{
+      overflow: auto;
+      width: 100%;
+      padding: 64px;
+      height: 100%;
+      margin: 0 auto;
+      display: grid;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(auto-fill, 200px);
+      grid-gap: 8% 4%;
+    }
+    .fluidButton {
+      width: 48px;
+      height: 48px;
+      background-color: $Primary;
+      color: $WHITE;
+      position: absolute;
+      top: -24px;
+      right: 32px;
+      border-radius: 100px;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 99999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        font-size: 28px;
+      }
+    }
+
+    .imgPreview {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 48px;
+      transition: all 0.5s;
+      box-shadow: $AroundShadow;
+
+      img.widthFormat {
+        width: 100%;
+      }
+
+      img.heightFormat {
+        height: 100%;
+      }
+
+      .mask {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        transition: all 0.5s;
+        opacity: 0;
+      }
+    }
+
+    .imgPreview:hover {
+      box-shadow: $HoverShadow;
+
+      .mask {
+        opacity: 1;
+      }
+    }
+
+    .previewArea {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+        transition: all 0.5s;
+        transform: scale(1);
+      }
+      img.widthFormat{
+        width: 500px;
+      }
+      img.heightFormat{
+        height: 420px;
+      }
+      .tools{
+        width: 100%;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+      }
+    }
+  }
 }
 
+@mixin colorConfig {
+  .lunaGardenLoading {
+    background-color: $MaskOpacity;
+  }
+
+  .header {
+    box-shadow: $Shadow;
+
+    * {
+      color: $PrimaryText;
+    }
+
+    .userIcon {
+      box-shadow: $Shadow;
+    }
+
+    .guide {
+      .btnGroup {
+        box-shadow: $AroundShadow;
+      }
+    }
+
+    .menuGroup {
+      .menuItem {
+        transition: all 0.35s;
+        box-shadow: $AroundShadow;
+      }
+    }
+  }
+
+  .home {
+    background-color: $NormalBackground;
+
+    .fluidButton {
+      box-shadow: $AroundShadow;
+    }
+
+    .homeSideBar {
+      h1 {
+        color: $PrimaryText;
+      }
+
+      ul {
+        .activeBar {
+          @include PrimaryGradients(135);
+        }
+
+        li {
+          color: $PrimaryText;
+        }
+      }
+    }
+
+    .homeMainView {
+      h1 {
+        color: $PrimaryText;
+        border-bottom: 1px solid $MaskOpacity;
+      }
+
+      > p {
+        color: $PrimaryText;
+      }
+
+      ul {
+        li {
+          color: $PrimaryText;
+          border-bottom: 1px solid $LightDark;
+
+          > div {
+            > div {
+              > div {
+                background: $MaskOpacity;
+
+                > span.errorPro {
+                  @include ErrorGradients(135);
+                }
+
+                > span.warningPro {
+                  @include WarningGradients(135);
+                }
+
+                > span.primaryPro {
+                  @include PrimaryGradients(135);
+                }
+
+                > span.successPro {
+                  @include SuccessGradients(135);
+                }
+
+                > span.alertPro {
+                  @include AlertGradients(135);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .imgHosting {
+    .fluidButton {
+      box-shadow: $AroundShadow;
+    }
+    .previewArea {
+      background: $MaskOpacity;
+      .tools{
+        background: $MaskOpacity;
+      }
+    }
+  }
+}
+
+@import './lightCss.scss';
+
 .LightTheme {
-  @import './lightCss.scss';
-  @import './publicColor';
+  @include colorConfig();
 }
 
 .DarkTheme {
   @import './darkCss.scss';
-  @import './publicColor';
+  @include colorConfig();
 }
 
 //@font-face {

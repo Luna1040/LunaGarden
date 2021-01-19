@@ -10,7 +10,7 @@ module.exports = {
     proxy: {
       '/api': {
         // target: 'http://192.168.31.180:3000/api', // 服务器
-        target: 'http://192.168.68.125:3000/api/',
+        target: 'http://192.168.1.3:3000/api/',
         // target: 'https://lunagarden.net/api/',
         pathRewrite: {
           '^/api': ''
